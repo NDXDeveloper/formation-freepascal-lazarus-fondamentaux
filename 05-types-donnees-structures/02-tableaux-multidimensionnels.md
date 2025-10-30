@@ -510,4 +510,4 @@ Les tableaux multidimensionnels permettent de :
 
 Les tableaux 2D sont très courants en programmation. Une fois maîtrisés, ils ouvrent la porte à de nombreuses applications, des jeux aux calculs scientifiques.
 
-⏭️ [Chaînes de caractères (String, ShortString)](05-types-donnees-structures/03-chaines-caracteres-string.md)
+⏭️ [Chaînes de caractères (String, ShortString)](/05-types-donnees-structures/03-chaines-caracteres-string.md)

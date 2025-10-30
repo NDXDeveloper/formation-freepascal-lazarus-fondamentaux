@@ -959,4 +959,4 @@ Les points clés à retenir :
 
 Dans la section suivante, nous allons voir comment permettre à l'utilisateur d'**annuler** une opération en cours. C'est le complément indispensable d'une bonne barre de progression !
 
-⏭️ [Annulation d'opérations longues](18-introduction-pratique-multi-threading/09-annulation-operations-longues.md)
+⏭️ [Annulation d'opérations longues](/18-introduction-pratique-multi-threading/09-annulation-operations-longues.md)

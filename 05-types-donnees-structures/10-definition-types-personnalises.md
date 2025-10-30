@@ -845,4 +845,4 @@ Les types personnalisés permettent de :
 
 Les types personnalisés sont la **fondation** d'un code Pascal bien structuré. Prenez le temps de bien les concevoir : c'est un investissement qui facilite grandement le développement et la maintenance de vos programmes !
 
-⏭️ [Pointeurs et Gestion Mémoire Basique](06-pointeurs-gestion-memoire-basique/README.md)
+⏭️ [Pointeurs et Gestion Mémoire Basique](/06-pointeurs-gestion-memoire-basique/README.md)

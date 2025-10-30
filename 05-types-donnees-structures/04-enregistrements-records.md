@@ -745,4 +745,4 @@ Les enregistrements (records) permettent de :
 
 Les enregistrements sont une étape importante vers la programmation orientée objet, où ils évolueront en classes avec des méthodes associées.
 
-⏭️ [Enregistrements imbriqués](05-types-donnees-structures/05-enregistrements-imbriques.md)
+⏭️ [Enregistrements imbriqués](/05-types-donnees-structures/05-enregistrements-imbriques.md)

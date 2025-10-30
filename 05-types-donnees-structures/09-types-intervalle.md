@@ -716,4 +716,4 @@ Les types intervalle permettent de :
 
 Les types intervalles sont un excellent outil pour écrire du code plus sûr et plus expressif. Ils font partie des bonnes pratiques en Pascal !
 
-⏭️ [Définition de types personnalisés (Type)](05-types-donnees-structures/10-definition-types-personnalises.md)
+⏭️ [Définition de types personnalisés (Type)](/05-types-donnees-structures/10-definition-types-personnalises.md)

@@ -780,4 +780,4 @@ fpc -gh programme.pas
 
 Dans la section suivante, nous explorerons le mot-clé **Self** et la référence à l'objet courant, ce qui vous permettra de mieux comprendre comment un objet peut se référencer lui-même dans ses propres méthodes.
 
-⏭️ [Self et référence à l'objet courant](10-fondamentaux-poo/07-self-reference-objet-courant.md)
+⏭️ [Self et référence à l'objet courant](/10-fondamentaux-poo/07-self-reference-objet-courant.md)

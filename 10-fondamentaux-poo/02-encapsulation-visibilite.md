@@ -378,4 +378,4 @@ end;
 
 Dans la section suivante, nous verrons comment déclarer et structurer correctement une classe complète, en appliquant ces principes d'encapsulation et de visibilité.
 
-⏭️ [Déclaration de classes](10-fondamentaux-poo/03-declaration-classes.md)
+⏭️ [Déclaration de classes](/10-fondamentaux-poo/03-declaration-classes.md)

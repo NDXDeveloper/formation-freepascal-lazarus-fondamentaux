@@ -642,4 +642,4 @@ Dans la section suivante, nous verrons **`Queue`**, une alternative à `Synchron
 
 Mais avant de continuer, assurez-vous de bien maîtriser `Synchronize`. C'est la base de toute communication thread-UI et vous l'utiliserez dans la majorité de vos applications multi-threadées.
 
-⏭️ [TThread.Queue vs Synchronize](18-introduction-pratique-multi-threading/06-tthread-queue-vs-synchronize.md)
+⏭️ [TThread.Queue vs Synchronize](/18-introduction-pratique-multi-threading/06-tthread-queue-vs-synchronize.md)

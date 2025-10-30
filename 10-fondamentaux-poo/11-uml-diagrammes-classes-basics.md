@@ -747,4 +747,4 @@ Félicitations ! Vous avez maintenant acquis les **fondamentaux de la Programmat
 
 Dans le **chapitre 11**, nous approfondirons ces concepts avec l'**héritage**, le **polymorphisme**, et les **méthodes virtuelles**, qui vous permettront de créer des hiérarchies de classes plus sophistiquées et réutilisables.
 
-⏭️ [POO Avancée - Héritage](11-poo-avancee-heritage/README.md)
+⏭️ [POO Avancée - Héritage](/11-poo-avancee-heritage/README.md)

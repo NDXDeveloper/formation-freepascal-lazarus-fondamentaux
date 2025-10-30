@@ -838,4 +838,4 @@ Dans la section suivante, nous verrons comment manipuler les répertoires et les
 
 > **Conseil professionnel :** Un programme qui gère bien ses erreurs inspire confiance. Prenez le temps de traiter correctement chaque cas d'erreur possible, vos utilisateurs vous en seront reconnaissants !
 
-⏭️ [Manipulation de répertoires](08-gestion-fichiers-io/06-manipulation-repertoires.md)
+⏭️ [Manipulation de répertoires](/08-gestion-fichiers-io/06-manipulation-repertoires.md)

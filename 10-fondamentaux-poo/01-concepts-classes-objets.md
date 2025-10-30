@@ -228,4 +228,4 @@ Dans les sections suivantes, nous approfondirons ces concepts en explorant :
 
 La POO peut sembler complexe au début, mais elle deviendra naturelle avec la pratique. Elle est la base de la programmation moderne et vous permettra de créer des applications plus structurées et maintenables.
 
-⏭️ [Encapsulation et visibilité](10-fondamentaux-poo/02-encapsulation-visibilite.md)
+⏭️ [Encapsulation et visibilité](/10-fondamentaux-poo/02-encapsulation-visibilite.md)

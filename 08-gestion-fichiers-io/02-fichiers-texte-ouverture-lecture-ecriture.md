@@ -434,4 +434,4 @@ Les fichiers texte sont parfaits pour stocker des configurations, des logs, ou d
 
 > **Conseil :** Pratiquez en créant de petits programmes qui lisent et écrivent dans des fichiers. C'est en manipulant réellement des fichiers que vous comprendrez vraiment leur fonctionnement !
 
-⏭️ [Fichiers binaires et accès direct](08-gestion-fichiers-io/03-fichiers-binaires-acces-direct.md)
+⏭️ [Fichiers binaires et accès direct](/08-gestion-fichiers-io/03-fichiers-binaires-acces-direct.md)

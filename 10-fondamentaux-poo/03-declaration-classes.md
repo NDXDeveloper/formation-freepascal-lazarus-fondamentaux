@@ -618,4 +618,4 @@ end;
 
 Maintenant que vous savez déclarer correctement une classe, la section suivante abordera les **attributs et méthodes** de manière plus approfondie, avec des exemples concrets d'utilisation.
 
-⏭️ [Attributs et méthodes](10-fondamentaux-poo/04-attributs-methodes.md)
+⏭️ [Attributs et méthodes](/10-fondamentaux-poo/04-attributs-methodes.md)

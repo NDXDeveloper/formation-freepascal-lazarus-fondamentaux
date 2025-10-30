@@ -741,4 +741,4 @@ end;
 
 Dans la section suivante, nous explorerons la **visibilité** en détail (private, protected, public, published) et comment organiser correctement les membres d'une classe pour une meilleure encapsulation.
 
-⏭️ [Visibilité : private, protected, public, published](10-fondamentaux-poo/08-visibilite-private-protected-public-published.md)
+⏭️ [Visibilité : private, protected, public, published](/10-fondamentaux-poo/08-visibilite-private-protected-public-published.md)

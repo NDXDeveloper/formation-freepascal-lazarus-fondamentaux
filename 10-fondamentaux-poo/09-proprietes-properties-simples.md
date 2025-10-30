@@ -861,4 +861,4 @@ function TrouverUtilisateur(ID: Integer): TUtilisateur;  // Action explicite
 
 Dans la section suivante, nous aborderons la **comparaison entre programmation procédurale et programmation orientée objet**, ce qui vous permettra de mieux comprendre quand et pourquoi utiliser l'approche objet plutôt que l'approche procédurale.
 
-⏭️ [Comparaison procédural vs objet](10-fondamentaux-poo/10-comparaison-procedural-vs-objet.md)
+⏭️ [Comparaison procédural vs objet](/10-fondamentaux-poo/10-comparaison-procedural-vs-objet.md)

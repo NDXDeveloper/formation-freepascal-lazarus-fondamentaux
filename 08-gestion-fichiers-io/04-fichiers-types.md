@@ -827,4 +827,4 @@ Dans la section suivante, nous verrons comment gérer les erreurs d'entrée/sort
 
 > **Conseil pratique :** Les fichiers typés sont idéaux pour apprendre la gestion de données persistantes. Commencez par des exemples simples avant de créer des applications plus complexes.
 
-⏭️ [Gestion des erreurs I/O](08-gestion-fichiers-io/05-gestion-erreurs-io.md)
+⏭️ [Gestion des erreurs I/O](/08-gestion-fichiers-io/05-gestion-erreurs-io.md)

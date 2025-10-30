@@ -283,4 +283,4 @@ Le multi-threading n'est finalement qu'une façon d'organiser le travail : au li
 
 Passons maintenant à la pratique avec la classe `TThread` !
 
-⏭️ [La classe TThread : création et utilisation](18-introduction-pratique-multi-threading/03-classe-tthread-creation-utilisation.md)
+⏭️ [La classe TThread : création et utilisation](/18-introduction-pratique-multi-threading/03-classe-tthread-creation-utilisation.md)

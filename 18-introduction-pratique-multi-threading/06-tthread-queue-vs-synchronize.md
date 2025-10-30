@@ -771,4 +771,4 @@ Maîtriser ces deux méthodes vous permet de créer des applications multi-threa
 
 Dans la section suivante, nous aborderons un sujet plus avancé mais crucial : la gestion des **variables partagées** et les **sections critiques**. C'est important quand plusieurs threads accèdent aux mêmes données simultanément.
 
-⏭️ [Variables partagées et section critique](18-introduction-pratique-multi-threading/07-variables-partagees-section-critique.md)
+⏭️ [Variables partagées et section critique](/18-introduction-pratique-multi-threading/07-variables-partagees-section-critique.md)

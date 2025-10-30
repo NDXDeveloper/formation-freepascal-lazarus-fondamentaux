@@ -956,4 +956,4 @@ Le multi-threading n'est plus un mystère pour vous. Vous êtes maintenant capab
 
 **La pratique est maintenant votre meilleure amie.** Commencez par de petits projets, ajoutez progressivement de la complexité, et vous maîtriserez bientôt le multi-threading comme un professionnel !
 
-⏭️ [Développement Multi-plateforme en Pratique](19-developpement-multi-plateforme-pratique/README.md)
+⏭️ [Développement Multi-plateforme en Pratique](/19-developpement-multi-plateforme-pratique/README.md)

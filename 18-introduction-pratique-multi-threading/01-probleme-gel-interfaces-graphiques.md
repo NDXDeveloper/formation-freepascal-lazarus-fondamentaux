@@ -261,4 +261,4 @@ Dans les sections suivantes, nous allons apprendre à :
 
 Le multi-threading peut sembler intimidant au début, mais une fois les concepts de base maîtrisés, vous ne pourrez plus vous en passer pour créer des applications modernes et réactives !
 
-⏭️ [Concepts de processus et threads](18-introduction-pratique-multi-threading/02-concepts-processus-threads.md)
+⏭️ [Concepts de processus et threads](/18-introduction-pratique-multi-threading/02-concepts-processus-threads.md)

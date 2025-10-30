@@ -731,4 +731,4 @@ end;
 
 Dans la section suivante, nous verrons les **destructeurs** (Destroy, Free), qui sont le pendant des constructeurs et permettent de libérer correctement les ressources utilisées par un objet.
 
-⏭️ [Destructeurs (Destroy, Free)](10-fondamentaux-poo/06-destructeurs-destroy-free.md)
+⏭️ [Destructeurs (Destroy, Free)](/10-fondamentaux-poo/06-destructeurs-destroy-free.md)

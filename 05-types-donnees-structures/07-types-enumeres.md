@@ -792,4 +792,4 @@ Les types énumérés permettent de :
 
 Les types énumérés sont un outil puissant pour écrire du code clair et sûr. Ils font partie des bonnes pratiques de programmation en Pascal !
 
-⏭️ [Types ensemble (Set)](05-types-donnees-structures/08-types-ensemble-set.md)
+⏭️ [Types ensemble (Set)](/05-types-donnees-structures/08-types-ensemble-set.md)

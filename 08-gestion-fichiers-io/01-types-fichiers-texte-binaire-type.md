@@ -153,4 +153,4 @@ Le choix du type de fichier dépend de la nature de vos données et de l'usage q
 
 > **Note importante :** Quelle que soit le type de fichier utilisé, n'oubliez jamais de fermer vos fichiers après utilisation avec la procédure `Close()` pour éviter la perte de données et les problèmes d'accès.
 
-⏭️ [Fichiers texte : ouverture, lecture, écriture](08-gestion-fichiers-io/02-fichiers-texte-ouverture-lecture-ecriture.md)
+⏭️ [Fichiers texte : ouverture, lecture, écriture](/08-gestion-fichiers-io/02-fichiers-texte-ouverture-lecture-ecriture.md)

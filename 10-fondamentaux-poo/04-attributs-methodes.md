@@ -801,4 +801,4 @@ type
 
 Dans la section suivante, nous approfondirons les **constructeurs et destructeurs**, qui sont des méthodes spéciales permettant d'initialiser et de libérer correctement les objets.
 
-⏭️ [Constructeurs (Create)](10-fondamentaux-poo/05-constructeurs-create.md)
+⏭️ [Constructeurs (Create)](/10-fondamentaux-poo/05-constructeurs-create.md)

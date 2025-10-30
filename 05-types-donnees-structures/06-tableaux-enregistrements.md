@@ -972,4 +972,4 @@ Les tableaux d'enregistrements permettent de :
 
 Les tableaux d'enregistrements sont essentiels pour créer des applications de gestion (élèves, produits, contacts, etc.). C'est la base de nombreux programmes pratiques !
 
-⏭️ [Types énumérés](05-types-donnees-structures/07-types-enumeres.md)
+⏭️ [Types énumérés](/05-types-donnees-structures/07-types-enumeres.md)

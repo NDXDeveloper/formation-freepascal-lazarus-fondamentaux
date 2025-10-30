@@ -404,4 +404,4 @@ Nous commencerons par le type structuré le plus fondamental : le tableau. C'est
 
 Allons-y ! 🚀
 
-⏭️ [Tableaux statiques unidimensionnels](05-types-donnees-structures/01-tableaux-statiques-unidimensionnels.md)
+⏭️ [Tableaux statiques unidimensionnels](/05-types-donnees-structures/01-tableaux-statiques-unidimensionnels.md)

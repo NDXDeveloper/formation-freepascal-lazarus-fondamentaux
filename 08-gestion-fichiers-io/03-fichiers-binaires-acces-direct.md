@@ -594,4 +594,4 @@ Dans la section suivante, nous verrons les **fichiers typés**, qui combinent la
 
 > **À retenir :** Les fichiers binaires sont parfaits quand vous avez besoin de vitesse et d'accès direct, mais ils nécessitent plus de rigueur dans la programmation que les fichiers texte.
 
-⏭️ [Fichiers typés](08-gestion-fichiers-io/04-fichiers-types.md)
+⏭️ [Fichiers typés](/08-gestion-fichiers-io/04-fichiers-types.md)

@@ -567,4 +567,4 @@ Avant de continuer, assurez-vous d'avoir bien compris cette section. Créez quel
 
 Une fois à l'aise avec ces bases, vous serez prêt pour la suite !
 
-⏭️ [Cycle de vie d'un thread](18-introduction-pratique-multi-threading/04-cycle-vie-thread.md)
+⏭️ [Cycle de vie d'un thread](/18-introduction-pratique-multi-threading/04-cycle-vie-thread.md)

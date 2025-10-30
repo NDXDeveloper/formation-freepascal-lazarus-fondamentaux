@@ -699,4 +699,4 @@ Les chaînes de caractères sont essentielles en programmation :
 
 Maîtriser les chaînes vous permettra de créer des programmes interactifs et de traiter du texte efficacement !
 
-⏭️ [Enregistrements (Records)](05-types-donnees-structures/04-enregistrements-records.md)
+⏭️ [Enregistrements (Records)](/05-types-donnees-structures/04-enregistrements-records.md)

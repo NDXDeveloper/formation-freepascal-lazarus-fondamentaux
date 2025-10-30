@@ -334,4 +334,4 @@ Les tableaux statiques unidimensionnels permettent de :
 
 Les tableaux sont une structure fondamentale en programmation. Maîtriser les tableaux unidimensionnels est essentiel avant de passer aux tableaux multidimensionnels.
 
-⏭️ [Tableaux multidimensionnels](05-types-donnees-structures/02-tableaux-multidimensionnels.md)
+⏭️ [Tableaux multidimensionnels](/05-types-donnees-structures/02-tableaux-multidimensionnels.md)

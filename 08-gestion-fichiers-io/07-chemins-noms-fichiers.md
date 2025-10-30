@@ -1055,4 +1055,4 @@ Dans la section suivante, nous verrons comment utiliser les fichiers INI pour la
 
 > **Conseil professionnel :** La maîtrise des fonctions de manipulation de chemins vous fera gagner énormément de temps et évitera de nombreux bugs subtils. Pratiquez-les régulièrement !
 
-⏭️ [Fichiers INI pour configuration](08-gestion-fichiers-io/08-fichiers-ini-configuration.md)
+⏭️ [Fichiers INI pour configuration](/08-gestion-fichiers-io/08-fichiers-ini-configuration.md)

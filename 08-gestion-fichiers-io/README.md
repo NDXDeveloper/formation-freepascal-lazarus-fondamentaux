@@ -441,4 +441,4 @@ Dans la prochaine section (8.1), nous commencerons par découvrir les trois type
 
 > **Citation inspirante :** "Les données sont le nouveau pétrole" - mais contrairement au pétrole, les données ne valent rien si vous ne savez pas les stocker et les récupérer ! Après ce chapitre, vous saurez exactement comment le faire.
 
-⏭️ [Types de fichiers (texte, binaire, typé)](08-gestion-fichiers-io/01-types-fichiers-texte-binaire-type.md)
+⏭️ [Types de fichiers (texte, binaire, typé)](/08-gestion-fichiers-io/01-types-fichiers-texte-binaire-type.md)

@@ -175,4 +175,4 @@ Alors, prêt à faire travailler vos applications en parallèle ?
 
 Commençons par comprendre le problème que nous allons résoudre...
 
-⏭️ [Problème : le gel des interfaces graphiques](18-introduction-pratique-multi-threading/01-probleme-gel-interfaces-graphiques.md)
+⏭️ [Problème : le gel des interfaces graphiques](/18-introduction-pratique-multi-threading/01-probleme-gel-interfaces-graphiques.md)

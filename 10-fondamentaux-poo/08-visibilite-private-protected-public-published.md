@@ -837,4 +837,4 @@ type
 
 Dans la section suivante, nous explorerons les **propriétés** (properties) qui permettent d'accéder aux attributs de manière contrôlée et élégante, en combinant la simplicité d'accès des attributs publics avec la sécurité des méthodes accesseurs.
 
-⏭️ [Propriétés (properties) simples](10-fondamentaux-poo/09-proprietes-properties-simples.md)
+⏭️ [Propriétés (properties) simples](/10-fondamentaux-poo/09-proprietes-properties-simples.md)

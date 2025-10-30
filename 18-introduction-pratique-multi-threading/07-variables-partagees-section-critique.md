@@ -956,4 +956,4 @@ Dans les sections suivantes, nous allons mettre en pratique tout ce que nous avo
 
 La théorie est maintenant derrière nous, place à la pratique !
 
-⏭️ [Barres de progression et feedback utilisateur](18-introduction-pratique-multi-threading/08-barres-progression-feedback-utilisateur.md)
+⏭️ [Barres de progression et feedback utilisateur](/18-introduction-pratique-multi-threading/08-barres-progression-feedback-utilisateur.md)

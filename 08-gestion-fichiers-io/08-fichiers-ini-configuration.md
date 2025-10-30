@@ -1093,4 +1093,4 @@ Dans la prochaine section, nous découvrirons les streams pour des manipulations
 
 > **Conseil pratique :** Les fichiers INI sont le moyen le plus simple de sauvegarder les préférences de vos applications. Commencez par les maîtriser avant d'explorer des formats plus complexes comme JSON ou XML !
 
-⏭️ [Introduction aux streams](08-gestion-fichiers-io/09-introduction-streams.md)
+⏭️ [Introduction aux streams](/08-gestion-fichiers-io/09-introduction-streams.md)

@@ -838,4 +838,4 @@ end.
 
 Dans la section suivante, nous aborderons l'**introduction aux diagrammes de classes UML**, un outil visuel pour concevoir et documenter vos classes avant même d'écrire du code. Cela vous aidera à mieux planifier vos applications orientées objet.
 
-⏭️ [UML et diagrammes de classes basics](10-fondamentaux-poo/11-uml-diagrammes-classes-basics.md)
+⏭️ [UML et diagrammes de classes basics](/10-fondamentaux-poo/11-uml-diagrammes-classes-basics.md)

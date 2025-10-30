@@ -946,4 +946,4 @@ Vous voilà équipé pour manipuler efficacement les fichiers et les données en
 
 > **Conseil pour la suite :** Les streams sont un outil puissant. Commencez par des exemples simples (copier un fichier, lire en mémoire) avant de vous attaquer à des cas plus complexes. La pratique vous permettra de comprendre quand utiliser chaque type de stream !
 
-⏭️ [Introduction à FreePascal et Lazarus](09-introduction-freepascal-lazarus/README.md)
+⏭️ [Introduction à FreePascal et Lazarus](/09-introduction-freepascal-lazarus/README.md)

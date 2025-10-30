@@ -823,4 +823,4 @@ Les types ensemble (Set) permettent de :
 
 Les ensembles sont un outil puissant pour gérer des collections logiques et effectuer des tests d'appartenance de manière élégante et performante !
 
-⏭️ [Types intervalle](05-types-donnees-structures/09-types-intervalle.md)
+⏭️ [Types intervalle](/05-types-donnees-structures/09-types-intervalle.md)

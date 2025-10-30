@@ -845,4 +845,4 @@ Les enregistrements imbriqués permettent de :
 
 Les enregistrements imbriqués sont un outil puissant pour structurer des données complexes de manière claire et maintenable. C'est une étape importante vers la maîtrise des structures de données avancées.
 
-⏭️ [Tableaux d'enregistrements](05-types-donnees-structures/06-tableaux-enregistrements.md)
+⏭️ [Tableaux d'enregistrements](/05-types-donnees-structures/06-tableaux-enregistrements.md)

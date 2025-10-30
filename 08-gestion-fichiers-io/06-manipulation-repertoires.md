@@ -965,4 +965,4 @@ Dans la section suivante, nous verrons comment manipuler les chemins et noms de 
 
 > **Conseil pratique :** La manipulation de répertoires est essentielle pour organiser vos données. Prenez le temps de bien comprendre `FindFirst`/`FindNext`/`FindClose`, car c'est la base de toute exploration de système de fichiers.
 
-⏭️ [Chemins et noms de fichiers](08-gestion-fichiers-io/07-chemins-noms-fichiers.md)
+⏭️ [Chemins et noms de fichiers](/08-gestion-fichiers-io/07-chemins-noms-fichiers.md)

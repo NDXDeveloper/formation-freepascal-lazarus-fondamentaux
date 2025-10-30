@@ -664,4 +664,4 @@ Maintenant que vous maîtrisez la création et le cycle de vie des threads, il e
 
 C'est ce que nous allons voir dans la section suivante avec la méthode `Synchronize` !
 
-⏭️ [TThread.Synchronize : communication thread-UI](18-introduction-pratique-multi-threading/05-tthread-synchronize-communication.md)
+⏭️ [TThread.Synchronize : communication thread-UI](/18-introduction-pratique-multi-threading/05-tthread-synchronize-communication.md)
