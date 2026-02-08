@@ -78,7 +78,8 @@ program SimpleJSONParsing;
 {$mode objfpc}{$H+}
 
 uses
-  fpjson, jsonparser, SysUtils;
+  fpjson, jsonparser,  // fpjson : types JSON ; jsonparser : fonction GetJSON
+  SysUtils;
 
 var
   JsonString: String;
@@ -660,7 +661,8 @@ var
   Response: String;
   JsonData: TJSONData;
   JsonArray: TJSONArray;
-  JsonObj, NameObj, CapitalArray: TJSONObject;
+  JsonObj, NameObj: TJSONObject;
+  CapitalArray: TJSONArray;
   CommonName, OfficialName, Capital, Region, Subregion: String;
   Population: Int64;
   Area: Double;

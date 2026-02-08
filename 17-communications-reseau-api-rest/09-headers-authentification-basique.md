@@ -365,7 +365,8 @@ program BasicAuthManual;
 {$mode objfpc}{$H+}
 
 uses
-  fphttpclient, opensslsockets, Base64, SysUtils;
+  fphttpclient, opensslsockets, Base64,  // Base64 : encodage pour Basic Auth
+  SysUtils;
 
 var
   Client: TFPHttpClient;

@@ -865,7 +865,7 @@ unit HTTPManager;
 interface
 
 uses
-  fphttpclient, opensslsockets, Classes, SysUtils;
+  fphttpclient, opensslsockets, Classes, SysUtils, Math;
 
 type
   THTTPResult = record
@@ -939,7 +939,10 @@ end;
 
 function THTTPManager.ShouldRetry(StatusCode: Integer): Boolean;
 begin
-  Result := StatusCode in [0, 500, 502, 503, 504];
+  Result := False;
+  case StatusCode of  // case et non 'in' : les sets FPC ne supportent pas les valeurs > 255
+    0, 500, 502, 503, 504: Result := True;
+  end;
 end;
 
 function THTTPManager.Get(const URL: String): THTTPResult;

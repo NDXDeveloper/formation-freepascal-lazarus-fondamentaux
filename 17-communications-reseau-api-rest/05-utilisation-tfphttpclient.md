@@ -46,7 +46,8 @@ Commençons par le plus simple : récupérer une page web ou des données d'API.
 program SimpleGet;
 
 uses
-  fphttpclient, opensslsockets, SysUtils;
+  fphttpclient, opensslsockets,  // opensslsockets : nécessaire pour HTTPS
+  SysUtils;
 
 var
   Client: TFPHttpClient;
@@ -55,6 +56,9 @@ begin
   // Créer une instance du client HTTP
   Client := TFPHttpClient.Create(nil);
   try
+    // GitHub exige un User-Agent
+    Client.AddHeader('User-Agent', 'FreePascal-App/1.0');
+
     // Effectuer une requête GET
     Response := Client.Get('https://api.github.com');
 
@@ -286,26 +290,22 @@ POST permet d'envoyer des données au serveur (création, soumission de formulai
 ### POST avec Données de Formulaire
 
 ```pascal
-uses Classes;
-
 var
   Client: TFPHttpClient;
-  PostData: TStringStream;
   Response: String;
 begin
   Client := TFPHttpClient.Create(nil);
-  PostData := TStringStream.Create('nom=Dupont&prenom=Jean&email=jean@example.com');
   try
     // Indiquer le type de contenu
     Client.AddHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-    // Envoyer la requête POST
-    Response := Client.FormPost('https://api.example.com/users', PostData);
+    // Envoyer la requête POST (FormPost accepte une String ou un TStrings)
+    Response := Client.FormPost('https://api.example.com/users',
+      'nom=Dupont&prenom=Jean&email=jean@example.com');
 
     WriteLn('Réponse du serveur :');
     WriteLn(Response);
   finally
-    PostData.Free;
     Client.Free;
   end;
 end;
@@ -401,6 +401,7 @@ PUT permet de mettre à jour une ressource existante.
 function PutJSON(const URL, JsonData: String): String;
 var
   Client: TFPHttpClient;
+  Response: String;
 begin
   Result := '';
   Client := TFPHttpClient.Create(nil);
@@ -712,7 +713,7 @@ end;
 function TApiClient.CreateUser(const JsonData: String): String;
 begin
   try
-    FClient.RequestBody := TRawByteStringStream.Create(JsonData);
+    FClient.RequestBody := TRawByteStringStream.Create(JsonData);  // Corps JSON de la requête
     try
       Result := FClient.Post(API_BASE_URL + '/users');
       WriteLn('Code statut : ', FClient.ResponseStatusCode);
