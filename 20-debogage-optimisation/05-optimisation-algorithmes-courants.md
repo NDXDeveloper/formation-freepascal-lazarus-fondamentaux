@@ -396,18 +396,27 @@ Tri Rapide : 4 ms
 **Pour les tableaux dynamiques d'entiers :**
 
 ```pascal
-uses Math;
+uses Classes;
 
 var
   tableau: array of Integer;
+
+function CompareInt(Item1, Item2: Pointer): Integer;
+begin
+  Result := PInteger(Item1)^ - PInteger(Item2)^;
+end;
+
 begin
   SetLength(tableau, 10000);
   // ... initialisation ...
 
-  // Tri intégré - optimisé !
-  QuickSort(@tableau[0], 0, Length(tableau) - 1, SizeOf(Integer), @CompareInt);
+  // Tri avec la procédure QuickSort de l'unité Classes
+  QuickSort(PPointer(@tableau[0]), 0, Length(tableau) - 1,
+            TListSortCompare(@CompareInt));
 end;
 ```
+
+> **Note :** `QuickSort` est définie dans l'unité `Classes`, pas dans `Math`.
 
 **Pour TStringList :**
 

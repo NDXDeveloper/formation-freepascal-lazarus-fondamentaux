@@ -136,7 +136,8 @@ uses SysUtils;
 
 procedure TraiterDonnees;
 var
-  i, total: Integer;
+  i: Integer;
+  total: Int64;
 begin
   total := 0;
   for i := 1 to 10000000 do  // 10 millions d'itérations
@@ -291,9 +292,10 @@ program ComparaisonAlgorithmes;
 
 uses SysUtils;
 
-function MethodeA: Integer;
+function MethodeA: Int64;
 var
-  i, total: Integer;
+  i: Integer;
+  total: Int64;
 begin
   total := 0;
   for i := 1 to 1000000 do
@@ -301,9 +303,9 @@ begin
   Result := total;
 end;
 
-function MethodeB: Integer;
+function MethodeB: Int64;
 var
-  n: Integer;
+  n: Int64;
 begin
   n := 1000000;
   Result := (n * (n + 1)) div 2;  // Formule mathématique
@@ -311,7 +313,7 @@ end;
 
 var
   debut, fin: QWord;
-  resultat: Integer;
+  resultat: Int64;
 begin
   // Test Méthode A
   debut := GetTickCount64;
@@ -503,6 +505,7 @@ procedure MesurerImpactOperation;
 var
   i, iterations: Integer;
   debut: QWord;
+  s: String;
 
   procedure TestAvec;
   var j: Integer;
@@ -517,9 +520,6 @@ var
     for j := 1 to iterations do
       ; // Boucle vide
   end;
-
-var
-  s: String;
 begin
   iterations := 1000000;
 

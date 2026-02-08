@@ -208,7 +208,7 @@ program MesTests;
 
 uses
   Classes, SysUtils,
-  fpcunit, testregistry, testrunner;
+  fpcunit, testregistry, consoletestrunner;
 
 begin
   // Configuration et exécution des tests
@@ -260,6 +260,8 @@ function Diviser(a, b: Double): Double;
 
 implementation
 
+uses SysUtils;
+
 function Additionner(a, b: Integer): Integer;
 begin
   Result := a + b;
@@ -302,7 +304,7 @@ uses
 
 type
   TTestCalculatrice = class(TTestCase)
-  published
+  published  // Les méthodes published sont auto-détectées comme tests
     procedure TestAdditionner;
     procedure TestSoustraire;
     procedure TestMultiplier;
@@ -336,7 +338,7 @@ end;
 
 procedure TTestCalculatrice.TestDiviser;
 begin
-  AssertEquals('10 / 2 devrait être 5', 5.0, Diviser(10, 2), 0.001);
+  AssertEquals('10 / 2 devrait être 5', 5.0, Diviser(10, 2), 0.001);  // 0.001 = tolérance pour comparaison de réels
   AssertEquals('7 / 2 devrait être 3.5', 3.5, Diviser(7, 2), 0.001);
 end;
 
@@ -352,7 +354,7 @@ begin
 end;
 
 initialization
-  RegisterTest(TTestCalculatrice);
+  RegisterTest(TTestCalculatrice);  // Enregistre la classe de tests auprès du runner
 
 end.
 ```
@@ -368,7 +370,7 @@ program AllTests;
 
 uses
   Classes, SysUtils,
-  fpcunit, testregistry, testrunner,
+  fpcunit, testregistry, consoletestrunner,  // consoletestrunner fournit TTestRunner
   TestCalculatrice;
 
 var
@@ -576,36 +578,55 @@ SetUp → TestAjout → TearDown
 SetUp → TestSuppression → TearDown
 ```
 
-### 6.2 SetupTest et TearDownTest (Classe)
+### 6.2 Initialisation Unique pour Toute la Classe
 
-**Pour initialiser UNE FOIS pour toute la classe :**
+**FPCUnit ne fournit pas de mécanisme `SetUpClass`/`TearDownClass` intégré** (contrairement à JUnit/NUnit). Pour initialiser une ressource UNE FOIS pour toute une suite de tests, utilisez la section `initialization`/`finalization` de l'unité de test :
 
 ```pascal
+unit TestAvecBDD;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, fpcunit, testregistry;
+
 type
   TTestAvecInitGlobale = class(TTestCase)
-  private
-    class var FBaseDeDonnees: TDatabase;
-  protected
-    class procedure SetupTest; override;
-    class procedure TeardownTest; override;
   published
     procedure Test1;
     procedure Test2;
   end;
 
-class procedure TTestAvecInitGlobale.SetupTest;
+implementation
+
+var
+  BaseDeDonnees: TDatabase;
+
+procedure TTestAvecInitGlobale.Test1;
 begin
-  // Appelé UNE FOIS avant TOUS les tests de la classe
-  FBaseDeDonnees := TDatabase.Create;
-  FBaseDeDonnees.Connect('test.db');
+  // Utilise BaseDeDonnees, initialisée une seule fois
+  AssertNotNull('Base de données initialisée', BaseDeDonnees);
 end;
 
-class procedure TTestAvecInitGlobale.TeardownTest;
+procedure TTestAvecInitGlobale.Test2;
 begin
-  // Appelé UNE FOIS après TOUS les tests
-  FBaseDeDonnees.Disconnect;
-  FreeAndNil(FBaseDeDonnees);
+  AssertTrue('Base de données connectée', BaseDeDonnees.Connected);
 end;
+
+initialization
+  // Appelé UNE FOIS au chargement de l'unité
+  BaseDeDonnees := TDatabase.Create;
+  BaseDeDonnees.Connect('test.db');
+  RegisterTest(TTestAvecInitGlobale);
+
+finalization
+  // Appelé UNE FOIS à la fin du programme
+  BaseDeDonnees.Disconnect;
+  FreeAndNil(BaseDeDonnees);
+
+end.
 ```
 
 **Usage :** Pour ressources coûteuses (connexions BDD, fichiers volumineux).
@@ -796,7 +817,7 @@ end;
 ```pascal
 program RunTests;
 uses
-  fpcunit, testrunner, testregistry,
+  fpcunit, consoletestrunner, testregistry,
   TestCalculatrice;
 
 begin
@@ -853,22 +874,26 @@ Errors: 0
 
 ```pascal
 uses
-  fpcunit, testrunner, xmltestreport;
+  fpcunit, consoletestrunner, xmltestreport;
 
 var
   App: TTestRunner;
 begin
-  DefaultFormat := fXML;
-  XMLResultsWriter.FileName := 'test-results.xml';
-
   App := TTestRunner.Create(nil);
   try
+    // Exécuter avec --format=xml en ligne de commande
+    // ou configurer programmatiquement :
     App.Initialize;
     App.Run;
   finally
     App.Free;
   end;
 end.
+```
+
+**Exécution en ligne de commande :**
+```bash
+./MesTests --format=xml --file=test-results.xml
 ```
 
 **Fichier `test-results.xml` généré :**

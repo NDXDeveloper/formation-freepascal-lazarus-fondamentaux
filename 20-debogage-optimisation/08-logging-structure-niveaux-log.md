@@ -450,6 +450,7 @@ initialization
   Logger := TSimpleLogger.Create('application.log', llInfo);
 
 finalization
+  Flush(Output);
   FreeAndNil(Logger);
 
 end.
@@ -629,6 +630,10 @@ app_20251017.log
 **Solution :** Buffer en mémoire et écriture en arrière-plan.
 
 ```pascal
+// Nécessite FPC 3.2+ avec les mode switches suivants :
+// {$modeswitch anonymousfunctions}
+// {$modeswitch functionreferences}
+
 type
   TAsyncLogger = class
   private
@@ -657,6 +662,7 @@ begin
         FlushBuffer;
       end;
     end);
+  FThread.FreeOnTerminate := False;  // Important : on gère la libération nous-mêmes
   FThread.Start;
 end;
 
@@ -1067,6 +1073,7 @@ begin
   Inc(FErrorCount);
 
   // Alerte si 10 erreurs en 1 minute
+  // Nécessite uses DateUtils pour MinutesBetween
   if (FErrorCount >= 10) and
      (MinutesBetween(Now, FLastAlertTime) >= 1) then
   begin
@@ -1260,14 +1267,10 @@ Logger := TSimpleLogger.Create(GetLogPath + 'application.log');
 **Gérer les différences :**
 
 ```pascal
-{$IFDEF WINDOWS}
-const LineEnding = #13#10;  // CRLF
-{$ELSE}
-const LineEnding = #10;     // LF
-{$ENDIF}
-
-// Ou utiliser la constante intégrée
-WriteLn(FLogFile, Msg + sLineBreak);
+// FreePascal fournit déjà la constante LineEnding (unit System)
+// qui vaut #13#10 sous Windows et #10 sous Linux.
+// Il suffit de l'utiliser directement :
+WriteLn(FLogFile, Msg);  // WriteLn ajoute automatiquement le saut de ligne
 ```
 
 ### 9.3 Permissions (Linux)

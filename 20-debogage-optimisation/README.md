@@ -37,7 +37,7 @@ Félicitations pour être arrivés à ce chapitre final de la formation ! Vous a
 
 ## Vue d'Ensemble du Chapitre
 
-Ce chapitre est structuré en 8 sections progressives qui couvrent tous les aspects du débogage et de l'optimisation :
+Ce chapitre est structuré en 9 sections progressives qui couvrent tous les aspects du débogage et de l'optimisation :
 
 ### 📍 Section 20.1 : Utilisation Avancée du Débogueur Lazarus
 **Ce que vous apprendrez :**
@@ -111,6 +111,16 @@ Ce chapitre est structuré en 8 sections progressives qui couvrent tous les aspe
 
 **Pourquoi c'est important :** Les logs sont vos yeux en production. Sans logs, vous êtes aveugle quand un problème survient chez un client.
 
+### 🧪 Section 20.9 : Tests Unitaires avec FPCUnit - Introduction
+**Ce que vous apprendrez :**
+- Découvrir le framework de tests unitaires FPCUnit
+- Écrire des tests automatisés pour valider votre code
+- Utiliser les assertions (CheckEquals, CheckTrue, etc.)
+- Organiser vos tests avec SetUp/TearDown
+- Appliquer les bases du Test-Driven Development (TDD)
+
+**Pourquoi c'est important :** Les tests unitaires détectent automatiquement les régressions et vous donnent la confiance de modifier votre code sans tout casser.
+
 ---
 
 ## Prérequis pour ce Chapitre
@@ -158,14 +168,15 @@ Avant de commencer ce chapitre, vous devriez être à l'aise avec :
 
 Suivez les sections dans l'ordre :
 ```
-20.1 → 20.2 → 20.3 → 20.4 → 20.5 → 20.6 → 20.7 → 20.8
+20.1 → 20.2 → 20.3 → 20.4 → 20.5 → 20.6 → 20.7 → 20.8 → 20.9
 ```
 
 Cette progression est logique car :
 1. D'abord maîtriser le débogage (20.1-20.3)
 2. Ensuite apprendre à mesurer (20.4)
 3. Puis optimiser (20.5-20.6)
-4. Enfin détecter les problèmes (20.7-20.8)
+4. Détecter les problèmes (20.7-20.8)
+5. Enfin valider avec des tests automatisés (20.9)
 
 **🎯 Approche par Besoin (Pour Développeurs Expérimentés)**
 
@@ -177,6 +188,7 @@ Allez directement à la section qui répond à votre problème actuel :
 | "Mon programme est lent" | 20.4, 20.5 |
 | "Mon programme consomme de plus en plus de mémoire" | 20.6, 20.7 |
 | "Je ne sais pas ce qui se passe en production" | 20.8 |
+| "Je veux vérifier automatiquement que mon code fonctionne" | 20.9 |
 
 ### Pratique Active
 
@@ -234,7 +246,8 @@ Projets/
     ├── 20.5_Optimisation/
     ├── 20.6_Memoire/
     ├── 20.7_DetectionFuites/
-    └── 20.8_Logging/
+    ├── 20.8_Logging/
+    └── 20.9_TestsUnitaires/
 ```
 
 **Activer les informations de débogage :**
@@ -404,6 +417,7 @@ Dans Lazarus :
 ✅ Détecter automatiquement les problèmes mémoire
 ✅ Implémenter un système de logging professionnel
 ✅ Diagnostiquer les problèmes en production
+✅ Écrire des tests unitaires avec FPCUnit
 
 **Compétences professionnelles acquises :**
 - 🎓 Débogage méthodique et efficace
@@ -438,7 +452,8 @@ Dans Lazarus :
 | 20.6 Mémoire | 1h | 2h | 3h |
 | 20.7 Détection fuites | 45 min | 1h30 | 2h15 |
 | 20.8 Logging | 1h | 2h | 3h |
-| **TOTAL** | **6h30** | **14h** | **~20h** |
+| 20.9 Tests unitaires | 1h | 2h30 | 3h30 |
+| **TOTAL** | **7h30** | **16h30** | **~24h** |
 
 **Répartition suggérée :**
 - 📅 **Sur 1 semaine** : ~3h par jour (idéal)
@@ -490,7 +505,7 @@ Si vous êtes arrivés jusqu'ici dans la formation, vous avez déjà prouvé vot
 
 ## Prêt à Commencer ?
 
-Vous avez maintenant une vision claire de ce qui vous attend dans ce chapitre. Les sections 20.1 à 20.8 vont transformer votre façon de développer et de résoudre les problèmes.
+Vous avez maintenant une vision claire de ce qui vous attend dans ce chapitre. Les sections 20.1 à 20.9 vont transformer votre façon de développer et de résoudre les problèmes.
 
 **Checklist finale avant de commencer :**
 - [ ] Lazarus installé et fonctionnel

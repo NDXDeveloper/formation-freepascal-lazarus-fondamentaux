@@ -874,6 +874,7 @@ end.
 **Simplifier l'instrumentation :**
 
 ```pascal
+{$MACRO ON}        // Active le support des macros (requis pour {$DEFINE X := ...})
 {$DEFINE TRACE_MEMORY}
 
 {$IFDEF TRACE_MEMORY}

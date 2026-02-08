@@ -191,8 +191,8 @@ var
   x: Integer;
   s: String;
 begin
-  x := param * 2;  // Arrêt ici
-  s := 'Test';
+  x := param * 2;
+  s := 'Test';     // Arrêt ici
 end;
 ```
 
@@ -200,7 +200,7 @@ La fenêtre affichera :
 ```
 param = 10
 x = 20
-s = ''  (pas encore initialisé)
+s = 'Test'
 ```
 
 ### 4.3 Fenêtre Inspecteur

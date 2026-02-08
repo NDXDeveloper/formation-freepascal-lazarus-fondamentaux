@@ -980,19 +980,25 @@ permissions : [opLecture, opEcriture]   (TOptions)
 ```pascal
 var
   p: ^Integer;
+
+procedure InitPointer;
+var
   x: Integer;
 begin
   x := 42;
-  p := @x;
-  // Fin du bloc - x n'existe plus !
+  p := @x;  // p pointe vers une variable locale
+end;  // Fin de la procédure : x n'existe plus !
+
+begin
+  InitPointer;
   // Point d'arrêt ici
-  WriteLn(p^);  // DANGER !
-end;
+  WriteLn(p^);  // DANGER : p pointe vers une zone mémoire libérée !
+end.
 ```
 
 **Détection :** L'inspecteur peut afficher des valeurs incohérentes ou `???`.
 
-**Solution :** Vérifiez que le pointeur pointe vers une mémoire valide.
+**Solution :** Ne conservez jamais un pointeur vers une variable locale après la fin de sa portée. Utilisez `New`/`Dispose` ou `GetMem`/`FreeMem` pour de la mémoire persistante.
 
 ### 8.4 Objets Non Créés
 
@@ -1347,7 +1353,7 @@ L'inspection de variables et d'expressions est une compétence fondamentale du d
 - Modifiez les valeurs pour tester différents scénarios
 - Documentez vos découvertes pour référence future
 
-**Prochaine Étape :** La section 20.4 (Pile d'appels) approfondira comment naviguer dans la hiérarchie des appels de fonctions pour comprendre le contexte d'exécution.
+**Prochaine Étape :** La section 20.4 (Profiling basique) vous apprendra à mesurer le temps d'exécution de votre code et à identifier les goulots de performance.
 
 ---
 
