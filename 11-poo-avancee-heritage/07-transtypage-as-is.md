@@ -798,15 +798,18 @@ end;
 ### ✅ Optimisé
 
 ```pascal
-if Animal is TChien then
+var
+  Chien: TChien;
 begin
-  var Chien: TChien;
-  Chien := Animal as TChien;  // 1 seul transtypage
+  if Animal is TChien then
+  begin
+    Chien := Animal as TChien;  // 1 seul transtypage
 
-  WriteLn(Chien.Race);
-  Chien.Aboyer;
-  Chien.Garder;
-  WriteLn(Chien.FAge);
+    WriteLn(Chien.Race);
+    Chien.Aboyer;
+    Chien.Garder;
+    WriteLn(Chien.FAge);
+  end;
 end;
 ```
 
@@ -855,10 +858,14 @@ end;
 
 2. **Stocker le résultat du transtypage si utilisé plusieurs fois**
    ```pascal
-   if Animal is TChien then
+   var
+     Chien: TChien;
    begin
-     var Chien := Animal as TChien;
-     // Utiliser Chien plusieurs fois
+     if Animal is TChien then
+     begin
+       Chien := Animal as TChien;
+       // Utiliser Chien plusieurs fois
+     end;
    end;
    ```
 

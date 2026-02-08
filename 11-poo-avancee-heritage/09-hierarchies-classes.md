@@ -136,7 +136,7 @@ program HierarchiePersonnel;
 {$mode objfpc}{$H+}
 
 uses
-  SysUtils, DateUtils;
+  SysUtils, DateUtils, StrUtils;
 
 type
   {

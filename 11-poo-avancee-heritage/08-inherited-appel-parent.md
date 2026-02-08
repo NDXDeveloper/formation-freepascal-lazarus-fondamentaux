@@ -440,7 +440,7 @@ program SystemeLogging;
 {$mode objfpc}{$H+}
 
 uses
-  SysUtils, DateUtils;
+  SysUtils;
 
 type
   { Classe de base : Logger simple }

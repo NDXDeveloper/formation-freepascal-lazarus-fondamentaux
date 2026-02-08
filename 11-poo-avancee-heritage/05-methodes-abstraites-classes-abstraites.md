@@ -96,7 +96,7 @@ program FormesAbstraites;
 {$mode objfpc}{$H+}
 
 uses
-  SysUtils, Math;
+  SysUtils;
 
 type
   { Classe abstraite : Forme }

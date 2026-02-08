@@ -413,7 +413,7 @@ L'héritage est comme un outil puissant : simple dans son principe, mais infinim
 
 ## Navigation
 
-- **Suivant** : [11.1 Concept d'héritage](./11.1-concept-heritage.md)
+- **Suivant** : [11.1 Concept d'héritage](./01-concept-heritage.md)
 - **Retour** : [Sommaire de la formation](../README.md)
 
 ---

@@ -46,21 +46,25 @@ type
 ## La hiérarchie Pascal complète
 
 ```
-                    TObject (racine universelle)
-                       ↓
-        ┌──────────────┼──────────────┐
-        ↓              ↓              ↓
-   TPersistent    TComponent     TInterfacedObject
-        ↓              ↓              ↓
-    TCollectionItem  TControl    TInterfacedPersistent
-                      ↓
-                  TWinControl
-                      ↓
-                ┌─────┴─────┐
-                ↓           ↓
-              TForm      TButton
-              TLabel     TEdit
-              TPanel     etc.
+                 TObject (racine universelle)
+                    ↓
+        ┌───────────┴───────────┐
+        ↓                       ↓
+   TPersistent           TInterfacedObject
+        ↓
+   ┌────┴────────┐
+   ↓             ↓
+TCollectionItem TComponent
+                 ↓
+              TControl
+                 ↓
+             TWinControl
+                 ↓
+           ┌─────┴─────┐
+           ↓           ↓
+         TForm      TButton
+         TLabel     TEdit
+         TPanel     etc.
 ```
 
 **Toutes les classes** que vous utilisez dans Lazarus (TForm, TButton, TEdit, etc.) descendent de TObject.
@@ -230,11 +234,14 @@ begin
   WriteLn('Nom classe Animal : ', Animal.ClassName);  // "TAnimal"
   WriteLn('Nom classe Chien : ', Chien.ClassName);    // "TChien"
 
+  // Libération du premier objet avant réaffectation
+  Animal.Free;
+
   // Utilisation polymorphe
   Animal := Chien;
   WriteLn('Animal pointe vers : ', Animal.ClassName); // "TChien"
 
-  Animal.Free;
+  // Libération une seule fois (Animal et Chien pointent vers le même objet)
   Chien.Free;
 end.
 ```
@@ -629,9 +636,10 @@ TObject
   ↓
 TPersistent
   ├─ TCollection
-  │   └─ TStrings
-  │       ├─ TStringList
-  │       └─ TMemoStrings
+  ├─ TStrings
+  │   ├─ TStringList
+  │   └─ TMemoStrings
+  ├─ TCollectionItem
   ├─ TGraphicsObject
   │   ├─ TFont
   │   ├─ TPen
