@@ -355,17 +355,17 @@ var
   tableau: array[1..3, 5..8] of Integer;
   i, j: Integer;
 begin
-  WriteLn('Lignes : de ', Low(tableau, 1), ' à ', High(tableau, 1));
-  WriteLn('Colonnes : de ', Low(tableau, 2), ' à ', High(tableau, 2));
+  WriteLn('Lignes : de ', Low(tableau), ' à ', High(tableau));
+  WriteLn('Colonnes : de ', Low(tableau[1]), ' à ', High(tableau[1]));
 
   // Parcours flexible
-  for i := Low(tableau, 1) to High(tableau, 1) do
-    for j := Low(tableau, 2) to High(tableau, 2) do
+  for i := Low(tableau) to High(tableau) do
+    for j := Low(tableau[i]) to High(tableau[i]) do
       tableau[i, j] := i * j;
 end.
 ```
 
-**Note :** Le deuxième paramètre (1 ou 2) indique la dimension.
+**Note :** `Low(tableau)` donne les bornes de la première dimension. Pour la deuxième dimension, on utilise `Low(tableau[1])` qui retourne les bornes du sous-tableau.
 
 ## Exemple complet : Jeu du Morpion
 
@@ -469,14 +469,14 @@ begin
 end;
 ```
 
-### 3. Oubli d'une dimension dans Low/High
+### 3. Oubli de la deuxième dimension dans Low/High
 
 ```pascal
-// INCORRECT
-for i := Low(tableau) to High(tableau) do  // Quelle dimension ?
+// Low(tableau) donne les bornes de la PREMIÈRE dimension
+for i := Low(tableau) to High(tableau) do  // OK : parcourt les lignes
 
-// CORRECT
-for i := Low(tableau, 1) to High(tableau, 1) do  // Première dimension
+// Pour la DEUXIÈME dimension, utiliser un sous-tableau
+for j := Low(tableau[1]) to High(tableau[1]) do  // OK : parcourt les colonnes
 ```
 
 ## Comparaison : 1D vs 2D vs 3D

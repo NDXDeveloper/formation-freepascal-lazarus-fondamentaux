@@ -357,7 +357,7 @@ type
   TJourSemaine = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
 
 var
-  temperatures: array[TJourSemaine] of Real;
+  temperatures: array[TJourSemaine] of Real;  // Tableau indexé par le type énuméré (pas par Integer)
   jour: TJourSemaine;
 begin
   // Saisie des températures

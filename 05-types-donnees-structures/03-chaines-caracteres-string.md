@@ -253,7 +253,7 @@ begin
   texte := 'Bonjour tout le monde';
   WriteLn('Avant : ', texte);
 
-  // Supprimer "tout le " (9 caractères à partir de la position 9)
+  // Supprimer "tout le " (8 caractères à partir de la position 9)
   Delete(texte, 9, 8);
   WriteLn('Après : ', texte);  // Bonjour monde
 end.
@@ -279,22 +279,23 @@ begin
 end.
 ```
 
-### UpCase() et LowerCase() - Changer la casse
+### UpperCase() et LowerCase() - Changer la casse
 
 ```pascal
 program ExempleCasse;
+uses SysUtils;
 var
   texte: String;
 begin
   texte := 'Pascal';
 
   WriteLn('Original : ', texte);
-  WriteLn('Majuscules : ', UpCase(texte));    // PASCAL
-  WriteLn('Minuscules : ', LowerCase(texte)); // pascal
+  WriteLn('Majuscules : ', UpperCase(texte));  // PASCAL
+  WriteLn('Minuscules : ', LowerCase(texte));  // pascal
 end.
 ```
 
-**Note :** `UpCase()` en standard Pascal ne fonctionne que sur un `Char`. Pour une chaîne complète, utilisez `UpperCase()` et `LowerCase()` de l'unité `SysUtils`.
+**Note :** `UpperCase()` et `LowerCase()` nécessitent l'unité `SysUtils` et fonctionnent sur des chaînes complètes. La fonction intégrée `UpCase()` ne fonctionne que sur un seul `Char`.
 
 ### Trim() - Supprimer les espaces
 
@@ -359,7 +360,7 @@ begin
     WriteLn('Différents');  // Différents
 
   // Comparaison insensible à la casse
-  if CompareText(mot1, mot2) = 0 then
+  if CompareText(mot1, mot2) = 0 then  // 0 signifie « égal » (insensible à la casse)
     WriteLn('Identiques (insensible)');  // Identiques (insensible)
 end.
 ```
@@ -408,7 +409,7 @@ begin
   WriteLn('Nombre : ', nombre);
 
   // Méthode 2 : Val (plus sûre)
-  Val(texte, nombre, code);
+  Val(texte, nombre, code);  // Val : code vaut 0 si OK, sinon position de l'erreur
   if code = 0 then
     WriteLn('Conversion réussie : ', nombre)
   else
@@ -567,13 +568,13 @@ var
   message: String;
 begin
   // Méthode 1 : Concaténation
-  message := 'Première ligne' + #13#10 +
+  message := 'Première ligne' + #13#10 +  // #N = caractère ASCII N ; #13#10 = saut de ligne
              'Deuxième ligne' + #13#10 +
              'Troisième ligne';
   WriteLn(message);
 
   // Méthode 2 : Utiliser la constante système
-  message := 'Ligne 1' + LineEnding + 'Ligne 2';
+  message := 'Ligne 1' + LineEnding + 'Ligne 2';  // LineEnding : constante FPC multi-plateforme
   WriteLn(message);
 end.
 ```

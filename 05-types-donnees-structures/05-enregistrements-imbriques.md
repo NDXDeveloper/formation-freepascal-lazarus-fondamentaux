@@ -577,7 +577,7 @@ end.
 ### Exemple 4 : Entreprise avec employés
 
 ```pascal
-program Entreprise;
+program ExempleEntreprise;
 type
   TDate = record
     jour: Integer;

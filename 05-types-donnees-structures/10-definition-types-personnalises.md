@@ -325,7 +325,7 @@ type
   TEtat = (Disponible, Emprunte, Perdu, EnReparation);
 
   // Types intervalles
-  TISBNCode = String[13];
+  TISBNCode = String[13];  // String[N] : ShortString limitée à N caractères max
   TAnnee = 1900..2100;
 
   // Structures
@@ -431,6 +431,7 @@ var
   planning: TPlanningHebdo;
   tache: TTache;
   jour: TJour;
+  i: Integer;
 
 procedure InitialiserPlanning(var p: TPlanningHebdo);
 var
@@ -494,7 +495,6 @@ begin
       WriteLn('  Aucune tâche')
     else
     begin
-      var i: Integer;
       for i := 1 to planning[jour].nbTaches do
         AfficherTache(planning[jour].taches[i]);
     end;

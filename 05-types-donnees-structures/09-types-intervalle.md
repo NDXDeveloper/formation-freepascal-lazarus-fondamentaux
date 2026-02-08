@@ -217,6 +217,8 @@ end.
 Très utiles pour valider les entrées :
 
 ```pascal
+{$mode objfpc}{$H+}
+{$R+}  // Active la vérification des intervalles à l'exécution
 program IntervalleCaracteres;
 type
   TChiffre = '0'..'9';
@@ -366,6 +368,7 @@ end.
 ### Exemple 3 : Gestion d'heures
 
 ```pascal
+{$mode objfpc}{$H+}
 program GestionHeures;
 type
   THeure = 0..23;
@@ -380,8 +383,7 @@ type
 
 procedure AfficherHoraire(h: THoraire);
 begin
-  Write(h.heure:2, ':', h.minute:2, ':', h.seconde:2);
-  // Compléter avec des zéros
+  // Afficher avec zéros de remplissage
   if h.heure < 10 then Write('0');
   Write(h.heure);
   Write(':');

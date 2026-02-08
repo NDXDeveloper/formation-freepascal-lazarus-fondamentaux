@@ -289,8 +289,8 @@ begin
   if ensemble1 <= ensemble2 then
     WriteLn('[1,2] est inclus dans [1,2,3,4]');
 
-  // Inclusion stricte
-  if ensemble1 < ensemble2 then
+  // Inclusion stricte (pas d'opérateur < pour les sets en FreePascal)
+  if (ensemble1 <= ensemble2) and (ensemble1 <> ensemble2) then
     WriteLn('[1,2] est strictement inclus dans [1,2,3,4]');
 end.
 ```
@@ -407,6 +407,7 @@ Jours de présence cette semaine :
 ### Exemple 2 : Validation de mot de passe
 
 ```pascal
+{$mode objfpc}{$H+}
 program ValidationMotDePasse;
 type
   TTypeCaractere = (Minuscule, Majuscule, Chiffre, Special);
