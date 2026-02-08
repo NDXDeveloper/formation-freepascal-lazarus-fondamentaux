@@ -213,6 +213,7 @@ end.
 ### Exemple complet : Décomposer un chemin
 
 ```pascal
+{$mode objfpc}{$H+}
 program DecomposerChemin;
 
 uses
@@ -231,9 +232,9 @@ begin
 end;
 
 begin
-  AnalyserChemin('C:\Users\Jean\Documents\rapport.pdf');
-  WriteLn;
   AnalyserChemin('/home/jean/documents/rapport.pdf');
+  WriteLn;
+  AnalyserChemin('config/settings.ini');
 end.
 ```
 
@@ -510,10 +511,11 @@ var
 begin
   Chemin := 'rapport.pdf';
 
-  DateModif := FileDateToDateTime(FileAge(Chemin));
-
-  if DateModif <> -1 then
-    WriteLn('Dernière modification : ', DateTimeToStr(DateModif))
+  if FileAge(Chemin) <> -1 then
+  begin
+    DateModif := FileDateToDateTime(FileAge(Chemin));
+    WriteLn('Dernière modification : ', DateTimeToStr(DateModif));
+  end
   else
     WriteLn('Fichier introuvable');
 end.
@@ -606,9 +608,11 @@ begin
   WriteLn('Séparateur de répertoire: ', DirectorySeparator); // Alias de PathDelim
   WriteLn('Séparateur de lecteur   : ', DriveDelim);       // : (Windows) ou vide
   WriteLn('Séparateur de PATH      : ', PathSep);          // ; ou :
-  WriteLn('Extension exécutable    : ', ExeExt);           // .exe ou vide
+  WriteLn('Suffixe bibliothèque    : ', SharedSuffix);     // dll ou so
 end.
 ```
+
+**Note :** `ExeExt` n'existe pas en FreePascal 3.2.2. Utilisez `SharedSuffix` pour le suffixe des bibliothèques partagées.
 
 **Résultat sous Windows :**
 ```
@@ -616,7 +620,7 @@ Séparateur de chemin    : \
 Séparateur de répertoire: \
 Séparateur de lecteur   : :
 Séparateur de PATH      : ;
-Extension exécutable    : .exe
+Suffixe bibliothèque    : dll
 ```
 
 **Résultat sous Linux :**
@@ -625,7 +629,7 @@ Séparateur de chemin    : /
 Séparateur de répertoire: /
 Séparateur de lecteur   :
 Séparateur de PATH      : :
-Extension exécutable    :
+Suffixe bibliothèque    : so
 ```
 
 ### Fonction de construction portable
@@ -819,6 +823,7 @@ end.
 ## Application complète : Gestionnaire de chemins
 
 ```pascal
+{$mode objfpc}{$H+}
 program GestionnaireChemin;
 
 uses
@@ -880,7 +885,7 @@ begin
   WriteLn('Chemin absolu : ', CheminAbsolu);
 end;
 
-procedure ExtraireChemin Relatif;
+procedure ExtraireCheminRelatif;
 var
   Base, Cible, Relatif: string;
 begin
@@ -905,14 +910,14 @@ begin
   WriteLn;
 
   if FileExists(Chemin) then
-    WriteLn('✓ Le fichier existe')
+    WriteLn('V Le fichier existe')
   else if DirectoryExists(Chemin) then
-    WriteLn('✓ Le répertoire existe')
+    WriteLn('V Le répertoire existe')
   else
-    WriteLn('✗ N''existe pas');
+    WriteLn('X N''existe pas');
 end;
 
-procedure ConstruireChemin;
+procedure ConstruireCheminInteractif;
 var
   NbSegments, i: Integer;
   Segments: array[1..10] of string;
@@ -956,7 +961,7 @@ begin
       3: ConvertirEnAbsolu;
       4: ExtraireCheminRelatif;
       5: VerifierExistence;
-      6: ConstruireChemin;
+      6: ConstruireCheminInteractif;
       0: WriteLn('Au revoir !');
     else
       WriteLn('Choix invalide !');

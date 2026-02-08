@@ -94,7 +94,7 @@ Append(MonFichier);
 ```
 
 - Ouvre le fichier en **écriture**
-- **Crée** le fichier s'il n'existe pas
+- **Erreur** si le fichier n'existe pas (contrairement à `Rewrite`)
 - **Conserve** le contenu existant
 - Le curseur est placé à la **fin** du fichier
 - Utilisez cette méthode pour ajouter des données à un fichier existant
@@ -336,7 +336,7 @@ end.
 Il est important de vérifier que le fichier existe avant de le lire :
 
 ```pascal
-program LectureSurisee;
+program LectureSecurisee;
 
 var
   MonFichier: TextFile;

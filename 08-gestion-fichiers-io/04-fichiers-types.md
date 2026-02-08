@@ -249,7 +249,7 @@ type
   end;
 
 var
-  F: File of TEmploye;
+  F: File of TEmploye;  // Fichier typé : chaque Read/Write lit/écrit un TEmploye complet
   Employe: TEmploye;
 
 procedure AjouterEmploye(Num: Integer; N: string; P: string; S: Real);
@@ -297,6 +297,10 @@ begin
   AfficherTous;
 
   Close(F);
+
+  // Nettoyage du fichier de donnees
+  Assign(F, 'employes.dat');
+  Erase(F);
 end.
 ```
 
@@ -309,10 +313,10 @@ Employé ajouté : Bernard Marie
 
 === LISTE DES EMPLOYÉS ===
 
-N°    1 | Dupont Jean          | Développeur     | 35000.00 €
-N°    2 | Martin Sophie        | Chef de projet  | 45000.00 €
-N°    3 | Durand Pierre        | Technicien      | 28000.00 €
-N°    4 | Bernard Marie        | Analyste        | 38000.00 €
+N°    1 |          Dupont Jean |    Développeur | 35000.00 €
+N°    2 |        Martin Sophie |  Chef de projet | 45000.00 €
+N°    3 |        Durand Pierre |      Technicien | 28000.00 €
+N°    4 |        Bernard Marie |        Analyste | 38000.00 €
 ```
 
 ---

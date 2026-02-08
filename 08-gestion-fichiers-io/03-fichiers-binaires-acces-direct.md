@@ -148,13 +148,23 @@ const
 var
   FichierSource, FichierDest: File;
   Buffer: array[1..TAILLE_BUFFER] of Byte;
-  NbLus: Word;
+  NbLus, NbEcrits: Word;
   TotalCopie: LongInt;
+  FichierTest: TextFile;
+  i: Integer;
 
 begin
+  // Creer un petit fichier source pour la demonstration
+  Assign(FichierTest, 'test_source.txt');
+  Rewrite(FichierTest);
+  for i := 1 to 100 do
+    WriteLn(FichierTest, 'Ligne de test numero ', i);
+  Close(FichierTest);
+  WriteLn('Fichier source créé.');
+
   // Association des fichiers
-  Assign(FichierSource, 'image.jpg');
-  Assign(FichierDest, 'image_copie.jpg');
+  Assign(FichierSource, 'test_source.txt');
+  Assign(FichierDest, 'test_copie.txt');
 
   // Ouverture
   Reset(FichierSource, 1);
@@ -168,7 +178,7 @@ begin
 
     if NbLus > 0 then
     begin
-      BlockWrite(FichierDest, Buffer, NbLus);
+      BlockWrite(FichierDest, Buffer, NbLus, NbEcrits);
       TotalCopie := TotalCopie + NbLus;
     end;
 
@@ -179,6 +189,12 @@ begin
   Close(FichierDest);
 
   WriteLn('Fichier copié : ', TotalCopie, ' octets');
+
+  // Nettoyage des fichiers de test
+  Assign(FichierSource, 'test_source.txt');
+  Erase(FichierSource);
+  Assign(FichierDest, 'test_copie.txt');
+  Erase(FichierDest);
 end.
 ```
 
@@ -466,7 +482,7 @@ begin
 
   // Ouvrir ou créer le fichier
   {$I-}
-  Reset(Fichier, SizeOf(TContact));
+  Reset(Fichier, SizeOf(TContact));  // Taille de bloc = taille d'un record, permet l'accès par numéro de contact
   {$I+}
 
   if IOResult <> 0 then

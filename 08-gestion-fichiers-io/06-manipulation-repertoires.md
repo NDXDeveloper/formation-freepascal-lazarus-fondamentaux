@@ -64,6 +64,7 @@ uses
 ### GetCurrentDir : Répertoire actuel
 
 ```pascal
+{$mode objfpc}{$H+}
 program AfficherRepertoireCourant;
 
 uses
@@ -309,6 +310,7 @@ if not DirectoryExists('Logs') then
 Pour lister tous les fichiers et répertoires, on utilise trois fonctions ensemble :
 
 ```pascal
+{$mode objfpc}{$H+}
 program ListerFichiers;
 
 uses
@@ -331,7 +333,7 @@ begin
       // Ignorer . et ..
       if (Info.Name <> '.') and (Info.Name <> '..') then
       begin
-        if (Info.Attr and faDirectory) = faDirectory then
+        if (Info.Attr and faDirectory) = faDirectory then  // and bitwise : teste si le bit répertoire est présent dans Attr
           WriteLn('[DIR]  ', Info.Name)
         else
           WriteLn('[FILE] ', Info.Name, ' (', Info.Size, ' octets)');
@@ -453,6 +455,7 @@ end.
 ### Exemple 3 : Rechercher un type de fichier spécifique
 
 ```pascal
+{$mode objfpc}{$H+}
 program ChercherFichiersTexte;
 
 uses
@@ -465,9 +468,9 @@ var
 begin
   Compteur := 0;
 
-  WriteLn('Recherche de fichiers .txt...');
+  WriteLn('Recherche de fichiers .pas...');
 
-  if FindFirst('*.txt', faAnyFile, Info) = 0 then
+  if FindFirst('*.pas', faAnyFile, Info) = 0 then
   begin
     try
       repeat
@@ -483,7 +486,7 @@ begin
   end;
 
   WriteLn;
-  WriteLn('Total : ', Compteur, ' fichier(s) .txt trouvé(s)');
+  WriteLn('Total : ', Compteur, ' fichier(s) .pas trouvé(s)');
 end.
 ```
 
@@ -546,6 +549,7 @@ end.
 Créons une petite application interactive pour gérer les répertoires.
 
 ```pascal
+{$mode objfpc}{$H+}
 program GestionnaireRepertoires;
 
 uses
@@ -837,7 +841,7 @@ end.
 
 **Paramètres :**
 - Premier : chemin du répertoire
-- Second : `True` = suppression récursive, `False` = uniquement si vide
+- Second (`OnlyChildren`) : `False` = supprime le répertoire et tout son contenu, `True` = supprime uniquement le contenu (le répertoire reste)
 
 ### Obtenir la taille d'un répertoire
 

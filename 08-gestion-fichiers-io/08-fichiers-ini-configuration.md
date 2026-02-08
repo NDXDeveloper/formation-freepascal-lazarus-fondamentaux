@@ -486,6 +486,7 @@ end.
 Créons une application qui charge et sauvegarde ses préférences.
 
 ```pascal
+{$mode objfpc}{$H+}
 program GestionPreferences;
 
 uses
@@ -618,7 +619,6 @@ begin
   WriteLn('  GESTIONNAIRE DE PRÉFÉRENCES   ');
   WriteLn('=================================');
 
-  // Charger les préférences au démarrage
   ChargerPreferences(Prefs);
 
   repeat
@@ -714,6 +714,7 @@ end.
 ## Exemple avancé : Configuration de connexion
 
 ```pascal
+{$mode objfpc}{$H+}
 program ConfigConnexion;
 
 uses
@@ -827,15 +828,18 @@ begin
   Config := ChargerConfigConnexion(FichierConfig);
   AfficherConfig(Config);
 
+  // Sauvegarder pour créer le fichier
+  SauvegarderConfigConnexion(FichierConfig, Config);
+
   // Tester la connexion
   if TesterConnexion(Config) then
-    WriteLn('✓ Connexion OK')
+    WriteLn('V Connexion OK')
   else
-    WriteLn('✗ Échec de connexion');
+    WriteLn('X Échec de connexion');
 
-  WriteLn;
-  WriteLn('Appuyez sur Entrée pour continuer...');
-  ReadLn;
+  // Nettoyage du fichier de demo
+  if FileExists(FichierConfig) then
+    DeleteFile(FichierConfig);
 end.
 ```
 
@@ -900,6 +904,8 @@ end;
 
 ```pascal
 function ChargementSecurise(Fichier: string): Boolean;
+var
+  Ini: TIniFile;
 begin
   Result := False;
 
@@ -908,7 +914,7 @@ begin
     begin
       // Tenter de charger
       // Si le fichier est corrompu, TIniFile peut lever une exception
-      var Ini := TIniFile.Create(Fichier);
+      Ini := TIniFile.Create(Fichier);
       try
         // Test de lecture
         Ini.ReadString('Test', 'Test', '');

@@ -120,7 +120,7 @@ end;
 Voici comment ouvrir un fichier en gérant proprement les erreurs.
 
 ```pascal
-program OuvertureSécurisée;
+program OuvertureSecurisee;
 
 var
   F: TextFile;
@@ -189,10 +189,13 @@ begin
   Reset(F);
   {$I+}
 
-  FichierExiste := (IOResult = 0);
-
   if IOResult = 0 then
+  begin
     Close(F);
+    FichierExiste := True;
+  end
+  else
+    FichierExiste := False;
 end;
 ```
 
@@ -214,7 +217,7 @@ end.
 Voici un exemple complet qui gère toutes les erreurs possibles lors de la lecture d'un fichier.
 
 ```pascal
-program LectureSécurisée;
+program LectureSecurisee;
 
 function LireFichier(NomFichier: string): Boolean;
 var
@@ -305,7 +308,7 @@ end.
 Lors de l'écriture, il faut aussi gérer les erreurs (disque plein, protégé en écriture, etc.).
 
 ```pascal
-program EcritureSécurisée;
+program EcritureSecurisee;
 
 function EcrireDansFichier(NomFichier: string; Donnees: array of string): Boolean;
 var
@@ -369,12 +372,20 @@ end;
 
 var
   Lignes: array[1..3] of string = ('Ligne 1', 'Ligne 2', 'Ligne 3');
+  FClean: File;
 
 begin
   if EcrireDansFichier('sortie.txt', Lignes) then
     WriteLn('Écriture réussie !')
   else
     WriteLn('Échec de l''écriture.');
+
+  // Nettoyage du fichier de test
+  Assign(FClean, 'sortie.txt');
+  {$I-}
+  Erase(FClean);
+  {$I+}
+  IOResult;  // Vider le code d'erreur
 end.
 ```
 
@@ -401,6 +412,7 @@ end;
 ### Exemple complet avec Try-Except
 
 ```pascal
+{$mode objfpc}{$H+}
 program GestionModerne;
 
 uses
@@ -549,6 +561,7 @@ if CodeErreur <> 0 then
 Créons une petite application qui lit un fichier de configuration en gérant toutes les erreurs possibles.
 
 ```pascal
+{$mode objfpc}{$H+}
 program ConfigRobuste;
 
 uses
@@ -575,7 +588,7 @@ begin
   end;
 end;
 
-function ChargerConfig(NomFichier: string; var Config: TConfig): Boolean;
+function ChargerConfig(NomFichier: string; var Cfg: TConfig): Boolean;
 var
   F: TextFile;
   Ligne, Cle, Valeur: string;
@@ -585,9 +598,9 @@ begin
   ChargerConfig := False;
 
   // Valeurs par défaut
-  Config.NomUtilisateur := 'Invité';
-  Config.CouleurTheme := 'Bleu';
-  Config.TaillePolice := 12;
+  Cfg.NomUtilisateur := 'Invité';
+  Cfg.CouleurTheme := 'Bleu';
+  Cfg.TaillePolice := 12;
 
   WriteLn('Chargement de la configuration...');
 
@@ -643,13 +656,13 @@ begin
 
         // Affecter la configuration
         if Cle = 'NomUtilisateur' then
-          Config.NomUtilisateur := Valeur
+          Cfg.NomUtilisateur := Valeur
         else if Cle = 'CouleurTheme' then
-          Config.CouleurTheme := Valeur
+          Cfg.CouleurTheme := Valeur
         else if Cle = 'TaillePolice' then
         begin
           try
-            Config.TaillePolice := StrToInt(Valeur);
+            Cfg.TaillePolice := StrToInt(Valeur);
           except
             WriteLn('Attention : TaillePolice invalide, valeur par défaut utilisée');
           end;

@@ -137,6 +137,7 @@ Modes de partage :
 ### Écrire dans un TFileStream
 
 ```pascal
+{$mode objfpc}{$H+}
 program EcrireStream;
 
 uses
@@ -152,7 +153,7 @@ begin
   try
     // Écrire une chaîne
     Texte := 'Bonjour le monde !';
-    Stream.Write(Texte[1], Length(Texte));
+    Stream.Write(Texte[1], Length(Texte));  // Texte[1] donne l'adresse du 1er caractère (Write attend un buffer, pas un pointeur de string)
 
     // Écrire un nombre
     Nombre := 42;
@@ -168,6 +169,7 @@ end.
 ### Lire depuis un TFileStream
 
 ```pascal
+{$mode objfpc}{$H+}
 program LireStream;
 
 uses
@@ -243,6 +245,7 @@ end.
 ### Création et utilisation
 
 ```pascal
+{$mode objfpc}{$H+}
 program StreamMemoire;
 
 uses
@@ -344,6 +347,7 @@ end.
 ### Création et utilisation
 
 ```pascal
+{$mode objfpc}{$H+}
 program StreamChaine;
 
 uses
@@ -358,7 +362,8 @@ begin
   try
     WriteLn('Contenu : ', Stream.DataString);
 
-    // Ajouter du contenu
+    // Se placer à la fin pour ajouter du contenu
+    Stream.Seek(0, soFromEnd);
     Stream.WriteString(' - Ajout de texte');
 
     WriteLn('Nouveau contenu : ', Stream.DataString);
@@ -405,7 +410,8 @@ La méthode **CopyFrom** permet de copier facilement d'un stream vers un autre.
 ### Copier un fichier avec des streams
 
 ```pascal
-program CopierFichier;
+{$mode objfpc}{$H+}
+program CopierStream;
 
 uses
   Classes, SysUtils;
@@ -430,14 +436,29 @@ begin
   end;
 end;
 
-begin
-  if ParamCount < 2 then
-  begin
-    WriteLn('Usage : ', ExtractFileName(ParamStr(0)), ' <source> <destination>');
-    Exit;
-  end;
+var
+  FSource: TextFile;
 
-  CopierFichierStream(ParamStr(1), ParamStr(2));
+begin
+  // Creer un fichier source de test
+  Assign(FSource, 'source_test.txt');
+  Rewrite(FSource);
+  WriteLn(FSource, 'Ligne 1 : Bonjour');
+  WriteLn(FSource, 'Ligne 2 : Ceci est un test de copie par stream');
+  WriteLn(FSource, 'Ligne 3 : Au revoir');
+  Close(FSource);
+  WriteLn('Fichier source créé.');
+
+  // Copier avec stream
+  CopierFichierStream('source_test.txt', 'copie_test.txt');
+
+  // Nettoyage
+  if FileExists('source_test.txt') then
+    DeleteFile('source_test.txt');
+  if FileExists('copie_test.txt') then
+    DeleteFile('copie_test.txt');
+
+  WriteLn('Fichiers temporaires nettoyés.');
 end.
 ```
 
@@ -472,6 +493,7 @@ end.
 ### Exemple 1 : Lire un fichier texte en mémoire
 
 ```pascal
+{$mode objfpc}{$H+}
 program LireFichierTexte;
 
 uses
@@ -521,6 +543,7 @@ end.
 ### Exemple 2 : Écrire des structures dans un stream
 
 ```pascal
+{$mode objfpc}{$H+}
 program EcrireStructures;
 
 uses
@@ -581,12 +604,20 @@ begin
   finally
     Stream.Free;
   end;
+
+  // Nettoyage
+  if FileExists('personnes.dat') then
+    DeleteFile('personnes.dat');
+
+  WriteLn;
+  WriteLn('Fichier temporaire nettoyé.');
 end.
 ```
 
 ### Exemple 3 : Concaténer plusieurs fichiers
 
 ```pascal
+{$mode objfpc}{$H+}
 program ConcatenerFichiers;
 
 uses
@@ -633,6 +664,7 @@ end.
 ### Exemple 4 : Stream avec buffer personnalisé
 
 ```pascal
+{$mode objfpc}{$H+}
 program LectureBufferisee;
 
 uses
@@ -745,7 +777,7 @@ begin
   Stream := TMemoryStream.Create;
   try
     // Écrire des données
-    Stream.WriteString('Beaucoup de données...');
+    Stream.Write(PChar('Beaucoup de données...')^, Length('Beaucoup de données...'));
     WriteLn('Taille : ', Stream.Size);
 
     // Vider complètement
