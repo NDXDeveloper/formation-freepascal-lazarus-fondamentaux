@@ -341,15 +341,13 @@ uses
 procedure AfficherPileAppels;
 var
   i: Integer;
-  pile: PPointer;
+  frames: PCodePointer;
 begin
   WriteLn('Pile d''appels :');
-  pile := ExceptAddr;
+  WriteLn('  Adresse exception : ', BackTraceStrFunc(ExceptAddr));
+  frames := ExceptFrames;
   for i := 0 to ExceptFrameCount - 1 do
-  begin
-    WriteLn(Format('  #%d: %p', [i, pile^]));
-    Inc(pile);
-  end;
+    WriteLn(Format('  #%d: %s', [i, BackTraceStrFunc(frames[i])]));
 end;
 
 // Utilisation
@@ -374,7 +372,7 @@ end;
 ```pascal
 procedure DebugConversion(const texte: String);
 var
-  nombre: Integer;
+  nombre, i: Integer;
 begin
   WriteLn('Tentative de conversion de : "', texte, '"');
   WriteLn('Longueur : ', Length(texte));
@@ -387,7 +385,7 @@ begin
     begin
       WriteLn('Conversion échouée !');
       WriteLn('La chaîne contient : ');
-      for var i := 1 to Length(texte) do
+      for i := 1 to Length(texte) do
         WriteLn('  Position ', i, ': "', texte[i], '" (code: ', Ord(texte[i]), ')');
       raise;
     end;

@@ -45,21 +45,23 @@ TObject (classe de base de tout objet)
   │
   └─► Exception (classe de base de toutes les exceptions)
         │
-        ├─► EMathError (erreurs mathématiques)
+        ├─► EIntError (erreurs d'entier)
         │     │
-        │     ├─► EDivByZero (division par zéro)
+        │     └─► EDivByZero (division entière par zéro)
+        │
+        ├─► EMathError (erreurs mathématiques flottantes)
+        │     │
+        │     ├─► EZeroDivide (division flottante par zéro)
         │     ├─► EOverflow (dépassement de capacité)
-        │     ├─► EUnderflow (sous-capacité)
         │     └─► EInvalidOp (opération invalide)
         │
         ├─► EConvertError (erreurs de conversion)
         │
-        ├─► EInOutError (erreurs d'entrée/sortie)
-        │     │
-        │     ├─► EFileNotFoundException
-        │     └─► EStreamError
+        ├─► EInOutError (erreurs d'entrée/sortie fichier)
         │
-        ├─► ERangeError (index hors limites)
+        ├─► EStreamError (erreurs de flux - unit Classes)
+        │     │
+        │     └─► EFOpenError (erreur d'ouverture de fichier)
         │
         └─► EAccessViolation (accès mémoire invalide)
 ```
@@ -173,14 +175,17 @@ Toutes les erreurs liées aux calculs mathématiques :
 
 ```pascal
 Exception
-  └─► EMathError
-        │
-        ├─► EDivByZero        // Division par zéro
+  ├─► EIntError              // Erreurs d'entier
+  │     └─► EDivByZero        // Division entière par zéro (10 div 0)
+  │
+  └─► EMathError             // Erreurs mathématiques flottantes
+        ├─► EZeroDivide        // Division flottante par zéro (10.0 / 0.0)
         ├─► EOverflow         // Nombre trop grand
         ├─► EUnderflow        // Nombre trop petit
-        ├─► EInvalidOp        // Opération invalide
-        └─► EZeroDivide       // Autre cas de division par zéro
+        └─► EInvalidOp        // Opération invalide
 ```
+
+**Note :** `EDivByZero` (sous `EIntError`) concerne la division entière (`div`), tandis que `EZeroDivide` (sous `EMathError`) concerne la division flottante (`/`).
 
 **Exemple d'utilisation :**
 
@@ -224,12 +229,16 @@ Erreurs liées aux opérations de lecture/écriture :
 
 ```pascal
 Exception
-  └─► EInOutError
-        │
-        ├─► EFileNotFoundException
-        ├─► EStreamError
-        └─► EFOpenError
+  ├─► EInOutError            // Erreurs I/O Pascal (AssignFile, Reset...)
+  │
+  └─► EStreamError           // Erreurs de flux (unit Classes)
+        ├─► EFOpenError        // Impossible d'ouvrir un fichier
+        ├─► EFCreateError      // Impossible de créer un fichier
+        ├─► EReadError         // Erreur de lecture
+        └─► EWriteError        // Erreur d'écriture
 ```
+
+**Note :** `EInOutError` et `EStreamError` sont deux branches séparées sous `Exception`. `EInOutError` est levée par les routines Pascal classiques (`AssignFile`, `Reset`...), tandis que `EStreamError` et ses descendants sont levés par les classes de flux (`TFileStream`, `TStringList.LoadFromFile`...).
 
 **Exemple :**
 
@@ -238,8 +247,6 @@ try
   AssignFile(f, 'donnees.txt');
   Reset(f);
 except
-  on E: EFileNotFoundException do
-    WriteLn('Fichier introuvable');
   on E: EInOutError do
     WriteLn('Erreur d''accès au fichier : ', E.Message);
 end;
@@ -289,42 +296,42 @@ Voici une représentation plus complète de la hiérarchie :
 ```
 Exception
 │
-├─► EAbort                    // Opération annulée
+├─► EAbort                    // Opération annulée (silencieuse)
 │
 ├─► EHeapException           // Problèmes de tas mémoire
 │     ├─► EOutOfMemory         // Mémoire insuffisante
 │     └─► EInvalidPointer      // Pointeur invalide
 │
-├─► EMathError               // Erreurs mathématiques
-│     ├─► EInvalidOp
-│     ├─► EZeroDivide
-│     ├─► EOverflow
-│     ├─► EUnderflow
-│     └─► EDivByZero
-│
-├─► EInOutError              // Erreurs I/O
-│     ├─► EFCreateError
-│     ├─► EFOpenError
-│     └─► EReadError
+├─► EExternal                // Exceptions matérielles/système
+│     │
+│     ├─► EIntError            // Erreurs d'entier
+│     │     ├─► EDivByZero       // Division entière par zéro
+│     │     ├─► ERangeError      // Index hors limites
+│     │     └─► EIntOverflow     // Dépassement d'entier
+│     │
+│     ├─► EMathError           // Erreurs mathématiques flottantes
+│     │     ├─► EInvalidOp       // Opération invalide
+│     │     ├─► EZeroDivide      // Division flottante par zéro
+│     │     ├─► EOverflow        // Dépassement flottant
+│     │     └─► EUnderflow       // Sous-capacité flottante
+│     │
+│     ├─► EAccessViolation     // Violation d'accès mémoire
+│     ├─► EPrivilege           // Instruction privilégiée
+│     ├─► EControlC            // Ctrl+C pressé
+│     ├─► EStackOverflow       // Pile débordée
+│     └─► EExternalException   // Exception externe (OS)
 │
 ├─► EConvertError            // Erreurs de conversion
 │
+├─► EInOutError              // Erreurs I/O Pascal classique
+│
+├─► EStreamError             // Erreurs de flux (unit Classes)
+│     ├─► EFCreateError        // Création de fichier impossible
+│     ├─► EFOpenError          // Ouverture de fichier impossible
+│     ├─► EReadError           // Erreur de lecture
+│     └─► EWriteError          // Erreur d'écriture
+│
 ├─► EVariantError            // Erreurs de variant
-│
-├─► EIntError                // Erreurs d'entier
-│     ├─► EDivByZero           // (aussi ici)
-│     ├─► ERangeError
-│     └─► EIntOverflow
-│
-├─► EAccessViolation         // Violation d'accès mémoire
-│
-├─► EPrivilege               // Instruction privilégiée
-│
-├─► EControlC                // Ctrl+C pressé
-│
-├─► EStackOverflow           // Pile débordée
-│
-├─► EExternalException       // Exception externe
 │
 └─► EAssertionFailed         // Assertion échouée
 ```
@@ -409,11 +416,8 @@ begin
 
   except
     // Gestion des erreurs spécifiques d'I/O
-    on E: EFileNotFoundException do
-      WriteLn('Le fichier "', nomFichier, '" n''existe pas');
-
     on E: EFOpenError do
-      WriteLn('Impossible d''ouvrir le fichier (droits insuffisants ?)');
+      WriteLn('Impossible d''ouvrir le fichier "', nomFichier, '" (introuvable ou droits insuffisants)');
 
     on E: EInOutError do
       WriteLn('Erreur de lecture du fichier : ', E.Message);

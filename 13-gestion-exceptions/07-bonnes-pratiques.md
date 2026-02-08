@@ -243,7 +243,7 @@ Nous l'avons déjà vu, mais c'est crucial : toujours capturer du plus spécifiq
 try
   TraiterDonnees;
 except
-  on E: EFileNotFoundException do      // Plus spécifique
+  on E: EFOpenError do      // Plus spécifique
     GererFichierManquant;
   on E: EInOutError do                  // Moins spécifique
     GererErreurIO;
@@ -257,7 +257,7 @@ try
 except
   on E: Exception do                    // ✗ Capture tout !
     GererErreurGenerique;
-  on E: EFileNotFoundException do      // ✗ Jamais atteint
+  on E: EFOpenError do      // ✗ Jamais atteint
     GererFichierManquant;
 end;
 ```
@@ -346,7 +346,7 @@ Documentez les exceptions que vos fonctions peuvent lever :
 /// Lit et retourne le contenu d'un fichier
 /// @param nomFichier Le chemin du fichier à lire
 /// @returns Le contenu du fichier
-/// @raises EFileNotFoundException si le fichier n'existe pas
+/// @raises EFOpenError si le fichier n'existe pas
 /// @raises EInOutError si le fichier ne peut pas être lu
 function LireFichier(const nomFichier: String): String;
 ```
@@ -394,7 +394,7 @@ Ne sacrifiez pas la robustesse pour la performance sans mesurer :
 function ChargerConfiguration: TConfiguration;
 begin
   if not FileExists('config.xml') then
-    raise EFileNotFoundException.Create('Configuration manquante');
+    raise EFOpenError.Create('Configuration manquante');
 
   Result := TConfiguration.Create;
   try
@@ -412,22 +412,39 @@ Les constructeurs ont un comportement particulier avec les exceptions.
 
 ### Si un constructeur lève une exception
 
+**Important :** En FreePascal/Delphi, si un constructeur lève une exception, le destructeur `Destroy` **EST automatiquement appelé** pour nettoyer l'objet partiellement créé. C'est pourquoi le destructeur doit être capable de gérer un objet incomplètement initialisé.
+
 ```pascal
 constructor TMonObjet.Create;
 begin
   inherited Create;
-
   FListe := TStringList.Create;
-  try
-    FListe.LoadFromFile('obligatoire.txt');  // Peut lever exception
-  except
-    FListe.Free;  // ✓ Nettoyer ce qui a été créé
-    raise;        // ✓ Propager l'exception
-  end;
+  FListe.LoadFromFile('obligatoire.txt');  // Si exception → Destroy est appelé
+end;
+
+destructor TMonObjet.Destroy;
+begin
+  FListe.Free;  // Free vérifie nil, donc sûr même si FListe n'a pas été créé
+  inherited Destroy;
 end;
 ```
 
-**Important :** Si un constructeur lève une exception, le destructeur n'est PAS appelé. Vous devez nettoyer dans le constructeur lui-même.
+**Attention au piège de la double libération :** Ne libérez pas un champ dans le constructeur ET dans le destructeur, sinon vous aurez un double-free.
+
+```pascal
+// ✗ MAUVAIS : double-free si LoadFromFile échoue
+constructor TMonObjet.Create;
+begin
+  inherited Create;
+  FListe := TStringList.Create;
+  try
+    FListe.LoadFromFile('obligatoire.txt');
+  except
+    FListe.Free;  // Libère ici...
+    raise;        // Destroy sera appelé → FListe.Free à nouveau = crash !
+  end;
+end;
+```
 
 ### Utilisation
 
@@ -435,21 +452,18 @@ end;
 var
   obj: TMonObjet;
 begin
+  obj := nil;  // ✓ Initialiser à nil avant le try
   try
     obj := TMonObjet.Create;  // Peut lever exception
+    obj.Travailler;
   except
-    // Si exception, obj n'a pas été créé, pas besoin de Free
     on E: Exception do
-      ShowMessage('Création impossible : ' + E.Message);
+      ShowMessage('Erreur : ' + E.Message);
   end;
 
-  // Si pas d'exception, obj existe et doit être libéré
-  if Assigned(obj) then
-  try
-    obj.Travailler;
-  finally
-    obj.Free;
-  end;
+  // Si Create a échoué, obj est resté nil (Destroy a été appelé en interne)
+  // Si Create a réussi et Travailler a échoué, obj existe et doit être libéré
+  obj.Free;  // Free vérifie nil, donc sûr dans les deux cas
 end;
 ```
 

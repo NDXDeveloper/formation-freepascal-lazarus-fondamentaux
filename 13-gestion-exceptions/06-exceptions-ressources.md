@@ -312,46 +312,51 @@ end;
 
 **Avantage :** Séparation claire entre libération et gestion d'erreur.
 
-### Méthode 2 : Try-Except-Finally combiné
+### Méthode 2 : Try-Except englobant Try-Finally
+
+On peut aussi placer le `try-except` à l'extérieur :
 
 ```pascal
 procedure TraiterAvecGestionCombinee;
 var
   liste: TStringList;
 begin
-  liste := TStringList.Create;
   try
-    liste.LoadFromFile('donnees.txt');
-    ProcesserListe(liste);
+    liste := TStringList.Create;
+    try
+      liste.LoadFromFile('donnees.txt');
+      ProcesserListe(liste);
+    finally
+      liste.Free;  // Libération TOUJOURS exécutée
+    end;
   except
     on E: Exception do
       WriteLn('Erreur : ', E.Message);
-  finally
-    liste.Free;  // Exécuté après except (si erreur) ou après try (si pas d'erreur)
   end;
 end;
 ```
 
-**Avantage :** Plus concis, une seule structure.
+**Important :** En FreePascal, on ne peut **pas** combiner `except` et `finally` dans un seul bloc `try`. La forme `try...except...finally...end` n'existe pas. Il faut toujours imbriquer deux blocs séparés.
 
-### Ordre d'exécution du Try-Except-Finally
+### Ordre d'exécution avec imbrication
 
 ```
-1. Code dans try s'exécute
+1. Code dans try interne s'exécute
    │
    ├─► Pas d'erreur ─────┐
    │                     │
    └─► Erreur            │
-         │               │
-         ▼               │
-   2. Bloc except        │
-         │               │
-         └───────────────┤
                          │
                          ▼
-   3. Bloc finally (TOUJOURS)
+   2. Bloc finally (TOUJOURS)
          │
-         ▼
+         ├─► Si erreur
+         │     │
+         │     ▼
+         │   3. Bloc except (externe)
+         │     │
+         └─────┤
+               ▼
    4. Suite du programme
 ```
 
@@ -504,6 +509,7 @@ Pour les ressources qui peuvent ne pas exister :
 procedure TraiterFichierOptional(const nom: String);
 var
   f: TextFile;
+  ligne: String;
   fichierOuvert: Boolean;
 begin
   fichierOuvert := False;
@@ -520,7 +526,10 @@ begin
     begin
       // Traiter le fichier
       while not EOF(f) do
-        ProcesserLigne(ReadLn(f));
+      begin
+        ReadLn(f, ligne);
+        ProcesserLigne(ligne);
+      end;
     end
     else
       WriteLn('Fichier non trouvé, traitement par défaut');
@@ -649,15 +658,19 @@ end;
 
 ```pascal
 // ✓ BONNE PRATIQUE
-obj1 := TObject1.Create;  // Créé en premier
-obj2 := TObject2.Create;  // Créé en second
+obj1 := nil;
+obj2 := nil;
 try
+  obj1 := TObject1.Create;  // Créé en premier
+  obj2 := TObject2.Create;  // Créé en second
   // Utilisation
 finally
   obj2.Free;  // Libéré en premier
   obj1.Free;  // Libéré en second
 end;
 ```
+
+**Note :** En initialisant à `nil` avant le `try`, si la création de `obj2` échoue, `obj1` sera quand même libéré dans le `finally`.
 
 ### 4. Documenter la propriété des ressources
 
@@ -707,6 +720,7 @@ Voici un exemple complet montrant toutes les bonnes pratiques :
 procedure TraiterFichierComplet(const nomFichier: String);
 var
   fichier: TextFile;
+  ligne: String;
   liste: TStringList;
   connexion: TSQLConnection;
   fichierOuvert: Boolean;
@@ -730,7 +744,10 @@ begin
 
       // Lecture
       while not EOF(fichier) do
-        liste.Add(ReadLn(fichier));
+      begin
+        ReadLn(fichier, ligne);
+        liste.Add(ligne);
+      end;
     end;
 
     // Traitement avec base de données
@@ -751,19 +768,21 @@ begin
       WriteLn('Erreur base de données : ', E.Message);
     on E: Exception do
       WriteLn('Erreur inattendue : ', E.Message);
-  finally
-    // Libération dans l'ordre inverse
-    if fichierOuvert then
-      CloseFile(fichier);
-
-    if Assigned(connexion) and connexion.Connected then
-      connexion.Close;
-
-    FreeAndNil(connexion);
-    FreeAndNil(liste);
   end;
+
+  // Libération dans l'ordre inverse (dans un bloc finally séparé)
+  if fichierOuvert then
+    CloseFile(fichier);
+
+  if Assigned(connexion) and connexion.Connected then
+    connexion.Close;
+
+  FreeAndNil(connexion);
+  FreeAndNil(liste);
 end;
 ```
+
+**Note :** En FreePascal, `except` et `finally` ne peuvent pas être dans le même bloc `try`. Pour combiner les deux, il faut imbriquer un `try-finally` à l'intérieur du `try-except`, ou gérer la libération après le bloc `except` (comme ici, puisque les exceptions sont capturées et ne se propagent pas).
 
 ## Conclusion
 

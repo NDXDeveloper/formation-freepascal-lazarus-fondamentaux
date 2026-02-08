@@ -200,37 +200,41 @@ begin
 end;
 ```
 
-### Méthode 2 : Try-Except-Finally (tout-en-un)
+### Méthode 2 : Try-Finally puis Try-Except (englobant)
 
-FreePascal permet de combiner les deux dans une seule structure :
+On peut aussi placer le `try-finally` à l'intérieur d'un `try-except` englobant :
 
 ```pascal
 var
   f: TextFile;
   ligne: String;
 begin
-  AssignFile(f, 'donnees.txt');
-  Reset(f);
-
   try
-    while not EOF(f) do
-    begin
-      ReadLn(f, ligne);
-      WriteLn(ligne);
+    AssignFile(f, 'donnees.txt');
+    Reset(f);
+
+    try
+      while not EOF(f) do
+      begin
+        ReadLn(f, ligne);
+        WriteLn(ligne);
+      end;
+    finally
+      CloseFile(f);  // Toujours fermer le fichier
     end;
   except
     on E: Exception do
       WriteLn('Erreur de lecture : ', E.Message);
-  finally
-    CloseFile(f);
   end;
 end;
 ```
 
+**Important :** En FreePascal, on ne peut **pas** combiner `except` et `finally` dans un seul bloc `try`. Il faut toujours les imbriquer. La forme `try...except...finally...end` n'existe pas.
+
 **Ordre d'exécution :**
-1. Le code dans `try` s'exécute
-2. Si une erreur survient, `except` est exécuté
-3. Dans TOUS les cas, `finally` est exécuté en dernier
+1. Le code dans le `try` interne s'exécute
+2. Le bloc `finally` s'exécute dans tous les cas (libération des ressources)
+3. Si une erreur survient, le bloc `except` externe la capture
 
 ## Exemple complet : téléchargement de fichier
 

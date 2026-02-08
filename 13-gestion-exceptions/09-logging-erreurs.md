@@ -806,7 +806,7 @@ finalization
 program ApplicationAvecLogging;
 
 uses
-  SysUtils;
+  SysUtils, DateUtils;
 
 var
   Logger: TLogger;
@@ -825,7 +825,7 @@ begin
       raise Exception.Create('Fichier introuvable');
     end;
 
-    Logger.Debug('Fichier trouvé, taille: ' + IntToStr(FileSize(nomFichier)));
+    Logger.Debug('Fichier trouvé, ouverture en cours...');
 
     // Traitement...
     Sleep(1000);  // Simulation
