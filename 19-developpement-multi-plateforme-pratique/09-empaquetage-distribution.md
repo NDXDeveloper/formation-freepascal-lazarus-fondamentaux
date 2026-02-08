@@ -1189,7 +1189,7 @@ unit UpdateChecker;
 interface
 
 uses
-  SysUtils, Classes, fphttpclient, fpjson, jsonparser;
+  SysUtils, Classes, Math, fphttpclient, fpjson, jsonparser;
 
 const
   CURRENT_VERSION = '1.0.0';

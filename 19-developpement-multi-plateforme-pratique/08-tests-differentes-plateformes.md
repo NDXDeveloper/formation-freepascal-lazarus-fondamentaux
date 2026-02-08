@@ -413,12 +413,12 @@ program BenchmarkMultiPlateforme;
 {$mode objfpc}{$H+}
 
 uses
-  SysUtils, DateUtils;
+  SysUtils, DateUtils, Classes;
 
 procedure BenchmarkCalculs;
 var
   Start: TDateTime;
-  i, j, Sum: Integer;
+  i, Sum: Integer;
 begin
   WriteLn('Benchmark : Calculs intensifs...');
   Start := Now;

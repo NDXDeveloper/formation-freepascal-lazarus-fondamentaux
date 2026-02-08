@@ -283,7 +283,7 @@ uses
 
 begin
   WriteLn('Hello from cross-compilation!');
-  WriteLn('Compiled for: ', {$I %FPCTARGETOS%});
+  WriteLn('Compiled for: ', {$I %FPCTARGETOS%});  // {$I %VAR%} : macro compilateur, insère une info comme chaîne
   WriteLn('CPU: ', {$I %FPCTARGETCPU%});
 
   {$IFDEF WINDOWS}

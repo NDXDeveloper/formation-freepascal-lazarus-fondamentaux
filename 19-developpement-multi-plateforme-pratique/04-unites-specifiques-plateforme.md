@@ -84,9 +84,9 @@ end.
 
 **Avantage :** Le code est clair et le compilateur ne charge que les unités nécessaires.
 
-### Méthode 2 : Sections Uses Séparées
+### Méthode 2 : Uses Séparées Interface/Implementation
 
-Pour les gros programmes, vous pouvez séparer les sections :
+Pour les gros programmes, vous pouvez mettre les unités portables dans `interface` et les unités spécifiques dans `implementation` (une seule clause `uses` par section) :
 
 ```pascal
 unit MonUnite;
@@ -98,6 +98,10 @@ interface
 uses
   SysUtils, Classes;  // Unités portables communes
 
+// ... déclarations ...
+
+implementation
+
 {$IFDEF WINDOWS}
 uses
   Windows, Registry;
@@ -108,14 +112,12 @@ uses
   BaseUnix, Unix;
 {$ENDIF}
 
-// ... déclarations ...
-
-implementation
-
 // ... code ...
 
 end.
 ```
+
+**Note :** On ne peut avoir qu'une seule clause `uses` par section (`interface` ou `implementation`). Les blocs `{$IFDEF}` dans `implementation` fonctionnent car un seul sera actif à la compilation.
 
 ---
 
@@ -351,6 +353,9 @@ var
 begin
   // Fonctionne sous Windows ET Unix/Linux !
   CheminIni := GetAppConfigDir(False) + 'config.ini';
+
+  // Créer le répertoire s'il n'existe pas
+  ForceDirectories(GetAppConfigDir(False));
 
   IniFile := TIniFile.Create(CheminIni);
   try
@@ -646,7 +651,7 @@ end.
 **Fichier : SystemInfo.Windows.inc**
 ```pascal
 uses
-  Windows;
+  SysUtils, Windows;
 
 function ObtenirVersionOS: string;
 var
@@ -675,7 +680,7 @@ end;
 **Fichier : SystemInfo.Unix.inc**
 ```pascal
 uses
-  BaseUnix, Unix;
+  SysUtils, BaseUnix, Unix;
 
 function ObtenirVersionOS: string;
 var

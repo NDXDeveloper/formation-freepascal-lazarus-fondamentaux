@@ -745,7 +745,7 @@ program VerifyDeps;
 {$mode objfpc}{$H+}
 
 uses
-  SysUtils, DynLibs, Classes;
+  SysUtils, DynLibs, Classes;  // DynLibs : LoadLibrary, UnloadLibrary, TLibHandle
 
 type
   TDependency = record
@@ -821,10 +821,11 @@ begin
 
   for i := 0 to High(Dependencies) do
   begin
-    if Dependencies[i].Required and not TestDependency(Dependencies[i]) then
-      AllOK := False
-    else
-      TestDependency(Dependencies[i]);
+    if not TestDependency(Dependencies[i]) then
+    begin
+      if Dependencies[i].Required then
+        AllOK := False;
+    end;
   end;
 
   WriteLn;

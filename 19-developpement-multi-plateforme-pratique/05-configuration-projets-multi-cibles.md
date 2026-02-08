@@ -43,9 +43,9 @@ Les options de projet sont organisées en catégories :
 
 ### Qu'est-ce qu'un Mode de Compilation ?
 
-Un **mode de compilation** (Build Mode) est un ensemble de paramètres de compilation prédéfinis. Par défaut, Lazarus en crée deux :
+Un **mode de compilation** (Build Mode) est un ensemble de paramètres de compilation prédéfinis. Par défaut, Lazarus en crée un seul (**Default**). Voici les modes typiques d'un projet :
 
-1. **Default** : Configuration par défaut
+1. **Default** : Configuration par défaut (créé automatiquement)
 2. **Debug** : Pour le débogage (symboles de debug inclus)
 3. **Release** : Pour la production (optimisé, sans debug)
 
