@@ -187,6 +187,8 @@ Voici un exemple qui illustre l'encapsulation et les différents niveaux de visi
 ```pascal
 program ExempleEncapsulation;
 
+{$mode objfpc}{$H+}
+
 type
   TCompteBancaire = class
   private

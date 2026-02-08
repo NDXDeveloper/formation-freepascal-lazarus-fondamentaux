@@ -361,7 +361,7 @@ var
   I: Integer;
 begin
   for I := 0 to FComptes.Count - 1 do
-    TCompte(FComptes[I]).Free;
+    TCompte(FComptes[I]).Free;  // TList stocke des Pointer : cast nécessaire pour accéder aux méthodes
   FComptes.Free;
   inherited Destroy;
 end;

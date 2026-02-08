@@ -157,6 +157,8 @@ Voici un exemple complet d'une classe `TCompteur` :
 ```pascal
 program ExempleClasse;
 
+{$mode objfpc}{$H+}
+
 type
   TCompteur = class
   private

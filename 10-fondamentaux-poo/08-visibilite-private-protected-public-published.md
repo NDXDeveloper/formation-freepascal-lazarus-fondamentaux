@@ -507,7 +507,7 @@ program SystemeNotes;
 {$mode objfpc}{$H+}
 
 uses
-  SysUtils, Math;
+  SysUtils, DateUtils;
 
 type
   // Classe de base
@@ -521,7 +521,7 @@ type
     constructor Create(const Nom, Prenom: string; DateNaissance: TDateTime);
     function ObtenirNomComplet: string;
     function CalculerAge: Integer;
-    procedure Afficher; virtual;
+    procedure Afficher; virtual;  // virtual : cette méthode peut être redéfinie par les classes dérivées
   end;
 
   // Classe dérivée
@@ -550,7 +550,7 @@ type
     function ObtenirPireNote: Real;
     function ObtenirNombreNotes: Integer;
     procedure AfficherNotes;
-    procedure Afficher; override;
+    procedure Afficher; override;  // override : redéfinit la méthode virtual du parent
   end;
 
 // === IMPLÉMENTATION TPersonne ===

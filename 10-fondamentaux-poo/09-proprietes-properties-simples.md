@@ -786,10 +786,10 @@ procedure SetNom(const Valeur: string);
 
 ```pascal
 // ✗ DÉCONSEILLÉ : setter avec calcul lourd
-function TClasse.SetValeurComplexe(Valeur: Integer);
+procedure TClasse.SetValeurComplexe(Valeur: Integer);
 begin
   // Calculs très lourds...
-  FValeur := /* résultat */;
+  FValeur := { résultat complexe };
 end;
 
 // ✓ MIEUX : méthode explicite

@@ -283,7 +283,7 @@ program ExempleSelf;
 {$mode objfpc}{$H+}
 
 uses
-  SysUtils, Math;
+  SysUtils;
 
 type
   TPoint = class
@@ -451,7 +451,7 @@ type
     function GetNomMajuscules: string;
     procedure SetNom(const Valeur: string);
   public
-    property Nom: string read GetNom write SetNom;
+    property Nom: string read FNom write SetNom;
     property NomMajuscules: string read GetNomMajuscules;
   end;
 
