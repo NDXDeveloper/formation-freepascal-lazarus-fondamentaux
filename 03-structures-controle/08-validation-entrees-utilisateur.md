@@ -22,7 +22,6 @@ begin
   Write('Âge : ');
   ReadLn(age);
   WriteLn('Dans 10 ans, vous aurez ', age + 10, ' ans');
-  ReadLn;
 end.
 ```
 
@@ -46,7 +45,6 @@ begin
   until (age >= 0) and (age <= 150);
 
   WriteLn('✓ Dans 10 ans, vous aurez ', age + 10, ' ans');
-  ReadLn;
 end.
 ```
 
@@ -77,7 +75,6 @@ begin
   until (note >= 0) and (note <= 20);
 
   WriteLn('✓ Note enregistrée : ', note, '/20');
-  ReadLn;
 end.
 ```
 
@@ -102,7 +99,6 @@ begin
   until choix in ['A', 'B', 'C'];
 
   WriteLn('✓ Option ', choix, ' sélectionnée');
-  ReadLn;
 end.
 ```
 
@@ -146,7 +142,6 @@ begin
   until valide;
 
   WriteLn('✓ Code postal accepté : ', codePostal);
-  ReadLn;
 end.
 ```
 
@@ -181,7 +176,6 @@ begin
   until (dateEmbauche >= dateNaissance + 16) and (dateEmbauche <= 2024);
 
   WriteLn('✓ Données validées');
-  ReadLn;
 end.
 ```
 
@@ -207,7 +201,7 @@ until EstValide(valeur);
 **Exemple :**
 
 ```pascal
-program ValidationRepeat;
+program ValidationRepeatPourcentage;
 var
   pourcentage: Integer;
 begin
@@ -220,7 +214,6 @@ begin
   until (pourcentage >= 0) and (pourcentage <= 100);
 
   WriteLn('✓ Pourcentage : ', pourcentage, '%');
-  ReadLn;
 end.
 ```
 
@@ -257,8 +250,6 @@ begin
 
   if not valide then
     WriteLn('Nombre maximum de tentatives atteint');
-
-  ReadLn;
 end.
 ```
 
@@ -278,7 +269,7 @@ begin
   if Length(s) = 0 then
   begin
     EstNombreEntier := False;
-    exit;
+    exit;  // exit quitte immédiatement la fonction (comme return en C/Java)
   end;
 
   for i := 1 to Length(s) do
@@ -303,7 +294,6 @@ begin
   until EstNombreEntier(saisie);
 
   WriteLn('✓ Nombre valide : ', saisie);
-  ReadLn;
 end.
 ```
 
@@ -333,8 +323,6 @@ begin
 
   LireEntierDansIntervalle('Note', 0, 20, note);
   WriteLn('✓ Note : ', note);
-
-  ReadLn;
 end.
 ```
 
@@ -359,7 +347,6 @@ begin
   until (jour >= 1) and (jour <= 31);
 
   WriteLn('✓ Jour : ', jour);
-  ReadLn;
 end.
 ```
 
@@ -381,7 +368,6 @@ begin
   until (prix >= 0) and (prix <= 1000000);
 
   WriteLn('✓ Prix : ', prix:0:2, ' €');
-  ReadLn;
 end.
 ```
 
@@ -404,6 +390,7 @@ begin
       WriteLn('❌ Note hors limites');
       valide := False;
     end
+    // Trunc supprime les décimales sans arrondir ; cette astuce détecte plus d'1 décimale
     else if (note * 10) <> Trunc(note * 10) then
     begin
       WriteLn('❌ Maximum 1 décimale (ex: 15.5)');
@@ -412,7 +399,6 @@ begin
   until valide;
 
   WriteLn('✓ Note : ', note:0:1, '/20');
-  ReadLn;
 end.
 ```
 
@@ -438,8 +424,6 @@ begin
     WriteLn('✓ Continuation...')
   else
     WriteLn('✓ Arrêt');
-
-  ReadLn;
 end.
 ```
 
@@ -447,6 +431,8 @@ end.
 
 ```pascal
 program ValidationNonVide;
+uses
+  SysUtils;
 var
   nom: String;
 begin
@@ -462,7 +448,6 @@ begin
   until Length(nom) > 0;
 
   WriteLn('✓ Bonjour ', nom, ' !');
-  ReadLn;
 end.
 ```
 
@@ -488,7 +473,6 @@ begin
         (Length(motDePasse) <= LONGUEUR_MAX);
 
   WriteLn('✓ Mot de passe accepté');
-  ReadLn;
 end.
 ```
 
@@ -527,6 +511,7 @@ begin
     else
     begin
       // Vérifier qu'il y a un point après le @
+      // Copy(chaine, debut, longueur) extrait une sous-chaîne
       posPoint := Pos('.', Copy(email, posArobase, Length(email)));
       if posPoint = 0 then
       begin
@@ -537,7 +522,6 @@ begin
   until valide;
 
   WriteLn('✓ Email accepté : ', email);
-  ReadLn;
 end.
 ```
 
@@ -546,7 +530,7 @@ end.
 ### Menu avec validation
 
 ```pascal
-program MenuAvecValidation;
+program MenuValidation;
 var
   choix: Integer;
 begin
@@ -566,7 +550,6 @@ begin
   until (choix >= 1) and (choix <= 4);
 
   WriteLn('✓ Option ', choix, ' sélectionnée');
-  ReadLn;
 end.
 ```
 
@@ -574,6 +557,8 @@ end.
 
 ```pascal
 program ChoixTextuels;
+uses
+  SysUtils;
 var
   couleur: String;
   valide: Boolean;
@@ -583,7 +568,7 @@ begin
   repeat
     Write('Votre couleur : ');
     ReadLn(couleur);
-    couleur := LowerCase(couleur);
+    couleur := LowerCase(couleur);  // LowerCase (SysUtils) agit sur String, UpCase sur Char seul
 
     valide := (couleur = 'rouge') or (couleur = 'vert') or (couleur = 'bleu');
 
@@ -592,7 +577,6 @@ begin
   until valide;
 
   WriteLn('✓ Couleur choisie : ', couleur);
-  ReadLn;
 end.
 ```
 
@@ -660,7 +644,6 @@ begin
   until valide;
 
   WriteLn('✓ Code valide : ', code);
-  ReadLn;
 end.
 ```
 
@@ -723,8 +706,6 @@ begin
     if (mois = 2) and (joursMax = 29) then
       WriteLn('  (', annee, ' est une année bissextile)');
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -734,6 +715,8 @@ end.
 
 ```pascal
 program FormulaireInscription;
+uses
+  SysUtils;
 var
   nom, prenom, email, telephone: String;
   age: Integer;
@@ -826,8 +809,6 @@ begin
   WriteLn('Téléphone : ', telephone);
   WriteLn('═══════════════════════════════');
   WriteLn('✓ Inscription validée !');
-
-  ReadLn;
 end.
 ```
 
@@ -890,8 +871,6 @@ begin
     WriteLn('Paiement exact');
   WriteLn('✓ Transaction terminée');
   WriteLn('═══════════════════════════');
-
-  ReadLn;
 end.
 ```
 
@@ -986,8 +965,6 @@ begin
     WriteLn('Désactivées');
   WriteLn('═══════════════════════════════');
   WriteLn('✓ Configuration enregistrée !');
-
-  ReadLn;
 end.
 ```
 
@@ -1046,8 +1023,6 @@ begin
     WriteLn('✓ Accès autorisé')
   else
     WriteLn('✗ Accès refusé - Trop de tentatives');
-
-  ReadLn;
 end.
 ```
 

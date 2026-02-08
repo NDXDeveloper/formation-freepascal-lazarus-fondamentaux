@@ -78,16 +78,14 @@ var
 begin
   Write('Entrez votre note (0-20) : ');
   ReadLn(note);
-
+  { Virgule = plusieurs valeurs pour un meme cas (pas besoin de repeter l'instruction) }
   case note of
     18, 19, 20: WriteLn('Mention Excellent');
-    16, 17: WriteLn('Mention Très Bien');
+    16, 17: WriteLn('Mention Tres Bien');
     14, 15: WriteLn('Mention Bien');
     12, 13: WriteLn('Mention Assez Bien');
     10, 11: WriteLn('Passable');
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -187,19 +185,17 @@ program ExempleIntervalle;
 var
   age: Integer;
 begin
-  Write('Entrez votre âge : ');
+  Write('Entrez votre age : ');
   ReadLn(age);
-
+  { La syntaxe 0..2 signifie "de 0 a 2 inclus" (intervalle) }
   case age of
-    0..2: WriteLn('Bébé');
+    0..2: WriteLn('Bebe');
     3..5: WriteLn('Petite enfance');
     6..11: WriteLn('Enfance');
     12..17: WriteLn('Adolescence');
     18..64: WriteLn('Adulte');
     65..120: WriteLn('Senior');
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -240,9 +236,8 @@ program ExempleAvecElse;
 var
   jour: Integer;
 begin
-  Write('Entrez un numéro de jour (1-7) : ');
+  Write('Entrez un numero de jour (1-7) : ');
   ReadLn(jour);
-
   case jour of
     1: WriteLn('Lundi');
     2: WriteLn('Mardi');
@@ -251,15 +246,13 @@ begin
     5: WriteLn('Vendredi');
     6: WriteLn('Samedi');
     7: WriteLn('Dimanche');
-  else
-    WriteLn('Numéro de jour invalide !');
+  else  { Dans case..of, le point-virgule avant else est autorise (contrairement a if..then..else) }
+    WriteLn('Numero de jour invalide !');
   end;
-
-  ReadLn;
 end.
 ```
 
-**Important :** Notez qu'il n'y a **pas de point-virgule** avant le `else` dans un `case-of`, tout comme dans un `if-then-else`.
+**Important :** Contrairement au `if-then-else`, vous **pouvez** mettre un point-virgule avant le `else` dans un `case-of`. Les deux formes (avec ou sans point-virgule) sont acceptées par FreePascal.
 
 ## Plusieurs instructions par cas
 
@@ -294,18 +287,17 @@ begin
   Write('Votre choix : ');
   ReadLn(choix);
   WriteLn;
-
   case choix of
     1:
       begin
-        WriteLn('Création d''un nouveau document...');
-        WriteLn('Document créé avec succès !');
+        WriteLn('Creation d''un nouveau document...');
+        WriteLn('Document cree avec succes !');
         WriteLn('Vous pouvez maintenant travailler.');
       end;
     2:
       begin
         WriteLn('Ouverture d''un document existant...');
-        WriteLn('Veuillez sélectionner un fichier.');
+        WriteLn('Veuillez selectionner un fichier.');
       end;
     3:
       begin
@@ -313,10 +305,8 @@ begin
         WriteLn('Au revoir !');
       end;
   else
-    WriteLn('Choix invalide. Veuillez réessayer.');
+    WriteLn('Choix invalide. Veuillez reessayer.');
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -329,51 +319,45 @@ program MenuImbriques;
 var
   categorie, choix: Integer;
 begin
-  WriteLn('Catégories :');
+  WriteLn('Categories :');
   WriteLn('1. Fichier');
-  WriteLn('2. Édition');
-  Write('Choisissez une catégorie : ');
+  WriteLn('2. Edition');
+  Write('Choisissez une categorie : ');
   ReadLn(categorie);
-
   case categorie of
-    1: // Menu Fichier
+    1:
       begin
         WriteLn('1. Nouveau');
         WriteLn('2. Ouvrir');
         WriteLn('3. Enregistrer');
         Write('Votre choix : ');
         ReadLn(choix);
-
         case choix of
-          1: WriteLn('Nouveau fichier créé');
+          1: WriteLn('Nouveau fichier cree');
           2: WriteLn('Ouvrir un fichier');
           3: WriteLn('Enregistrer le fichier');
         else
           WriteLn('Choix invalide');
         end;
       end;
-
-    2: // Menu Édition
+    2:
       begin
         WriteLn('1. Copier');
         WriteLn('2. Coller');
         WriteLn('3. Couper');
         Write('Votre choix : ');
         ReadLn(choix);
-
         case choix of
-          1: WriteLn('Texte copié');
-          2: WriteLn('Texte collé');
-          3: WriteLn('Texte coupé');
+          1: WriteLn('Texte copie');
+          2: WriteLn('Texte colle');
+          3: WriteLn('Texte coupe');
         else
           WriteLn('Choix invalide');
         end;
       end;
   else
-    WriteLn('Catégorie invalide');
+    WriteLn('Categorie invalide');
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -382,7 +366,7 @@ end.
 ### Calculatrice simple
 
 ```pascal
-program CalculatriceSimple;
+program CalculatriceCaseOf;
 var
   nombre1, nombre2: Real;
   operation: Char;
@@ -391,42 +375,40 @@ begin
   WriteLn('=== CALCULATRICE SIMPLE ===');
   Write('Premier nombre : ');
   ReadLn(nombre1);
-  Write('Opération (+, -, *, /) : ');
+  Write('Operation (+, -, *, /) : ');
   ReadLn(operation);
-  Write('Deuxième nombre : ');
+  Write('Deuxieme nombre : ');
   ReadLn(nombre2);
-
+  { case..of fonctionne avec Char car c'est un type ordinal (comme Integer et Boolean) }
   case operation of
     '+':
       begin
         resultat := nombre1 + nombre2;
-        WriteLn('Résultat : ', resultat:0:2);
+        WriteLn('Resultat : ', resultat:0:2);
       end;
     '-':
       begin
         resultat := nombre1 - nombre2;
-        WriteLn('Résultat : ', resultat:0:2);
+        WriteLn('Resultat : ', resultat:0:2);
       end;
     '*':
       begin
         resultat := nombre1 * nombre2;
-        WriteLn('Résultat : ', resultat:0:2);
+        WriteLn('Resultat : ', resultat:0:2);
       end;
     '/':
       begin
         if nombre2 <> 0 then
         begin
           resultat := nombre1 / nombre2;
-          WriteLn('Résultat : ', resultat:0:2);
+          WriteLn('Resultat : ', resultat:0:2);
         end
         else
-          WriteLn('Erreur : division par zéro !');
+          WriteLn('Erreur : division par zero !');
       end;
   else
-    WriteLn('Opération non reconnue !');
+    WriteLn('Operation non reconnue !');
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -439,8 +421,7 @@ var
 begin
   Write('Entrez votre note (A, B, C, D, F) : ');
   ReadLn(noteLettre);
-
-  Write('Équivalent français : ');
+  Write('Equivalent francais : ');
   case noteLettre of
     'A', 'a': WriteLn('Excellent (16-20)');
     'B', 'b': WriteLn('Bien (14-15)');
@@ -450,8 +431,6 @@ begin
   else
     WriteLn('Note invalide !');
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -463,46 +442,42 @@ var
   age: Integer;
   tarif: Real;
 begin
-  Write('Entrez votre âge : ');
+  Write('Entrez votre age : ');
   ReadLn(age);
-
   case age of
     0..4:
       begin
         tarif := 0;
-        WriteLn('Catégorie : Gratuit (moins de 5 ans)');
+        WriteLn('Categorie : Gratuit (moins de 5 ans)');
       end;
     5..12:
       begin
         tarif := 5.50;
-        WriteLn('Catégorie : Enfant');
+        WriteLn('Categorie : Enfant');
       end;
     13..17:
       begin
         tarif := 8.00;
-        WriteLn('Catégorie : Adolescent');
+        WriteLn('Categorie : Adolescent');
       end;
     18..64:
       begin
         tarif := 12.50;
-        WriteLn('Catégorie : Adulte');
+        WriteLn('Categorie : Adulte');
       end;
     65..120:
       begin
         tarif := 9.00;
-        WriteLn('Catégorie : Senior');
+        WriteLn('Categorie : Senior');
       end;
   else
     begin
       tarif := 0;
-      WriteLn('Âge invalide !');
+      WriteLn('Age invalide !');
     end;
   end;
-
   if (age >= 0) and (age <= 120) then
     WriteLn('Tarif : ', tarif:0:2, ' euros');
-
-  ReadLn;
 end.
 ```
 
@@ -579,18 +554,22 @@ case age of
 end;
 ```
 
-### 4. Point-virgule avant else
+### 4. Différence avec if-then-else pour le point-virgule
+
+Contrairement au `if-then-else`, le `case-of` accepte un point-virgule avant `else` :
 
 ```pascal
-// ERREUR !
+// Les deux formes sont valides dans un case-of :
+
+// Forme 1 : avec point-virgule
 case jour of
   1: WriteLn('Lundi');
-  2: WriteLn('Mardi');  // Pas de point-virgule ici si else suit
+  2: WriteLn('Mardi');
 else
   WriteLn('Invalide');
 end;
 
-// CORRECT
+// Forme 2 : sans point-virgule
 case jour of
   1: WriteLn('Lundi');
   2: WriteLn('Mardi')
@@ -690,26 +669,24 @@ begin
   WriteLn('  RESTAURANT LE BON PASCAL  ');
   WriteLn('=============================');
   WriteLn;
-  WriteLn('Catégories :');
-  WriteLn('1. Entrées');
+  WriteLn('Categories :');
+  WriteLn('1. Entrees');
   WriteLn('2. Plats principaux');
   WriteLn('3. Desserts');
   WriteLn('4. Boissons');
   WriteLn;
-  Write('Choisissez une catégorie : ');
+  Write('Choisissez une categorie : ');
   ReadLn(categorie);
   WriteLn;
-
   case categorie of
-    1: // Entrées
+    1:
       begin
-        WriteLn('--- ENTRÉES ---');
-        WriteLn('1. Salade mixte (5€)');
-        WriteLn('2. Soupe du jour (4€)');
-        WriteLn('3. Terrine (6€)');
+        WriteLn('--- ENTREES ---');
+        WriteLn('1. Salade mixte (5 euros)');
+        WriteLn('2. Soupe du jour (4 euros)');
+        WriteLn('3. Terrine (6 euros)');
         Write('Votre choix : ');
         ReadLn(plat);
-
         case plat of
           1: prix := 5.0;
           2: prix := 4.0;
@@ -721,17 +698,15 @@ begin
           end;
         end;
       end;
-
-    2: // Plats principaux
+    2:
       begin
         WriteLn('--- PLATS PRINCIPAUX ---');
-        WriteLn('1. Steak-frites (15€)');
-        WriteLn('2. Poisson grillé (18€)');
-        WriteLn('3. Pâtes carbonara (12€)');
-        WriteLn('4. Pizza margherita (10€)');
+        WriteLn('1. Steak-frites (15 euros)');
+        WriteLn('2. Poisson grille (18 euros)');
+        WriteLn('3. Pates carbonara (12 euros)');
+        WriteLn('4. Pizza margherita (10 euros)');
         Write('Votre choix : ');
         ReadLn(plat);
-
         case plat of
           1: prix := 15.0;
           2: prix := 18.0;
@@ -744,18 +719,16 @@ begin
           end;
         end;
       end;
-
-    3: // Desserts
+    3:
       begin
         WriteLn('--- DESSERTS ---');
-        WriteLn('1. Tarte aux pommes (5€)');
-        WriteLn('2. Crème brûlée (6€)');
-        WriteLn('3. Mousse au chocolat (5€)');
+        WriteLn('1. Tarte aux pommes (5 euros)');
+        WriteLn('2. Creme brulee (6 euros)');
+        WriteLn('3. Mousse au chocolat (5 euros)');
         Write('Votre choix : ');
         ReadLn(plat);
-
         case plat of
-          1, 3: prix := 5.0;  // Même prix pour deux desserts
+          1, 3: prix := 5.0;
           2: prix := 6.0;
         else
           begin
@@ -764,17 +737,15 @@ begin
           end;
         end;
       end;
-
-    4: // Boissons
+    4:
       begin
         WriteLn('--- BOISSONS ---');
-        WriteLn('1. Eau (2€)');
-        WriteLn('2. Jus (3€)');
-        WriteLn('3. Soda (3€)');
-        WriteLn('4. Café (2.5€)');
+        WriteLn('1. Eau (2 euros)');
+        WriteLn('2. Jus (3 euros)');
+        WriteLn('3. Soda (3 euros)');
+        WriteLn('4. Cafe (2.5 euros)');
         Write('Votre choix : ');
         ReadLn(plat);
-
         case plat of
           1: prix := 2.0;
           2, 3: prix := 3.0;
@@ -786,14 +757,12 @@ begin
           end;
         end;
       end;
-
   else
     begin
-      WriteLn('Catégorie inconnue !');
+      WriteLn('Categorie inconnue !');
       prix := 0;
     end;
   end;
-
   WriteLn;
   if prix > 0 then
   begin
@@ -802,8 +771,6 @@ begin
     WriteLn('Merci pour votre commande !');
     WriteLn('=============================');
   end;
-
-  ReadLn;
 end.
 ```
 

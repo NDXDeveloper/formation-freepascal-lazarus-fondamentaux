@@ -69,11 +69,13 @@ program IfImbriques;
 var
   age: Integer;
   permis: Boolean;
+  reponse: String;
 begin
   Write('Âge : ');
   ReadLn(age);
   Write('Avez-vous le permis ? (true/false) : ');
-  ReadLn(permis);
+  ReadLn(reponse);
+  permis := (reponse = 'true');
 
   if age >= 18 then
   begin
@@ -83,11 +85,9 @@ begin
       WriteLn('Vous pouvez conduire.')
     else
       WriteLn('Vous devez passer le permis.');
-  end
-  else
+  end  // Pas de point-virgule avant else : en Pascal, ";" termine
+  else // l'instruction if, donc le else n'aurait plus de if associe
     WriteLn('Vous êtes trop jeune pour conduire.');
-
-  ReadLn;
 end.
 ```
 
@@ -105,6 +105,9 @@ begin
   if (note >= 0) and (note <= 20) then
   begin
     // Note valide, on détermine la mention
+    // "else if" n'est pas un mot-cle unique en Pascal : c'est un else
+    // dont la branche contient un nouveau if (pas besoin de begin..end
+    // car chaque else contient une seule instruction : le if suivant)
     if note >= 16 then
       mention := 'Très bien'
     else if note >= 14 then
@@ -121,8 +124,6 @@ begin
   end
   else
     WriteLn('Note invalide !');
-
-  ReadLn;
 end.
 ```
 
@@ -134,11 +135,13 @@ var
   age: Integer;
   membre: Boolean;
   cotisationAJour: Boolean;
+  reponse: String;
 begin
   Write('Âge : ');
   ReadLn(age);
   Write('Membre ? (true/false) : ');
-  ReadLn(membre);
+  ReadLn(reponse);
+  membre := (reponse = 'true');
 
   if age >= 18 then
   begin
@@ -149,7 +152,8 @@ begin
       WriteLn('✓ Vous êtes membre');
 
       Write('Cotisation à jour ? (true/false) : ');
-      ReadLn(cotisationAJour);
+      ReadLn(reponse);
+      cotisationAJour := (reponse = 'true');
 
       if cotisationAJour then
       begin
@@ -174,8 +178,6 @@ begin
     WriteLn('✗ Âge insuffisant');
     WriteLn('Accès réservé aux majeurs.');
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -205,7 +207,7 @@ end;
 ### Table de multiplication
 
 ```pascal
-program TableMultiplication;
+program TableMultiplication2D;
 var
   ligne, colonne: Integer;
 begin
@@ -229,8 +231,6 @@ begin
 
     WriteLn;
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -258,8 +258,6 @@ begin
 
     WriteLn;
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -288,8 +286,6 @@ begin
     end;
     WriteLn;
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -318,8 +314,6 @@ begin
     WriteLn;
     i := i + 1;
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -369,8 +363,6 @@ begin
       WriteLn('Choix invalide');
     end;
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -396,8 +388,6 @@ begin
 
     WriteLn;
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -425,8 +415,6 @@ begin
       7: WriteLn('Dimanche (week-end)');
     end;
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -437,11 +425,13 @@ program AffichageConditionnel;
 var
   i, n: Integer;
   afficher: Boolean;
+  reponse: String;
 begin
   Write('Combien de nombres voulez-vous ? ');
   ReadLn(n);
   Write('Afficher les détails ? (true/false) : ');
-  ReadLn(afficher);
+  ReadLn(reponse);
+  afficher := (reponse = 'true');
   WriteLn;
 
   if afficher then
@@ -457,8 +447,6 @@ begin
       Write(i, ' ');
     WriteLn;
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -514,14 +502,14 @@ begin
       end;
 
   else
+    // Le else d'un case..of n'a pas besoin de begin..end :
+    // toutes les instructions entre else et end font partie du bloc
     mention := 'Invalide';
     WriteLn('Note hors limites');
   end;
 
   if (note >= 0) and (note <= 20) then
     WriteLn('Mention : ', mention);
-
-  ReadLn;
 end.
 ```
 
@@ -577,8 +565,6 @@ begin
 
   if not trouve then
     WriteLn('Non trouvé');
-
-  ReadLn;
 end.
 ```
 
@@ -609,8 +595,6 @@ begin
 
     WriteLn;
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -685,8 +669,6 @@ begin
   // Moyenne générale
   moyenneGenerale := sommeTotal / (LIGNES * COLS);
   WriteLn('Moyenne générale : ', moyenneGenerale:0:2);
-
-  ReadLn;
 end.
 ```
 
@@ -736,6 +718,9 @@ begin
     WriteLn('Joueur ', joueur);
 
     // Saisie avec validation
+    // repeat..until False = boucle infinie volontaire, on en sort
+    // uniquement par break. L'idiome simule une boucle avec sortie
+    // au milieu du corps (ni au debut comme while, ni a la fin)
     repeat
       Write('Ligne (1-3) : ');
       ReadLn(ligne);
@@ -780,8 +765,6 @@ begin
     if ligne < 3 then
       WriteLn('-----------');
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -843,8 +826,6 @@ begin
 
     WriteLn;
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -915,8 +896,6 @@ begin
   for i := 1 to TAILLE do
     Write(tableau[i]:4);
   WriteLn;
-
-  ReadLn;
 end.
 ```
 

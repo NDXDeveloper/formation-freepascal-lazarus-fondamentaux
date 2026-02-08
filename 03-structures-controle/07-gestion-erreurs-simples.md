@@ -30,8 +30,6 @@ begin
 
   resultat := a / b;  // ❌ Et si b = 0 ?
   WriteLn('Résultat : ', resultat:0:2);
-
-  ReadLn;
 end.
 ```
 
@@ -61,8 +59,6 @@ begin
     resultat := a / b;
     WriteLn('Résultat : ', resultat:0:2);
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -94,7 +90,7 @@ Fichier introuvable, mémoire insuffisante, etc.
 ### Validation simple
 
 ```pascal
-program ValidationAge;
+program ValidationAgeSimple;
 var
   age: Integer;
 begin
@@ -108,8 +104,6 @@ begin
   end
   else
     WriteLn('Âge accepté : ', age, ' ans');
-
-  ReadLn;
 end.
 ```
 
@@ -140,14 +134,13 @@ begin
   end;
 
   WriteLn('Vous avez ', age, ' ans.');
-  ReadLn;
 end.
 ```
 
 ### Validation avec REPEAT-UNTIL
 
 ```pascal
-program ValidationRepeat;
+program ValidationRepeatNombre;
 var
   nombre: Integer;
 begin
@@ -162,8 +155,6 @@ begin
     else
       WriteLn('✓ Nombre accepté : ', nombre);
   until nombre > 0;
-
-  ReadLn;
 end.
 ```
 
@@ -187,6 +178,7 @@ begin
       erreur := 'La note ne peut pas être négative'
     else if note > 20 then
       erreur := 'La note ne peut pas dépasser 20'
+    // Trunc supprime les décimales sans arrondir ; cette astuce détecte plus d'1 décimale
     else if (note * 10) <> Trunc(note * 10) then
       erreur := 'Utilisez maximum 1 décimale (ex: 15.5)';
 
@@ -195,8 +187,6 @@ begin
     else
       WriteLn('✓ Note valide : ', note:0:1, '/20');
   until erreur = '';
-
-  ReadLn;
 end.
 ```
 
@@ -227,8 +217,6 @@ begin
     resultat := a / b;
     WriteLn('Résultat : ', a:0:2, ' / ', b:0:2, ' = ', resultat:0:2);
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -252,8 +240,6 @@ begin
     racine := Sqrt(nombre);
     WriteLn('La racine carrée de ', nombre:0:2, ' est ', racine:0:4);
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -282,8 +268,6 @@ begin
   end
   else
     WriteLn('Valeur à l''indice ', indice, ' : ', tableau[indice]);
-
-  ReadLn;
 end.
 ```
 
@@ -341,8 +325,6 @@ begin
   end
   else
     WriteLn('Température acceptée : ', temperature:0:2, '°C');
-
-  ReadLn;
 end.
 ```
 
@@ -356,6 +338,7 @@ program ValidationAvecBooleen;
 function ValiderEmail(email: String): Boolean;
 begin
   // Validation simplifiée
+  // Pos retourne la position (1-based) ou 0 si non trouvé
   ValiderEmail := (Pos('@', email) > 0) and (Pos('.', email) > 0);
 end;
 
@@ -372,8 +355,6 @@ begin
     WriteLn('✗ Email invalide');
     WriteLn('Un email doit contenir @ et un point');
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -383,14 +364,25 @@ end.
 program ValidationAvecCode;
 
 function ValiderMotDePasse(mdp: String): Integer;
+var
+  i: Integer;
+  contientChiffre: Boolean;
 begin
   // Retourne 0 si OK, sinon code d'erreur
   if Length(mdp) < 8 then
     ValiderMotDePasse := 1  // Trop court
-  else if Pos('0', mdp) + Pos('1', mdp) + Pos('2', mdp) = 0 then
-    ValiderMotDePasse := 2  // Pas de chiffre
   else
-    ValiderMotDePasse := 0;  // OK
+  begin
+    contientChiffre := False;
+    for i := 1 to Length(mdp) do
+      if mdp[i] in ['0'..'9'] then  // in : test d'appartenance à un ensemble de caractères
+        contientChiffre := True;
+
+    if not contientChiffre then
+      ValiderMotDePasse := 2  // Pas de chiffre
+    else
+      ValiderMotDePasse := 0;  // OK
+  end;
 end;
 
 var
@@ -409,8 +401,6 @@ begin
   else
     WriteLn('✗ Erreur inconnue');
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -448,8 +438,6 @@ begin
     WriteLn('✗ Nombre non trouvé')
   else
     WriteLn('✓ Nombre trouvé à la position ', position);
-
-  ReadLn;
 end.
 ```
 
@@ -553,8 +541,6 @@ begin
     WriteLn('Résultat : ', resultat:0:2);
     WriteLn('═══════════════════════════');
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -602,8 +588,6 @@ begin
   WriteLn('Note : ', note:0:1, '/20');
   WriteLn('Mention : ', mention);
   WriteLn('═══════════════════════════');
-
-  ReadLn;
 end.
 ```
 
@@ -645,7 +629,7 @@ begin
     ReadLn(operation);
     WriteLn;
 
-    case UpCase(operation) of
+    case UpCase(operation) of  // UpCase convertit un Char en majuscule (un seul caractère)
       'A':
         begin
           repeat
@@ -674,13 +658,11 @@ begin
             begin
               WriteLn('❌ Stock insuffisant !');
               WriteLn('   Stock disponible : ', stock, ' unités');
-            end
-            else
-            begin
-              stock := stock - quantite;
-              WriteLn('✓ ', quantite, ' unités retirées');
             end;
           until (quantite > 0) and (quantite <= stock);
+
+          stock := stock - quantite;
+          WriteLn('✓ ', quantite, ' unités retirées');
         end;
 
       'Q':
@@ -695,15 +677,13 @@ begin
 
     WriteLn;
   end;
-
-  ReadLn;
 end.
 ```
 
 ### Conversion de température
 
 ```pascal
-program ConversionTemperature;
+program ConversionTemperatureRobuste;
 const
   ZERO_ABSOLU = -273.15;
 var
@@ -778,8 +758,6 @@ begin
 
   if erreur then
     WriteLn('⚠️  Veuillez réessayer avec une température valide.');
-
-  ReadLn;
 end.
 ```
 
@@ -821,7 +799,7 @@ begin
     ReadLn(operation);
     WriteLn;
 
-    case UpCase(operation) of
+    case UpCase(operation) of  // UpCase convertit un Char en majuscule (un seul caractère)
       'D':
         begin
           repeat
@@ -851,18 +829,16 @@ begin
             begin
               WriteLn('❌ Opération refusée');
               WriteLn('   Découvert maximum : ', DECOUVERT_MAX:0:2, ' €');
-              WriteLn('   Solde disponible : ', solde + DECOUVERT_MAX:0:2, ' €');
-            end
-            else
-            begin
-              solde := solde - montant;
-              WriteLn('✓ Retrait effectué');
-              WriteLn('  Nouveau solde : ', solde:0:2, ' €');
-
-              if solde < 0 then
-                WriteLn('  ⚠️  Vous êtes maintenant à découvert');
+              WriteLn('   Solde disponible : ', (solde + DECOUVERT_MAX):0:2, ' €');
             end;
           until (montant > 0) and ((solde - montant) >= -DECOUVERT_MAX);
+
+          solde := solde - montant;
+          WriteLn('✓ Retrait effectué');
+          WriteLn('  Nouveau solde : ', solde:0:2, ' €');
+
+          if solde < 0 then
+            WriteLn('  ⚠️  Vous êtes maintenant à découvert');
         end;
 
       'Q':
@@ -880,8 +856,6 @@ begin
 
     WriteLn;
   end;
-
-  ReadLn;
 end.
 ```
 

@@ -77,11 +77,10 @@ program ExempleBreakpoint;
 var
   a, b, resultat: Integer;
 begin
-  a := 10;              // ← Placer un breakpoint ici
+  a := 10;              // <- Placer un breakpoint ici
   b := 5;
   resultat := a + b;
   WriteLn('Résultat : ', resultat);
-  ReadLn;
 end.
 ```
 
@@ -124,7 +123,6 @@ begin
   WriteLn('Début');        // Point d'arrêt ici
   Afficher(10);           // F8 : exécute toute la procédure
   WriteLn('Fin');          // On arrive ici
-  ReadLn;
 end.
 ```
 
@@ -146,7 +144,6 @@ begin
   WriteLn('Début');        // Point d'arrêt ici
   Afficher(10);           // F7 : entre dans la procédure
   WriteLn('Fin');
-  ReadLn;
 end.
 ```
 
@@ -193,7 +190,6 @@ begin
   somme := a + b;
   moyenne := somme / 2;
   WriteLn('Moyenne : ', moyenne:0:2);
-  ReadLn;
 end.
 ```
 
@@ -239,7 +235,7 @@ Vous pouvez changer la valeur d'une variable pour tester différents scénarios 
 ### Programme avec bug
 
 ```pascal
-program CalculMoyenne;
+program CalculMoyenneBug;
 var
   note1, note2, note3: Integer;
   moyenne: Real;
@@ -257,7 +253,6 @@ begin
   moyenne := (note1 + note2 + note3) / 2;
 
   WriteLn('Moyenne : ', moyenne:0:2);
-  ReadLn;
 end.
 ```
 
@@ -347,8 +342,6 @@ begin
     WriteLn('Trouvé à l''indice ', i)
   else
     WriteLn('Non trouvé');
-
-  ReadLn;
 end.
 ```
 
@@ -389,7 +382,6 @@ end;
 
 begin
   WriteLn('Résultat : ', SommeCarres(3, 4));  // Point d'arrêt ici
-  ReadLn;
 end.
 ```
 
@@ -511,7 +503,6 @@ begin
     somme := somme + i;  // somme a une valeur aléatoire au départ
 
   WriteLn('Somme : ', somme);
-  ReadLn;
 end.
 ```
 
@@ -530,8 +521,6 @@ var
 begin
   for i := 0 to 5 do  // BUG : commence à 0 au lieu de 1
     tableau[i] := i * 10;
-
-  ReadLn;
 end.
 ```
 
@@ -556,8 +545,6 @@ begin
     WriteLn('Vous êtes majeur')
   else
     WriteLn('Vous êtes mineur');
-
-  ReadLn;
 end.
 ```
 
@@ -581,7 +568,6 @@ begin
     WriteLn(i);
     // BUG : oubli d'incrémenter i
   end;
-  ReadLn;
 end.
 ```
 
@@ -592,7 +578,7 @@ end.
 4. Regardez `i` → vaut toujours 1
 5. **Solution :** `i := i + 1;` dans la boucle
 
-### Bug 5 : Erreur de calcul
+### Bug 5 : Erreur de calcul (division entière)
 
 ```pascal
 program BugCalcul;
@@ -601,17 +587,16 @@ var
 begin
   a := 5;
   b := 2;
-  resultat := a / b;  // BUG : division réelle dans un Integer
+  resultat := a div b;  // BUG : division entière perd la partie décimale
   WriteLn('Résultat : ', resultat);
-  ReadLn;
 end.
 ```
 
 **Débogage :**
 1. Point d'arrêt après le calcul
 2. Regardez `resultat` → vaut 2 au lieu de 2.5
-3. Le résultat est tronqué car `resultat` est un Integer
-4. **Solution :** Déclarer `resultat: Real;`
+3. L'opérateur `div` effectue une division entière qui tronque le résultat
+4. **Solution :** Déclarer `resultat: Real;` et utiliser `/` au lieu de `div`
 
 ## Outils complémentaires
 

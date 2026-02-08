@@ -36,8 +36,6 @@ var
 begin
   for i := 1 to 5 do
     WriteLn('Bonjour !');
-
-  ReadLn;
 end.
 ```
 
@@ -64,8 +62,6 @@ begin
   WriteLn('Comptage de 1 à 10 :');
   for i := 1 to 10 do
     WriteLn(i);
-
-  ReadLn;
 end.
 ```
 
@@ -93,11 +89,8 @@ var
 begin
   WriteLn('Table de multiplication par 7 :');
   WriteLn;
-
   for i := 1 to 10 do
     WriteLn('7 x ', i, ' = ', 7 * i);
-
-  ReadLn;
 end.
 ```
 
@@ -141,8 +134,6 @@ begin
     WriteLn('Le triple de ', i, ' est ', i * 3);
     WriteLn;
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -181,15 +172,12 @@ var
 begin
   WriteLn('Compte à rebours pour le lancement :');
   WriteLn;
-
+  { downto : compte a rebours, i est decremente de 1 a chaque iteration }
   for i := 10 downto 1 do
   begin
     WriteLn(i, '...');
-    // En réalité, ici on ajouterait une pause
   end;
-
   WriteLn('DÉCOLLAGE !');
-  ReadLn;
 end.
 ```
 
@@ -217,13 +205,10 @@ begin
     Write(i, ' ');
   WriteLn;
   WriteLn;
-
   WriteLn('Avec DOWNTO (décroissant) :');
   for i := 5 downto 1 do
     Write(i, ' ');
   WriteLn;
-
-  ReadLn;
 end.
 ```
 
@@ -266,12 +251,10 @@ var
   lettre: Char;
 begin
   WriteLn('L''alphabet en majuscules :');
-
+  { for fonctionne avec tout type ordinal : Char parcourt l'ordre ASCII }
   for lettre := 'A' to 'Z' do
     Write(lettre, ' ');
-
   WriteLn;
-  ReadLn;
 end.
 ```
 
@@ -289,11 +272,8 @@ var
   lettre: Char;
 begin
   WriteLn('Voyelles en minuscules :');
-
   for lettre := 'a' to 'e' do
     WriteLn(lettre);
-
-  ReadLn;
 end.
 ```
 
@@ -322,18 +302,15 @@ var
 begin
   WriteLn('TABLE DE MULTIPLICATION (1 à 5)');
   WriteLn;
-
   for i := 1 to 5 do
   begin
     for j := 1 to 5 do
     begin
       resultat := i * j;
-      Write(resultat:4);  // :4 pour aligner sur 4 caractères
+      Write(resultat:4);   { :4 = affiche sur 4 caracteres, aligne a droite }
     end;
-    WriteLn;  // Retour à la ligne après chaque ligne du tableau
+    WriteLn;
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -357,15 +334,12 @@ var
 begin
   WriteLn('Triangle d''étoiles :');
   WriteLn;
-
   for ligne := 1 to 5 do
   begin
     for colonne := 1 to ligne do
       Write('*');
     WriteLn;
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -392,33 +366,26 @@ var
   i, somme: Integer;
 begin
   somme := 0;
-
   for i := 1 to 100 do
     somme := somme + i;
-
   WriteLn('La somme des nombres de 1 à 100 est : ', somme);
-  ReadLn;
 end.
 ```
 
 ### Exemple : Calcul de factorielle
 
 ```pascal
-program Factorielle;
+program FactorielleFor;
 var
   n, i: Integer;
-  resultat: Int64;  // Int64 pour les grands nombres
+  resultat: Int64;
 begin
   Write('Entrez un nombre : ');
   ReadLn(n);
-
   resultat := 1;
-
   for i := 1 to n do
     resultat := resultat * i;
-
   WriteLn('La factorielle de ', n, ' est : ', resultat);
-  ReadLn;
 end.
 ```
 
@@ -430,24 +397,17 @@ var
   i, nombre, maximum: Integer;
 begin
   WriteLn('Entrez 5 nombres :');
-
-  // Lire le premier nombre comme maximum initial
   Write('Nombre 1 : ');
   ReadLn(maximum);
-
-  // Lire les 4 autres nombres
   for i := 2 to 5 do
   begin
     Write('Nombre ', i, ' : ');
     ReadLn(nombre);
-
     if nombre > maximum then
       maximum := nombre;
   end;
-
   WriteLn;
   WriteLn('Le plus grand nombre est : ', maximum);
-  ReadLn;
 end.
 ```
 
@@ -466,14 +426,10 @@ begin
   ReadLn(debut);
   Write('Nombre de fin : ');
   ReadLn(fin);
-
   WriteLn;
   WriteLn('Comptage de ', debut, ' à ', fin, ' :');
-
   for i := debut to fin do
     WriteLn(i);
-
-  ReadLn;
 end.
 ```
 
@@ -486,12 +442,8 @@ var
 begin
   Write('Entrez un nombre : ');
   ReadLn(n);
-
-  // Affiche les nombres de 1 jusqu'au double de n
   for i := 1 to (n * 2) do
     WriteLn(i);
-
-  ReadLn;
 end.
 ```
 
@@ -528,9 +480,9 @@ for i := 10 downto 1 do
   WriteLn(i);  // Ceci fonctionne
 ```
 
-### 3. La variable conserve sa dernière valeur
+### 3. Valeur de la variable après la boucle
 
-Après la boucle, la variable garde sa dernière valeur :
+**Attention :** Après une boucle `for`, la valeur de la variable de boucle est **indéfinie** selon la spécification du langage. Ne vous fiez pas à sa valeur :
 
 ```pascal
 program ValeurApresFor;
@@ -539,9 +491,8 @@ var
 begin
   for i := 1 to 5 do
     WriteLn(i);
-
-  WriteLn('Après la boucle, i vaut : ', i);  // i vaut 5
-  ReadLn;
+  { Attention : la valeur de i apres la boucle est indefinie selon la norme }
+  WriteLn('Après la boucle, i vaut : ', i);
 end.
 ```
 
@@ -558,21 +509,14 @@ begin
   Write('Hauteur du sapin : ');
   ReadLn(hauteur);
   WriteLn;
-
   for ligne := 1 to hauteur do
   begin
-    // Espaces avant les étoiles
     for espace := 1 to (hauteur - ligne) do
       Write(' ');
-
-    // Étoiles
     for etoile := 1 to (2 * ligne - 1) do
       Write('*');
-
     WriteLn;
   end;
-
-  // Tronc du sapin
   for ligne := 1 to 2 do
   begin
     for espace := 1 to (hauteur - 1) do
@@ -580,8 +524,6 @@ begin
     Write('|');
     WriteLn;
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -608,33 +550,28 @@ const
   MAX_TENTATIVES = 3;
 begin
   correct := false;
-
   WriteLn('=== SYSTÈME DE SÉCURITÉ ===');
   WriteLn('Vous avez ', MAX_TENTATIVES, ' tentatives.');
   WriteLn;
-
   for i := 1 to MAX_TENTATIVES do
   begin
     Write('Tentative ', i, ' - Entrez le code : ');
     ReadLn(nombre);
-
     if nombre = MOT_DE_PASSE then
     begin
       correct := true;
-      WriteLn('✓ Code correct ! Accès autorisé.');
-      Break;  // Sort de la boucle immédiatement
+      WriteLn('Code correct ! Accès autorisé.');
+      Break;  { Break sort immediatement de la boucle for englobante }
     end
     else
     begin
       if i < MAX_TENTATIVES then
-        WriteLn('✗ Code incorrect. Il vous reste ', MAX_TENTATIVES - i, ' tentative(s).')
+        WriteLn('Code incorrect. Il vous reste ', MAX_TENTATIVES - i, ' tentative(s).')
       else
-        WriteLn('✗ Code incorrect. Accès bloqué !');
+        WriteLn('Code incorrect. Accès bloqué !');
     end;
     WriteLn;
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -650,39 +587,29 @@ begin
   Write('Combien de nombres voulez-vous entrer ? ');
   ReadLn(n);
   WriteLn;
-
-  // Initialisation
   Write('Nombre 1 : ');
   ReadLn(nombre);
   somme := nombre;
   minimum := nombre;
   maximum := nombre;
-
-  // Lecture des autres nombres
   for i := 2 to n do
   begin
     Write('Nombre ', i, ' : ');
     ReadLn(nombre);
-
     somme := somme + nombre;
-
     if nombre < minimum then
       minimum := nombre;
-
     if nombre > maximum then
       maximum := nombre;
   end;
-
+  { / donne un resultat Real (division reelle) ; div donnerait un Integer }
   moyenne := somme / n;
-
   WriteLn;
   WriteLn('=== STATISTIQUES ===');
   WriteLn('Somme : ', somme);
-  WriteLn('Moyenne : ', moyenne:0:2);
+  WriteLn('Moyenne : ', moyenne:0:2);  { :0:2 = pas de largeur min, 2 decimales }
   WriteLn('Minimum : ', minimum);
   WriteLn('Maximum : ', maximum);
-
-  ReadLn;
 end.
 ```
 
@@ -699,26 +626,18 @@ begin
   Write('Nombre de jours dans le mois : ');
   ReadLn(joursDansMois);
   WriteLn;
-
   WriteLn('Lun Mar Mer Jeu Ven Sam Dim');
   WriteLn('---------------------------');
-
-  // Espaces avant le premier jour
   for espace := 1 to (premierJour - 1) do
     Write('    ');
-
-  // Affichage des jours
   for jour := 1 to joursDansMois do
   begin
     Write(jour:3, ' ');
-
-    // Retour à la ligne après dimanche
+    { mod = reste de la division entiere ; ici detecte le passage a la ligne }
     if (premierJour + jour - 1) mod 7 = 0 then
       WriteLn;
   end;
-
   WriteLn;
-  ReadLn;
 end.
 ```
 
@@ -787,17 +706,17 @@ begin
 end;
 ```
 
-### 5. Compter sur la valeur finale exacte
+### 5. Ne pas compter sur la valeur finale
 
 ```pascal
-// Attention à la valeur après la boucle
+// La valeur de la variable après la boucle est indéfinie
 var
   i: Integer;
 begin
   for i := 1 to 10 do
     WriteLn(i);
 
-  // Après la boucle, i peut valoir 10 ou 11 selon le compilateur
+  // Après la boucle, la valeur de i n'est pas garantie
   // Ne comptez pas sur une valeur précise
 end;
 ```
@@ -866,40 +785,30 @@ begin
   compteurConsonnes := 0;
   compteurChiffres := 0;
   compteurEspaces := 0;
-
   WriteLn('=== ANALYSEUR DE TEXTE ===');
   WriteLn;
   Write('Entrez un texte : ');
   ReadLn(texte);
   WriteLn;
-
   WriteLn('Analyse en cours...');
   WriteLn;
-
-  // Parcourir chaque caractère
   for i := 1 to Length(texte) do
   begin
     caractere := texte[i];
-
-    // Analyser le type de caractère
     case caractere of
       'A', 'E', 'I', 'O', 'U', 'Y',
       'a', 'e', 'i', 'o', 'u', 'y':
         compteurVoyelles := compteurVoyelles + 1;
-
+      { 'B'..'D' = plage de caracteres, equivaut a 'B','C','D' }
       'B'..'D', 'F'..'H', 'J'..'N', 'P'..'T', 'V'..'X', 'Z',
       'b'..'d', 'f'..'h', 'j'..'n', 'p'..'t', 'v'..'x', 'z':
         compteurConsonnes := compteurConsonnes + 1;
-
       '0'..'9':
         compteurChiffres := compteurChiffres + 1;
-
       ' ':
         compteurEspaces := compteurEspaces + 1;
     end;
   end;
-
-  // Affichage des résultats
   WriteLn('=== RÉSULTATS ===');
   WriteLn('Longueur totale : ', Length(texte), ' caractères');
   WriteLn('Voyelles : ', compteurVoyelles);
@@ -909,18 +818,15 @@ begin
   WriteLn('Autres caractères : ',
     Length(texte) - compteurVoyelles - compteurConsonnes -
     compteurChiffres - compteurEspaces);
-
   WriteLn;
   WriteLn('Aperçu caractère par caractère :');
   for i := 1 to Length(texte) do
   begin
     Write(texte[i]);
     if i mod 10 = 0 then
-      WriteLn;  // Retour à la ligne tous les 10 caractères
+      WriteLn;
   end;
-
   WriteLn;
-  ReadLn;
 end.
 ```
 

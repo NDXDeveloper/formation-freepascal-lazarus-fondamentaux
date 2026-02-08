@@ -56,15 +56,14 @@ var
   compteur: Integer;
 begin
   compteur := 1;
-
+  { while verifie la condition AVANT chaque iteration :
+    si elle est fausse des le depart, le corps n'est jamais execute }
   while compteur <= 5 do
   begin
     WriteLn('Compteur = ', compteur);
     compteur := compteur + 1;
   end;
-
   WriteLn('Fin de la boucle');
-  ReadLn;
 end.
 ```
 
@@ -113,15 +112,12 @@ var
   i: Integer;
 begin
   i := 10;
-
   while i < 5 do
   begin
     WriteLn('Ce message ne s''affichera jamais !');
     i := i + 1;
   end;
-
   WriteLn('i vaut toujours ', i);
-  ReadLn;
 end.
 ```
 
@@ -133,23 +129,19 @@ i vaut toujours 10
 ### Exemple : Validation d'entrée
 
 ```pascal
-program ValidationAge;
+program ValidationAgeWhile;
 var
   age: Integer;
 begin
-  age := -1;  // Valeur invalide pour démarrer
-
+  age := -1;
   while (age < 0) or (age > 120) do
   begin
     Write('Entrez votre âge (0-120) : ');
     ReadLn(age);
-
     if (age < 0) or (age > 120) then
       WriteLn('Âge invalide ! Réessayez.');
   end;
-
   WriteLn('Âge accepté : ', age, ' ans');
-  ReadLn;
 end.
 ```
 
@@ -161,7 +153,6 @@ var
   choix: Integer;
 begin
   choix := 0;
-
   while choix <> 4 do
   begin
     WriteLn;
@@ -173,7 +164,6 @@ begin
     Write('Votre choix : ');
     ReadLn(choix);
     WriteLn;
-
     case choix of
       1: WriteLn('Vous avez choisi l''option A');
       2: WriteLn('Vous avez choisi l''option B');
@@ -183,8 +173,6 @@ begin
       WriteLn('Choix invalide !');
     end;
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -219,14 +207,11 @@ var
   compteur: Integer;
 begin
   compteur := 1;
-
   repeat
     WriteLn('Compteur = ', compteur);
     compteur := compteur + 1;
-  until compteur > 5;
-
+  until compteur > 5;  { until = "arrete quand c'est vrai" (logique inversee par rapport a while) }
   WriteLn('Fin de la boucle');
-  ReadLn;
 end.
 ```
 
@@ -272,19 +257,18 @@ Fin de la boucle
 Contrairement à `while`, `repeat` exécute toujours ses instructions au moins une fois :
 
 ```pascal
-program RepeatToujoursUneF fois;
+program RepeatToujoursUneFois;
 var
   i: Integer;
 begin
   i := 10;
-
+  { repeat execute le corps AVANT de tester la condition :
+    le message s'affiche au moins une fois, meme si i > 5 des le depart }
   repeat
     WriteLn('Ce message s''affiche quand même !');
     WriteLn('i = ', i);
-  until i < 5;  // La condition est vraie dès le début
-
+  until i > 5;
   WriteLn('Fin de la boucle');
-  ReadLn;
 end.
 ```
 
@@ -298,20 +282,21 @@ Fin de la boucle
 ### Exemple : Validation d'entrée avec REPEAT
 
 ```pascal
-program ValidationRepeat;
+program ValidationRepeatAge;
 var
   age: Integer;
 begin
+  { Pas besoin d'initialiser age a une valeur invalide :
+    repeat execute le corps au moins une fois, donc ReadLn s'execute d'abord }
   repeat
     Write('Entrez votre âge (0-120) : ');
     ReadLn(age);
-
     if (age < 0) or (age > 120) then
       WriteLn('Âge invalide ! Réessayez.');
   until (age >= 0) and (age <= 120);
-
+  { Comparer avec la version while : while utilise (age < 0) or (age > 120)
+    pour continuer, repeat utilise (age >= 0) and (age <= 120) pour s'arreter }
   WriteLn('Âge accepté : ', age, ' ans');
-  ReadLn;
 end.
 ```
 
@@ -343,7 +328,6 @@ begin
   end;
   WriteLn('WHILE : Aucune exécution car condition fausse au départ');
   WriteLn;
-
   WriteLn('=== Avec REPEAT ===');
   i := 10;
   repeat
@@ -351,8 +335,6 @@ begin
     i := i + 1;
   until i >= 5;
   WriteLn('REPEAT : Exécuté une fois malgré la condition vraie');
-
-  ReadLn;
 end.
 ```
 
@@ -448,61 +430,52 @@ program JeuDevinette;
 var
   nombreSecret, proposition, tentatives: Integer;
 begin
-  Randomize;  // Initialise le générateur aléatoire
-  nombreSecret := Random(100) + 1;  // Nombre entre 1 et 100
+  Randomize;   { Initialise le generateur aleatoire (a appeler une seule fois) }
+  nombreSecret := Random(100) + 1;  { Random(100) donne 0..99, donc +1 donne 1..100 }
   tentatives := 0;
-
   WriteLn('=== JEU DE DEVINETTE ===');
   WriteLn('J''ai choisi un nombre entre 1 et 100.');
   WriteLn('Essayez de le deviner !');
   WriteLn;
-
   repeat
     Write('Votre proposition : ');
     ReadLn(proposition);
     tentatives := tentatives + 1;
-
     if proposition < nombreSecret then
-      WriteLn('↑ C''est plus !')
+      WriteLn('C''est plus !')
     else if proposition > nombreSecret then
-      WriteLn('↓ C''est moins !')
+      WriteLn('C''est moins !')
     else
-      WriteLn('✓ Bravo ! Vous avez trouvé en ', tentatives, ' tentative(s) !');
-
+      WriteLn('Bravo ! Vous avez trouvé en ', tentatives, ' tentative(s) !');
     WriteLn;
   until proposition = nombreSecret;
-
-  ReadLn;
 end.
 ```
 
 ### Calcul de moyenne avec sentinelle
 
 ```pascal
-program CalculMoyenne;
+program CalculMoyenneSentinelle;
 var
   nombre: Real;
-  somme, compteur: Integer;
+  somme: Real;
+  compteur: Integer;
   moyenne: Real;
 begin
   somme := 0;
   compteur := 0;
-
   WriteLn('=== CALCUL DE MOYENNE ===');
   WriteLn('Entrez des nombres (0 pour terminer)');
   WriteLn;
-
   repeat
     Write('Nombre ', compteur + 1, ' : ');
     ReadLn(nombre);
-
     if nombre <> 0 then
     begin
       somme := somme + nombre;
       compteur := compteur + 1;
     end;
   until nombre = 0;
-
   WriteLn;
   if compteur > 0 then
   begin
@@ -513,8 +486,6 @@ begin
   end
   else
     WriteLn('Aucune valeur saisie.');
-
-  ReadLn;
 end.
 ```
 
@@ -566,35 +537,31 @@ var
 begin
   tentatives := 0;
   connecte := False;
-
   WriteLn('=== CONNEXION ===');
   WriteLn;
-
+  { not connecte : l'operateur not inverse un Boolean (True -> False, False -> True) }
   while (tentatives < MAX_TENTATIVES) and (not connecte) do
   begin
     tentatives := tentatives + 1;
     Write('Mot de passe (tentative ', tentatives, '/', MAX_TENTATIVES, ') : ');
     ReadLn(motDePasse);
-
     if motDePasse = MOT_DE_PASSE_CORRECT then
     begin
       connecte := True;
       WriteLn;
-      WriteLn('✓ Connexion réussie !');
+      WriteLn('Connexion réussie !');
       WriteLn('Bienvenue dans le système.');
     end
     else
     begin
       if tentatives < MAX_TENTATIVES then
-        WriteLn('✗ Mot de passe incorrect. Il vous reste ',
+        WriteLn('Mot de passe incorrect. Il vous reste ',
                 MAX_TENTATIVES - tentatives, ' tentative(s).')
       else
-        WriteLn('✗ Accès refusé. Nombre maximum de tentatives atteint.');
+        WriteLn('Accès refusé. Nombre maximum de tentatives atteint.');
     end;
     WriteLn;
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -609,22 +576,17 @@ var
   i, recherche: Integer;
   trouve: Boolean;
 begin
-  // Remplir le tableau
   WriteLn('Entrez ', TAILLE, ' nombres :');
   for i := 1 to TAILLE do
   begin
     Write('Nombre ', i, ' : ');
     ReadLn(nombres[i]);
   end;
-
   WriteLn;
   Write('Nombre à rechercher : ');
   ReadLn(recherche);
-
-  // Recherche avec WHILE
   i := 1;
   trouve := False;
-
   while (i <= TAILLE) and (not trouve) do
   begin
     if nombres[i] = recherche then
@@ -632,14 +594,11 @@ begin
     else
       i := i + 1;
   end;
-
   WriteLn;
   if trouve then
-    WriteLn('✓ Nombre ', recherche, ' trouvé à la position ', i)
+    WriteLn('Nombre ', recherche, ' trouvé à la position ', i)
   else
-    WriteLn('✗ Nombre ', recherche, ' non trouvé');
-
-  ReadLn;
+    WriteLn('Nombre ', recherche, ' non trouvé');
 end.
 ```
 
@@ -658,19 +617,15 @@ begin
   while i <= 3 do
   begin
     WriteLn('Ligne ', i, ' :');
-
     j := 1;
     while j <= 4 do
     begin
       Write(j, ' ');
       j := j + 1;
     end;
-
     WriteLn;
     i := i + 1;
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -687,26 +642,22 @@ Ligne 3 :
 ### Mélange de types de boucles
 
 ```pascal
-program MelangeBoubcles;
+program MelangeBoucles;
 var
   continuer: Char;
   i: Integer;
 begin
   repeat
     WriteLn('Affichage des nombres de 1 à 5 :');
-
     for i := 1 to 5 do
       Write(i, ' ');
-
     WriteLn;
     WriteLn;
     Write('Continuer ? (O/N) : ');
     ReadLn(continuer);
     WriteLn;
   until (continuer = 'N') or (continuer = 'n');
-
   WriteLn('Au revoir !');
-  ReadLn;
 end.
 ```
 
@@ -871,19 +822,15 @@ begin
   continuer := True;
   codeCorrect := '1234';
   solde := 1000.00;
-
   WriteLn('================================');
   WriteLn('   DISTRIBUTEUR AUTOMATIQUE   ');
   WriteLn('================================');
   WriteLn;
-
-  // Authentification avec REPEAT (au moins une tentative)
   tentatives := 0;
   repeat
     tentatives := tentatives + 1;
     Write('Entrez votre code PIN : ');
     ReadLn(codePin);
-
     if codePin <> codeCorrect then
     begin
       WriteLn('Code incorrect !');
@@ -894,8 +841,6 @@ begin
       end;
     end;
   until (codePin = codeCorrect) or (tentatives >= 3);
-
-  // Menu principal avec WHILE
   while continuer and (codePin = codeCorrect) do
   begin
     WriteLn;
@@ -910,41 +855,33 @@ begin
     Write('Votre choix : ');
     ReadLn(choix);
     WriteLn;
-
     case choix of
-      1:  // Consultation
+      1:
         begin
           WriteLn('--- CONSULTATION ---');
           WriteLn('Votre solde est de : ', solde:0:2, ' euros');
         end;
-
-      2:  // Retrait avec validation REPEAT
+      2:
         begin
           WriteLn('--- RETRAIT ---');
           repeat
             Write('Montant à retirer : ');
             ReadLn(montant);
-
             if montant <= 0 then
               WriteLn('Le montant doit être positif !')
             else if montant > solde then
-              WriteLn('Solde insuffisant ! (Solde : ', solde:0:2, ' euros)')
-            else
-            begin
-              solde := solde - montant;
-              WriteLn('Retrait effectué avec succès !');
-              WriteLn('Nouveau solde : ', solde:0:2, ' euros');
-            end;
+              WriteLn('Solde insuffisant ! (Solde : ', solde:0:2, ' euros)');
           until (montant > 0) and (montant <= solde);
+          solde := solde - montant;
+          WriteLn('Retrait effectué avec succès !');
+          WriteLn('Nouveau solde : ', solde:0:2, ' euros');
         end;
-
-      3:  // Dépôt avec validation REPEAT
+      3:
         begin
           WriteLn('--- DÉPÔT ---');
           repeat
             Write('Montant à déposer : ');
             ReadLn(montant);
-
             if montant <= 0 then
               WriteLn('Le montant doit être positif !')
             else
@@ -955,22 +892,18 @@ begin
             end;
           until montant > 0;
         end;
-
-      4:  // Quitter
+      4:
         begin
           WriteLn('Merci d''avoir utilisé nos services.');
           WriteLn('Au revoir !');
           continuer := False;
         end;
-
     else
       WriteLn('Choix invalide. Veuillez réessayer.');
     end;
   end;
-
   WriteLn;
   WriteLn('================================');
-  ReadLn;
 end.
 ```
 

@@ -49,7 +49,6 @@ begin
   end;
 
   WriteLn('Après la boucle');
-  ReadLn;
 end.
 ```
 
@@ -113,7 +112,6 @@ begin
   end;
 
   WriteLn('Total de tentatives : ', tentatives);
-  ReadLn;
 end.
 ```
 
@@ -148,7 +146,6 @@ begin
   until False;  // Normalement boucle infinie
 
   WriteLn('Programme terminé');
-  ReadLn;
 end.
 ```
 
@@ -190,11 +187,9 @@ begin
 
   WriteLn;
   if position <> -1 then
-    WriteLn('✓ Nombre trouvé à la position ', position)
+    WriteLn('Nombre trouvé à la position ', position)
   else
-    WriteLn('✗ Nombre non trouvé');
-
-  ReadLn;
+    WriteLn('Nombre non trouvé');
 end.
 ```
 
@@ -231,8 +226,6 @@ begin
 
     WriteLn(i);
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -283,6 +276,8 @@ begin
   i := 0;
   while i < 20 do
   begin
+    // Important : incrémenter AVANT le Continue, sinon boucle infinie
+    // (dans un for, l'incrémentation est automatique, pas dans un while)
     i := i + 1;
 
     if (i mod 2) = 1 then  // Si impair
@@ -290,8 +285,6 @@ begin
 
     WriteLn(i);
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -331,14 +324,14 @@ begin
     begin
       WriteLn('Nombre invalide, ignoré');
       compteur := compteur - 1;  // Ne compte pas cette tentative
-      continue;  // Recommence
+      // Continue saute directement au test 'until' (pas au début du repeat)
+      continue;
     end;
 
-    WriteLn('✓ Nombre ', nombre, ' accepté');
+    WriteLn('Nombre ', nombre, ' accepté');
   until compteur >= 5;
 
   WriteLn('Merci !');
-  ReadLn;
 end.
 ```
 
@@ -377,8 +370,6 @@ begin
     WriteLn('Somme : ', somme)
   else
     WriteLn('Aucun nombre positif');
-
-  ReadLn;
 end.
 ```
 
@@ -416,8 +407,6 @@ begin
     WriteLn(i);
   end;
   WriteLn('Boucle terminée');
-
-  ReadLn;
 end.
 ```
 
@@ -469,8 +458,6 @@ begin
 
     WriteLn;  // Ceci s'exécute car on sort juste de la boucle J
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -509,8 +496,6 @@ begin
 
     WriteLn;
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -533,6 +518,8 @@ Pour sortir de plusieurs boucles imbriquées, utilisez un drapeau (flag) :
 program SortieDoubleBreak;
 var
   i, j: Integer;
+  // En Pascal, Break ne sort que de la boucle la plus proche.
+  // Un drapeau (flag) booléen permet de propager la sortie aux boucles externes.
   trouve: Boolean;
 begin
   trouve := False;
@@ -555,7 +542,6 @@ begin
   end;
 
   WriteLn('Fin des boucles');
-  ReadLn;
 end.
 ```
 
@@ -584,23 +570,21 @@ begin
 
     if saisie = MOT_DE_PASSE then
     begin
-      WriteLn('✓ Authentification réussie !');
+      WriteLn('Authentification réussie !');
       succes := True;
       break;  // Plus besoin de continuer
     end
     else
     begin
       if tentative < MAX_TENTATIVES then
-        WriteLn('✗ Incorrect. Il reste ', MAX_TENTATIVES - tentative, ' tentative(s)')
+        WriteLn('Incorrect. Il reste ', MAX_TENTATIVES - tentative, ' tentative(s)')
       else
-        WriteLn('✗ Accès refusé. Nombre maximum de tentatives atteint.');
+        WriteLn('Accès refusé. Nombre maximum de tentatives atteint.');
     end;
   end;
 
   if succes then
     WriteLn('Bienvenue dans le système !');
-
-  ReadLn;
 end.
 ```
 
@@ -649,7 +633,6 @@ begin
 
   WriteLn;
   WriteLn('Total des commandes valides : ', totalValide:0:2, ' €');
-  ReadLn;
 end.
 ```
 
@@ -698,14 +681,13 @@ begin
 
   WriteLn('Premier nombre pair : ', premierPair);
   WriteLn('Premier multiple de 5 : ', premierMultiple5);
-  ReadLn;
 end.
 ```
 
 ### Menu interactif avancé
 
 ```pascal
-program MenuInteractif;
+program MenuInteractifAvance;
 var
   choixPrincipal, sousChoix: Integer;
   continuer: Boolean;
@@ -783,8 +765,6 @@ begin
       WriteLn('Choix invalide');
     end;
   end;
-
-  ReadLn;
 end.
 ```
 
@@ -827,7 +807,6 @@ begin
 
   WriteLn;
   WriteLn('Total de lettres : ', compteurLettres);
-  ReadLn;
 end.
 ```
 
@@ -873,8 +852,6 @@ begin
     WriteLn('Trouvé à la position ', position)
   else
     WriteLn('Non trouvé');
-
-  ReadLn;
 end.
 ```
 
@@ -922,8 +899,6 @@ begin
       itemsDansLot := 0;
     end;
   end;
-
-  ReadLn;
 end.
 ```
 

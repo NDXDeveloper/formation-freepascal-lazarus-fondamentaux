@@ -30,12 +30,9 @@ var
 begin
   Write('Entrez votre âge : ');
   ReadLn(age);
-
   if age >= 18 then
     WriteLn('Vous êtes majeur.');
-
   WriteLn('Programme terminé.');
-  ReadLn;
 end.
 ```
 
@@ -78,13 +75,10 @@ var
 begin
   Write('Entrez votre âge : ');
   ReadLn(age);
-
   if age >= 18 then
-    WriteLn('Vous êtes majeur.')
+    WriteLn('Vous êtes majeur.')  { Pas de point-virgule ici : en Pascal, un ; avant else provoque une erreur }
   else
     WriteLn('Vous êtes mineur.');
-
-  ReadLn;
 end.
 ```
 
@@ -130,25 +124,23 @@ program ExempleImbrique;
 var
   age: Integer;
   permis: Boolean;
+  reponse: String;
 begin
   Write('Entrez votre âge : ');
   ReadLn(age);
-
   if age >= 18 then
   begin
     WriteLn('Vous êtes majeur.');
     Write('Avez-vous le permis de conduire ? (true/false) : ');
-    ReadLn(permis);
-
+    ReadLn(reponse);
+    permis := (reponse = 'true');
     if permis then
       WriteLn('Vous pouvez conduire.')
     else
       WriteLn('Vous devez passer le permis.');
-  end
+  end  { Pas de ; après end quand un else suit : même règle que pour une instruction simple }
   else
     WriteLn('Vous êtes trop jeune pour conduire.');
-
-  ReadLn;
 end.
 ```
 
@@ -163,7 +155,6 @@ var
 begin
   Write('Entrez votre note (0-20) : ');
   ReadLn(note);
-
   if note >= 16 then
     WriteLn('Excellent !')
   else if note >= 14 then
@@ -174,8 +165,6 @@ begin
     WriteLn('Assez bien')
   else
     WriteLn('Insuffisant');
-
-  ReadLn;
 end.
 ```
 
@@ -234,24 +223,27 @@ var
   age: Integer;
   etudiant: Boolean;
   revenus: Real;
+  reponse: String;
 begin
   Write('Âge : ');
   ReadLn(age);
   Write('Êtes-vous étudiant ? (true/false) : ');
-  ReadLn(etudiant);
+  ReadLn(reponse);
+  etudiant := (reponse = 'true');
   Write('Revenus annuels : ');
   ReadLn(revenus);
-
+  { En Pascal, and/or ont une priorité PLUS HAUTE que < > = : les
+    parenthèses autour de chaque comparaison sont donc obligatoires,
+    sinon le compilateur interprète « age < (26 and etudiant) » }
   if ((age < 26) and etudiant) or (revenus < 10000) then
     WriteLn('Vous avez droit à une aide financière.')
   else
     WriteLn('Vous n''avez pas droit à une aide financière.');
-
-  ReadLn;
+    { '' (deux apostrophes) est la façon d'écrire une apostrophe dans une chaîne Pascal }
 end.
 ```
 
-**Important** : Utilisez toujours des parenthèses pour clarifier l'ordre d'évaluation des conditions complexes.
+**Important** : En Pascal, les opérateurs `and`/`or` ont une priorité **plus haute** que les opérateurs de comparaison (`<`, `>`, `=`, etc.). Les parenthèses autour de chaque comparaison sont donc **obligatoires**, pas simplement recommandées.
 
 ## Bonnes pratiques
 
@@ -375,21 +367,19 @@ var
   membre: Boolean;
   solde: Real;
   acces: Boolean;
+  reponse: String;
 begin
   WriteLn('=== Système de gestion d''accès ===');
   WriteLn;
-
   Write('Entrez votre âge : ');
   ReadLn(age);
   Write('Êtes-vous membre ? (true/false) : ');
-  ReadLn(membre);
+  ReadLn(reponse);
+  membre := (reponse = 'true');
   Write('Solde du compte : ');
   ReadLn(solde);
-
   WriteLn;
   WriteLn('--- Analyse ---');
-
-  // Vérification de l'âge
   if age < 18 then
   begin
     WriteLn('Vous êtes mineur.');
@@ -399,8 +389,6 @@ begin
   else
   begin
     WriteLn('Vous êtes majeur.');
-
-    // Vérification du statut membre et du solde
     if membre then
     begin
       WriteLn('Vous êtes membre.');
@@ -421,15 +409,12 @@ begin
       acces := false;
     end;
   end;
-
   WriteLn;
   WriteLn('--- Résultat ---');
   if acces then
     WriteLn('ACCÈS AUTORISÉ')
   else
     WriteLn('ACCÈS REFUSÉ');
-
-  ReadLn;
 end.
 ```
 
