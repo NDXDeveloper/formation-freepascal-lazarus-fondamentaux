@@ -46,7 +46,8 @@ end.
 ## Exemple simple et complet
 
 ```pascal
-unit UniteCompteur;
+{$mode objfpc}{$H+}
+unit UniteCompteurInit;
 
 interface
 
@@ -76,6 +77,7 @@ initialization
 finalization
   // Afficher la valeur finale
   WriteLn('UniteCompteur : Valeur finale du compteur = ', Compteur);
+  Flush(Output);  // Nécessaire en finalization : sans Flush, la sortie peut être perdue
 
 end.
 ```
@@ -83,10 +85,10 @@ end.
 **Programme utilisant cette unité :**
 
 ```pascal
-program TestCompteur;
+program TestCompteurInit;
 
 uses
-  UniteCompteur;
+  UniteCompteurInit;
 
 begin
   WriteLn('Début du programme principal');
@@ -126,8 +128,8 @@ Remarquez l'ordre d'exécution !
 ### Exemple avec plusieurs unités
 
 ```pascal
-// UniteA.pas
-unit UniteA;
+// UniteInitA.pas
+unit UniteInitA;
 
 interface
 
@@ -138,18 +140,19 @@ initialization
 
 finalization
   WriteLn('6. Finalisation UniteA');
+  Flush(Output);
 
 end.
 ```
 
 ```pascal
-// UniteB.pas
-unit UniteB;
+// UniteInitB.pas
+unit UniteInitB;
 
 interface
 
 uses
-  UniteA;  // UniteB dépend de UniteA
+  UniteInitA;  // UniteB dépend de UniteA
 
 implementation
 
@@ -158,18 +161,19 @@ initialization
 
 finalization
   WriteLn('5. Finalisation UniteB');
+  Flush(Output);
 
 end.
 ```
 
 ```pascal
-// UniteC.pas
-unit UniteC;
+// UniteInitC.pas
+unit UniteInitC;
 
 interface
 
 uses
-  UniteB;  // UniteC dépend de UniteB
+  UniteInitB;  // UniteC dépend de UniteB
 
 implementation
 
@@ -178,15 +182,16 @@ initialization
 
 finalization
   WriteLn('4. Finalisation UniteC');
+  Flush(Output);
 
 end.
 ```
 
 ```pascal
-program TestOrdre;
+program TestOrdreInit;
 
 uses
-  UniteC;
+  UniteInitC;
 
 begin
   WriteLn('─── Programme Principal ───');
@@ -220,6 +225,9 @@ var
   ModeDebug: Boolean;
 
 implementation
+
+uses
+  SysUtils;  // Pour GetCurrentDir
 
 initialization
   CheminDonnees := GetCurrentDir + '/data/';
@@ -276,7 +284,7 @@ unit ConnexionDB;
 interface
 
 uses
-  SQLdb;
+  SQLdb, SysUtils;
 
 var
   Connexion: TSQLConnection;
@@ -442,6 +450,9 @@ unit UniteAvecErreur;
 interface
 
 implementation
+
+uses
+  SysUtils;  // Pour Exception
 
 var
   MonObjet: TObject;

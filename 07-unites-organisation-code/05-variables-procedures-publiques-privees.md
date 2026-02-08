@@ -192,6 +192,7 @@ end.
 Les variables déclarées dans la section `implementation` sont **privées**.
 
 ```pascal
+{$mode objfpc}{$H+}
 unit UniteCompteur;
 
 interface
@@ -225,7 +226,7 @@ end.
 
 **Utilisation :**
 ```pascal
-program Test;
+program TestCompteur;
 
 uses
   UniteCompteur;
@@ -273,6 +274,7 @@ end.
 ### Bon exemple (avec encapsulation)
 
 ```pascal
+{$mode objfpc}{$H+}
 unit CompteEnBanque;
 
 interface
@@ -412,6 +414,9 @@ interface
 procedure TraiterDonnees(donnees: String);
 
 implementation
+
+uses
+  SysUtils;  // Pour Trim et UpperCase
 
 // Fonctions privées pour découper la logique
 function ValiderDonnees(donnees: String): Boolean;

@@ -168,13 +168,9 @@ uses
   UniteA, UniteB;  // UniteB est en dernier
 
 begin
-  Afficher;  // Affichera "Version B"
+  Afficher;           // Affichera "Version B" (dernière unité)
+  UniteA.Afficher;    // Affichera "Version A" (appel explicite)
 end.
-```
-
-Pour appeler explicitement la version de UniteA :
-```pascal
-UniteA.Afficher;  // Affichera "Version A"
 ```
 
 ## Les dépendances entre unités
@@ -193,7 +189,7 @@ UniteCalculs
 UniteMaths
 ```
 
-Le programme principal inclut automatiquement toutes les unités de la chaîne !
+Le compilateur résout automatiquement toute la chaîne de dépendances et compile les unités dans le bon ordre.
 
 ### Exemple pratique
 
@@ -232,13 +228,17 @@ end.
 program MonProgramme;
 
 uses
-  UniteCalculs;  // Inclut automatiquement UniteMaths aussi !
+  UniteCalculs;  // Le compilateur sait qu'il doit aussi compiler UniteMaths
 
 begin
-  WriteLn(SommesCarres(3, 4));  // Fonctionne !
-  WriteLn(Carre(5));  // Fonctionne aussi, même si on n'a pas écrit "uses UniteMaths"
+  WriteLn(SommesCarres(3, 4));  // 3² + 4² = 9 + 16 = 25
+
+  // WriteLn(Carre(5));  // ERREUR ! Carre n'est pas directement accessible
+  // Pour utiliser Carre directement, il faudrait ajouter UniteMaths dans uses
 end.
 ```
+
+> **Attention :** Utiliser `UniteCalculs` ne rend **pas** les identifiants de `UniteMaths` accessibles dans votre programme. Chaque unité doit être explicitement listée dans la clause `uses` si vous voulez utiliser ses fonctions directement.
 
 ## Le danger des dépendances circulaires
 

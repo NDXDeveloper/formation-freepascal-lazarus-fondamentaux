@@ -62,12 +62,12 @@ var
   resultat: Real;
 
 begin
-  resultat := Sqrt(16);  // Sqrt vient de l'unité Math
-  WriteLn(resultat);
+  resultat := Power(2, 10);  // Power vient de l'unité Math
+  WriteLn(resultat:0:0);     // Affiche 1024
 end.
 ```
 
-Dans cet exemple, la fonction `Sqrt` (racine carrée) n'est pas définie par vous : elle vient de l'unité `Math` que FreePascal fournit automatiquement.
+Dans cet exemple, la fonction `Power` (puissance) n'est pas définie par vous : elle vient de l'unité `Math` que FreePascal fournit automatiquement.
 
 ## Unités standards de FreePascal
 

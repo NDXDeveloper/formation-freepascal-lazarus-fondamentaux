@@ -154,17 +154,16 @@ Créons une bibliothèque pour valider différents types de données.
 
 ```pascal
 {*******************************************************************************
-  UniteValidation - Bibliothèque de validation de données
+  UniteValidation - Bibliotheque de validation de donnees
 
-  Cette unité fournit des fonctions pour valider différents formats :
+  Cette unite fournit des fonctions pour valider differents formats :
   - Adresses email
-  - Numéros de téléphone français
-  - Codes postaux français
+  - Numeros de telephone francais
+  - Codes postaux francais
   - Dates
 
   Auteur  : Formation FreePascal
   Version : 1.0
-  Date    : 13/10/2025
 *******************************************************************************}
 
 unit UniteValidation;
@@ -231,21 +230,21 @@ var
 begin
   Result := False;
 
-  // Vérifications de base
+  // Verifications de base
   if Length(email) < 5 then
     Exit;  // Trop court (a@b.c minimum)
 
   // Rechercher @
   posArobase := Pos('@', email);
   if posArobase <= 1 then
-    Exit;  // @ absent ou au début
+    Exit;  // @ absent ou au debut
 
-  // Rechercher . après @
+  // Rechercher . apres @
   posPoint := PosEx('.', email, posArobase);
   if posPoint <= posArobase + 1 then
-    Exit;  // . absent ou juste après @
+    Exit;  // . absent ou juste apres @
 
-  // Vérifier qu'il y a quelque chose après le dernier point
+  // Verifier qu'il y a quelque chose apres le dernier point
   if posPoint >= Length(email) then
     Exit;
 
@@ -267,7 +266,7 @@ begin
       numeros := numeros + telephone[i];
   end;
 
-  // Vérifier : 10 chiffres, commence par 0
+  // Verifier : 10 chiffres, commence par 0
   if (Length(numeros) = 10) and (numeros[1] = '0') then
     Result := True;
 end;
@@ -278,11 +277,11 @@ var
 begin
   Result := False;
 
-  // Doit faire exactement 5 caractères
+  // Doit faire exactement 5 caracteres
   if Length(codePostal) <> 5 then
     Exit;
 
-  // Tous les caractères doivent être des chiffres
+  // Tous les caracteres doivent etre des chiffres
   for i := 1 to 5 do
   begin
     if not (codePostal[i] in ['0'..'9']) then
@@ -308,6 +307,7 @@ end.
 ## Utilisation de la bibliothèque
 
 ```pascal
+{$mode objfpc}{$H+}
 program TestValidation;
 
 uses
@@ -323,23 +323,23 @@ begin
   // Test email
   email := 'jean.dupont@example.com';
   if EstEmailValide(email) then
-    WriteLn('✓ ', email, ' est valide')
+    WriteLn('V ', email, ' est valide')
   else
-    WriteLn('✗ ', email, ' est invalide');
+    WriteLn('X ', email, ' est invalide');
 
-  // Test téléphone
+  // Test telephone
   tel := '06 01 02 03 04';
   if EstTelephoneValide(tel) then
-    WriteLn('✓ ', tel, ' est valide')
+    WriteLn('V ', tel, ' est valide')
   else
-    WriteLn('✗ ', tel, ' est invalide');
+    WriteLn('X ', tel, ' est invalide');
 
   // Test code postal
   cp := '75001';
   if EstCodePostalValide(cp) then
-    WriteLn('✓ ', cp, ' est valide')
+    WriteLn('V ', cp, ' est valide')
   else
-    WriteLn('✗ ', cp, ' est invalide');
+    WriteLn('X ', cp, ' est invalide');
 end.
 ```
 

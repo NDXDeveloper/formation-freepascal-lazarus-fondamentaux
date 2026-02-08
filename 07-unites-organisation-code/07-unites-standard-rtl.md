@@ -58,18 +58,24 @@ begin
   // Conversion de casse
   maj := UpperCase(texte);     // '  BONJOUR LE MONDE  '
   min := LowerCase(texte);     // '  bonjour le monde  '
+  WriteLn('Majuscules : ', maj);
+  WriteLn('Minuscules : ', min);
 
   // Suppression des espaces
   texte := Trim(texte);        // 'Bonjour le Monde'
+  WriteLn('Trim : ', texte);
 
   // Conversion en entier
   i := StrToInt('123');        // 123
+  WriteLn('StrToInt : ', i);
 
-  // Conversion d'entier en chaîne
+  // Conversion d'entier en chaine
   texte := IntToStr(456);      // '456'
+  WriteLn('IntToStr : ', texte);
 
   // Formatage
   texte := Format('J''ai %d ans', [25]);  // 'J'ai 25 ans'
+  WriteLn('Format : ', texte);
 end.
 ```
 
@@ -173,12 +179,12 @@ var
 begin
   liste := TStringList.Create;
   try
-    // Ajouter des éléments
+    // Ajouter des elements
     liste.Add('Pomme');
     liste.Add('Banane');
     liste.Add('Orange');
 
-    // Accéder aux éléments
+    // Acceder aux elements
     WriteLn('Premier : ', liste[0]);  // 'Pomme'
     WriteLn('Nombre : ', liste.Count);  // 3
 
@@ -188,19 +194,16 @@ begin
 
     // Trier
     liste.Sort;
-
-    // Sauvegarder dans un fichier
-    liste.SaveToFile('liste.txt');
-
-    // Charger depuis un fichier
-    liste.LoadFromFile('liste.txt');
+    WriteLn('Apres tri :');
+    for i := 0 to liste.Count - 1 do
+      WriteLn(i, ': ', liste[i]);
 
     // Rechercher
     if liste.IndexOf('Banane') >= 0 then
       WriteLn('Banane trouvée !');
 
   finally
-    liste.Free;  // Toujours libérer !
+    liste.Free;  // Toujours liberer !
   end;
 end.
 ```
@@ -268,49 +271,45 @@ end.
 
 ## Math - Fonctions mathématiques
 
-L'unité **Math** fournit des fonctions mathématiques avancées.
+L'unité **Math** fournit des fonctions mathématiques avancées, en complément des fonctions de base déjà disponibles dans `System`.
+
+> **Note :** Certaines fonctions mathématiques courantes sont intégrées à l'unité `System` (donc toujours disponibles sans `uses`) : `Sqrt`, `Sqr`, `Abs`, `Round`, `Trunc`, `Sin`, `Cos`, `Ln`, `Exp`, `Pi`. L'unité `Math` ajoute des fonctions supplémentaires.
 
 ```pascal
 uses
   Math;
 
 var
-  x, y: Real;
+  x: Real;
 
 begin
-  // Constantes
-  WriteLn('Pi = ', Pi);  // 3.14159...
+  // Fonctions integrees (System) - pas besoin de "uses Math"
+  x := Sqrt(16);
+  WriteLn('Sqrt(16) = ', x:0:1);           // 4.0
+  x := Sqr(5);
+  WriteLn('Sqr(5) = ', x:0:1);             // 25.0
+  x := Abs(-5.7);
+  WriteLn('Abs(-5.7) = ', x:0:1);          // 5.7
 
-  // Fonctions de base
-  x := Sqrt(16);          // Racine carrée = 4
-  x := Power(2, 3);       // 2^3 = 8
-  x := Sqr(5);            // 5^2 = 25
+  // Fonctions de l'unite Math
+  x := Power(2, 3);
+  WriteLn('Power(2,3) = ', x:0:1);         // 8.0
 
-  // Fonctions trigonométriques
-  x := Sin(Pi / 2);       // Sinus = 1
-  x := Cos(0);            // Cosinus = 1
-  x := Tan(Pi / 4);       // Tangente ≈ 1
+  // Fonctions d'arrondi (Math)
+  x := Ceil(3.2);
+  WriteLn('Ceil(3.2) = ', x:0:1);          // 4.0
+  x := Floor(3.8);
+  WriteLn('Floor(3.8) = ', x:0:1);         // 3.0
 
-  // Fonctions d'arrondi
-  x := Ceil(3.2);         // Arrondi supérieur = 4
-  x := Floor(3.8);        // Arrondi inférieur = 3
-  x := Round(3.5);        // Arrondi classique = 4
+  // Maximum et minimum (Math)
+  x := Max(10, 20);
+  WriteLn('Max(10,20) = ', x:0:1);         // 20.0
+  x := Min(10, 20);
+  WriteLn('Min(10,20) = ', x:0:1);         // 10.0
 
-  // Valeur absolue
-  x := Abs(-5.7);         // 5.7
-
-  // Maximum et minimum
-  x := Max(10, 20);       // 20
-  x := Min(10, 20);       // 10
-
-  // Logarithmes et exponentielles
-  x := Ln(2.718281828);   // Logarithme naturel ≈ 1
-  x := Exp(1);            // e^1 ≈ 2.718
-  x := Log10(100);        // Logarithme base 10 = 2
-
-  // Fonctions statistiques
-  x := Mean([1, 2, 3, 4, 5]);  // Moyenne = 3
-  x := Sum([1, 2, 3, 4, 5]);   // Somme = 15
+  // Logarithme base 10 (Math)
+  x := Log10(100);
+  WriteLn('Log10(100) = ', x:0:1);         // 2.0
 end.
 ```
 
@@ -330,26 +329,30 @@ begin
 
   // Extraire la gauche ou la droite
   resultat := LeftStr(texte, 7);    // 'Bonjour'
+  WriteLn('LeftStr : ', resultat);
+
   resultat := RightStr(texte, 5);   // 'monde'
+  WriteLn('RightStr : ', resultat);
 
   // Extraire le milieu
   resultat := MidStr(texte, 9, 2);  // 'le'
+  WriteLn('MidStr : ', resultat);
 
-  // Inverser une chaîne
+  // Inverser une chaine
   resultat := ReverseString(texte);  // 'ednom el ruojnoB'
+  WriteLn('ReverseString : ', resultat);
 
   // Remplacer du texte
   resultat := StringReplace(texte, 'monde', 'Pascal', [rfReplaceAll]);
-  // 'Bonjour le Pascal'
+  WriteLn('StringReplace : ', resultat);  // 'Bonjour le Pascal'
 
-  // Compter les occurrences
-  WriteLn('Nombre de "o" : ', AnsiContainsStr(texte, 'o'));
+  // Verifier si un texte contient une sous-chaine
+  if AnsiContainsStr(texte, 'monde') then
+    WriteLn('Le texte contient "monde"');
 
-  // Répéter une chaîne
+  // Repeter une chaine
   resultat := DupeString('Ha', 3);  // 'HaHaHa'
-
-  // Remplir avec des caractères
-  resultat := AddChar('*', 'Test', 10);  // 'Test******'
+  WriteLn('DupeString : ', resultat);
 end.
 ```
 
@@ -470,13 +473,13 @@ begin
   v := 10;              // Entier
   WriteLn(v);
 
-  v := 'Hello';         // Chaîne
+  v := 'Hello';         // Chaine
   WriteLn(v);
 
-  v := 3.14;            // Réel
+  v := 3.14;            // Reel
   WriteLn(v);
 
-  v := True;            // Booléen
+  v := True;            // Booleen
   WriteLn(v);
 end.
 ```
@@ -487,10 +490,10 @@ end.
 
 | Unité | Usage principal | Exemples de fonctions |
 |-------|----------------|----------------------|
-| **System** | Base (automatique) | WriteLn, Inc, Length |
+| **System** | Base (automatique) | WriteLn, Inc, Length, Sqrt, Sin, Cos, Abs, Round |
 | **SysUtils** | Utilitaires système | UpperCase, FileExists, Now, IntToStr |
 | **Classes** | Collections et objets | TStringList, TList, TStream |
-| **Math** | Mathématiques | Sin, Cos, Sqrt, Max, Min |
+| **Math** | Mathématiques avancées | Power, Ceil, Floor, Max, Min, Tan |
 | **StrUtils** | Chaînes avancées | LeftStr, RightStr, ReverseString |
 | **DateUtils** | Dates avancées | IncDay, DaysBetween, YearOf |
 | **CRT** | Console texte | ClrScr, TextColor, GotoXY |

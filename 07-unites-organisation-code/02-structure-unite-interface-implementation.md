@@ -77,7 +77,7 @@ end;
 // On peut aussi avoir des fonctions privées (non déclarées dans interface)
 function FonctionPrivee: String;
 begin
-  Result := 'Invisible de l\'extérieur';
+  Result := 'Invisible de l''extérieur';
 end;
 
 end.
@@ -88,12 +88,10 @@ end.
 Créons une unité pour gérer des opérations sur les cercles :
 
 ```pascal
+{$mode objfpc}{$H+}
 unit UniteCercles;
 
 interface
-
-uses
-  Math;  // Pour utiliser Pi et les fonctions mathématiques
 
 const
   PI_APPROX = 3.14159;
@@ -155,8 +153,6 @@ begin
   end
   else
     WriteLn('Rayon invalide !');
-
-  // MessageErreur n'est PAS accessible ici car elle est privée
 end.
 ```
 
