@@ -654,6 +654,8 @@ chmod +x MonAppli
 
 **Dans le code Pascal :**
 ```pascal
+program ParametresProgramme;
+
 var
   i: Integer;
 begin
@@ -900,6 +902,10 @@ for i := 1 to 1000 do
 **Méthode simple : mesurer le temps :**
 
 ```pascal
+program MesurerPerformance;
+
+{$mode objfpc}{$H+}
+
 uses
   SysUtils, DateUtils;
 

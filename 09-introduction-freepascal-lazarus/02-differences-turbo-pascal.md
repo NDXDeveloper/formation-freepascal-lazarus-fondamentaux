@@ -100,10 +100,11 @@ Assign(F, 'data' + DirectorySeparator + 'fichier.txt');
 - `LongInt` = 32 bits
 
 **FreePascal (architecture moderne, souvent 64 bits)**
-- `Integer` = dépend de la plateforme (16, 32 ou 64 bits)
+- `Integer` = dépend du mode de compilation (16 bits en mode TP, 32 bits dans les autres modes)
 - `Word` = 16 bits
 - `LongInt` = 32 bits
 - `Int64` = 64 bits (nouveau type)
+- `NativeInt` = dépend de la plateforme (32 ou 64 bits)
 
 **Recommandation pour le débutant :**
 Si vous voulez une taille précise, utilisez les types explicites :
@@ -202,20 +203,21 @@ begin
 end;
 ```
 
-**FreePascal (mode moderne)** : Vous pouvez déclarer des variables presque partout (selon le mode).
+**FreePascal (mode moderne)** : Avec certaines configurations, vous pouvez déclarer des variables presque partout.
 
 ```pascal
+{$mode delphi}  // Nécessaire pour les déclarations inline
 procedure Test;
 var
   i: Integer;
 begin
   i := 5;
-  var s: String;   // Déclaration inline (en mode FPC ou Delphi)
+  var s: String;   // Déclaration inline (mode Delphi, FPC récent)
   s := 'Bonjour';
 end;
 ```
 
-**Pour le débutant :** En mode Turbo Pascal (`{$MODE TP}`), gardez l'ancienne méthode. En mode moderne, vous avez plus de flexibilité.
+**Pour le débutant :** Les déclarations inline nécessitent `{$mode delphi}` et une version récente de FreePascal. En mode standard (`{$MODE OBJFPC}`), déclarez toutes vos variables dans la section `var` avant `begin`, comme en Turbo Pascal.
 
 ### 4.2 Opérateurs supplémentaires
 
