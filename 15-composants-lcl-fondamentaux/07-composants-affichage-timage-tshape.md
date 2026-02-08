@@ -43,13 +43,12 @@ Une interface uniquement textuelle peut sembler :
 ### Hiérarchie
 
 ```
-TWinControl
-  └─ TCustomControl
-       └─ TGraphicControl
-            └─ TImage
+TControl
+  └─ TGraphicControl
+       └─ TImage
 ```
 
-**Important :** TImage hérite de `TGraphicControl`, donc :
+**Important :** TImage hérite de `TGraphicControl` (branche parallèle à `TWinControl`, les deux héritant de `TControl`), donc :
 - Pas de handle système (léger en ressources)
 - Ne peut pas recevoir le focus
 - Ne peut pas contenir d'autres composants
@@ -605,7 +604,7 @@ end;
 ### Hiérarchie
 
 ```
-TWinControl
+TControl
   └─ TGraphicControl
        └─ TShape
 ```
@@ -860,12 +859,15 @@ begin
   ShapeFond.Height := 20;
 
   // Barre de progression
+  // Note : TShape (TGraphicControl) ne peut pas être Parent d'un autre composant.
+  // Les deux TShape doivent avoir le même Parent (ex: le formulaire ou un TPanel)
+  // et être superposés par positionnement.
   ShapeProgression.Shape := stRectangle;
   ShapeProgression.Brush.Color := clGreen;
   ShapeProgression.Height := 20;
-  ShapeProgression.Parent := ShapeFond;  // Superposer
-  ShapeProgression.Left := 0;
-  ShapeProgression.Top := 0;
+  ShapeProgression.Parent := ShapeFond.Parent;  // Même parent que ShapeFond
+  ShapeProgression.Left := ShapeFond.Left;
+  ShapeProgression.Top := ShapeFond.Top;
 
   AfficherProgression(0);
 end;
@@ -989,10 +991,12 @@ begin
   ShapeIndicateur.Pen.Color := clWhite;
   ShapeIndicateur.Pen.Width := 2;
 
-  // Positionner sur l'image
-  ShapeIndicateur.Parent := Image1;
-  ShapeIndicateur.Left := X - 10;
-  ShapeIndicateur.Top := Y - 10;
+  // Positionner par-dessus l'image
+  // Note : TImage (TGraphicControl) ne peut pas être Parent d'un autre composant.
+  // On utilise le même parent que l'image et on ajuste les coordonnées.
+  ShapeIndicateur.Parent := Image1.Parent;
+  ShapeIndicateur.Left := Image1.Left + X - 10;
+  ShapeIndicateur.Top := Image1.Top + Y - 10;
   ShapeIndicateur.BringToFront;
 end;
 

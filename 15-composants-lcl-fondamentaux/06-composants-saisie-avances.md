@@ -441,7 +441,7 @@ var
   Aujourd_hui: TDateTime;
 begin
   Aujourd_hui := Date;
-  Result := YearsBetween(DateNaissance, Aujourd_hui);
+  Result := YearsBetween(DateNaissance, Aujourd_hui);  // Nécessite uses DateUtils
 end;
 
 // Utilisation
@@ -943,7 +943,7 @@ begin
   end;
 
   // Vérifier l'âge (via date de naissance)
-  Age := YearsBetween(DateEditNaissance.Date, Date);
+  Age := YearsBetween(DateEditNaissance.Date, Date);  // Nécessite uses DateUtils
   if Age < 18 then
   begin
     ShowMessage('Vous devez avoir au moins 18 ans');
@@ -1056,7 +1056,7 @@ end;
 procedure TForm1.DateEditNaissanceChange(Sender: TObject);
 begin
   // Calculer l'âge automatiquement
-  SpinEditAge.Value := YearsBetween(DateEditNaissance.Date, Date);
+  SpinEditAge.Value := YearsBetween(DateEditNaissance.Date, Date);  // Nécessite uses DateUtils
 end;
 ```
 

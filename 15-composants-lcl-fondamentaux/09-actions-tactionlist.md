@@ -17,6 +17,7 @@ Les **Actions** (TAction) et les **listes d'actions** (TActionList) résolvent c
 Sans actions, pour implémenter "Copier" partout :
 
 ```pascal
+// Note : l'utilisation de Clipboard nécessite uses Clipbrd
 // Menu principal
 procedure TForm1.MenuItemCopierClick(Sender: TObject);
 begin

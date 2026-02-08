@@ -64,8 +64,8 @@ Une grille, c'est comme :
 ```
 TWinControl
   └─ TCustomControl
-       └─ TCustomDrawGrid
-            └─ TCustomGrid
+       └─ TCustomGrid
+            └─ TCustomDrawGrid
                  └─ TCustomStringGrid
                       └─ TStringGrid
 ```
@@ -572,8 +572,9 @@ end;
 ```
 TWinControl
   └─ TCustomControl
-       └─ TCustomDrawGrid
-            └─ TDrawGrid
+       └─ TCustomGrid
+            └─ TCustomDrawGrid
+                 └─ TDrawGrid
 ```
 
 ### Différence avec TStringGrid

@@ -179,7 +179,7 @@ begin
   PanelTop.Parent := Self;
   PanelTop.Align := alTop;
   PanelTop.Height := 50;
-  PanelTop.Caption := 'Barre d\'outils';
+  PanelTop.Caption := 'Barre d''outils';
   PanelTop.Color := clSkyBlue;
 
   // Barre inférieure
@@ -249,8 +249,10 @@ StatusPanel.Caption := 'Prêt';
 #### 3. Zone de contenu avec défilement
 
 ```pascal
-ContentPanel.Align := alClient;
-ContentPanel.AutoScroll := True;  // Ajoute des barres de défilement si nécessaire
+// Note : AutoScroll est une propriété de TScrollBox, pas de TPanel
+// Pour le défilement, utiliser un TScrollBox à la place de TPanel
+ScrollBox1.Align := alClient;
+ScrollBox1.AutoScroll := True;  // Ajoute des barres de défilement si nécessaire
 ```
 
 #### 4. Carte d'information

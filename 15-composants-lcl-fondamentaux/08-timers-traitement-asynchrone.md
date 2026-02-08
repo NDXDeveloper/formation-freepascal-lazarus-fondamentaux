@@ -1040,7 +1040,7 @@ procedure TForm1.TimerTimeoutTimer(Sender: TObject);
 var
   MinutesInactif: Integer;
 begin
-  MinutesInactif := MinutesBetween(Now, FDerniereActivite);
+  MinutesInactif := MinutesBetween(Now, FDerniereActivite);  // Nécessite uses DateUtils
 
   if MinutesInactif >= FTimeoutMinutes then
   begin
@@ -1107,11 +1107,11 @@ const
 begin
   if AlphaBlendValue < FOpaciteCible then
   begin
-    AlphaBlendValue := Min(AlphaBlendValue + VITESSE, FOpaciteCible);
+    AlphaBlendValue := Min(AlphaBlendValue + VITESSE, FOpaciteCible);  // Min nécessite uses Math
   end
   else if AlphaBlendValue > FOpaciteCible then
   begin
-    AlphaBlendValue := Max(AlphaBlendValue - VITESSE, FOpaciteCible);
+    AlphaBlendValue := Max(AlphaBlendValue - VITESSE, FOpaciteCible);  // Max nécessite uses Math
   end
   else
   begin
