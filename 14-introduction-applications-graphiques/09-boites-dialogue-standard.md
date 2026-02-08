@@ -947,31 +947,31 @@ end;
 
 procedure TForm1.FindDialog1Find(Sender: TObject);
 var
-  Pos: Integer;
-  Options: TFindOptions;
+  FoundPos, StartPos: Integer;
+  SearchText: string;
 begin
-  Options := FindDialog1.Options;
+  SearchText := FindDialog1.FindText;
 
-  // Rechercher dans le texte
-  if frDown in Options then
-    Pos := Memo1.SelStart + 1
+  // Position de départ selon la direction
+  if frDown in FindDialog1.Options then
+    StartPos := Memo1.SelStart + Memo1.SelLength
   else
-    Pos := Memo1.SelStart - 1;
+    StartPos := Memo1.SelStart - 1;
 
-  // Effectuer la recherche
-  Pos := FindText(Memo1.Text, FindDialog1.FindText, Pos, Options);
+  // Effectuer la recherche avec PosEx (uses StrUtils)
+  FoundPos := PosEx(SearchText, Memo1.Text, StartPos + 1);
 
-  if Pos >= 0 then
+  if FoundPos > 0 then
   begin
-    // Texte trouvé
-    Memo1.SelStart := Pos;
-    Memo1.SelLength := Length(FindDialog1.FindText);
+    // Texte trouvé (PosEx est 1-based, SelStart est 0-based)
+    Memo1.SelStart := FoundPos - 1;
+    Memo1.SelLength := Length(SearchText);
     Memo1.SetFocus;
   end
   else
   begin
     // Texte non trouvé
-    ShowMessage('Texte introuvable : "' + FindDialog1.FindText + '"');
+    ShowMessage('Texte introuvable : "' + SearchText + '"');
   end;
 end;
 ```
@@ -1362,7 +1362,7 @@ begin
   else
     StartPos := Memo1.SelStart - 1;
 
-  Pos := PosEx(SearchText, Memo1.Text, StartPos + 1);
+  Pos := PosEx(SearchText, Memo1.Text, StartPos + 1);  // uses StrUtils
 
   if Pos > 0 then
   begin

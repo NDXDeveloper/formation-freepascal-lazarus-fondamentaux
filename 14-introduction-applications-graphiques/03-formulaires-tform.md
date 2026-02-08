@@ -550,11 +550,11 @@ end;
 1. Constructor Create
    │
    ↓
-2. OnCreate
-   │ (initialisation du code utilisateur)
-   ↓
-3. Lecture du fichier .lfm
+2. Lecture du fichier .lfm
    │ (création des composants)
+   ↓
+3. OnCreate
+   │ (initialisation du code utilisateur)
    ↓
 4. OnShow
    │

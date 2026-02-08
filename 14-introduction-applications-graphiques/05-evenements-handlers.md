@@ -601,9 +601,9 @@ Quand l'utilisateur clique sur un bouton, plusieurs événements se déclenchent
 ```
 1. Constructor Create
    ↓
-2. OnCreate       (votre code d'initialisation)
+2. Lecture du .lfm (création des composants)
    ↓
-3. Lecture du .lfm (création des composants)
+3. OnCreate       (votre code d'initialisation)
    ↓
 4. OnShow         (juste avant l'affichage)
    ↓

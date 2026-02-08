@@ -215,6 +215,7 @@ MenuItem1.Enabled := False;  // Grisé, non cliquable
 MenuEnregistrer.Enabled := DocumentOuvert;
 
 // Désactiver "Coller" si le presse-papiers est vide
+// Clipboard et CF_TEXT nécessitent : uses Clipbrd
 MenuColler.Enabled := Clipboard.HasFormat(CF_TEXT);
 ```
 
