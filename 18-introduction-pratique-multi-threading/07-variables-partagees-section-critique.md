@@ -499,19 +499,30 @@ end;
 
 ```pascal
 CS.Enter;
+
+if condition then
+  Exit;  // ❌ ERREUR : on sort sans appeler Leave !
+
+DoSomething();
+
+CS.Leave;  // Jamais atteint si Exit est appelé !
+```
+
+**Problème** : Si `condition` est vraie, `Exit` quitte la procédure et `CS.Leave` n'est jamais appelé. Les autres threads attendront **éternellement** (deadlock).
+
+**Solution** : Utiliser `try-finally` qui garantit que `Leave` est toujours appelé, même avec `Exit` :
+
+```pascal
+CS.Enter;
 try
   if condition then
-    Exit;  // ❌ ERREUR : on sort sans appeler Leave !
+    Exit;  // ✓ Le finally sera quand même exécuté !
 
   DoSomething();
 finally
-  CS.Leave;
+  CS.Leave;  // Toujours appelé, même si Exit est utilisé
 end;
 ```
-
-**Problème** : Si `condition` est vraie, on sort sans libérer la section critique. Les autres threads attendront **éternellement** (deadlock).
-
-**Solution** : Le `try-finally` garantit que `Leave` est toujours appelé.
 
 ### ❌ Erreur 2 : Entrer deux fois sans sortir
 
@@ -744,13 +755,10 @@ end;
 Pour des opérations simples sur des entiers, FreePascal offre des fonctions atomiques :
 
 ```pascal
-uses
-  System.SyncObjs;
-
 var
   Compteur: Integer;
 
-// Incrémenter de façon atomique
+// Incrémenter de façon atomique (disponible dans System, pas de uses nécessaire)
 InterlockedIncrement(Compteur);
 
 // Décrémenter de façon atomique

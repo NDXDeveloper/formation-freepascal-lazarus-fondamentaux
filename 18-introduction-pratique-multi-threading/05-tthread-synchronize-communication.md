@@ -504,8 +504,8 @@ begin
       if ContentLength > 0 then
         FPourcentage := Round((CurrentPos * 100) / ContentLength);
 
-      // Synchroniser seulement tous les 1% pour ne pas surcharger
-      if (FPourcentage mod 1 = 0) or (CurrentPos = ContentLength) then
+      // Synchroniser seulement tous les 5% pour ne pas surcharger
+      if (FPourcentage mod 5 = 0) or (CurrentPos = ContentLength) then
         Synchronize(@UpdateProgress);
     end;
 

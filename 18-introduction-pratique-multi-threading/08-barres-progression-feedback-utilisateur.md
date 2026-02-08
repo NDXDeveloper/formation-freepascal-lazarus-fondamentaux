@@ -634,16 +634,16 @@ if i mod 10000 = 0 then
 ### ❌ Erreur 3 : Calcul de pourcentage incorrect
 
 ```pascal
-// ❌ Division entière !
-Pourcentage := (i / Total) * 100;  // Donne toujours 0 ou 100 !
+// ❌ Division entière avec div : résultat tronqué à 0 tant que i < Total !
+Pourcentage := (i div Total) * 100;  // Donne 0 jusqu'à i = Total, puis 100 !
 ```
 
-**Solution** : Forcer la division réelle ou utiliser div correctement.
+**Solution** : Multiplier d'abord par 100 ou utiliser la division réelle avec `Round`.
 
 ```pascal
-// Correct
+// Correct : multiplication d'abord
 Pourcentage := (i * 100) div Total;
-// ou
+// ou : division réelle avec arrondi
 Pourcentage := Round((i / Total) * 100);
 ```
 
