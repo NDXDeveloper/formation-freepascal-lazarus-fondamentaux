@@ -498,9 +498,9 @@ begin
 end;
 
 var
-  Email: TEmail;
-  SMS: TSMS;
-  Secure: TMessageSecurise;
+  Email: IEnvoyable;
+  SMS: IEnvoyable;
+  Secure: IEnvoyable;
 begin
   Email := TEmail.Create;
   SMS := TSMS.Create;
@@ -514,12 +514,10 @@ begin
   WriteLn('');
 
   // Seul l'email peut être archivé
-  ArchiverSiPossible(Email);   // ✅ Fonctionne
-  ArchiverSiPossible(SMS);      // ❌ N'est pas archivable
+  ArchiverSiPossible(Email as IInterface);   // ✅ Fonctionne
+  ArchiverSiPossible(SMS as IInterface);      // ❌ N'est pas archivable
 
-  Email.Free;
-  SMS.Free;
-  Secure.Free;
+  // Pas de Free : gestion automatique via les interfaces
 end.
 ```
 

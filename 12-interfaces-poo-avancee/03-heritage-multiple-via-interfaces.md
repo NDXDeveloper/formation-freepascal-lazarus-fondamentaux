@@ -232,7 +232,8 @@ begin
   Marcheur.Marcher;
   WriteLn('Vitesse de marche: ', Marcheur.ObtenirVitesseMarche, ' km/h');
 
-  MonCanard.Free;
+  // Pas de Free : les variables d'interface (Nageur, Volant, Marcheur)
+  // gèrent automatiquement la mémoire de l'objet
 end.
 ```
 
@@ -394,15 +395,23 @@ end;
 
 var
   MonTelephone: TSmartphone;
+  Tel: ITelephone;
+  Photo: IAppareilPhoto;
+  Nav: INavigateurWeb;
 begin
   MonTelephone := TSmartphone.Create;
 
-  // Le même objet peut être utilisé via différentes interfaces
-  UtiliserTelephone(MonTelephone);
-  UtiliserAppareilPhoto(MonTelephone);
-  UtiliserNavigateur(MonTelephone);
+  // Obtenir les différentes interfaces du même objet
+  Tel := MonTelephone;
+  Photo := MonTelephone;
+  Nav := MonTelephone;
 
-  MonTelephone.Free;
+  // Le même objet peut être utilisé via différentes interfaces
+  UtiliserTelephone(Tel);
+  UtiliserAppareilPhoto(Photo);
+  UtiliserNavigateur(Nav);
+
+  // Pas de Free : les variables d'interface gèrent la mémoire automatiquement
 end.
 ```
 

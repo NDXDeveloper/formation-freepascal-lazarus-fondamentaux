@@ -288,7 +288,7 @@ uses
 type
   // 1. DÉCLARATION DE L'INTERFACE
   INotificateur = interface
-    ['{D4C3B2A1-9E8F-7D6C-5B4A-3E2F1D0C9B8A}']
+    ['{D4C3B2A1-9E8F-7D6C-5B4A-3E2F1D0C9B8A}']  // GUID : identifiant unique de l'interface
     procedure EnvoyerMessage(const Message: string);
     function ObtenirNomService: string;
   end;
@@ -366,6 +366,7 @@ program TestNotifications;
 uses
   UNotifications;
 
+// Accepte tout objet implémentant INotificateur (polymorphisme via interface)
 procedure EnvoyerAlerte(Notif: INotificateur; const Alerte: string);
 begin
   WriteLn('=== ', Notif.ObtenirNomService, ' ===');

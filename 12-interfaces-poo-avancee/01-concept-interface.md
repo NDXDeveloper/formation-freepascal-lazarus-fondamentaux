@@ -126,6 +126,7 @@ type
   end;
 
   // Un oiseau qui vole
+  // TInterfacedObject gère le comptage de références (pas besoin de Free)
   TOiseau = class(TInterfacedObject, IVolant)
     procedure Voler;
     procedure Atterrir;
@@ -169,8 +170,8 @@ begin
 end;
 
 var
-  MonOiseau: TOiseau;
-  MonAvion: TAvion;
+  MonOiseau: IVolant;  // Type interface : active le comptage de références
+  MonAvion: IVolant;
 begin
   MonOiseau := TOiseau.Create;
   MonAvion := TAvion.Create;
@@ -179,8 +180,7 @@ begin
   FaireVoler(MonOiseau);
   FaireVoler(MonAvion);
 
-  MonOiseau.Free;
-  MonAvion.Free;
+  // Pas besoin de Free : gestion automatique via les interfaces !
 end.
 ```
 

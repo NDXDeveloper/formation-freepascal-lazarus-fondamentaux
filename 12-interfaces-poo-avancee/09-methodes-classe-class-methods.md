@@ -106,7 +106,7 @@ type
     class function ObtenirTotal: Integer;
   end;
 
-class var TCompteur.FTotal: Integer = 0;  // Initialisation
+// Note : FTotal est automatiquement initialisé à 0 (valeur par défaut)
 
 constructor TCompteur.Create;
 begin
@@ -368,7 +368,7 @@ type
     property Version: string read FVersion write FVersion;
   end;
 
-class var TConfiguration.FInstance: TConfiguration = nil;
+// Note : FInstance est automatiquement initialisé à nil (valeur par défaut)
 
 constructor TConfiguration.CreatePrivate;
 begin
@@ -471,9 +471,7 @@ type
     property Utilisateur: string read FUtilisateur;
   end;
 
-class var
-  TConnexion.FNombreConnexions: Integer = 0;
-  TConnexion.FNombreActif: Integer = 0;
+// Note : FNombreConnexions et FNombreActif sont automatiquement initialisés à 0
 
 constructor TConnexion.Create(const Utilisateur: string);
 begin
@@ -671,12 +669,14 @@ end;
 
 ```pascal
 class procedure TExemple.MethodeDeClasse;
+var
+  Instance: TExemple;
+  X: Integer;
 begin
   // ✅ Accès aux attributs de classe (class var)
   WriteLn(FCompteur);
 
   // ✅ Créer des instances
-  var Instance: TExemple;
   Instance := TExemple.Create;
   Instance.Free;
 
@@ -684,7 +684,6 @@ begin
   AutreMethodeDeClasse;
 
   // ✅ Variables locales
-  var X: Integer;
   X := 10;
 end;
 ```
@@ -744,9 +743,7 @@ type
     property Connecte: Boolean read FConnecte;
   end;
 
-class var
-  TConnexionBD.FConnexionDefaut: TConnexionBD = nil;
-  TConnexionBD.FNombreConnexions: Integer = 0;
+// Note : FConnexionDefaut (nil) et FNombreConnexions (0) sont initialisés par défaut
 
 constructor TConnexionBD.Create(const Serveur, Utilisateur: string);
 begin

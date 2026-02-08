@@ -113,7 +113,8 @@ begin
 end;
 
 var
-  Ref1, Ref2, Ref3: IMessage;
+  Obj: TMessagerie;            // Variable objet : accès à AfficherCompteur (hors interface)
+  Ref1, Ref2, Ref3: IMessage;  // Variables interface : participent au comptage de références
 begin
   WriteLn('');
   WriteLn('═══════════════════════════════════════════════════');
@@ -122,18 +123,19 @@ begin
   WriteLn('');
 
   WriteLn('▶ Étape 1: Création et assignation à Ref1');
-  Ref1 := TMessagerie.Create('Assistant');
-  TMessagerie(Ref1).AfficherCompteur;
+  Obj := TMessagerie.Create('Assistant');
+  Ref1 := Obj;
+  Obj.AfficherCompteur;
   WriteLn('');
 
   WriteLn('▶ Étape 2: Assignation à Ref2 (même objet)');
   Ref2 := Ref1;
-  TMessagerie(Ref1).AfficherCompteur;
+  Obj.AfficherCompteur;
   WriteLn('');
 
   WriteLn('▶ Étape 3: Assignation à Ref3 (toujours le même)');
   Ref3 := Ref1;
-  TMessagerie(Ref1).AfficherCompteur;
+  Obj.AfficherCompteur;
   WriteLn('');
 
   WriteLn('▶ Étape 4: Utilisation via différentes références');
@@ -146,13 +148,13 @@ begin
   WriteLn('▶ Étape 5: Libération de Ref1');
   Ref1 := nil;
   WriteLn('   ℹ️ Objet toujours vivant (Ref2 et Ref3 existent)');
-  TMessagerie(Ref2).AfficherCompteur;
+  Obj.AfficherCompteur;
   WriteLn('');
 
   WriteLn('▶ Étape 6: Libération de Ref2');
   Ref2 := nil;
   WriteLn('   ℹ️ Objet toujours vivant (Ref3 existe)');
-  TMessagerie(Ref3).AfficherCompteur;
+  Obj.AfficherCompteur;
   WriteLn('');
 
   WriteLn('▶ Étape 7: Libération de Ref3 (dernière référence)');

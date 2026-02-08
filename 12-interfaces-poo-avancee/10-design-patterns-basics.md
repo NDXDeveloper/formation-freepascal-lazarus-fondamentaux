@@ -93,8 +93,7 @@ type
     property DossierDonnees: string read FDossierDonnees write FDossierDonnees;
   end;
 
-// Initialisation de l'attribut de classe
-class var TConfiguration.FInstance: TConfiguration = nil;
+// Note : FInstance est automatiquement initialisé à nil (valeur par défaut)
 
 // Constructeur privé
 constructor TConfiguration.CreatePrivate;
@@ -107,7 +106,7 @@ begin
   WriteLn('⚙️  Configuration initialisée');
 end;
 
-// Méthode pour obtenir l''instance unique
+// Méthode pour obtenir l'instance unique
 class function TConfiguration.Instance: TConfiguration;
 begin
   // Si l'instance n'existe pas, la créer
@@ -243,7 +242,7 @@ type
     procedure Error(const Message: string);
   end;
 
-class var TLogger.FInstance: TLogger = nil;
+// Note : FInstance est automatiquement initialisé à nil
 
 constructor TLogger.CreatePrivate;
 begin
@@ -888,7 +887,7 @@ begin
 end;
 
 // Implémentation du Singleton
-class var TGestionnaireSession.FInstance: TGestionnaireSession = nil;
+// Note : FInstance est automatiquement initialisé à nil
 
 constructor TGestionnaireSession.CreatePrivate;
 begin
