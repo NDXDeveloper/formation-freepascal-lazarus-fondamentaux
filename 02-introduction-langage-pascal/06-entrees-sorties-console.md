@@ -113,8 +113,8 @@ begin
 
   WriteLn('Nom : ', nom);
   WriteLn('Âge : ', age);
-  WriteLn('Taille : ', taille);
-  WriteLn('Étudiant : ', estEtudiant);
+  WriteLn('Taille : ', taille);       // real sans formatage => notation scientifique
+  WriteLn('Étudiant : ', estEtudiant); // boolean s'affiche TRUE ou FALSE
 end.
 ```
 
@@ -141,6 +141,7 @@ begin
   nom := 'Dupont';
   age := 25;
 
+  // Les virgules séparent les arguments : chacun est affiché à la suite
   WriteLn('Bonjour ', prenom, ' ', nom, ', vous avez ', age, ' ans.');
 end.
 ```
@@ -165,7 +166,7 @@ begin
   WriteLn('Somme : ', a + b);
   WriteLn('Différence : ', a - b);
   WriteLn('Produit : ', a * b);
-  WriteLn('Quotient : ', a / b);
+  WriteLn('Quotient : ', a / b);    // / entre entiers donne un real (notation scientifique)
 end.
 ```
 
@@ -255,6 +256,7 @@ C'est particulièrement utile pour aligner des colonnes :
 ```pascal
 program TableauAligne;
 begin
+  // :N fonctionne aussi sur les littéraux (strings et entiers), pas seulement les variables
   WriteLn('Nom':15, 'Age':5, 'Ville':15);
   WriteLn('---------------':15, '-----':5, '---------------':15);
   WriteLn('Alice':15, 25:5, 'Paris':15);
@@ -266,10 +268,10 @@ end.
 **Résultat :**
 ```
             Nom  Age          Ville
-    -----------  ----   -----------
-          Alice    25          Paris
-            Bob    30           Lyon
-        Charlie    28      Marseille
+-----------------------------------
+          Alice   25          Paris
+            Bob   30           Lyon
+        Charlie   28      Marseille
 ```
 
 ### Formatage des chaînes de caractères
@@ -295,7 +297,7 @@ end.
 
 ### Read - Lire sans passer à la ligne
 
-La procédure `Read` lit une valeur saisie par l'utilisateur, **sans attendre la touche Entrée immédiatement**.
+La procédure `Read` lit une valeur saisie par l'utilisateur, **sans consommer le retour à la ligne**.
 
 ```pascal
 var
@@ -533,7 +535,7 @@ begin
     '-': resultat := nombre1 - nombre2;
     '*': resultat := nombre1 * nombre2;
     '/':
-      if nombre2 <> 0 then
+      if nombre2 <> 0 then    // <> signifie "différent de" en Pascal
         resultat := nombre1 / nombre2
       else
       begin
@@ -564,6 +566,7 @@ var
   age: integer;
   taille: real;
 begin
+  // En Pascal, '' (deux apostrophes) insère une apostrophe littérale dans une chaîne
   WriteLn('=== FICHE D''IDENTITÉ ===');
   WriteLn;
 
@@ -602,7 +605,7 @@ end.
 ### Exemple 3 : Calcul de moyenne
 
 ```pascal
-program CalculMoyenne;
+program CalculMoyenneIO;
 var
   note1, note2, note3: real;
   moyenne: real;
@@ -652,7 +655,7 @@ end.
 ### Exemple 4 : Conversion de température
 
 ```pascal
-program ConversionTemperature;
+program ConversionTemperatureIO;
 var
   celsius, fahrenheit: real;
   choix: integer;

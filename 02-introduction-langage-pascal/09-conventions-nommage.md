@@ -515,6 +515,7 @@ program MonApplication;        // Nom de programme
 ### Exemple 1 : Petit programme bien nommé
 
 ```pascal
+{$mode objfpc}{$H+}
 program CalculateurMoyenne;
 
 const
@@ -529,6 +530,7 @@ var
 
 function CalculerMoyenne(n1, n2, n3: real): real;
 begin
+  { Result est la variable spéciale pour renvoyer la valeur d'une fonction }
   Result := (n1 + n2 + n3) / NOMBRE_NOTES;
 end;
 
@@ -569,14 +571,13 @@ begin
 
   WriteLn;
   AfficherResultat(moyenneGenerale, appreciation);
-
-  ReadLn;
 end.
 ```
 
 ### Exemple 2 : Gestion d'un article avec type personnalisé
 
 ```pascal
+{$mode objfpc}{$H+}
 program GestionArticles;
 
 const
@@ -596,6 +597,8 @@ var
   prixTTC: real;
   estEnRupture: boolean;
 
+{ var devant le paramètre = passage par référence : les modifications
+  sont répercutées sur la variable de l'appelant }
 procedure InitialiserArticle(var unArticle: TArticle);
 begin
   unArticle.code := 'ART001';
@@ -606,6 +609,7 @@ end;
 
 function CalculerPrixTTC(prixHT: real): real;
 begin
+  { Result est la variable spéciale pour renvoyer la valeur d'une fonction }
   Result := prixHT * (1 + TAUX_TVA / 100);
 end;
 
@@ -629,7 +633,6 @@ end;
 begin
   InitialiserArticle(article);
   AfficherArticle(article);
-  ReadLn;
 end.
 ```
 
@@ -688,7 +691,7 @@ var
 ```pascal
 var
   leNomCompletDuClientQuiAPasseCommande: string;
-  lePrixTotalDeTosTousLesArticlesDansLePanier: real;
+  lePrixTotalDeTousLesArticlesDansLePanier: real;
 ```
 
 **Bon :**

@@ -326,7 +326,10 @@ var
 begin
   age := 25;
 
+  // Le resultat d'une comparaison est un boolean (true/false)
   estEnfant := age < 13;
+  // En Pascal, and a priorite sur >= et <, donc les parentheses
+  // autour de chaque comparaison sont obligatoires
   estAdolescent := (age >= 13) and (age < 18);
   estAdulte := (age >= 18) and (age < 65);
   estSenior := age >= 65;
@@ -569,7 +572,7 @@ Quand plusieurs opérateurs sont utilisés dans la même expression, ils ne sont
 
 ```pascal
 var
-  resultat: integer;
+  resultat: real;
 begin
   resultat := 2 + 3 * 4;    // 14 (pas 20)
   // Équivalent à : 2 + (3 * 4)
@@ -696,6 +699,7 @@ begin
   b := 4.0;
   choix := 1;  // 1=addition, 2=soustraction, 3=multiplication, 4=division
 
+  // :0:2 formate un real : 0 = largeur minimale, 2 = decimales
   writeln('Nombre 1 : ', a:0:2);
   writeln('Nombre 2 : ', b:0:2);
   writeln;
@@ -811,6 +815,8 @@ var
 begin
   nombre := 30;
 
+  // mod retourne le reste de la division entiere
+  // Si le reste vaut 0, le nombre est divisible
   divisiblePar2 := (nombre mod 2) = 0;
   divisiblePar3 := (nombre mod 3) = 0;
   divisiblePar5 := (nombre mod 5) = 0;

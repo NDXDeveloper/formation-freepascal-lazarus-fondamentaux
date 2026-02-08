@@ -197,6 +197,7 @@ begin
   // Affichage
   writeln('Prénom : ', prenom);
   writeln('Âge : ', age, ' ans');
+  // :0:2 = largeur minimale 0, 2 decimales (formate le nombre reel)
   writeln('Taille : ', taille:0:2, ' m');
   writeln('Adulte : ', estAdulte);
 end.
@@ -267,19 +268,20 @@ const
 **Notez la différence avec les variables :**
 - On utilise `=` au lieu de `:`
 - On n'indique pas de type (il est déduit automatiquement)
-- Pas de `;` entre le nom et la valeur
+- Pas de `:` entre le nom et la valeur
 
 ### Exemples de constantes
 
 ```pascal
 program ExemplesConstantes;
 
+// Les constantes utilisent = (pas :=) et le type est deduit automatiquement
 const
-  PI = 3.14159;
-  TauxTVA = 20;
-  NomEntreprise = 'Ma Société';
+  PI = 3.14159;            // -> real
+  TauxTVA = 20;            // -> integer
+  NomEntreprise = 'Ma Société';  // -> string
   JoursParSemaine = 7;
-  EstDebugMode = false;
+  EstDebugMode = false;    // -> boolean
 
 var
   rayon: real;
@@ -369,6 +371,7 @@ begin
 
   // Affichage des résultats
   writeln('Prix HT : ', prixHT:0:2, ' €');
+  // :0:0 = 0 decimales (affiche le reel comme un entier)
   writeln('TVA (', TauxTVA:0:0, '%) : ', montantTVA:0:2, ' €');
   writeln('Prix TTC : ', prixTTC:0:2, ' €');
 end.

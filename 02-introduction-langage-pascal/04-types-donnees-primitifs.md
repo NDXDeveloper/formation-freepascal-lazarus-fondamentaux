@@ -69,7 +69,7 @@ begin
   annee := 2024;
 
   writeln('Âge : ', age);
-  writeln('Nombre d''élèves : ', nombreEleves);
+  writeln('Nombre d''élèves : ', nombreEleves);  // '' double l'apostrophe pour en afficher une
   writeln('Température : ', temperature, ' °C');
   writeln('Année : ', annee);
 end.
@@ -161,7 +161,7 @@ begin
   temperature := 20.5;
   pi := 3.14159;
 
-  writeln('Prix : ', prix:0:2, ' €');
+  writeln('Prix : ', prix:0:2, ' €');            // :0:2 = afficher avec 2 decimales
   writeln('Taille : ', taille:0:2, ' m');
   writeln('Température : ', temperature:0:1, ' °C');
   writeln('Pi : ', pi:0:5);
@@ -464,8 +464,8 @@ begin
   writeln('Identiques : ', estIdentique);
 
   // Conversion majuscule/minuscule
-  writeln(upcase(c1));          // Convertit en majuscule : A
-  writeln(lowercase(c2));       // Convertit en minuscule : a
+  writeln(upcase(c2));          // Convertit 'a' en majuscule : A
+  writeln(lowercase(c1));       // Convertit 'A' en minuscule : a (nécessite uses SysUtils)
 end.
 ```
 
@@ -516,21 +516,25 @@ end.
 ### Integer/Real vers String
 
 ```pascal
+uses SysUtils;
+
 var
   nombre: integer;
   texte: string;
 begin
   nombre := 42;
 
-  // Méthode 1 : concaténation automatique
+  // Méthode 1 : concaténation avec conversion explicite
   texte := 'Le nombre est ' + IntToStr(nombre);
   writeln(texte);
 
-  // Méthode 2 : fonction de conversion
+  // Méthode 2 : conversion seule
   texte := IntToStr(nombre);
   writeln(texte);
 end.
 ```
+
+**Note :** `IntToStr` nécessite `uses SysUtils`.
 
 ### String vers Integer/Real
 
@@ -549,7 +553,7 @@ begin
   else
     writeln('Erreur de conversion');
 
-  // Ou plus simplement (Free Pascal moderne)
+  // Ou plus simplement (nécessite uses SysUtils)
   nombre := StrToInt('456');
   decimal := StrToFloat('3.14');
 end.
@@ -581,7 +585,7 @@ begin
   note3 := 14.5;
 
   moyenne := (note1 + note2 + note3) / 3;
-  aReussi := moyenne >= 10.0;
+  aReussi := moyenne >= 10.0;  // La comparaison >= produit true ou false
 
   writeln('Note 1 : ', note1:0:1);
   writeln('Note 2 : ', note2:0:1);
@@ -596,7 +600,7 @@ end.
 ```pascal
 program InfoProduit;
 const
-  TauxTVA = 20.0;
+  TauxTVA = 20.0;  // const = valeur fixe, non modifiable
 var
   nomProduit: string;
   prixHT: real;
@@ -629,7 +633,7 @@ end.
 ### Exemple 3 : Validation d'âge
 
 ```pascal
-program ValidationAge;
+program ValidationAgeComplete;
 var
   nom: string;
   age: integer;

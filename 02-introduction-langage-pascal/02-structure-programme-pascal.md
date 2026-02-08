@@ -196,6 +196,7 @@ var
 begin
   rayon := 5.0;
   surface := PI * rayon * rayon;
+  // :0:2 formate le nombre reel : 0 = largeur minimale, 2 = decimales
   writeln('Surface du cercle : ', surface:0:2);
 end.
 ```
@@ -231,6 +232,7 @@ begin
   write('Votre choix : ');
   readln(choix);
 
+  // En Pascal, on double l'apostrophe ('') pour en afficher une dans un texte
   writeln('Vous avez choisi l''option : ', choix);
 
   writeln('Fin du programme');

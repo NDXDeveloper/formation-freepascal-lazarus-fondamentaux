@@ -152,7 +152,7 @@ end.
 Le formatage d'entiers est particulièrement utile pour créer des tableaux bien alignés :
 
 ```pascal
-program TableauAligne;
+program TableauAligneNum;
 begin
   WriteLn('Numéro':8, 'Quantité':12, 'Prix':10);
   WriteLn('------':8, '--------':12, '----':10);
@@ -384,6 +384,7 @@ begin
   WriteLn('              FACTURE N° 2024-001');
   WriteLn('==============================================');
   WriteLn;
+  // :-LargeurNom = largeur negative via constante, donc alignement a gauche
   WriteLn('Article':-LargeurNom, 'Qté':LargeurQte, 'P.U.':LargeurPrix, 'Total':LargeurPrix);
   WriteLn('------------------------':LargeurNom, '-------':LargeurQte,
           '-----------':LargeurPrix, '-----------':LargeurPrix);
@@ -480,7 +481,7 @@ end.
 **Note :** Les caractères spéciaux (╔, ═, ║, etc.) peuvent ne pas s'afficher correctement sur tous les systèmes. Utilisez plutôt des caractères standards :
 
 ```pascal
-program MenuStandard;
+program MenuFormate;
 begin
   WriteLn;
   WriteLn('+================================+');
@@ -553,6 +554,7 @@ begin
   texte := 'TITRE CENTRÉ';
   espaces := (LargeurEcran - Length(texte)) div 2;
 
+  // '':espaces = chaine vide formatee sur N caracteres, ce qui produit N espaces
   WriteLn('':espaces, texte);
 end.
 ```
@@ -649,6 +651,7 @@ begin
   else
     symbole := '-';
 
+  // abs() retourne la valeur absolue (sans le signe negatif)
   WriteLn('Solde : ', symbole, ' ', abs(solde):0:2, ' €');
 
   if solde < 0 then
