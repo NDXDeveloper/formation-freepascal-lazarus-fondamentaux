@@ -117,8 +117,23 @@ Ce projet est distribué sous licence MIT. Voir le fichier [LICENSE](LICENSE) po
 ### ✍️ Auteur
 
 **Nicolas DEOUX**
-NDXdev@gmail.com
+
+- [NDXDev@gmail.com](mailto:NDXDev@gmail.com)
+- [LinkedIn](https://www.linkedin.com/in/nicolas-deoux-ab295980/)
+- [GitHub](https://github.com/NDXDeveloper)
 
 ---
 
 💡 **Astuce** : Prenez votre temps avec cette formation fondamentale. Une base solide est essentielle avant de passer au niveau avancé !
+
+---
+
+<div align="center">
+
+[![Mettre une étoile sur GitHub](https://github.com/NDXDeveloper/formation-freepascal-lazarus-fondamentaux?style=social)](https://github.com/NDXDeveloper/formation-freepascal-lazarus-fondamentaux)
+[![Suivre](https://img.shields.io/github/followers/NDXDeveloper?style=social)](https://github.com/NDXDeveloper)
+
+**[Retour](#formation-freepascallazarus)**
+
+
+</div>
