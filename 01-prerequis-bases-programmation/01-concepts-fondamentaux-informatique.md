@@ -114,9 +114,14 @@ C'est pour cette raison que les ordinateurs utilisent le **système binaire**, q
 
 ### Langage machine vs langage de haut niveau
 
-**Langage machine (ou assembleur)**
+**Langage machine**
 - C'est le langage que le processeur comprend directement
-- Très difficile à lire et à écrire pour un humain
+- Suite de codes binaires illisibles pour un humain
+- Exemple : `B8 05 00` (instruction binaire en hexadécimal)
+
+**Langage assembleur**
+- Représentation lisible du langage machine, utilisant des mnémoniques
+- Chaque instruction correspond à une instruction machine
 - Exemple : `MOV AX, 5` (déplace la valeur 5 dans un registre)
 
 **Langage de haut niveau**

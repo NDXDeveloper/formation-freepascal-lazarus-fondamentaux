@@ -670,7 +670,7 @@ ls *.pas
 dir projet?.pas           # projet1.pas, projetA.pas, etc.
 ls projet?.pas
 
-dir *.p??                 # .pas, .pp, .ppu, etc.
+dir *.p??                 # .pas, .ppu, etc. (p + 2 caractères exactement)
 ls *.p??
 ```
 

@@ -511,9 +511,11 @@ Inverse tous les bits.
 
 **Décalage à gauche (SHL - Shift Left)**
 ```
-1011 shl 1 = 0110  (équivaut à multiplier par 2)
-1011 shl 2 = 1100  (équivaut à multiplier par 4)
+0011 shl 1 = 0110  (3 × 2 = 6, équivaut à multiplier par 2)
+0011 shl 2 = 1100  (3 × 4 = 12, équivaut à multiplier par 4)
 ```
+
+**Attention :** si le bit de poids fort est perdu lors du décalage (dépassement de capacité), le résultat ne correspond plus à une simple multiplication.
 
 **Décalage à droite (SHR - Shift Right)**
 ```

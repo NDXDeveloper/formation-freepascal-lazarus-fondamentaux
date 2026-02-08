@@ -512,7 +512,7 @@ lib/                     # Fichiers de compilation
 **Inconvénients :**
 - Très cher (plusieurs centaines/milliers d'euros)
 - Windows principalement (multi-plateforme en version chère)
-- License propriétaire
+- Licence propriétaire
 
 **Pour ce tutoriel :**
 - Nous utilisons Lazarus (gratuit et multi-plateforme)

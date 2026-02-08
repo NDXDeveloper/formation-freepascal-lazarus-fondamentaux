@@ -549,13 +549,17 @@ if (Length(tableau) > 0) and (tableau[0] = valeur) then
   WriteLn('Premier élément correspond');
 ```
 
-**Attention :** En FreePascal, pour garantir le court-circuit, utilisez les directives de compilation ou les opérateurs spéciaux `and then` et `or else` :
+**Attention :** En FreePascal, le court-circuit est activé par défaut (directive `{$B-}`). Si vous voulez être sûr qu'il est actif, ajoutez cette directive en début de fichier :
 
 ```pascal
-// Court-circuit garanti
-if (x <> 0) and then (y / x > 5) then
+{$B-}  // Active l'évaluation en court-circuit (comportement par défaut)
+
+// Avec le court-circuit actif, la division n'est jamais effectuée si x = 0
+if (x <> 0) and (y / x > 5) then
   WriteLn('OK');
 ```
+
+**Note :** La directive `{$B+}` force l'évaluation complète de toutes les conditions (utile dans de rares cas). Par défaut, FreePascal utilise `{$B-}` (court-circuit), donc vous n'avez normalement rien à ajouter.
 
 ## Simplification d'expressions booléennes
 

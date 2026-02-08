@@ -377,10 +377,6 @@ La fenêtre peut se fermer immédiatement. Pour la garder ouverte, voir la secti
 **Solution 1 : Ajouter une pause**
 ```pascal
 program HelloWorld;
-
-uses
-  SysUtils;  // Pour la fonction ReadLn
-
 begin
   WriteLn('Hello, World!');
   WriteLn('Appuyez sur Entrée pour continuer...');
