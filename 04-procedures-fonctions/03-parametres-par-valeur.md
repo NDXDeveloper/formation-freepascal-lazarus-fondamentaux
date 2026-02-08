@@ -453,6 +453,7 @@ end.
 ## Exemple complet récapitulatif
 
 ```pascal
+{$mode objfpc}{$H+}
 program GestionNotes;
 
 // Fonction avec un paramètre

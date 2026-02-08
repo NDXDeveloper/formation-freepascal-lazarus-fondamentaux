@@ -780,13 +780,13 @@ var
   a, b, resultat: Real;
   texte: String;
 begin
-  Randomize;
+  Randomize;  // Initialise le générateur aléatoire (à appeler une seule fois)
 
   repeat
     AfficherMenu;
     Write('Votre choix : ');
     ReadLn(texte);
-    choix := StrToIntDef(texte, -1);
+    choix := StrToIntDef(texte, -1);  // Convertit en entier, retourne -1 si invalide
 
     case choix of
       1: begin

@@ -25,7 +25,6 @@ end;
 procedure AfficherMessage;
 begin
   WriteLn('Bonjour ! Bienvenue dans le programme.');
-  WriteLn('Cette procédure affiche simplement du texte.');
 end;
 ```
 
@@ -77,7 +76,7 @@ program ExempleFonction;
 
 function CalculerCarre(nombre: Integer): Integer;
 begin
-  CalculerCarre := nombre * nombre;
+  CalculerCarre := nombre * nombre;  // En Pascal, on retourne une valeur en assignant au nom de la fonction
 end;
 
 var

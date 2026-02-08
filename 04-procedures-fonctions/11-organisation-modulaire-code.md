@@ -70,6 +70,7 @@ end.
 ### Solution : code modulaire
 
 ```pascal
+{$mode objfpc}{$H+}
 program Bon;
 
 uses SysUtils;
@@ -141,7 +142,7 @@ var
 begin
   Write(prompt, ' : ');
   ReadLn(texte);
-  Result := StrToFloatDef(texte, 0.0);
+  Result := StrToFloatDef(texte, 0.0);  // Convertit en réel, retourne 0.0 si invalide
 end;
 
 function CalculerMoyenne(v1, v2, v3: Real): Real;
@@ -317,6 +318,7 @@ end;
 ### Structure recommandée
 
 ```pascal
+{$mode objfpc}{$H+}
 program MonProgramme;
 
 uses
@@ -362,7 +364,7 @@ begin
     Write(prompt, ' : ');
     ReadLn(texte);
     valeur := StrToIntDef(texte, -1);
-  until valeur > 0;
+  until valeur >= 0;
   Result := valeur;
 end;
 
@@ -532,6 +534,7 @@ end;
 ## Exemple complet : système de bibliothèque
 
 ```pascal
+{$mode objfpc}{$H+}
 program Bibliotheque;
 
 uses
@@ -572,7 +575,7 @@ function AjouterLivre(const livre: TLivre): Boolean;
 begin
   if nbLivres < MAX_LIVRES then
   begin
-    Inc(nbLivres);
+    Inc(nbLivres);  // Inc incrémente : équivalent de nbLivres := nbLivres + 1
     livres[nbLivres] := livre;
     Result := True;
   end

@@ -149,6 +149,8 @@ procedure Correct(n: Integer = 10);
 ### 1. Affichage avec formatage optionnel
 
 ```pascal
+uses SysUtils;
+
 procedure AfficherNombre(nombre: Integer; largeur: Integer = 5; remplissage: Char = ' ');
 var
   texte: String;
@@ -214,6 +216,8 @@ end.
 ### 4. Fonction de recherche dans du texte
 
 ```pascal
+uses SysUtils;
+
 function Rechercher(const texte: String; const motif: String;
                    sensibleCasse: Boolean = False): Integer;
 var
@@ -278,6 +282,8 @@ end.
 On peut combiner paramètres normaux, const, var et par défaut :
 
 ```pascal
+uses SysUtils;
+
 procedure TraiterDonnees(
   const source: String;           // const, obligatoire
   var resultat: String;           // var, obligatoire
@@ -365,6 +371,8 @@ end.
 ### 3. Fonctions mathématiques
 
 ```pascal
+uses Math;
+
 function Arrondir(valeur: Real; decimales: Integer = 2): Real;
 var
   multiplicateur: Real;
@@ -383,10 +391,11 @@ end.
 ## Exemple complet : système de notification
 
 ```pascal
+{$mode objfpc}{$H+}
 program SystemeNotification;
 
 type
-  TNiveauUrgence = (Basse, Normale, Haute, Critique);
+  TNiveauUrgence = (Basse, Normale, Haute, Critique);  // Type énuméré : liste de valeurs nommées
 
 procedure EnvoyerNotification(
   const destinataire: String;

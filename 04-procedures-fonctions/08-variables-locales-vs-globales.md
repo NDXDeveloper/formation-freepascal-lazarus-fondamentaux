@@ -13,6 +13,7 @@ Une **variable globale** est déclarée dans la section principale du programme,
 ### Syntaxe
 
 ```pascal
+{$mode objfpc}{$H+}
 program Exemple;
 
 var
@@ -20,16 +21,16 @@ var
 
 procedure MaProcedure;
 begin
-  variableGlobale := 10;  // ✅ Accessible ici
+  variableGlobale := 10;  // Accessible ici
 end;
 
 function MaFonction: Integer;
 begin
-  Result := variableGlobale + 5;  // ✅ Accessible ici aussi
+  Result := variableGlobale + 5;  // Accessible ici aussi
 end;
 
 begin
-  variableGlobale := 100;  // ✅ Accessible dans le programme principal
+  variableGlobale := 100;  // Accessible dans le programme principal
   MaProcedure;
   WriteLn(MaFonction);
 end.
@@ -76,30 +77,30 @@ end.
 program Demonstration;
 
 var
-  globale: Integer;  // ┐
-                     // │ Accessible partout
-procedure Proc1;     // │
-var                  // │
-  locale1: Integer;  // │ Accessible uniquement dans Proc1
-begin                // │
-  globale := 5;      // ✅
-  locale1 := 10;     // ✅
-end;                 // ┘
+  globale: Integer;
 
-procedure Proc2;     // ┐
-var                  // │
-  locale2: Integer;  // │ Accessible uniquement dans Proc2
-begin                // │
-  globale := 15;     // ✅
-  // locale1 := 20;  // ❌ Erreur : locale1 n'existe pas ici
-  locale2 := 25;     // ✅
-end;                 // ┘
+procedure Proc1;
+var
+  locale1: Integer;
+begin
+  globale := 5;
+  locale1 := 10;
+end;
 
-begin                // ┐
-  globale := 100;    // ✅
-  // locale1 := 50;  // ❌ Erreur : locale1 n'existe pas ici
-  // locale2 := 75;  // ❌ Erreur : locale2 n'existe pas ici
-end.                 // ┘
+procedure Proc2;
+var
+  locale2: Integer;
+begin
+  globale := 15;
+  // locale1 := 20;  // Erreur : locale1 n'existe pas ici
+  locale2 := 25;
+end;
+
+begin
+  globale := 100;
+  // locale1 := 50;  // Erreur : locale1 n'existe pas ici
+  // locale2 := 75;  // Erreur : locale2 n'existe pas ici
+end.
 ```
 
 ## Exemples pratiques
@@ -459,6 +460,7 @@ Les variables globales ne devraient être utilisées que pour :
 ## Exemple complet : gestion d'un compte bancaire
 
 ```pascal
+{$mode objfpc}{$H+}
 program GestionCompte;
 
 // Variables globales (état du compte)

@@ -252,6 +252,8 @@ end.
 ### 3. Conversion de types
 
 ```pascal
+uses SysUtils;
+
 function VersTexte(n: Integer): String; overload;
 begin
   Result := IntToStr(n);
@@ -306,6 +308,8 @@ end.
 ### 5. Recherche dans différentes structures
 
 ```pascal
+uses StrUtils;
+
 function Rechercher(const texte: String; const motif: String): Integer; overload;
 begin
   Result := Pos(motif, texte);
@@ -334,7 +338,7 @@ var
   position: Integer;
 begin
   position := Rechercher('Bonjour le monde', 'monde');  // 12
-  position := Rechercher('Bonjour le monde', 'o', 5);   // 8
+  position := Rechercher('Bonjour le monde', 'o', 5);   // 5
   position := Rechercher('Bonjour', 'o');               // 2
 end.
 ```
@@ -421,9 +425,10 @@ end.
 ## Exemple complet : calculatrice
 
 ```pascal
+{$mode objfpc}{$H+}
 program Calculatrice;
 
-// Addition avec 2 nombres
+// overload : permet plusieurs fonctions avec le même nom mais des paramètres différents
 function Additionner(a, b: Integer): Integer; overload;
 begin
   Result := a + b;

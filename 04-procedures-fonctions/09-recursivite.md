@@ -387,6 +387,8 @@ end.
 ### 5. Conversion décimal vers binaire
 
 ```pascal
+uses SysUtils;
+
 function DecimalVersBinaire(n: Integer): String;
 begin
   if n = 0 then

@@ -86,21 +86,21 @@ program ComparaisonParametres;
 procedure ParValeur(texte: String);
 begin
   WriteLn('Par valeur : ', texte);
-  texte := 'Modifié';  // ✅ Possible mais n'affecte pas l'original
+  texte := 'Modifié';  // Possible mais n'affecte pas l'original
 end;
 
 // 2. Par référence (var)
 procedure ParReference(var texte: String);
 begin
   WriteLn('Par référence : ', texte);
-  texte := 'Modifié';  // ✅ Possible et affecte l'original
+  texte := 'Modifié';  // Possible et affecte l'original
 end;
 
 // 3. Constant (const)
 procedure ParConstant(const texte: String);
 begin
   WriteLn('Par constant : ', texte);
-  // texte := 'Modifié';  // ❌ ERREUR de compilation !
+  // texte := 'Modifié';  // ERREUR de compilation !
 end;
 
 var
@@ -232,6 +232,8 @@ end.
 ### 2. Recherche dans du texte
 
 ```pascal
+uses StrUtils;
+
 function CompterOccurrences(const texte: String; const motif: String): Integer;
 var
   position, compteur: Integer;
@@ -435,6 +437,7 @@ end;
 ## Exemple complet : système de gestion de messages
 
 ```pascal
+{$mode objfpc}{$H+}
 program GestionMessages;
 
 type

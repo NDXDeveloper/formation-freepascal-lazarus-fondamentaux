@@ -102,11 +102,12 @@ end;
 ### Exemple simple
 
 ```pascal
+{$mode objfpc}{$H+}
 program ExempleFonction;
 
 function ObtenirAge: Integer;
 begin
-  Result := 25;
+  Result := 25;  // Result nécessite {$mode objfpc} ; sinon utiliser NomFonction := valeur
 end;
 
 var
@@ -205,6 +206,7 @@ Une fonction s'appelle dans une **expression** ou une **affectation** car elle r
 ### Dans une affectation
 
 ```pascal
+{$mode objfpc}{$H+}
 program AppelFonction;
 
 function ObtenirNombre: Integer;
@@ -386,6 +388,7 @@ end;
 ## Exemple complet récapitulatif
 
 ```pascal
+{$mode objfpc}{$H+}
 program ExempleComplet;
 
 // Déclaration d'une procédure
