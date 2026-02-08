@@ -151,11 +151,11 @@ begin
   WriteLn('Valeur de nombre : ', nombre);  // Affiche : 42
 
   // Étape 2 : Faire pointer pNombre vers nombre
-  pNombre := @nombre;
+  pNombre := @nombre;  // @ donne l'adresse mémoire de la variable
   WriteLn('Adresse de nombre : ', PtrUInt(pNombre));  // Affiche l'adresse
 
   // Étape 3 : Accéder à la valeur via le pointeur
-  WriteLn('Valeur via pointeur : ', pNombre^);  // Affiche : 42
+  WriteLn('Valeur via pointeur : ', pNombre^);  // ^ déréférence le pointeur (accède à la valeur)
 
   // Étape 4 : Modifier via le pointeur
   pNombre^ := 100;

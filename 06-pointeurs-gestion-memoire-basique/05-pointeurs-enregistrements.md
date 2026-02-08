@@ -224,8 +224,9 @@ type
 ### Création d'une Liste Simple
 
 ```pascal
+program ListeSimple;
 type
-  PNoeud = ^TNoeud;
+  PNoeud = ^TNoeud;  // Déclaration anticipée : Pascal autorise ^Type avant que Type soit défini
   TNoeud = record
     valeur: Integer;
     suivant: PNoeud;
@@ -287,6 +288,8 @@ end.
 Créons une petite bibliothèque pour gérer une liste :
 
 ```pascal
+{$mode objfpc}{$H+}
+program ListeChainee;
 type
   PNoeud = ^TNoeud;
   TNoeud = record
@@ -421,13 +424,14 @@ end;
 ### Enregistrement avec Plusieurs Pointeurs
 
 ```pascal
+program RelationsPointeurs;
 type
   PPersonne = ^TPersonne;
   TPersonne = record
     nom: String;
     age: Integer;
-    conjoint: PPersonne;    // Pointeur vers le conjoint
-    meilleurAmi: PPersonne; // Pointeur vers l'ami
+    conjoint: PPersonne;      // Pointeur vers le conjoint
+    meilleurAmi: PPersonne;   // Pointeur vers l'ami
   end;
 
 var
@@ -464,11 +468,12 @@ end.
 ### Enregistrement avec Tableau Dynamique
 
 ```pascal
+program EtudiantNotes;
 type
   PEtudiant = ^TEtudiant;
   TEtudiant = record
     nom: String;
-    notes: array of Real;  // Tableau dynamique
+    notes: array of Real;    // Tableau dynamique
   end;
 
 var
@@ -559,6 +564,7 @@ end.
 ### 1. Carnet d'Adresses
 
 ```pascal
+program CarnetAdresses;
 type
   PContact = ^TContact;
   TContact = record
@@ -596,6 +602,20 @@ begin
   end;
 end;
 
+procedure LibererCarnet(var carnet: PContact);
+var
+  courant, suivant: PContact;
+begin
+  courant := carnet;
+  while courant <> nil do
+  begin
+    suivant := courant^.suivant;
+    Dispose(courant);
+    courant := suivant;
+  end;
+  carnet := nil;
+end;
+
 var
   contacts: PContact;
 begin
@@ -606,13 +626,15 @@ begin
 
   AfficherCarnet(contacts);
 
-  // Libération (à implémenter)
+  LibererCarnet(contacts);
 end.
 ```
 
 ### 2. File d'Attente (Queue)
 
 ```pascal
+{$mode objfpc}{$H+}
+program FileAttente;
 type
   PNoeud = ^TNoeud;
   TNoeud = record
@@ -666,17 +688,17 @@ begin
 end;
 
 var
-  file: TFile;
+  maFile: TFile;
 begin
-  file.premier := nil;
-  file.dernier := nil;
+  maFile.premier := nil;
+  maFile.dernier := nil;
 
-  Enfiler(file, 'Client 1');
-  Enfiler(file, 'Client 2');
-  Enfiler(file, 'Client 3');
+  Enfiler(maFile, 'Client 1');
+  Enfiler(maFile, 'Client 2');
+  Enfiler(maFile, 'Client 3');
 
-  WriteLn('Service : ', Defiler(file));  // Client 1
-  WriteLn('Service : ', Defiler(file));  // Client 2
+  WriteLn('Service : ', Defiler(maFile));  // Client 1
+  WriteLn('Service : ', Defiler(maFile));  // Client 2
 end.
 ```
 
@@ -685,6 +707,8 @@ end.
 ### Éviter les Fuites avec Try-Finally
 
 ```pascal
+uses SysUtils;
+
 type
   PPerson = ^TPerson;
   TPerson = record

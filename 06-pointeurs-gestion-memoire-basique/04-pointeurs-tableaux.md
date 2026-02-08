@@ -37,9 +37,13 @@ end;
 Vous pouvez créer un pointeur qui pointe vers un tableau complet :
 
 ```pascal
+program PointeurVersTableau;
+type
+  TTableau5 = array[1..5] of Integer;
+  PTableau5 = ^TTableau5;
 var
-  nombres: array[1..5] of Integer;
-  pTableau: ^array[1..5] of Integer;
+  nombres: TTableau5;
+  pTableau: PTableau5;
   i: Integer;
 begin
   // Initialisation du tableau
@@ -56,7 +60,7 @@ begin
   // Modification via le pointeur
   pTableau^[3] := 999;
   WriteLn('Element 3 modifié : ', nombres[3]);  // Affiche 999
-end;
+end.
 ```
 
 ### Visualisation en Mémoire
@@ -112,6 +116,7 @@ end;
 **Note avancée :** En Pascal, vous pouvez parcourir un tableau en utilisant l'arithmétique de pointeurs, mais cette technique est plus avancée et moins courante que dans d'autres langages.
 
 ```pascal
+program ParcoursInc;
 var
   nombres: array[1..5] of Integer;
   p: ^Integer;
@@ -133,7 +138,7 @@ begin
 
   Inc(p);  // p pointe vers nombres[3]
   WriteLn('Troisième : ', p^);
-end;
+end.
 ```
 
 **Attention :** L'arithmétique de pointeurs est dangereuse car elle peut sortir des limites du tableau. Utilisez-la avec précaution !
@@ -145,6 +150,7 @@ end;
 Vous pouvez créer un tableau dynamiquement avec `New` :
 
 ```pascal
+program TableauDynamiqueNew;
 type
   TTableau5 = array[1..5] of Integer;
   PTableau5 = ^TTableau5;
@@ -167,7 +173,7 @@ begin
   // Libération
   Dispose(pTab);
   pTab := nil;
-end;
+end.
 ```
 
 ### Limitation de cette Approche
@@ -213,6 +219,7 @@ end;
 ### Avantages des array of
 
 ```pascal
+program ArrayOfRedim;
 var
   donnees: array of Integer;
 begin
@@ -227,7 +234,7 @@ begin
   WriteLn('Premier : ', donnees[0]);   // 100
   WriteLn('Dernier : ', donnees[9]);   // 200
   WriteLn('Taille : ', Length(donnees));  // 10
-end;
+end.
 ```
 
 ## Pointeurs et array of
@@ -296,6 +303,7 @@ end;
 ### Matrice Dynamique 2D
 
 ```pascal
+program MatriceDynamique;
 type
   TMatrice = array of array of Integer;
 
@@ -323,7 +331,7 @@ begin
   end;
 
   // Libération automatique en fin de scope
-end;
+end.
 ```
 
 **Résultat :**
@@ -338,6 +346,8 @@ end;
 ### Tableau Dynamique en Paramètre
 
 ```pascal
+program PassageTableau;
+
 procedure AfficherTableau(const tab: array of Integer);
 var
   i: Integer;
@@ -361,7 +371,7 @@ begin
 
   InitialiserTableau(nombres, 100);
   AfficherTableau(nombres);
-end;
+end.
 ```
 
 **Avantages :**
@@ -408,6 +418,7 @@ end;
 ### 1. Redimensionnement Dynamique
 
 ```pascal
+program Redimensionnement;
 var
   data: array of Integer;
   ancienneTaille, nouvelleTaille: Integer;
@@ -427,7 +438,7 @@ begin
   WriteLn('Nouvelle taille : ', Length(data));
   WriteLn('Premier élément conservé : ', data[0]);  // 10
   WriteLn('Dernier ancien conservé : ', data[4]);   // 50
-end;
+end.
 ```
 
 ### 2. Copie de Tableau
@@ -458,6 +469,9 @@ end;
 Créer un tableau où chaque élément est un pointeur :
 
 ```pascal
+program TableauDePointeurs;
+uses SysUtils;
+
 type
   PPerson = ^TPerson;
   TPerson = record
@@ -487,7 +501,7 @@ begin
     Dispose(personnes[i]);
     personnes[i] := nil;
   end;
-end;
+end.
 ```
 
 ## Comparaison des Approches

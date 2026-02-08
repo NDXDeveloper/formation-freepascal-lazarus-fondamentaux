@@ -309,9 +309,9 @@ begin
   if racine = nil then
     Exit;
 
-  Write(racine^.donnee, ' ');           // 1. Visiter la racine
-  ParcoursPreordre(racine^.gauche);     // 2. Parcourir gauche
-  ParcoursPreordre(racine^.droite);     // 3. Parcourir droite
+  Write(racine^.donnee, ' ');          // 1. Visiter la racine
+  ParcoursPreordre(racine^.gauche);    // 2. Parcourir gauche
+  ParcoursPreordre(racine^.droite);    // 3. Parcourir droite
 end;
 ```
 
@@ -338,9 +338,9 @@ begin
   if racine = nil then
     Exit;
 
-  ParcoursInfixe(racine^.gauche);       // 1. Parcourir gauche
-  Write(racine^.donnee, ' ');           // 2. Visiter la racine
-  ParcoursInfixe(racine^.droite);       // 3. Parcourir droite
+  ParcoursInfixe(racine^.gauche);      // 1. Parcourir gauche
+  Write(racine^.donnee, ' ');          // 2. Visiter la racine
+  ParcoursInfixe(racine^.droite);      // 3. Parcourir droite
 end;
 ```
 
@@ -367,9 +367,9 @@ begin
   if racine = nil then
     Exit;
 
-  ParcoursPostordre(racine^.gauche);    // 1. Parcourir gauche
-  ParcoursPostordre(racine^.droite);    // 2. Parcourir droite
-  Write(racine^.donnee, ' ');           // 3. Visiter la racine
+  ParcoursPostordre(racine^.gauche);   // 1. Parcourir gauche
+  ParcoursPostordre(racine^.droite);   // 2. Parcourir droite
+  Write(racine^.donnee, ' ');          // 3. Visiter la racine
 end;
 ```
 
@@ -393,7 +393,7 @@ Résultat : 20 40 30 70 50
 ```pascal
 procedure ParcoursLargeur(racine: PNoeud);
 var
-  file: array[1..100] of PNoeud;
+  fileAttente: array[1..100] of PNoeud;
   debut, fin: Integer;
   courant: PNoeud;
 begin
@@ -403,11 +403,11 @@ begin
   // Initialiser la file
   debut := 1;
   fin := 1;
-  file[fin] := racine;
+  fileAttente[fin] := racine;
 
   while debut <= fin do
   begin
-    courant := file[debut];
+    courant := fileAttente[debut];
     Inc(debut);
 
     Write(courant^.donnee, ' ');
@@ -415,13 +415,13 @@ begin
     if courant^.gauche <> nil then
     begin
       Inc(fin);
-      file[fin] := courant^.gauche;
+      fileAttente[fin] := courant^.gauche;
     end;
 
     if courant^.droite <> nil then
     begin
       Inc(fin);
-      file[fin] := courant^.droite;
+      fileAttente[fin] := courant^.droite;
     end;
   end;
 end;
@@ -478,7 +478,14 @@ begin
     WriteLn('30 trouvé')
   else
     WriteLn('30 non trouvé');
-end;
+
+  if Rechercher(arbre, 99) then
+    WriteLn('99 trouvé')
+  else
+    WriteLn('99 non trouvé');
+
+  LibererArbre(arbre);
+end.
 ```
 
 ### Recherche Itérative
@@ -656,9 +663,9 @@ end;
 ```
 Avant :     50           Après :    50
            /  \                    /  \
-          30  70                  40  70
-         / \    ← Supprimer 30      \
-        20 40                       20
+          30  70                  20  70
+         /      ← Supprimer 30
+        20
 ```
 
 ### Cas 3 : Noeud avec Deux Enfants
@@ -789,7 +796,9 @@ begin
   Inserer(arbre, 40);
 
   AfficherArbre(arbre, 0);
-end;
+
+  LibererArbre(arbre);
+end.
 ```
 
 **Résultat :**
@@ -804,6 +813,7 @@ end;
 ## Programme Complet : Gestionnaire d'ABR
 
 ```pascal
+{$mode objfpc}{$H+}
 program GestionnaireABR;
 
 type
@@ -841,21 +851,24 @@ begin
   if racine = nil then
     Exit;
 
-  ParcoursInfixe(racine^.gauche);
-  Write(racine^.donnee, ' ');
-  ParcoursInfixe(racine^.droite);
+  ParcoursInfixe(racine^.gauche);      // 1. Parcourir gauche
+  Write(racine^.donnee, ' ');          // 2. Visiter la racine
+  ParcoursInfixe(racine^.droite);      // 3. Parcourir droite
 end;
 
 function Rechercher(racine: PNoeud; valeur: Integer): Boolean;
 begin
+  // Cas de base : arbre vide
   if racine = nil then
   begin
     Result := False;
     Exit;
   end;
 
+  // Cas de base : valeur trouvée
   if racine^.donnee = valeur then
     Result := True
+  // Cas récursif : chercher dans le bon sous-arbre
   else if valeur < racine^.donnee then
     Result := Rechercher(racine^.gauche, valeur)
   else

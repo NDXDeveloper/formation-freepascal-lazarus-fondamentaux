@@ -505,12 +505,11 @@ var
   AllocCount: Integer = 0;
   FreeCount: Integer = 0;
 
-function DebugNew: Pointer;
+procedure DebugNew(var p: Pointer; taille: Integer);
 begin
-  New(Result);
+  GetMem(p, taille);
   Inc(AllocCount);
-  WriteLn('New #', AllocCount, ' à ', PtrUInt(Result));
-  Result := p;
+  WriteLn('New #', AllocCount, ' à ', PtrUInt(p));
 end;
 
 procedure DebugDispose(var p: Pointer);
@@ -519,7 +518,7 @@ begin
   begin
     Inc(FreeCount);
     WriteLn('Dispose #', FreeCount, ' de ', PtrUInt(p));
-    Dispose(p);
+    FreeMem(p);
     p := nil;
   end;
 end;
@@ -644,6 +643,8 @@ end;
 ### Pattern 2 : Sentinelles
 
 ```pascal
+{$mode objfpc}{$H+}
+program SentinellesDebug;
 type
   PNoeudDebug = ^TNoeudDebug;
   TNoeudDebug = record
@@ -662,19 +663,75 @@ begin
   Result^.magicFin := $DEADBEEF;
 end;
 
-procedure VerifierNoeud(p: PNoeudDebug);
+procedure VerifierNoeud(p: PNoeudDebug; id: Integer);
 begin
   if p^.magicDebut <> $DEADBEEF then
-    WriteLn('CORRUPTION : Début du noeud écrasé !');
+    WriteLn('CORRUPTION : Début du noeud #', id, ' écrasé !')
+  else
+    WriteLn('Noeud #', id, ' début OK');
 
   if p^.magicFin <> $DEADBEEF then
-    WriteLn('CORRUPTION : Fin du noeud écrasée !');
+    WriteLn('CORRUPTION : Fin du noeud #', id, ' écrasée !')
+  else
+    WriteLn('Noeud #', id, ' fin OK');
 end;
+
+procedure LibererListe(var liste: PNoeudDebug);
+var
+  courant, suivant: PNoeudDebug;
+begin
+  courant := liste;
+  while courant <> nil do
+  begin
+    suivant := courant^.suivant;
+    Dispose(courant);
+    courant := suivant;
+  end;
+  liste := nil;
+end;
+
+var
+  n1, n2, n3: PNoeudDebug;
+begin
+  WriteLn('=== Test des sentinelles de débogage ===');
+
+  // Créer des noeuds avec sentinelles
+  n1 := CreerNoeudDebug(10);
+  n2 := CreerNoeudDebug(20);
+  n3 := CreerNoeudDebug(30);
+  n1^.suivant := n2;
+  n2^.suivant := n3;
+
+  // Vérifier l'intégrité
+  WriteLn('--- Vérification après création ---');
+  VerifierNoeud(n1, 1);
+  VerifierNoeud(n2, 2);
+  VerifierNoeud(n3, 3);
+
+  // Simuler une corruption (en réalité, on ne le fait pas ici)
+  WriteLn('--- Données des noeuds ---');
+  WriteLn('Noeud 1 : ', n1^.donnee);
+  WriteLn('Noeud 2 : ', n2^.donnee);
+  WriteLn('Noeud 3 : ', n3^.donnee);
+
+  LibererListe(n1);
+  WriteLn('Mémoire libérée');
+end.
 ```
 
 ### Pattern 3 : Mode Verbeux
 
 ```pascal
+{$mode objfpc}{$H+}
+program ModeVerbeux;
+uses SysUtils;
+type
+  PNoeud = ^TNoeud;
+  TNoeud = record
+    donnee: Integer;
+    suivant: PNoeud;
+  end;
+
 const
   DEBUG_MODE = True;  // Mettre à False en production
 
@@ -682,6 +739,27 @@ procedure DebugLog(const msg: String);
 begin
   if DEBUG_MODE then
     WriteLn('[DEBUG] ', msg);
+end;
+
+procedure InsererFin(var liste: PNoeud; valeur: Integer);
+var
+  nouveau, courant: PNoeud;
+begin
+  DebugLog('InsererFin(' + IntToStr(valeur) + ')');
+  New(nouveau);
+  nouveau^.donnee := valeur;
+  nouveau^.suivant := nil;
+
+  if liste = nil then
+    liste := nouveau
+  else
+  begin
+    courant := liste;
+    while courant^.suivant <> nil do
+      courant := courant^.suivant;
+    courant^.suivant := nouveau;
+  end;
+  DebugLog('  -> Insertion réussie');
 end;
 
 procedure TraiterListe(liste: PNoeud);
@@ -703,6 +781,41 @@ begin
 
   DebugLog('Fin traitement, ' + IntToStr(compteur) + ' noeuds traités');
 end;
+
+procedure LibererListe(var liste: PNoeud);
+var
+  courant, suivant: PNoeud;
+  compteur: Integer;
+begin
+  DebugLog('Début libération liste');
+  courant := liste;
+  compteur := 0;
+
+  while courant <> nil do
+  begin
+    suivant := courant^.suivant;
+    Inc(compteur);
+    DebugLog('  Libération noeud #' + IntToStr(compteur));
+    Dispose(courant);
+    courant := suivant;
+  end;
+  liste := nil;
+  DebugLog('Liste libérée (' + IntToStr(compteur) + ' noeuds)');
+end;
+
+var
+  maListe: PNoeud;
+begin
+  maListe := nil;
+
+  InsererFin(maListe, 10);
+  InsererFin(maListe, 20);
+  InsererFin(maListe, 30);
+
+  TraiterListe(maListe);
+
+  LibererListe(maListe);
+end.
 ```
 
 ## Outils Complémentaires

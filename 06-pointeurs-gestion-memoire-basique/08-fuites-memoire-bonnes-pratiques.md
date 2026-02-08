@@ -195,6 +195,7 @@ end;
 **Deux structures se pointent mutuellement**
 
 ```pascal
+program ReferencesCirculaires;
 type
   PA = ^TA;
   PB = ^TB;
@@ -209,7 +210,6 @@ type
     refA: PA;
   end;
 
-// ✗ PROBLÈME POTENTIEL
 var
   a: PA;
   b: PB;
@@ -217,18 +217,22 @@ begin
   New(a);
   New(b);
 
+  a^.data := 1;
+  b^.data := 2;
+
+  // PROBLEME POTENTIEL : références circulaires
   a^.refB := b;  // A pointe vers B
   b^.refA := a;  // B pointe vers A
 
-  // Comment libérer correctement ?
-  // Dispose(a) d'abord ? Dispose(b) d'abord ?
-  // Il faut casser le cycle avant !
+  WriteLn('A.data = ', a^.data, ', A.refB^.data = ', a^.refB^.data);
+  WriteLn('B.data = ', b^.data, ', B.refA^.data = ', b^.refA^.data);
 
-  // ✓ SOLUTION
-  a^.refB := nil;  // Casser le cycle
+  // SOLUTION : casser le cycle avant de libérer
+  a^.refB := nil;  // Casser la référence circulaire
   Dispose(a);
   Dispose(b);
-end;
+  WriteLn('Mémoire libérée correctement (cycle cassé)');
+end.
 ```
 
 ## Détection des Fuites Mémoire
@@ -284,17 +288,15 @@ FreePascal inclut un outil de détection de fuites intégré :
 ```pascal
 program TestFuite;
 
-{$IFDEF DEBUG}
-uses
-  HeapTrc;  // Inclure cette unité en mode Debug
-{$ENDIF}
-
 var
   p: ^Integer;
 begin
   New(p);
   p^ := 42;
+  WriteLn('Valeur : ', p^);
   // Oubli volontaire de Dispose(p)
+  // Compiler avec : fpc -gh 08-fuite-detection.pas
+  // pour voir le rapport de fuites mémoire
 end.
 ```
 
@@ -445,6 +447,8 @@ end;
 **Créer des fonctions de création/destruction**
 
 ```pascal
+{$mode objfpc}{$H+}
+program EncapsulationMemoire;
 type
   PPerson = ^TPerson;
   TPerson = record
@@ -474,11 +478,15 @@ var
 begin
   pers := CreerPersonne('Alice', 30);
   try
-    // ... utilisation ...
+    WriteLn('Nom : ', pers^.nom);
+    WriteLn('Age : ', pers^.age);
   finally
     DetruirePersonne(pers);
   end;
-end;
+
+  if pers = nil then
+    WriteLn('Pointeur remis à nil après destruction');
+end.
 ```
 
 ### 6. Documentation de l'Ownership
@@ -647,6 +655,8 @@ valgrind --leak-check=full ./programme
 Pour partager des ressources :
 
 ```pascal
+{$mode objfpc}{$H+}
+program CompteurReferences;
 type
   PDonneePartagee = ^TDonneePartagee;
   TDonneePartagee = record
@@ -673,11 +683,13 @@ begin
   if p <> nil then
   begin
     Dec(p^.compteurRef);
+    WriteLn('  Compteur après libération : ', p^.compteurRef);
     if p^.compteurRef <= 0 then
     begin
+      WriteLn('  -> Mémoire effectivement libérée');
       Dispose(p);
-      p := nil;
     end;
+    p := nil;
   end;
 end;
 
@@ -686,11 +698,18 @@ var
   original, copie: PDonneePartagee;
 begin
   original := Creer;           // compteur = 1
-  copie := Acquerir(original); // compteur = 2
+  original^.donnees := 'Données partagées';
+  WriteLn('Création : compteur = ', original^.compteurRef);
 
+  copie := Acquerir(original); // compteur = 2
+  WriteLn('Acquisition : compteur = ', original^.compteurRef);
+
+  WriteLn('Libération copie :');
   Liberer(copie);    // compteur = 1
+
+  WriteLn('Libération original :');
   Liberer(original); // compteur = 0, libération effective
-end;
+end.
 ```
 
 ### 3. Pool de Mémoire

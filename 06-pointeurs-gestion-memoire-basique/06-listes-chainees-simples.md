@@ -238,6 +238,33 @@ end;
 ### Affichage Complet
 
 ```pascal
+program AfficherListeDemo;
+type
+  PNoeud = ^TNoeud;
+  TNoeud = record
+    donnee: Integer;
+    suivant: PNoeud;
+  end;
+
+procedure InsererFin(var liste: PNoeud; valeur: Integer);
+var
+  nouveau, courant: PNoeud;
+begin
+  New(nouveau);
+  nouveau^.donnee := valeur;
+  nouveau^.suivant := nil;
+
+  if liste = nil then
+    liste := nouveau
+  else
+  begin
+    courant := liste;
+    while courant^.suivant <> nil do
+      courant := courant^.suivant;
+    courant^.suivant := nouveau;
+  end;
+end;
+
 procedure AfficherListe(liste: PNoeud);
 var
   courant: PNoeud;
@@ -260,6 +287,20 @@ begin
   WriteLn;
 end;
 
+procedure LibererListe(var liste: PNoeud);
+var
+  courant, suivant: PNoeud;
+begin
+  courant := liste;
+  while courant <> nil do
+  begin
+    suivant := courant^.suivant;
+    Dispose(courant);
+    courant := suivant;
+  end;
+  liste := nil;
+end;
+
 var
   maListe: PNoeud;
 begin
@@ -269,12 +310,63 @@ begin
   InsererFin(maListe, 30);
 
   AfficherListe(maListe);  // Affiche : Liste : 10 -> 20 -> 30
-end;
+
+  LibererListe(maListe);
+end.
 ```
 
 ### Parcours avec Traitement
 
 ```pascal
+program DoublerValeursDemo;
+type
+  PNoeud = ^TNoeud;
+  TNoeud = record
+    donnee: Integer;
+    suivant: PNoeud;
+  end;
+
+procedure InsererFin(var liste: PNoeud; valeur: Integer);
+var
+  nouveau, courant: PNoeud;
+begin
+  New(nouveau);
+  nouveau^.donnee := valeur;
+  nouveau^.suivant := nil;
+
+  if liste = nil then
+    liste := nouveau
+  else
+  begin
+    courant := liste;
+    while courant^.suivant <> nil do
+      courant := courant^.suivant;
+    courant^.suivant := nouveau;
+  end;
+end;
+
+procedure AfficherListe(liste: PNoeud);
+var
+  courant: PNoeud;
+begin
+  if liste = nil then
+  begin
+    WriteLn('Liste vide');
+    Exit;
+  end;
+
+  courant := liste;
+  Write('Liste : ');
+  while courant <> nil do
+  begin
+    Write(courant^.donnee);
+    if courant^.suivant <> nil then
+      Write(' -> ');
+    courant := courant^.suivant;
+  end;
+  WriteLn;
+end;
+
 procedure DoublerValeurs(liste: PNoeud);
 var
   courant: PNoeud;
@@ -285,6 +377,20 @@ begin
     courant^.donnee := courant^.donnee * 2;
     courant := courant^.suivant;
   end;
+end;
+
+procedure LibererListe(var liste: PNoeud);
+var
+  courant, suivant: PNoeud;
+begin
+  courant := liste;
+  while courant <> nil do
+  begin
+    suivant := courant^.suivant;
+    Dispose(courant);
+    courant := suivant;
+  end;
+  liste := nil;
 end;
 
 var
@@ -298,7 +404,9 @@ begin
   AfficherListe(maListe);   // 5 -> 10 -> 15
   DoublerValeurs(maListe);
   AfficherListe(maListe);   // 10 -> 20 -> 30
-end;
+
+  LibererListe(maListe);
+end.
 ```
 
 ## Recherche dans une Liste
@@ -306,6 +414,34 @@ end;
 ### Rechercher une Valeur
 
 ```pascal
+{$mode objfpc}{$H+}
+program RechercherDemo;
+type
+  PNoeud = ^TNoeud;
+  TNoeud = record
+    donnee: Integer;
+    suivant: PNoeud;
+  end;
+
+procedure InsererFin(var liste: PNoeud; valeur: Integer);
+var
+  nouveau, courant: PNoeud;
+begin
+  New(nouveau);
+  nouveau^.donnee := valeur;
+  nouveau^.suivant := nil;
+
+  if liste = nil then
+    liste := nouveau
+  else
+  begin
+    courant := liste;
+    while courant^.suivant <> nil do
+      courant := courant^.suivant;
+    courant^.suivant := nouveau;
+  end;
+end;
+
 function Rechercher(liste: PNoeud; valeur: Integer): Boolean;
 var
   courant: PNoeud;
@@ -323,6 +459,20 @@ begin
   Result := False;
 end;
 
+procedure LibererListe(var liste: PNoeud);
+var
+  courant, suivant: PNoeud;
+begin
+  courant := liste;
+  while courant <> nil do
+  begin
+    suivant := courant^.suivant;
+    Dispose(courant);
+    courant := suivant;
+  end;
+  liste := nil;
+end;
+
 var
   maListe: PNoeud;
 begin
@@ -335,12 +485,42 @@ begin
     WriteLn('20 trouvé')
   else
     WriteLn('20 non trouvé');
-end;
+
+  LibererListe(maListe);
+end.
 ```
 
 ### Trouver la Position
 
 ```pascal
+{$mode objfpc}{$H+}
+program TrouverPositionDemo;
+type
+  PNoeud = ^TNoeud;
+  TNoeud = record
+    donnee: Integer;
+    suivant: PNoeud;
+  end;
+
+procedure InsererFin(var liste: PNoeud; valeur: Integer);
+var
+  nouveau, courant: PNoeud;
+begin
+  New(nouveau);
+  nouveau^.donnee := valeur;
+  nouveau^.suivant := nil;
+
+  if liste = nil then
+    liste := nouveau
+  else
+  begin
+    courant := liste;
+    while courant^.suivant <> nil do
+      courant := courant^.suivant;
+    courant^.suivant := nouveau;
+  end;
+end;
+
 function TrouverPosition(liste: PNoeud; valeur: Integer): Integer;
 var
   courant: PNoeud;
@@ -363,6 +543,20 @@ begin
   Result := -1;  // Non trouvé
 end;
 
+procedure LibererListe(var liste: PNoeud);
+var
+  courant, suivant: PNoeud;
+begin
+  courant := liste;
+  while courant <> nil do
+  begin
+    suivant := courant^.suivant;
+    Dispose(courant);
+    courant := suivant;
+  end;
+  liste := nil;
+end;
+
 var
   maListe: PNoeud;
   pos: Integer;
@@ -377,7 +571,9 @@ begin
     WriteLn('20 trouvé à la position ', pos)
   else
     WriteLn('20 non trouvé');
-end;
+
+  LibererListe(maListe);
+end.
 ```
 
 ### Obtenir un Élément par Position
@@ -416,6 +612,55 @@ end;
 ### Supprimer le Premier Élément
 
 ```pascal
+program SupprimerDebutDemo;
+type
+  PNoeud = ^TNoeud;
+  TNoeud = record
+    donnee: Integer;
+    suivant: PNoeud;
+  end;
+
+procedure InsererFin(var liste: PNoeud; valeur: Integer);
+var
+  nouveau, courant: PNoeud;
+begin
+  New(nouveau);
+  nouveau^.donnee := valeur;
+  nouveau^.suivant := nil;
+
+  if liste = nil then
+    liste := nouveau
+  else
+  begin
+    courant := liste;
+    while courant^.suivant <> nil do
+      courant := courant^.suivant;
+    courant^.suivant := nouveau;
+  end;
+end;
+
+procedure AfficherListe(liste: PNoeud);
+var
+  courant: PNoeud;
+begin
+  if liste = nil then
+  begin
+    WriteLn('Liste vide');
+    Exit;
+  end;
+
+  courant := liste;
+  Write('Liste : ');
+  while courant <> nil do
+  begin
+    Write(courant^.donnee);
+    if courant^.suivant <> nil then
+      Write(' -> ');
+    courant := courant^.suivant;
+  end;
+  WriteLn;
+end;
+
 procedure SupprimerDebut(var liste: PNoeud);
 var
   temp: PNoeud;
@@ -426,14 +671,23 @@ begin
     Exit;
   end;
 
-  // Sauvegarder le premier
-  temp := liste;
+  temp := liste;              // Sauvegarder le premier
+  liste := liste^.suivant;    // Le deuxième devient le premier
+  Dispose(temp);              // Libérer l'ancien premier
+end;
 
-  // Le deuxième devient le premier
-  liste := liste^.suivant;
-
-  // Libérer l'ancien premier
-  Dispose(temp);
+procedure LibererListe(var liste: PNoeud);
+var
+  courant, suivant: PNoeud;
+begin
+  courant := liste;
+  while courant <> nil do
+  begin
+    suivant := courant^.suivant;
+    Dispose(courant);
+    courant := suivant;
+  end;
+  liste := nil;
 end;
 
 var
@@ -447,7 +701,9 @@ begin
   AfficherListe(maListe);  // 10 -> 20 -> 30
   SupprimerDebut(maListe);
   AfficherListe(maListe);  // 20 -> 30
-end;
+
+  LibererListe(maListe);
+end.
 ```
 
 **Visualisation :**
@@ -506,6 +762,55 @@ end;
 ### Supprimer par Valeur
 
 ```pascal
+program SupprimerValeurDemo;
+type
+  PNoeud = ^TNoeud;
+  TNoeud = record
+    donnee: Integer;
+    suivant: PNoeud;
+  end;
+
+procedure InsererFin(var liste: PNoeud; valeur: Integer);
+var
+  nouveau, courant: PNoeud;
+begin
+  New(nouveau);
+  nouveau^.donnee := valeur;
+  nouveau^.suivant := nil;
+
+  if liste = nil then
+    liste := nouveau
+  else
+  begin
+    courant := liste;
+    while courant^.suivant <> nil do
+      courant := courant^.suivant;
+    courant^.suivant := nouveau;
+  end;
+end;
+
+procedure AfficherListe(liste: PNoeud);
+var
+  courant: PNoeud;
+begin
+  if liste = nil then
+  begin
+    WriteLn('Liste vide');
+    Exit;
+  end;
+
+  courant := liste;
+  Write('Liste : ');
+  while courant <> nil do
+  begin
+    Write(courant^.donnee);
+    if courant^.suivant <> nil then
+      Write(' -> ');
+    courant := courant^.suivant;
+  end;
+  WriteLn;
+end;
+
 procedure SupprimerValeur(var liste: PNoeud; valeur: Integer);
 var
   courant, precedent: PNoeud;
@@ -513,7 +818,7 @@ begin
   if liste = nil then
     Exit;
 
-  // Cas 1 : le premier élément contient la valeur
+  // Cas 1 : suppression en tête
   if liste^.donnee = valeur then
   begin
     courant := liste;
@@ -522,7 +827,7 @@ begin
     Exit;
   end;
 
-  // Cas 2 : chercher dans le reste de la liste
+  // Cas 2 : suppression ailleurs
   precedent := liste;
   courant := liste^.suivant;
 
@@ -541,6 +846,20 @@ begin
   WriteLn('Valeur non trouvée');
 end;
 
+procedure LibererListe(var liste: PNoeud);
+var
+  courant, suivant: PNoeud;
+begin
+  courant := liste;
+  while courant <> nil do
+  begin
+    suivant := courant^.suivant;
+    Dispose(courant);
+    courant := suivant;
+  end;
+  liste := nil;
+end;
+
 var
   maListe: PNoeud;
 begin
@@ -552,7 +871,9 @@ begin
   AfficherListe(maListe);        // 10 -> 20 -> 30
   SupprimerValeur(maListe, 20);
   AfficherListe(maListe);        // 10 -> 30
-end;
+
+  LibererListe(maListe);
+end.
 ```
 
 ## Opérations Utiles
@@ -560,6 +881,34 @@ end;
 ### Compter les Éléments
 
 ```pascal
+{$mode objfpc}{$H+}
+program CompterElementsDemo;
+type
+  PNoeud = ^TNoeud;
+  TNoeud = record
+    donnee: Integer;
+    suivant: PNoeud;
+  end;
+
+procedure InsererFin(var liste: PNoeud; valeur: Integer);
+var
+  nouveau, courant: PNoeud;
+begin
+  New(nouveau);
+  nouveau^.donnee := valeur;
+  nouveau^.suivant := nil;
+
+  if liste = nil then
+    liste := nouveau
+  else
+  begin
+    courant := liste;
+    while courant^.suivant <> nil do
+      courant := courant^.suivant;
+    courant^.suivant := nouveau;
+  end;
+end;
+
 function CompterElements(liste: PNoeud): Integer;
 var
   courant: PNoeud;
@@ -577,6 +926,20 @@ begin
   Result := compte;
 end;
 
+procedure LibererListe(var liste: PNoeud);
+var
+  courant, suivant: PNoeud;
+begin
+  courant := liste;
+  while courant <> nil do
+  begin
+    suivant := courant^.suivant;
+    Dispose(courant);
+    courant := suivant;
+  end;
+  liste := nil;
+end;
+
 var
   maListe: PNoeud;
 begin
@@ -586,7 +949,9 @@ begin
   InsererFin(maListe, 30);
 
   WriteLn('Nombre d''éléments : ', CompterElements(maListe));  // 3
-end;
+
+  LibererListe(maListe);
+end.
 ```
 
 ### Vérifier si la Liste est Vide
@@ -684,6 +1049,55 @@ end;
 **Essentiel :** Ne jamais oublier de libérer toute la liste !
 
 ```pascal
+program LibererListeDemo;
+type
+  PNoeud = ^TNoeud;
+  TNoeud = record
+    donnee: Integer;
+    suivant: PNoeud;
+  end;
+
+procedure InsererFin(var liste: PNoeud; valeur: Integer);
+var
+  nouveau, courant: PNoeud;
+begin
+  New(nouveau);
+  nouveau^.donnee := valeur;
+  nouveau^.suivant := nil;
+
+  if liste = nil then
+    liste := nouveau
+  else
+  begin
+    courant := liste;
+    while courant^.suivant <> nil do
+      courant := courant^.suivant;
+    courant^.suivant := nouveau;
+  end;
+end;
+
+procedure AfficherListe(liste: PNoeud);
+var
+  courant: PNoeud;
+begin
+  if liste = nil then
+  begin
+    WriteLn('Liste vide');
+    Exit;
+  end;
+
+  courant := liste;
+  Write('Liste : ');
+  while courant <> nil do
+  begin
+    Write(courant^.donnee);
+    if courant^.suivant <> nil then
+      Write(' -> ');
+    courant := courant^.suivant;
+  end;
+  WriteLn;
+end;
+
 procedure LibererListe(var liste: PNoeud);
 var
   courant, suivant: PNoeud;
@@ -733,6 +1147,55 @@ Dispose(courant), puis courant := suivant
 ### Inverser une Liste
 
 ```pascal
+program InverserListeDemo;
+type
+  PNoeud = ^TNoeud;
+  TNoeud = record
+    donnee: Integer;
+    suivant: PNoeud;
+  end;
+
+procedure InsererFin(var liste: PNoeud; valeur: Integer);
+var
+  nouveau, courant: PNoeud;
+begin
+  New(nouveau);
+  nouveau^.donnee := valeur;
+  nouveau^.suivant := nil;
+
+  if liste = nil then
+    liste := nouveau
+  else
+  begin
+    courant := liste;
+    while courant^.suivant <> nil do
+      courant := courant^.suivant;
+    courant^.suivant := nouveau;
+  end;
+end;
+
+procedure AfficherListe(liste: PNoeud);
+var
+  courant: PNoeud;
+begin
+  if liste = nil then
+  begin
+    WriteLn('Liste vide');
+    Exit;
+  end;
+
+  courant := liste;
+  Write('Liste : ');
+  while courant <> nil do
+  begin
+    Write(courant^.donnee);
+    if courant^.suivant <> nil then
+      Write(' -> ');
+    courant := courant^.suivant;
+  end;
+  WriteLn;
+end;
+
 procedure InverserListe(var liste: PNoeud);
 var
   precedent, courant, suivant: PNoeud;
@@ -745,13 +1208,27 @@ begin
 
   while courant <> nil do
   begin
-    suivant := courant^.suivant;   // Sauvegarder le suivant
-    courant^.suivant := precedent; // Inverser le lien
-    precedent := courant;          // Avancer
+    suivant := courant^.suivant;    // Sauvegarder le suivant
+    courant^.suivant := precedent;   // Inverser le lien
+    precedent := courant;            // Avancer
     courant := suivant;
   end;
 
   liste := precedent;  // Le dernier devient le premier
+end;
+
+procedure LibererListe(var liste: PNoeud);
+var
+  courant, suivant: PNoeud;
+begin
+  courant := liste;
+  while courant <> nil do
+  begin
+    suivant := courant^.suivant;
+    Dispose(courant);
+    courant := suivant;
+  end;
+  liste := nil;
 end;
 
 var
@@ -765,12 +1242,64 @@ begin
   AfficherListe(maListe);   // 10 -> 20 -> 30
   InverserListe(maListe);
   AfficherListe(maListe);   // 30 -> 20 -> 10
-end;
+
+  LibererListe(maListe);
+end.
 ```
 
 ### Copier une Liste
 
 ```pascal
+{$mode objfpc}{$H+}
+program CopierListeDemo;
+type
+  PNoeud = ^TNoeud;
+  TNoeud = record
+    donnee: Integer;
+    suivant: PNoeud;
+  end;
+
+procedure InsererFin(var liste: PNoeud; valeur: Integer);
+var
+  nouveau, courant: PNoeud;
+begin
+  New(nouveau);
+  nouveau^.donnee := valeur;
+  nouveau^.suivant := nil;
+
+  if liste = nil then
+    liste := nouveau
+  else
+  begin
+    courant := liste;
+    while courant^.suivant <> nil do
+      courant := courant^.suivant;
+    courant^.suivant := nouveau;
+  end;
+end;
+
+procedure AfficherListe(liste: PNoeud);
+var
+  courant: PNoeud;
+begin
+  if liste = nil then
+  begin
+    WriteLn('Liste vide');
+    Exit;
+  end;
+
+  courant := liste;
+  Write('Liste : ');
+  while courant <> nil do
+  begin
+    Write(courant^.donnee);
+    if courant^.suivant <> nil then
+      Write(' -> ');
+    courant := courant^.suivant;
+  end;
+  WriteLn;
+end;
+
 function CopierListe(liste: PNoeud): PNoeud;
 var
   nouvelle, courant, dernier: PNoeud;
@@ -801,6 +1330,20 @@ begin
   Result := nouvelle;
 end;
 
+procedure LibererListe(var liste: PNoeud);
+var
+  courant, suivant: PNoeud;
+begin
+  courant := liste;
+  while courant <> nil do
+  begin
+    suivant := courant^.suivant;
+    Dispose(courant);
+    courant := suivant;
+  end;
+  liste := nil;
+end;
+
 var
   liste1, liste2: PNoeud;
 begin
@@ -812,12 +1355,64 @@ begin
 
   AfficherListe(liste1);  // 10 -> 20
   AfficherListe(liste2);  // 10 -> 20 (copie indépendante)
-end;
+
+  LibererListe(liste1);
+  LibererListe(liste2);
+end.
 ```
 
 ### Trier une Liste (Tri à Bulles)
 
 ```pascal
+program TrierListeDemo;
+type
+  PNoeud = ^TNoeud;
+  TNoeud = record
+    donnee: Integer;
+    suivant: PNoeud;
+  end;
+
+procedure InsererFin(var liste: PNoeud; valeur: Integer);
+var
+  nouveau, courant: PNoeud;
+begin
+  New(nouveau);
+  nouveau^.donnee := valeur;
+  nouveau^.suivant := nil;
+
+  if liste = nil then
+    liste := nouveau
+  else
+  begin
+    courant := liste;
+    while courant^.suivant <> nil do
+      courant := courant^.suivant;
+    courant^.suivant := nouveau;
+  end;
+end;
+
+procedure AfficherListe(liste: PNoeud);
+var
+  courant: PNoeud;
+begin
+  if liste = nil then
+  begin
+    WriteLn('Liste vide');
+    Exit;
+  end;
+
+  courant := liste;
+  Write('Liste : ');
+  while courant <> nil do
+  begin
+    Write(courant^.donnee);
+    if courant^.suivant <> nil then
+      Write(' -> ');
+    courant := courant^.suivant;
+  end;
+  WriteLn;
+end;
+
 procedure TrierListe(liste: PNoeud);
 var
   i, j: PNoeud;
@@ -845,6 +1440,20 @@ begin
   end;
 end;
 
+procedure LibererListe(var liste: PNoeud);
+var
+  courant, suivant: PNoeud;
+begin
+  courant := liste;
+  while courant <> nil do
+  begin
+    suivant := courant^.suivant;
+    Dispose(courant);
+    courant := suivant;
+  end;
+  liste := nil;
+end;
+
 var
   maListe: PNoeud;
 begin
@@ -856,7 +1465,9 @@ begin
   AfficherListe(maListe);  // 30 -> 10 -> 20
   TrierListe(maListe);
   AfficherListe(maListe);  // 10 -> 20 -> 30
-end;
+
+  LibererListe(maListe);
+end.
 ```
 
 ## Programme Complet : Gestionnaire de Liste

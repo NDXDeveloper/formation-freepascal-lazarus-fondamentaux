@@ -170,6 +170,7 @@ Après pScore^ := 100 :
 Les pointeurs sont particulièrement utiles pour passer des données volumineuses aux fonctions sans les copier :
 
 ```pascal
+program PassagePointeurParametre;
 type
   TGrosseStructure = record
     donnees: array[1..1000] of Integer;
@@ -181,7 +182,7 @@ begin
   // Accès direct aux données via le pointeur
   if p <> nil then
   begin
-    p^.donnees[1] := 999;
+    p^.donnees[1] := 999;  // p^ déréférence, puis .donnees accède au champ du record
     WriteLn('Première donnée modifiée');
   end;
 end;
@@ -201,22 +202,22 @@ end.
 Une fonction peut retourner un pointeur :
 
 ```pascal
-function TrouverMaximum(a, b: Integer): ^Integer;
-var
-  pA, pB: ^Integer;
-begin
-  pA := @a;
-  pB := @b;
+{$mode objfpc}{$H+}
+program RetournerPointeur;
+type
+  PInteger = ^Integer;
 
+function TrouverMaximum(var a, b: Integer): PInteger;  // var obligatoire : sans var, @a pointerait vers une copie locale détruite au retour
+begin
   if a > b then
-    Result := pA
+    Result := @a
   else
-    Result := pB;
+    Result := @b;
 end;
 
 var
   x, y: Integer;
-  pMax: ^Integer;
+  pMax: PInteger;
 begin
   x := 10;
   y := 20;
@@ -375,12 +376,12 @@ end;
 Au lieu de passer de grosses structures en paramètre :
 
 ```pascal
+program PartageDonnees;
 type
   TConfiguration = record
     serveur: String;
     port: Integer;
     timeout: Integer;
-    // ... beaucoup d'autres champs
   end;
   PConfiguration = ^TConfiguration;
 
@@ -416,7 +417,11 @@ end.
 Une fonction classique utilisant des pointeurs :
 
 ```pascal
-procedure Echanger(a, b: ^Integer);
+program EchangeValeurs;
+type
+  PInteger = ^Integer;
+
+procedure Echanger(a, b: PInteger);
 var
   temp: Integer;
 begin
