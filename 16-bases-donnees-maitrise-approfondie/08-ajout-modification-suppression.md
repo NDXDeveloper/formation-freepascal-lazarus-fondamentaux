@@ -662,6 +662,8 @@ begin
 end;
 
 function TForm1.FormaterTelephone(const Tel: string): string;
+var
+  i: Integer;
 begin
   // Retirer tous les caractères non numériques
   Result := '';

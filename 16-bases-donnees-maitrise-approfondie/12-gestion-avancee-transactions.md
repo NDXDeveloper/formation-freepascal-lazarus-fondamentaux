@@ -497,7 +497,7 @@ RELEASE SAVEPOINT etape1;
 
 - ✅ PostgreSQL : support complet
 - ⚠️ MySQL/MariaDB : support limité (InnoDB uniquement)
-- ❌ SQLite : pas de support natif
+- ✅ SQLite : support natif depuis la version 3.6.8
 
 ## Les Verrous (Locks)
 

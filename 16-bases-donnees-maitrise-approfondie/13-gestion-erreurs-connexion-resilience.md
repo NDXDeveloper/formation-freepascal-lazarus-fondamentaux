@@ -442,6 +442,7 @@ var
   Thread: TThread;
   Termine: Boolean;
   ErreurMsg: string;
+  Debut: QWord;
 begin
   Termine := False;
   ErreurMsg := '';
@@ -466,8 +467,16 @@ begin
   Thread.FreeOnTerminate := False;
   Thread.Start;
 
-  // Attendre avec timeout
-  if not Thread.WaitFor(TimeoutSec * 1000) then
+  // Attendre avec timeout (WaitFor n'accepte pas de paramètre en FreePascal)
+  Debut := GetTickCount64;
+  while (not Termine) and
+        ((GetTickCount64 - Debut) < QWord(TimeoutSec) * 1000) do
+  begin
+    Sleep(100);
+    Application.ProcessMessages;
+  end;
+
+  if not Termine then
   begin
     // Timeout atteint
     Thread.Terminate;
@@ -482,6 +491,7 @@ begin
     ShowMessage('Requête exécutée avec succès');
   end;
 
+  Thread.WaitFor;
   Thread.Free;
 end;
 ```
@@ -517,6 +527,7 @@ var
 begin
   Result := False;
   Tentative := 0;
+  Success := False;
 
   while (Tentative < MaxTentatives) and (not Success) do
   begin
