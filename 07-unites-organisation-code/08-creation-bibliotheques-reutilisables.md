@@ -540,7 +540,7 @@ MaBibliotheque/
 
 ### Fichier README.md
 
-```markdown
+````markdown
 # MaBibliotheque - Validation et Formatage
 
 ## Description
@@ -570,7 +570,7 @@ Consultez le dossier `docs/` pour la documentation complète.
 
 ## Licence
 MIT License - Libre d'utilisation
-```
+````
 
 ## Versionnement de votre bibliothèque
 

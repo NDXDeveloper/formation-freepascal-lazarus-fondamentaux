@@ -461,7 +461,7 @@ Lazarus peut générer automatiquement des squelettes de documentation.
 
 Créez simplement un fichier texte ou markdown expliquant votre unité.
 
-```markdown
+````markdown
 # UniteMaths
 
 ## Description
@@ -481,7 +481,7 @@ Calcule la moyenne d'un tableau de réels.
 ```pascal
 moyenne := CalculerMoyenne([10, 15, 20]);  // Retourne 15.0
 ```
-```
+````
 
 ## Vérifier la qualité de votre documentation
 

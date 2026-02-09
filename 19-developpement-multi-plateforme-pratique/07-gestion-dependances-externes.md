@@ -285,7 +285,8 @@ end;
 **Documentation requise :**
 
 **README.md :**
-```markdown
+
+````markdown
 ## Prérequis
 
 ### Windows
@@ -307,7 +308,7 @@ sudo dnf install sqlite-libs openssl-libs
 ```bash
 brew install sqlite openssl
 ```
-```
+````
 
 ### Stratégie 3 : Hybride (Recommandé)
 

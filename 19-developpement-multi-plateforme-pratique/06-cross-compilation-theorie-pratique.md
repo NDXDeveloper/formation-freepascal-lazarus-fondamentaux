@@ -873,7 +873,8 @@ La cross-compilation peut réussir, mais :
 **Documentez les prérequis sur chaque plateforme :**
 
 **README.md :**
-```markdown
+
+````markdown
 ## Dépendances
 
 ### Windows
@@ -888,7 +889,7 @@ sudo apt install libgtk2.0-0 libglib2.0-0
 ```bash
 brew install gtk+
 ```
-```
+````
 
 ### ✅ 4. Structure de Projet Organisée
 
