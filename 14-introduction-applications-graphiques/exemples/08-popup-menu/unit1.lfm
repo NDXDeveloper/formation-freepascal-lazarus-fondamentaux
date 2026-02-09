@@ -1,0 +1,95 @@
+object Form1: TForm1
+  Left = 0
+  Height = 400
+  Top = 0
+  Width = 500
+  Caption = 'Demo Menus et PopupMenu'
+  Menu = MainMenu1
+  Position = poScreenCenter
+  OnCreate = FormCreate
+  object Memo1: TMemo
+    Left = 0
+    Height = 400
+    Top = 0
+    Width = 500
+    Align = alClient
+    PopupMenu = PopupMenu1
+    ScrollBars = ssBoth
+    TabOrder = 0
+  end
+  object MainMenu1: TMainMenu
+    Left = 16
+    Top = 16
+    object MenuFichier: TMenuItem
+      Caption = '&Fichier'
+      object MenuNouveau: TMenuItem
+        Caption = '&Nouveau'
+        ShortCut = 16462
+        OnClick = MenuNouveauClick
+      end
+      object MenuQuitter: TMenuItem
+        Caption = '&Quitter'
+        ShortCut = 16465
+        OnClick = MenuQuitterClick
+      end
+    end
+    object MenuEdition: TMenuItem
+      Caption = '&Édition'
+      object MenuCouper: TMenuItem
+        Caption = 'Co&uper'
+        ShortCut = 16472
+        OnClick = CouperClick
+      end
+      object MenuCopier: TMenuItem
+        Caption = '&Copier'
+        ShortCut = 16451
+        OnClick = CopierClick
+      end
+      object MenuColler: TMenuItem
+        Caption = 'C&oller'
+        ShortCut = 16470
+        OnClick = CollerClick
+      end
+      object MenuSepEdition: TMenuItem
+        Caption = '-'
+      end
+      object MenuSelectTout: TMenuItem
+        Caption = 'Tout &sélectionner'
+        ShortCut = 16449
+        OnClick = SelectToutClick
+      end
+    end
+  end
+  object PopupMenu1: TPopupMenu
+    OnPopup = PopupMenu1Popup
+    Left = 80
+    Top = 16
+    object PopCouper: TMenuItem
+      Caption = 'Couper'
+      ShortCut = 16472
+      OnClick = CouperClick
+    end
+    object PopCopier: TMenuItem
+      Caption = 'Copier'
+      ShortCut = 16451
+      OnClick = CopierClick
+    end
+    object PopColler: TMenuItem
+      Caption = 'Coller'
+      ShortCut = 16470
+      OnClick = CollerClick
+    end
+    object PopSeparateur: TMenuItem
+      Caption = '-'
+    end
+    object PopSupprimer: TMenuItem
+      Caption = 'Supprimer'
+      OnClick = SupprimerClick
+    end
+    object PopSelectTout: TMenuItem
+      Caption = 'Tout sélectionner'
+      ShortCut = 16449
+      OnClick = SelectToutClick
+    end
+  end
+end

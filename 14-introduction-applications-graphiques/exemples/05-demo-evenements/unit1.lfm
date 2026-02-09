@@ -1,0 +1,130 @@
+object Form1: TForm1
+  Left = 426
+  Height = 400
+  Top = 132
+  Width = 420
+  Caption = 'Demo Événements et Handlers'
+  ClientHeight = 400
+  ClientWidth = 420
+  OnCreate = FormCreate
+  Position = poScreenCenter
+  LCLVersion = '3.0.0.3'
+  object GroupBoxShared: TGroupBox
+    Left = 8
+    Height = 100
+    Top = 8
+    Width = 400
+    Caption = '1. Handler partagé (Sender as TButton)'
+    ClientHeight = 80
+    ClientWidth = 398
+    TabOrder = 0
+    object Button1: TButton
+      Left = 12
+      Height = 30
+      Top = 24
+      Width = 90
+      Caption = 'Bouton 1'
+      TabOrder = 0
+    end
+    object Button2: TButton
+      Left = 112
+      Height = 30
+      Top = 24
+      Width = 90
+      Caption = 'Bouton 2'
+      TabOrder = 1
+    end
+    object Button3: TButton
+      Left = 212
+      Height = 30
+      Top = 24
+      Width = 90
+      Caption = 'Bouton 3'
+      TabOrder = 2
+    end
+    object LabelResultat: TLabel
+      Left = 12
+      Height = 19
+      Top = 64
+      Width = 116
+      Caption = '(cliquez un bouton)'
+    end
+  end
+  object GroupBoxTag: TGroupBox
+    Left = 8
+    Height = 100
+    Top = 116
+    Width = 400
+    Caption = '2. Utilisation du Tag pour les couleurs'
+    ClientHeight = 80
+    ClientWidth = 398
+    TabOrder = 1
+    object BtnRouge: TButton
+      Left = 12
+      Height = 30
+      Top = 24
+      Width = 90
+      Caption = 'Rouge'
+      TabOrder = 0
+    end
+    object BtnVert: TButton
+      Left = 112
+      Height = 30
+      Top = 24
+      Width = 90
+      Caption = 'Vert'
+      TabOrder = 1
+    end
+    object BtnBleu: TButton
+      Left = 212
+      Height = 30
+      Top = 24
+      Width = 90
+      Caption = 'Bleu'
+      TabOrder = 2
+    end
+    object LabelCouleur: TLabel
+      Left = 12
+      Height = 19
+      Top = 64
+      Width = 140
+      Caption = '(cliquez une couleur)'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+  end
+  object GroupBoxDynamic: TGroupBox
+    Left = 8
+    Height = 144
+    Top = 224
+    Width = 400
+    Caption = '3. Assignation dynamique de handler'
+    ClientHeight = 124
+    ClientWidth = 398
+    TabOrder = 2
+    object CheckBoxActiver: TCheckBox
+      Left = 12
+      Height = 21
+      Top = 24
+      Width = 201
+      Caption = 'Activer le handler du bouton'
+      TabOrder = 0
+      OnChange = CheckBoxActiverChange
+    end
+    object ButtonDynamic: TButton
+      Left = 12
+      Height = 30
+      Top = 52
+      Width = 150
+      Caption = 'Bouton dynamique'
+      TabOrder = 1
+    end
+    object LabelDynamic: TLabel
+      Left = 12
+      Height = 19
+      Top = 92
+      Width = 237
+      Caption = 'Handler retiré — le bouton ne fait rien'
+    end
+  end
+end

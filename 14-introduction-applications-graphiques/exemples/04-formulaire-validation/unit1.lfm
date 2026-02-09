@@ -1,0 +1,76 @@
+object Form1: TForm1
+  Left = 0
+  Height = 220
+  Top = 0
+  Width = 400
+  BorderStyle = bsDialog
+  Caption = 'Formulaire de Validation'
+  Position = poScreenCenter
+  OnCreate = FormCreate
+  object LabelNom: TLabel
+    Left = 16
+    Height = 15
+    Top = 20
+    Width = 60
+    Caption = 'Nom :'
+  end
+  object EditNom: TEdit
+    Left = 90
+    Height = 23
+    Top = 16
+    Width = 290
+    OnChange = EditChange
+    TabOrder = 0
+  end
+  object LabelEmail: TLabel
+    Left = 16
+    Height = 15
+    Top = 56
+    Width = 60
+    Caption = 'Email :'
+  end
+  object EditEmail: TEdit
+    Left = 90
+    Height = 23
+    Top = 52
+    Width = 290
+    OnChange = EditChange
+    TabOrder = 1
+  end
+  object LabelAge: TLabel
+    Left = 16
+    Height = 15
+    Top = 92
+    Width = 60
+    Caption = 'Âge :'
+  end
+  object EditAge: TEdit
+    Left = 90
+    Height = 23
+    Top = 88
+    Width = 80
+    OnChange = EditChange
+    TabOrder = 2
+  end
+  object ButtonValider: TButton
+    Left = 200
+    Height = 30
+    Top = 136
+    Width = 85
+    Caption = '&Valider'
+    Default = True
+    Enabled = False
+    OnClick = ButtonValiderClick
+    TabOrder = 3
+  end
+  object ButtonAnnuler: TButton
+    Left = 296
+    Height = 30
+    Top = 136
+    Width = 85
+    Cancel = True
+    Caption = '&Annuler'
+    OnClick = ButtonAnnulerClick
+    TabOrder = 4
+  end
+end

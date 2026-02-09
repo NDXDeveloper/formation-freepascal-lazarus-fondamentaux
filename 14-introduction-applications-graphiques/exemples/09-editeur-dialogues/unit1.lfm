@@ -1,0 +1,105 @@
+object Form1: TForm1
+  Left = 0
+  Height = 500
+  Top = 0
+  Width = 600
+  Caption = 'Éditeur - Sans titre'
+  Menu = MainMenu1
+  Position = poScreenCenter
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  object Memo1: TMemo
+    Left = 0
+    Height = 500
+    Top = 0
+    Width = 600
+    Align = alClient
+    ScrollBars = ssBoth
+    TabOrder = 0
+  end
+  object MainMenu1: TMainMenu
+    Left = 16
+    Top = 16
+    object MenuFichier: TMenuItem
+      Caption = '&Fichier'
+      object MenuNouveau: TMenuItem
+        Caption = '&Nouveau'
+        ShortCut = 16462
+        OnClick = MenuNouveauClick
+      end
+      object MenuOuvrir: TMenuItem
+        Caption = '&Ouvrir...'
+        ShortCut = 16463
+        OnClick = MenuOuvrirClick
+      end
+      object MenuEnregistrer: TMenuItem
+        Caption = '&Enregistrer'
+        ShortCut = 16467
+        OnClick = MenuEnregistrerClick
+      end
+      object MenuEnregistrerSous: TMenuItem
+        Caption = 'Enregistrer &sous...'
+        ShortCut = 24659
+        OnClick = MenuEnregistrerSousClick
+      end
+      object MenuSepFichier: TMenuItem
+        Caption = '-'
+      end
+      object MenuQuitter: TMenuItem
+        Caption = '&Quitter'
+        ShortCut = 16465
+        OnClick = MenuQuitterClick
+      end
+    end
+    object MenuFormat: TMenuItem
+      Caption = 'F&ormat'
+      object MenuCouleurFond: TMenuItem
+        Caption = 'Couleur de &fond...'
+        OnClick = MenuCouleurFondClick
+      end
+      object MenuPolice: TMenuItem
+        Caption = '&Police...'
+        OnClick = MenuPoliceClick
+      end
+    end
+    object MenuRecherche: TMenuItem
+      Caption = '&Recherche'
+      object MenuRechercher: TMenuItem
+        Caption = '&Rechercher...'
+        ShortCut = 16454
+        OnClick = MenuRechercherClick
+      end
+      object MenuRemplacer: TMenuItem
+        Caption = 'Re&mplacer...'
+        ShortCut = 16456
+        OnClick = MenuRemplacerClick
+      end
+    end
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 80
+    Top = 16
+  end
+  object SaveDialog1: TSaveDialog
+    Left = 144
+    Top = 16
+  end
+  object ColorDialog1: TColorDialog
+    Left = 208
+    Top = 16
+  end
+  object FontDialog1: TFontDialog
+    Left = 272
+    Top = 16
+  end
+  object FindDialog1: TFindDialog
+    OnFind = FindDialog1Find
+    Left = 336
+    Top = 16
+  end
+  object ReplaceDialog1: TReplaceDialog
+    OnReplace = ReplaceDialog1Replace
+    Left = 400
+    Top = 16
+  end
+end
