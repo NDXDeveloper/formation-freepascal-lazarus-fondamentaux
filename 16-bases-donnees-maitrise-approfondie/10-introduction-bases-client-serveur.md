@@ -85,8 +85,8 @@ Une base de données **client/serveur** est un système où :
 
 Les clients et le serveur communiquent via le **réseau** (même si tout est sur la même machine, on passe par le réseau local).
 
-**Protocole :** TCP/IP
-**Port :** Chaque SGBD écoute sur un port spécifique
+**Protocole :** TCP/IP  
+**Port :** Chaque SGBD écoute sur un port spécifique  
 - PostgreSQL : port 5432 (par défaut)
 - MySQL/MariaDB : port 3306 (par défaut)
 - SQL Server : port 1433 (par défaut)
@@ -290,8 +290,8 @@ DELETE FROM clients;    -- ❌ Erreur : permission refusée
 
 ### MySQL / MariaDB
 
-**MySQL :** Le plus populaire au monde
-**MariaDB :** Fork open source de MySQL (100% compatible)
+**MySQL :** Le plus populaire au monde  
+**MariaDB :** Fork open source de MySQL (100% compatible)  
 
 **Caractéristiques :**
 - ✅ Très populaire (énorme communauté)

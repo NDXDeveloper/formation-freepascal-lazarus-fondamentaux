@@ -486,8 +486,8 @@ WriteLn('DEBUG: Début de la fonction, a=', a, ', b=', b);
 WriteLn('DEBUG: Après calcul, resultat=', resultat);
 ```
 
-**Avantage :** Fonctionne même sans débogueur
-**Inconvénient :** Il faut supprimer les lignes après
+**Avantage :** Fonctionne même sans débogueur  
+**Inconvénient :** Il faut supprimer les lignes après  
 
 ## Exemples de débogage courants
 

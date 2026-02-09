@@ -1357,7 +1357,7 @@ L'inspection de variables et d'expressions est une compétence fondamentale du d
 
 ---
 
-**Multi-plateforme Windows/Ubuntu** ✓
-**Formation FreePascal/Lazarus - Niveau Débutant à Intermédiaire**
+**Multi-plateforme Windows/Ubuntu** ✓  
+**Formation FreePascal/Lazarus - Niveau Débutant à Intermédiaire**  
 
 ⏭️ [Profiling basique : identifier les goulots](/20-debogage-optimisation/04-profiling-basique-identifier-goulots.md)

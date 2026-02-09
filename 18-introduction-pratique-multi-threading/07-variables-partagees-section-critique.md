@@ -137,8 +137,8 @@ THREAD 1                          THREAD 2
 État final : CompteurGlobal = 101
 ```
 
-**Résultat attendu** : 102 (100 + 1 + 1)
-**Résultat obtenu** : 101
+**Résultat attendu** : 102 (100 + 1 + 1)  
+**Résultat obtenu** : 101  
 
 **Une incrémentation a été perdue !** On appelle cela une **race condition** (condition de concurrence).
 

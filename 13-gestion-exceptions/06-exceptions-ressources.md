@@ -445,8 +445,8 @@ begin
 end;
 ```
 
-**Avantage :** Chaque ressource est protégée individuellement.
-**Inconvénient :** Code profondément imbriqué, moins lisible.
+**Avantage :** Chaque ressource est protégée individuellement.  
+**Inconvénient :** Code profondément imbriqué, moins lisible.  
 
 ### Approche 2 : Initialisation puis Try unique
 
@@ -473,8 +473,8 @@ begin
 end;
 ```
 
-**Avantage :** Plus lisible, un seul niveau d'imbrication.
-**Note :** Si `Create` de ressource2 échoue, ressource1 sera quand même libérée dans `finally`.
+**Avantage :** Plus lisible, un seul niveau d'imbrication.  
+**Note :** Si `Create` de ressource2 échoue, ressource1 sera quand même libérée dans `finally`.  
 
 ### Approche 3 : FreeAndNil
 
@@ -564,8 +564,8 @@ begin
 end;
 ```
 
-**Avantage :** Pas de `try-finally` nécessaire.
-**Note :** Sujet avancé, nous verrons les interfaces en détail dans un autre chapitre.
+**Avantage :** Pas de `try-finally` nécessaire.  
+**Note :** Sujet avancé, nous verrons les interfaces en détail dans un autre chapitre.  
 
 ## Erreurs courantes
 

@@ -156,10 +156,10 @@ TABLE DE MULTIPLICATION (1 a 5)
 Triangle d'etoiles :
 
 *
-**
-***
-****
-*****
+**  
+***  
+****  
+*****  
 ```
 
 **Sortie attendue `03-compte-a-rebours` :**

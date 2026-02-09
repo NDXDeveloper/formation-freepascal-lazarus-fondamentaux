@@ -340,12 +340,12 @@ Dans Lazarus, vous utiliserez :
 
 **Propriétés dans l'Inspecteur d'objets :**
 
-**HostName :** `localhost` (ou l'adresse de votre serveur)
-**DatabaseName :** `ma_base_test`
-**UserName :** `mon_app`
-**Password :** `motdepasse_app`
-**CharSet :** `UTF8`
-**Transaction :** `SQLTransaction1`
+**HostName :** `localhost` (ou l'adresse de votre serveur)  
+**DatabaseName :** `ma_base_test`  
+**UserName :** `mon_app`  
+**Password :** `motdepasse_app`  
+**CharSet :** `UTF8`  
+**Transaction :** `SQLTransaction1`  
 
 **Ne PAS définir Password dans l'Inspecteur pour la sécurité !** Définissez-le en code.
 

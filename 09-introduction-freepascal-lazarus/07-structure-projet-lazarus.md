@@ -666,10 +666,10 @@ Chaque fichier sauvegardé a l'extension `.bak` ajoutée.
 
 ### 3. Autres dossiers (avancé)
 
-**docs/** : Documentation du projet
-**images/** : Images, icônes pour l'interface
-**data/** : Fichiers de données (configuration, bases de données...)
-**tests/** : Tests unitaires (FPCUnit)
+**docs/** : Documentation du projet  
+**images/** : Images, icônes pour l'interface  
+**data/** : Fichiers de données (configuration, bases de données...)  
+**tests/** : Tests unitaires (FPCUnit)  
 
 **Organisation personnelle :** Vous pouvez créer vos propres dossiers selon vos besoins.
 

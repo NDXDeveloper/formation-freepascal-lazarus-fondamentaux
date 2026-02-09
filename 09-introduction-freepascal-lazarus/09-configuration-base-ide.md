@@ -667,8 +667,8 @@ Menu **View** → **Layouts** → [Nom de la disposition]
 
 #### Dispositions prédéfinies
 
-**Default Layout** : Disposition par défaut de Lazarus
-**Debug Layout** : Optimisée pour le débogage (fenêtres de debug visibles)
+**Default Layout** : Disposition par défaut de Lazarus  
+**Debug Layout** : Optimisée pour le débogage (fenêtres de debug visibles)  
 
 #### Réinitialiser les fenêtres
 

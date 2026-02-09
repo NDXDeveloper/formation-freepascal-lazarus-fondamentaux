@@ -373,8 +373,8 @@ Cette classification vous aide à anticiper l'effort nécessaire.
 
 ### Temps de lecture vs temps de pratique
 
-**Temps de lecture** : temps pour lire et comprendre la théorie
-**Temps de pratique** : temps pour expérimenter et manipuler
+**Temps de lecture** : temps pour lire et comprendre la théorie  
+**Temps de pratique** : temps pour expérimenter et manipuler  
 
 | Section | Lecture | Pratique | Total |
 |---------|---------|----------|-------|

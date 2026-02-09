@@ -333,8 +333,8 @@ begin
 end;
 ```
 
-**Avantage** : Simple, pas de gestion de la mémoire
-**Inconvénient** : Vous ne pouvez pas récupérer de résultat facilement
+**Avantage** : Simple, pas de gestion de la mémoire  
+**Inconvénient** : Vous ne pouvez pas récupérer de résultat facilement  
 
 ### Pattern 2 : Wait For Result (Attendre un résultat)
 

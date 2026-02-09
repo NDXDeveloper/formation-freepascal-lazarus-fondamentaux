@@ -1026,23 +1026,23 @@ end.
 
 ### JSON (données structurées)
 
-**Avantages :** Hiérarchique, typé, standard web
-**Usage :** API, échange de données, structures complexes
+**Avantages :** Hiérarchique, typé, standard web  
+**Usage :** API, échange de données, structures complexes  
 
 ### XML (documents structurés)
 
-**Avantages :** Hiérarchique, validable, extensible
-**Usage :** Documents, données métier complexes
+**Avantages :** Hiérarchique, validable, extensible  
+**Usage :** Documents, données métier complexes  
 
 ### SQLite (base de données)
 
-**Avantages :** Requêtes puissantes, transactions, performances
-**Usage :** Grandes quantités de données, relations complexes
+**Avantages :** Requêtes puissantes, transactions, performances  
+**Usage :** Grandes quantités de données, relations complexes  
 
 ### Registry (Windows uniquement)
 
-**Avantages :** Intégré au système
-**Inconvénients :** Non portable, difficile à sauvegarder
+**Avantages :** Intégré au système  
+**Inconvénients :** Non portable, difficile à sauvegarder  
 
 ---
 

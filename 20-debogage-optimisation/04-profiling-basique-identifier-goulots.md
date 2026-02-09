@@ -220,8 +220,8 @@ end.
 {$ENDIF}
 ```
 
-**Avantages :** Précision extrême (microsecondes)
-**Inconvénients :** Spécifique à Windows
+**Avantages :** Précision extrême (microsecondes)  
+**Inconvénients :** Spécifique à Windows  
 
 ### 2.5 Encapsuler les Mesures dans une Classe
 
@@ -652,8 +652,8 @@ kcachegrind callgrind.out.12345
 - Graphe d'appels (qui appelle quoi)
 - Identification automatique des goulots
 
-**Avantage :** Analyse très détaillée
-**Inconvénient :** Ralentit considérablement l'exécution (10-50x plus lent)
+**Avantage :** Analyse très détaillée  
+**Inconvénient :** Ralentit considérablement l'exécution (10-50x plus lent)  
 
 ### 6.2 gprof (Linux/Windows)
 
@@ -1325,7 +1325,7 @@ Le profiling est une compétence essentielle pour créer des applications perfor
 
 ---
 
-**Multi-plateforme Windows/Ubuntu** ✓
-**Formation FreePascal/Lazarus - Niveau Débutant à Intermédiaire**
+**Multi-plateforme Windows/Ubuntu** ✓  
+**Formation FreePascal/Lazarus - Niveau Débutant à Intermédiaire**  
 
 ⏭️ [Optimisation des algorithmes courants](/20-debogage-optimisation/05-optimisation-algorithmes-courants.md)

@@ -1428,10 +1428,10 @@ fi
 ```markdown
 # Rapport de Détection de Fuites Mémoire
 
-**Projet:** MonApplication v1.2.3
-**Date:** 2025-10-15
-**Outil:** HeapTrc + Valgrind
-**Testeur:** Jean Dupont
+**Projet:** MonApplication v1.2.3  
+**Date:** 2025-10-15  
+**Outil:** HeapTrc + Valgrind  
+**Testeur:** Jean Dupont  
 
 ## Résumé Exécutif
 - Fuites détectées : 3
@@ -1544,7 +1544,7 @@ Avec ces outils et ces pratiques, vous maîtriserez totalement la gestion de la 
 
 ---
 
-**Multi-plateforme Windows/Ubuntu** ✓
-**Formation FreePascal/Lazarus - Niveau Débutant à Intermédiaire**
+**Multi-plateforme Windows/Ubuntu** ✓  
+**Formation FreePascal/Lazarus - Niveau Débutant à Intermédiaire**  
 
 ⏭️ [Logging structuré et niveaux de log](/20-debogage-optimisation/08-logging-structure-niveaux-log.md)

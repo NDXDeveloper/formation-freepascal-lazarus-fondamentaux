@@ -26,8 +26,8 @@ Chemin complet   : C:\Users\Jean\Documents\rapport.pdf
 
 Prenons l'exemple suivant :
 
-**Windows :** `C:\Users\Jean\Documents\rapport.pdf`
-**Linux :** `/home/jean/documents/rapport.pdf`
+**Windows :** `C:\Users\Jean\Documents\rapport.pdf`  
+**Linux :** `/home/jean/documents/rapport.pdf`  
 
 Un chemin complet se décompose en plusieurs parties :
 

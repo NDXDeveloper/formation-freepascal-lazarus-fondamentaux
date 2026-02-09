@@ -71,18 +71,18 @@ Le formulaire joue deux rôles :
 ```pascal
 Form1.Caption := 'Gestionnaire de clients';
 ```
-**Description :** Le texte affiché dans la barre de titre
-**Type :** String
-**Valeur par défaut :** 'Form1'
+**Description :** Le texte affiché dans la barre de titre  
+**Type :** String  
+**Valeur par défaut :** 'Form1'  
 
 #### Width et Height
 ```pascal
 Form1.Width := 800;   // Largeur en pixels
 Form1.Height := 600;  // Hauteur en pixels
 ```
-**Description :** Dimensions de la fenêtre
-**Type :** Integer
-**Conseil :** Pensez à différentes résolutions d'écran !
+**Description :** Dimensions de la fenêtre  
+**Type :** Integer  
+**Conseil :** Pensez à différentes résolutions d'écran !  
 
 #### Color
 ```pascal
@@ -90,8 +90,8 @@ Form1.Color := clWhite;      // Blanc
 Form1.Color := clBtnFace;    // Couleur système (recommandé)
 Form1.Color := $00FF8800;    // Couleur personnalisée (BGR)
 ```
-**Description :** Couleur de fond du formulaire
-**Type :** TColor
+**Description :** Couleur de fond du formulaire  
+**Type :** TColor  
 
 **Couleurs courantes :**
 | Constante | Couleur |
@@ -109,8 +109,8 @@ Form1.Font.Size := 10;
 Form1.Font.Style := [fsBold];
 Form1.Font.Color := clNavy;
 ```
-**Description :** Police par défaut pour le formulaire et ses composants
-**Type :** TFont
+**Description :** Police par défaut pour le formulaire et ses composants  
+**Type :** TFont  
 
 ### Propriétés de comportement
 
@@ -213,8 +213,8 @@ Form1.Constraints.MaxWidth := 1920;
 Form1.Constraints.MaxHeight := 1080;
 ```
 
-**Description :** Limites de redimensionnement
-**Utile pour :** Empêcher l'utilisateur de rendre la fenêtre trop petite ou trop grande
+**Description :** Limites de redimensionnement  
+**Utile pour :** Empêcher l'utilisateur de rendre la fenêtre trop petite ou trop grande  
 
 ### Propriétés de visibilité
 
@@ -223,16 +223,16 @@ Form1.Constraints.MaxHeight := 1080;
 Form1.Visible := True;   // Visible
 Form1.Visible := False;  // Caché
 ```
-**Description :** Contrôle si le formulaire est affiché
-**Type :** Boolean
+**Description :** Contrôle si le formulaire est affiché  
+**Type :** Boolean  
 
 #### Enabled
 ```pascal
 Form1.Enabled := True;   // Actif (par défaut)
 Form1.Enabled := False;  // Désactivé (grisé, n'accepte plus d'événements)
 ```
-**Description :** Contrôle si le formulaire répond aux interactions
-**Type :** Boolean
+**Description :** Contrôle si le formulaire répond aux interactions  
+**Type :** Boolean  
 
 ---
 

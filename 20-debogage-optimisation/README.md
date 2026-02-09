@@ -520,7 +520,7 @@ Vous avez maintenant une vision claire de ce qui vous attend dans ce chapitre. L
 
 ---
 
-**Multi-plateforme Windows/Ubuntu** ✓
-**Formation FreePascal/Lazarus - Niveau Débutant à Intermédiaire**
+**Multi-plateforme Windows/Ubuntu** ✓  
+**Formation FreePascal/Lazarus - Niveau Débutant à Intermédiaire**  
 
 ⏭️ [Utilisation avancée du débogueur Lazarus](/20-debogage-optimisation/01-utilisation-avancee-debogueur-lazarus.md)

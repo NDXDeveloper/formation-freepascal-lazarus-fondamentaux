@@ -348,10 +348,10 @@ end.
 Triangle d'étoiles :
 
 *
-**
-***
-****
-*****
+**  
+***  
+****  
+*****  
 ```
 
 ## Calculs avec des boucles

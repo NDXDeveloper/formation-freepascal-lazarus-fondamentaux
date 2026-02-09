@@ -800,8 +800,8 @@ type
 // Ouvrent automatiquement les dialogues appropriés
 ```
 
-**Avantage** : Comportement standard et testé, gain de temps.
-**Inconvénient** : Moins de contrôle, parfois trop générique.
+**Avantage** : Comportement standard et testé, gain de temps.  
+**Inconvénient** : Moins de contrôle, parfois trop générique.  
 
 ---
 

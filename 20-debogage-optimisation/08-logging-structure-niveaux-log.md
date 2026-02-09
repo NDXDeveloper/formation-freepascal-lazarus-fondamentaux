@@ -1595,7 +1595,7 @@ Avec un système de logging bien conçu, vous transformez votre application en u
 
 ---
 
-**Multi-plateforme Windows/Ubuntu** ✓
-**Formation FreePascal/Lazarus - Niveau Débutant à Intermédiaire**
+**Multi-plateforme Windows/Ubuntu** ✓  
+**Formation FreePascal/Lazarus - Niveau Débutant à Intermédiaire**  
 
 ⏭️ [Tests unitaires avec FPCUnit (introduction)](/20-debogage-optimisation/09-tests-unitaires-fpcunit-introduction.md)

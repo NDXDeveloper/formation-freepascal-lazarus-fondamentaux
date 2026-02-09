@@ -560,8 +560,8 @@ JSON n'a **pas de type natif pour les dates**. Voici les conventions courantes :
 }
 ```
 
-**Avantage :** Facile à manipuler en programmation
-**Inconvénient :** Pas lisible par un humain
+**Avantage :** Facile à manipuler en programmation  
+**Inconvénient :** Pas lisible par un humain  
 
 ## Erreurs Courantes et Comment les Éviter
 

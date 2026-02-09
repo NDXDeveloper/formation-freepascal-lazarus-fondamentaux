@@ -1396,7 +1396,7 @@ Avec FPCUnit, vous avez tous les outils pour écrire des tests professionnels. C
 
 ---
 
-**Multi-plateforme Windows/Ubuntu** ✓
-**Formation FreePascal/Lazarus - Niveau Débutant à Intermédiaire**
+**Multi-plateforme Windows/Ubuntu** ✓  
+**Formation FreePascal/Lazarus - Niveau Débutant à Intermédiaire**  
 
 ⏭️ [Sommaire](/SOMMAIRE.md)

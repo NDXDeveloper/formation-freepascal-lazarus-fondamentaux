@@ -311,11 +311,11 @@ reductionApplicable := (estEtudiant or estRetraite) and (not estDejaClient);
 
 Comme en mathématiques, il existe un ordre de priorité :
 
-**1. Parenthèses** : `( )`
-**2. NOT** (négation)
-**3. AND** (multiplication logique)
-**4. OR, XOR** (addition logique)
-**5. Comparaisons** : `=`, `<>`, `<`, `>`, `<=`, `>=`
+**1. Parenthèses** : `( )`  
+**2. NOT** (négation)  
+**3. AND** (multiplication logique)  
+**4. OR, XOR** (addition logique)  
+**5. Comparaisons** : `=`, `<>`, `<`, `>`, `<=`, `>=`  
 
 **Exemple sans parenthèses :**
 ```pascal

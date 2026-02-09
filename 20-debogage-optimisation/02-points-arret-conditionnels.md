@@ -57,8 +57,8 @@ end;
 
 Vous voulez arrêter uniquement pour l'utilisateur "Jean Dupont", pas pour les 5000 autres utilisateurs.
 
-**Sans point d'arrêt conditionnel :** Des heures de F9 répétitifs.
-**Avec point d'arrêt conditionnel :** Arrêt immédiat sur le bon utilisateur.
+**Sans point d'arrêt conditionnel :** Des heures de F9 répétitifs.  
+**Avec point d'arrêt conditionnel :** Arrêt immédiat sur le bon utilisateur.  
 
 ---
 
@@ -926,7 +926,7 @@ Les points d'arrêt conditionnels sont un outil indispensable pour le débogage 
 
 ---
 
-**Multi-plateforme Windows/Ubuntu** ✓
-**Formation FreePascal/Lazarus - Niveau Débutant à Intermédiaire**
+**Multi-plateforme Windows/Ubuntu** ✓  
+**Formation FreePascal/Lazarus - Niveau Débutant à Intermédiaire**  
 
 ⏭️ [Inspection de variables et expressions](/20-debogage-optimisation/03-inspection-variables-expressions.md)

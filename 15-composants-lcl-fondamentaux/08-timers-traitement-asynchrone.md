@@ -551,8 +551,8 @@ Temps →
 
 ### Analogie
 
-**Synchrone** = Faire la vaisselle, puis passer l'aspirateur, puis faire le lit.
-**Asynchrone** = Lancer la machine à laver (qui tourne seule), pendant ce temps passer l'aspirateur.
+**Synchrone** = Faire la vaisselle, puis passer l'aspirateur, puis faire le lit.  
+**Asynchrone** = Lancer la machine à laver (qui tourne seule), pendant ce temps passer l'aspirateur.  
 
 ---
 

@@ -528,7 +528,7 @@ Le débogueur Lazarus est un outil extrêmement puissant qui vous fait gagner é
 
 ---
 
-**Multi-plateforme Windows/Ubuntu** ✓
-**Formation FreePascal/Lazarus - Niveau Débutant à Intermédiaire**
+**Multi-plateforme Windows/Ubuntu** ✓  
+**Formation FreePascal/Lazarus - Niveau Débutant à Intermédiaire**  
 
 ⏭️ [Points d'arrêt conditionnels](/20-debogage-optimisation/02-points-arret-conditionnels.md)

@@ -49,9 +49,9 @@ MonApp-v1.0-Windows.zip
 
 ### Distribution par Installeur
 
-**Windows :** Setup.exe
-**Linux :** .deb, .rpm, .pkg.tar.zst
-**macOS :** .dmg, .pkg
+**Windows :** Setup.exe  
+**Linux :** .deb, .rpm, .pkg.tar.zst  
+**macOS :** .dmg, .pkg  
 
 **Avantages :**
 - ✅ Installation guidée

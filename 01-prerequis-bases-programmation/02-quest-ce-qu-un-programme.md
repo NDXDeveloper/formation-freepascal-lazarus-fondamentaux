@@ -150,8 +150,8 @@ Le code source doit être traduit en langage machine :
 - Il traduit le code en instructions binaires
 - Il produit un **fichier exécutable**
 
-**Sur Windows :** le fichier a l'extension `.exe`
-**Sur Linux :** le fichier n'a généralement pas d'extension
+**Sur Windows :** le fichier a l'extension `.exe`  
+**Sur Linux :** le fichier n'a généralement pas d'extension  
 
 ### 4. Test et débogage
 

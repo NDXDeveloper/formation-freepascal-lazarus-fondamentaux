@@ -599,8 +599,8 @@ Button1.Caption := 'Annuler';
 Button1.Caption := 'OK';
 Button1.Caption := 'Calculer';
 ```
-**Description :** Le texte affiché sur le bouton
-**Type :** String
+**Description :** Le texte affiché sur le bouton  
+**Type :** String  
 
 **Astuce :** Utilisez le caractère `&` pour créer un raccourci clavier :
 ```pascal

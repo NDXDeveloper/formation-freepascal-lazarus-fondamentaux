@@ -312,8 +312,8 @@ brew install sqlite openssl
 
 ### Stratégie 3 : Hybride (Recommandé)
 
-**Sous Windows :** Inclure les DLL
-**Sous Linux/macOS :** Dépendre des bibliothèques système
+**Sous Windows :** Inclure les DLL  
+**Sous Linux/macOS :** Dépendre des bibliothèques système  
 
 **Pourquoi ?**
 - Windows : Pas de gestionnaire de paquets standard, les utilisateurs préfèrent "tout inclus"

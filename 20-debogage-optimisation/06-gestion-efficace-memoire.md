@@ -1494,7 +1494,7 @@ Une approche méthodique et des outils appropriés vous éviteront 99% des probl
 
 ---
 
-**Multi-plateforme Windows/Ubuntu** ✓
-**Formation FreePascal/Lazarus - Niveau Débutant à Intermédiaire**
+**Multi-plateforme Windows/Ubuntu** ✓  
+**Formation FreePascal/Lazarus - Niveau Débutant à Intermédiaire**  
 
 ⏭️ [Outils de détection de fuites mémoire](/20-debogage-optimisation/07-outils-detection-fuites-memoire.md)

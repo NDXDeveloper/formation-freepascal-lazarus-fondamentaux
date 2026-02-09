@@ -1411,7 +1411,7 @@ L'optimisation d'algorithmes est un équilibre entre :
 
 ---
 
-**Multi-plateforme Windows/Ubuntu** ✓
-**Formation FreePascal/Lazarus - Niveau Débutant à Intermédiaire**
+**Multi-plateforme Windows/Ubuntu** ✓  
+**Formation FreePascal/Lazarus - Niveau Débutant à Intermédiaire**  
 
 ⏭️ [Gestion efficace de la mémoire](/20-debogage-optimisation/06-gestion-efficace-memoire.md)

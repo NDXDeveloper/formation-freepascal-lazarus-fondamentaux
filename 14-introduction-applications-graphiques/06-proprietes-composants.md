@@ -478,9 +478,9 @@ Label1.Font.Size := 10;   // Taille normale
 Label1.Font.Size := 14;   // Grand titre
 Label1.Font.Size := 8;    // Petit texte
 ```
-**Type :** Integer
-**Unité :** Points (pt)
-**Valeurs courantes :** 8-12 (normal), 14-18 (titres)
+**Type :** Integer  
+**Unité :** Points (pt)  
+**Valeurs courantes :** 8-12 (normal), 14-18 (titres)  
 
 #### Font.Style
 ```pascal
