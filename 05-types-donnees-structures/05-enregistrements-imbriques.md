@@ -761,32 +761,32 @@ end.
 
 ## Avantages et inconvénients
 
-### Avantages
+### Avantages  
 
-✓ **Organisation logique** : Structure claire et hiérarchique
-✓ **Réutilisation** : Les types de base peuvent servir ailleurs
-✓ **Maintenabilité** : Plus facile à comprendre et modifier
-✓ **Modularité** : Chaque sous-partie peut avoir ses propres fonctions
-✓ **Correspond au réel** : Modélise mieux les objets du monde réel
+✓ **Organisation logique** : Structure claire et hiérarchique  
+✓ **Réutilisation** : Les types de base peuvent servir ailleurs  
+✓ **Maintenabilité** : Plus facile à comprendre et modifier  
+✓ **Modularité** : Chaque sous-partie peut avoir ses propres fonctions  
+✓ **Correspond au réel** : Modélise mieux les objets du monde réel  
 
 ### Inconvénients
 
-✗ **Complexité** : Plus difficile pour les débutants
-✗ **Verbosité** : Accès aux champs plus long (plusieurs points)
-✗ **Débogage** : Plus difficile à inspecter en profondeur
+✗ **Complexité** : Plus difficile pour les débutants  
+✗ **Verbosité** : Accès aux champs plus long (plusieurs points)  
+✗ **Débogage** : Plus difficile à inspecter en profondeur  
 
 ## Quand utiliser des enregistrements imbriqués ?
 
-✓ **Utilisez l'imbrication quand :**
-- Les données ont une structure naturellement hiérarchique
-- Vous pouvez réutiliser des types (TAdresse, TDate, etc.)
-- Vous voulez séparer logiquement les responsabilités
-- Les sous-parties ont du sens indépendamment
+✓ **Utilisez l'imbrication quand :**  
+- Les données ont une structure naturellement hiérarchique  
+- Vous pouvez réutiliser des types (TAdresse, TDate, etc.)  
+- Vous voulez séparer logiquement les responsabilités  
+- Les sous-parties ont du sens indépendamment  
 
-✗ **Évitez l'imbrication quand :**
-- La structure devient trop profonde (> 3 niveaux)
-- Les champs sont tous indépendants
-- Cela complique inutilement le code
+✗ **Évitez l'imbrication quand :**  
+- La structure devient trop profonde (> 3 niveaux)  
+- Les champs sont tous indépendants  
+- Cela complique inutilement le code  
 
 ## Comparaison : Plat vs Imbriqué
 

@@ -513,31 +513,31 @@ Si vous développez pour Windows et Linux, testez régulièrement sur les deux.
 ## Résolution de problèmes courants
 
 ### "Cannot find unit Interfaces"
-**Cause :** Lazarus n'arrive pas à trouver la LCL.
-**Solution :** Vérifiez que Lazarus est correctement installé et que le chemin vers les sources LCL est configuré.
+**Cause :** Lazarus n'arrive pas à trouver la LCL.  
+**Solution :** Vérifiez que Lazarus est correctement installé et que le chemin vers les sources LCL est configuré.  
 
 ### La fenêtre ne s'affiche pas
-**Cause :** Erreur dans le code ou mauvaise configuration.
-**Solution :** Vérifiez que `Application.Run` est bien appelé dans le .lpr
+**Cause :** Erreur dans le code ou mauvaise configuration.  
+**Solution :** Vérifiez que `Application.Run` est bien appelé dans le .lpr  
 
-### "Project1.lpr(21,1) Fatal: Cannot open file"
-**Cause :** Chemin de fichier incorrect ou fichier manquant.
-**Solution :** Vérifiez que tous les fichiers du projet sont dans le bon dossier.
+### "Project1.lpr(21,1) Fatal: Cannot open file"  
+**Cause :** Chemin de fichier incorrect ou fichier manquant.  
+**Solution :** Vérifiez que tous les fichiers du projet sont dans le bon dossier.  
 
-### La fenêtre clignote et disparaît
-**Cause :** Exception non gérée au démarrage.
-**Solution :** Exécutez en mode debug (F7) pour voir l'erreur.
+### La fenêtre clignote et disparaît  
+**Cause :** Exception non gérée au démarrage.  
+**Solution :** Exécutez en mode debug (F7) pour voir l'erreur.  
 
 ---
 
 ## Ce que vous avez appris
 
-✅ Créer un nouveau projet GUI avec Lazarus
-✅ Comprendre la structure des fichiers (.lpr, .pas, .lfm)
-✅ Utiliser l'Inspecteur d'Objets pour modifier les propriétés
-✅ Compiler et exécuter une application fenêtrée
-✅ Comprendre le cycle de vie d'une application GUI
-✅ Différencier projet console et projet GUI
+✅ Créer un nouveau projet GUI avec Lazarus  
+✅ Comprendre la structure des fichiers (.lpr, .pas, .lfm)  
+✅ Utiliser l'Inspecteur d'Objets pour modifier les propriétés  
+✅ Compiler et exécuter une application fenêtrée  
+✅ Comprendre le cycle de vie d'une application GUI  
+✅ Différencier projet console et projet GUI  
 
 ---
 

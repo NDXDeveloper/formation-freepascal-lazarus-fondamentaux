@@ -678,12 +678,12 @@ type
 
 ## Avantages des types intervalles
 
-✓ **Sécurité** : Détection des erreurs de valeurs
-✓ **Documentation** : Le code exprime les contraintes
-✓ **Lisibilité** : Intention claire du programmeur
-✓ **Vérification** : Le compilateur aide à trouver les bugs
-✓ **Optimisation** : Peut réduire l'espace mémoire nécessaire
-✓ **Maintenance** : Facilite les modifications futures
+✓ **Sécurité** : Détection des erreurs de valeurs  
+✓ **Documentation** : Le code exprime les contraintes  
+✓ **Lisibilité** : Intention claire du programmeur  
+✓ **Vérification** : Le compilateur aide à trouver les bugs  
+✓ **Optimisation** : Peut réduire l'espace mémoire nécessaire  
+✓ **Maintenance** : Facilite les modifications futures  
 
 ## Quand utiliser des types intervalles ?
 

@@ -14,23 +14,23 @@ Bienvenue dans le chapitre 12, qui marque votre passage vers la **Programmation 
 
 Grâce au chapitre précédent, vous maîtrisez :
 
-✅ **Les classes et objets** : Créer des types de données personnalisés
-✅ **L'encapsulation** : Protéger les données avec `private`, `public`, `protected`
-✅ **L'héritage** : Créer des hiérarchies de classes (`TAnimal` → `TChien`)
-✅ **Le polymorphisme** : Utiliser des objets de types différents de manière uniforme
-✅ **Les méthodes virtuelles** : Redéfinir le comportement dans les classes dérivées
-✅ **Les classes abstraites** : Créer des modèles incomplets que d'autres complètent
+✅ **Les classes et objets** : Créer des types de données personnalisés  
+✅ **L'encapsulation** : Protéger les données avec `private`, `public`, `protected`  
+✅ **L'héritage** : Créer des hiérarchies de classes (`TAnimal` → `TChien`)  
+✅ **Le polymorphisme** : Utiliser des objets de types différents de manière uniforme  
+✅ **Les méthodes virtuelles** : Redéfinir le comportement dans les classes dérivées  
+✅ **Les classes abstraites** : Créer des modèles incomplets que d'autres complètent  
 
 ### Ce que vous allez apprendre (Chapitre 12)
 
 Dans ce chapitre, vous découvrirez des outils encore plus puissants :
 
-🎯 **Les interfaces** : Des contrats que les classes s'engagent à respecter
-🎯 **L'héritage multiple** : Combiner plusieurs comportements (via les interfaces)
-🎯 **La gestion automatique de la mémoire** : Le comptage de références
-🎯 **La délégation et la composition** : Alternatives élégantes à l'héritage
-🎯 **Les properties avancées** : Contrôler finement l'accès aux données
-🎯 **Les design patterns** : Solutions éprouvées aux problèmes courants
+🎯 **Les interfaces** : Des contrats que les classes s'engagent à respecter  
+🎯 **L'héritage multiple** : Combiner plusieurs comportements (via les interfaces)  
+🎯 **La gestion automatique de la mémoire** : Le comptage de références  
+🎯 **La délégation et la composition** : Alternatives élégantes à l'héritage  
+🎯 **Les properties avancées** : Contrôler finement l'accès aux données  
+🎯 **Les design patterns** : Solutions éprouvées aux problèmes courants  
 
 ---
 
@@ -174,11 +174,11 @@ Si vous avez des **bases** mais voulez approfondir :
 
 Pour rester accessible aux débutants/intermédiaires, ce chapitre **n'aborde pas** :
 
-❌ Les interfaces COM avancées (spécifiques Windows)
-❌ Les génériques (traités dans un chapitre ultérieur)
-❌ Les design patterns avancés (Strategy, Observer, Decorator, etc.)
-❌ La programmation par contrats (DBC)
-❌ L'injection de dépendances avancée
+❌ Les interfaces COM avancées (spécifiques Windows)  
+❌ Les génériques (traités dans un chapitre ultérieur)  
+❌ Les design patterns avancés (Strategy, Observer, Decorator, etc.)  
+❌ La programmation par contrats (DBC)  
+❌ L'injection de dépendances avancée  
 
 Ces sujets viendront **plus tard**, une fois que vous aurez solidement maîtrisé les fondamentaux de ce chapitre.
 
@@ -188,19 +188,19 @@ Ces sujets viendront **plus tard**, une fois que vous aurez solidement maîtris�
 
 Avant de commencer ce chapitre, assurez-vous de maîtriser :
 
-### Depuis le Chapitre 10 (POO Fondamentaux)
-✅ Création et utilisation de classes
-✅ Constructeurs et destructeurs
-✅ Attributs et méthodes
-✅ Visibilité (`private`, `public`, `protected`)
-✅ Properties simples
+### Depuis le Chapitre 10 (POO Fondamentaux)  
+✅ Création et utilisation de classes  
+✅ Constructeurs et destructeurs  
+✅ Attributs et méthodes  
+✅ Visibilité (`private`, `public`, `protected`)  
+✅ Properties simples  
 
 ### Depuis le Chapitre 11 (Héritage)
-✅ Héritage de classes
-✅ Méthodes virtuelles et `override`
-✅ Classes abstraites
-✅ Polymorphisme
-✅ Transtypage (`as`, `is`)
+✅ Héritage de classes  
+✅ Méthodes virtuelles et `override`  
+✅ Classes abstraites  
+✅ Polymorphisme  
+✅ Transtypage (`as`, `is`)  
 
 **Si certains de ces concepts ne sont pas clairs, révisez les chapitres 10 et 11 avant de continuer.**
 

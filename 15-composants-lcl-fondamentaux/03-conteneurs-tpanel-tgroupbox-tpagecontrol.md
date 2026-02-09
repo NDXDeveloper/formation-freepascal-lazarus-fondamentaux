@@ -31,10 +31,10 @@ Les organiseurs vous permettent de ranger et de structurer votre espace de trava
 
 ### Pourquoi Utiliser des Conteneurs ?
 
-✅ **Organisation visuelle** : regrouper des éléments liés
-✅ **Gestion simplifiée** : déplacer un conteneur déplace tous ses enfants
-✅ **Réutilisabilité** : masquer/afficher plusieurs composants en une fois
-✅ **Layout intelligent** : alignement et redimensionnement automatique
+✅ **Organisation visuelle** : regrouper des éléments liés  
+✅ **Gestion simplifiée** : déplacer un conteneur déplace tous ses enfants  
+✅ **Réutilisabilité** : masquer/afficher plusieurs composants en une fois  
+✅ **Layout intelligent** : alignement et redimensionnement automatique  
 ✅ **Séparation logique** : structurer votre code et votre interface
 
 ---

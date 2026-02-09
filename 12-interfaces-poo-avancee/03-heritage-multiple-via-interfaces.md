@@ -690,11 +690,11 @@ end.
 - **Ordre important** : classe parente d'abord, puis interfaces
 
 ### Avantages
-✅ Combine plusieurs comportements dans une seule classe
-✅ Pas de conflit de noms (problème du diamant évité)
-✅ Flexibilité maximale
-✅ Séparation claire des responsabilités
-✅ Code réutilisable
+✅ Combine plusieurs comportements dans une seule classe  
+✅ Pas de conflit de noms (problème du diamant évité)  
+✅ Flexibilité maximale  
+✅ Séparation claire des responsabilités  
+✅ Code réutilisable  
 
 ### Règles à retenir
 - La classe parente (si elle existe) vient **toujours en premier**

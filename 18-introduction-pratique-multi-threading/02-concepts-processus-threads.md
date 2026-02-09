@@ -201,7 +201,7 @@ Pour nous, développeurs d'applications graphiques, cette distinction n'est pas 
 
 Dans une application graphique, **seul le thread principal peut modifier l'interface**. C'est une règle absolue dans Windows, Linux, macOS.
 
-❌ **INTERDIT** : Modifier un `TLabel` depuis un thread de travail
+❌ **INTERDIT** : Modifier un `TLabel` depuis un thread de travail  
 ✅ **PERMIS** : Demander au thread principal de modifier le `TLabel`
 
 Nous verrons comment faire dans les sections suivantes avec `Synchronize`.

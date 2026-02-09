@@ -292,20 +292,20 @@ Comprendre → Pratiquer → Maîtriser → Créer
 
 À la fin de ce chapitre, vous saurez :
 
-✅ Comment fonctionne HTTP et le web
-✅ Comment structurer et consommer des API REST
-✅ Comment parser et générer du JSON
-✅ Comment utiliser TFPHttpClient efficacement
-✅ Comment gérer les erreurs réseau robustement
-✅ Comment sécuriser vos communications (HTTPS, auth)
+✅ Comment fonctionne HTTP et le web  
+✅ Comment structurer et consommer des API REST  
+✅ Comment parser et générer du JSON  
+✅ Comment utiliser TFPHttpClient efficacement  
+✅ Comment gérer les erreurs réseau robustement  
+✅ Comment sécuriser vos communications (HTTPS, auth)  
 ✅ Comment créer des applications connectées professionnelles
 
 ### Ce Que Vous Ne Verrez Pas (Mais qui Viendra Plus Tard)
 
-❌ Création de serveurs HTTP/API (serveur REST)
-❌ WebSockets et communication temps réel
-❌ GraphQL
-❌ Protocoles avancés (MQTT, gRPC)
+❌ Création de serveurs HTTP/API (serveur REST)  
+❌ WebSockets et communication temps réel  
+❌ GraphQL  
+❌ Protocoles avancés (MQTT, gRPC)  
 ❌ Sécurité avancée (OAuth 2.0 complet)
 
 **Ces sujets avancés seront couverts dans des chapitres ultérieurs.**

@@ -32,17 +32,17 @@ Cette section vous apprend à :
 **Dans le code :**
 ```pascal
 WriteLn('Test');  // Placez le curseur sur WriteLn et appuyez sur F1
-```
+```  
 → L'aide s'ouvre avec la description de `WriteLn`, sa syntaxe, des exemples
 
 **Sur un composant :**
 - Sélectionnez un bouton (TButton) sur votre formulaire
-- Appuyez sur F1
+- Appuyez sur F1  
 → Documentation de TButton avec toutes ses propriétés et méthodes
 
 **Sur une propriété :**
 - Dans l'Inspecteur d'objets, cliquez sur une propriété (ex: Caption)
-- Appuyez sur F1
+- Appuyez sur F1  
 → Explication de cette propriété
 
 #### Ce qui s'affiche
@@ -404,10 +404,10 @@ Lazarus est livré avec de nombreux exemples de code prêts à compiler.
 
 **Titre clair et descriptif**
 
-❌ Mauvais : "Aide SVP !!!"
-❌ Mauvais : "Ça ne marche pas"
-✅ Bon : "Erreur 'Identifier not found' lors de la compilation avec TStringList"
-✅ Bon : "Comment lire un fichier CSV en FreePascal ?"
+❌ Mauvais : "Aide SVP !!!"  
+❌ Mauvais : "Ça ne marche pas"  
+✅ Bon : "Erreur 'Identifier not found' lors de la compilation avec TStringList"  
+✅ Bon : "Comment lire un fichier CSV en FreePascal ?"  
 
 **Message structuré**
 
@@ -416,13 +416,13 @@ Bonjour,
 
 Je suis débutant avec Lazarus et j'essaie de [description du problème].
 
-**Ce que je veux faire :**
+**Ce que je veux faire :**  
 [Expliquez votre objectif]
 
-**Mon code :**
+**Mon code :**  
 [Code en balise code]
 
-**L'erreur rencontrée :**
+**L'erreur rencontrée :**  
 [Message d'erreur exact]
 
 **Mon environnement :**

@@ -10,11 +10,11 @@
 
 ### Pourquoi utiliser l'UML ?
 
-✓ **Visualiser** la structure du code avant de l'écrire
-✓ **Communiquer** avec d'autres développeurs
-✓ **Planifier** l'architecture de l'application
-✓ **Documenter** le code existant
-✓ **Identifier** les problèmes de conception tôt
+✓ **Visualiser** la structure du code avant de l'écrire  
+✓ **Communiquer** avec d'autres développeurs  
+✓ **Planifier** l'architecture de l'application  
+✓ **Documenter** le code existant  
+✓ **Identifier** les problèmes de conception tôt  
 
 ## Le diagramme de classes
 
@@ -736,14 +736,14 @@ Aide à estimer le travail nécessaire.
 
 Félicitations ! Vous avez maintenant acquis les **fondamentaux de la Programmation Orientée Objet** :
 
-✓ Concepts de classes et d'objets
-✓ Encapsulation et visibilité
-✓ Attributs et méthodes
-✓ Constructeurs et destructeurs
-✓ Le mot-clé Self
-✓ Propriétés
-✓ Comparaison procédural vs objet
-✓ Diagrammes UML
+✓ Concepts de classes et d'objets  
+✓ Encapsulation et visibilité  
+✓ Attributs et méthodes  
+✓ Constructeurs et destructeurs  
+✓ Le mot-clé Self  
+✓ Propriétés  
+✓ Comparaison procédural vs objet  
+✓ Diagrammes UML  
 
 Dans le **chapitre 11**, nous approfondirons ces concepts avec l'**héritage**, le **polymorphisme**, et les **méthodes virtuelles**, qui vous permettront de créer des hiérarchies de classes plus sophistiquées et réutilisables.
 

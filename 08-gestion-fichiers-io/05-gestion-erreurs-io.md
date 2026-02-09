@@ -167,10 +167,10 @@ begin
 end.
 ```
 
-**Avantages de cette approche :**
-✅ Le programme ne plante pas
-✅ L'utilisateur reçoit un message clair
-✅ On peut réagir différemment selon l'erreur
+**Avantages de cette approche :**  
+✅ Le programme ne plante pas  
+✅ L'utilisateur reçoit un message clair  
+✅ On peut réagir différemment selon l'erreur  
 
 ---
 

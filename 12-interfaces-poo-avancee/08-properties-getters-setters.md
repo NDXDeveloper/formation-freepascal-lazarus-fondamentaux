@@ -979,12 +979,12 @@ end.
 - **Setter** : Procédure qui modifie la valeur (peut valider)
 
 ### Avantages
-✅ Encapsulation respectée
-✅ Validation des données
-✅ Logique métier centralisée
-✅ Facilite le débogage
-✅ Syntaxe simple pour l'utilisateur
-✅ Flexibilité future (on peut changer l'implémentation)
+✅ Encapsulation respectée  
+✅ Validation des données  
+✅ Logique métier centralisée  
+✅ Facilite le débogage  
+✅ Syntaxe simple pour l'utilisateur  
+✅ Flexibilité future (on peut changer l'implémentation)  
 
 ### Bonnes pratiques
 - Toujours utiliser des attributs privés (`F` + nom)

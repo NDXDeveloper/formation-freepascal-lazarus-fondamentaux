@@ -583,11 +583,11 @@ end;
 - Plusieurs interfaces peuvent être implémentées
 
 ### Points clés à retenir
-✅ Une interface = un contrat obligatoire
-✅ `TInterfacedObject` simplifie le travail
-✅ Toujours générer un GUID pour vos interfaces
-✅ Respecter les conventions de nommage (I...)
-✅ Garder les interfaces simples et ciblées
+✅ Une interface = un contrat obligatoire  
+✅ `TInterfacedObject` simplifie le travail  
+✅ Toujours générer un GUID pour vos interfaces  
+✅ Respecter les conventions de nommage (I...)  
+✅ Garder les interfaces simples et ciblées  
 
 ---
 

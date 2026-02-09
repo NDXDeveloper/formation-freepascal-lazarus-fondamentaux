@@ -132,11 +132,11 @@ Si vous avez déjà programmé mais jamais utilisé de pointeurs, ce chapitre vo
 
 Avant de commencer ce chapitre, assurez-vous de maîtriser :
 
-✅ Les types de données de base (Integer, Real, String, Char)
-✅ Les tableaux statiques
-✅ Les enregistrements (records)
-✅ Les procédures et fonctions
-✅ Le passage de paramètres (par valeur et par référence avec `var`)
+✅ Les types de données de base (Integer, Real, String, Char)  
+✅ Les tableaux statiques  
+✅ Les enregistrements (records)  
+✅ Les procédures et fonctions  
+✅ Le passage de paramètres (par valeur et par référence avec `var`)  
 
 Si l'un de ces concepts n'est pas clair, nous vous recommandons de revoir les chapitres précédents.
 
@@ -202,14 +202,14 @@ Nous détaillerons ces règles tout au long du chapitre.
 
 À la fin de ce chapitre, vous serez capable de :
 
-✅ Expliquer ce qu'est un pointeur et une adresse mémoire
-✅ Créer et utiliser des pointeurs de manière sûre
-✅ Allouer et libérer de la mémoire dynamiquement
-✅ Implémenter une liste chaînée simple
-✅ Construire un arbre binaire de recherche
-✅ Détecter et corriger les fuites mémoire
-✅ Déboguer les problèmes liés aux pointeurs
-✅ Écrire du code robuste et maintenable avec pointeurs
+✅ Expliquer ce qu'est un pointeur et une adresse mémoire  
+✅ Créer et utiliser des pointeurs de manière sûre  
+✅ Allouer et libérer de la mémoire dynamiquement  
+✅ Implémenter une liste chaînée simple  
+✅ Construire un arbre binaire de recherche  
+✅ Détecter et corriger les fuites mémoire  
+✅ Déboguer les problèmes liés aux pointeurs  
+✅ Écrire du code robuste et maintenable avec pointeurs  
 
 ## Conseils pour Tirer le Maximum de ce Chapitre
 

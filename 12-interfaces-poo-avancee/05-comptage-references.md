@@ -811,16 +811,16 @@ Préoccupez-vous des performances **seulement si** :
 - Destruction automatique quand compteur = 0
 
 ### Avantages majeurs
-✅ Pas de fuite mémoire
-✅ Pas de `Free` à gérer
-✅ Partage sécurisé d'objets
-✅ Code plus simple et plus sûr
+✅ Pas de fuite mémoire  
+✅ Pas de `Free` à gérer  
+✅ Partage sécurisé d'objets  
+✅ Code plus simple et plus sûr  
 
 ### Pièges à éviter
-❌ Mélanger classes et interfaces
-❌ Créer des références circulaires
-❌ Appeler `Free` sur une interface
-❌ Appeler `_AddRef`/`_Release` manuellement
+❌ Mélanger classes et interfaces  
+❌ Créer des références circulaires  
+❌ Appeler `Free` sur une interface  
+❌ Appeler `_AddRef`/`_Release` manuellement  
 
 ### Règle d'or
 **Si vous utilisez une interface, laissez FreePascal gérer la mémoire automatiquement !**

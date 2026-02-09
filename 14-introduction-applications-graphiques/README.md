@@ -31,14 +31,14 @@ Maintenant, imaginez créer des applications qui ressemblent à ceci :
 ├────────────────────────────────────────────┤
 │ Fichier  Édition  Affichage  Aide          │
 ├────────────────────────────────────────────┤
-│ [📄] [📁] [💾] │ [✂] [📋] [📌]              │
+│ [📄] [📁] [💾] │ [✂] [📋] [📌]             │
 ├────────────────────────────────────────────┤
 │                                            │
 │  Nom :    [Jean_____________]              │
 │                                            │
 │  Âge :    [25___]                          │
 │                                            │
-│  ☑ Accepter les conditions                │
+│  ☑ Accepter les conditions                 │
 │                                            │
 │           [Valider]  [Annuler]             │
 │                                            │
@@ -184,7 +184,7 @@ C'est le conteneur de base de votre application.
 ├────────────────────────────────────┤
 │ Fichier  Édition  Aide             │ ← Barre de menu
 ├────────────────────────────────────┤
-│ [📄] [📁] [💾]                      │ ← Barre d'outils
+│ [📄] [📁] [💾]                     │ ← Barre d'outils
 ├────────────────────────────────────┤
 │                                    │
 │        Zone de contenu             │ ← Contenu
@@ -441,7 +441,7 @@ Quand vous ouvrez Lazarus, vous voyez plusieurs fenêtres :
 │ Lazarus IDE                                             │
 ├─────────────────────────────────────────────────────────┤
 │ Fichier  Édition  Rechercher  Voir  Projet  Exécuter... │
-│ [💾] [📁] [▶] [⏸] [⏹] ...                              │
+│ [💾] [📁] [▶] [⏸] [⏹] ...                               │
 └─────────────────────────────────────────────────────────┘
 
 ┌──────────────────┐  ┌─────────────────────────────────┐
@@ -462,14 +462,14 @@ Quand vous ouvrez Lazarus, vous voyez plusieurs fenêtres :
 │ Palette de       │  │ implementation                  │
 │ composants       │  │                                 │
 │ [Standard]       │  │ // votre code ici               │
-│ [📋][📝][🔘]...  │  │                                  │
+│ [📋][📝][🔘]...  │  │                                 │
 └──────────────────┘  └─────────────────────────────────┘
 
 ┌─────────────────────────────────────┐
 │ Concepteur de formulaires           │
 │                                     │
 │  ┌───────────────────────────────┐  │
-│  │ Form1                   _ □ ✕ │ │
+│  │ Form1                   _ □ ✕ │  │
 │  ├───────────────────────────────┤  │
 │  │                               │  │
 │  │    . . . . . . . . . . . .    │  │
@@ -587,15 +587,15 @@ Finitions professionnelles (14.9)
 
 À la fin de ce chapitre, vous serez capable de :
 
-✅ **Comprendre** le paradigme événementiel
-✅ **Créer** des formulaires et interfaces graphiques
-✅ **Utiliser** les composants de base (Boutons, Champs, Labels)
-✅ **Gérer** les événements utilisateur (Clics, Saisies)
-✅ **Organiser** l'interface avec des layouts adaptatifs
-✅ **Créer** des menus et barres d'outils
-✅ **Intégrer** des dialogues standard (Ouvrir, Enregistrer, Couleurs)
-✅ **Développer** des applications complètes et professionnelles
-✅ **Compiler** pour Windows et Linux
+✅ **Comprendre** le paradigme événementiel  
+✅ **Créer** des formulaires et interfaces graphiques  
+✅ **Utiliser** les composants de base (Boutons, Champs, Labels)  
+✅ **Gérer** les événements utilisateur (Clics, Saisies)  
+✅ **Organiser** l'interface avec des layouts adaptatifs  
+✅ **Créer** des menus et barres d'outils  
+✅ **Intégrer** des dialogues standard (Ouvrir, Enregistrer, Couleurs)  
+✅ **Développer** des applications complètes et professionnelles  
+✅ **Compiler** pour Windows et Linux  
 
 ---
 

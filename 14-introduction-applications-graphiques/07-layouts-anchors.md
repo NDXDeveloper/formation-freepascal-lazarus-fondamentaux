@@ -102,8 +102,8 @@ Les **anchors** (ancrages) définissent quels **côtés** d'un composant restent
 Button1.Anchors := [akLeft, akTop];  // Défaut
 ```
 
-**Type :** Set de TAnchorKind
-**Valeurs possibles :**
+**Type :** Set de TAnchorKind  
+**Valeurs possibles :**  
 - `akLeft` : Ancré au bord gauche
 - `akTop` : Ancré au bord haut
 - `akRight` : Ancré au bord droit
@@ -330,8 +330,8 @@ Si la fenêtre est agrandie, tout s'adapte parfaitement !
 Panel1.Align := alTop;
 ```
 
-**Type :** TAlign
-**Valeurs possibles :**
+**Type :** TAlign  
+**Valeurs possibles :**  
 
 | Valeur | Description |
 |--------|-------------|
@@ -610,8 +610,8 @@ Form1.Constraints.MaxWidth := 1920;
 Form1.Constraints.MaxHeight := 1080;
 ```
 
-**Type :** TSizeConstraints
-**Sous-propriétés :**
+**Type :** TSizeConstraints  
+**Sous-propriétés :**  
 - `MinWidth` : Largeur minimale
 - `MinHeight` : Hauteur minimale
 - `MaxWidth` : Largeur maximale
@@ -669,7 +669,7 @@ Memo1.Constraints.MinHeight := 100;
 
 Les **Panels** sont des conteneurs qui regroupent d'autres composants.
 
-**Avantages :**
+**Avantages :**  
 - Organiser visuellement l'interface
 - Appliquer Align/Anchors à un groupe
 - Créer des zones distinctes
@@ -1062,11 +1062,11 @@ Panel1.BorderSpacing.Around := 0;
 
 ### Concepts clés
 
-✅ **Anchors** : Définissent les côtés ancrés (distances fixes)
-✅ **Align** : Alignement automatique (Top, Bottom, Left, Right, Client)
-✅ **Constraints** : Limites de taille (min/max)
-✅ **Panels** : Conteneurs pour organiser
-✅ **Splitters** : Divisions redimensionnables
+✅ **Anchors** : Définissent les côtés ancrés (distances fixes)  
+✅ **Align** : Alignement automatique (Top, Bottom, Left, Right, Client)  
+✅ **Constraints** : Limites de taille (min/max)  
+✅ **Panels** : Conteneurs pour organiser  
+✅ **Splitters** : Divisions redimensionnables  
 
 ### Tableau de décision : Quand utiliser quoi ?
 
@@ -1083,12 +1083,12 @@ Panel1.BorderSpacing.Around := 0;
 
 ### Checklist pour une bonne interface
 
-✅ Tous les composants visibles à toutes les tailles
-✅ Taille minimale définie (Constraints)
-✅ Zones principales utilisent Align
-✅ Détails utilisent Anchors
-✅ Marges et espacement cohérents
-✅ Testée à différentes résolutions
+✅ Tous les composants visibles à toutes les tailles  
+✅ Taille minimale définie (Constraints)  
+✅ Zones principales utilisent Align  
+✅ Détails utilisent Anchors  
+✅ Marges et espacement cohérents  
+✅ Testée à différentes résolutions  
 
 ---
 

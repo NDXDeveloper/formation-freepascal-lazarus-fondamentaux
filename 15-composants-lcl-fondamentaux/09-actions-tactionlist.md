@@ -853,32 +853,32 @@ end;
 
 ### 1. Centralisation du Code
 
-✅ **Une seule implémentation** de chaque commande
-✅ **Maintenance simplifiée** : modifier à un seul endroit
+✅ **Une seule implémentation** de chaque commande  
+✅ **Maintenance simplifiée** : modifier à un seul endroit  
 ✅ **Moins de bugs** : pas de code dupliqué
 
 ### 2. Cohérence Automatique
 
-✅ **Même libellé** partout (menu, bouton, tooltip)
-✅ **Même raccourci** clavier
+✅ **Même libellé** partout (menu, bouton, tooltip)  
+✅ **Même raccourci** clavier  
 ✅ **Même icône** si ImageList utilisée
 
 ### 3. Gestion Automatique de l'État
 
-✅ **OnUpdate** synchronise automatiquement
-✅ **Activation/désactivation** propagée à tous les contrôles
+✅ **OnUpdate** synchronise automatiquement  
+✅ **Activation/désactivation** propagée à tous les contrôles  
 ✅ **État coché** (Checked) géré uniformément
 
 ### 4. Facilité d'Extension
 
-✅ **Ajouter un nouveau bouton** : une ligne de code (`Button.Action := ...`)
-✅ **Créer un menu contextuel** : réutiliser les actions existantes
+✅ **Ajouter un nouveau bouton** : une ligne de code (`Button.Action := ...`)  
+✅ **Créer un menu contextuel** : réutiliser les actions existantes  
 ✅ **Ajouter un raccourci clavier** : défini dans l'action uniquement
 
 ### 5. Organisation
 
-✅ **Catégories** pour grouper logiquement
-✅ **Liste centralisée** de toutes les commandes
+✅ **Catégories** pour grouper logiquement  
+✅ **Liste centralisée** de toutes les commandes  
 ✅ **Plus facile à documenter** et à comprendre
 
 ---

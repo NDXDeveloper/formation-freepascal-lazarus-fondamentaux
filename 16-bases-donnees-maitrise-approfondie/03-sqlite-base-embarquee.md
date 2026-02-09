@@ -643,26 +643,26 @@ Il est important de connaître les limitations pour faire les bons choix :
 
 ### Pour l'apprentissage
 
-✅ Aucune configuration
-✅ Pas de serveur à gérer
-✅ Erreurs claires et simples
-✅ Démarrage instantané
+✅ Aucune configuration  
+✅ Pas de serveur à gérer  
+✅ Erreurs claires et simples  
+✅ Démarrage instantané  
 ✅ Parfait pour expérimenter
 
 ### Pour le développement
 
-✅ Déploiement simple (un fichier)
-✅ Multi-plateforme natif
-✅ Pas de dépendances externes
-✅ Tests faciles (copier/supprimer des fichiers)
+✅ Déploiement simple (un fichier)  
+✅ Multi-plateforme natif  
+✅ Pas de dépendances externes  
+✅ Tests faciles (copier/supprimer des fichiers)  
 ✅ Sauvegarde simple (copie de fichier)
 
 ### Pour la production
 
-✅ Fiable et mature (20+ ans)
-✅ Très bien testé
-✅ Performances excellentes
-✅ Footprint minimal
+✅ Fiable et mature (20+ ans)  
+✅ Très bien testé  
+✅ Performances excellentes  
+✅ Footprint minimal  
 ✅ Domaine public (aucune licence)
 
 ## Outils de développement recommandés

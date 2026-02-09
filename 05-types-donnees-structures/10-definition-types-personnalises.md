@@ -818,12 +818,12 @@ type
 
 ## Avantages des types personnalisés
 
-✓ **Clarté** : Code auto-documenté
-✓ **Sécurité** : Vérification de types par le compilateur
-✓ **Réutilisabilité** : Définir une fois, utiliser partout
-✓ **Maintenabilité** : Modification centralisée
-✓ **Abstraction** : Masquer la complexité
-✓ **Cohérence** : Utilisation uniforme dans tout le projet
+✓ **Clarté** : Code auto-documenté  
+✓ **Sécurité** : Vérification de types par le compilateur  
+✓ **Réutilisabilité** : Définir une fois, utiliser partout  
+✓ **Maintenabilité** : Modification centralisée  
+✓ **Abstraction** : Masquer la complexité  
+✓ **Cohérence** : Utilisation uniforme dans tout le projet  
 
 ## Résumé
 

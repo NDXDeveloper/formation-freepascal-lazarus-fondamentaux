@@ -886,32 +886,32 @@ end;
 
 ### À la connexion initiale
 
-✅ **Tentatives multiples** avec backoff exponentiel
-✅ **Messages clairs** pour l'utilisateur
-✅ **Configuration des timeouts**
+✅ **Tentatives multiples** avec backoff exponentiel  
+✅ **Messages clairs** pour l'utilisateur  
+✅ **Configuration des timeouts**  
 ✅ **Validation des paramètres** (host, port, base, etc.)
 
 ### Pendant l'exécution
 
-✅ **Détection des déconnexions**
-✅ **Reconnexion automatique** quand possible
-✅ **Gestion des timeouts** de requête
-✅ **Logging des erreurs** pour diagnostic
+✅ **Détection des déconnexions**  
+✅ **Reconnexion automatique** quand possible  
+✅ **Gestion des timeouts** de requête  
+✅ **Logging des erreurs** pour diagnostic  
 ✅ **Interface réactive** (feedback utilisateur)
 
 ### Gestion des erreurs
 
-✅ **Try-except** systématique
-✅ **Messages utilisateur** compréhensibles
-✅ **Rollback** en cas d'erreur de transaction
-✅ **Retry** pour les erreurs temporaires
+✅ **Try-except** systématique  
+✅ **Messages utilisateur** compréhensibles  
+✅ **Rollback** en cas d'erreur de transaction  
+✅ **Retry** pour les erreurs temporaires  
 ✅ **Abandon** pour les erreurs permanentes
 
 ### Monitoring
 
-✅ **État de connexion** visible
-✅ **Logs structurés** (timestamp, niveau, message)
-✅ **Alertes** sur requêtes lentes
+✅ **État de connexion** visible  
+✅ **Logs structurés** (timestamp, niveau, message)  
+✅ **Alertes** sur requêtes lentes  
 ✅ **Statistiques** (nombre d'erreurs, reconnexions, etc.)
 
 ## Exemple complet : Application résiliente
@@ -1153,36 +1153,36 @@ end;
 
 ### 2. Implémenter le retry intelligemment
 
-✅ Backoff exponentiel
-✅ Nombre limité de tentatives
-✅ Jitter pour éviter les pics
+✅ Backoff exponentiel  
+✅ Nombre limité de tentatives  
+✅ Jitter pour éviter les pics  
 ✅ Messages clairs
 
 ### 3. Configurer les timeouts
 
-✅ Timeout de connexion
-✅ Timeout de requête
+✅ Timeout de connexion  
+✅ Timeout de requête  
 ✅ Timeout de verrou
 
 ### 4. Logger pour diagnostiquer
 
-✅ Timestamp
-✅ Niveau (INFO, WARNING, ERROR)
-✅ Message clair
+✅ Timestamp  
+✅ Niveau (INFO, WARNING, ERROR)  
+✅ Message clair  
 ✅ Contexte (quelle opération)
 
 ### 5. Informer l'utilisateur
 
-✅ État de connexion visible
-✅ Messages compréhensibles
+✅ État de connexion visible  
+✅ Messages compréhensibles  
 ✅ Options claires (réessayer, annuler, continuer)
 
 ### 6. Tester les scénarios d'erreur
 
-✅ Serveur arrêté
-✅ Réseau coupé
-✅ Mauvais identifiants
-✅ Requête trop longue
+✅ Serveur arrêté  
+✅ Réseau coupé  
+✅ Mauvais identifiants  
+✅ Requête trop longue  
 ✅ Deadlock
 
 ## Résumé

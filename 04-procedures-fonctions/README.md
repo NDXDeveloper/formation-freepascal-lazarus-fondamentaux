@@ -146,16 +146,16 @@ Ce chapitre est divisé en 11 sections progressives qui vous mèneront de la dé
 
 ## Ce que vous saurez faire à la fin
 
-À la fin de ce chapitre, vous serez capable de :
+À la fin de ce chapitre, vous serez capable de :  
 
-✅ Créer vos propres procédures et fonctions
-✅ Comprendre quand utiliser l'une ou l'autre
-✅ Passer des informations entre différentes parties de votre programme
-✅ Modifier ou protéger des données selon vos besoins
-✅ Réutiliser votre code efficacement
-✅ Organiser vos programmes de manière professionnelle
-✅ Déboguer plus facilement vos programmes
-✅ Collaborer avec d'autres développeurs
+✅ Créer vos propres procédures et fonctions  
+✅ Comprendre quand utiliser l'une ou l'autre  
+✅ Passer des informations entre différentes parties de votre programme  
+✅ Modifier ou protéger des données selon vos besoins  
+✅ Réutiliser votre code efficacement  
+✅ Organiser vos programmes de manière professionnelle  
+✅ Déboguer plus facilement vos programmes  
+✅ Collaborer avec d'autres développeurs  
 
 ## Concepts clés à retenir
 
@@ -300,12 +300,12 @@ Certains concepts (comme la récursivité) peuvent nécessiter plusieurs lecture
 
 ## Prérequis
 
-Avant de commencer ce chapitre, assurez-vous de maîtriser :
+Avant de commencer ce chapitre, assurez-vous de maîtriser :  
 
-✅ Les variables et types de données (Chapitre 2)
-✅ Les structures de contrôle (if, case, boucles) (Chapitre 3)
-✅ La lecture et l'écriture console (ReadLn, WriteLn)
-✅ Les opérateurs de base (arithmétiques, logiques)
+✅ Les variables et types de données (Chapitre 2)  
+✅ Les structures de contrôle (if, case, boucles) (Chapitre 3)  
+✅ La lecture et l'écriture console (ReadLn, WriteLn)  
+✅ Les opérateurs de base (arithmétiques, logiques)  
 
 Si un de ces sujets n'est pas clair, n'hésitez pas à réviser avant de continuer.
 

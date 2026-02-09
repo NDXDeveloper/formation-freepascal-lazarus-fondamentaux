@@ -54,35 +54,35 @@ Ce chapitre vous guidera progressivement à travers tous les aspects de la gesti
 
 ### Les fondamentaux (Sections 13.1 à 13.3)
 
-**13.1 - Concept d'exception**
+**13.1 - Concept d'exception**  
 Vous comprendrez ce qu'est une exception, pourquoi elles existent, et comment elles transforment votre façon de gérer les erreurs. Nous utiliserons des analogies du quotidien pour rendre ce concept abstrait très concret.
 
-**13.2 - Try-except-finally**
+**13.2 - Try-except-finally**  
 Vous maîtriserez les trois structures fondamentales pour capturer et gérer les exceptions. Vous apprendrez quand utiliser `try-except` pour gérer les erreurs, et `try-finally` pour garantir la libération des ressources.
-
-**13.3 - Raise et déclenchement**
+ 
+**13.3 - Raise et déclenchement**  
 Vous apprendrez à lever vos propres exceptions pour signaler les situations anormales dans votre code. Vous saurez quand et comment créer des messages d'erreur utiles.
 
 ### Maîtriser le système (Sections 13.4 à 13.5)
 
-**13.4 - Hiérarchie des exceptions**
+**13.4 - Hiérarchie des exceptions**  
 Vous découvrirez comment toutes les exceptions s'organisent en une hiérarchie de classes. Vous comprendrez pourquoi cette organisation est importante et comment l'utiliser à votre avantage.
 
-**13.5 - Exceptions personnalisées**
+**13.5 - Exceptions personnalisées**  
 Vous créerez vos propres classes d'exceptions pour modéliser les erreurs spécifiques à votre domaine métier. Vos exceptions parleront le langage de votre application.
 
 ### Devenir expert (Sections 13.6 à 13.9)
 
-**13.6 - Exceptions et ressources**
+**13.6 - Exceptions et ressources**  
 Vous apprendrez le pattern le plus important : comment garantir que les ressources (fichiers, mémoire, connexions) sont toujours libérées correctement, même quand des erreurs se produisent.
 
-**13.7 - Bonnes pratiques**
+**13.7 - Bonnes pratiques**  
 Vous découvrirez 15 principes essentiels qui séparent les développeurs novices des experts. Ces pratiques sont le fruit de décennies d'expérience collective.
 
-**13.8 - Débogage avec exceptions**
+**13.8 - Débogage avec exceptions**  
 Vous maîtriserez les outils de Lazarus pour traquer et corriger les bugs liés aux exceptions. Points d'arrêt, inspection de variables, pile d'appels : vous saurez tout.
 
-**13.9 - Logging des erreurs**
+**13.9 - Logging des erreurs**  
 Vous créerez un système de journalisation professionnel pour enregistrer et analyser les erreurs. Vous transformerez les "ça ne marche pas" en diagnostics précis.
 
 ## Progression pédagogique
@@ -100,29 +100,29 @@ Chaque section s'appuie sur les précédentes. Il est important de les suivre da
 
 Après avoir étudié ce chapitre, vous serez capable de :
 
-✓ Comprendre et interpréter les messages d'exception
-✓ Capturer et gérer les erreurs de manière appropriée
-✓ Protéger les ressources avec `try-finally`
-✓ Créer vos propres exceptions personnalisées
-✓ Organiser vos exceptions en hiérarchies cohérentes
-✓ Écrire des messages d'erreur clairs et utiles
-✓ Déboguer efficacement avec les outils de Lazarus
-✓ Mettre en place un système de logging professionnel
-✓ Appliquer les bonnes pratiques reconnues
-✓ Créer des applications robustes et fiables
+✓ Comprendre et interpréter les messages d'exception  
+✓ Capturer et gérer les erreurs de manière appropriée  
+✓ Protéger les ressources avec `try-finally`  
+✓ Créer vos propres exceptions personnalisées  
+✓ Organiser vos exceptions en hiérarchies cohérentes  
+✓ Écrire des messages d'erreur clairs et utiles  
+✓ Déboguer efficacement avec les outils de Lazarus  
+✓ Mettre en place un système de logging professionnel  
+✓ Appliquer les bonnes pratiques reconnues  
+✓ Créer des applications robustes et fiables  
 
 ## Un changement de mentalité
 
 Apprendre la gestion des exceptions, c'est plus qu'apprendre une syntaxe. C'est adopter une nouvelle mentalité :
 
-**Avant :** "Mon code fonctionnera toujours correctement"
-**Après :** "Que se passe-t-il si quelque chose tourne mal ?"
+**Avant :** "Mon code fonctionnera toujours correctement"  
+**Après :** "Que se passe-t-il si quelque chose tourne mal ?"  
 
-**Avant :** "Si ça crash, c'est la faute de l'utilisateur"
-**Après :** "Comment puis-je aider l'utilisateur quand un problème survient ?"
+**Avant :** "Si ça crash, c'est la faute de l'utilisateur"  
+**Après :** "Comment puis-je aider l'utilisateur quand un problème survient ?"  
 
-**Avant :** "Les erreurs sont des échecs"
-**Après :** "Les erreurs sont des opportunités d'améliorer la robustesse"
+**Avant :** "Les erreurs sont des échecs"  
+**Après :** "Les erreurs sont des opportunités d'améliorer la robustesse"  
 
 Cette mentalité défensive (ou "programmation défensive") est la marque des développeurs expérimentés. Elle ne rend pas votre code plus complexe, elle le rend plus **fiable**.
 

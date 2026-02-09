@@ -921,16 +921,16 @@ end.
 
 ### Avantages des ABR
 
-✅ **Recherche efficace** : O(log n) dans le meilleur cas
-✅ **Insertion/suppression** : O(log n) en moyenne
-✅ **Parcours ordonné** : Le parcours infixe donne les valeurs triées
-✅ **Structure hiérarchique** : Représente naturellement des relations
+✅ **Recherche efficace** : O(log n) dans le meilleur cas  
+✅ **Insertion/suppression** : O(log n) en moyenne  
+✅ **Parcours ordonné** : Le parcours infixe donne les valeurs triées  
+✅ **Structure hiérarchique** : Représente naturellement des relations  
 
 ### Inconvénients
 
-❌ **Déséquilibre** : Peut dégénérer en liste chaînée (O(n))
-❌ **Complexité** : Plus difficile à implémenter que les listes
-❌ **Surcoût mémoire** : Deux pointeurs par noeud
+❌ **Déséquilibre** : Peut dégénérer en liste chaînée (O(n))  
+❌ **Complexité** : Plus difficile à implémenter que les listes  
+❌ **Surcoût mémoire** : Deux pointeurs par noeud  
 
 ### Comparaison avec Liste Chaînée
 

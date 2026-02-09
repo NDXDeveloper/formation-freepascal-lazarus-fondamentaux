@@ -29,11 +29,11 @@ Imaginez un Timer comme :
 
 ### Utilisations Courantes
 
-✅ **Horloges et chronomètres** : afficher l'heure en temps réel
-✅ **Animations** : déplacer des objets, faire clignoter
-✅ **Surveillance** : vérifier périodiquement un état
-✅ **Timeout** : déclencher une action après un délai
-✅ **Auto-sauvegarde** : sauvegarder automatiquement
+✅ **Horloges et chronomètres** : afficher l'heure en temps réel  
+✅ **Animations** : déplacer des objets, faire clignoter  
+✅ **Surveillance** : vérifier périodiquement un état  
+✅ **Timeout** : déclencher une action après un délai  
+✅ **Auto-sauvegarde** : sauvegarder automatiquement  
 ✅ **Rafraîchissement** : mettre à jour des données périodiquement
 
 ---

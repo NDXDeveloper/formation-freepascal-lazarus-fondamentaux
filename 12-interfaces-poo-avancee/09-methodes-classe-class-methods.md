@@ -266,10 +266,10 @@ end.
 ```
 
 **Avantages des factory methods :**
-- ✅ Noms explicites (`CreerAdmin` vs `Create`)
-- ✅ Logique de création centralisée
-- ✅ Peut retourner des sous-classes différentes
-- ✅ Facilite les tests (on peut mocker)
+- ✅ Noms explicites (`CreerAdmin` vs `Create`)  
+- ✅ Logique de création centralisée  
+- ✅ Peut retourner des sous-classes différentes  
+- ✅ Facilite les tests (on peut mocker)  
 
 ---
 
@@ -861,11 +861,11 @@ class procedure NomMethode; virtual;  // Peut être virtuelle
 ```
 
 ### Restrictions
-❌ Pas d'accès aux attributs d'instance (`FNom`, `FAge`)
-❌ Pas d'accès à `Self` (pas d'instance)
-✅ Accès aux attributs de classe (`class var`)
-✅ Peut créer des instances
-✅ Peut appeler d'autres méthodes de classe
+❌ Pas d'accès aux attributs d'instance (`FNom`, `FAge`)  
+❌ Pas d'accès à `Self` (pas d'instance)  
+✅ Accès aux attributs de classe (`class var`)  
+✅ Peut créer des instances  
+✅ Peut appeler d'autres méthodes de classe  
 
 ### Cas d'usage principaux
 1. **Factory methods** : Créer des objets avec logique
@@ -875,10 +875,10 @@ class procedure NomMethode; virtual;  // Peut être virtuelle
 5. **Validation** : Vérifier avant création
 
 ### Avantages
-✅ Pas besoin de créer d'objet pour appeler
-✅ Code plus clair et expressif
-✅ Centralise la logique de création
-✅ Facilite les tests (mocking)
+✅ Pas besoin de créer d'objet pour appeler  
+✅ Code plus clair et expressif  
+✅ Centralise la logique de création  
+✅ Facilite les tests (mocking)  
 
 ### Différence clé
 | Méthode d'instance | Méthode de classe |

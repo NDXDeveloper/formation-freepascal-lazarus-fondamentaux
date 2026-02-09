@@ -587,23 +587,23 @@ end;
 - ⚠️ Attention aux références circulaires
 
 ### Règles importantes
-✅ Hériter de `TInterfacedObject`
-✅ Utiliser des variables de type interface
-✅ Laisser la destruction automatique fonctionner
-❌ Ne jamais appeler `.Free` sur une interface
-❌ Ne jamais appeler `_AddRef`/`_Release` manuellement
+✅ Hériter de `TInterfacedObject`  
+✅ Utiliser des variables de type interface  
+✅ Laisser la destruction automatique fonctionner  
+❌ Ne jamais appeler `.Free` sur une interface  
+❌ Ne jamais appeler `_AddRef`/`_Release` manuellement  
 
 ---
 
 ## Pour aller plus loin
 
 **Vous êtes débutant ?**
-➜ Retenez juste : utilisez `TInterfacedObject` et laissez la magie opérer !
+➜ Retenez juste : utilisez `TInterfacedObject` et laissez la magie opérer !  
 
 **Vous voulez approfondir ?**
-➜ Consultez la documentation FreePascal sur COM et les interfaces
-➜ Étudiez les design patterns utilisant les interfaces
-➜ Explorez les références faibles (weak references) pour éviter les cycles
+➜ Consultez la documentation FreePascal sur COM et les interfaces  
+➜ Étudiez les design patterns utilisant les interfaces  
+➜ Explorez les références faibles (weak references) pour éviter les cycles  
 
 ---
 

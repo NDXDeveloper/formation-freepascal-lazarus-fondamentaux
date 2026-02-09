@@ -62,7 +62,7 @@ Avec la LCL, vous créez des **applications graphiques modernes** :
 
 ```
 ┌─────────────────────────────────────┐
-│ Mon Application             ─ □ ✕  │
+│ Mon Application             ─ □ ✕   │
 ├─────────────────────────────────────┤
 │ Fichier  Édition  Affichage  Aide   │
 ├─────────────────────────────────────┤
@@ -73,8 +73,8 @@ Avec la LCL, vous créez des **applications graphiques modernes** :
 │                                     │
 │  Nom : [____________]               │
 │                                     │
-│  ☑ Option 1                        │
-│  ☐ Option 2                        │
+│  ☑ Option 1                         │
+│  ☐ Option 2                         │
 │                                     │
 │      [ Valider ]  [ Annuler ]       │
 │                                     │

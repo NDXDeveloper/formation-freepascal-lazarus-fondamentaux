@@ -18,10 +18,10 @@ JSON a été créé par Douglas Crockford au début des années 2000 comme sous-
 
 ### Pourquoi JSON est si populaire ?
 
-✅ **Lisible** : facile à lire et à comprendre pour un humain
-✅ **Léger** : peu de caractères "de décoration"
-✅ **Universel** : supporté par tous les langages
-✅ **Flexible** : peut représenter des structures complexes
+✅ **Lisible** : facile à lire et à comprendre pour un humain  
+✅ **Léger** : peu de caractères "de décoration"  
+✅ **Universel** : supporté par tous les langages  
+✅ **Flexible** : peut représenter des structures complexes  
 ✅ **Standard** : spécification officielle (RFC 8259)
 
 ### JSON vs autres formats
@@ -712,18 +712,18 @@ Ce schéma définit qu'un objet valide doit avoir :
 
 ### Avantages de JSON
 
-✅ Plus léger (moins de caractères)
-✅ Plus facile à lire
-✅ Plus rapide à parser
-✅ Types de données natifs (nombre, booléen)
+✅ Plus léger (moins de caractères)  
+✅ Plus facile à lire  
+✅ Plus rapide à parser  
+✅ Types de données natifs (nombre, booléen)  
 ✅ Tableaux natifs
 
 ### Avantages de XML
 
-✅ Support des attributs
-✅ Espaces de noms (namespaces)
-✅ Validation stricte avec XSD
-✅ Support des commentaires
+✅ Support des attributs  
+✅ Espaces de noms (namespaces)  
+✅ Validation stricte avec XSD  
+✅ Support des commentaires  
 ✅ Plus ancien, plus de bibliothèques legacy
 
 ## Conseils Pratiques

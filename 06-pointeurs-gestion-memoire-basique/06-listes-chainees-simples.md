@@ -1563,17 +1563,17 @@ end.
 
 ### Avantages des Listes Chaînées
 
-✅ **Taille dynamique** : Peut croître ou rétrécir facilement
-✅ **Insertion/suppression rapides** : O(1) en début de liste
-✅ **Pas de déplacement** : Pas besoin de déplacer les autres éléments
-✅ **Utilisation flexible de la mémoire** : Pas de blocs contigus requis
+✅ **Taille dynamique** : Peut croître ou rétrécir facilement  
+✅ **Insertion/suppression rapides** : O(1) en début de liste  
+✅ **Pas de déplacement** : Pas besoin de déplacer les autres éléments  
+✅ **Utilisation flexible de la mémoire** : Pas de blocs contigus requis  
 
 ### Inconvénients
 
-❌ **Accès séquentiel** : Impossible d'accéder directement au n-ième élément
-❌ **Surcoût mémoire** : Chaque noeud nécessite un pointeur supplémentaire
-❌ **Parcours lent** : O(n) pour atteindre un élément
-❌ **Gestion manuelle** : Risque de fuites mémoire
+❌ **Accès séquentiel** : Impossible d'accéder directement au n-ième élément  
+❌ **Surcoût mémoire** : Chaque noeud nécessite un pointeur supplémentaire  
+❌ **Parcours lent** : O(n) pour atteindre un élément  
+❌ **Gestion manuelle** : Risque de fuites mémoire  
 
 ### Comparaison avec les Tableaux
 

@@ -148,13 +148,13 @@ Dans cette section **fondamentale**, vous allez découvrir comment devenir un v�
 
 À la fin de cette section, vous serez capable de :
 
-✅ **Organiser** vos programmes en unités modulaires
-✅ **Créer** des unités réutilisables dans différents projets
-✅ **Gérer** les dépendances entre unités
-✅ **Contrôler** la visibilité de votre code (public/privé)
-✅ **Utiliser** efficacement les unités standard de FreePascal
-✅ **Documenter** votre code de manière professionnelle
-✅ **Concevoir** des bibliothèques de qualité professionnelle
+✅ **Organiser** vos programmes en unités modulaires  
+✅ **Créer** des unités réutilisables dans différents projets  
+✅ **Gérer** les dépendances entre unités  
+✅ **Contrôler** la visibilité de votre code (public/privé)  
+✅ **Utiliser** efficacement les unités standard de FreePascal  
+✅ **Documenter** votre code de manière professionnelle  
+✅ **Concevoir** des bibliothèques de qualité professionnelle  
 
 ## Transition du débutant vers l'intermédiaire
 
@@ -225,10 +225,10 @@ Prenez le temps de découvrir ce que FreePascal offre déjà. Vous serez surpris
 
 Quelques concepts à avoir bien en tête avant d'entamer cette section :
 
-✓ Vous devez être à l'aise avec les **procédures et fonctions**
-✓ Vous devez comprendre les **paramètres** et les **valeurs de retour**
-✓ Vous devez savoir ce qu'est une **variable globale** vs **locale**
-✓ Vous devez connaître les **types de données** de base
+✓ Vous devez être à l'aise avec les **procédures et fonctions**  
+✓ Vous devez comprendre les **paramètres** et les **valeurs de retour**  
+✓ Vous devez savoir ce qu'est une **variable globale** vs **locale**  
+✓ Vous devez connaître les **types de données** de base  
 
 Si l'un de ces concepts n'est pas clair, n'hésitez pas à réviser les sections précédentes.
 

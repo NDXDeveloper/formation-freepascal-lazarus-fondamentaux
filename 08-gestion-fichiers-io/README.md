@@ -283,19 +283,19 @@ Ce chapitre suit une progression logique du plus simple au plus avancé :
 ```
 Simple                                              Avancé
   │                                                    │
-  ├─ Fichiers texte (lisibles, faciles)               │
+  ├─ Fichiers texte (lisibles, faciles)                │
   │                                                    │
-  ├─ Fichiers typés (structures simples)              │
+  ├─ Fichiers typés (structures simples)               │
   │                                                    │
-  ├─ Fichiers binaires (données brutes)               │
+  ├─ Fichiers binaires (données brutes)                │
   │                                                    │
-  ├─ Gestion d'erreurs (robustesse)                   │
+  ├─ Gestion d'erreurs (robustesse)                    │
   │                                                    │
-  ├─ Répertoires et chemins (organisation)            │
+  ├─ Répertoires et chemins (organisation)             │
   │                                                    │
-  ├─ Fichiers INI (configuration)                     │
+  ├─ Fichiers INI (configuration)                      │
   │                                                    │
-  └─ Streams (abstraction moderne)                    │
+  └─ Streams (abstraction moderne)                     │
 ```
 
 **Conseil :** Ne sautez pas d'étapes ! Chaque section s'appuie sur les précédentes.

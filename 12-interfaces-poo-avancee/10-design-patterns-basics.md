@@ -16,11 +16,11 @@ Un **design pattern** (patron de conception) est une **solution réutilisable** 
 
 ### Pourquoi utiliser des design patterns ?
 
-✅ **Solutions éprouvées** : Testées par des milliers de développeurs
-✅ **Vocabulaire commun** : Facilite la communication entre développeurs
-✅ **Code maintenable** : Structure claire et logique
-✅ **Évite les erreurs** : Prévient les problèmes connus
-✅ **Gagne du temps** : Pas besoin de réinventer la solution
+✅ **Solutions éprouvées** : Testées par des milliers de développeurs  
+✅ **Vocabulaire commun** : Facilite la communication entre développeurs  
+✅ **Code maintenable** : Structure claire et logique  
+✅ **Évite les erreurs** : Prévient les problèmes connus  
+✅ **Gagne du temps** : Pas besoin de réinventer la solution  
 
 ### Les patterns que vous allez apprendre
 
@@ -1016,30 +1016,30 @@ end.
 
 ### Singleton
 
-**Avantages :**
-✅ Instance unique garantie
-✅ Point d'accès global
-✅ Initialisation paresseuse (lazy)
-✅ Économie de mémoire
+**Avantages :**  
+✅ Instance unique garantie  
+✅ Point d'accès global  
+✅ Initialisation paresseuse (lazy)  
+✅ Économie de mémoire  
 
-**Inconvénients :**
-⚠️ État global (difficile à tester)
-⚠️ Couplage fort
-⚠️ Peut cacher des dépendances
-⚠️ Problèmes en multi-threading (sans précautions)
+**Inconvénients :**  
+⚠️ État global (difficile à tester)  
+⚠️ Couplage fort  
+⚠️ Peut cacher des dépendances  
+⚠️ Problèmes en multi-threading (sans précautions)  
 
 ### Factory
 
-**Avantages :**
-✅ Découplage (code client vs classes concrètes)
-✅ Logique de création centralisée
-✅ Facilite l'ajout de nouveaux types
-✅ Code plus maintenable
+**Avantages :**  
+✅ Découplage (code client vs classes concrètes)  
+✅ Logique de création centralisée  
+✅ Facilite l'ajout de nouveaux types  
+✅ Code plus maintenable  
 
-**Inconvénients :**
-⚠️ Complexité ajoutée
-⚠️ Plus de classes à gérer
-⚠️ Peut être "over-engineering" pour des cas simples
+**Inconvénients :**  
+⚠️ Complexité ajoutée  
+⚠️ Plus de classes à gérer  
+⚠️ Peut être "over-engineering" pour des cas simples  
 
 ---
 
@@ -1106,12 +1106,12 @@ end;
 
 Félicitations ! Vous avez terminé le chapitre sur les interfaces et la POO avancée. Vous maîtrisez maintenant :
 
-✅ **Interfaces** : Contrats et polymorphisme
-✅ **Héritage multiple** : Via les interfaces
-✅ **IInterface** : Comptage de références automatique
-✅ **Properties** : Getters/setters élégants
-✅ **Méthodes de classe** : Fonctionnalités sans instance
-✅ **Design patterns** : Solutions éprouvées (Singleton, Factory)
+✅ **Interfaces** : Contrats et polymorphisme  
+✅ **Héritage multiple** : Via les interfaces  
+✅ **IInterface** : Comptage de références automatique  
+✅ **Properties** : Getters/setters élégants  
+✅ **Méthodes de classe** : Fonctionnalités sans instance  
+✅ **Design patterns** : Solutions éprouvées (Singleton, Factory)  
 
 Ces concepts vous permettent de créer des architectures logicielles **solides, maintenables et évolutives**. Continuez à pratiquer et à explorer d'autres patterns pour devenir un développeur Pascal accompli !
 

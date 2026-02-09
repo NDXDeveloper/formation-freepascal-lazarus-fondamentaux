@@ -26,10 +26,10 @@ Une interface uniquement textuelle peut sembler :
 
 ### Avec Composants d'Affichage
 
-✅ **Identité visuelle** : logos, bannières
-✅ **Communication rapide** : icônes universelles
-✅ **Séparation visuelle** : lignes, cadres
-✅ **Feedback visuel** : indicateurs colorés
+✅ **Identité visuelle** : logos, bannières  
+✅ **Communication rapide** : icônes universelles  
+✅ **Séparation visuelle** : lignes, cadres  
+✅ **Feedback visuel** : indicateurs colorés  
 ✅ **Attractivité** : interfaces modernes
 
 ---

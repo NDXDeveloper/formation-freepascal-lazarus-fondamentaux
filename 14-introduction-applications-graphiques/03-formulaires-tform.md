@@ -281,8 +281,8 @@ Form1.Visible := False;
 ```pascal
 Form1.Close;
 ```
-**Description :** Ferme le formulaire (déclenche l'événement OnClose)
-**Note :** Le formulaire peut empêcher sa fermeture dans OnClose
+**Description :** Ferme le formulaire (déclenche l'événement OnClose)  
+**Note :** Le formulaire peut empêcher sa fermeture dans OnClose  
 
 ### Méthodes de gestion de la position
 
@@ -309,14 +309,14 @@ Form1.Position := poScreenCenter;
 ```pascal
 Form1.Refresh;
 ```
-**Description :** Force le redessin complet du formulaire
+**Description :** Force le redessin complet du formulaire  
 
 #### Invalidate
 ```pascal
 Form1.Invalidate;
 ```
-**Description :** Marque le formulaire comme devant être redessiné
-**Différence avec Refresh :** Plus léger, le redessin peut être différé
+**Description :** Marque le formulaire comme devant être redessiné  
+**Différence avec Refresh :** Plus léger, le redessin peut être différé  
 
 #### Update
 ```pascal
@@ -336,7 +336,7 @@ begin
     TButton(Comp).Caption := 'Trouvé !';
 end;
 ```
-**Description :** Recherche un composant par son nom
+**Description :** Recherche un composant par son nom  
 
 ---
 
@@ -358,8 +358,8 @@ begin
   LoadConfig;
 end;
 ```
-**Quand :** À la création du formulaire (avant affichage)
-**Usage :** Initialisation, chargement de données
+**Quand :** À la création du formulaire (avant affichage)  
+**Usage :** Initialisation, chargement de données  
 
 #### OnShow
 ```pascal
@@ -370,8 +370,8 @@ begin
   RefreshData;     // Rafraîchit les données
 end;
 ```
-**Quand :** Juste avant que le formulaire devienne visible
-**Usage :** Mise à jour de l'affichage, définition du focus
+**Quand :** Juste avant que le formulaire devienne visible  
+**Usage :** Mise à jour de l'affichage, définition du focus  
 
 #### OnActivate
 ```pascal
@@ -381,8 +381,8 @@ begin
   StatusBar1.SimpleText := 'Fenêtre active';
 end;
 ```
-**Quand :** Quand le formulaire reçoit le focus
-**Usage :** Mise à jour d'état, rafraîchissement
+**Quand :** Quand le formulaire reçoit le focus  
+**Usage :** Mise à jour d'état, rafraîchissement  
 
 #### OnDeactivate
 ```pascal
@@ -421,8 +421,8 @@ end;
 | `caFree` | Libère le formulaire de la mémoire |
 | `caMinimize` | Réduit le formulaire |
 
-**Quand :** Quand l'utilisateur tente de fermer le formulaire
-**Usage :** Confirmation, sauvegarde, nettoyage
+**Quand :** Quand l'utilisateur tente de fermer le formulaire  
+**Usage :** Confirmation, sauvegarde, nettoyage  
 
 #### OnCloseQuery
 ```pascal
@@ -448,8 +448,8 @@ begin
     CanClose := True;
 end;
 ```
-**Quand :** Avant OnClose
-**Usage :** Validation avant fermeture
+**Quand :** Avant OnClose  
+**Usage :** Validation avant fermeture  
 
 #### OnDestroy
 ```pascal
@@ -461,8 +461,8 @@ begin
   FMyList.Free;
 end;
 ```
-**Quand :** Juste avant la destruction du formulaire
-**Usage :** Libération de ressources, nettoyage mémoire
+**Quand :** Juste avant la destruction du formulaire  
+**Usage :** Libération de ressources, nettoyage mémoire  
 
 ### Événements de redimensionnement
 
@@ -478,8 +478,8 @@ begin
                                    [ClientWidth, ClientHeight]);
 end;
 ```
-**Quand :** Quand le formulaire est redimensionné
-**Usage :** Ajustement dynamique de la mise en page
+**Quand :** Quand le formulaire est redimensionné  
+**Usage :** Ajustement dynamique de la mise en page  
 
 ### Événements de clavier
 
@@ -495,8 +495,8 @@ begin
     Button1.Click;
 end;
 ```
-**Quand :** Quand une touche caractère est pressée
-**Usage :** Raccourcis clavier simples
+**Quand :** Quand une touche caractère est pressée  
+**Usage :** Raccourcis clavier simples  
 
 #### OnKeyDown / OnKeyUp
 ```pascal
@@ -513,8 +513,8 @@ begin
     ShowHelp;  // F1 pour l'aide
 end;
 ```
-**Quand :** Quand une touche est enfoncée/relâchée
-**Usage :** Raccourcis complexes, touches spéciales
+**Quand :** Quand une touche est enfoncée/relâchée  
+**Usage :** Raccourcis complexes, touches spéciales  
 
 ### Événements de souris
 
@@ -820,21 +820,21 @@ end;
 Form1.AlphaBlend := True;
 Form1.AlphaBlendValue := 200;  // 0 (transparent) à 255 (opaque)
 ```
-**Description :** Rendre le formulaire semi-transparent
+**Description :** Rendre le formulaire semi-transparent  
 
 ### DoubleBuffered
 ```pascal
 Form1.DoubleBuffered := True;
 ```
-**Description :** Active le double-buffering (réduit le scintillement)
-**Recommandation :** True pour les formulaires avec beaucoup de dessin personnalisé
+**Description :** Active le double-buffering (réduit le scintillement)  
+**Recommandation :** True pour les formulaires avec beaucoup de dessin personnalisé  
 
 ### KeyPreview
 ```pascal
 Form1.KeyPreview := True;
 ```
-**Description :** Le formulaire reçoit les événements clavier avant les composants
-**Usage :** Raccourcis globaux, gestion centralisée du clavier
+**Description :** Le formulaire reçoit les événements clavier avant les composants  
+**Usage :** Raccourcis globaux, gestion centralisée du clavier  
 
 ---
 
@@ -842,10 +842,10 @@ Form1.KeyPreview := True;
 
 Le formulaire (TForm) est :
 
-✅ La base de toute application GUI
-✅ Un conteneur pour les composants
-✅ Un gestionnaire d'événements
-✅ Une classe personnalisable par héritage
+✅ La base de toute application GUI  
+✅ Un conteneur pour les composants  
+✅ Un gestionnaire d'événements  
+✅ Une classe personnalisable par héritage  
 
 **Propriétés clés à retenir :**
 - `Caption`, `Width`, `Height`, `Color`

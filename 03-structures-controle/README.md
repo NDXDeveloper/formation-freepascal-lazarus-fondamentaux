@@ -457,23 +457,23 @@ Vous avez maintenant une vue d'ensemble de ce qui vous attend dans ce chapitre. 
 
 ## Ce que vous avez déjà
 
-Avant de commencer les structures de contrôle, vous disposez déjà de :
+Avant de commencer les structures de contrôle, vous disposez déjà de :  
 
-✓ Variables et types de données
-✓ Opérateurs arithmétiques et logiques
-✓ Entrées/sorties de base (`ReadLn`, `WriteLn`)
-✓ Environnement Lazarus
+✓ Variables et types de données  
+✓ Opérateurs arithmétiques et logiques  
+✓ Entrées/sorties de base (`ReadLn`, `WriteLn`)  
+✓ Environnement Lazarus  
 
-## Ce que vous allez acquérir
+## Ce que vous allez acquérir  
 
-Après ce chapitre, vous maîtriserez :
+Après ce chapitre, vous maîtriserez :  
 
-✓ Prendre des décisions dans votre code
-✓ Répéter des actions efficacement
-✓ Valider les entrées utilisateur
-✓ Créer des programmes interactifs
-✓ Déboguer vos programmes
-✓ Écrire du code robuste et professionnel
+✓ Prendre des décisions dans votre code  
+✓ Répéter des actions efficacement  
+✓ Valider les entrées utilisateur  
+✓ Créer des programmes interactifs  
+✓ Déboguer vos programmes  
+✓ Écrire du code robuste et professionnel  
 
 ---
 

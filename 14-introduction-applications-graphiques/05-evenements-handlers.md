@@ -1077,12 +1077,12 @@ end;
 
 ### Concepts clés
 
-✅ Un **événement** est une propriété qui peut pointer vers une méthode
-✅ Un **handler** est la méthode que vous écrivez pour répondre
-✅ **Sender** identifie qui a déclenché l'événement
-✅ Les événements ont des **signatures** spécifiques (paramètres)
-✅ L'**ordre** des événements est important
-✅ On peut **associer/dissocier** des événements dynamiquement
+✅ Un **événement** est une propriété qui peut pointer vers une méthode  
+✅ Un **handler** est la méthode que vous écrivez pour répondre  
+✅ **Sender** identifie qui a déclenché l'événement  
+✅ Les événements ont des **signatures** spécifiques (paramètres)  
+✅ L'**ordre** des événements est important  
+✅ On peut **associer/dissocier** des événements dynamiquement  
 
 ### Types d'événements principaux
 

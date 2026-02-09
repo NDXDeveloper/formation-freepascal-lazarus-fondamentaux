@@ -250,15 +250,15 @@ La prise ne sait pas ce qui se passe *à l'intérieur* de l'appareil. Elle garan
 
 Utilisez une interface quand :
 
-✅ Plusieurs classes différentes doivent partager un comportement commun
-✅ Vous voulez découpler votre code (le rendre moins dépendant)
-✅ Vous avez besoin de polymorphisme sans héritage
-✅ Vous voulez définir un "contrat" que d'autres développeurs doivent respecter
+✅ Plusieurs classes différentes doivent partager un comportement commun  
+✅ Vous voulez découpler votre code (le rendre moins dépendant)  
+✅ Vous avez besoin de polymorphisme sans héritage  
+✅ Vous voulez définir un "contrat" que d'autres développeurs doivent respecter  
 
 Ne vous compliquez pas la vie avec des interfaces si :
 
-❌ Une simple classe suffit
-❌ Vous n'avez qu'une seule implémentation et aucune raison d'en avoir plusieurs
+❌ Une simple classe suffit  
+❌ Vous n'avez qu'une seule implémentation et aucune raison d'en avoir plusieurs  
 
 ---
 

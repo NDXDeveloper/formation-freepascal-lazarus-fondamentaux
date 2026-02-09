@@ -483,19 +483,19 @@ end.
 
 ## CASE-OF vs IF-ELSE : Quand utiliser quoi ?
 
-### Utilisez CASE-OF quand :
+### Utilisez CASE-OF quand :  
 
-✓ Vous testez **une seule variable** contre plusieurs valeurs possibles
-✓ Les valeurs sont des **types ordinaux** (Integer, Char, Boolean)
-✓ Vous avez **3 conditions ou plus** à tester
-✓ Les valeurs sont des **constantes connues**
+✓ Vous testez **une seule variable** contre plusieurs valeurs possibles  
+✓ Les valeurs sont des **types ordinaux** (Integer, Char, Boolean)  
+✓ Vous avez **3 conditions ou plus** à tester  
+✓ Les valeurs sont des **constantes connues**  
 
 ### Utilisez IF-ELSE quand :
 
-✓ Vous testez des **conditions complexes** (avec `and`, `or`)
-✓ Vous comparez des **types non ordinaux** (String, Real)
-✓ Vous testez des **intervalles complexes** avec plusieurs variables
-✓ Vous avez seulement **1 ou 2 conditions**
+✓ Vous testez des **conditions complexes** (avec `and`, `or`)  
+✓ Vous comparez des **types non ordinaux** (String, Real)  
+✓ Vous testez des **intervalles complexes** avec plusieurs variables  
+✓ Vous avez seulement **1 ou 2 conditions**  
 
 ### Tableau comparatif
 

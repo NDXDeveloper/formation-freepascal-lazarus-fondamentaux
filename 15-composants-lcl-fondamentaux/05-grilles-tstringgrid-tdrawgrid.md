@@ -46,9 +46,9 @@ Une grille, c'est comme :
 
 ### Pourquoi Utiliser des Grilles ?
 
-✅ **Afficher des données tabulaires** : résultats de base de données, tableaux de chiffres
-✅ **Éditer des données** : saisie structurée dans des cellules
-✅ **Comparer des données** : aligner visuellement des informations
+✅ **Afficher des données tabulaires** : résultats de base de données, tableaux de chiffres  
+✅ **Éditer des données** : saisie structurée dans des cellules  
+✅ **Comparer des données** : aligner visuellement des informations  
 ✅ **Créer des interfaces** : tableaux de bord, calendriers, jeux
 
 ---

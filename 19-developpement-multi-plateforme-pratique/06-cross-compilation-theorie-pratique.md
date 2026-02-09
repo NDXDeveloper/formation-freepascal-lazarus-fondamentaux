@@ -93,16 +93,16 @@ Votre code Pascal (.pas, .lpr)
 
 ### Ce Qui Fonctionne Bien
 
-✅ **Code pur FreePascal** : S'il n'utilise que les unités standard
-✅ **Applications console** : Plus simples à cross-compiler
-✅ **Applications Lazarus/LCL** : Fonctionnent généralement bien
+✅ **Code pur FreePascal** : S'il n'utilise que les unités standard  
+✅ **Applications console** : Plus simples à cross-compiler  
+✅ **Applications Lazarus/LCL** : Fonctionnent généralement bien  
 ✅ **Logique métier** : Algorithmes, calculs, traitements de données
 
 ### Ce Qui Peut Poser Problème
 
-❌ **Bibliothèques externes natives** : DLL Windows compilées, bibliothèques .so spécifiques
-❌ **Accès matériel direct** : Ports COM, GPIO, etc.
-❌ **API système spécifiques** : Registre Windows, fonctions kernel
+❌ **Bibliothèques externes natives** : DLL Windows compilées, bibliothèques .so spécifiques  
+❌ **Accès matériel direct** : Ports COM, GPIO, etc.  
+❌ **API système spécifiques** : Registre Windows, fonctions kernel  
 ❌ **Interface graphique native** : Certains widgets peuvent avoir un rendu différent
 
 ### Point Important : Test Réel Indispensable

@@ -1072,7 +1072,7 @@ Call trace for block $... size 48
 
 **Étape 2 : Localisation**
 
-→ Ligne 26 : `temp := TStringList.Create;`
+→ Ligne 26 : `temp := TStringList.Create;`  
 → Appelé 3 fois (lignes 42-44)
 
 **Étape 3 : Analyse**

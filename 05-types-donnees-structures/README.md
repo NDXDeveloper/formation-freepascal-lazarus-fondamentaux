@@ -351,28 +351,28 @@ Les données sont **organisées et reliées logiquement**.
 
 À la fin de ce chapitre, vous saurez :
 
-✓ Créer et manipuler des **tableaux** de toutes dimensions
-✓ Travailler efficacement avec les **chaînes de caractères**
-✓ Définir des **enregistrements** pour représenter des entités complexes
-✓ Combiner différents types pour créer des **structures sophistiquées**
-✓ Utiliser des **types énumérés** pour rendre le code plus clair
-✓ Manipuler des **ensembles** pour des tests d'appartenance
-✓ Restreindre les valeurs avec des **intervalles**
+✓ Créer et manipuler des **tableaux** de toutes dimensions  
+✓ Travailler efficacement avec les **chaînes de caractères**  
+✓ Définir des **enregistrements** pour représenter des entités complexes  
+✓ Combiner différents types pour créer des **structures sophistiquées**  
+✓ Utiliser des **types énumérés** pour rendre le code plus clair  
+✓ Manipuler des **ensembles** pour des tests d'appartenance  
+✓ Restreindre les valeurs avec des **intervalles**  
 ✓ Concevoir vos **propres types** adaptés à votre domaine
 
 ## État d'esprit pour ce chapitre
 
 ### Ce que ce n'est PAS
 
-❌ Une simple liste de syntaxes à mémoriser
-❌ Des concepts abstraits sans utilité pratique
+❌ Une simple liste de syntaxes à mémoriser  
+❌ Des concepts abstraits sans utilité pratique  
 ❌ Réservé aux programmeurs avancés
 
 ### Ce que c'est VRAIMENT
 
-✓ Les **fondations** pour créer de vrais programmes
-✓ Des outils pour **organiser votre pensée** et vos données
-✓ La **porte d'entrée** vers la programmation orientée objet
+✓ Les **fondations** pour créer de vrais programmes  
+✓ Des outils pour **organiser votre pensée** et vos données  
+✓ La **porte d'entrée** vers la programmation orientée objet  
 ✓ Des concepts que vous utiliserez **tous les jours** en programmation
 
 ## Message important

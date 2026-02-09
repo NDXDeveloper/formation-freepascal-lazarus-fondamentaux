@@ -259,9 +259,9 @@ Button1.Left := 10;
 Button1.Top := 50;
 ```
 
-**Type :** Integer
-**Unité :** Pixels
-**Origine :** Coin supérieur gauche du conteneur parent
+**Type :** Integer  
+**Unité :** Pixels  
+**Origine :** Coin supérieur gauche du conteneur parent  
 
 **Exemple : Centrer un bouton**
 ```pascal
@@ -279,8 +279,8 @@ Button1.Width := 100;
 Button1.Height := 30;
 ```
 
-**Type :** Integer
-**Unité :** Pixels
+**Type :** Integer  
+**Unité :** Pixels  
 
 **Exemple : Agrandir progressivement**
 ```pascal
@@ -305,8 +305,8 @@ begin
 end;
 ```
 
-**Type :** TRect
-**Usage :** Obtenir toutes les coordonnées en une fois
+**Type :** TRect  
+**Usage :** Obtenir toutes les coordonnées en une fois  
 
 ### SetBounds
 
@@ -359,9 +359,9 @@ end;
 Button1.Name := 'ButtonCalculer';
 ```
 
-**Type :** String
-**Description :** Nom du composant (identifiant dans le code)
-**Important :**
+**Type :** String  
+**Description :** Nom du composant (identifiant dans le code)  
+**Important :**  
 - Doit être unique dans le formulaire
 - Utilisé dans le code pour référencer le composant
 - Convention : Commence par le type (Button, Edit, Label, etc.)
@@ -376,9 +376,9 @@ Label1.Caption := 'Entrez votre nom :';
 Form1.Caption := 'Ma superbe application';
 ```
 
-**Type :** String
-**Description :** Texte affiché sur/dans le composant
-**Utilisé par :** TButton, TLabel, TForm, TCheckBox, TGroupBox, etc.
+**Type :** String  
+**Description :** Texte affiché sur/dans le composant  
+**Utilisé par :** TButton, TLabel, TForm, TCheckBox, TGroupBox, etc.  
 
 **Astuces :**
 ```pascal
@@ -399,11 +399,11 @@ Edit1.Text := 'Contenu initial';
 Memo1.Text := 'Ligne 1' + sLineBreak + 'Ligne 2';
 ```
 
-**Type :** String
-**Description :** Contenu textuel modifiable
-**Utilisé par :** TEdit, TMemo, TComboBox, etc.
+**Type :** String  
+**Description :** Contenu textuel modifiable  
+**Utilisé par :** TEdit, TMemo, TComboBox, etc.  
 
-**Différence avec Caption :**
+**Différence avec Caption :**  
 - `Caption` : Étiquette fixe (bouton, label)
 - `Text` : Contenu éditable (champ de saisie)
 
@@ -415,8 +415,8 @@ Panel1.Color := $00FF00;          // Valeur hexadécimale (BGR)
 Label1.Color := RGBToColor(255, 128, 0);  // RGB
 ```
 
-**Type :** TColor
-**Description :** Couleur de fond du composant
+**Type :** TColor  
+**Description :** Couleur de fond du composant  
 
 **Couleurs prédéfinies courantes :**
 | Constante | Couleur |
@@ -453,8 +453,8 @@ Button1.Font.Style := [fsBold, fsItalic];
 Button1.Font.Color := clNavy;
 ```
 
-**Type :** TFont (objet)
-**Sous-propriétés :**
+**Type :** TFont (objet)  
+**Sous-propriétés :**  
 
 #### Font.Name
 ```pascal
@@ -462,10 +462,10 @@ Label1.Font.Name := 'Arial';
 Label1.Font.Name := 'Courier New';
 Label1.Font.Name := 'Times New Roman';
 ```
-**Type :** String
-**Description :** Nom de la police
+**Type :** String  
+**Description :** Nom de la police  
 
-**Polices courantes :**
+**Polices courantes :**  
 - **Arial** : Sans-serif moderne
 - **Times New Roman** : Serif classique
 - **Courier New** : Espacement fixe (code)
@@ -491,14 +491,14 @@ Label1.Font.Style := [fsBold, fsItalic];      // Gras + Italique
 Label1.Font.Style := [fsUnderline];           // Souligné
 Label1.Font.Style := [fsStrikeOut];           // Barré
 ```
-**Type :** Set de TFontStyle
-**Valeurs possibles :**
+**Type :** Set de TFontStyle  
+**Valeurs possibles :**  
 - `fsBold` : Gras
 - `fsItalic` : Italique
 - `fsUnderline` : Souligné
 - `fsStrikeOut` : Barré
 
-**Manipuler les styles :**
+**Manipuler les styles :**  
 ```pascal
 // Ajouter un style
 Label1.Font.Style := Label1.Font.Style + [fsBold];
@@ -517,8 +517,8 @@ Label1.Font.Color := clBlack;   // Noir (défaut)
 Label1.Font.Color := clRed;     // Rouge
 Label1.Font.Color := clWhite;   // Blanc
 ```
-**Type :** TColor
-**Description :** Couleur du texte
+**Type :** TColor  
+**Description :** Couleur du texte  
 
 ### Cursor
 
@@ -528,10 +528,10 @@ Edit1.Cursor := crIBeam;         // Curseur texte
 Panel1.Cursor := crCross;        // Croix
 ```
 
-**Type :** TCursor
-**Description :** Forme du curseur souris quand il survole le composant
+**Type :** TCursor  
+**Description :** Forme du curseur souris quand il survole le composant  
 
-**Curseurs courants :**
+**Curseurs courants :**  
 | Constante | Apparence |
 |-----------|-----------|
 | `crDefault` | Flèche standard |
@@ -542,7 +542,7 @@ Panel1.Cursor := crCross;        // Croix
 | `crHourGlass` | Sablier (attente) |
 | `crNone` | Invisible |
 
-**Exemple d'utilisation :**
+**Exemple d'utilisation :**  
 ```pascal
 // Label cliquable qui ressemble à un lien
 Label1.Caption := 'Cliquez ici';
@@ -562,14 +562,14 @@ Button1.Enabled := True;   // Actif (défaut)
 Button1.Enabled := False;  // Désactivé (grisé)
 ```
 
-**Type :** Boolean
-**Description :** Le composant peut-il réagir aux interactions ?
+**Type :** Boolean  
+**Description :** Le composant peut-il réagir aux interactions ?  
 
-**Effet :**
+**Effet :**  
 - `True` : Composant normal, interactif
 - `False` : Composant grisé, ne répond pas aux clics/saisies
 
-**Usage typique :**
+**Usage typique :**  
 ```pascal
 // Désactiver le bouton Valider si le champ est vide
 procedure TForm1.Edit1Change(Sender: TObject);
@@ -587,14 +587,14 @@ Panel1.Visible := True;   // Visible (défaut)
 Panel1.Visible := False;  // Caché
 ```
 
-**Type :** Boolean
-**Description :** Le composant est-il affiché ?
+**Type :** Boolean  
+**Description :** Le composant est-il affiché ?  
 
-**Effet :**
+**Effet :**  
 - `True` : Composant visible
 - `False` : Composant invisible (mais existe toujours en mémoire)
 
-**Usage typique :**
+**Usage typique :**  
 ```pascal
 // Afficher/Cacher un panneau d'options avancées
 procedure TForm1.CheckBoxAvanceClick(Sender: TObject);
@@ -612,8 +612,8 @@ Button1.Hint := 'Cliquez ici pour valider';
 Button1.ShowHint := True;
 ```
 
-**Type :** String
-**Description :** Texte affiché dans une bulle quand la souris survole le composant
+**Type :** String  
+**Description :** Texte affiché dans une bulle quand la souris survole le composant  
 
 **Important :** N'oubliez pas `ShowHint := True` !
 
@@ -637,10 +637,10 @@ Button1.ShowHint := True;   // Afficher la bulle d'aide
 Button1.ShowHint := False;  // Ne pas afficher
 ```
 
-**Type :** Boolean
-**Description :** Activer l'affichage du Hint
+**Type :** Boolean  
+**Description :** Activer l'affichage du Hint  
 
-**Héritage :** Si le formulaire a `ShowHint := True`, tous les composants enfants héritent cette valeur (sauf s'ils le redéfinissent).
+**Héritage :** Si le formulaire a `ShowHint := True`, tous les composants enfants héritent cette valeur (sauf s'ils le redéfinissent).  
 
 ### PopupMenu
 
@@ -648,8 +648,8 @@ Button1.ShowHint := False;  // Ne pas afficher
 Edit1.PopupMenu := PopupMenu1;
 ```
 
-**Type :** TPopupMenu
-**Description :** Menu contextuel (clic droit)
+**Type :** TPopupMenu  
+**Description :** Menu contextuel (clic droit)  
 
 **Usage :**
 ```pascal
@@ -667,10 +667,10 @@ Edit1.TabStop := True;   // Peut recevoir le focus avec Tab
 Label1.TabStop := False; // Ne peut pas recevoir le focus
 ```
 
-**Type :** Boolean
-**Description :** Le composant peut-il recevoir le focus avec la touche Tab ?
+**Type :** Boolean  
+**Description :** Le composant peut-il recevoir le focus avec la touche Tab ?  
 
-**Par défaut :**
+**Par défaut :**  
 - `True` : Edit, Button, CheckBox, ComboBox, etc.
 - `False` : Label, Image, Panel, etc.
 
@@ -682,12 +682,12 @@ Edit2.TabOrder := 1;      // Deuxième
 Button1.TabOrder := 2;    // Troisième
 ```
 
-**Type :** Integer
-**Description :** Ordre de navigation avec la touche Tab
+**Type :** Integer  
+**Description :** Ordre de navigation avec la touche Tab  
 
-**Usage :** Définit l'ordre logique de saisie dans un formulaire.
+**Usage :** Définit l'ordre logique de saisie dans un formulaire.  
 
-**Conseil :** Définissez un ordre naturel (haut en bas, gauche à droite).
+**Conseil :** Définissez un ordre naturel (haut en bas, gauche à droite).  
 
 ### Anchors
 
@@ -697,8 +697,8 @@ Button1.Anchors := [akRight, akBottom];          // Ancré en bas à droite
 Button1.Anchors := [akLeft, akTop, akRight];     // S'étire horizontalement
 ```
 
-**Type :** Set de TAnchorKind
-**Description :** Côtés ancrés lors du redimensionnement du parent
+**Type :** Set de TAnchorKind  
+**Description :** Côtés ancrés lors du redimensionnement du parent  
 
 **Valeurs possibles :**
 - `akLeft` : Bord gauche
@@ -734,8 +734,8 @@ Panel3.Align := alLeft;     // À gauche, pleine hauteur
 Panel4.Align := alClient;   // Remplit l'espace restant
 ```
 
-**Type :** TAlign
-**Description :** Alignement automatique dans le parent
+**Type :** TAlign  
+**Description :** Alignement automatique dans le parent  
 
 **Valeurs possibles :**
 | Valeur | Description |
@@ -773,8 +773,8 @@ Button2.Tag := 2;
 Button3.Tag := 3;
 ```
 
-**Type :** PtrInt (entier)
-**Description :** Valeur numérique libre, utilisée comme vous voulez
+**Type :** PtrInt (entier)  
+**Description :** Valeur numérique libre, utilisée comme vous voulez  
 
 **Usage typique :** Identifier les composants, stocker des données associées
 
@@ -810,10 +810,10 @@ Button1.Parent := Panel1;  // Button1 est maintenant dans Panel1
 Button1.Parent := Form1;   // Button1 est maintenant sur Form1
 ```
 
-**Type :** TWinControl
-**Description :** Le conteneur qui contient ce composant
+**Type :** TWinControl  
+**Description :** Le conteneur qui contient ce composant  
 
-**Important :** Changer Parent déplace visuellement le composant et change le référentiel des coordonnées.
+**Important :** Changer Parent déplace visuellement le composant et change le référentiel des coordonnées.  
 
 ### Owner
 
@@ -826,14 +826,14 @@ begin
 end;
 ```
 
-**Type :** TComponent
-**Description :** Qui est responsable de libérer ce composant ?
+**Type :** TComponent  
+**Description :** Qui est responsable de libérer ce composant ?  
 
-**Différence Parent/Owner :**
+**Différence Parent/Owner :**  
 - **Parent** : Où le composant est affiché (visuel)
 - **Owner** : Qui libère la mémoire (gestion mémoire)
 
-**Règle :** Owner libère automatiquement tous ses composants enfants.
+**Règle :** Owner libère automatiquement tous ses composants enfants.  
 
 ---
 
@@ -860,8 +860,8 @@ begin
 end;
 ```
 
-**Type :** Integer (Count), TComponent (Components[])
-**Description :** Liste des composants possédés
+**Type :** Integer (Count), TComponent (Components[])  
+**Description :** Liste des composants possédés  
 
 ### ControlCount et Controls
 
@@ -879,11 +879,11 @@ begin
 end;
 ```
 
-**Type :** Integer (Count), TControl (Controls[])
-**Description :** Liste des contrôles visuels enfants
+**Type :** Integer (Count), TControl (Controls[])  
+**Description :** Liste des contrôles visuels enfants  
 
 **Différence Components/Controls :**
-- **Components** : Tous les composants (même non visuels comme Timer)
+- **Components** : Tous les composants (même non visuels comme Timer)  
 - **Controls** : Seulement les composants visuels
 
 ### ClassName
@@ -895,8 +895,8 @@ begin
 end;
 ```
 
-**Type :** String
-**Description :** Nom de la classe du composant
+**Type :** String  
+**Description :** Nom de la classe du composant  
 
 **Usage :** Identifier le type d'un composant de manière sûre.
 
@@ -910,8 +910,8 @@ begin
 end;
 ```
 
-**Type :** THandle
-**Description :** Identifiant système du composant
+**Type :** THandle  
+**Description :** Identifiant système du composant  
 
 **Usage :** Appels système de bas niveau (avancé).
 
@@ -1117,11 +1117,11 @@ Button1.Width := 99;  // 1 seul redessin
 
 ### Concepts clés
 
-✅ Les **propriétés** définissent les caractéristiques d'un composant
-✅ Modification en **design-time** (Inspecteur) ou **run-time** (code)
-✅ **Héritage** : les propriétés sont transmises aux classes dérivées
-✅ Propriétés **published** apparaissent dans l'Inspecteur
-
+✅ Les **propriétés** définissent les caractéristiques d'un composant  
+✅ Modification en **design-time** (Inspecteur) ou **run-time** (code)  
+✅ **Héritage** : les propriétés sont transmises aux classes dérivées  
+✅ Propriétés **published** apparaissent dans l'Inspecteur  
+ 
 ### Propriétés essentielles à retenir
 
 **Position/Taille :**

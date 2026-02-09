@@ -753,26 +753,26 @@ end.
 
 ## Avantages des types énumérés
 
-✓ **Lisibilité** : Code auto-documenté avec des noms significatifs
-✓ **Sécurité** : Le compilateur vérifie les valeurs
-✓ **Maintenabilité** : Plus facile de modifier le code
-✓ **Performance** : Aussi rapide que des entiers
-✓ **Exhaustivité** : Le compilateur peut vérifier que tous les cas sont gérés
-✓ **Typage fort** : Impossible de mélanger des types énumérés différents
+✓ **Lisibilité** : Code auto-documenté avec des noms significatifs  
+✓ **Sécurité** : Le compilateur vérifie les valeurs  
+✓ **Maintenabilité** : Plus facile de modifier le code  
+✓ **Performance** : Aussi rapide que des entiers  
+✓ **Exhaustivité** : Le compilateur peut vérifier que tous les cas sont gérés  
+✓ **Typage fort** : Impossible de mélanger des types énumérés différents  
 
 ## Quand utiliser des types énumérés ?
 
-✓ **Utilisez des types énumérés quand :**
-- Vous avez un ensemble **fixe et limité** de valeurs possibles
-- Les valeurs ont un **nom significatif** dans votre domaine
-- Vous voulez éviter les "nombres magiques" (0, 1, 2...)
-- Vous utilisez souvent des `case-of` sur ces valeurs
-- Vous voulez une meilleure vérification du compilateur
+✓ **Utilisez des types énumérés quand :**  
+- Vous avez un ensemble **fixe et limité** de valeurs possibles  
+- Les valeurs ont un **nom significatif** dans votre domaine  
+- Vous voulez éviter les "nombres magiques" (0, 1, 2...)  
+- Vous utilisez souvent des `case-of` sur ces valeurs  
+- Vous voulez une meilleure vérification du compilateur  
 
-✗ **N'utilisez pas de types énumérés quand :**
-- L'ensemble des valeurs peut changer fréquemment
-- Vous avez besoin de valeurs numériques arbitraires
-- L'ensemble est très grand (préférez une autre structure)
+✗ **N'utilisez pas de types énumérés quand :**  
+- L'ensemble des valeurs peut changer fréquemment  
+- Vous avez besoin de valeurs numériques arbitraires  
+- L'ensemble est très grand (préférez une autre structure)  
 
 ## Résumé
 

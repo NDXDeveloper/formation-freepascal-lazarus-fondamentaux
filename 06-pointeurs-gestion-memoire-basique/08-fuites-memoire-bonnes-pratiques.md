@@ -864,3 +864,4 @@ Rappelez-vous : **un bug de mémoire aujourd'hui peut devenir un crash en produc
 **Bravo !** Vous avez terminé le chapitre sur les pointeurs et la gestion mémoire. Avec ces connaissances, vous êtes armé pour créer des programmes robustes et sans fuites !
 
 ⏭️ [Débogage des problèmes mémoire](/06-pointeurs-gestion-memoire-basique/09-debogage-problemes-memoire.md)
+

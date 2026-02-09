@@ -409,14 +409,14 @@ Dans Lazarus :
 
 **Après avoir terminé ce chapitre, vous serez capable de :**
 
-✅ Déboguer efficacement n'importe quel programme Pascal
-✅ Utiliser professionnellement le débogueur Lazarus
-✅ Identifier rapidement les goulots de performance
-✅ Optimiser les algorithmes courants
-✅ Gérer la mémoire sans fuites
-✅ Détecter automatiquement les problèmes mémoire
-✅ Implémenter un système de logging professionnel
-✅ Diagnostiquer les problèmes en production
+✅ Déboguer efficacement n'importe quel programme Pascal  
+✅ Utiliser professionnellement le débogueur Lazarus  
+✅ Identifier rapidement les goulots de performance  
+✅ Optimiser les algorithmes courants  
+✅ Gérer la mémoire sans fuites  
+✅ Détecter automatiquement les problèmes mémoire  
+✅ Implémenter un système de logging professionnel  
+✅ Diagnostiquer les problèmes en production  
 ✅ Écrire des tests unitaires avec FPCUnit
 
 **Compétences professionnelles acquises :**

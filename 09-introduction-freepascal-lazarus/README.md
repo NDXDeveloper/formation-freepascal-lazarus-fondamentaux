@@ -106,27 +106,27 @@ Apprendre à se débrouiller seul est une compétence essentielle ! Cette sectio
 
 ### Comment aborder ce chapitre
 
-**Pour les débutants complets :**
+**Pour les débutants complets :**  
 Lisez chaque section dans l'ordre, sans en sauter aucune. Prenez le temps de bien comprendre chaque concept avant de passer au suivant. N'hésitez pas à relire une section si nécessaire.
 
-**Si vous avez déjà installé Lazarus :**
+**Si vous avez déjà installé Lazarus :**  
 Vous pouvez survoler les sections d'installation (9.4 et 9.5), mais ne les sautez pas complètement : elles contiennent des informations utiles sur la configuration optimale.
 
-**Si vous connaissez déjà un autre IDE :**
+**Si vous connaissez déjà un autre IDE :**  
 Comparez avec vos connaissances, mais gardez l'esprit ouvert. Lazarus a ses spécificités et ses atouts. La section 9.3 sur l'écosystème vous intéressera particulièrement.
 
-**Conseil général :**
+**Conseil général :**  
 Ce chapitre est dense et très pratique. Ne le lisez pas d'une traite ! Installez Lazarus, testez, expérimentez, revenez aux explications. L'apprentissage sera plus efficace en alternant lecture et pratique.
 
 ### Organisation du chapitre
 
-**Parties théoriques (Sections 9.1, 9.2, 9.3) :**
+**Parties théoriques (Sections 9.1, 9.2, 9.3) :**  
 Ces sections posent le contexte et vous donnent une vue d'ensemble. Elles sont importantes pour comprendre l'outil que vous allez utiliser, sa philosophie, et ses capacités.
 
-**Parties pratiques (Sections 9.4, 9.5, 9.6) :**
+**Parties pratiques (Sections 9.4, 9.5, 9.6) :**  
 C'est là que vous mettez les mains dans le cambouis : installation, configuration initiale, et création de vos premiers programmes. Suivez les instructions pas à pas.
 
-**Parties approfondissement (Sections 9.7, 9.8, 9.9, 9.10) :**
+**Parties approfondissement (Sections 9.7, 9.8, 9.9, 9.10) :**  
 Ces sections vous donnent une compréhension plus profonde et vous rendent autonome. Elles sont essentielles pour bien maîtriser l'outil sur le long terme.
 
 ### Temps estimé pour ce chapitre

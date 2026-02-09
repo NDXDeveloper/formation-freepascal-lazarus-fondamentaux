@@ -42,13 +42,13 @@ Cliquer sur "Fichier" ouvre un menu déroulant :
 ┌───────────────────────────────────────────────┐
 │ Fichier  Édition  Affichage  Aide      _ □ ✕  │
 ├───────────────────────────────────────────────┤
-│ ┌──────────────────┐                          │
+│ ┌───────────────────┐                         │
 │ │ Nouveau     Ctrl+N│                         │
 │ │ Ouvrir...   Ctrl+O│                         │
 │ │ Enregistrer Ctrl+S│                         │
-│ ├──────────────────┤                          │
+│ ├───────────────────┤                         │
 │ │ Quitter           │                         │
-│ └──────────────────┘                          │
+│ └───────────────────┘                         │
 │                                               │
 └───────────────────────────────────────────────┘
 ```
@@ -1508,13 +1508,13 @@ Quitter
 
 ### Checklist
 
-✅ Toutes les fonctions accessibles par menu
-✅ Fonctions courantes dans la toolbar
-✅ Raccourcis clavier standards respectés
-✅ Hints sur tous les boutons de toolbar
-✅ Actions activées/désactivées selon le contexte
-✅ Icônes cohérentes et lisibles
-✅ Séparateurs pour organiser les menus
+✅ Toutes les fonctions accessibles par menu  
+✅ Fonctions courantes dans la toolbar  
+✅ Raccourcis clavier standards respectés  
+✅ Hints sur tous les boutons de toolbar  
+✅ Actions activées/désactivées selon le contexte  
+✅ Icônes cohérentes et lisibles  
+✅ Séparateurs pour organiser les menus  
 
 ---
 

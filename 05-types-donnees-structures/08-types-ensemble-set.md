@@ -784,26 +784,26 @@ type
 
 ## Avantages des ensembles
 
-✓ **Lisibilité** : Code clair et expressif
-✓ **Performance** : Opérations très rapides (manipulation de bits)
-✓ **Sécurité** : Pas de doublons possibles
-✓ **Opérations mathématiques** : Union, intersection, différence naturelles
-✓ **Tests multiples** : Remplace plusieurs `OR` par un simple `in`
+✓ **Lisibilité** : Code clair et expressif  
+✓ **Performance** : Opérations très rapides (manipulation de bits)  
+✓ **Sécurité** : Pas de doublons possibles  
+✓ **Opérations mathématiques** : Union, intersection, différence naturelles  
+✓ **Tests multiples** : Remplace plusieurs `OR` par un simple `in`  
 
 ## Quand utiliser des ensembles ?
 
-✓ **Utilisez des ensembles quand :**
-- Vous avez besoin de tester l'appartenance rapidement
-- Vous manipulez des collections sans ordre ni doublons
-- Vous faites des opérations ensemblistes (union, intersection)
-- Le nombre d'éléments possibles est ≤ 256
-- Vous travaillez avec des drapeaux (options actives/inactives)
+✓ **Utilisez des ensembles quand :**  
+- Vous avez besoin de tester l'appartenance rapidement  
+- Vous manipulez des collections sans ordre ni doublons  
+- Vous faites des opérations ensemblistes (union, intersection)  
+- Le nombre d'éléments possibles est ≤ 256  
+- Vous travaillez avec des drapeaux (options actives/inactives)  
 
-✗ **N'utilisez pas d'ensembles quand :**
-- Vous avez besoin de l'ordre des éléments
-- Vous devez compter les occurrences
-- Le type de base a plus de 256 valeurs possibles
-- Vous devez parcourir souvent tous les éléments
+✗ **N'utilisez pas d'ensembles quand :**  
+- Vous avez besoin de l'ordre des éléments  
+- Vous devez compter les occurrences  
+- Le type de base a plus de 256 valeurs possibles  
+- Vous devez parcourir souvent tous les éléments  
 
 ## Résumé
 

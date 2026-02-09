@@ -23,9 +23,9 @@ En haut de l'IDE Lazarus, vous voyez plusieurs onglets :
 
 ```
 ┌─────────────────────────────────────────────────┐
-│ Standard | Additional | Common | Dialogs | ... │
+│ Standard | Additional | Common | Dialogs | ...  │
 ├─────────────────────────────────────────────────┤
-│ [📋] [📝] [🔘] [☑] [📻] [📋] [📊] [📁] ...      │
+│ [📋] [📝] [🔘] [☑] [📻] [📋] [📊] [📁] ...     │
 └─────────────────────────────────────────────────┘
 ```
 
@@ -45,10 +45,10 @@ L'onglet **"Standard"** contient les composants de base.
 
 ### Manipuler un composant
 
-**Sélectionner :** Cliquez dessus
-**Déplacer :** Cliquez et glissez
-**Redimensionner :** Utilisez les poignées (petits carrés noirs) aux coins et sur les bords
-**Supprimer :** Sélectionnez puis appuyez sur `Suppr` ou `Delete`
+**Sélectionner :** Cliquez dessus  
+**Déplacer :** Cliquez et glissez  
+**Redimensionner :** Utilisez les poignées (petits carrés noirs) aux coins et sur les bords  
+**Supprimer :** Sélectionnez puis appuyez sur `Suppr` ou `Delete`  
 
 ---
 
@@ -78,11 +78,11 @@ Un label apparaît avec le texte "Label1".
 ```pascal
 Label1.Caption := 'Bonjour le monde !';
 ```
-**Description :** Le texte affiché
-**Type :** String
-**Modification :** Inspecteur d'Objets ou par code
+**Description :** Le texte affiché  
+**Type :** String  
+**Modification :** Inspecteur d'Objets ou par code  
 
-**Astuce :** Utilisez `#13#10` ou `sLineBreak` pour créer des sauts de ligne :
+**Astuce :** Utilisez `#13#10` ou `sLineBreak` pour créer des sauts de ligne :  
 ```pascal
 Label1.Caption := 'Ligne 1' + sLineBreak + 'Ligne 2';
 ```
@@ -114,8 +114,8 @@ Label1.Font.Style := [fsBold, fsItalic];  // Gras ET italique
 Label1.Color := clYellow;      // Couleur de fond jaune
 Label1.Transparent := False;   // Doit être False pour voir la couleur
 ```
-**Description :** Couleur de fond du label
-**Attention :** Par défaut, `Transparent := True` (le fond est transparent)
+**Description :** Couleur de fond du label  
+**Attention :** Par défaut, `Transparent := True` (le fond est transparent)  
 
 #### Transparent
 ```pascal
@@ -129,7 +129,7 @@ Label1.Alignment := taLeftJustify;   // Gauche (défaut)
 Label1.Alignment := taCenter;        // Centre
 Label1.Alignment := taRightJustify;  // Droite
 ```
-**Description :** Alignement horizontal du texte
+**Description :** Alignement horizontal du texte  
 
 #### Layout
 ```pascal
@@ -137,23 +137,23 @@ Label1.Layout := tlTop;     // Haut (défaut)
 Label1.Layout := tlCenter;  // Centre vertical
 Label1.Layout := tlBottom;  // Bas
 ```
-**Description :** Alignement vertical du texte
+**Description :** Alignement vertical du texte  
 
 #### WordWrap
 ```pascal
 Label1.WordWrap := True;   // Le texte revient à la ligne automatiquement
 Label1.WordWrap := False;  // Le texte reste sur une ligne
 ```
-**Description :** Activer le retour à la ligne automatique
+**Description :** Activer le retour à la ligne automatique  
 
 #### AutoSize
 ```pascal
 Label1.AutoSize := True;   // Taille ajustée au contenu (défaut)
 Label1.AutoSize := False;  // Taille fixe
 ```
-**Description :** Ajuster automatiquement la taille au texte
+**Description :** Ajuster automatiquement la taille au texte  
 
-**Important :** Si `AutoSize = True`, le label s'agrandira automatiquement. Si vous voulez un label de taille fixe avec retour à la ligne, mettez :
+**Important :** Si `AutoSize = True`, le label s'agrandira automatiquement. Si vous voulez un label de taille fixe avec retour à la ligne, mettez :  
 ```pascal
 Label1.AutoSize := False;
 Label1.WordWrap := True;
@@ -181,7 +181,7 @@ begin
 end;
 ```
 
-**Usage :** Bien que rare, on peut utiliser un label cliquable comme un "lien" visuel.
+**Usage :** Bien que rare, on peut utiliser un label cliquable comme un "lien" visuel.  
 
 #### OnDblClick
 ```pascal
@@ -265,9 +265,9 @@ begin
   ShowMessage('Vous avez saisi : ' + Contenu);
 end;
 ```
-**Description :** Le contenu du champ
-**Type :** String
-**Note :** C'est la propriété la plus importante du TEdit !
+**Description :** Le contenu du champ  
+**Type :** String  
+**Note :** C'est la propriété la plus importante du TEdit !  
 
 #### MaxLength
 ```pascal
@@ -448,8 +448,8 @@ begin
   LabelNbCaracteres.Caption := IntToStr(Length(Edit1.Text)) + ' caractères';
 end;
 ```
-**Quand :** Chaque fois que le contenu du champ change
-**Usage :** Validation en temps réel, compteurs de caractères
+**Quand :** Chaque fois que le contenu du champ change  
+**Usage :** Validation en temps réel, compteurs de caractères  
 
 #### OnKeyPress
 ```pascal
@@ -470,8 +470,8 @@ begin
   end;
 end;
 ```
-**Quand :** Quand une touche caractère est pressée
-**Usage :** Validation de saisie, navigation au clavier
+**Quand :** Quand une touche caractère est pressée  
+**Usage :** Validation de saisie, navigation au clavier  
 
 #### OnKeyDown
 ```pascal
@@ -485,8 +485,8 @@ begin
   end;
 end;
 ```
-**Quand :** Quand une touche est enfoncée (y compris touches spéciales)
-**Usage :** Raccourcis clavier complexes
+**Quand :** Quand une touche est enfoncée (y compris touches spéciales)  
+**Usage :** Raccourcis clavier complexes  
 
 #### OnEnter / OnExit
 ```pascal
@@ -510,8 +510,8 @@ begin
   end;
 end;
 ```
-**Quand :** Quand le champ reçoit/perd le focus
-**Usage :** Mise en évidence, validation
+**Quand :** Quand le champ reçoit/perd le focus  
+**Usage :** Mise en évidence, validation  
 
 ### Exemples pratiques
 
@@ -728,8 +728,8 @@ begin
   Button1.Enabled := False;
 end;
 ```
-**Quand :** Quand le bouton est cliqué
-**Usage :** C'est L'événement principal du bouton !
+**Quand :** Quand le bouton est cliqué  
+**Usage :** C'est L'événement principal du bouton !  
 
 **Note :** OnClick est aussi déclenché par :
 - Clic de souris
@@ -1121,12 +1121,12 @@ end;
 
 ## Ce que vous avez appris
 
-✅ Ajouter des composants visuellement dans Lazarus
-✅ Configurer les propriétés des TLabel, TEdit et TButton
-✅ Gérer les événements (OnClick, OnChange, OnKeyPress)
-✅ Valider les saisies utilisateur
-✅ Organiser les composants de manière ergonomique
-✅ Créer des formulaires interactifs complets
+✅ Ajouter des composants visuellement dans Lazarus  
+✅ Configurer les propriétés des TLabel, TEdit et TButton  
+✅ Gérer les événements (OnClick, OnChange, OnKeyPress)  
+✅ Valider les saisies utilisateur  
+✅ Organiser les composants de manière ergonomique  
+✅ Créer des formulaires interactifs complets  
 
 ---
 

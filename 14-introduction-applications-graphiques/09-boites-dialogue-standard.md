@@ -93,8 +93,8 @@ begin
 end;
 ```
 
-**Type :** String
-**Description :** Chemin complet du fichier sélectionné
+**Type :** String  
+**Description :** Chemin complet du fichier sélectionné  
 
 ##### InitialDir
 ```pascal
@@ -105,8 +105,8 @@ OpenDialog1.InitialDir := 'C:\Users\Public\Documents';
 OpenDialog1.InitialDir := GetUserDir + 'Documents';
 ```
 
-**Type :** String
-**Description :** Dossier affiché à l'ouverture du dialogue
+**Type :** String  
+**Description :** Dossier affiché à l'ouverture du dialogue  
 
 ##### Filter
 ```pascal
@@ -144,8 +144,8 @@ OpenDialog1.FilterIndex := 1;  // Premier filtre par défaut (1-based)
 OpenDialog1.FilterIndex := 2;  // Deuxième filtre par défaut
 ```
 
-**Type :** Integer
-**Description :** Index du filtre sélectionné par défaut (commence à 1)
+**Type :** Integer  
+**Description :** Index du filtre sélectionné par défaut (commence à 1)  
 
 ##### Title
 ```pascal
@@ -153,16 +153,16 @@ OpenDialog1.Title := 'Ouvrir un document';
 OpenDialog1.Title := 'Sélectionner une image';
 ```
 
-**Type :** String
-**Description :** Titre de la fenêtre de dialogue
+**Type :** String  
+**Description :** Titre de la fenêtre de dialogue  
 
 ##### Options
 ```pascal
 OpenDialog1.Options := [ofFileMustExist, ofEnableSizing];
 ```
 
-**Type :** Set de TOpenOption
-**Options courantes :**
+**Type :** Set de TOpenOption  
+**Options courantes :**  
 
 | Option | Description |
 |--------|-------------|
@@ -1413,13 +1413,13 @@ end;
 
 ### Checklist
 
-✅ Toujours vérifier `Execute` avant d'utiliser le résultat
-✅ Gérer les exceptions (try-except)
-✅ Filtres clairs et complets
-✅ Messages informatifs
-✅ Confirmer les actions destructives
-✅ Options appropriées (ofFileMustExist, ofOverwritePrompt, etc.)
-✅ Sauvegarder les préférences (InitialDir, couleurs, polices)
+✅ Toujours vérifier `Execute` avant d'utiliser le résultat  
+✅ Gérer les exceptions (try-except)  
+✅ Filtres clairs et complets  
+✅ Messages informatifs  
+✅ Confirmer les actions destructives  
+✅ Options appropriées (ofFileMustExist, ofOverwritePrompt, etc.)  
+✅ Sauvegarder les préférences (InitialDir, couleurs, polices)  
 
 ---
 
