@@ -1,0 +1,119 @@
+object Form1: TForm1
+  Left = 200
+  Height = 400
+  Top = 100
+  Width = 500
+  Caption = 'Démo TShape'
+  ClientHeight = 400
+  ClientWidth = 500
+  OnCreate = FormCreate
+  LCLVersion = '3.6.0.0'
+  object PanelFeu: TPanel
+    Left = 16
+    Height = 200
+    Top = 16
+    Width = 200
+    Caption = ''
+    TabOrder = 0
+    object LabelFeu: TLabel
+      Left = 8
+      Height = 20
+      Top = 4
+      Width = 180
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Feu tricolore'
+    end
+    object ShapeRouge: TShape
+      Left = 85
+      Height = 40
+      Top = 28
+      Width = 40
+      Brush.Color = clGray
+      Shape = stCircle
+    end
+    object ShapeOrange: TShape
+      Left = 85
+      Height = 40
+      Top = 72
+      Width = 40
+      Brush.Color = clGray
+      Shape = stCircle
+    end
+    object ShapeVert: TShape
+      Left = 85
+      Height = 40
+      Top = 116
+      Width = 40
+      Brush.Color = clLime
+      Shape = stCircle
+    end
+    object BtnRouge: TButton
+      Left = 8
+      Height = 28
+      Top = 164
+      Width = 55
+      Caption = 'Rouge'
+      OnClick = BtnRougeClick
+      TabOrder = 0
+    end
+    object BtnOrange: TButton
+      Left = 72
+      Height = 28
+      Top = 164
+      Width = 60
+      Caption = 'Orange'
+      OnClick = BtnOrangeClick
+      TabOrder = 1
+    end
+    object BtnVert: TButton
+      Left = 140
+      Height = 28
+      Top = 164
+      Width = 50
+      Caption = 'Vert'
+      OnClick = BtnVertClick
+      TabOrder = 2
+    end
+  end
+  object PanelAnimation: TPanel
+    Left = 240
+    Height = 200
+    Top = 16
+    Width = 240
+    Caption = ''
+    TabOrder = 1
+    object LabelAnimation: TLabel
+      Left = 8
+      Height = 20
+      Top = 4
+      Width = 220
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Animation pulsante'
+    end
+    object ShapePulse: TShape
+      Left = 100
+      Height = 40
+      Top = 50
+      Width = 40
+      Brush.Color = clBlue
+      Shape = stCircle
+    end
+    object BtnToggleAnimation: TButton
+      Left = 40
+      Height = 28
+      Top = 164
+      Width = 160
+      Caption = 'Arrêter animation'
+      OnClick = BtnToggleAnimationClick
+      TabOrder = 0
+    end
+  end
+  object Timer1: TTimer
+    Interval = 50
+    OnTimer = Timer1Timer
+    Left = 440
+    Top = 350
+  end
+end

@@ -1,0 +1,131 @@
+object Form1: TForm1
+  Left = 200
+  Height = 500
+  Top = 100
+  Width = 700
+  Caption = 'Éditeur - Sans titre'
+  ClientHeight = 500
+  ClientWidth = 700
+  Menu = MainMenu1
+  OnCreate = FormCreate
+  LCLVersion = '3.6.0.0'
+  object Memo1: TMemo
+    Left = 0
+    Height = 475
+    Top = 0
+    Width = 700
+    Align = alClient
+    ScrollBars = ssBoth
+    TabOrder = 0
+  end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Height = 25
+    Top = 475
+    Width = 700
+    Panels = <>
+    SimplePanel = True
+    SimpleText = 'Prêt'
+  end
+  object ActionList1: TActionList
+    Left = 600
+    Top = 50
+    object ActNouveau: TAction
+      Caption = '&Nouveau'
+      ShortCut = 16462
+      OnExecute = ActNouveauExecute
+    end
+    object ActOuvrir: TAction
+      Caption = '&Ouvrir...'
+      ShortCut = 16463
+      OnExecute = ActOuvrirExecute
+    end
+    object ActSauvegarder: TAction
+      Caption = '&Sauvegarder'
+      ShortCut = 16467
+      OnExecute = ActSauvegarderExecute
+      OnUpdate = ActSauvegarderUpdate
+    end
+    object ActQuitter: TAction
+      Caption = '&Quitter'
+      ShortCut = 32883
+      OnExecute = ActQuitterExecute
+    end
+    object ActCouper: TAction
+      Caption = 'Co&uper'
+      ShortCut = 16472
+      OnExecute = ActCouperExecute
+      OnUpdate = ActCouperUpdate
+    end
+    object ActCopier: TAction
+      Caption = '&Copier'
+      ShortCut = 16451
+      OnExecute = ActCopierExecute
+      OnUpdate = ActCopierUpdate
+    end
+    object ActColler: TAction
+      Caption = 'C&oller'
+      ShortCut = 16470
+      OnExecute = ActCollerExecute
+      OnUpdate = ActCollerUpdate
+    end
+    object ActSelectionnerTout: TAction
+      Caption = 'Sélectionner &tout'
+      ShortCut = 16449
+      OnExecute = ActSelectionnerToutExecute
+    end
+  end
+  object MainMenu1: TMainMenu
+    Left = 600
+    Top = 10
+    object MenuFichier: TMenuItem
+      Caption = '&Fichier'
+      object MenuNouveau: TMenuItem
+        Action = ActNouveau
+      end
+      object MenuOuvrir: TMenuItem
+        Action = ActOuvrir
+      end
+      object MenuSauvegarder: TMenuItem
+        Action = ActSauvegarder
+      end
+      object MenuSep1: TMenuItem
+        Caption = '-'
+      end
+      object MenuQuitter: TMenuItem
+        Action = ActQuitter
+      end
+    end
+    object MenuEdition: TMenuItem
+      Caption = '&Édition'
+      object MenuCouper: TMenuItem
+        Action = ActCouper
+      end
+      object MenuCopier: TMenuItem
+        Action = ActCopier
+      end
+      object MenuColler: TMenuItem
+        Action = ActColler
+      end
+      object MenuSep2: TMenuItem
+        Caption = '-'
+      end
+      object MenuSelectionnerTout: TMenuItem
+        Action = ActSelectionnerTout
+      end
+    end
+  end
+  object OpenDialog1: TOpenDialog
+    Filter = 'Fichiers texte (*.txt)|*.txt|Tous les fichiers (*.*)|*.*'
+    Title = 'Ouvrir un fichier'
+    Left = 650
+    Top = 50
+  end
+  object SaveDialog1: TSaveDialog
+    DefaultExt = '.txt'
+    Filter = 'Fichiers texte (*.txt)|*.txt|Tous les fichiers (*.*)|*.*'
+    Title = 'Sauvegarder le fichier'
+    Left = 650
+    Top = 10
+  end
+end

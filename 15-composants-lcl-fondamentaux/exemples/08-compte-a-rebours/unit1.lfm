@@ -1,0 +1,78 @@
+object Form1: TForm1
+  Left = 300
+  Height = 350
+  Top = 150
+  Width = 400
+  Caption = 'Compte à Rebours'
+  ClientHeight = 350
+  ClientWidth = 400
+  OnCreate = FormCreate
+  LCLVersion = '3.6.0.0'
+  object LabelTitre: TLabel
+    Left = 16
+    Height = 28
+    Top = 16
+    Width = 360
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Compte à Rebours'
+    Font.Height = -20
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object LabelTemps: TLabel
+    Left = 16
+    Height = 80
+    Top = 60
+    Width = 360
+    Alignment = taCenter
+    AutoSize = False
+    Caption = '00:00'
+    Font.Height = -48
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object LabelMinutes: TLabel
+    Left = 16
+    Height = 20
+    Top = 170
+    Width = 120
+    Caption = 'Minutes (1-60) :'
+  end
+  object SpinEditMinutes: TSpinEdit
+    Left = 150
+    Height = 28
+    Top = 166
+    Width = 80
+    MaxValue = 60
+    MinValue = 1
+    TabOrder = 0
+    Value = 5
+  end
+  object BtnDemarrer: TButton
+    Left = 60
+    Height = 40
+    Top = 220
+    Width = 120
+    Caption = 'Démarrer'
+    OnClick = BtnDemarrerClick
+    TabOrder = 1
+  end
+  object BtnAnnuler: TButton
+    Left = 210
+    Height = 40
+    Top = 220
+    Width = 120
+    Caption = 'Annuler'
+    Enabled = False
+    OnClick = BtnAnnulerClick
+    TabOrder = 2
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 1000
+    OnTimer = Timer1Timer
+    Left = 350
+    Top = 300
+  end
+end

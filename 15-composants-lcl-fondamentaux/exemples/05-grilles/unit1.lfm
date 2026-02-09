@@ -1,0 +1,105 @@
+object Form1: TForm1
+  Left = 200
+  Height = 500
+  Top = 100
+  Width = 650
+  Caption = 'Carnet d''adresses'
+  ClientHeight = 500
+  ClientWidth = 650
+  OnCreate = FormCreate
+  LCLVersion = '3.6.0.0'
+  object StringGrid1: TStringGrid
+    Left = 0
+    Height = 350
+    Top = 0
+    Width = 650
+    Align = alClient
+    ColCount = 4
+    FixedCols = 0
+    RowCount = 2
+    TabOrder = 0
+  end
+  object PanelSaisie: TPanel
+    Left = 0
+    Height = 150
+    Top = 350
+    Width = 650
+    Align = alBottom
+    BevelOuter = bvNone
+    TabOrder = 1
+    object LabelNom: TLabel
+      Left = 16
+      Height = 20
+      Top = 8
+      Width = 40
+      Caption = 'Nom :'
+    end
+    object EditNom: TEdit
+      Left = 16
+      Height = 28
+      Top = 28
+      Width = 120
+      TabOrder = 0
+    end
+    object LabelPrenom: TLabel
+      Left = 148
+      Height = 20
+      Top = 8
+      Width = 55
+      Caption = 'Prénom :'
+    end
+    object EditPrenom: TEdit
+      Left = 148
+      Height = 28
+      Top = 28
+      Width = 120
+      TabOrder = 1
+    end
+    object LabelTelephone: TLabel
+      Left = 280
+      Height = 20
+      Top = 8
+      Width = 72
+      Caption = 'Téléphone :'
+    end
+    object EditTelephone: TEdit
+      Left = 280
+      Height = 28
+      Top = 28
+      Width = 130
+      TabOrder = 2
+    end
+    object LabelEmail: TLabel
+      Left = 422
+      Height = 20
+      Top = 8
+      Width = 42
+      Caption = 'Email :'
+    end
+    object EditEmail: TEdit
+      Left = 422
+      Height = 28
+      Top = 28
+      Width = 200
+      TabOrder = 3
+    end
+    object BtnAjouter: TButton
+      Left = 16
+      Height = 35
+      Top = 70
+      Width = 120
+      Caption = 'Ajouter'
+      OnClick = BtnAjouterClick
+      TabOrder = 4
+    end
+    object BtnSupprimer: TButton
+      Left = 148
+      Height = 35
+      Top = 70
+      Width = 120
+      Caption = 'Supprimer'
+      OnClick = BtnSupprimerClick
+      TabOrder = 5
+    end
+  end
+end
