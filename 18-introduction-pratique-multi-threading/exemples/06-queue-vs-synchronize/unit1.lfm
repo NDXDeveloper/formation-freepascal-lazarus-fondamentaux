@@ -1,0 +1,76 @@
+object Form1: TForm1
+  Left = 250
+  Height = 450
+  Top = 150
+  Width = 620
+  Caption = '18.6 - Queue vs Synchronize'
+  ClientHeight = 450
+  ClientWidth = 620
+  Position = poScreenCenter
+  LCLVersion = '3.0.0.0'
+  object LabelSync: TLabel
+    Left = 16
+    Height = 20
+    Top = 16
+    Width = 280
+    Caption = 'Synchronize (thread attend)'
+    Font.Height = -13
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object LabelQueue: TLabel
+    Left = 316
+    Height = 20
+    Top = 16
+    Width = 280
+    Caption = 'Queue (thread continue)'
+    Font.Height = -13
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object LabelComparaison: TLabel
+    Left = 16
+    Height = 20
+    Top = 420
+    Width = 580
+    Caption = 'Synchronize = ordre garanti, plus lent | Queue = ordre possible mais thread plus rapide'
+    Font.Color = clGray
+    ParentFont = False
+  end
+  object MemoSync: TMemo
+    Left = 16
+    Height = 300
+    Top = 100
+    Width = 280
+    ReadOnly = True
+    ScrollBars = ssVertical
+    TabOrder = 2
+  end
+  object MemoQueue: TMemo
+    Left = 316
+    Height = 300
+    Top = 100
+    Width = 280
+    ReadOnly = True
+    ScrollBars = ssVertical
+    TabOrder = 3
+  end
+  object ButtonTestSync: TButton
+    Left = 16
+    Height = 35
+    Top = 50
+    Width = 280
+    Caption = 'Test Synchronize'
+    OnClick = ButtonTestSyncClick
+    TabOrder = 0
+  end
+  object ButtonTestQueue: TButton
+    Left = 316
+    Height = 35
+    Top = 50
+    Width = 280
+    Caption = 'Test Queue'
+    OnClick = ButtonTestQueueClick
+    TabOrder = 1
+  end
+end

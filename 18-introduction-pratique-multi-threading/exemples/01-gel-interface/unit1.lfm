@@ -1,0 +1,63 @@
+object Form1: TForm1
+  Left = 300
+  Height = 280
+  Top = 200
+  Width = 480
+  Caption = '18.1 - Gel de l''interface graphique'
+  ClientHeight = 280
+  ClientWidth = 480
+  Position = poScreenCenter
+  LCLVersion = '3.0.0.0'
+  object LabelTitre: TLabel
+    Left = 16
+    Height = 20
+    Top = 16
+    Width = 440
+    Caption = 'Cliquez sur un bouton et essayez de deplacer la fenetre'
+    Font.Height = -13
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object LabelStatut: TLabel
+    Left = 16
+    Height = 20
+    Top = 180
+    Width = 440
+    Caption = 'Pret'
+  end
+  object LabelResultat: TLabel
+    Left = 16
+    Height = 20
+    Top = 220
+    Width = 440
+    Caption = ''
+  end
+  object LabelReactivite: TLabel
+    Left = 16
+    Height = 20
+    Top = 140
+    Width = 440
+    Caption = 'Cliquez ici pour tester la reactivite'
+    Font.Color = clBlue
+    ParentFont = False
+    OnClick = LabelReactiviteClick
+  end
+  object ButtonBloquant: TButton
+    Left = 16
+    Height = 40
+    Top = 60
+    Width = 210
+    Caption = 'Calcul BLOQUANT'
+    OnClick = ButtonBloquantClick
+    TabOrder = 0
+  end
+  object ButtonThread: TButton
+    Left = 250
+    Height = 40
+    Top = 60
+    Width = 210
+    Caption = 'Calcul en THREAD'
+    OnClick = ButtonThreadClick
+    TabOrder = 1
+  end
+end
