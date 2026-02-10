@@ -19,8 +19,8 @@ type
     SSL: Boolean;
   end;
 
-function ChargerConfigConnexion(Fichier: string): TConfigConnexion;
-var
+function ChargerConfigConnexion(Fichier: string): TConfigConnexion;  
+var  
   Ini: TMemIniFile;
 begin
   if not FileExists(Fichier) then
@@ -51,8 +51,8 @@ begin
   end;
 end;
 
-procedure SauvegarderConfigConnexion(Fichier: string; const Config: TConfigConnexion);
-var
+procedure SauvegarderConfigConnexion(Fichier: string; const Config: TConfigConnexion);  
+var  
   Ini: TMemIniFile;
 begin
   Ini := TMemIniFile.Create(Fichier);
@@ -75,8 +75,8 @@ begin
   end;
 end;
 
-procedure AfficherConfig(const Config: TConfigConnexion);
-begin
+procedure AfficherConfig(const Config: TConfigConnexion);  
+begin  
   WriteLn;
   WriteLn('=== CONFIGURATION DE CONNEXION ===');
   WriteLn('Serveur        : ', Config.Serveur);
@@ -88,8 +88,8 @@ begin
   WriteLn('==================================');
 end;
 
-function TesterConnexion(const Config: TConfigConnexion): Boolean;
-begin
+function TesterConnexion(const Config: TConfigConnexion): Boolean;  
+begin  
   WriteLn;
   WriteLn('Test de connexion à ', Config.Serveur, ':', Config.Port, '...');
   WriteLn('Connexion simulée réussie !');

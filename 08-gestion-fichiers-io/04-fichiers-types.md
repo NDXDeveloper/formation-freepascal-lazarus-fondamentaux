@@ -252,8 +252,8 @@ var
   F: File of TEmploye;  // Fichier typé : chaque Read/Write lit/écrit un TEmploye complet
   Employe: TEmploye;
 
-procedure AjouterEmploye(Num: Integer; N: string; P: string; S: Real);
-begin
+procedure AjouterEmploye(Num: Integer; N: string; P: string; S: Real);  
+begin  
   Employe.Numero := Num;
   Employe.Nom := N;
   Employe.Poste := P;
@@ -263,8 +263,8 @@ begin
   WriteLn('Employé ajouté : ', N);
 end;
 
-procedure AfficherTous;
-begin
+procedure AfficherTous;  
+begin  
   Seek(F, 0);  // Retour au début
 
   WriteLn('=== LISTE DES EMPLOYÉS ===');
@@ -306,17 +306,17 @@ end.
 
 **Résultat :**
 ```
-Employé ajouté : Dupont Jean
-Employé ajouté : Martin Sophie
-Employé ajouté : Durand Pierre
-Employé ajouté : Bernard Marie
+Employé ajouté : Dupont Jean  
+Employé ajouté : Martin Sophie  
+Employé ajouté : Durand Pierre  
+Employé ajouté : Bernard Marie  
 
 === LISTE DES EMPLOYÉS ===
 
-N°    1 |          Dupont Jean |    Développeur | 35000.00 €
-N°    2 |        Martin Sophie |  Chef de projet | 45000.00 €
-N°    3 |        Durand Pierre |      Technicien | 28000.00 €
-N°    4 |        Bernard Marie |        Analyste | 38000.00 €
+N°    1 |          Dupont Jean |    Développeur | 35000.00 €  
+N°    2 |        Martin Sophie |  Chef de projet | 45000.00 €  
+N°    3 |        Durand Pierre |      Technicien | 28000.00 €  
+N°    4 |        Bernard Marie |        Analyste | 38000.00 €  
 ```
 
 ---
@@ -483,8 +483,8 @@ end.
 ### Ajouter à la fin
 
 ```pascal
-procedure AjouterEmploye(var F: File of TEmploye; E: TEmploye);
-begin
+procedure AjouterEmploye(var F: File of TEmploye; E: TEmploye);  
+begin  
   Seek(F, FileSize(F));  // Aller à la fin
   Write(F, E);
 end;
@@ -505,8 +505,8 @@ type
     Actif: Boolean;  // True = actif, False = supprimé
   end;
 
-procedure SupprimerEmploye(var F: File of TEmploye; Position: Integer);
-var
+procedure SupprimerEmploye(var F: File of TEmploye; Position: Integer);  
+var  
   Emp: TEmploye;
 begin
   Seek(F, Position);
@@ -522,8 +522,8 @@ end;
 #### Méthode 2 : Copier dans un nouveau fichier
 
 ```pascal
-procedure SupprimerEmploye(Position: Integer);
-var
+procedure SupprimerEmploye(Position: Integer);  
+var  
   Ancien, Nouveau: File of TEmploye;
   Emp: TEmploye;
   i: Integer;
@@ -576,8 +576,8 @@ var
   Contact: TContact;
   Choix: Integer;
 
-procedure InitialiserFichier;
-begin
+procedure InitialiserFichier;  
+begin  
   Assign(Fichier, 'contacts.dat');
   {$I-}
   Reset(Fichier);
@@ -586,8 +586,8 @@ begin
     Rewrite(Fichier);
 end;
 
-function ProchainID: Integer;
-var
+function ProchainID: Integer;  
+var  
   C: TContact;
   MaxID: Integer;
 begin
@@ -604,8 +604,8 @@ begin
   ProchainID := MaxID + 1;
 end;
 
-procedure AjouterContact;
-begin
+procedure AjouterContact;  
+begin  
   WriteLn('=== NOUVEAU CONTACT ===');
 
   Contact.ID := ProchainID;
@@ -628,8 +628,8 @@ begin
   WriteLn('Contact ajouté avec l''ID : ', Contact.ID);
 end;
 
-procedure AfficherTous;
-begin
+procedure AfficherTous;  
+begin  
   if FileSize(Fichier) = 0 then
   begin
     WriteLn('Aucun contact dans le carnet.');
@@ -654,8 +654,8 @@ begin
   WriteLn('Total : ', FileSize(Fichier), ' contact(s)');
 end;
 
-procedure RechercherParNom;
-var
+procedure RechercherParNom;  
+var  
   NomRecherche: string;
   Trouve: Boolean;
 begin

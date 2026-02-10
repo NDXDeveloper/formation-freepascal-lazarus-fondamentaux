@@ -17,13 +17,13 @@ type
     Salaire: Double;
   end;
 
-procedure EcrirePersonne(Stream: TStream; const P: TPersonne);
-begin
+procedure EcrirePersonne(Stream: TStream; const P: TPersonne);  
+begin  
   Stream.Write(P, SizeOf(P));
 end;
 
-function LirePersonne(Stream: TStream): TPersonne;
-begin
+function LirePersonne(Stream: TStream): TPersonne;  
+begin  
   Stream.Read(Result, SizeOf(Result));
 end;
 

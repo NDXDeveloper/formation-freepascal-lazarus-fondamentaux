@@ -126,9 +126,9 @@ Un **fichier** est un ensemble de données stocké sur un support de stockage (d
 
 ```
           ┌─────────────────┐
-Clavier → │                 │ → Écran
-Fichiers →│  VOTRE PROGRAMME│ → Fichiers
-Réseau → │                  │ → Réseau
+Clavier → │                 │ → Écran  
+Fichiers →│  VOTRE PROGRAMME│ → Fichiers  
+Réseau → │                  │ → Réseau  
           └─────────────────┘
           Input          Output
 ```
@@ -223,8 +223,8 @@ Ce chapitre couvre tous les aspects essentiels de la gestion des fichiers en Pas
 
 **Bonne pratique :**
 ```pascal
-Ouvrir le fichier
-try
+Ouvrir le fichier  
+try  
   // Travailler avec le fichier
 finally
   Fermer le fichier  // Toujours exécuté, même en cas d'erreur

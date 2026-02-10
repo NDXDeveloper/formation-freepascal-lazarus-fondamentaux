@@ -9,8 +9,8 @@ program DecomposerChemin;
 uses
   SysUtils;
 
-procedure AnalyserChemin(Chemin: string);
-begin
+procedure AnalyserChemin(Chemin: string);  
+begin  
   WriteLn('=== ANALYSE DU CHEMIN ===');
   WriteLn('Chemin complet  : ', Chemin);
   WriteLn('Lecteur         : ', ExtractFileDrive(Chemin));

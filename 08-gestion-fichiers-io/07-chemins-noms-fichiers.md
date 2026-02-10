@@ -14,8 +14,8 @@ Un chemin de fichier, c'est comme une adresse postale :
 - **Titre (M./Mme)** = extension
 
 ```
-Adresse complète : 123 rue Victor Hugo, Paris
-Chemin complet   : C:\Users\Jean\Documents\rapport.pdf
+Adresse complète : 123 rue Victor Hugo, Paris  
+Chemin complet   : C:\Users\Jean\Documents\rapport.pdf  
 ```
 
 ---
@@ -61,8 +61,8 @@ Un **chemin absolu** spécifie l'emplacement complet depuis la racine du systèm
 
 **Exemples :**
 ```
-Windows : C:\Program Files\MonApp\data.db
-Linux   : /usr/local/bin/monapp
+Windows : C:\Program Files\MonApp\data.db  
+Linux   : /usr/local/bin/monapp  
 ```
 
 **Caractéristiques :**
@@ -77,8 +77,8 @@ Un **chemin relatif** est défini par rapport au répertoire courant.
 
 **Exemples :**
 ```
-data.db              → dans le répertoire courant
-config\settings.ini  → dans le sous-répertoire config
+data.db              → dans le répertoire courant  
+config\settings.ini  → dans le sous-répertoire config  
 ..\images\logo.png   → dans le répertoire parent, sous-répertoire images
 ..\..\backup.zip     → deux répertoires au-dessus
 ```
@@ -219,8 +219,8 @@ program DecomposerChemin;
 uses
   SysUtils;
 
-procedure AnalyserChemin(Chemin: string);
-begin
+procedure AnalyserChemin(Chemin: string);  
+begin  
   WriteLn('=== ANALYSE DU CHEMIN ===');
   WriteLn('Chemin complet  : ', Chemin);
   WriteLn('Lecteur         : ', ExtractFileDrive(Chemin));
@@ -241,12 +241,12 @@ end.
 **Résultat sous Windows :**
 ```
 === ANALYSE DU CHEMIN ===
-Chemin complet  : C:\Users\Jean\Documents\rapport.pdf
-Lecteur         : C:
-Répertoire (/)  : C:\Users\Jean\Documents\
-Répertoire      : C:\Users\Jean\Documents
-Nom du fichier  : rapport.pdf
-Extension       : .pdf
+Chemin complet  : C:\Users\Jean\Documents\rapport.pdf  
+Lecteur         : C:  
+Répertoire (/)  : C:\Users\Jean\Documents\  
+Répertoire      : C:\Users\Jean\Documents  
+Nom du fichier  : rapport.pdf  
+Extension       : .pdf  
 ========================
 ```
 
@@ -299,8 +299,8 @@ end.
 
 **Alternative pour anciennes versions :**
 ```pascal
-function NomSansExtension(Chemin: string): string;
-begin
+function NomSansExtension(Chemin: string): string;  
+begin  
   NomSansExtension := ChangeFileExt(ExtractFileName(Chemin), '');
 end;
 ```
@@ -527,8 +527,8 @@ end.
 uses
   SysUtils;
 
-function TailleFichier(Chemin: string): Int64;
-var
+function TailleFichier(Chemin: string): Int64;  
+var  
   F: File of Byte;
 begin
   if not FileExists(Chemin) then
@@ -616,20 +616,20 @@ end.
 
 **Résultat sous Windows :**
 ```
-Séparateur de chemin    : \
-Séparateur de répertoire: \
-Séparateur de lecteur   : :
-Séparateur de PATH      : ;
-Suffixe bibliothèque    : dll
+Séparateur de chemin    : \  
+Séparateur de répertoire: \  
+Séparateur de lecteur   : :  
+Séparateur de PATH      : ;  
+Suffixe bibliothèque    : dll  
 ```
 
 **Résultat sous Linux :**
 ```
-Séparateur de chemin    : /
-Séparateur de répertoire: /
-Séparateur de lecteur   :
-Séparateur de PATH      : :
-Suffixe bibliothèque    : so
+Séparateur de chemin    : /  
+Séparateur de répertoire: /  
+Séparateur de lecteur   :  
+Séparateur de PATH      : :  
+Suffixe bibliothèque    : so  
 ```
 
 ### Fonction de construction portable
@@ -638,8 +638,8 @@ Suffixe bibliothèque    : so
 uses
   SysUtils;
 
-function ConstruireChemin(const Segments: array of string): string;
-var
+function ConstruireChemin(const Segments: array of string): string;  
+var  
   i: Integer;
 begin
   Result := '';
@@ -675,8 +675,8 @@ end.
 uses
   SysUtils, DateUtils;
 
-function NomFichierSauvegarde(CheminOriginal: string): string;
-var
+function NomFichierSauvegarde(CheminOriginal: string): string;  
+var  
   Repertoire, Nom, Extension: string;
   Horodatage: string;
 begin
@@ -701,8 +701,8 @@ end.
 uses
   SysUtils;
 
-procedure TrouverFichiersParExtension(Repertoire, Extension: string);
-var
+procedure TrouverFichiersParExtension(Repertoire, Extension: string);  
+var  
   Info: TSearchRec;
   CheminComplet: string;
 begin
@@ -743,8 +743,8 @@ end.
 uses
   SysUtils;
 
-function NomFichierValide(Nom: string): Boolean;
-const
+function NomFichierValide(Nom: string): Boolean;  
+const  
   CaracteresInterdits = '\/:*?"<>|';
 var
   i: Integer;
@@ -784,8 +784,8 @@ end.
 uses
   SysUtils;
 
-function TrouverNomDisponible(CheminBase: string): string;
-var
+function TrouverNomDisponible(CheminBase: string): string;  
+var  
   Repertoire, NomBase, Extension: string;
   Compteur: Integer;
   CheminTest: string;
@@ -829,8 +829,8 @@ program GestionnaireChemin;
 uses
   SysUtils;
 
-procedure AfficherMenu;
-begin
+procedure AfficherMenu;  
+begin  
   WriteLn;
   WriteLn('=== GESTIONNAIRE DE CHEMINS ===');
   WriteLn('1. Analyser un chemin');
@@ -843,8 +843,8 @@ begin
   Write('Choix : ');
 end;
 
-procedure AnalyserChemin;
-var
+procedure AnalyserChemin;  
+var  
   Chemin: string;
 begin
   Write('Chemin à analyser : ');
@@ -860,8 +860,8 @@ begin
   WriteLn('Chemin absolu      : ', ExpandFileName(Chemin));
 end;
 
-procedure ChangerExtension;
-var
+procedure ChangerExtension;  
+var  
   Chemin, NouvelleExt, Resultat: string;
 begin
   Write('Chemin du fichier : ');
@@ -873,8 +873,8 @@ begin
   WriteLn('Résultat : ', Resultat);
 end;
 
-procedure ConvertirEnAbsolu;
-var
+procedure ConvertirEnAbsolu;  
+var  
   CheminRelatif, CheminAbsolu: string;
 begin
   WriteLn('Répertoire courant : ', GetCurrentDir);
@@ -885,8 +885,8 @@ begin
   WriteLn('Chemin absolu : ', CheminAbsolu);
 end;
 
-procedure ExtraireCheminRelatif;
-var
+procedure ExtraireCheminRelatif;  
+var  
   Base, Cible, Relatif: string;
 begin
   Write('Chemin de base : ');
@@ -901,8 +901,8 @@ begin
   WriteLn('Chemin relatif : ', Relatif);
 end;
 
-procedure VerifierExistence;
-var
+procedure VerifierExistence;  
+var  
   Chemin: string;
 begin
   Write('Chemin à vérifier : ');
@@ -917,8 +917,8 @@ begin
     WriteLn('X N''existe pas');
 end;
 
-procedure ConstruireCheminInteractif;
-var
+procedure ConstruireCheminInteractif;  
+var  
   NbSegments, i: Integer;
   Segments: array[1..10] of string;
   Resultat: string;

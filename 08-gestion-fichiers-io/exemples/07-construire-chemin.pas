@@ -9,8 +9,8 @@ program ConstruireCheminPortable;
 uses
   SysUtils;
 
-function ConstruireChemin(const Segments: array of string): string;
-var
+function ConstruireChemin(const Segments: array of string): string;  
+var  
   i: Integer;
 begin
   Result := '';

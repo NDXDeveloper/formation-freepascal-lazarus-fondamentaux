@@ -19,8 +19,8 @@ var
   Choix, Position: Integer;
   NomFichier: string;
 
-procedure AjouterContact;
-var
+procedure AjouterContact;  
+var  
   NbEcrits: Word;
 begin
   WriteLn('--- Ajouter un contact ---');
@@ -40,8 +40,8 @@ begin
     WriteLn('Erreur lors de l''ajout.');
 end;
 
-procedure AfficherContact(Num: Integer);
-var
+procedure AfficherContact(Num: Integer);  
+var  
   NbLus: Word;
 begin
   if (Num < 1) or (Num > FileSize(Fichier)) then
@@ -63,8 +63,8 @@ begin
   end;
 end;
 
-procedure ListerContacts;
-var
+procedure ListerContacts;  
+var  
   i: Integer;
   NbLus: Word;
 begin

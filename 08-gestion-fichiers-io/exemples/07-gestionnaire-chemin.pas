@@ -10,8 +10,8 @@ program GestionnaireChemin;
 uses
   SysUtils;
 
-procedure AfficherMenu;
-begin
+procedure AfficherMenu;  
+begin  
   WriteLn;
   WriteLn('=== GESTIONNAIRE DE CHEMINS ===');
   WriteLn('1. Analyser un chemin');
@@ -24,8 +24,8 @@ begin
   Write('Choix : ');
 end;
 
-procedure AnalyserChemin;
-var
+procedure AnalyserChemin;  
+var  
   Chemin: string;
 begin
   Write('Chemin à analyser : ');
@@ -41,8 +41,8 @@ begin
   WriteLn('Chemin absolu      : ', ExpandFileName(Chemin));
 end;
 
-procedure ChangerExtension;
-var
+procedure ChangerExtension;  
+var  
   Chemin, NouvelleExt, Resultat: string;
 begin
   Write('Chemin du fichier : ');
@@ -54,8 +54,8 @@ begin
   WriteLn('Résultat : ', Resultat);
 end;
 
-procedure ConvertirEnAbsolu;
-var
+procedure ConvertirEnAbsolu;  
+var  
   CheminRelatif, CheminAbsolu: string;
 begin
   WriteLn('Répertoire courant : ', GetCurrentDir);
@@ -66,8 +66,8 @@ begin
   WriteLn('Chemin absolu : ', CheminAbsolu);
 end;
 
-procedure ExtraireCheminRelatif;
-var
+procedure ExtraireCheminRelatif;  
+var  
   Base, Cible, Relatif: string;
 begin
   Write('Chemin de base : ');
@@ -82,8 +82,8 @@ begin
   WriteLn('Chemin relatif : ', Relatif);
 end;
 
-procedure VerifierExistence;
-var
+procedure VerifierExistence;  
+var  
   Chemin: string;
 begin
   Write('Chemin à vérifier : ');
@@ -98,8 +98,8 @@ begin
     WriteLn('X N''existe pas');
 end;
 
-procedure ConstruireCheminInteractif;
-var
+procedure ConstruireCheminInteractif;  
+var  
   NbSegments, i: Integer;
   Segments: array[1..10] of string;
   Resultat: string;

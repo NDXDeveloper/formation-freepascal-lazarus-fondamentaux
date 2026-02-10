@@ -9,8 +9,8 @@ program CopierStream;
 uses
   Classes, SysUtils;
 
-procedure CopierFichierStream(Source, Destination: string);
-var
+procedure CopierFichierStream(Source, Destination: string);  
+var  
   StreamSource, StreamDest: TFileStream;
 begin
   StreamSource := TFileStream.Create(Source, fmOpenRead);

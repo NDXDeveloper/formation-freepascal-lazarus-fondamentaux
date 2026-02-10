@@ -416,8 +416,8 @@ program CopierStream;
 uses
   Classes, SysUtils;
 
-procedure CopierFichierStream(Source, Destination: string);
-var
+procedure CopierFichierStream(Source, Destination: string);  
+var  
   StreamSource, StreamDest: TFileStream;
 begin
   StreamSource := TFileStream.Create(Source, fmOpenRead);
@@ -499,8 +499,8 @@ program LireFichierTexte;
 uses
   Classes, SysUtils;
 
-function LireFichierEnMemoire(NomFichier: string): string;
-var
+function LireFichierEnMemoire(NomFichier: string): string;  
+var  
   Stream: TStringStream;
   FileStream: TFileStream;
 begin
@@ -557,13 +557,13 @@ type
     Salaire: Double;
   end;
 
-procedure EcrirePersonne(Stream: TStream; const P: TPersonne);
-begin
+procedure EcrirePersonne(Stream: TStream; const P: TPersonne);  
+begin  
   Stream.Write(P, SizeOf(P));
 end;
 
-function LirePersonne(Stream: TStream): TPersonne;
-begin
+function LirePersonne(Stream: TStream): TPersonne;  
+begin  
   Stream.Read(Result, SizeOf(Result));
 end;
 
@@ -623,8 +623,8 @@ program ConcatenerFichiers;
 uses
   Classes, SysUtils;
 
-procedure ConcatenerFichiers(Fichiers: array of string; Sortie: string);
-var
+procedure ConcatenerFichiers(Fichiers: array of string; Sortie: string);  
+var  
   StreamSortie: TFileStream;
   StreamEntree: TFileStream;
   i: Integer;
@@ -670,8 +670,8 @@ program LectureBufferisee;
 uses
   Classes, SysUtils;
 
-procedure LireFichierAvecBuffer(NomFichier: string);
-const
+procedure LireFichierAvecBuffer(NomFichier: string);  
+const  
   TAILLE_BUFFER = 4096;  // 4 Ko
 var
   Stream: TFileStream;

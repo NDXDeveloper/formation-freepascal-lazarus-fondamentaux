@@ -498,8 +498,8 @@ program ParcoursRecursif;
 uses
   SysUtils;
 
-procedure ListerRecursif(Chemin: string; Niveau: Integer);
-var
+procedure ListerRecursif(Chemin: string; Niveau: Integer);  
+var  
   Info: TSearchRec;
   CheminComplet: string;
   Indentation: string;
@@ -555,13 +555,13 @@ program GestionnaireRepertoires;
 uses
   SysUtils;
 
-procedure AfficherRepertoireCourant;
-begin
+procedure AfficherRepertoireCourant;  
+begin  
   WriteLn('Répertoire actuel : ', GetCurrentDir);
 end;
 
-procedure ListerContenu;
-var
+procedure ListerContenu;  
+var  
   Info: TSearchRec;
   NbFichiers, NbDossiers: Integer;
 begin
@@ -599,8 +599,8 @@ begin
   WriteLn('=============================');
 end;
 
-procedure CreerNouveauRepertoire;
-var
+procedure CreerNouveauRepertoire;  
+var  
   Nom: string;
 begin
   Write('Nom du nouveau répertoire : ');
@@ -624,8 +624,8 @@ begin
     WriteLn('Erreur lors de la création du répertoire');
 end;
 
-procedure SupprimerRepertoire;
-var
+procedure SupprimerRepertoire;  
+var  
   Nom: string;
 begin
   Write('Nom du répertoire à supprimer : ');
@@ -643,8 +643,8 @@ begin
     WriteLn('Erreur : Le répertoire n''est probablement pas vide');
 end;
 
-procedure ChangerRepertoire;
-var
+procedure ChangerRepertoire;  
+var  
   Nom: string;
 begin
   Write('Nom du répertoire (.. pour parent) : ');
@@ -659,8 +659,8 @@ begin
     WriteLn('Erreur : Répertoire invalide ou inaccessible');
 end;
 
-procedure RechercherFichiers;
-var
+procedure RechercherFichiers;  
+var  
   Motif: string;
   Info: TSearchRec;
   Compteur: Integer;
@@ -849,8 +849,8 @@ end.
 uses
   SysUtils;
 
-function TailleRepertoire(Chemin: string): Int64;
-var
+function TailleRepertoire(Chemin: string): Int64;  
+var  
   Info: TSearchRec;
   Total: Int64;
 begin

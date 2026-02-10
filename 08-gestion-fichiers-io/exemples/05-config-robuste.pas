@@ -19,8 +19,8 @@ type
 var
   Config: TConfig;
 
-function MessageErreur(Code: Integer): string;
-begin
+function MessageErreur(Code: Integer): string;  
+begin  
   case Code of
     2: Result := 'Fichier de configuration introuvable';
     5: Result := 'Accès refusé au fichier de configuration';
@@ -30,8 +30,8 @@ begin
   end;
 end;
 
-function ChargerConfig(NomFichier: string; var Cfg: TConfig): Boolean;
-var
+function ChargerConfig(NomFichier: string; var Cfg: TConfig): Boolean;  
+var  
   F: TextFile;
   Ligne, Cle, Valeur: string;
   PosEgal: Integer;

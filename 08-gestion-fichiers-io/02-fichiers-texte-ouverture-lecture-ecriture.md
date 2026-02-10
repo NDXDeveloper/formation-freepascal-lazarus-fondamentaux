@@ -137,8 +137,8 @@ end;
 ### Vérifier la fin du fichier : EOF
 
 ```pascal
-while not EOF(MonFichier) do
-begin
+while not EOF(MonFichier) do  
+begin  
   ReadLn(MonFichier, Ligne);
   WriteLn(Ligne);  // Affiche la ligne à l'écran
 end;
@@ -151,8 +151,8 @@ end;
 ### Vérifier la fin de ligne : EOLn
 
 ```pascal
-while not EOLn(MonFichier) do
-begin
+while not EOLn(MonFichier) do  
+begin  
   Read(MonFichier, Caractere);
   // Traite le caractère
 end;
@@ -167,8 +167,8 @@ end;
 ### Écrire une ligne : WriteLn
 
 ```pascal
-WriteLn(MonFichier, 'Bonjour tout le monde !');
-WriteLn(MonFichier, 'Ceci est la deuxième ligne.');
+WriteLn(MonFichier, 'Bonjour tout le monde !');  
+WriteLn(MonFichier, 'Ceci est la deuxième ligne.');  
 ```
 
 - Écrit le texte dans le fichier
@@ -177,9 +177,9 @@ WriteLn(MonFichier, 'Ceci est la deuxième ligne.');
 ### Écrire sans retour à la ligne : Write
 
 ```pascal
-Write(MonFichier, 'Prénom : ');
-Write(MonFichier, 'Jean');
-WriteLn(MonFichier);  // Passe à la ligne
+Write(MonFichier, 'Prénom : ');  
+Write(MonFichier, 'Jean');  
+WriteLn(MonFichier);  // Passe à la ligne  
 ```
 
 - Écrit le texte sans passer à la ligne
@@ -256,10 +256,10 @@ end.
 ```
 Liste des premiers nombres :
 ----------------------------
-Nombre 1 : 1
-Nombre 2 : 4
-Nombre 3 : 9
-Nombre 4 : 16
+Nombre 1 : 1  
+Nombre 2 : 4  
+Nombre 3 : 9  
+Nombre 4 : 16  
 ...
 ```
 

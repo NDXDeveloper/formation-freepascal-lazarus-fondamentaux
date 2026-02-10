@@ -20,8 +20,8 @@ var
   Contact: TContact;
   Choix: Integer;
 
-procedure InitialiserFichier;
-begin
+procedure InitialiserFichier;  
+begin  
   Assign(Fichier, 'contacts.dat');
   {$I-}
   Reset(Fichier);
@@ -30,8 +30,8 @@ begin
     Rewrite(Fichier);
 end;
 
-function ProchainID: Integer;
-var
+function ProchainID: Integer;  
+var  
   C: TContact;
   MaxID: Integer;
 begin
@@ -48,8 +48,8 @@ begin
   ProchainID := MaxID + 1;
 end;
 
-procedure AjouterContact;
-begin
+procedure AjouterContact;  
+begin  
   WriteLn('=== NOUVEAU CONTACT ===');
 
   Contact.ID := ProchainID;
@@ -72,8 +72,8 @@ begin
   WriteLn('Contact ajouté avec l''ID : ', Contact.ID);
 end;
 
-procedure AfficherTous;
-begin
+procedure AfficherTous;  
+begin  
   if FileSize(Fichier) = 0 then
   begin
     WriteLn('Aucun contact dans le carnet.');
@@ -98,8 +98,8 @@ begin
   WriteLn('Total : ', FileSize(Fichier), ' contact(s)');
 end;
 
-procedure RechercherParNom;
-var
+procedure RechercherParNom;  
+var  
   NomRecherche: string;
   Trouve: Boolean;
 begin

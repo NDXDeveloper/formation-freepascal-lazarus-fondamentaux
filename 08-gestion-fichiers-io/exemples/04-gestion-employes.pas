@@ -17,8 +17,8 @@ var
   F: File of TEmploye;  // Fichier typé : chaque Read/Write lit/écrit un TEmploye complet
   Employe: TEmploye;
 
-procedure AjouterEmploye(Num: Integer; N: string; P: string; S: Real);
-begin
+procedure AjouterEmploye(Num: Integer; N: string; P: string; S: Real);  
+begin  
   Employe.Numero := Num;
   Employe.Nom := N;
   Employe.Poste := P;
@@ -28,8 +28,8 @@ begin
   WriteLn('Employé ajouté : ', N);
 end;
 
-procedure AfficherTous;
-begin
+procedure AfficherTous;  
+begin  
   Seek(F, 0);  // Retour au debut
 
   WriteLn('=== LISTE DES EMPLOYÉS ===');

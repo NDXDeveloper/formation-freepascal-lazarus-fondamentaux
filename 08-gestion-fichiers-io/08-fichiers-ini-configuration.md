@@ -14,12 +14,12 @@ Un fichier INI, c'est comme un carnet de notes organisé par thèmes :
 
 ```ini
 [Général]
-Langue=Français
-Theme=Sombre
+Langue=Français  
+Theme=Sombre  
 
 [Fenêtre]
-Largeur=1024
-Hauteur=768
+Largeur=1024  
+Hauteur=768  
 ```
 
 ---
@@ -36,26 +36,26 @@ Un fichier INI est un fichier texte organisé en **sections**, chacune contenant
 ; Les commentaires commencent par ; ou #
 
 [Application]
-Nom=MonApplication
-Version=1.0.5
-Auteur=Jean Dupont
+Nom=MonApplication  
+Version=1.0.5  
+Auteur=Jean Dupont  
 
 [Interface]
-Langue=Français
-Theme=Clair
-TaillePolice=12
+Langue=Français  
+Theme=Clair  
+TaillePolice=12  
 
 [Fenêtre]
-Largeur=1024
-Hauteur=768
-Maximisee=false
-PosX=100
-PosY=50
+Largeur=1024  
+Hauteur=768  
+Maximisee=false  
+PosX=100  
+PosY=50  
 
 [Connexion]
-Serveur=192.168.1.100
-Port=8080
-Timeout=30
+Serveur=192.168.1.100  
+Port=8080  
+Timeout=30  
 ```
 
 ### Syntaxe et règles
@@ -506,8 +506,8 @@ type
 var
   Prefs: TPreferences;
 
-procedure ChargerPreferences(var Prefs: TPreferences);
-var
+procedure ChargerPreferences(var Prefs: TPreferences);  
+var  
   IniFile: TIniFile;
   CheminIni: string;
 begin
@@ -538,8 +538,8 @@ begin
   end;
 end;
 
-procedure SauvegarderPreferences(const Prefs: TPreferences);
-var
+procedure SauvegarderPreferences(const Prefs: TPreferences);  
+var  
   IniFile: TIniFile;
   CheminIni: string;
 begin
@@ -568,8 +568,8 @@ begin
   end;
 end;
 
-procedure AfficherPreferences(const Prefs: TPreferences);
-begin
+procedure AfficherPreferences(const Prefs: TPreferences);  
+begin  
   WriteLn;
   WriteLn('=== PRÉFÉRENCES ACTUELLES ===');
   WriteLn('Langue          : ', Prefs.Langue);
@@ -582,8 +582,8 @@ begin
   WriteLn('============================');
 end;
 
-procedure ModifierPreferences(var Prefs: TPreferences);
-var
+procedure ModifierPreferences(var Prefs: TPreferences);  
+var  
   Choix: Integer;
 begin
   WriteLn;
@@ -730,8 +730,8 @@ type
     SSL: Boolean;
   end;
 
-function ChargerConfigConnexion(Fichier: string): TConfigConnexion;
-var
+function ChargerConfigConnexion(Fichier: string): TConfigConnexion;  
+var  
   Ini: TMemIniFile;
 begin
   if not FileExists(Fichier) then
@@ -762,8 +762,8 @@ begin
   end;
 end;
 
-procedure SauvegarderConfigConnexion(Fichier: string; const Config: TConfigConnexion);
-var
+procedure SauvegarderConfigConnexion(Fichier: string; const Config: TConfigConnexion);  
+var  
   Ini: TMemIniFile;
 begin
   Ini := TMemIniFile.Create(Fichier);
@@ -788,8 +788,8 @@ begin
   end;
 end;
 
-procedure AfficherConfig(const Config: TConfigConnexion);
-begin
+procedure AfficherConfig(const Config: TConfigConnexion);  
+begin  
   WriteLn;
   WriteLn('=== CONFIGURATION DE CONNEXION ===');
   WriteLn('Serveur        : ', Config.Serveur);
@@ -801,8 +801,8 @@ begin
   WriteLn('==================================');
 end;
 
-function TesterConnexion(const Config: TConfigConnexion): Boolean;
-begin
+function TesterConnexion(const Config: TConfigConnexion): Boolean;  
+begin  
   WriteLn;
   WriteLn('Test de connexion à ', Config.Serveur, ':', Config.Port, '...');
 
@@ -846,17 +846,17 @@ end.
 **Fichier `database.ini` créé :**
 ```ini
 [_INFO]
-Description=Configuration de connexion base de données
-Version=1.0
-DateModif=13/10/2025 14:30:52
+Description=Configuration de connexion base de données  
+Version=1.0  
+DateModif=13/10/2025 14:30:52  
 
 [Connexion]
-Serveur=localhost
-Port=5432
-BaseDeDonnees=mabase
-Utilisateur=admin
-Timeout=30
-SSL=0
+Serveur=localhost  
+Port=5432  
+BaseDeDonnees=mabase  
+Utilisateur=admin  
+Timeout=30  
+SSL=0  
 ```
 
 ---
@@ -866,8 +866,8 @@ SSL=0
 ### Validation des valeurs lues
 
 ```pascal
-function ChargerConfigValidee(Fichier: string): Boolean;
-var
+function ChargerConfigValidee(Fichier: string): Boolean;  
+var  
   Ini: TIniFile;
   Port: Integer;
 begin
@@ -903,8 +903,8 @@ end;
 ### Gestion des fichiers INI corrompus
 
 ```pascal
-function ChargementSecurise(Fichier: string): Boolean;
-var
+function ChargementSecurise(Fichier: string): Boolean;  
+var  
   Ini: TIniFile;
 begin
   Result := False;

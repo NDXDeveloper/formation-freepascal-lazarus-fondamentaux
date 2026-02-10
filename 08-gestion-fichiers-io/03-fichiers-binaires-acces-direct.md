@@ -247,9 +247,9 @@ Place le curseur de lecture/écriture à la position spécifiée.
 
 **Exemples :**
 ```pascal
-Seek(MonFichier, 0);               // Aller au début
-Seek(MonFichier, 100);             // Aller au 100ème bloc
-Seek(MonFichier, FileSize(MonFichier));  // Aller à la fin
+Seek(MonFichier, 0);               // Aller au début  
+Seek(MonFichier, 100);             // Aller au 100ème bloc  
+Seek(MonFichier, FileSize(MonFichier));  // Aller à la fin  
 ```
 
 ---
@@ -312,13 +312,13 @@ end.
 
 ```pascal
 // Lire tout le fichier séquentiellement
-Reset(Fichier, 1);
-while FilePos(Fichier) < FileSize(Fichier) do
-begin
+Reset(Fichier, 1);  
+while FilePos(Fichier) < FileSize(Fichier) do  
+begin  
   BlockRead(Fichier, Buffer, 1);
   // Traiter le buffer
-end;
-Close(Fichier);
+end;  
+Close(Fichier);  
 ```
 
 **Avantages :**
@@ -337,10 +337,10 @@ Close(Fichier);
 
 ```pascal
 // Lire directement le 100ème bloc
-Reset(Fichier, 1);
-Seek(Fichier, 99);  // Position 99 = 100ème bloc (car on commence à 0)
-BlockRead(Fichier, Buffer, 1);
-Close(Fichier);
+Reset(Fichier, 1);  
+Seek(Fichier, 99);  // Position 99 = 100ème bloc (car on commence à 0)  
+BlockRead(Fichier, Buffer, 1);  
+Close(Fichier);  
 ```
 
 **Avantages :**
@@ -367,8 +367,8 @@ Retourne `True` si on est à la fin du fichier.
 ### Truncate : Tronquer le fichier
 
 ```pascal
-Seek(MonFichier, 100);  // Se positionner
-Truncate(MonFichier);   // Couper tout ce qui suit
+Seek(MonFichier, 100);  // Se positionner  
+Truncate(MonFichier);   // Couper tout ce qui suit  
 ```
 
 Coupe le fichier à la position courante, supprimant tout ce qui suit.
@@ -376,8 +376,8 @@ Coupe le fichier à la position courante, supprimant tout ce qui suit.
 ### Rename : Renommer le fichier
 
 ```pascal
-Close(MonFichier);  // Le fichier doit être fermé
-Rename(MonFichier, 'nouveau_nom.dat');
+Close(MonFichier);  // Le fichier doit être fermé  
+Rename(MonFichier, 'nouveau_nom.dat');  
 ```
 
 Renomme le fichier associé.
@@ -385,8 +385,8 @@ Renomme le fichier associé.
 ### Erase : Supprimer le fichier
 
 ```pascal
-Close(MonFichier);  // Le fichier doit être fermé
-Erase(MonFichier);
+Close(MonFichier);  // Le fichier doit être fermé  
+Erase(MonFichier);  
 ```
 
 Supprime définitivement le fichier du disque.
@@ -413,8 +413,8 @@ var
   Choix, Position: Integer;
   NomFichier: string;
 
-procedure AjouterContact;
-var
+procedure AjouterContact;  
+var  
   NbEcrits: Word;
 begin
   WriteLn('--- Ajouter un contact ---');
@@ -434,8 +434,8 @@ begin
     WriteLn('Erreur lors de l''ajout.');
 end;
 
-procedure AfficherContact(Num: Integer);
-var
+procedure AfficherContact(Num: Integer);  
+var  
   NbLus: Word;
 begin
   if (Num < 1) or (Num > FileSize(Fichier)) then
@@ -457,8 +457,8 @@ begin
   end;
 end;
 
-procedure ListerContacts;
-var
+procedure ListerContacts;  
+var  
   i: Integer;
   NbLus: Word;
 begin

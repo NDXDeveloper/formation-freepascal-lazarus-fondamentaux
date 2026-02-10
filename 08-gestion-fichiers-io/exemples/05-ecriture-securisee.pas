@@ -5,8 +5,8 @@
   ============================================================================ }
 program EcritureSecurisee;
 
-function EcrireDansFichier(NomFichier: string; Donnees: array of string): Boolean;
-var
+function EcrireDansFichier(NomFichier: string; Donnees: array of string): Boolean;  
+var  
   F: TextFile;
   i: Integer;
   CodeErreur: Integer;

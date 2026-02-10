@@ -24,8 +24,8 @@ type
 var
   Prefs: TPreferences;
 
-procedure ChargerPreferences(var Prefs: TPreferences);
-var
+procedure ChargerPreferences(var Prefs: TPreferences);  
+var  
   IniFile: TIniFile;
   CheminIni: string;
 begin
@@ -52,8 +52,8 @@ begin
   end;
 end;
 
-procedure SauvegarderPreferences(const Prefs: TPreferences);
-var
+procedure SauvegarderPreferences(const Prefs: TPreferences);  
+var  
   IniFile: TIniFile;
   CheminIni: string;
 begin
@@ -79,8 +79,8 @@ begin
   end;
 end;
 
-procedure AfficherPreferences(const Prefs: TPreferences);
-begin
+procedure AfficherPreferences(const Prefs: TPreferences);  
+begin  
   WriteLn;
   WriteLn('=== PRÉFÉRENCES ACTUELLES ===');
   WriteLn('Langue          : ', Prefs.Langue);
@@ -93,8 +93,8 @@ begin
   WriteLn('============================');
 end;
 
-procedure ModifierPreferences(var Prefs: TPreferences);
-var
+procedure ModifierPreferences(var Prefs: TPreferences);  
+var  
   Choix: Integer;
 begin
   WriteLn;

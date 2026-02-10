@@ -9,8 +9,8 @@ program ValiderNomFichier;
 uses
   SysUtils;
 
-function NomFichierValide(Nom: string): Boolean;
-const
+function NomFichierValide(Nom: string): Boolean;  
+const  
   CaracteresInterdits = '\/:*?"<>|';
 var
   i: Integer;

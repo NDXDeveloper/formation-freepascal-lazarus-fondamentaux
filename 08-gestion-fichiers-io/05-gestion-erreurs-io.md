@@ -179,8 +179,8 @@ end.
 Créons une fonction réutilisable pour vérifier si un fichier existe.
 
 ```pascal
-function FichierExiste(NomFichier: string): Boolean;
-var
+function FichierExiste(NomFichier: string): Boolean;  
+var  
   F: File;
 begin
   Assign(F, NomFichier);
@@ -219,8 +219,8 @@ Voici un exemple complet qui gère toutes les erreurs possibles lors de la lectu
 ```pascal
 program LectureSecurisee;
 
-function LireFichier(NomFichier: string): Boolean;
-var
+function LireFichier(NomFichier: string): Boolean;  
+var  
   F: TextFile;
   Ligne: string;
   CodeErreur: Integer;
@@ -310,8 +310,8 @@ Lors de l'écriture, il faut aussi gérer les erreurs (disque plein, protégé e
 ```pascal
 program EcritureSecurisee;
 
-function EcrireDansFichier(NomFichier: string; Donnees: array of string): Boolean;
-var
+function EcrireDansFichier(NomFichier: string; Donnees: array of string): Boolean;  
+var  
   F: TextFile;
   i: Integer;
   CodeErreur: Integer;
@@ -515,8 +515,8 @@ end.
 Les codes d'erreur bruts ne sont pas compréhensibles pour l'utilisateur. Créons une fonction qui traduit les codes en messages clairs.
 
 ```pascal
-function MessageErreurIO(Code: Integer): string;
-begin
+function MessageErreurIO(Code: Integer): string;  
+begin  
   case Code of
     0:   MessageErreurIO := 'Aucune erreur';
     2:   MessageErreurIO := 'Le fichier n''existe pas';
@@ -577,8 +577,8 @@ type
 var
   Config: TConfig;
 
-function MessageErreur(Code: Integer): string;
-begin
+function MessageErreur(Code: Integer): string;  
+begin  
   case Code of
     2: Result := 'Fichier de configuration introuvable';
     5: Result := 'Accès refusé au fichier de configuration';
@@ -588,8 +588,8 @@ begin
   end;
 end;
 
-function ChargerConfig(NomFichier: string; var Cfg: TConfig): Boolean;
-var
+function ChargerConfig(NomFichier: string; var Cfg: TConfig): Boolean;  
+var  
   F: TextFile;
   Ligne, Cle, Valeur: string;
   PosEgal: Integer;
@@ -699,9 +699,9 @@ end.
 **Fichier config.ini exemple :**
 ```ini
 # Configuration de l'application
-NomUtilisateur=Jean Dupont
-CouleurTheme=Vert
-TaillePolice=14
+NomUtilisateur=Jean Dupont  
+CouleurTheme=Vert  
+TaillePolice=14  
 ```
 
 ---
@@ -764,8 +764,8 @@ TaillePolice=14
 Reset(F);
 {$I+}
 
-if IOResult <> 0 then
-begin
+if IOResult <> 0 then  
+begin  
   WriteLn('Erreur d''ouverture');
   Exit;
 end;
@@ -790,8 +790,8 @@ end;
 ### Pour une application robuste
 
 ```pascal
-function TraiterFichier(Nom: string): Boolean;
-var
+function TraiterFichier(Nom: string): Boolean;  
+var  
   F: TextFile;
 begin
   Result := False;
