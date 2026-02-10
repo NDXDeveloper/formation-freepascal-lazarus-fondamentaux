@@ -30,8 +30,8 @@ L'inspection de variables est au cœur du débogage. Une fois que vous avez arr�
 **Exemple :**
 
 ```pascal
-procedure Calculer;
-var
+procedure Calculer;  
+var  
   x: Integer;
   prix: Double;
   nom: String;
@@ -104,19 +104,19 @@ end;
 
 ```pascal
 // Variables simples
-x
-prix * 1.2
-Length(nom)
+x  
+prix * 1.2  
+Length(nom)  
 
 // Expressions complexes
 (a + b) / 2
-Tableau[i] + Tableau[i+1]
-UpperCase(prenom + ' ' + nom)
+Tableau[i] + Tableau[i+1]  
+UpperCase(prenom + ' ' + nom)  
 
 // Appels de fonctions
-Sqrt(valeur)
-Pos('test', chaine)
-FormatFloat('0.00', prix)
+Sqrt(valeur)  
+Pos('test', chaine)  
+FormatFloat('0.00', prix)  
 ```
 
 **Avantage majeur :** Vous pouvez tester des expressions qui n'existent pas dans votre code !
@@ -150,8 +150,8 @@ La fenêtre Variables Locales affiche automatiquement toutes les variables acces
 **Exemple de lecture :**
 
 ```pascal
-procedure ExempleSimple;
-var
+procedure ExempleSimple;  
+var  
   compteur: Integer;
   ratio: Double;
   actif: Boolean;
@@ -169,10 +169,10 @@ end;
 ```
 Nom         | Valeur                    | Type
 ------------|---------------------------|----------
-compteur    | 10                        | Integer
-ratio       | 0.75                      | Double
-actif       | True                      | Boolean
-message     | 'Traitement en cours'     | String
+compteur    | 10                        | Integer  
+ratio       | 0.75                      | Double  
+actif       | True                      | Boolean  
+message     | 'Traitement en cours'     | String  
 ```
 
 ### 2.3 Navigation dans les Structures
@@ -275,8 +275,8 @@ end;
 
 **Affichage au point d'arrêt :**
 ```
-x : 32764  (valeur aléatoire ! ⚠️)
-s : ''     (chaîne vide par défaut)
+x : 32764  (valeur aléatoire ! ⚠️)  
+s : ''     (chaîne vide par défaut)  
 ```
 
 **Leçon :** Si vous voyez une valeur bizarre, vérifiez que la variable a bien été initialisée avant ce point.
@@ -476,8 +476,8 @@ Les espions sont des **variables ou expressions** que vous choisissez de surveil
 **Exemple :**
 
 ```pascal
-procedure TraiterDonnees;
-var
+procedure TraiterDonnees;  
+var  
   i: Integer;
   total: Double;
   compteur: Integer;
@@ -512,14 +512,14 @@ solde > 1000                       // True ou False
 (i mod 10) = 0                     // True tous les 10
 
 // Accès tableau/record
-Tableau[i]                         // Élément courant
-client.Adresse.Ville               // Ville du client
-ListeClients[0].Nom                // Premier client
+Tableau[i]                         // Élément courant  
+client.Adresse.Ville               // Ville du client  
+ListeClients[0].Nom                // Premier client  
 
 // Fonctions
-UpperCase(nom)                     // Nom en majuscules
-Sqrt(valeur)                       // Racine carrée
-FormatDateTime('dd/mm/yyyy', date) // Date formatée
+UpperCase(nom)                     // Nom en majuscules  
+Sqrt(valeur)                       // Racine carrée  
+FormatDateTime('dd/mm/yyyy', date) // Date formatée  
 ```
 
 ### 4.4 Gestion des Espions
@@ -546,16 +546,16 @@ FormatDateTime('dd/mm/yyyy', date) // Date formatée
 **Exemple :**
 
 ```pascal
-procedure A;
-var
+procedure A;  
+var  
   x: Integer;
 begin
   x := 10;
   B();  // Appel de B
 end;
 
-procedure B;
-var
+procedure B;  
+var  
   y: Integer;
 begin
   y := 20;
@@ -565,8 +565,8 @@ end;
 
 **Si vous avez un espion sur `x` et que vous êtes dans `B` :**
 ```
-Espion: x
-Valeur: <hors de portée> ou <unavailable>
+Espion: x  
+Valeur: <hors de portée> ou <unavailable>  
 ```
 
 **Pourquoi ?** La variable `x` n'existe que dans la fonction `A`.
@@ -610,8 +610,8 @@ Valeur: <hors de portée> ou <unavailable>
 **Exemples pratiques :**
 
 ```pascal
-procedure Calculer;
-var
+procedure Calculer;  
+var  
   a, b, c: Integer;
   prix: Double;
   nom: String;
@@ -650,8 +650,8 @@ end;
 **Exemple :**
 
 ```pascal
-procedure Traiter;
-var
+procedure Traiter;  
+var  
   compteur: Integer;
   valide: Boolean;
 begin
@@ -780,8 +780,8 @@ end;
 
 **Espion utile :**
 ```
-produits[i].Nom     // Nom du produit courant dans une boucle
-produits[i].Stock < 30  // True si stock faible
+produits[i].Nom     // Nom du produit courant dans une boucle  
+produits[i].Stock < 30  // True si stock faible  
 ```
 
 ### 6.3 Listes Chaînées et Structures Dynamiques
@@ -822,8 +822,8 @@ end;
 
 **Espions :**
 ```
-courant^.Valeur           // Valeur du nœud courant
-courant^.Suivant <> nil   // True s'il y a un suivant
+courant^.Valeur           // Valeur du nœud courant  
+courant^.Suivant <> nil   // True s'il y a un suivant  
 ```
 
 ### 6.4 Objets avec Héritage
@@ -981,8 +981,8 @@ permissions : [opLecture, opEcriture]   (TOptions)
 var
   p: ^Integer;
 
-procedure InitPointer;
-var
+procedure InitPointer;  
+var  
   x: Integer;
 begin
   x := 42;
@@ -1044,9 +1044,9 @@ client : TClient (nil)   ⚠️
 Si l'inspection ne fonctionne pas sous Linux :
 
 ```bash
-sudo apt update
-sudo apt install gdb
-sudo apt install fpc-source   # Sources FreePascal (recommandé)
+sudo apt update  
+sudo apt install gdb  
+sudo apt install fpc-source   # Sources FreePascal (recommandé)  
 ```
 
 **Permissions :**
@@ -1081,8 +1081,8 @@ sudo gdb
 ### 10.1 Débogage d'une Boucle de Traitement
 
 ```pascal
-procedure TraiterCommandes;
-var
+procedure TraiterCommandes;  
+var  
   i: Integer;
   commande: TCommande;
   total: Double;
@@ -1109,18 +1109,18 @@ end;
 
 **Variables Locales :**
 ```
-i         : 50
-total     : 12450.75
-erreurs   : 3
+i         : 50  
+total     : 12450.75  
+erreurs   : 3  
 ```
 
 **Espions ajoutés :**
 ```
-commande.Numero         : 'CMD-000050'
-commande.Valide         : True
-commande.Montant        : 250.00
-ListeCommandes.Count    : 150
-total / i               : 249.015    (moyenne)
+commande.Numero         : 'CMD-000050'  
+commande.Valide         : True  
+commande.Montant        : 250.00  
+ListeCommandes.Count    : 150  
+total / i               : 249.015    (moyenne)  
 ```
 
 **Analyse :** À l'itération 50, vous voyez clairement l'état global et pouvez identifier les anomalies.
@@ -1128,8 +1128,8 @@ total / i               : 249.015    (moyenne)
 ### 10.2 Analyse d'une Fonction Récursive
 
 ```pascal
-function Factorielle(n: Integer): Integer;
-begin
+function Factorielle(n: Integer): Integer;  
+begin  
   // Point d'arrêt ici
   if n <= 1 then
     Result := 1
@@ -1146,8 +1146,8 @@ end.
 
 **Variables Locales :**
 ```
-n      : 3
-Result : 0  (pas encore calculé)
+n      : 3  
+Result : 0  (pas encore calculé)  
 ```
 
 **Pile d'appels :**
@@ -1181,8 +1181,8 @@ type
     function CalculerTTC: Double;
   end;
 
-function TCommande.CalculerTTC: Double;
-begin
+function TCommande.CalculerTTC: Double;  
+begin  
   // Point d'arrêt ici
   Result := FMontant * 1.2;
 end;
@@ -1213,9 +1213,9 @@ end;
 
 **Espions :**
 ```
-FMontant * 1.2              : 120.0
-Self.Client.Nom             : 'Durand'
-Self.Montant > 500          : False
+FMontant * 1.2              : 120.0  
+Self.Client.Nom             : 'Durand'  
+Self.Montant > 500          : False  
 ```
 
 ---
@@ -1285,9 +1285,9 @@ Ajoutez rapidement un espion pour un débogage ponctuel, puis supprimez-le aprè
 Créez des espions qui détectent les états impossibles :
 
 ```
-Tableau[i] < 0              // Devrait être toujours False
-compteur > 1000000          // Limite de sécurité
-pointeur = nil              // Devrait être initialisé
+Tableau[i] < 0              // Devrait être toujours False  
+compteur > 1000000          // Limite de sécurité  
+pointeur = nil              // Devrait être initialisé  
 ```
 
 **Astuce 4 : Documentation des Espions**

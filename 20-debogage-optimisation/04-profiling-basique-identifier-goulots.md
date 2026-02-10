@@ -44,8 +44,8 @@ for i := 1 to 1000 do
 **2. Goulot d'Accès aux Données**
 ```pascal
 // Lecture de fichier répétitive
-for i := 1 to 10000 do
-begin
+for i := 1 to 10000 do  
+begin  
   AssignFile(F, 'data.txt');
   Reset(F);
   ReadLn(F, ligne);  // Ouvre/ferme le fichier 10 000 fois !
@@ -56,8 +56,8 @@ end;
 **3. Goulot d'Allocations Mémoire**
 ```pascal
 // Création/destruction répétitive d'objets
-for i := 1 to 100000 do
-begin
+for i := 1 to 100000 do  
+begin  
   obj := TMonObjet.Create;  // Allocation coûteuse
   obj.Traiter();
   obj.Free;  // Libération coûteuse
@@ -67,8 +67,8 @@ end;
 **4. Goulot Réseau/Base de Données**
 ```pascal
 // Requête SQL dans une boucle
-for i := 1 to 1000 do
-begin
+for i := 1 to 1000 do  
+begin  
   Query.SQL.Text := 'SELECT * FROM Table WHERE ID = ' + IntToStr(i);
   Query.Open;  // 1000 requêtes au lieu d'1 seule !
   Traiter(Query);
@@ -134,8 +134,8 @@ program MesurePerformance;
 
 uses SysUtils;
 
-procedure TraiterDonnees;
-var
+procedure TraiterDonnees;  
+var  
   i: Integer;
   total: Int64;
 begin
@@ -160,8 +160,8 @@ end.
 
 **Exemple de sortie :**
 ```
-Démarrage du traitement...
-Traitement terminé en 45 ms
+Démarrage du traitement...  
+Traitement terminé en 45 ms  
 ```
 
 ### 2.3 Méthode 2 : Now (Date et Heure)
@@ -190,8 +190,8 @@ end.
 
 **Sortie :**
 ```
-Temps écoulé : 2500 ms
-Soit : 2.50 secondes
+Temps écoulé : 2500 ms  
+Soit : 2.50 secondes  
 ```
 
 ### 2.4 Méthode 3 : QueryPerformanceCounter (Haute Précision Windows)
@@ -239,14 +239,14 @@ type
     function GetElapsedMs: QWord;
   end;
 
-procedure TChronometer.Start;
-begin
+procedure TChronometer.Start;  
+begin  
   FDebut := GetTickCount64;
   FEnCours := True;
 end;
 
-function TChronometer.Stop: QWord;
-begin
+function TChronometer.Stop: QWord;  
+begin  
   if FEnCours then
   begin
     Result := GetTickCount64 - FDebut;
@@ -256,8 +256,8 @@ begin
     Result := 0;
 end;
 
-function TChronometer.GetElapsedMs: QWord;
-begin
+function TChronometer.GetElapsedMs: QWord;  
+begin  
   if FEnCours then
     Result := GetTickCount64 - FDebut
   else
@@ -292,8 +292,8 @@ program ComparaisonAlgorithmes;
 
 uses SysUtils;
 
-function MethodeA: Int64;
-var
+function MethodeA: Int64;  
+var  
   i: Integer;
   total: Int64;
 begin
@@ -303,8 +303,8 @@ begin
   Result := total;
 end;
 
-function MethodeB: Int64;
-var
+function MethodeB: Int64;  
+var  
   n: Int64;
 begin
   n := 1000000;
@@ -333,8 +333,8 @@ end.
 
 **Sortie typique :**
 ```
-Méthode A : 15 ms (Résultat: 500000500000)
-Méthode B : 0 ms (Résultat: 500000500000)
+Méthode A : 15 ms (Résultat: 500000500000)  
+Méthode B : 0 ms (Résultat: 500000500000)  
 ```
 
 **Conclusion :** La Méthode B (formule mathématique) est infiniment plus rapide !
@@ -406,11 +406,11 @@ RAPPORT DE PROFILING
 
 Fonction                    | Temps (ms) | % du total
 -----------------------------------------------------------
-ChargerDonnees              |        150 |   4.84%
-TraiterDonnees              |       2500 |  80.65%  ← GOULOT !
-CalculerStatistiques        |        300 |   9.68%
-GenererRapport              |         50 |   1.61%
-SauvegarderResultats        |        100 |   3.23%
+ChargerDonnees              |        150 |   4.84%  
+TraiterDonnees              |       2500 |  80.65%  ← GOULOT !  
+CalculerStatistiques        |        300 |   9.68%  
+GenererRapport              |         50 |   1.61%  
+SauvegarderResultats        |        100 |   3.23%  
 -----------------------------------------------------------
 TOTAL                       |       3100 | 100.00%
 ```
@@ -426,8 +426,8 @@ TOTAL                       |       3100 | 100.00%
 **Problème :** Une boucle exécutée des millions de fois peut amplifier de petites inefficacités.
 
 ```pascal
-procedure AnalyserBoucle;
-var
+procedure AnalyserBoucle;  
+var  
   i: Integer;
   debut, fin, tempsTotal, tempsBoucle: QWord;
   s: String;
@@ -451,9 +451,9 @@ end;
 
 **Sortie typique :**
 ```
-Itération 10000 : 0 ms
-Itération 20000 : 0 ms
-Itération 30000 : 0 ms
+Itération 10000 : 0 ms  
+Itération 20000 : 0 ms  
+Itération 30000 : 0 ms  
 ...
 Temps total : 125 ms
 ```
@@ -501,8 +501,8 @@ end;
 ### 4.3 Mesurer l'Impact d'une Opération
 
 ```pascal
-procedure MesurerImpactOperation;
-var
+procedure MesurerImpactOperation;  
+var  
   i, iterations: Integer;
   debut: QWord;
   s: String;
@@ -537,8 +537,8 @@ end;
 
 **Sortie :**
 ```
-Boucle vide : 2 ms
-Avec IntToStr : 85 ms
+Boucle vide : 2 ms  
+Avec IntToStr : 85 ms  
 ```
 
 **Conclusion :** `IntToStr` ajoute ~83 ms pour 1 million d'appels (0,000083 ms par appel).
@@ -560,8 +560,8 @@ Avec IntToStr : 85 ms
 **Technique 2 : Logging avec Horodatage**
 
 ```pascal
-procedure LogTemps(const msg: String);
-var
+procedure LogTemps(const msg: String);  
+var  
   F: TextFile;
 begin
   AssignFile(F, 'profiling.log');
@@ -574,8 +574,8 @@ begin
   CloseFile(F);
 end;
 
-procedure TraiterGrandesdonnees;
-begin
+procedure TraiterGrandesdonnees;  
+begin  
   LogTemps('Début TraiterGrandesDonnees');
 
   // Traitement...
@@ -600,8 +600,8 @@ end;
 ```pascal
 uses LazLogger;
 
-procedure MaFonction;
-begin
+procedure MaFonction;  
+begin  
   DebugLn('Début de MaFonction');
 
   // Code
@@ -628,9 +628,9 @@ end;
 **Installation Ubuntu/Debian :**
 
 ```bash
-sudo apt update
-sudo apt install valgrind
-sudo apt install kcachegrind  # Visualiseur graphique
+sudo apt update  
+sudo apt install valgrind  
+sudo apt install kcachegrind  # Visualiseur graphique  
 ```
 
 **Utilisation basique :**
@@ -758,8 +758,8 @@ end;
 Si "Traitement" prend 90% du temps, détaillez-le :
 
 ```pascal
-procedure TraitementPrincipal;
-var
+procedure TraitementPrincipal;  
+var  
   t1, t2, t3, t4: QWord;
 begin
   t1 := GetTickCount64;
@@ -794,8 +794,8 @@ var
   ProfilingDB: array[1..100] of TProfilingData;
   ProfilingIndex: Integer = 0;
 
-procedure EnregistrerAppel(const nom: String; tempsMs: QWord);
-var
+procedure EnregistrerAppel(const nom: String; tempsMs: QWord);  
+var  
   i: Integer;
   trouve: Boolean;
 begin
@@ -824,8 +824,8 @@ begin
 end;
 
 // Dans chaque fonction à profiler
-procedure MaFonction;
-var
+procedure MaFonction;  
+var  
   debut: QWord;
 begin
   debut := GetTickCount64;
@@ -839,8 +839,8 @@ end;
 **À la fin du programme :**
 
 ```pascal
-procedure AfficherRapportProfiling;
-var
+procedure AfficherRapportProfiling;  
+var  
   i: Integer;
 begin
   WriteLn('RAPPORT DE PROFILING');
@@ -893,8 +893,8 @@ end;
 ```pascal
 program AnalyseDemarrage;
 
-procedure MesurerDemarrage;
-var
+procedure MesurerDemarrage;  
+var  
   t0, t1, t2, t3, t4, t5: QWord;
 begin
   t0 := GetTickCount64;
@@ -925,12 +925,12 @@ end;
 
 **Résultats :**
 ```
-Configuration : 50 ms
-BDD : 3000 ms              ← GOULOT !
-Ressources : 200 ms
-Interface : 1500 ms
-Plugins : 5200 ms          ← GOULOT MAJEUR !
-TOTAL : 9950 ms
+Configuration : 50 ms  
+BDD : 3000 ms              ← GOULOT !  
+Ressources : 200 ms  
+Interface : 1500 ms  
+Plugins : 5200 ms          ← GOULOT MAJEUR !  
+TOTAL : 9950 ms  
 ```
 
 **Diagnostic :**
@@ -945,8 +945,8 @@ TOTAL : 9950 ms
 ### 8.2 Scénario : Traitement de Fichier Volumineux
 
 ```pascal
-procedure AnalyserFichier(const nomFichier: String);
-var
+procedure AnalyserFichier(const nomFichier: String);  
+var  
   F: TextFile;
   ligne: String;
   compteur: Integer;
@@ -993,13 +993,13 @@ end;
 
 **Résultats typiques :**
 ```
-Lignes traitées : 10000
-Lignes traitées : 20000
+Lignes traitées : 10000  
+Lignes traitées : 20000  
 ...
-STATISTIQUES
-Lignes : 100000
-Temps lecture : 450 ms (15%)
-Temps traitement : 2550 ms (85%)    ← Le traitement est le goulot
+STATISTIQUES  
+Lignes : 100000  
+Temps lecture : 450 ms (15%)  
+Temps traitement : 2550 ms (85%)    ← Le traitement est le goulot  
 ```
 
 **Conclusion :** Optimiser `TraiterLigne`, pas la lecture du fichier.
@@ -1013,8 +1013,8 @@ Temps traitement : 2550 ms (85%)    ← Le traitement est le goulot
 **Profiling :**
 
 ```pascal
-procedure TFormPrincipal.ButtonTraiterClick(Sender: TObject);
-var
+procedure TFormPrincipal.ButtonTraiterClick(Sender: TObject);  
+var  
   debut: QWord;
 begin
   debut := GetTickCount64;
@@ -1040,8 +1040,8 @@ end;
 **Avant (calcul répété) :**
 
 ```pascal
-function ObtenirNomClient(id: Integer): String;
-begin
+function ObtenirNomClient(id: Integer): String;  
+begin  
   // Requête BDD coûteuse
   Result := RequeteBDD('SELECT Nom FROM Clients WHERE ID = ' + IntToStr(id));
 end;
@@ -1057,8 +1057,8 @@ for i := 1 to 1000 do
 var
   Cache: TDictionary<Integer, String>;
 
-function ObtenirNomClient(id: Integer): String;
-begin
+function ObtenirNomClient(id: Integer): String;  
+begin  
   if not Cache.ContainsKey(id) then
     Cache.Add(id, RequeteBDD('SELECT Nom FROM Clients WHERE ID = ' + IntToStr(id)));
 
@@ -1073,8 +1073,8 @@ end;
 **Avant (calcul à chaque fois) :**
 
 ```pascal
-function EstPremier(n: Integer): Boolean;
-var
+function EstPremier(n: Integer): Boolean;  
+var  
   i: Integer;
 begin
   if n < 2 then Exit(False);
@@ -1094,8 +1094,8 @@ for i := 1 to 100000 do
 var
   Premiers: array[1..100000] of Boolean;
 
-procedure PrecalculerPremiers;
-var
+procedure PrecalculerPremiers;  
+var  
   i: Integer;
 begin
   for i := 1 to 100000 do
@@ -1117,8 +1117,8 @@ for i := 1 to 100000 do
 **Avant (allocations répétées) :**
 
 ```pascal
-for i := 1 to 100000 do
-begin
+for i := 1 to 100000 do  
+begin  
   liste := TStringList.Create;
   liste.Add('Element');
   Traiter(liste);
@@ -1129,8 +1129,8 @@ end;
 **Après (réutilisation) :**
 
 ```pascal
-liste := TStringList.Create;
-try
+liste := TStringList.Create;  
+try  
   for i := 1 to 100000 do
   begin
     liste.Clear;
@@ -1164,8 +1164,8 @@ end;
 {$IFDEF WINDOWS}
 uses Windows;
 
-function GetTimeMicroseconds: Int64;
-var
+function GetTimeMicroseconds: Int64;  
+var  
   freq, count: Int64;
 begin
   QueryPerformanceFrequency(freq);
@@ -1175,8 +1175,8 @@ end;
 {$ELSE}
 uses Unix, BaseUnix;
 
-function GetTimeMicroseconds: Int64;
-var
+function GetTimeMicroseconds: Int64;  
+var  
   tp: TTimeSpec;
 begin
   clock_gettime(CLOCK_MONOTONIC, @tp);
@@ -1259,21 +1259,21 @@ end.
 **Créez un rapport de profiling :**
 
 ```
-RAPPORT DE PROFILING - Version 1.0
-Date : 15/10/2025
-Environnement : Windows 11, i7-9700K, 16 GB RAM
+RAPPORT DE PROFILING - Version 1.0  
+Date : 15/10/2025  
+Environnement : Windows 11, i7-9700K, 16 GB RAM  
 
 Configuration de test :
 - Fichier : data_1M.csv (1 million de lignes)
 - Exécutions : 5 fois, moyenne calculée
 
-RÉSULTATS INITIAUX :
-Fonction                | Temps (ms) | % Total
+RÉSULTATS INITIAUX :  
+Fonction                | Temps (ms) | % Total  
 --------------------------------------------------
-ChargerFichier          |        850 |     8.5%
-TraiterDonnees          |      7.250 |    72.5%  ← GOULOT
-CalculerStatistiques    |      1.200 |    12.0%
-GenererRapport          |        700 |     7.0%
+ChargerFichier          |        850 |     8.5%  
+TraiterDonnees          |      7.250 |    72.5%  ← GOULOT  
+CalculerStatistiques    |      1.200 |    12.0%  
+GenererRapport          |        700 |     7.0%  
 --------------------------------------------------
 TOTAL                   |     10.000 |   100.0%
 

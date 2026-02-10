@@ -27,8 +27,8 @@ var
   TotalValides, TotalInvalides: Integer;
   MontantTotal: Double;
 
-procedure InitialiserCommandes;
-var
+procedure InitialiserCommandes;  
+var  
   j: Integer;
 begin
   for j := 1 to 1000 do
@@ -65,8 +65,8 @@ begin
   end;
 end;
 
-procedure TraiterCommande(const cmd: TCommande);
-begin
+procedure TraiterCommande(const cmd: TCommande);  
+begin  
   { Points d'arrêt conditionnels suggérés :
     - cmd.Montant < 0         (détecte les prix négatifs)
     - cmd.Montant > 50000     (détecte les montants excessifs)

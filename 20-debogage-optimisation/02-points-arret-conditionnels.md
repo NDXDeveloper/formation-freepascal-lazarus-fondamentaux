@@ -43,8 +43,8 @@ end.
 ### 1.2 Autre Exemple Courant
 
 ```pascal
-procedure TFormPrincipal.GererUtilisateurs;
-var
+procedure TFormPrincipal.GererUtilisateurs;  
+var  
   utilisateur: TUtilisateur;
 begin
   for utilisateur in ListeUtilisateurs do
@@ -190,12 +190,12 @@ Pour les variables booléennes, deux syntaxes sont possibles :
 
 ```pascal
 // Syntaxe complète
-actif = True
-valide = False
+actif = True  
+valide = False  
 
 // Syntaxe abrégée (recommandée)
-actif        // Équivaut à : actif = True
-not valide   // Équivaut à : valide = False
+actif        // Équivaut à : actif = True  
+not valide   // Équivaut à : valide = False  
 ```
 
 **Exemple :**
@@ -217,10 +217,10 @@ Vous pouvez utiliser certaines fonctions Pascal dans les conditions :
 (Abs(valeur) > 100)   // Valeur absolue
 
 // Fonctions de chaînes
-Length(nom) > 50      // Nom trop long
-Pos('error', message) > 0   // Message contient 'error'
-LowerCase(code) = 'urgent'  // Comparaison insensible à la casse
-Copy(ref, 1, 3) = 'CMD'     // Commence par 'CMD'
+Length(nom) > 50      // Nom trop long  
+Pos('error', message) > 0   // Message contient 'error'  
+LowerCase(code) = 'urgent'  // Comparaison insensible à la casse  
+Copy(ref, 1, 3) = 'CMD'     // Commence par 'CMD'  
 
 // Fonctions de date (si disponibles selon contexte)
 // Note : Peut ne pas fonctionner dans tous les débogueurs
@@ -233,17 +233,17 @@ Vous pouvez accéder aux champs de structures complexes :
 
 ```pascal
 // Enregistrement (Record)
-personne.Age > 18
-personne.Nom = 'Martin'
+personne.Age > 18  
+personne.Nom = 'Martin'  
 
 // Objet
-client.EstActif
-commande.Montant >= 1000
-utilisateur.Email = 'test@example.com'
+client.EstActif  
+commande.Montant >= 1000  
+utilisateur.Email = 'test@example.com'  
 
 // Imbrication
-commande.Client.Pays = 'France'
-produit.Categorie.Nom = 'Électronique'
+commande.Client.Pays = 'France'  
+produit.Categorie.Nom = 'Électronique'  
 ```
 
 ---
@@ -255,8 +255,8 @@ produit.Categorie.Nom = 'Électronique'
 **Problème :** Votre boucle traite 10 000 éléments, et l'erreur survient à l'élément 8742.
 
 ```pascal
-for i := 1 to 10000 do
-begin
+for i := 1 to 10000 do  
+begin  
   element := Tableau[i];
   Traiter(element);   // Point d'arrêt ici
 end;
@@ -279,8 +279,8 @@ end;
 **Problème :** Un calcul produit une valeur négative inappropriée.
 
 ```pascal
-procedure CalculerPrix(var prix: Double);
-begin
+procedure CalculerPrix(var prix: Double);  
+begin  
   prix := PrixBase * (1 - Remise);
   AppliquerTaxes(prix);        // Point d'arrêt ici
   AfficherPrix(prix);
@@ -310,8 +310,8 @@ valeur > 2147483647   // Max Integer 32 bits
 **Problème :** Vous avez une liste d'objets et cherchez un objet spécifique.
 
 ```pascal
-procedure TraiterClients;
-var
+procedure TraiterClients;  
+var  
   client: TClient;
 begin
   for client in ListeClients do
@@ -331,8 +331,8 @@ end;
 **Problème :** Vous lisez un fichier de 100 000 lignes, et l'erreur est à la ligne 87 654.
 
 ```pascal
-procedure LireFichier;
-var
+procedure LireFichier;  
+var  
   ligne: String;
   numLigne: Integer;
 begin
@@ -355,8 +355,8 @@ end;
 **Scénario Réel :** Application de gestion de commandes.
 
 ```pascal
-procedure ValiderCommande(cmd: TCommande);
-begin
+procedure ValiderCommande(cmd: TCommande);  
+begin  
   // Point d'arrêt sur la ligne suivante
   if cmd.Valide then
     EnregistrerCommande(cmd);
@@ -380,8 +380,8 @@ end;
 **Problème :** Deux variables devraient toujours être en phase, mais parfois elles divergent.
 
 ```pascal
-procedure SynchroniserDonnees;
-begin
+procedure SynchroniserDonnees;  
+begin  
   // compteurA et compteurB devraient être égaux
   Traiter();   // Point d'arrêt ici
 end;
@@ -434,8 +434,8 @@ C'est différent d'une condition classique : le point d'arrêt compte ses activa
 **Exemple 1 : Problème Intermittent**
 
 ```pascal
-for i := 1 to 1000 do
-begin
+for i := 1 to 1000 do  
+begin  
   Traiter();   // Fonctionne 99% du temps, plante rarement
 end;
 ```
@@ -445,8 +445,8 @@ Vous suspectez que le problème survient après plusieurs passages. Configurez u
 **Exemple 2 : Débogage Périodique**
 
 ```pascal
-while not Termine do
-begin
+while not Termine do  
+begin  
   MettreAJour();   // Point d'arrêt tous les 100 passages
 end;
 ```
@@ -463,8 +463,8 @@ Compteur configuré en "Multiple de 100" : vous vérifiez l'état tous les 100 p
 - **Résultat :** S'arrête au 10ème client belge
 
 ```pascal
-for client in ListeClients do
-begin
+for client in ListeClients do  
+begin  
   Traiter(client);   // Condition: Pays = Belgique, Compteur: 10
 end;
 ```
@@ -489,8 +489,8 @@ Certaines versions avancées de GDB permettent d'exécuter des actions au lieu d
 
 **Exemple de Commande :**
 ```gdb
-print "Valeur de i:", i
-continue
+print "Valeur de i:", i  
+continue  
 ```
 
 **Résultat :** Affiche la valeur de `i` à chaque passage SANS arrêter le programme.
@@ -613,16 +613,16 @@ Le débogueur peut :
 **Problème :**
 
 ```pascal
-procedure A;
-var
+procedure A;  
+var  
   x: Integer;
 begin
   x := 10;
   B();   // Point d'arrêt dans B avec condition sur x
 end;
 
-procedure B;
-begin
+procedure B;  
+begin  
   // La variable x n'existe pas ici !
   Traiter();   // Condition : x = 10  ❌ ERREUR
 end;
@@ -681,8 +681,8 @@ SommeA <> SommeB
 Combinez points d'arrêt et logging pour un débogage efficace :
 
 ```pascal
-if ConditionDeDebug then
-begin
+if ConditionDeDebug then  
+begin  
   WriteLn('Debug: i=', i, ' valeur=', valeur);
   // Point d'arrêt ici avec condition : ConditionDeDebug
 end;
@@ -700,8 +700,8 @@ const
   DEBUG_MONTANT_MIN = 1000;
 
 // Dans votre code :
-if (client.ID = DEBUG_CLIENT_ID) and (montant > DEBUG_MONTANT_MIN) then
-begin
+if (client.ID = DEBUG_CLIENT_ID) and (montant > DEBUG_MONTANT_MIN) then  
+begin  
   // Point d'arrêt ici
   TraiterCasSpecial();
 end;
@@ -731,8 +731,8 @@ Vous pouvez créer des points d'arrêt qui se désactivent automatiquement aprè
 **Contexte :** Vous créez des objets dans une boucle, et suspectez un oubli de libération.
 
 ```pascal
-for i := 1 to 10000 do
-begin
+for i := 1 to 10000 do  
+begin  
   client := TClient.Create;
   Traiter(client);
   client.Free;   // Point d'arrêt ici
@@ -751,8 +751,8 @@ client = nil
 **Contexte :** Une opération devient lente après plusieurs passages.
 
 ```pascal
-procedure OptimiserCache;
-var
+procedure OptimiserCache;  
+var  
   tempDebut: TDateTime;
 begin
   tempDebut := Now;
@@ -790,8 +790,8 @@ enreg.ID = 87456   // L'ID problématique identifié dans les logs
 **Contexte :** Vous importez des données, certaines sont invalides.
 
 ```pascal
-for ligne in FichierCSV do
-begin
+for ligne in FichierCSV do  
+begin  
   donnees := ParseLigne(ligne);
   if Valider(donnees) then
     Importer(donnees);   // Point d'arrêt ici
@@ -849,25 +849,25 @@ end;
 **Syntaxe de Base :**
 ```pascal
 // Valeurs simples
-i = 500
-prix > 100
+i = 500  
+prix > 100  
 (age >= 18) and (age <= 65)
 
 // Chaînes
-nom = 'Dupont'
-LowerCase(code) = 'urgent'
+nom = 'Dupont'  
+LowerCase(code) = 'urgent'  
 
 // Booléens
-actif
-not termine
+actif  
+not termine  
 
 // Conditions complexes
 (client.Pays = 'France') and (commande.Montant > 5000)
 
 // Détection d'anomalies
-valeur < 0
-pointeur = nil
-compteurA <> compteurB
+valeur < 0  
+pointeur = nil  
+compteurA <> compteurB  
 ```
 
 ---

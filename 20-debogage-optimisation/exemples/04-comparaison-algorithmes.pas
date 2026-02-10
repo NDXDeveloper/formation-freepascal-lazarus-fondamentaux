@@ -9,8 +9,8 @@ program ComparaisonAlgorithmes;
 
 uses SysUtils;
 
-function MethodeA: Int64;
-var
+function MethodeA: Int64;  
+var  
   i: Integer;
   total: Int64;
 begin
@@ -20,8 +20,8 @@ begin
   Result := total;
 end;
 
-function MethodeB: Int64;
-var
+function MethodeB: Int64;  
+var  
   n: Int64;
 begin
   n := 1000000;

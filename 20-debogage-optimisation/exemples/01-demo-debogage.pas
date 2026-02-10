@@ -19,8 +19,8 @@ type
     Actif: Boolean;
   end;
 
-procedure NiveauC(valeur: Integer);
-var
+procedure NiveauC(valeur: Integer);  
+var  
   resultat: Integer;
 begin
   { Pratiquez ici : inspectez 'valeur' et 'resultat' }
@@ -28,8 +28,8 @@ begin
   WriteLn('  NiveauC: valeur=', valeur, ' resultat=', resultat);
 end;
 
-procedure NiveauB(x: Integer);
-var
+procedure NiveauB(x: Integer);  
+var  
   y: Integer;
 begin
   y := x + 10;
@@ -37,8 +37,8 @@ begin
   NiveauC(y);
 end;
 
-procedure NiveauA;
-var
+procedure NiveauA;  
+var  
   i: Integer;
 begin
   WriteLn('NiveauA: debut');
@@ -50,8 +50,8 @@ begin
   WriteLn('NiveauA: fin');
 end;
 
-procedure DemoVariables;
-var
+procedure DemoVariables;  
+var  
   entier: Integer;
   reel: Double;
   chaine: String;
@@ -85,8 +85,8 @@ begin
   WriteLn;
 end;
 
-procedure DemoException;
-var
+procedure DemoException;  
+var  
   tab: array[1..10] of Integer;
   i, indice: Integer;
 begin

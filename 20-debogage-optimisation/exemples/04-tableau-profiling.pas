@@ -11,8 +11,8 @@ program TableauProfiling;
 uses
   SysUtils;
 
-procedure ChargerDonnees;
-var
+procedure ChargerDonnees;  
+var  
   i: Integer;
   total: Int64;
 begin
@@ -21,8 +21,8 @@ begin
     total := total + i;
 end;
 
-procedure TraiterDonnees;
-var
+procedure TraiterDonnees;  
+var  
   i, j: Integer;
   total: Double;
 begin
@@ -32,8 +32,8 @@ begin
       total := total + Sqrt(i * j);
 end;
 
-procedure CalculerStatistiques;
-var
+procedure CalculerStatistiques;  
+var  
   i: Integer;
   total: Double;
 begin
@@ -42,8 +42,8 @@ begin
     total := total + Sin(i / 1000.0);
 end;
 
-procedure GenererRapport;
-var
+procedure GenererRapport;  
+var  
   i: Integer;
   s: String;
 begin
@@ -52,8 +52,8 @@ begin
     s := IntToStr(i);
 end;
 
-procedure SauvegarderResultats;
-begin
+procedure SauvegarderResultats;  
+begin  
   Sleep(50);
 end;
 

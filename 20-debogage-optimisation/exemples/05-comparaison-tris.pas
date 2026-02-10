@@ -9,8 +9,8 @@ program ComparaisonTris;
 
 uses SysUtils;
 
-procedure TriBulles(var tab: array of Integer);
-var
+procedure TriBulles(var tab: array of Integer);  
+var  
   i, j, temp: Integer;
 begin
   for i := Low(tab) to High(tab) - 1 do
@@ -23,8 +23,8 @@ begin
       end;
 end;
 
-procedure TriRapide(var tab: array of Integer; gauche, droite: Integer);
-var
+procedure TriRapide(var tab: array of Integer; gauche, droite: Integer);  
+var  
   i, j, pivot, temp: Integer;
 begin
   if gauche >= droite then Exit;
@@ -51,8 +51,8 @@ begin
   if i < droite then TriRapide(tab, i, droite);
 end;
 
-procedure InitialiserTableau(var tab: array of Integer);
-var
+procedure InitialiserTableau(var tab: array of Integer);  
+var  
   i: Integer;
 begin
   for i := Low(tab) to High(tab) do

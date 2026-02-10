@@ -17,8 +17,8 @@ const
 var
   Tableau: array[1..TAILLE] of Integer;
 
-function RechercheLineaire(valeur: Integer): Integer;
-var
+function RechercheLineaire(valeur: Integer): Integer;  
+var  
   i: Integer;
 begin
   Result := -1;
@@ -32,8 +32,8 @@ begin
   end;
 end;
 
-function RechercheBinaire(valeur: Integer): Integer;
-var
+function RechercheBinaire(valeur: Integer): Integer;  
+var  
   gauche, droite, milieu: Integer;
 begin
   Result := -1;

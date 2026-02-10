@@ -79,11 +79,11 @@ end.
 **Logging non structuré (à éviter) :**
 
 ```
-Programme démarré
-Connexion à la BDD réussie
-Utilisateur Jean connecté
-Erreur inconnue
-Programme terminé
+Programme démarré  
+Connexion à la BDD réussie  
+Utilisateur Jean connecté  
+Erreur inconnue  
+Programme terminé  
 ```
 
 **Problèmes :**
@@ -130,11 +130,11 @@ Programme terminé
 **Exemples :**
 
 ```pascal
-Logger.Debug('Entrée dans la fonction CalculerTotal');
-Logger.Debug('Valeur de x = %d, y = %d', [x, y]);
-Logger.Debug('Boucle itération %d/%d', [i, total]);
-Logger.Debug('Requête SQL: %s', [query]);
-Logger.Debug('Sortie de la fonction, résultat = %f', [resultat]);
+Logger.Debug('Entrée dans la fonction CalculerTotal');  
+Logger.Debug('Valeur de x = %d, y = %d', [x, y]);  
+Logger.Debug('Boucle itération %d/%d', [i, total]);  
+Logger.Debug('Requête SQL: %s', [query]);  
+Logger.Debug('Sortie de la fonction, résultat = %f', [resultat]);  
 ```
 
 **Caractéristiques :**
@@ -155,11 +155,11 @@ Logger.Debug('Sortie de la fonction, résultat = %f', [resultat]);
 **Exemples :**
 
 ```pascal
-Logger.Info('Application démarrée (version %s)', [Version]);
-Logger.Info('Utilisateur %s connecté', [Username]);
-Logger.Info('Traitement de %d fichiers démarré', [Count]);
-Logger.Info('Sauvegarde effectuée avec succès');
-Logger.Info('Application arrêtée proprement');
+Logger.Info('Application démarrée (version %s)', [Version]);  
+Logger.Info('Utilisateur %s connecté', [Username]);  
+Logger.Info('Traitement de %d fichiers démarré', [Count]);  
+Logger.Info('Sauvegarde effectuée avec succès');  
+Logger.Info('Application arrêtée proprement');  
 ```
 
 **Caractéristiques :**
@@ -180,11 +180,11 @@ Logger.Info('Application arrêtée proprement');
 **Exemples :**
 
 ```pascal
-Logger.Warning('Paramètre manquant, utilisation de la valeur par défaut: %d', [ValeurDefaut]);
-Logger.Warning('Fichier de configuration introuvable, création d''un nouveau');
-Logger.Warning('Temps de réponse élevé: %d ms (seuil: %d ms)', [Temps, Seuil]);
-Logger.Warning('Cache plein à %d%%, nettoyage recommandé', [Pourcentage]);
-Logger.Warning('Tentative de reconnexion %d/%d', [Essai, MaxEssais]);
+Logger.Warning('Paramètre manquant, utilisation de la valeur par défaut: %d', [ValeurDefaut]);  
+Logger.Warning('Fichier de configuration introuvable, création d''un nouveau');  
+Logger.Warning('Temps de réponse élevé: %d ms (seuil: %d ms)', [Temps, Seuil]);  
+Logger.Warning('Cache plein à %d%%, nettoyage recommandé', [Pourcentage]);  
+Logger.Warning('Tentative de reconnexion %d/%d', [Essai, MaxEssais]);  
 ```
 
 **Caractéristiques :**
@@ -205,11 +205,11 @@ Logger.Warning('Tentative de reconnexion %d/%d', [Essai, MaxEssais]);
 **Exemples :**
 
 ```pascal
-Logger.Error('Impossible d''ouvrir le fichier: %s (Code: %d)', [NomFichier, CodeErreur]);
-Logger.Error('Échec de connexion à la base de données après %d tentatives', [Tentatives]);
-Logger.Error('Format de données invalide: %s', [Donnees]);
-Logger.Error('Exception capturée: %s', [E.Message]);
-Logger.Error('Timeout lors de l''appel API (%d ms)', [Timeout]);
+Logger.Error('Impossible d''ouvrir le fichier: %s (Code: %d)', [NomFichier, CodeErreur]);  
+Logger.Error('Échec de connexion à la base de données après %d tentatives', [Tentatives]);  
+Logger.Error('Format de données invalide: %s', [Donnees]);  
+Logger.Error('Exception capturée: %s', [E.Message]);  
+Logger.Error('Timeout lors de l''appel API (%d ms)', [Timeout]);  
 ```
 
 **Caractéristiques :**
@@ -231,10 +231,10 @@ Logger.Error('Timeout lors de l''appel API (%d ms)', [Timeout]);
 **Exemples :**
 
 ```pascal
-Logger.Fatal('Mémoire insuffisante, arrêt du programme');
-Logger.Fatal('Corruption de données détectée dans la table principale');
-Logger.Fatal('Composant critique indisponible: %s', [Composant]);
-Logger.Fatal('Exception non gérée: %s', [E.Message]);
+Logger.Fatal('Mémoire insuffisante, arrêt du programme');  
+Logger.Fatal('Corruption de données détectée dans la table principale');  
+Logger.Fatal('Composant critique indisponible: %s', [Composant]);  
+Logger.Fatal('Exception non gérée: %s', [E.Message]);  
 ```
 
 **Caractéristiques :**
@@ -330,8 +330,8 @@ var
 
 implementation
 
-constructor TSimpleLogger.Create(const AFileName: String; AMinLevel: TLogLevel);
-begin
+constructor TSimpleLogger.Create(const AFileName: String; AMinLevel: TLogLevel);  
+begin  
   inherited Create;
   FLogFileName := AFileName;
   FMinLevel := AMinLevel;
@@ -350,15 +350,15 @@ begin
   end;
 end;
 
-destructor TSimpleLogger.Destroy;
-begin
+destructor TSimpleLogger.Destroy;  
+begin  
   if FFileOpen then
     CloseFile(FLogFile);
   inherited Destroy;
 end;
 
-function TSimpleLogger.LevelToString(Level: TLogLevel): String;
-begin
+function TSimpleLogger.LevelToString(Level: TLogLevel): String;  
+begin  
   case Level of
     llDebug:   Result := 'DEBUG';
     llInfo:    Result := 'INFO ';
@@ -368,13 +368,13 @@ begin
   end;
 end;
 
-function TSimpleLogger.GetTimestamp: String;
-begin
+function TSimpleLogger.GetTimestamp: String;  
+begin  
   Result := FormatDateTime('yyyy-mm-dd hh:nn:ss.zzz', Now);
 end;
 
-procedure TSimpleLogger.Log(Level: TLogLevel; const Msg: String);
-var
+procedure TSimpleLogger.Log(Level: TLogLevel; const Msg: String);  
+var  
   LogLine: String;
 begin
   if Level < FMinLevel then Exit;
@@ -391,58 +391,58 @@ begin
   WriteLn(LogLine);
 end;
 
-procedure TSimpleLogger.Log(Level: TLogLevel; const Msg: String; const Args: array of const);
-begin
+procedure TSimpleLogger.Log(Level: TLogLevel; const Msg: String; const Args: array of const);  
+begin  
   Log(Level, Format(Msg, Args));
 end;
 
-procedure TSimpleLogger.Debug(const Msg: String);
-begin
+procedure TSimpleLogger.Debug(const Msg: String);  
+begin  
   Log(llDebug, Msg);
 end;
 
-procedure TSimpleLogger.Debug(const Msg: String; const Args: array of const);
-begin
+procedure TSimpleLogger.Debug(const Msg: String; const Args: array of const);  
+begin  
   Log(llDebug, Msg, Args);
 end;
 
-procedure TSimpleLogger.Info(const Msg: String);
-begin
+procedure TSimpleLogger.Info(const Msg: String);  
+begin  
   Log(llInfo, Msg);
 end;
 
-procedure TSimpleLogger.Info(const Msg: String; const Args: array of const);
-begin
+procedure TSimpleLogger.Info(const Msg: String; const Args: array of const);  
+begin  
   Log(llInfo, Msg, Args);
 end;
 
-procedure TSimpleLogger.Warning(const Msg: String);
-begin
+procedure TSimpleLogger.Warning(const Msg: String);  
+begin  
   Log(llWarning, Msg);
 end;
 
-procedure TSimpleLogger.Warning(const Msg: String; const Args: array of const);
-begin
+procedure TSimpleLogger.Warning(const Msg: String; const Args: array of const);  
+begin  
   Log(llWarning, Msg, Args);
 end;
 
-procedure TSimpleLogger.Error(const Msg: String);
-begin
+procedure TSimpleLogger.Error(const Msg: String);  
+begin  
   Log(llError, Msg);
 end;
 
-procedure TSimpleLogger.Error(const Msg: String; const Args: array of const);
-begin
+procedure TSimpleLogger.Error(const Msg: String; const Args: array of const);  
+begin  
   Log(llError, Msg, Args);
 end;
 
-procedure TSimpleLogger.Fatal(const Msg: String);
-begin
+procedure TSimpleLogger.Fatal(const Msg: String);  
+begin  
   Log(llFatal, Msg);
 end;
 
-procedure TSimpleLogger.Fatal(const Msg: String; const Args: array of const);
-begin
+procedure TSimpleLogger.Fatal(const Msg: String; const Args: array of const);  
+begin  
   Log(llFatal, Msg, Args);
 end;
 
@@ -464,8 +464,8 @@ program TestLogger;
 uses
   SimpleLogger, SysUtils;
 
-procedure ConnecterBDD;
-begin
+procedure ConnecterBDD;  
+begin  
   Logger.Info('Tentative de connexion à la base de données');
 
   if Random(2) = 0 then
@@ -477,8 +477,8 @@ begin
   Logger.Info('Connexion réussie');
 end;
 
-procedure TraiterFichier(const NomFichier: String);
-var
+procedure TraiterFichier(const NomFichier: String);  
+var  
   i: Integer;
 begin
   Logger.Debug('Début traitement: %s', [NomFichier]);
@@ -552,14 +552,14 @@ type
     function ShouldRotate(const FileName: String): Boolean;
   end;
 
-constructor TLogRotation.Create(AMaxSize: Int64; AMaxFiles: Integer);
-begin
+constructor TLogRotation.Create(AMaxSize: Int64; AMaxFiles: Integer);  
+begin  
   FMaxSize := AMaxSize;  // Défaut: 10 MB
   FMaxFiles := AMaxFiles;  // Défaut: 5 fichiers
 end;
 
-function TLogRotation.ShouldRotate(const FileName: String): Boolean;
-var
+function TLogRotation.ShouldRotate(const FileName: String): Boolean;  
+var  
   FileInfo: TSearchRec;
 begin
   Result := False;
@@ -570,8 +570,8 @@ begin
   end;
 end;
 
-procedure TLogRotation.RotateFile(const FileName: String);
-var
+procedure TLogRotation.RotateFile(const FileName: String);  
+var  
   i: Integer;
   OldName, NewName: String;
 begin
@@ -596,19 +596,19 @@ end;
 
 **Résultat :**
 ```
-application.log         ← Fichier actif
-application.log.1       ← Rotation précédente
-application.log.2
-application.log.3
-application.log.4
-application.log.5       ← Plus ancien (sera supprimé au prochain rotate)
+application.log         ← Fichier actif  
+application.log.1       ← Rotation précédente  
+application.log.2  
+application.log.3  
+application.log.4  
+application.log.5       ← Plus ancien (sera supprimé au prochain rotate)  
 ```
 
 **Rotation par date :**
 
 ```pascal
-function GetLogFileName: String;
-begin
+function GetLogFileName: String;  
+begin  
   Result := Format('app_%s.log', [FormatDateTime('yyyymmdd', Date)]);
 end;
 
@@ -618,9 +618,9 @@ Logger := TSimpleLogger.Create(GetLogFileName);
 
 **Résultat :**
 ```
-app_20251015.log
-app_20251016.log
-app_20251017.log
+app_20251015.log  
+app_20251016.log  
+app_20251017.log  
 ```
 
 ### 4.2 Logging Asynchrone
@@ -647,8 +647,8 @@ type
     procedure Log(const Msg: String);
   end;
 
-constructor TAsyncLogger.Create;
-begin
+constructor TAsyncLogger.Create;  
+begin  
   inherited Create;
   FBuffer := TStringList.Create;
   FLock := TCriticalSection.Create;
@@ -666,8 +666,8 @@ begin
   FThread.Start;
 end;
 
-destructor TAsyncLogger.Destroy;
-begin
+destructor TAsyncLogger.Destroy;  
+begin  
   FThread.Terminate;
   FThread.WaitFor;
   FThread.Free;
@@ -679,8 +679,8 @@ begin
   inherited Destroy;
 end;
 
-procedure TAsyncLogger.Log(const Msg: String);
-begin
+procedure TAsyncLogger.Log(const Msg: String);  
+begin  
   FLock.Enter;
   try
     FBuffer.Add(Msg);
@@ -689,8 +689,8 @@ begin
   end;
 end;
 
-procedure TAsyncLogger.FlushBuffer;
-var
+procedure TAsyncLogger.FlushBuffer;  
+var  
   F: TextFile;
   i: Integer;
   LocalBuffer: TStringList;
@@ -739,8 +739,8 @@ end;
 **Ajouter des informations contextuelles :**
 
 ```pascal
-procedure TAdvancedLogger.Log(Level: TLogLevel; const Msg: String);
-var
+procedure TAdvancedLogger.Log(Level: TLogLevel; const Msg: String);  
+var  
   LogLine: String;
   ThreadID: String;
   MemUsage: String;
@@ -768,8 +768,8 @@ end;
 ```pascal
 uses SysUtils;
 
-procedure LogWithStackTrace(const Msg: String);
-var
+procedure LogWithStackTrace(const Msg: String);  
+var  
   i: Integer;
 begin
   Logger.Error(Msg);
@@ -814,9 +814,9 @@ finalization
 **Utilisation :**
 
 ```pascal
-LoggerApp.Info('Application démarrée');
-LoggerBDD.Info('Connexion établie');
-LoggerReseau.Debug('Requête HTTP GET /api/users');
+LoggerApp.Info('Application démarrée');  
+LoggerBDD.Info('Connexion établie');  
+LoggerReseau.Debug('Requête HTTP GET /api/users');  
 ```
 
 **Résultat :**
@@ -841,15 +841,15 @@ LoggerReseau.Debug('Requête HTTP GET /api/users');
 **Ajouter des tags pour filtrer :**
 
 ```pascal
-procedure TTaggedLogger.Log(const Tag, Msg: String);
-begin
+procedure TTaggedLogger.Log(const Tag, Msg: String);  
+begin  
   inherited Log(Format('[%s] %s', [Tag, Msg]));
 end;
 
 // Utilisation
-Logger.Log('AUTH', 'Utilisateur connecté: %s', [Username]);
-Logger.Log('FILE', 'Fichier sauvegardé: %s', [FileName]);
-Logger.Log('CACHE', 'Cache vidé: %d entrées', [Count]);
+Logger.Log('AUTH', 'Utilisateur connecté: %s', [Username]);  
+Logger.Log('FILE', 'Fichier sauvegardé: %s', [FileName]);  
+Logger.Log('CACHE', 'Cache vidé: %d entrées', [Count]);  
 ```
 
 **Sortie :**
@@ -903,9 +903,9 @@ end.
 
 **Résultats typiques :**
 ```
-Sans log: 125 ms
-Avec log DEBUG: 8500 ms (68x plus lent !)
-Avec log INFO: 140 ms (12% plus lent)
+Sans log: 125 ms  
+Avec log DEBUG: 8500 ms (68x plus lent !)  
+Avec log INFO: 140 ms (12% plus lent)  
 ```
 
 **Conclusion :** DEBUG peut ralentir énormément. Utilisez avec parcimonie.
@@ -929,8 +929,8 @@ if Logger.MinLevel <= llDebug then
 **Ou avec méthode inline :**
 
 ```pascal
-function TSimpleLogger.IsDebugEnabled: Boolean;
-begin
+function TSimpleLogger.IsDebugEnabled: Boolean;  
+begin  
   Result := FMinLevel <= llDebug;
 end;
 
@@ -945,15 +945,15 @@ if Logger.IsDebugEnabled then
 
 ```pascal
 // Immédiat (lent mais sûr)
-procedure WriteImmediate(const Msg: String);
-begin
+procedure WriteImmediate(const Msg: String);  
+begin  
   WriteLn(FLogFile, Msg);
   Flush(FLogFile);  // Force l'écriture sur disque
 end;
 
 // Buffered (rapide mais risque perte)
-procedure WriteBuffered(const Msg: String);
-begin
+procedure WriteBuffered(const Msg: String);  
+begin  
   WriteLn(FLogFile, Msg);
   // Flush automatique par l'OS
 end;
@@ -965,8 +965,8 @@ end;
 var
   FBufferCount: Integer;
 
-procedure TLogger.Log(const Msg: String);
-begin
+procedure TLogger.Log(const Msg: String);  
+begin  
   WriteLn(FLogFile, Msg);
   Inc(FBufferCount);
 
@@ -988,11 +988,11 @@ end;
 
 ```ini
 [Logging]
-Level=INFO
-FileName=application.log
-MaxSize=10485760
-MaxFiles=5
-Console=false
+Level=INFO  
+FileName=application.log  
+MaxSize=10485760  
+MaxFiles=5  
+Console=false  
 ```
 
 **Chargement de la configuration :**
@@ -1000,8 +1000,8 @@ Console=false
 ```pascal
 uses IniFiles;
 
-procedure ConfigureLogger;
-var
+procedure ConfigureLogger;  
+var  
   ini: TIniFile;
   level: String;
 begin
@@ -1031,19 +1031,19 @@ end;
 
 ```pascal
 // NE JAMAIS FAIRE ÇA !
-Logger.Debug('Mot de passe: %s', [Password]);
-Logger.Info('Numéro de carte: %s', [CardNumber]);
-Logger.Debug('Token API: %s', [ApiToken]);
+Logger.Debug('Mot de passe: %s', [Password]);  
+Logger.Info('Numéro de carte: %s', [CardNumber]);  
+Logger.Debug('Token API: %s', [ApiToken]);  
 ```
 
 **✅ Correct : Masquer ou omettre**
 
 ```pascal
-Logger.Info('Authentification réussie pour: %s', [Username]);
-Logger.Debug('Carte se terminant par: ****%s', [Copy(CardNumber, Length(CardNumber) - 3, 4)]);
+Logger.Info('Authentification réussie pour: %s', [Username]);  
+Logger.Debug('Carte se terminant par: ****%s', [Copy(CardNumber, Length(CardNumber) - 3, 4)]);  
 
-function MaskPassword(const pwd: String): String;
-begin
+function MaskPassword(const pwd: String): String;  
+begin  
   if Length(pwd) > 0 then
     Result := '****'
   else
@@ -1068,8 +1068,8 @@ type
     procedure OnError(const Msg: String);
   end;
 
-procedure TLogMonitor.OnError(const Msg: String);
-begin
+procedure TLogMonitor.OnError(const Msg: String);  
+begin  
   Inc(FErrorCount);
 
   // Alerte si 10 erreurs en 1 minute
@@ -1083,8 +1083,8 @@ begin
   end;
 end;
 
-procedure TLogMonitor.SendAlert(const Msg: String);
-begin
+procedure TLogMonitor.SendAlert(const Msg: String);  
+begin  
   // Envoyer email, SMS, webhook...
   Logger.Fatal('ALERTE ENVOYÉE: %s', [Msg]);
 end;
@@ -1095,8 +1095,8 @@ end;
 **Supprimer les vieux logs :**
 
 ```pascal
-procedure CleanOldLogs(const LogDir: String; DaysToKeep: Integer);
-var
+procedure CleanOldLogs(const LogDir: String; DaysToKeep: Integer);  
+var  
   SR: TSearchRec;
   FilePath: String;
   CutoffDate: TDateTime;
@@ -1158,8 +1158,8 @@ end.
 ```pascal
 uses Windows, JwaTlHelp32;
 
-procedure WriteToEventLog(const Msg: String; EventType: Word);
-var
+procedure WriteToEventLog(const Msg: String; EventType: Word);  
+var  
   EventSource: THandle;
   Strings: array[0..0] of PChar;
 begin
@@ -1173,8 +1173,8 @@ begin
 end;
 
 // Utilisation
-WriteToEventLog('Application démarrée', EVENTLOG_INFORMATION_TYPE);
-WriteToEventLog('Erreur critique', EVENTLOG_ERROR_TYPE);
+WriteToEventLog('Application démarrée', EVENTLOG_INFORMATION_TYPE);  
+WriteToEventLog('Erreur critique', EVENTLOG_ERROR_TYPE);  
 ```
 
 **Visible dans :** Observateur d'événements Windows
@@ -1186,16 +1186,16 @@ WriteToEventLog('Erreur critique', EVENTLOG_ERROR_TYPE);
 ```pascal
 uses BaseUnix;
 
-procedure WriteToSyslog(Priority: Integer; const Msg: String);
-begin
+procedure WriteToSyslog(Priority: Integer; const Msg: String);  
+begin  
   openlog('MonApplication', LOG_PID, LOG_USER);
   syslog(Priority, PChar(Msg));
   closelog();
 end;
 
 // Utilisation
-WriteToSyslog(LOG_INFO, 'Application démarrée');
-WriteToSyslog(LOG_ERR, 'Erreur critique');
+WriteToSyslog(LOG_INFO, 'Application démarrée');  
+WriteToSyslog(LOG_ERR, 'Erreur critique');  
 ```
 
 **Logs visibles dans :** `/var/log/syslog` ou `/var/log/messages`
@@ -1239,8 +1239,8 @@ tail -f application.log | grep "ERROR"
 ```pascal
 uses SysUtils;
 
-function GetLogPath: String;
-begin
+function GetLogPath: String;  
+begin  
   {$IFDEF WINDOWS}
   Result := GetEnvironmentVariable('APPDATA') + '\MonApp\logs\';
   {$ENDIF}
@@ -1278,8 +1278,8 @@ WriteLn(FLogFile, Msg);  // WriteLn ajoute automatiquement le saut de ligne
 **Vérifier les droits d'écriture :**
 
 ```pascal
-function CanWriteToLogDir(const Dir: String): Boolean;
-begin
+function CanWriteToLogDir(const Dir: String): Boolean;  
+begin  
   Result := DirectoryExists(Dir);
 
   {$IFDEF LINUX}
@@ -1327,9 +1327,9 @@ if not CanWriteToLogDir(LogPath) then
 **❌ Mauvais messages :**
 
 ```pascal
-Logger.Error('Erreur');  // Trop vague
-Logger.Info('OK');  // Pas assez d'info
-Logger.Debug('x=5');  // Pas de contexte
+Logger.Error('Erreur');  // Trop vague  
+Logger.Info('OK');  // Pas assez d'info  
+Logger.Debug('x=5');  // Pas de contexte  
 ```
 
 **✅ Bons messages :**
@@ -1370,8 +1370,8 @@ Logger.Debug('Fonction CalculerTotal - x=%d, y=%d, total=%d', [x, y, total]);
 **Pattern try-except avec logging :**
 
 ```pascal
-procedure TraiterDonnees;
-begin
+procedure TraiterDonnees;  
+begin  
   try
     Logger.Info('Début traitement données');
 
@@ -1409,8 +1409,8 @@ program ConsoleApp;
 uses
   SimpleLogger, SysUtils;
 
-procedure Executer;
-var
+procedure Executer;  
+var  
   i: Integer;
 begin
   Logger.Info('Démarrage du traitement');
@@ -1460,8 +1460,8 @@ program ServiceApp;
 uses Windows;
 {$ENDIF}
 
-procedure ServiceLoop;
-begin
+procedure ServiceLoop;  
+begin  
   Logger.Info('Service démarré');
 
   while not Terminated do
@@ -1498,8 +1498,8 @@ end.
 ### 11.3 Application Web/API
 
 ```pascal
-procedure TAPIController.HandleRequest(Request: TRequest; Response: TResponse);
-var
+procedure TAPIController.HandleRequest(Request: TRequest; Response: TResponse);  
+var  
   debut: QWord;
   duree: Integer;
 begin
@@ -1546,21 +1546,21 @@ end;
 **Développement :**
 ```ini
 [Logging]
-Level=DEBUG
-Console=true
-File=dev.log
-Rotation=false
+Level=DEBUG  
+Console=true  
+File=dev.log  
+Rotation=false  
 ```
 
 **Production :**
 ```ini
 [Logging]
-Level=WARNING
-Console=false
-File=production.log
-Rotation=true
-MaxSize=10MB
-MaxFiles=10
+Level=WARNING  
+Console=false  
+File=production.log  
+Rotation=true  
+MaxSize=10MB  
+MaxFiles=10  
 ```
 
 ### 12.3 Tableau de Décision Rapide

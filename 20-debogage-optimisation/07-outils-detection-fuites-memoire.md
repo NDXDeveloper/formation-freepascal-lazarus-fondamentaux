@@ -155,8 +155,8 @@ uses
   heaptrc, Classes;
 {$ENDIF}
 
-procedure CreerFuite;
-var
+procedure CreerFuite;  
+var  
   liste: TStringList;
 begin
   liste := TStringList.Create;
@@ -165,8 +165,8 @@ begin
   // Oubli volontaire du Free !
 end;
 
-procedure SansFuite;
-var
+procedure SansFuite;  
+var  
   liste: TStringList;
 begin
   liste := TStringList.Create;
@@ -199,9 +199,9 @@ Heap dump by heaptrc unit of C:\Projets\testfuite.exe
 240 memory blocks allocated : 3456/3712
 239 memory blocks freed     : 3408/3664
 1 unfreed memory blocks : 48
-True heap size : 131072
-True free heap : 130976
-Should be : 131024
+True heap size : 131072  
+True free heap : 130976  
+Should be : 131024  
 
 Call trace for block $00007FF7A0012340 size 48
   $00402156  CREERFUITE,  line 12 of testfuite.pas
@@ -242,16 +242,16 @@ program TestFuitesMultiples;
 uses
   heaptrc, Classes, SysUtils;
 
-procedure Fuite1;
-var
+procedure Fuite1;  
+var  
   s: TStringList;
 begin
   s := TStringList.Create;
   s.Add('Fuite 1');
 end;
 
-procedure Fuite2;
-var
+procedure Fuite2;  
+var  
   fs: TFileStream;
 begin
   fs := TFileStream.Create('test.txt', fmCreate);
@@ -259,8 +259,8 @@ begin
   // Oubli du Free
 end;
 
-procedure Fuite3;
-var
+procedure Fuite3;  
+var  
   i: Integer;
   liste: TList;
 begin
@@ -347,8 +347,8 @@ end.
 **Ubuntu/Debian :**
 
 ```bash
-sudo apt update
-sudo apt install valgrind
+sudo apt update  
+sudo apt install valgrind  
 ```
 
 **Fedora/CentOS :**
@@ -405,8 +405,8 @@ program TestValgrind;
 
 uses Classes;
 
-procedure CreerFuite;
-var
+procedure CreerFuite;  
+var  
   liste: TStringList;
 begin
   liste := TStringList.Create;
@@ -424,8 +424,8 @@ end.
 **Compilation et exécution :**
 
 ```bash
-fpc -g -gl testvalgrind.pas
-valgrind --leak-check=full --show-leak-kinds=all ./testvalgrind
+fpc -g -gl testvalgrind.pas  
+valgrind --leak-check=full --show-leak-kinds=all ./testvalgrind  
 ```
 
 **Sortie Valgrind :**
@@ -436,8 +436,8 @@ valgrind --leak-check=full --show-leak-kinds=all ./testvalgrind
 ==12345== Using Valgrind-3.19.0 and LibVEX; rerun with -h for copyright info
 ==12345== Command: ./testvalgrind
 ==12345==
-Début du programme
-Fin du programme
+Début du programme  
+Fin du programme  
 ==12345==
 ==12345== HEAP SUMMARY:
 ==12345==     in use at exit: 48 bytes in 1 blocks
@@ -630,8 +630,8 @@ drmemory.exe -light -show_reachable -- monprogramme.exe
 **Sortie typique :**
 
 ```
-Dr. Memory version 2.5.0 build 1
-DUPLICATE ERROR: LEAK 48 bytes
+Dr. Memory version 2.5.0 build 1  
+DUPLICATE ERROR: LEAK 48 bytes  
 # 0 system.pas:1234
 # 1 classes.pas:2456
 # 2 testfuite.pas:12
@@ -665,32 +665,32 @@ type
     class function GetCompteur: Integer;
   end;
 
-class procedure TMoniteur.Incrementer;
-begin
+class procedure TMoniteur.Incrementer;  
+begin  
   Inc(FCompteur);
   WriteLn('[DEBUG] Allocations actives : ', FCompteur);
 end;
 
-class procedure TMoniteur.Decrementer;
-begin
+class procedure TMoniteur.Decrementer;  
+begin  
   Dec(FCompteur);
   WriteLn('[DEBUG] Allocations actives : ', FCompteur);
 end;
 
-class function TMoniteur.GetCompteur: Integer;
-begin
+class function TMoniteur.GetCompteur: Integer;  
+begin  
   Result := FCompteur;
 end;
 
 // Dans vos classes
-constructor TMonObjet.Create;
-begin
+constructor TMonObjet.Create;  
+begin  
   inherited Create;
   TMoniteur.Incrementer;
 end;
 
-destructor TMonObjet.Destroy;
-begin
+destructor TMonObjet.Destroy;  
+begin  
   TMoniteur.Decrementer;
   inherited Destroy;
 end;
@@ -753,29 +753,29 @@ type
 
 implementation
 
-class constructor TMemoryTracker.Create;
-begin
+class constructor TMemoryTracker.Create;  
+begin  
   FAllocations := TDictionary<Pointer, TAllocationInfo>.Create;
   FActif := False;
 end;
 
-class destructor TMemoryTracker.Destroy;
-begin
+class destructor TMemoryTracker.Destroy;  
+begin  
   FAllocations.Free;
 end;
 
-class procedure TMemoryTracker.Activer;
-begin
+class procedure TMemoryTracker.Activer;  
+begin  
   FActif := True;
 end;
 
-class procedure TMemoryTracker.Desactiver;
-begin
+class procedure TMemoryTracker.Desactiver;  
+begin  
   FActif := False;
 end;
 
-class procedure TMemoryTracker.EnregistrerAllocation(Adresse: Pointer; Taille: PtrUInt; const Classe: String);
-var
+class procedure TMemoryTracker.EnregistrerAllocation(Adresse: Pointer; Taille: PtrUInt; const Classe: String);  
+var  
   info: TAllocationInfo;
 begin
   if not FActif then Exit;
@@ -789,16 +789,16 @@ begin
   FAllocations.AddOrSetValue(Adresse, info);
 end;
 
-class procedure TMemoryTracker.EnregistrerLiberation(Adresse: Pointer);
-begin
+class procedure TMemoryTracker.EnregistrerLiberation(Adresse: Pointer);  
+begin  
   if not FActif then Exit;
 
   if FAllocations.ContainsKey(Adresse) then
     FAllocations.Remove(Adresse);
 end;
 
-class procedure TMemoryTracker.GenererRapport(const NomFichier: String);
-var
+class procedure TMemoryTracker.GenererRapport(const NomFichier: String);  
+var  
   F: TextFile;
   paire: TPair<Pointer, TAllocationInfo>;
   totalFuites: PtrUInt;
@@ -847,14 +847,14 @@ type
     destructor Destroy; override;
   end;
 
-constructor TObjetTrace.Create;
-begin
+constructor TObjetTrace.Create;  
+begin  
   inherited Create;
   TMemoryTracker.EnregistrerAllocation(Self, InstanceSize, ClassName);
 end;
 
-destructor TObjetTrace.Destroy;
-begin
+destructor TObjetTrace.Destroy;  
+begin  
   TMemoryTracker.EnregistrerLiberation(Self);
   inherited Destroy;
 end;
@@ -886,14 +886,14 @@ end.
 {$ENDIF}
 
 // Utilisation
-constructor TMonObjet.Create;
-begin
+constructor TMonObjet.Create;  
+begin  
   inherited Create;
   TRACE_CREATE;
 end;
 
-destructor TMonObjet.Destroy;
-begin
+destructor TMonObjet.Destroy;  
+begin  
   TRACE_DESTROY;
   inherited Destroy;
 end;
@@ -908,9 +908,9 @@ unit MemoryLogger;
 
 interface
 
-procedure LogAlloc(const Classe: String; Taille: Integer);
-procedure LogFree(const Classe: String);
-procedure LogRapport;
+procedure LogAlloc(const Classe: String; Taille: Integer);  
+procedure LogFree(const Classe: String);  
+procedure LogRapport;  
 
 implementation
 
@@ -920,8 +920,8 @@ var
   LogFile: TextFile;
   LogActif: Boolean = False;
 
-procedure InitLog;
-begin
+procedure InitLog;  
+begin  
   if not LogActif then
   begin
     AssignFile(LogFile, 'memory_' + FormatDateTime('yyyymmdd_hhnnss', Now) + '.log');
@@ -930,15 +930,15 @@ begin
   end;
 end;
 
-procedure LogAlloc(const Classe: String; Taille: Integer);
-begin
+procedure LogAlloc(const Classe: String; Taille: Integer);  
+begin  
   InitLog;
   WriteLn(LogFile, FormatDateTime('hh:nn:ss.zzz', Now), ' [+] ', Classe, ' (', Taille, ' octets)');
   Flush(LogFile);
 end;
 
-procedure LogFree(const Classe: String);
-begin
+procedure LogFree(const Classe: String);  
+begin  
   if LogActif then
   begin
     WriteLn(LogFile, FormatDateTime('hh:nn:ss.zzz', Now), ' [-] ', Classe);
@@ -946,8 +946,8 @@ begin
   end;
 end;
 
-procedure LogRapport;
-begin
+procedure LogRapport;  
+begin  
   if LogActif then
   begin
     WriteLn(LogFile, '=== FIN DU LOG ===');
@@ -1006,20 +1006,20 @@ type
     procedure Traiter(const donnees: String);
   end;
 
-constructor TGestionnaire.Create;
-begin
+constructor TGestionnaire.Create;  
+begin  
   inherited Create;
   FListe := TStringList.Create;
 end;
 
-destructor TGestionnaire.Destroy;
-begin
+destructor TGestionnaire.Destroy;  
+begin  
   FListe.Free;
   inherited Destroy;
 end;
 
-procedure TGestionnaire.Traiter(const donnees: String);
-var
+procedure TGestionnaire.Traiter(const donnees: String);  
+var  
   temp: TStringList;
 begin
   temp := TStringList.Create;
@@ -1078,8 +1078,8 @@ Call trace for block $... size 48
 **Étape 3 : Analyse**
 
 ```pascal
-procedure TGestionnaire.Traiter(const donnees: String);
-var
+procedure TGestionnaire.Traiter(const donnees: String);  
+var  
   temp: TStringList;
 begin
   temp := TStringList.Create;  // ← Ligne 26 : Allocation
@@ -1094,8 +1094,8 @@ end;
 **Étape 4 : Correction**
 
 ```pascal
-procedure TGestionnaire.Traiter(const donnees: String);
-var
+procedure TGestionnaire.Traiter(const donnees: String);  
+var  
   temp: TStringList;
 begin
   temp := TStringList.Create;
@@ -1146,35 +1146,35 @@ type
     class procedure DumpInstances;
   end;
 
-class constructor TObjetDebug.Create;
-begin
+class constructor TObjetDebug.Create;  
+begin  
   FInstances := TList<TObjetDebug>.Create;
 end;
 
-class destructor TObjetDebug.Destroy;
-begin
+class destructor TObjetDebug.Destroy;  
+begin  
   DumpInstances;
   FInstances.Free;
 end;
 
-constructor TObjetDebug.Create;
-begin
+constructor TObjetDebug.Create;  
+begin  
   inherited Create;
   FInstances.Add(Self);
   WriteLn('[DEBUG] Instance créée: ', IntToHex(PtrUInt(Self), 16),
           ' (Total: ', FInstances.Count, ')');
 end;
 
-destructor TObjetDebug.Destroy;
-begin
+destructor TObjetDebug.Destroy;  
+begin  
   FInstances.Remove(Self);
   WriteLn('[DEBUG] Instance détruite: ', IntToHex(PtrUInt(Self), 16),
           ' (Total: ', FInstances.Count, ')');
   inherited Destroy;
 end;
 
-class procedure TObjetDebug.DumpInstances;
-var
+class procedure TObjetDebug.DumpInstances;  
+var  
   obj: TObjetDebug;
 begin
   if FInstances.Count > 0 then
@@ -1231,19 +1231,19 @@ REM test_memory.bat
 
 echo === Test de detection de fuites memoire ===
 
-REM Compiler
-fpc -gh -gl -B monprogramme.pas
+REM Compiler  
+fpc -gh -gl -B monprogramme.pas  
 
 if errorlevel 1 (
     echo ERREUR: Compilation echouee
     exit /b 1
 )
 
-REM Executer
-monprogramme.exe
+REM Executer  
+monprogramme.exe  
 
-REM Verifier
-findstr /C:"unfreed memory blocks : 0" heaptrc.log > nul
+REM Verifier  
+findstr /C:"unfreed memory blocks : 0" heaptrc.log > nul  
 
 if errorlevel 1 (
     echo ECHEC: Fuites detectees
@@ -1461,8 +1461,8 @@ fi
 - [x] Tests sur Linux : OK
 
 ## Conclusion
-Toutes les fuites ont été corrigées et validées.
-Application prête pour release.
+Toutes les fuites ont été corrigées et validées.  
+Application prête pour release.  
 ```
 
 ### 10.3 Formation de l'Équipe

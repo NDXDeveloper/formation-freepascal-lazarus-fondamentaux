@@ -29,8 +29,8 @@ Il existe deux zones principales de mémoire :
 **Stack (Pile) - Automatique**
 
 ```pascal
-procedure Exemple;
-var
+procedure Exemple;  
+var  
   x: Integer;        // Allouée sur la stack
   s: String;         // Référence sur la stack, données sur le heap
   tab: array[1..10] of Integer;  // Stack si petit
@@ -107,8 +107,8 @@ MÉMOIRE DU PROGRAMME
 **Gestion automatique - Rien à faire !**
 
 ```pascal
-procedure TraiterDonnees;
-var
+procedure TraiterDonnees;  
+var  
   compteur: Integer;
   total: Double;
   nom: String;
@@ -152,8 +152,8 @@ end;
 **❌ Erreur courante : Oublier Dispose**
 
 ```pascal
-procedure FuiteMemoireSimple;
-var
+procedure FuiteMemoireSimple;  
+var  
   p: ^Integer;
 begin
   New(p);
@@ -209,8 +209,8 @@ end;
 > **Qui crée, libère !**
 
 ```pascal
-procedure Exemple;
-var
+procedure Exemple;  
+var  
   liste: TStringList;
 begin
   // Création (allocation heap)
@@ -233,8 +233,8 @@ end;
 **❌ Sans try-finally (DANGEREUX) :**
 
 ```pascal
-procedure MauvaiseGestion;
-var
+procedure MauvaiseGestion;  
+var  
   liste: TStringList;
 begin
   liste := TStringList.Create;
@@ -249,8 +249,8 @@ end;
 **✅ Avec try-finally (CORRECT) :**
 
 ```pascal
-procedure BonneGestion;
-var
+procedure BonneGestion;  
+var  
   liste: TStringList;
 begin
   liste := TStringList.Create;
@@ -267,8 +267,8 @@ end;
 ### 3.3 FreeAndNil : Sécurité Supplémentaire
 
 ```pascal
-procedure GestionSecurisee;
-var
+procedure GestionSecurisee;  
+var  
   objet: TMonObjet;
 begin
   objet := TMonObjet.Create;
@@ -322,8 +322,8 @@ objet.Destroy;  // Ne vérifie pas si nil → plantage si nil !
 **Exemple 1 : Oubli de Free**
 
 ```pascal
-procedure CreerListe;
-var
+procedure CreerListe;  
+var  
   liste: TStringList;
 begin
   liste := TStringList.Create;
@@ -339,8 +339,8 @@ for i := 1 to 1000 do
 **Exemple 2 : Sortie Précoce**
 
 ```pascal
-procedure TraiterFichier(const nom: String);
-var
+procedure TraiterFichier(const nom: String);  
+var  
   liste: TStringList;
 begin
   liste := TStringList.Create;
@@ -357,8 +357,8 @@ end;
 **Correction :**
 
 ```pascal
-procedure TraiterFichierCorrect(const nom: String);
-var
+procedure TraiterFichierCorrect(const nom: String);  
+var  
   liste: TStringList;
 begin
   if not FileExists(nom) then
@@ -377,8 +377,8 @@ end;
 **Exemple 3 : Exception Non Gérée**
 
 ```pascal
-procedure TraiterDonnees;
-var
+procedure TraiterDonnees;  
+var  
   connexion: TConnexion;
 begin
   connexion := TConnexion.Create;
@@ -393,8 +393,8 @@ end;
 **Correction :**
 
 ```pascal
-procedure TraiterDonneesCorrect;
-var
+procedure TraiterDonneesCorrect;  
+var  
   connexion: TConnexion;
 begin
   connexion := TConnexion.Create;
@@ -517,8 +517,8 @@ uses
   {$ENDIF}
   Classes;
 
-procedure CreerFuite;
-var
+procedure CreerFuite;  
+var  
   liste: TStringList;
 begin
   liste := TStringList.Create;
@@ -544,8 +544,8 @@ Heap dump by heaptrc unit
 48 memory blocks allocated : 1892/2032
 48 memory blocks freed     : 1844/1984
 0 unfreed memory blocks : 48
-True heap size : 98304
-True free heap : 98176
+True heap size : 98304  
+True free heap : 98176  
 
 Call trace for block $00007F8A40001234 size 48
   $00402345  CREERFUITE,  line 12 of testfuite.pas
@@ -564,8 +564,8 @@ Call trace for block $00007F8A40001234 size 48
 **Installation Ubuntu/Debian :**
 
 ```bash
-sudo apt update
-sudo apt install valgrind
+sudo apt update  
+sudo apt install valgrind  
 ```
 
 **Utilisation :**
@@ -609,15 +609,15 @@ valgrind --leak-check=full --show-leak-kinds=all ./monprogramme
 var
   compteurObjets: Integer = 0;
 
-constructor TMonObjet.Create;
-begin
+constructor TMonObjet.Create;  
+begin  
   inherited Create;
   Inc(compteurObjets);
   WriteLn('Objets créés : ', compteurObjets);
 end;
 
-destructor TMonObjet.Destroy;
-begin
+destructor TMonObjet.Destroy;  
+begin  
   Dec(compteurObjets);
   WriteLn('Objets actifs : ', compteurObjets);
   inherited Destroy;
@@ -636,8 +636,8 @@ end;
 **Template standard :**
 
 ```pascal
-procedure Template;
-var
+procedure Template;  
+var  
   objet: TMonObjet;
 begin
   objet := TMonObjet.Create;
@@ -652,8 +652,8 @@ end;
 **Pour plusieurs objets :**
 
 ```pascal
-procedure TemplateMultiple;
-var
+procedure TemplateMultiple;  
+var  
   objet1: TObjet1;
   objet2: TObjet2;
 begin
@@ -674,8 +674,8 @@ end;
 **Ou avec FreeAndNil :**
 
 ```pascal
-procedure TemplateMultipleSimplifiee;
-var
+procedure TemplateMultipleSimplifiee;  
+var  
   objet1: TObjet1;
   objet2: TObjet2;
 begin
@@ -707,15 +707,15 @@ type
     destructor Destroy; override;
   end;
 
-constructor TGestionnaire.Create;
-begin
+constructor TGestionnaire.Create;  
+begin  
   inherited Create;
   FConnexion := nil;  // Initialisation explicite
   FListe := nil;
 end;
 
-destructor TGestionnaire.Destroy;
-begin
+destructor TGestionnaire.Destroy;  
+begin  
   FreeAndNil(FConnexion);  // Safe même si nil
   FreeAndNil(FListe);
   inherited Destroy;
@@ -729,8 +729,8 @@ end;
 **Exemple : Formulaire et composants**
 
 ```pascal
-procedure TFormPrincipal.FormCreate(Sender: TObject);
-var
+procedure TFormPrincipal.FormCreate(Sender: TObject);  
+var  
   bouton: TButton;
 begin
   bouton := TButton.Create(Self);  // Self = propriétaire
@@ -757,13 +757,13 @@ type
     destructor Destroy; override;
   end;
 
-procedure TGestionnaire.SetListe(AListe: TStringList);
-begin
+procedure TGestionnaire.SetListe(AListe: TStringList);  
+begin  
   FListe := AListe;  // Simple référence
 end;
 
-destructor TGestionnaire.Destroy;
-begin
+destructor TGestionnaire.Destroy;  
+begin  
   // Doit-on libérer FListe ?
   // Problème : On ne sait pas si on est propriétaire !
   inherited Destroy;
@@ -783,8 +783,8 @@ type
     destructor Destroy; override;
   end;
 
-procedure TGestionnaire.SetListe(AListe: TStringList; AProprietaire: Boolean);
-begin
+procedure TGestionnaire.SetListe(AListe: TStringList; AProprietaire: Boolean);  
+begin  
   if FProprietaire and Assigned(FListe) then
     FListe.Free;  // Libérer l'ancienne si propriétaire
 
@@ -792,8 +792,8 @@ begin
   FProprietaire := AProprietaire;
 end;
 
-destructor TGestionnaire.Destroy;
-begin
+destructor TGestionnaire.Destroy;  
+begin  
   if FProprietaire then
     FreeAndNil(FListe);
   inherited Destroy;
@@ -809,8 +809,8 @@ end;
 **❌ Inefficace : Créer/Détruire répétitivement**
 
 ```pascal
-for i := 1 to 100000 do
-begin
+for i := 1 to 100000 do  
+begin  
   liste := TStringList.Create;
   liste.Add('Element');
   Traiter(liste);
@@ -821,8 +821,8 @@ end;
 **✅ Optimisé : Réutiliser**
 
 ```pascal
-liste := TStringList.Create;
-try
+liste := TStringList.Create;  
+try  
   for i := 1 to 100000 do
   begin
     liste.Clear;
@@ -844,8 +844,8 @@ end;
 **TStringList et TList :**
 
 ```pascal
-liste := TStringList.Create;
-try
+liste := TStringList.Create;  
+try  
   liste.Capacity := 10000;  // Pré-alloue pour 10 000 éléments
 
   for i := 1 to 10000 do
@@ -863,8 +863,8 @@ end;
 **Après traitement de grandes données :**
 
 ```pascal
-procedure TraiterGrandesDonnees;
-var
+procedure TraiterGrandesDonnees;  
+var  
   liste: TStringList;
 begin
   liste := TStringList.Create;
@@ -909,8 +909,8 @@ end;
 **Optimisation : UniqueString**
 
 ```pascal
-procedure ModifierChaine(var s: String);
-begin
+procedure ModifierChaine(var s: String);  
+begin  
   UniqueString(s);  // Force une copie si partagée
   // Maintenant on peut modifier sans affecter l'original
   s[1] := 'X';
@@ -964,8 +964,8 @@ end;
 **Toujours vérifier avant utilisation :**
 
 ```pascal
-procedure Traiter(p: PMonType);
-begin
+procedure Traiter(p: PMonType);  
+begin  
   if not Assigned(p) then  // ou : if p = nil then
   begin
     WriteLn('Erreur : pointeur nil');
@@ -1029,26 +1029,26 @@ type
     property Obj: TObject read GetObject;
   end;
 
-constructor TAutoFree.Create(AObject: TObject);
-begin
+constructor TAutoFree.Create(AObject: TObject);  
+begin  
   inherited Create;
   FObject := AObject;
 end;
 
-destructor TAutoFree.Destroy;
-begin
+destructor TAutoFree.Destroy;  
+begin  
   FreeAndNil(FObject);
   inherited Destroy;
 end;
 
-function TAutoFree.GetObject: TObject;
-begin
+function TAutoFree.GetObject: TObject;  
+begin  
   Result := FObject;
 end;
 
 // Utilisation
-procedure Exemple;
-var
+procedure Exemple;  
+var  
   auto: IAutoFree;
   liste: TStringList;
 begin
@@ -1079,30 +1079,30 @@ type
     procedure Release(AObject: T);
   end;
 
-constructor TObjectPool<T>.Create;
-begin
+constructor TObjectPool<T>.Create;  
+begin  
   inherited Create;
   FPool := TQueue<T>.Create;
 end;
 
-destructor TObjectPool<T>.Destroy;
-begin
+destructor TObjectPool<T>.Destroy;  
+begin  
   while FPool.Count > 0 do
     FPool.Dequeue.Free;
   FPool.Free;
   inherited Destroy;
 end;
 
-function TObjectPool<T>.Acquire: T;
-begin
+function TObjectPool<T>.Acquire: T;  
+begin  
   if FPool.Count > 0 then
     Result := FPool.Dequeue
   else
     Result := T.Create;
 end;
 
-procedure TObjectPool<T>.Release(AObject: T);
-begin
+procedure TObjectPool<T>.Release(AObject: T);  
+begin  
   // Réinitialiser l'objet si nécessaire
   FPool.Enqueue(AObject);
 end;
@@ -1149,8 +1149,8 @@ end;
 ```pascal
 uses Windows;
 
-function GetMemoryUsage: Int64;
-var
+function GetMemoryUsage: Int64;  
+var  
   pmc: TProcessMemoryCounters;
 begin
   pmc.cb := SizeOf(pmc);
@@ -1164,8 +1164,8 @@ end;
 **Linux :**
 
 ```pascal
-function GetMemoryUsageLinux: Int64;
-var
+function GetMemoryUsageLinux: Int64;  
+var  
   F: TextFile;
   ligne: String;
 begin
@@ -1195,8 +1195,8 @@ end;
 **Portable :**
 
 ```pascal
-function GetMemoryUsage: Int64;
-begin
+function GetMemoryUsage: Int64;  
+begin  
   {$IFDEF WINDOWS}
   Result := GetMemoryUsageWindows;
   {$ENDIF}
@@ -1265,8 +1265,8 @@ end;
 
 **Erreur :**
 ```pascal
-procedure Traiter;
-var
+procedure Traiter;  
+var  
   liste: TStringList;
 begin
   liste := TStringList.Create;
@@ -1281,8 +1281,8 @@ end;
 
 **Erreur :**
 ```pascal
-function CreerListe: TStringList;
-begin
+function CreerListe: TStringList;  
+begin  
   Result := TStringList.Create;
   Result.Add('Element');
   Result.Free;  // ERREUR ! Libéré avant retour
@@ -1343,16 +1343,16 @@ type
     destructor Destroy; override;
   end;
 
-constructor TObjetTrace.Create;
-begin
+constructor TObjetTrace.Create;  
+begin  
   inherited Create;
   Inc(CompteurAllocations);
   WriteLn('[+] Allocation #', CompteurAllocations, ' (Actifs: ',
           CompteurAllocations - CompteurLiberations, ')');
 end;
 
-destructor TObjetTrace.Destroy;
-begin
+destructor TObjetTrace.Destroy;  
+begin  
   Inc(CompteurLiberations);
   WriteLn('[-] Libération #', CompteurLiberations, ' (Actifs: ',
           CompteurAllocations - CompteurLiberations, ')');
@@ -1363,8 +1363,8 @@ end;
 ### 13.2 Logging des Allocations
 
 ```pascal
-procedure LogAllocation(const nom: String; taille: Integer);
-var
+procedure LogAllocation(const nom: String; taille: Integer);  
+var  
   F: TextFile;
 begin
   AssignFile(F, 'allocations.log');
@@ -1386,8 +1386,8 @@ end;
 ```pascal
 {$ASSERTIONS ON}
 
-procedure Traiter(objet: TMonObjet);
-begin
+procedure Traiter(objet: TMonObjet);  
+begin  
   Assert(Assigned(objet), 'Objet ne doit pas être nil');
   Assert(objet is TMonObjet, 'Type incorrect');
 
@@ -1411,8 +1411,8 @@ end;
 
 **Pattern de base :**
 ```pascal
-objet := TObjet.Create;
-try
+objet := TObjet.Create;  
+try  
   // Utilisation
 finally
   objet.Free;
@@ -1421,9 +1421,9 @@ end;
 
 **Pattern multi-objets :**
 ```pascal
-objet1 := nil;
-objet2 := nil;
-try
+objet1 := nil;  
+objet2 := nil;  
+try  
   objet1 := TObjet1.Create;
   objet2 := TObjet2.Create;
   // Utilisation
@@ -1435,15 +1435,15 @@ end;
 
 **Pattern de fonction :**
 ```pascal
-function CreerObjet: TObjet;
-begin
+function CreerObjet: TObjet;  
+begin  
   Result := TObjet.Create;
   // L'appelant est responsable du Free
 end;
 
 // Utilisation
-objet := CreerObjet;
-try
+objet := CreerObjet;  
+try  
   // ...
 finally
   objet.Free;

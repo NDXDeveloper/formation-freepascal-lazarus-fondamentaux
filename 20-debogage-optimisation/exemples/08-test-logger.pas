@@ -10,8 +10,8 @@ program TestLogger;
 uses
   SimpleLogger, SysUtils;
 
-procedure ConnecterBDD;
-begin
+procedure ConnecterBDD;  
+begin  
   Logger.Info('Tentative de connexion a la base de donnees');
 
   if Random(2) = 0 then
@@ -23,8 +23,8 @@ begin
   Logger.Info('Connexion reussie');
 end;
 
-procedure TraiterFichier(const NomFichier: String);
-var
+procedure TraiterFichier(const NomFichier: String);  
+var  
   i: Integer;
 begin
   Logger.Debug('Debut traitement: %s', [NomFichier]);

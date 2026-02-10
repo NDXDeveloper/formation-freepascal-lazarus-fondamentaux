@@ -79,8 +79,8 @@ La notation Big O décrit comment le temps d'exécution augmente quand la taille
 **Recherche Linéaire - O(n)**
 
 ```pascal
-function RechercheLineaire(const tab: array of Integer; valeur: Integer): Integer;
-var
+function RechercheLineaire(const tab: array of Integer; valeur: Integer): Integer;  
+var  
   i: Integer;
 begin
   Result := -1;  // Non trouvé
@@ -105,8 +105,8 @@ end;
 **Prérequis :** Le tableau DOIT être trié.
 
 ```pascal
-function RechercheBinaire(const tab: array of Integer; valeur: Integer): Integer;
-var
+function RechercheBinaire(const tab: array of Integer; valeur: Integer): Integer;  
+var  
   gauche, droite, milieu: Integer;
 begin
   Result := -1;
@@ -161,8 +161,8 @@ end.
 
 **Résultat typique :**
 ```
-Linéaire : 12 ms
-Binaire : 0 ms
+Linéaire : 12 ms  
+Binaire : 0 ms  
 ```
 
 **Quand utiliser quoi ?**
@@ -262,8 +262,8 @@ end;
 **⚠️ À ÉVITER pour de grandes quantités de données**
 
 ```pascal
-procedure TriBulles(var tab: array of Integer);
-var
+procedure TriBulles(var tab: array of Integer);  
+var  
   i, j, temp: Integer;
 begin
   for i := Low(tab) to High(tab) - 1 do
@@ -293,8 +293,8 @@ end;
 **✅ RECOMMANDÉ**
 
 ```pascal
-procedure TriRapide(var tab: array of Integer; gauche, droite: Integer);
-var
+procedure TriRapide(var tab: array of Integer; gauche, droite: Integer);  
+var  
   i, j, pivot, temp: Integer;
 begin
   if gauche >= droite then Exit;
@@ -349,9 +349,9 @@ var
   i: Integer;
   debut: QWord;
 
-procedure InitialiserTableau(var tab: array of Integer);
-var i: Integer;
-begin
+procedure InitialiserTableau(var tab: array of Integer);  
+var i: Integer;  
+begin  
   Randomize;
   for i := Low(tab) to High(tab) do
     tab[i] := Random(100000);
@@ -381,10 +381,10 @@ end.
 
 **Résultat typique :**
 ```
-Test Tri à Bulles...
-Tri à Bulles : 1450 ms
-Test Tri Rapide...
-Tri Rapide : 4 ms
+Test Tri à Bulles...  
+Tri à Bulles : 1450 ms  
+Test Tri Rapide...  
+Tri Rapide : 4 ms  
 
 → QuickSort est ~360x plus rapide !
 ```
@@ -401,8 +401,8 @@ uses Classes;
 var
   tableau: array of Integer;
 
-function CompareInt(Item1, Item2: Pointer): Integer;
-begin
+function CompareInt(Item1, Item2: Pointer): Integer;  
+begin  
   Result := PInteger(Item1)^ - PInteger(Item2)^;
 end;
 
@@ -456,8 +456,8 @@ for i := 1 to Length(chaine) do  // Length() appelé à chaque itération !
 **✅ Optimisé :**
 
 ```pascal
-longueur := Length(chaine);  // Calcul une seule fois
-for i := 1 to longueur do
+longueur := Length(chaine);  // Calcul une seule fois  
+for i := 1 to longueur do  
   Traiter(chaine[i]);
 ```
 
@@ -466,9 +466,9 @@ for i := 1 to longueur do
 **❌ Inefficace :**
 
 ```pascal
-trouve := False;
-for i := 1 to 1000000 do
-begin
+trouve := False;  
+for i := 1 to 1000000 do  
+begin  
   if tableau[i] = valeur then
     trouve := True;
   // Continue même après avoir trouvé !
@@ -478,9 +478,9 @@ end;
 **✅ Optimisé :**
 
 ```pascal
-trouve := False;
-for i := 1 to 1000000 do
-begin
+trouve := False;  
+for i := 1 to 1000000 do  
+begin  
   if tableau[i] = valeur then
   begin
     trouve := True;
@@ -628,8 +628,8 @@ end;
 
 **Résultats :**
 ```
-TStringList : 1200 ms
-TDictionary : 1 ms
+TStringList : 1200 ms  
+TDictionary : 1 ms  
 
 → 1200x plus rapide !
 ```
@@ -781,9 +781,9 @@ for i := 1 to Length(chaine) do
 **✅ Optimisé avec accès direct :**
 
 ```pascal
-SetLength(traiter, Length(chaine));
-for i := 1 to Length(chaine) do
-begin
+SetLength(traiter, Length(chaine));  
+for i := 1 to Length(chaine) do  
+begin  
   traiter[i] := chaine[i];
   // Traitement
 end;
@@ -800,8 +800,8 @@ end;
 **❌ Inefficace - Suppression dans la boucle :**
 
 ```pascal
-procedure FiltrerPairs(liste: TList<Integer>);
-var
+procedure FiltrerPairs(liste: TList<Integer>);  
+var  
   i: Integer;
 begin
   for i := liste.Count - 1 downto 0 do
@@ -813,8 +813,8 @@ end;
 **✅ Optimisé - Créer nouvelle liste :**
 
 ```pascal
-function FiltrerPairs(liste: TList<Integer>): TList<Integer>;
-var
+function FiltrerPairs(liste: TList<Integer>): TList<Integer>;  
+var  
   element: Integer;
 begin
   Result := TList<Integer>.Create;
@@ -838,27 +838,27 @@ end;
 **❌ Inefficace - Trois parcours :**
 
 ```pascal
-function Moyenne(liste: TList<Integer>): Double;
-var i: Integer; total: Int64;
-begin
+function Moyenne(liste: TList<Integer>): Double;  
+var i: Integer; total: Int64;  
+begin  
   total := 0;
   for i := 0 to liste.Count - 1 do
     total := total + liste[i];
   Result := total / liste.Count;
 end;
 
-function Minimum(liste: TList<Integer>): Integer;
-var i: Integer;
-begin
+function Minimum(liste: TList<Integer>): Integer;  
+var i: Integer;  
+begin  
   Result := liste[0];
   for i := 1 to liste.Count - 1 do
     if liste[i] < Result then
       Result := liste[i];
 end;
 
-function Maximum(liste: TList<Integer>): Integer;
-var i: Integer;
-begin
+function Maximum(liste: TList<Integer>): Integer;  
+var i: Integer;  
+begin  
   Result := liste[0];
   for i := 1 to liste.Count - 1 do
     if liste[i] > Result then
@@ -905,8 +905,8 @@ end;
 **❌ Inefficace - O(n²) :**
 
 ```pascal
-function TousUniques(liste: TList<Integer>): Boolean;
-var
+function TousUniques(liste: TList<Integer>): Boolean;  
+var  
   i, j: Integer;
 begin
   Result := True;
@@ -920,8 +920,8 @@ end;
 **✅ Optimisé - O(n) avec TDictionary :**
 
 ```pascal
-function TousUniques(liste: TList<Integer>): Boolean;
-var
+function TousUniques(liste: TList<Integer>): Boolean;  
+var  
   vus: TDictionary<Integer, Boolean>;
   element: Integer;
 begin
@@ -952,8 +952,8 @@ end;
 **❌ Inefficace - O(n × m) :**
 
 ```pascal
-function Intersection(liste1, liste2: TList<Integer>): TList<Integer>;
-var
+function Intersection(liste1, liste2: TList<Integer>): TList<Integer>;  
+var  
   i, j: Integer;
 begin
   Result := TList<Integer>.Create;
@@ -970,8 +970,8 @@ end;
 **✅ Optimisé - O(n + m) avec TDictionary :**
 
 ```pascal
-function Intersection(liste1, liste2: TList<Integer>): TList<Integer>;
-var
+function Intersection(liste1, liste2: TList<Integer>): TList<Integer>;  
+var  
   ensemble: TDictionary<Integer, Boolean>;
   element: Integer;
 begin
@@ -1007,8 +1007,8 @@ end;
 **❌ Inefficace - Créer/Détruire répétitivement :**
 
 ```pascal
-for i := 1 to 100000 do
-begin
+for i := 1 to 100000 do  
+begin  
   liste := TStringList.Create;
   liste.Add('Element');
   Traiter(liste);
@@ -1019,8 +1019,8 @@ end;
 **✅ Optimisé - Réutiliser :**
 
 ```pascal
-liste := TStringList.Create;
-try
+liste := TStringList.Create;  
+try  
   for i := 1 to 100000 do
   begin
     liste.Clear;
@@ -1039,17 +1039,17 @@ end;
 **❌ Sans pré-allocation :**
 
 ```pascal
-liste := TList<Integer>.Create;
-for i := 1 to 100000 do
+liste := TList<Integer>.Create;  
+for i := 1 to 100000 do  
   liste.Add(i);  // Réallocations multiples
 ```
 
 **✅ Avec pré-allocation :**
 
 ```pascal
-liste := TList<Integer>.Create;
-liste.Capacity := 100000;  // Alloue une seule fois
-for i := 1 to 100000 do
+liste := TList<Integer>.Create;  
+liste.Capacity := 100000;  // Alloue une seule fois  
+for i := 1 to 100000 do  
   liste.Add(i);
 ```
 
@@ -1064,8 +1064,8 @@ for i := 1 to 100000 do
 
 ```pascal
 // Si vous savez que vous avez terminé avec de grandes données
-liste.Clear;
-liste.Capacity := 0;  // Libère la mémoire allouée
+liste.Clear;  
+liste.Capacity := 0;  // Libère la mémoire allouée  
 ```
 
 ---
@@ -1079,8 +1079,8 @@ liste.Capacity := 0;  // Libère la mémoire allouée
 **Exemple : Fibonacci naïf - O(2ⁿ) :**
 
 ```pascal
-function Fibonacci(n: Integer): Int64;
-begin
+function Fibonacci(n: Integer): Int64;  
+begin  
   if n <= 1 then
     Result := n
   else
@@ -1096,8 +1096,8 @@ end;
 var
   FibCache: TDictionary<Integer, Int64>;
 
-function FibonacciMemo(n: Integer): Int64;
-begin
+function FibonacciMemo(n: Integer): Int64;  
+begin  
   if n <= 1 then
     Result := n
   else if FibCache.ContainsKey(n) then
@@ -1110,8 +1110,8 @@ begin
 end;
 
 // Initialisation
-FibCache := TDictionary<Integer, Int64>.Create;
-try
+FibCache := TDictionary<Integer, Int64>.Create;  
+try  
   WriteLn(FibonacciMemo(40));  // Instantané !
 finally
   FibCache.Free;
@@ -1130,8 +1130,8 @@ end;
 **❌ Requête par requête :**
 
 ```pascal
-for i := 1 to 1000 do
-begin
+for i := 1 to 1000 do  
+begin  
   Query.SQL.Text := 'INSERT INTO Table VALUES (' + IntToStr(i) + ')';
   Query.ExecSQL;  // 1000 allers-retours réseau !
 end;
@@ -1140,11 +1140,11 @@ end;
 **✅ Par lots :**
 
 ```pascal
-Query.SQL.Text := 'INSERT INTO Table VALUES (:valeur)';
-Query.Prepare;
+Query.SQL.Text := 'INSERT INTO Table VALUES (:valeur)';  
+Query.Prepare;  
 
-SQLTransaction.Active := True;
-try
+SQLTransaction.Active := True;  
+try  
   for i := 1 to 1000 do
   begin
     Query.ParamByName('valeur').AsInteger := i;
@@ -1160,14 +1160,14 @@ end;
 **Encore mieux - Insertion multiple :**
 
 ```pascal
-sql := 'INSERT INTO Table VALUES ';
-for i := 1 to 1000 do
-begin
+sql := 'INSERT INTO Table VALUES ';  
+for i := 1 to 1000 do  
+begin  
   if i > 1 then sql := sql + ',';
   sql := sql + '(' + IntToStr(i) + ')';
-end;
-Query.SQL.Text := sql;
-Query.ExecSQL;  // Une seule requête !
+end;  
+Query.SQL.Text := sql;  
+Query.ExecSQL;  // Une seule requête !  
 ```
 
 **Performance :**
@@ -1191,8 +1191,8 @@ type
     property Donnees: TList<Integer> read GetDonnees;
   end;
 
-procedure TDataManager.ChargerDonnees;
-begin
+procedure TDataManager.ChargerDonnees;  
+begin  
   if FChargeees then Exit;  // Déjà chargées
 
   WriteLn('Chargement des données...');
@@ -1201,8 +1201,8 @@ begin
   FChargeees := True;
 end;
 
-function TDataManager.GetDonnees: TList<Integer>;
-begin
+function TDataManager.GetDonnees: TList<Integer>;  
+begin  
   if not FChargeees then
     ChargerDonnees;
   Result := FDonnees;
@@ -1230,8 +1230,8 @@ end;
 
 ```pascal
 // ✅ Portable
-uses SysUtils;
-chemin := IncludeTrailingPathDelimiter(repertoire) + fichier;
+uses SysUtils;  
+chemin := IncludeTrailingPathDelimiter(repertoire) + fichier;  
 
 // ❌ Spécifique Windows
 chemin := repertoire + '\' + fichier;

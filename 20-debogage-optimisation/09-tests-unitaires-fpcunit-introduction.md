@@ -28,14 +28,14 @@ Les tests unitaires sont une pratique fondamentale du développement professionn
 
 ```pascal
 // Fonction à tester
-function Additionner(a, b: Integer): Integer;
-begin
+function Additionner(a, b: Integer): Integer;  
+begin  
   Result := a + b;
 end;
 
 // Test unitaire correspondant
-procedure TestAdditionner;
-begin
+procedure TestAdditionner;  
+begin  
   Assert(Additionner(2, 3) = 5, 'Erreur: 2 + 3 devrait donner 5');
   Assert(Additionner(0, 0) = 0, 'Erreur: 0 + 0 devrait donner 0');
   Assert(Additionner(-5, 5) = 0, 'Erreur: -5 + 5 devrait donner 0');
@@ -185,9 +185,9 @@ dir /s C:\fpc\*fpcunit*
 
 **Si installé, vous devriez voir :**
 ```
-fpcunit.ppu
-fpcunit.o
-testutils.ppu
+fpcunit.ppu  
+fpcunit.o  
+testutils.ppu  
 ...
 ```
 
@@ -253,32 +253,32 @@ unit Calculatrice;
 
 interface
 
-function Additionner(a, b: Integer): Integer;
-function Soustraire(a, b: Integer): Integer;
-function Multiplier(a, b: Integer): Integer;
-function Diviser(a, b: Double): Double;
+function Additionner(a, b: Integer): Integer;  
+function Soustraire(a, b: Integer): Integer;  
+function Multiplier(a, b: Integer): Integer;  
+function Diviser(a, b: Double): Double;  
 
 implementation
 
 uses SysUtils;
 
-function Additionner(a, b: Integer): Integer;
-begin
+function Additionner(a, b: Integer): Integer;  
+begin  
   Result := a + b;
 end;
 
-function Soustraire(a, b: Integer): Integer;
-begin
+function Soustraire(a, b: Integer): Integer;  
+begin  
   Result := a - b;
 end;
 
-function Multiplier(a, b: Integer): Integer;
-begin
+function Multiplier(a, b: Integer): Integer;  
+begin  
   Result := a * b;
 end;
 
-function Diviser(a, b: Double): Double;
-begin
+function Diviser(a, b: Double): Double;  
+begin  
   if b = 0 then
     raise Exception.Create('Division par zéro');
   Result := a / b;
@@ -314,36 +314,36 @@ type
 
 implementation
 
-procedure TTestCalculatrice.TestAdditionner;
-begin
+procedure TTestCalculatrice.TestAdditionner;  
+begin  
   AssertEquals('2 + 3 devrait être 5', 5, Additionner(2, 3));
   AssertEquals('0 + 0 devrait être 0', 0, Additionner(0, 0));
   AssertEquals('-5 + 5 devrait être 0', 0, Additionner(-5, 5));
   AssertEquals('-10 + -5 devrait être -15', -15, Additionner(-10, -5));
 end;
 
-procedure TTestCalculatrice.TestSoustraire;
-begin
+procedure TTestCalculatrice.TestSoustraire;  
+begin  
   AssertEquals('5 - 3 devrait être 2', 2, Soustraire(5, 3));
   AssertEquals('0 - 0 devrait être 0', 0, Soustraire(0, 0));
   AssertEquals('10 - (-5) devrait être 15', 15, Soustraire(10, -5));
 end;
 
-procedure TTestCalculatrice.TestMultiplier;
-begin
+procedure TTestCalculatrice.TestMultiplier;  
+begin  
   AssertEquals('3 * 4 devrait être 12', 12, Multiplier(3, 4));
   AssertEquals('0 * 100 devrait être 0', 0, Multiplier(0, 100));
   AssertEquals('-5 * 3 devrait être -15', -15, Multiplier(-5, 3));
 end;
 
-procedure TTestCalculatrice.TestDiviser;
-begin
+procedure TTestCalculatrice.TestDiviser;  
+begin  
   AssertEquals('10 / 2 devrait être 5', 5.0, Diviser(10, 2), 0.001);  // 0.001 = tolérance pour comparaison de réels
   AssertEquals('7 / 2 devrait être 3.5', 3.5, Diviser(7, 2), 0.001);
 end;
 
-procedure TTestCalculatrice.TestDivisionParZero;
-begin
+procedure TTestCalculatrice.TestDivisionParZero;  
+begin  
   try
     Diviser(10, 0);
     Fail('Une exception devrait être levée');
@@ -403,8 +403,8 @@ fpc AllTests.lpr
 **Sortie attendue :**
 
 ```
-Tests Unitaires - Calculatrice
-Time: 0.001
+Tests Unitaires - Calculatrice  
+Time: 0.001  
 
 OK: 5 tests
 ```
@@ -412,8 +412,8 @@ OK: 5 tests
 **Si un test échoue :**
 
 ```
-Tests Unitaires - Calculatrice
-Time: 0.002
+Tests Unitaires - Calculatrice  
+Time: 0.002  
 
 FAILURES:
   Test "TestAdditionner" failed:
@@ -422,9 +422,9 @@ FAILURES:
 ERRORS:
   0
 
-Ran: 5 tests
-Failures: 1
-Errors: 0
+Ran: 5 tests  
+Failures: 1  
+Errors: 0  
 ```
 
 ---
@@ -437,12 +437,12 @@ Errors: 0
 
 ```pascal
 // Pour entiers
-AssertEquals('Message', Attendu, Obtenu);
-AssertEquals('2 + 2 = 4', 4, Additionner(2, 2));
+AssertEquals('Message', Attendu, Obtenu);  
+AssertEquals('2 + 2 = 4', 4, Additionner(2, 2));  
 
 // Pour réels (avec tolérance)
-AssertEquals('Message', Attendu, Obtenu, Delta);
-AssertEquals('Division', 3.5, Diviser(7, 2), 0.001);
+AssertEquals('Message', Attendu, Obtenu, Delta);  
+AssertEquals('Division', 3.5, Diviser(7, 2), 0.001);  
 
 // Pour chaînes
 AssertEquals('Noms identiques', 'Jean', Nom);
@@ -451,21 +451,21 @@ AssertEquals('Noms identiques', 'Jean', Nom);
 **AssertTrue / AssertFalse :**
 
 ```pascal
-AssertTrue('Devrait être vrai', Condition);
-AssertTrue('x > 0', x > 0);
+AssertTrue('Devrait être vrai', Condition);  
+AssertTrue('x > 0', x > 0);  
 
-AssertFalse('Devrait être faux', Condition);
-AssertFalse('Liste vide', Liste.Count > 0);
+AssertFalse('Devrait être faux', Condition);  
+AssertFalse('Liste vide', Liste.Count > 0);  
 ```
 
 **AssertNull / AssertNotNull :**
 
 ```pascal
-AssertNull('Devrait être nil', Pointeur);
-AssertNull('Pas encore créé', MonObjet);
+AssertNull('Devrait être nil', Pointeur);  
+AssertNull('Pas encore créé', MonObjet);  
 
-AssertNotNull('Ne devrait pas être nil', Pointeur);
-AssertNotNull('Objet créé', MonObjet);
+AssertNotNull('Ne devrait pas être nil', Pointeur);  
+AssertNotNull('Objet créé', MonObjet);  
 ```
 
 ### 5.2 Assertions pour Exceptions
@@ -473,16 +473,16 @@ AssertNotNull('Objet créé', MonObjet);
 **Vérifier qu'une exception est levée :**
 
 ```pascal
-procedure TestExceptionAttendue;
-begin
+procedure TestExceptionAttendue;  
+begin  
   AssertException('Division par zéro devrait lever exception',
                   EDivByZero,
                   @FonctionQuiDivise);
 end;
 
 // Ou manuellement
-procedure TestExceptionManuelle;
-begin
+procedure TestExceptionManuelle;  
+begin  
   try
     FonctionDangereuse;
     Fail('Une exception devrait être levée');
@@ -498,8 +498,8 @@ end;
 **Fail :**
 
 ```pascal
-procedure TestLogique;
-begin
+procedure TestLogique;  
+begin  
   if not ConditionComplexe then
     Fail('La condition devrait être vraie');
 end;
@@ -508,8 +508,8 @@ end;
 **AssertSame / AssertNotSame :**
 
 ```pascal
-AssertSame('Même objet', Objet1, Objet2);
-AssertNotSame('Objets différents', Objet1, Objet2);
+AssertSame('Même objet', Objet1, Objet2);  
+AssertNotSame('Objets différents', Objet1, Objet2);  
 ```
 
 ---
@@ -535,28 +535,28 @@ type
     procedure TestSuppression;
   end;
 
-procedure TTestAvecSetup.SetUp;
-begin
+procedure TTestAvecSetup.SetUp;  
+begin  
   // Appelé AVANT chaque test
   FListe := TStringList.Create;
   FListe.Add('Element 1');
   FListe.Add('Element 2');
 end;
 
-procedure TTestAvecSetup.TearDown;
-begin
+procedure TTestAvecSetup.TearDown;  
+begin  
   // Appelé APRÈS chaque test
   FreeAndNil(FListe);
 end;
 
-procedure TTestAvecSetup.TestAjout;
-begin
+procedure TTestAvecSetup.TestAjout;  
+begin  
   FListe.Add('Element 3');
   AssertEquals('3 éléments', 3, FListe.Count);
 end;
 
-procedure TTestAvecSetup.TestSuppression;
-begin
+procedure TTestAvecSetup.TestSuppression;  
+begin  
   FListe.Delete(0);
   AssertEquals('1 élément restant', 1, FListe.Count);
 end;
@@ -574,8 +574,8 @@ Pour chaque test:
 **Exemple complet :**
 
 ```
-SetUp → TestAjout → TearDown
-SetUp → TestSuppression → TearDown
+SetUp → TestAjout → TearDown  
+SetUp → TestSuppression → TearDown  
 ```
 
 ### 6.2 Initialisation Unique pour Toute la Classe
@@ -604,14 +604,14 @@ implementation
 var
   BaseDeDonnees: TDatabase;
 
-procedure TTestAvecInitGlobale.Test1;
-begin
+procedure TTestAvecInitGlobale.Test1;  
+begin  
   // Utilise BaseDeDonnees, initialisée une seule fois
   AssertNotNull('Base de données initialisée', BaseDeDonnees);
 end;
 
-procedure TTestAvecInitGlobale.Test2;
-begin
+procedure TTestAvecInitGlobale.Test2;  
+begin  
   AssertTrue('Base de données connectée', BaseDeDonnees.Connected);
 end;
 
@@ -641,8 +641,8 @@ end.
 
 ```pascal
 // Pour la classe TClient
-unit TestClient;
-type
+unit TestClient;  
+type  
   TTestClient = class(TTestCase)
   published
     procedure TestCreation;
@@ -651,8 +651,8 @@ type
   end;
 
 // Pour la classe TCommande
-unit TestCommande;
-type
+unit TestCommande;  
+type  
   TTestCommande = class(TTestCase)
   published
     procedure TestAjouterArticle;
@@ -666,17 +666,17 @@ type
 **❌ Mauvais noms :**
 
 ```pascal
-procedure Test1;
-procedure Test2;
-procedure TestFonction;
+procedure Test1;  
+procedure Test2;  
+procedure TestFonction;  
 ```
 
 **✅ Bons noms :**
 
 ```pascal
-procedure TestAdditionnerDeuxNombresPositifs;
-procedure TestDivisionParZeroLeveException;
-procedure TestListeVideRetourneTailleDeux;
+procedure TestAdditionnerDeuxNombresPositifs;  
+procedure TestDivisionParZeroLeveException;  
+procedure TestListeVideRetourneTailleDeux;  
 ```
 
 **Convention de nommage :**
@@ -686,9 +686,9 @@ Test[Fonction]_[Scenario]_[ResultatAttendu]
 
 **Exemples :**
 ```pascal
-TestCalculerTotal_PanierVide_RetourneZero
-TestAjouterClient_NomVide_LeveException
-TestConnexion_MauvauxMotDePasse_RetourneFalse
+TestCalculerTotal_PanierVide_RetourneZero  
+TestAjouterClient_NomVide_LeveException  
+TestConnexion_MauvauxMotDePasse_RetourneFalse  
 ```
 
 ### 7.3 Organiser en Suites
@@ -729,8 +729,8 @@ initialization
 **Exemple problématique :**
 
 ```pascal
-function EnvoyerEmail(const destinataire, sujet, corps: String): Boolean;
-begin
+function EnvoyerEmail(const destinataire, sujet, corps: String): Boolean;  
+begin  
   // Envoie VRAIMENT un email !
   Result := SMTPClient.Send(destinataire, sujet, corps);
 end;
@@ -764,33 +764,33 @@ type
     function GetNombreEmails: Integer;
   end;
 
-constructor TMockEmailSender.Create;
-begin
+constructor TMockEmailSender.Create;  
+begin  
   inherited;
   FEmailsEnvoyes := TStringList.Create;
 end;
 
-destructor TMockEmailSender.Destroy;
-begin
+destructor TMockEmailSender.Destroy;  
+begin  
   FEmailsEnvoyes.Free;
   inherited;
 end;
 
-function TMockEmailSender.Send(const dest, subj, body: String): Boolean;
-begin
+function TMockEmailSender.Send(const dest, subj, body: String): Boolean;  
+begin  
   // Ne fait QUE enregistrer
   FEmailsEnvoyes.Add(Format('%s|%s|%s', [dest, subj, body]));
   Result := True;
 end;
 
-function TMockEmailSender.GetNombreEmails: Integer;
-begin
+function TMockEmailSender.GetNombreEmails: Integer;  
+begin  
   Result := FEmailsEnvoyes.Count;
 end;
 
 // Test
-procedure TTestEmail.TestEnvoiNotification;
-var
+procedure TTestEmail.TestEnvoiNotification;  
+var  
   mockSender: TMockEmailSender;
 begin
   mockSender := TMockEmailSender.Create;
@@ -815,8 +815,8 @@ end;
 **Programme simple :**
 
 ```pascal
-program RunTests;
-uses
+program RunTests;  
+uses  
   fpcunit, consoletestrunner, testregistry,
   TestCalculatrice;
 
@@ -862,10 +862,10 @@ Running tests...
 
 Time: 0.002
 
-OK: 5 tests
-Successes: 5
-Failures: 0
-Errors: 0
+OK: 5 tests  
+Successes: 5  
+Failures: 0  
+Errors: 0  
 ```
 
 ### 9.3 Sortie XML pour CI/CD
@@ -936,8 +936,8 @@ end.
 
 ```pascal
 // Test écrit AVANT le code
-procedure TTestPanier.TestAjouterArticle;
-var
+procedure TTestPanier.TestAjouterArticle;  
+var  
   panier: TPanier;
 begin
   panier := TPanier.Create;
@@ -966,24 +966,24 @@ type
     function NombreArticles: Integer;
   end;
 
-constructor TPanier.Create;
-begin
+constructor TPanier.Create;  
+begin  
   FArticles := TList.Create;
 end;
 
-destructor TPanier.Destroy;
-begin
+destructor TPanier.Destroy;  
+begin  
   FArticles.Free;
   inherited;
 end;
 
-procedure TPanier.Ajouter(const nom: String; prix: Double);
-begin
+procedure TPanier.Ajouter(const nom: String; prix: Double);  
+begin  
   FArticles.Add(nil);  // Version minimale !
 end;
 
-function TPanier.NombreArticles: Integer;
-begin
+function TPanier.NombreArticles: Integer;  
+begin  
   Result := FArticles.Count;
 end;
 ```
@@ -1000,8 +1000,8 @@ type
     Prix: Double;
   end;
 
-procedure TPanier.Ajouter(const nom: String; prix: Double);
-var
+procedure TPanier.Ajouter(const nom: String; prix: Double);  
+var  
   article: TArticle;
 begin
   article := TArticle.Create;
@@ -1016,8 +1016,8 @@ end;
 **Étape 4 : Nouveau test**
 
 ```pascal
-procedure TTestPanier.TestCalculerTotal;
-var
+procedure TTestPanier.TestCalculerTotal;  
+var  
   panier: TPanier;
 begin
   panier := TPanier.Create;
@@ -1096,8 +1096,8 @@ Les bons tests sont **FIRST** :
 **Structure de test recommandée :**
 
 ```pascal
-procedure TestExemple;
-var
+procedure TestExemple;  
+var  
   // ARRANGE (Préparer)
   calculatrice: TCalculatrice;
   resultat: Integer;
@@ -1123,8 +1123,8 @@ end;
 **❌ Mauvais : Teste trop de choses**
 
 ```pascal
-procedure TestToutEnUn;
-begin
+procedure TestToutEnUn;  
+begin  
   AssertEquals(5, Additionner(2, 3));
   AssertEquals(1, Soustraire(3, 2));
   AssertEquals(6, Multiplier(2, 3));
@@ -1137,23 +1137,23 @@ end;
 **✅ Bon : Un test par concept**
 
 ```pascal
-procedure TestAdditionner;
-begin
+procedure TestAdditionner;  
+begin  
   AssertEquals(5, Additionner(2, 3));
 end;
 
-procedure TestSoustraire;
-begin
+procedure TestSoustraire;  
+begin  
   AssertEquals(1, Soustraire(3, 2));
 end;
 
-procedure TestMultiplier;
-begin
+procedure TestMultiplier;  
+begin  
   AssertEquals(6, Multiplier(2, 3));
 end;
 
-procedure TestDiviser;
-begin
+procedure TestDiviser;  
+begin  
   AssertEquals(2.0, Diviser(6, 3), 0.01);
 end;
 ```
@@ -1189,8 +1189,8 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-echo "SUCCÈS: Tous les tests passent"
-exit 0
+echo "SUCCÈS: Tous les tests passent"  
+exit 0  
 ```
 
 **Batch (Windows) :**
@@ -1201,16 +1201,16 @@ REM run_tests.bat
 
 echo === Execution des tests unitaires ===
 
-REM Compiler
-fpc -B tests\AllTests.lpr
+REM Compiler  
+fpc -B tests\AllTests.lpr  
 
 if errorlevel 1 (
     echo ERREUR: Compilation echouee
     exit /b 1
 )
 
-REM Executer
-tests\AllTests.exe --format=xml --output=test-results.xml
+REM Executer  
+tests\AllTests.exe --format=xml --output=test-results.xml  
 
 if errorlevel 1 (
     echo ECHEC: Des tests ont echoue
@@ -1218,8 +1218,8 @@ if errorlevel 1 (
     exit /b 1
 )
 
-echo SUCCES: Tous les tests passent
-exit /b 0
+echo SUCCES: Tous les tests passent  
+exit /b 0  
 ```
 
 ### 12.2 GitLab CI
@@ -1285,8 +1285,8 @@ jobs:
 **Code portable :**
 
 ```pascal
-procedure TTestFichier.SetUp;
-begin
+procedure TTestFichier.SetUp;  
+begin  
   FCheminTest := GetTempDir + 'test.txt';
   // Fonctionne sur Windows ET Linux
 end;
@@ -1297,8 +1297,8 @@ end;
 **Test portable :**
 
 ```pascal
-procedure TestLireFichier;
-var
+procedure TestLireFichier;  
+var  
   contenu: String;
 begin
   contenu := LireFichier('test.txt');
@@ -1314,8 +1314,8 @@ end;
 ### 13.3 Tests Spécifiques à une Plateforme
 
 ```pascal
-procedure TTestPlateforme.TestFonctionWindows;
-begin
+procedure TTestPlateforme.TestFonctionWindows;  
+begin  
   {$IFDEF WINDOWS}
   // Test spécifique Windows
   AssertTrue('Fonctionnalité Windows', FonctionWindows);

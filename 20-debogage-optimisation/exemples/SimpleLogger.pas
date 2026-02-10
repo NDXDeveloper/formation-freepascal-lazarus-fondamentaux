@@ -53,8 +53,8 @@ var
 
 implementation
 
-constructor TSimpleLogger.Create(const AFileName: String; AMinLevel: TLogLevel);
-begin
+constructor TSimpleLogger.Create(const AFileName: String; AMinLevel: TLogLevel);  
+begin  
   inherited Create;
   FLogFileName := AFileName;
   FMinLevel := AMinLevel;
@@ -73,15 +73,15 @@ begin
   end;
 end;
 
-destructor TSimpleLogger.Destroy;
-begin
+destructor TSimpleLogger.Destroy;  
+begin  
   if FFileOpen then
     CloseFile(FLogFile);
   inherited Destroy;
 end;
 
-function TSimpleLogger.LevelToString(Level: TLogLevel): String;
-begin
+function TSimpleLogger.LevelToString(Level: TLogLevel): String;  
+begin  
   case Level of
     llDebug:   Result := 'DEBUG';
     llInfo:    Result := 'INFO ';
@@ -91,13 +91,13 @@ begin
   end;
 end;
 
-function TSimpleLogger.GetTimestamp: String;
-begin
+function TSimpleLogger.GetTimestamp: String;  
+begin  
   Result := FormatDateTime('yyyy-mm-dd hh:nn:ss.zzz', Now);
 end;
 
-procedure TSimpleLogger.Log(Level: TLogLevel; const Msg: String);
-var
+procedure TSimpleLogger.Log(Level: TLogLevel; const Msg: String);  
+var  
   LogLine: String;
 begin
   if Level < FMinLevel then Exit;
@@ -113,58 +113,58 @@ begin
   WriteLn(LogLine);
 end;
 
-procedure TSimpleLogger.Log(Level: TLogLevel; const Msg: String; const Args: array of const);
-begin
+procedure TSimpleLogger.Log(Level: TLogLevel; const Msg: String; const Args: array of const);  
+begin  
   Log(Level, Format(Msg, Args));
 end;
 
-procedure TSimpleLogger.Debug(const Msg: String);
-begin
+procedure TSimpleLogger.Debug(const Msg: String);  
+begin  
   Log(llDebug, Msg);
 end;
 
-procedure TSimpleLogger.Debug(const Msg: String; const Args: array of const);
-begin
+procedure TSimpleLogger.Debug(const Msg: String; const Args: array of const);  
+begin  
   Log(llDebug, Msg, Args);
 end;
 
-procedure TSimpleLogger.Info(const Msg: String);
-begin
+procedure TSimpleLogger.Info(const Msg: String);  
+begin  
   Log(llInfo, Msg);
 end;
 
-procedure TSimpleLogger.Info(const Msg: String; const Args: array of const);
-begin
+procedure TSimpleLogger.Info(const Msg: String; const Args: array of const);  
+begin  
   Log(llInfo, Msg, Args);
 end;
 
-procedure TSimpleLogger.Warning(const Msg: String);
-begin
+procedure TSimpleLogger.Warning(const Msg: String);  
+begin  
   Log(llWarning, Msg);
 end;
 
-procedure TSimpleLogger.Warning(const Msg: String; const Args: array of const);
-begin
+procedure TSimpleLogger.Warning(const Msg: String; const Args: array of const);  
+begin  
   Log(llWarning, Msg, Args);
 end;
 
-procedure TSimpleLogger.Error(const Msg: String);
-begin
+procedure TSimpleLogger.Error(const Msg: String);  
+begin  
   Log(llError, Msg);
 end;
 
-procedure TSimpleLogger.Error(const Msg: String; const Args: array of const);
-begin
+procedure TSimpleLogger.Error(const Msg: String; const Args: array of const);  
+begin  
   Log(llError, Msg, Args);
 end;
 
-procedure TSimpleLogger.Fatal(const Msg: String);
-begin
+procedure TSimpleLogger.Fatal(const Msg: String);  
+begin  
   Log(llFatal, Msg);
 end;
 
-procedure TSimpleLogger.Fatal(const Msg: String; const Args: array of const);
-begin
+procedure TSimpleLogger.Fatal(const Msg: String; const Args: array of const);  
+begin  
   Log(llFatal, Msg, Args);
 end;
 

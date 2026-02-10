@@ -62,24 +62,24 @@
 
 ### Programmes indépendants (sections 20.1 à 20.7)
 ```bash
-fpc 01-demo-debogage.pas
-fpc 02-demo-points-arret.pas
-fpc 03-demo-inspection.pas
-fpc 04-mesure-performance.pas
-fpc 04-comparaison-algorithmes.pas
-fpc 04-tableau-profiling.pas
-fpc 05-comparaison-tris.pas
-fpc 05-recherche-lin-vs-bin.pas
-fpc 06-test-fuite.pas
-fpc 06-gestion-memoire-patterns.pas
-fpc 07-test-fuite-simple.pas
-fpc 07-test-fuites-multiples.pas
+fpc 01-demo-debogage.pas  
+fpc 02-demo-points-arret.pas  
+fpc 03-demo-inspection.pas  
+fpc 04-mesure-performance.pas  
+fpc 04-comparaison-algorithmes.pas  
+fpc 04-tableau-profiling.pas  
+fpc 05-comparaison-tris.pas  
+fpc 05-recherche-lin-vs-bin.pas  
+fpc 06-test-fuite.pas  
+fpc 06-gestion-memoire-patterns.pas  
+fpc 07-test-fuite-simple.pas  
+fpc 07-test-fuites-multiples.pas  
 ```
 
 ### Logger (section 20.8) — compiler l'unité d'abord
 ```bash
-fpc SimpleLogger.pas
-fpc 08-test-logger.pas
+fpc SimpleLogger.pas  
+fpc 08-test-logger.pas  
 ```
 
 ### Tests unitaires (section 20.9) — compiler le programme principal
@@ -129,12 +129,12 @@ done
 
 ## Nettoyage
 ```bash
-rm -f *.o *.ppu
-rm -f 01-demo-debogage 02-demo-points-arret 03-demo-inspection
-rm -f 04-mesure-performance 04-comparaison-algorithmes 04-tableau-profiling
-rm -f 05-comparaison-tris 05-recherche-lin-vs-bin
-rm -f 06-test-fuite 06-gestion-memoire-patterns
-rm -f 07-test-fuite-simple 07-test-fuites-multiples
-rm -f 08-test-logger 09-all-tests
-rm -f heaptrc.log rapport.log fuites_multiples.log application.log test_fuite2.txt
+rm -f *.o *.ppu  
+rm -f 01-demo-debogage 02-demo-points-arret 03-demo-inspection  
+rm -f 04-mesure-performance 04-comparaison-algorithmes 04-tableau-profiling  
+rm -f 05-comparaison-tris 05-recherche-lin-vs-bin  
+rm -f 06-test-fuite 06-gestion-memoire-patterns  
+rm -f 07-test-fuite-simple 07-test-fuites-multiples  
+rm -f 08-test-logger 09-all-tests  
+rm -f heaptrc.log rapport.log fuites_multiples.log application.log test_fuite2.txt  
 ```

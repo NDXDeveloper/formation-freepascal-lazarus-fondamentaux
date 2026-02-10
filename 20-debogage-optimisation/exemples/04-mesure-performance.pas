@@ -9,8 +9,8 @@ program MesurePerformance;
 
 uses SysUtils;
 
-procedure TraiterDonnees;
-var
+procedure TraiterDonnees;  
+var  
   i: Integer;
   total: Int64;
 begin

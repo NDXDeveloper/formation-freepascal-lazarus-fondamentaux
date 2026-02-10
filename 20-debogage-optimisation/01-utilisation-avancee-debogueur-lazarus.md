@@ -70,8 +70,8 @@ Une fois en mode débogage, vous disposez de plusieurs commandes :
 **Exemple de Scénario :**
 
 ```pascal
-procedure CalculerTotal(a, b: Integer);
-var
+procedure CalculerTotal(a, b: Integer);  
+var  
   resultat: Integer;
 begin
   resultat := a + b;              // Ligne 1
@@ -131,8 +131,8 @@ Les points d'arrêt conditionnels ne s'activent que si une condition est vraie. 
 **Exemple Pratique :**
 
 ```pascal
-for i := 1 to 1000 do
-begin
+for i := 1 to 1000 do  
+begin  
   Traiter(i);  // Point d'arrêt ici
 end;
 ```
@@ -186,8 +186,8 @@ Cette fenêtre affiche automatiquement :
 **Exemple de Lecture :**
 
 ```pascal
-procedure Exemple(param: Integer);
-var
+procedure Exemple(param: Integer);  
+var  
   x: Integer;
   s: String;
 begin
@@ -198,9 +198,9 @@ end;
 
 La fenêtre affichera :
 ```
-param = 10
-x = 20
-s = 'Test'
+param = 10  
+x = 20  
+s = 'Test'  
 ```
 
 ### 4.3 Fenêtre Inspecteur
@@ -290,18 +290,18 @@ La pile d'appels montre la séquence des appels de fonctions qui ont mené au po
 **Exemple :**
 
 ```pascal
-procedure NiveauC;
-begin
+procedure NiveauC;  
+begin  
   WriteLn('C');  // Arrêt ici
 end;
 
-procedure NiveauB;
-begin
+procedure NiveauB;  
+begin  
   NiveauC;
 end;
 
-procedure NiveauA;
-begin
+procedure NiveauA;  
+begin  
   NiveauB;
 end;
 
@@ -433,8 +433,8 @@ Bien que le débogueur soit puissant, les `WriteLn` ont leur place :
 **Exemple :**
 
 ```pascal
-for i := 1 to 100 do
-begin
+for i := 1 to 100 do  
+begin  
   WriteLn('Itération ', i, ' - Valeur: ', Tableau[i]);
   Traiter(Tableau[i]);
 end;
@@ -443,10 +443,10 @@ end;
 **Astuce :** Utilisez un fichier log au lieu de WriteLn pour ne pas polluer la console :
 
 ```pascal
-AssignFile(LogFile, 'debug.log');
-Rewrite(LogFile);
-WriteLn(LogFile, 'Debug info...');
-CloseFile(LogFile);
+AssignFile(LogFile, 'debug.log');  
+Rewrite(LogFile);  
+WriteLn(LogFile, 'Debug info...');  
+CloseFile(LogFile);  
 ```
 
 ### 8.3 Débogage Multi-plateforme (Windows/Linux)
@@ -463,9 +463,9 @@ CloseFile(LogFile);
 **Installation GDB sous Ubuntu :**
 
 ```bash
-sudo apt update
-sudo apt install gdb
-sudo apt install fpc-source  # Sources FreePascal (recommandé)
+sudo apt update  
+sudo apt install gdb  
+sudo apt install fpc-source  # Sources FreePascal (recommandé)  
 ```
 
 **Configuration Lazarus Linux :**

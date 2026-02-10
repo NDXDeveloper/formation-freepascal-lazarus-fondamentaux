@@ -27,8 +27,8 @@ type
     Notes: array[1..5] of Double;
   end;
 
-procedure DemoRecords;
-var
+procedure DemoRecords;  
+var  
   p: TPersonne;
   i: Integer;
   moyenne: Double;
@@ -63,8 +63,8 @@ begin
   WriteLn('  Moyenne des notes : ', moyenne:0:2);
 end;
 
-procedure DemoTableaux;
-var
+procedure DemoTableaux;  
+var  
   entiers: array[1..10] of Integer;
   chaines: array[1..5] of String;
   matrice: array[1..3, 1..3] of Integer;
@@ -111,8 +111,8 @@ begin
   end;
 end;
 
-procedure DemoObjets;
-var
+procedure DemoObjets;  
+var  
   listeNoms: TStringList;
   listeValeurs: TList;
   i: Integer;
@@ -160,8 +160,8 @@ begin
   end;
 end;
 
-procedure DemoEvaluationExpressions;
-var
+procedure DemoEvaluationExpressions;  
+var  
   x, y: Integer;
   s: String;
   prix: Double;

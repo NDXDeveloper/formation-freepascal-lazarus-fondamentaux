@@ -10,8 +10,8 @@ program TestFuiteSimple;
 uses
   heaptrc, Classes;
 
-procedure CreerFuite;
-var
+procedure CreerFuite;  
+var  
   liste: TStringList;
 begin
   liste := TStringList.Create;
@@ -20,8 +20,8 @@ begin
   // Oubli volontaire du Free !
 end;
 
-procedure SansFuite;
-var
+procedure SansFuite;  
+var  
   liste: TStringList;
 begin
   liste := TStringList.Create;

@@ -224,8 +224,8 @@ Pour suivre ce chapitre efficacement, vous aurez besoin de :
 - ✅ GDB (généralement déjà installé)
 
 ```bash
-sudo apt update
-sudo apt install valgrind gdb
+sudo apt update  
+sudo apt install valgrind gdb  
 ```
 
 **Sous Windows :**

@@ -10,16 +10,16 @@ program TestFuitesMultiples;
 uses
   heaptrc, Classes, SysUtils;
 
-procedure Fuite1;
-var
+procedure Fuite1;  
+var  
   s: TStringList;
 begin
   s := TStringList.Create;
   s.Add('Fuite 1');
 end;
 
-procedure Fuite2;
-var
+procedure Fuite2;  
+var  
   fs: TFileStream;
 begin
   fs := TFileStream.Create('test_fuite2.txt', fmCreate);
@@ -27,8 +27,8 @@ begin
   // Oubli du Free
 end;
 
-procedure Fuite3;
-var
+procedure Fuite3;  
+var  
   i: Integer;
   liste: TList;
 begin

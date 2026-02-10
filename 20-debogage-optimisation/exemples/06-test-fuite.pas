@@ -15,8 +15,8 @@ uses
   {$ENDIF}
   Classes;
 
-procedure CreerFuite;
-var
+procedure CreerFuite;  
+var  
   liste: TStringList;
 begin
   liste := TStringList.Create;
