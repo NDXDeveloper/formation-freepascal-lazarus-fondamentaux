@@ -6,8 +6,8 @@
 {$mode objfpc}{$H+}
 program AppelFonction;
 
-function ObtenirNombre: Integer;
-begin
+function ObtenirNombre: Integer;  
+begin  
   Result := 100;
 end;
 

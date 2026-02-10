@@ -15,8 +15,8 @@ Il existe une troisième façon : les **paramètres constants (const)** qui comb
 Imaginez que vous avez une longue chaîne de caractères ou une grande structure de données :
 
 ```pascal
-procedure AfficherTexte(texte: String);  // Paramètre par valeur
-begin
+procedure AfficherTexte(texte: String);  // Paramètre par valeur  
+begin  
   WriteLn(texte);
 end;
 
@@ -32,8 +32,8 @@ end;
 
 **Solution naïve avec var :**
 ```pascal
-procedure AfficherTexte(var texte: String);  // Pas de copie
-begin
+procedure AfficherTexte(var texte: String);  // Pas de copie  
+begin  
   WriteLn(texte);
 end;
 ```
@@ -47,8 +47,8 @@ Le mot-clé `const` combine le meilleur des deux mondes :
 - ✅ **Pas de modification possible** (comme par valeur) → sécurisé
 
 ```pascal
-procedure AfficherTexte(const texte: String);
-begin
+procedure AfficherTexte(const texte: String);  
+begin  
   WriteLn(texte);
   // texte := 'autre chose';  // ❌ ERREUR : modification interdite !
 end;
@@ -59,8 +59,8 @@ end;
 ### Pour une procédure
 
 ```pascal
-procedure NomProcedure(const nomParametre: Type);
-begin
+procedure NomProcedure(const nomParametre: Type);  
+begin  
   // Lecture seule : on ne peut pas modifier nomParametre
 end;
 ```
@@ -68,8 +68,8 @@ end;
 ### Pour une fonction
 
 ```pascal
-function NomFonction(const nomParametre: Type): TypeRetour;
-begin
+function NomFonction(const nomParametre: Type): TypeRetour;  
+begin  
   // Lecture seule : on ne peut pas modifier nomParametre
   Result := ...;
 end;
@@ -83,22 +83,22 @@ end;
 program ComparaisonParametres;
 
 // 1. Par valeur (copie)
-procedure ParValeur(texte: String);
-begin
+procedure ParValeur(texte: String);  
+begin  
   WriteLn('Par valeur : ', texte);
   texte := 'Modifié';  // Possible mais n'affecte pas l'original
 end;
 
 // 2. Par référence (var)
-procedure ParReference(var texte: String);
-begin
+procedure ParReference(var texte: String);  
+begin  
   WriteLn('Par référence : ', texte);
   texte := 'Modifié';  // Possible et affecte l'original
 end;
 
 // 3. Constant (const)
-procedure ParConstant(const texte: String);
-begin
+procedure ParConstant(const texte: String);  
+begin  
   WriteLn('Par constant : ', texte);
   // texte := 'Modifié';  // ERREUR de compilation !
 end;
@@ -136,8 +136,8 @@ end.
 ### 1. Chaînes de caractères longues
 
 ```pascal
-procedure AfficherRapport(const rapport: String);
-begin
+procedure AfficherRapport(const rapport: String);  
+begin  
   WriteLn('=== RAPPORT ===');
   WriteLn(rapport);
   WriteLn('===============');
@@ -154,14 +154,14 @@ end.
 ### 2. Calculs sur de grandes valeurs
 
 ```pascal
-function CalculerLongueur(const texte: String): Integer;
-begin
+function CalculerLongueur(const texte: String): Integer;  
+begin  
   Result := Length(texte);
   // On lit texte mais on ne le modifie pas
 end;
 
-function ContientMot(const phrase: String; const mot: String): Boolean;
-begin
+function ContientMot(const phrase: String; const mot: String): Boolean;  
+begin  
   Result := Pos(mot, phrase) > 0;
 end;
 ```
@@ -169,8 +169,8 @@ end;
 ### 3. Tableaux (que nous verrons plus tard)
 
 ```pascal
-procedure AfficherTableau(const tableau: array of Integer);
-var
+procedure AfficherTableau(const tableau: array of Integer);  
+var  
   i: Integer;
 begin
   for i := Low(tableau) to High(tableau) do
@@ -190,8 +190,8 @@ type
     Ville: String;
   end;
 
-procedure AfficherPersonne(const personne: TPersonne);
-begin
+procedure AfficherPersonne(const personne: TPersonne);  
+begin  
   WriteLn('Nom : ', personne.Nom);
   WriteLn('Âge : ', personne.Age);
   WriteLn('Ville : ', personne.Ville);
@@ -213,8 +213,8 @@ end.
 ### 1. Validation de données
 
 ```pascal
-function EstEmailValide(const email: String): Boolean;
-begin
+function EstEmailValide(const email: String): Boolean;  
+begin  
   Result := (Pos('@', email) > 0) and (Pos('.', email) > 0);
 end;
 
@@ -234,8 +234,8 @@ end.
 ```pascal
 uses StrUtils;
 
-function CompterOccurrences(const texte: String; const motif: String): Integer;
-var
+function CompterOccurrences(const texte: String; const motif: String): Integer;  
+var  
   position, compteur: Integer;
 begin
   compteur := 0;
@@ -264,8 +264,8 @@ end.
 ### 3. Formatage d'affichage
 
 ```pascal
-procedure AfficherTitre(const titre: String);
-var
+procedure AfficherTitre(const titre: String);  
+var  
   longueur, i: Integer;
 begin
   longueur := Length(titre);
@@ -303,16 +303,16 @@ end.
 ### 4. Comparaison de valeurs
 
 ```pascal
-function Minimum(const a, b: Integer): Integer;
-begin
+function Minimum(const a, b: Integer): Integer;  
+begin  
   if a < b then
     Result := a
   else
     Result := b;
 end;
 
-function Maximum(const a, b, c: Real): Real;
-var
+function Maximum(const a, b, c: Real): Real;  
+var  
   max: Real;
 begin
   max := a;
@@ -383,13 +383,13 @@ end.
 Contrairement à `var`, on peut passer des constantes et expressions avec `const` :
 
 ```pascal
-procedure Afficher(const texte: String);
-begin
+procedure Afficher(const texte: String);  
+begin  
   WriteLn(texte);
 end;
 
-function Additionner(const a, b: Integer): Integer;
-begin
+function Additionner(const a, b: Integer): Integer;  
+begin  
   Result := a + b;
 end;
 
@@ -412,8 +412,8 @@ end.
 Pour les types simples (Integer, Boolean, Real, Char), `const` se comporte comme un passage par valeur :
 
 ```pascal
-procedure Test(const n: Integer);
-begin
+procedure Test(const n: Integer);  
+begin  
   // En interne, n est passé par valeur pour les types simples
   WriteLn(n);
 end;
@@ -426,8 +426,8 @@ end;
 Pour les types complexes (String, tableaux, enregistrements), `const` passe une référence (comme `var`) mais en lecture seule :
 
 ```pascal
-procedure Test(const s: String);
-begin
+procedure Test(const s: String);  
+begin  
   // s est passé par référence (pas de copie)
   // mais on ne peut pas le modifier
   WriteLn(s);
@@ -449,8 +449,8 @@ type
   end;
 
 // Affichage (lecture seule, pas de modification)
-procedure AfficherMessage(const msg: TMessage);
-begin
+procedure AfficherMessage(const msg: TMessage);  
+begin  
   WriteLn('=== MESSAGE ===');
   WriteLn('De : ', msg.Expediteur);
   WriteLn('À : ', msg.Destinataire);
@@ -461,8 +461,8 @@ begin
 end;
 
 // Vérification (lecture seule)
-function EstMessageVide(const msg: TMessage): Boolean;
-begin
+function EstMessageVide(const msg: TMessage): Boolean;  
+begin  
   Result := (Length(msg.Contenu) = 0);
 end;
 
@@ -491,8 +491,8 @@ end.
 ### 1. Essayer de modifier un paramètre const
 
 ```pascal
-procedure Test(const n: Integer);
-begin
+procedure Test(const n: Integer);  
+begin  
   n := 10;  // ❌ ERREUR : n est constant
 end;
 ```
@@ -500,14 +500,14 @@ end;
 ### 2. Utiliser const quand var est nécessaire
 
 ```pascal
-procedure Doubler(const n: Integer);  // ❌ Erreur de conception
-begin
+procedure Doubler(const n: Integer);  // ❌ Erreur de conception  
+begin  
   n := n * 2;  // ❌ Ne compile pas
 end;
 
 // ✅ Correction : utiliser var
-procedure Doubler(var n: Integer);
-begin
+procedure Doubler(var n: Integer);  
+begin  
   n := n * 2;
 end;
 ```
@@ -516,14 +516,14 @@ end;
 
 ```pascal
 // ❌ Inutile pour les types simples
-function Carre(const n: Integer): Integer;
-begin
+function Carre(const n: Integer): Integer;  
+begin  
   Result := n * n;
 end;
 
 // ✅ Mieux : par valeur suffit
-function Carre(n: Integer): Integer;
-begin
+function Carre(n: Integer): Integer;  
+begin  
   Result := n * n;
 end;
 ```

@@ -11,18 +11,18 @@ Parfois, on veut créer plusieurs versions d'une même procédure ou fonction qu
 Imaginons que vous voulez afficher différents types de données :
 
 ```pascal
-procedure AfficherEntier(n: Integer);
-begin
+procedure AfficherEntier(n: Integer);  
+begin  
   WriteLn('Valeur : ', n);
 end;
 
-procedure AfficherReel(r: Real);
-begin
+procedure AfficherReel(r: Real);  
+begin  
   WriteLn('Valeur : ', r:0:2);
 end;
 
-procedure AfficherTexte(s: String);
-begin
+procedure AfficherTexte(s: String);  
+begin  
   WriteLn('Valeur : ', s);
 end;
 
@@ -40,18 +40,18 @@ end.
 Avec la surcharge, on peut utiliser le **même nom** pour toutes ces procédures :
 
 ```pascal
-procedure Afficher(n: Integer); overload;
-begin
+procedure Afficher(n: Integer); overload;  
+begin  
   WriteLn('Valeur : ', n);
 end;
 
-procedure Afficher(r: Real); overload;
-begin
+procedure Afficher(r: Real); overload;  
+begin  
   WriteLn('Valeur : ', r:0:2);
 end;
 
-procedure Afficher(s: String); overload;
-begin
+procedure Afficher(s: String); overload;  
+begin  
   WriteLn('Valeur : ', s);
 end;
 
@@ -77,12 +77,12 @@ Le compilateur choisit automatiquement la version appropriée selon les argument
 Pour surcharger une procédure/fonction, ajoutez la directive `overload` après la déclaration :
 
 ```pascal
-procedure NomProcedure(param1: Type1); overload;
-procedure NomProcedure(param1: Type2); overload;
-procedure NomProcedure(param1: Type1; param2: Type2); overload;
+procedure NomProcedure(param1: Type1); overload;  
+procedure NomProcedure(param1: Type2); overload;  
+procedure NomProcedure(param1: Type1; param2: Type2); overload;  
 
-function NomFonction(param1: Type1): TypeRetour; overload;
-function NomFonction(param1: Type2): TypeRetour; overload;
+function NomFonction(param1: Type1): TypeRetour; overload;  
+function NomFonction(param1: Type2): TypeRetour; overload;  
 ```
 
 **Important :** Toutes les versions surchargées doivent avoir la directive `overload`.
@@ -94,18 +94,18 @@ Pour que deux procédures/fonctions puissent être surchargées, elles doivent d
 ### 1. Le nombre de paramètres
 
 ```pascal
-procedure Calculer(a: Integer); overload;
-begin
+procedure Calculer(a: Integer); overload;  
+begin  
   WriteLn('Résultat : ', a);
 end;
 
-procedure Calculer(a, b: Integer); overload;
-begin
+procedure Calculer(a, b: Integer); overload;  
+begin  
   WriteLn('Résultat : ', a + b);
 end;
 
-procedure Calculer(a, b, c: Integer); overload;
-begin
+procedure Calculer(a, b, c: Integer); overload;  
+begin  
   WriteLn('Résultat : ', a + b + c);
 end;
 
@@ -119,18 +119,18 @@ end.
 ### 2. Le type des paramètres
 
 ```pascal
-function Doubler(n: Integer): Integer; overload;
-begin
+function Doubler(n: Integer): Integer; overload;  
+begin  
   Result := n * 2;
 end;
 
-function Doubler(r: Real): Real; overload;
-begin
+function Doubler(r: Real): Real; overload;  
+begin  
   Result := r * 2;
 end;
 
-function Doubler(s: String): String; overload;
-begin
+function Doubler(s: String): String; overload;  
+begin  
   Result := s + s;
 end;
 
@@ -144,13 +144,13 @@ end.
 ### 3. L'ordre des paramètres (si types différents)
 
 ```pascal
-procedure Afficher(texte: String; nombre: Integer); overload;
-begin
+procedure Afficher(texte: String; nombre: Integer); overload;  
+begin  
   WriteLn(texte, ' : ', nombre);
 end;
 
-procedure Afficher(nombre: Integer; texte: String); overload;
-begin
+procedure Afficher(nombre: Integer; texte: String); overload;  
+begin  
   WriteLn(nombre, ' : ', texte);
 end;
 
@@ -168,16 +168,16 @@ end.
 
 ```pascal
 // ❌ ERREUR : même signature (seul le type de retour diffère)
-function Obtenir(n: Integer): Integer; overload;
-function Obtenir(n: Integer): String; overload;
+function Obtenir(n: Integer): Integer; overload;  
+function Obtenir(n: Integer): String; overload;  
 
 // ❌ ERREUR : même signature (seuls les noms diffèrent)
-procedure Test(a: Integer); overload;
-procedure Test(b: Integer); overload;
+procedure Test(a: Integer); overload;  
+procedure Test(b: Integer); overload;  
 
 // ❌ ERREUR : même signature (seul const/var diffère)
-procedure Modifier(n: Integer); overload;
-procedure Modifier(var n: Integer); overload;
+procedure Modifier(n: Integer); overload;  
+procedure Modifier(var n: Integer); overload;  
 ```
 
 ## Exemples pratiques
@@ -185,24 +185,24 @@ procedure Modifier(var n: Integer); overload;
 ### 1. Fonction Minimum avec différents types
 
 ```pascal
-function Min(a, b: Integer): Integer; overload;
-begin
+function Min(a, b: Integer): Integer; overload;  
+begin  
   if a < b then
     Result := a
   else
     Result := b;
 end;
 
-function Min(a, b: Real): Real; overload;
-begin
+function Min(a, b: Real): Real; overload;  
+begin  
   if a < b then
     Result := a
   else
     Result := b;
 end;
 
-function Min(a, b, c: Integer): Integer; overload;
-begin
+function Min(a, b, c: Integer): Integer; overload;  
+begin  
   Result := Min(Min(a, b), c);  // Réutilise la version à 2 paramètres
 end;
 
@@ -216,8 +216,8 @@ end.
 ### 2. Procédure de dessin avec options
 
 ```pascal
-procedure DessinerLigne(longueur: Integer); overload;
-var
+procedure DessinerLigne(longueur: Integer); overload;  
+var  
   i: Integer;
 begin
   for i := 1 to longueur do
@@ -225,8 +225,8 @@ begin
   WriteLn;
 end;
 
-procedure DessinerLigne(longueur: Integer; caractere: Char); overload;
-var
+procedure DessinerLigne(longueur: Integer; caractere: Char); overload;  
+var  
   i: Integer;
 begin
   for i := 1 to longueur do
@@ -234,8 +234,8 @@ begin
   WriteLn;
 end;
 
-procedure DessinerLigne(longueur: Integer; caractere: Char; repetitions: Integer); overload;
-var
+procedure DessinerLigne(longueur: Integer; caractere: Char; repetitions: Integer); overload;  
+var  
   i: Integer;
 begin
   for i := 1 to repetitions do
@@ -254,18 +254,18 @@ end.
 ```pascal
 uses SysUtils;
 
-function VersTexte(n: Integer): String; overload;
-begin
+function VersTexte(n: Integer): String; overload;  
+begin  
   Result := IntToStr(n);
 end;
 
-function VersTexte(r: Real): String; overload;
-begin
+function VersTexte(r: Real): String; overload;  
+begin  
   Result := FloatToStr(r);
 end;
 
-function VersTexte(b: Boolean): String; overload;
-begin
+function VersTexte(b: Boolean): String; overload;  
+begin  
   if b then
     Result := 'Vrai'
   else
@@ -282,19 +282,19 @@ end.
 ### 4. Création de rectangles
 
 ```pascal
-procedure CreerRectangle(largeur, hauteur: Integer); overload;
-begin
+procedure CreerRectangle(largeur, hauteur: Integer); overload;  
+begin  
   WriteLn('Rectangle de ', largeur, 'x', hauteur);
 end;
 
-procedure CreerRectangle(cote: Integer); overload;
-begin
+procedure CreerRectangle(cote: Integer); overload;  
+begin  
   WriteLn('Carré de ', cote, 'x', cote);
   CreerRectangle(cote, cote);  // Appelle la version avec 2 paramètres
 end;
 
-procedure CreerRectangle(largeur, hauteur: Integer; couleur: String); overload;
-begin
+procedure CreerRectangle(largeur, hauteur: Integer; couleur: String); overload;  
+begin  
   WriteLn('Rectangle de ', largeur, 'x', hauteur, ' en ', couleur);
 end;
 
@@ -310,8 +310,8 @@ end.
 ```pascal
 uses StrUtils;
 
-function Rechercher(const texte: String; const motif: String): Integer; overload;
-begin
+function Rechercher(const texte: String; const motif: String): Integer; overload;  
+begin  
   Result := Pos(motif, texte);
 end;
 
@@ -321,8 +321,8 @@ begin
   Result := PosEx(motif, texte, depart);
 end;
 
-function Rechercher(const texte: String; const motif: Char): Integer; overload;
-var
+function Rechercher(const texte: String; const motif: Char): Integer; overload;  
+var  
   i: Integer;
 begin
   Result := 0;
@@ -374,9 +374,9 @@ end;
 ### Surcharge
 
 ```pascal
-procedure Afficher(n: Integer); overload;
-procedure Afficher(r: Real); overload;
-procedure Afficher(s: String); overload;
+procedure Afficher(n: Integer); overload;  
+procedure Afficher(r: Real); overload;  
+procedure Afficher(s: String); overload;  
 ```
 
 **Avantages :**
@@ -404,13 +404,13 @@ procedure Afficher(s: String); overload;
 On peut combiner les deux techniques :
 
 ```pascal
-procedure Logger(message: String; niveau: String = 'INFO'); overload;
-begin
+procedure Logger(message: String; niveau: String = 'INFO'); overload;  
+begin  
   WriteLn('[', niveau, '] ', message);
 end;
 
-procedure Logger(code: Integer; niveau: String = 'ERROR'); overload;
-begin
+procedure Logger(code: Integer; niveau: String = 'ERROR'); overload;  
+begin  
   WriteLn('[', niveau, '] Code erreur : ', code);
 end;
 
@@ -429,42 +429,42 @@ end.
 program Calculatrice;
 
 // overload : permet plusieurs fonctions avec le même nom mais des paramètres différents
-function Additionner(a, b: Integer): Integer; overload;
-begin
+function Additionner(a, b: Integer): Integer; overload;  
+begin  
   Result := a + b;
 end;
 
 // Addition avec 3 nombres
-function Additionner(a, b, c: Integer): Integer; overload;
-begin
+function Additionner(a, b, c: Integer): Integer; overload;  
+begin  
   Result := a + b + c;
 end;
 
 // Addition de réels
-function Additionner(a, b: Real): Real; overload;
-begin
+function Additionner(a, b: Real): Real; overload;  
+begin  
   Result := a + b;
 end;
 
 // Multiplication
-function Multiplier(a, b: Integer): Integer; overload;
-begin
+function Multiplier(a, b: Integer): Integer; overload;  
+begin  
   Result := a * b;
 end;
 
-function Multiplier(a, b: Real): Real; overload;
-begin
+function Multiplier(a, b: Real): Real; overload;  
+begin  
   Result := a * b;
 end;
 
 // Affichage du résultat
-procedure AfficherResultat(operation: String; resultat: Integer); overload;
-begin
+procedure AfficherResultat(operation: String; resultat: Integer); overload;  
+begin  
   WriteLn(operation, ' = ', resultat);
 end;
 
-procedure AfficherResultat(operation: String; resultat: Real); overload;
-begin
+procedure AfficherResultat(operation: String; resultat: Real); overload;  
+begin  
   WriteLn(operation, ' = ', resultat:0:2);
 end;
 
@@ -503,26 +503,26 @@ end.
 ### 1. Oublier la directive overload
 
 ```pascal
-procedure Test(n: Integer);  // ❌ Manque overload
-begin
+procedure Test(n: Integer);  // ❌ Manque overload  
+begin  
   WriteLn(n);
 end;
 
-procedure Test(s: String);   // ❌ Manque overload
-begin
+procedure Test(s: String);   // ❌ Manque overload  
+begin  
   WriteLn(s);
 end;
 
 // ✅ CORRECT
-procedure Test(n: Integer); overload;
-procedure Test(s: String); overload;
+procedure Test(n: Integer); overload;  
+procedure Test(s: String); overload;  
 ```
 
 ### 2. Signatures ambiguës
 
 ```pascal
-procedure Traiter(n: Integer); overload;
-procedure Traiter(n: LongInt); overload;  // ❌ Trop similaire
+procedure Traiter(n: Integer); overload;  
+procedure Traiter(n: LongInt); overload;  // ❌ Trop similaire  
 
 var
   x: Integer;
@@ -535,12 +535,12 @@ end;
 
 ```pascal
 // ⚠️ Mauvaise pratique : trop de versions
-procedure Afficher(n: Integer); overload;
-procedure Afficher(n: LongInt); overload;
-procedure Afficher(n: Int64); overload;
-procedure Afficher(n: Byte); overload;
-procedure Afficher(n: Word); overload;
-procedure Afficher(n: Cardinal); overload;
+procedure Afficher(n: Integer); overload;  
+procedure Afficher(n: LongInt); overload;  
+procedure Afficher(n: Int64); overload;  
+procedure Afficher(n: Byte); overload;  
+procedure Afficher(n: Word); overload;  
+procedure Afficher(n: Cardinal); overload;  
 
 // ✅ Mieux : une seule version générique
 procedure Afficher(n: Int64);
@@ -550,12 +550,12 @@ procedure Afficher(n: Int64);
 
 ```pascal
 // Surcharge : même nom, paramètres différents
-procedure Test(n: Integer); overload;
-procedure Test(s: String); overload;  // ✅ Surcharge
+procedure Test(n: Integer); overload;  
+procedure Test(s: String); overload;  // ✅ Surcharge  
 
 // Redéfinition : déclaration multiple identique
-procedure Autre(n: Integer);
-procedure Autre(n: Integer);  // ❌ ERREUR : redéfinition
+procedure Autre(n: Integer);  
+procedure Autre(n: Integer);  // ❌ ERREUR : redéfinition  
 ```
 
 ## Bonnes pratiques

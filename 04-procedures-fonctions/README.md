@@ -15,8 +15,8 @@ Jusqu'à présent, vous avez écrit du code de manière **linéaire** : le progr
 Imaginez que vous devez afficher un menu plusieurs fois dans votre programme :
 
 ```pascal
-program SansModules;
-begin
+program SansModules;  
+begin  
   // Première fois
   WriteLn('=== MENU ===');
   WriteLn('1. Option A');
@@ -57,8 +57,8 @@ Avec une procédure, vous écrivez le code **une seule fois** et vous l'**appele
 ```pascal
 program AvecModules;
 
-procedure AfficherMenu;
-begin
+procedure AfficherMenu;  
+begin  
   WriteLn('=== MENU ===');
   WriteLn('1. Option A');
   WriteLn('2. Option B');
@@ -178,8 +178,8 @@ Cachez les **détails d'implémentation**. L'utilisateur de votre fonction n'a p
 ### ❌ Avant (sans procédures/fonctions)
 
 ```pascal
-program CalculsMesaventures;
-var
+program CalculsMesaventures;  
+var  
   a, b, c, resultat: Integer;
 begin
   // Calcul 1
@@ -223,23 +223,23 @@ end.
 ```pascal
 program CalculsBienOrganises;
 
-function Additionner(x, y: Integer): Integer;
-begin
+function Additionner(x, y: Integer): Integer;  
+begin  
   Result := x + y;
 end;
 
-function Carre(n: Integer): Integer;
-begin
+function Carre(n: Integer): Integer;  
+begin  
   Result := n * n;
 end;
 
-procedure AfficherAddition(x, y: Integer);
-begin
+procedure AfficherAddition(x, y: Integer);  
+begin  
   WriteLn(x, ' + ', y, ' = ', Additionner(x, y));
 end;
 
-procedure AfficherCarre(n: Integer);
-begin
+procedure AfficherCarre(n: Integer);  
+begin  
   WriteLn('Carré de ', n, ' = ', Carre(n));
 end;
 

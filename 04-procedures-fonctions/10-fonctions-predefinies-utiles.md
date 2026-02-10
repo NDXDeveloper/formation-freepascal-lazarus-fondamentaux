@@ -15,16 +15,16 @@ Pascal et FreePascal fournissent une grande bibliothèque de **fonctions prédé
 Retourne la valeur absolue (sans le signe).
 
 ```pascal
-function Abs(x: Integer): Integer;
-function Abs(x: Real): Real;
+function Abs(x: Integer): Integer;  
+function Abs(x: Real): Real;  
 ```
 
 **Exemples :**
 ```pascal
-WriteLn(Abs(-5));      // 5
-WriteLn(Abs(5));       // 5
-WriteLn(Abs(-3.14));   // 3.14
-WriteLn(Abs(0));       // 0
+WriteLn(Abs(-5));      // 5  
+WriteLn(Abs(5));       // 5  
+WriteLn(Abs(-3.14));   // 3.14  
+WriteLn(Abs(0));       // 0  
 ```
 
 #### Sqr - Carré
@@ -32,15 +32,15 @@ WriteLn(Abs(0));       // 0
 Retourne le carré d'un nombre (x²).
 
 ```pascal
-function Sqr(x: Integer): Integer;
-function Sqr(x: Real): Real;
+function Sqr(x: Integer): Integer;  
+function Sqr(x: Real): Real;  
 ```
 
 **Exemples :**
 ```pascal
-WriteLn(Sqr(5));       // 25
-WriteLn(Sqr(3.0));     // 9.0
-WriteLn(Sqr(-4));      // 16
+WriteLn(Sqr(5));       // 25  
+WriteLn(Sqr(3.0));     // 9.0  
+WriteLn(Sqr(-4));      // 16  
 ```
 
 #### Sqrt - Racine carrée
@@ -53,10 +53,10 @@ function Sqrt(x: Real): Real;
 
 **Exemples :**
 ```pascal
-WriteLn(Sqrt(25):0:0);     // 5
-WriteLn(Sqrt(16):0:0);     // 4
-WriteLn(Sqrt(2):0:5);      // 1.41421
-WriteLn(Sqrt(100):0:0);    // 10
+WriteLn(Sqrt(25):0:0);     // 5  
+WriteLn(Sqrt(16):0:0);     // 4  
+WriteLn(Sqrt(2):0:5);      // 1.41421  
+WriteLn(Sqrt(100):0:0);    // 10  
 ```
 
 **⚠️ Attention :** Ne pas utiliser Sqrt avec un nombre négatif (erreur d'exécution).
@@ -68,9 +68,9 @@ Ces fonctions travaillent en **radians** (pas en degrés).
 #### Sin, Cos, Tan - Trigonométrie
 
 ```pascal
-function Sin(x: Real): Real;  // Sinus
-function Cos(x: Real): Real;  // Cosinus
-function Tan(x: Real): Real;  // Tangente (dans l'unité Math)
+function Sin(x: Real): Real;  // Sinus  
+function Cos(x: Real): Real;  // Cosinus  
+function Tan(x: Real): Real;  // Tangente (dans l'unité Math)  
 ```
 
 **Exemples :**
@@ -94,19 +94,19 @@ end.
 ```pascal
 uses Math;
 
-function DegreesVersRadians(degres: Real): Real;
-begin
+function DegreesVersRadians(degres: Real): Real;  
+begin  
   Result := degres * Pi / 180;
 end;
 
-function RadiansVersDegrees(radians: Real): Real;
-begin
+function RadiansVersDegrees(radians: Real): Real;  
+begin  
   Result := radians * 180 / Pi;
 end;
 
 // Ou utiliser les fonctions de l'unité Math
-WriteLn(DegToRad(90):0:5);   // π/2 ≈ 1.5708
-WriteLn(RadToDeg(Pi):0:1);   // 180.0
+WriteLn(DegToRad(90):0:5);   // π/2 ≈ 1.5708  
+WriteLn(RadToDeg(Pi):0:1);   // 180.0  
 ```
 
 ### Fonctions exponentielles et logarithmes
@@ -121,9 +121,9 @@ function Exp(x: Real): Real;
 
 **Exemples :**
 ```pascal
-WriteLn(Exp(0):0:0);      // 1 (e^0 = 1)
-WriteLn(Exp(1):0:5);      // 2.71828 (e^1 = e)
-WriteLn(Exp(2):0:5);      // 7.38906 (e^2)
+WriteLn(Exp(0):0:0);      // 1 (e^0 = 1)  
+WriteLn(Exp(1):0:5);      // 2.71828 (e^1 = e)  
+WriteLn(Exp(2):0:5);      // 7.38906 (e^2)  
 ```
 
 #### Ln - Logarithme naturel
@@ -136,9 +136,9 @@ function Ln(x: Real): Real;
 
 **Exemples :**
 ```pascal
-WriteLn(Ln(1):0:0);       // 0 (ln(1) = 0)
-WriteLn(Ln(Exp(1)):0:5);  // 1.00000 (ln(e) = 1)
-WriteLn(Ln(10):0:5);      // 2.30259
+WriteLn(Ln(1):0:0);       // 0 (ln(1) = 0)  
+WriteLn(Ln(Exp(1)):0:5);  // 1.00000 (ln(e) = 1)  
+WriteLn(Ln(10):0:5);      // 2.30259  
 ```
 
 #### Power - Puissance (unité Math)
@@ -155,10 +155,10 @@ function Power(base, exposant: Real): Real;
 ```pascal
 uses Math;
 
-WriteLn(Power(2, 3):0:0);     // 8 (2³)
-WriteLn(Power(10, 2):0:0);    // 100 (10²)
-WriteLn(Power(5, 0.5):0:5);   // 2.23607 (√5)
-WriteLn(Power(2, -1):0:2);    // 0.50 (1/2)
+WriteLn(Power(2, 3):0:0);     // 8 (2³)  
+WriteLn(Power(10, 2):0:0);    // 100 (10²)  
+WriteLn(Power(5, 0.5):0:5);   // 2.23607 (√5)  
+WriteLn(Power(2, -1):0:2);    // 0.50 (1/2)  
 ```
 
 ### Fonctions d'arrondi
@@ -173,11 +173,11 @@ function Round(x: Real): Int64;
 
 **Exemples :**
 ```pascal
-WriteLn(Round(3.4));    // 3
-WriteLn(Round(3.5));    // 4
-WriteLn(Round(3.6));    // 4
-WriteLn(Round(-2.5));   // -2 (arrondi vers le pair le plus proche)
-WriteLn(Round(-2.6));   // -3
+WriteLn(Round(3.4));    // 3  
+WriteLn(Round(3.5));    // 4  
+WriteLn(Round(3.6));    // 4  
+WriteLn(Round(-2.5));   // -2 (arrondi vers le pair le plus proche)  
+WriteLn(Round(-2.6));   // -3  
 ```
 
 #### Trunc - Tronquer
@@ -190,10 +190,10 @@ function Trunc(x: Real): Int64;
 
 **Exemples :**
 ```pascal
-WriteLn(Trunc(3.9));    // 3
-WriteLn(Trunc(3.1));    // 3
-WriteLn(Trunc(-3.9));   // -3
-WriteLn(Trunc(-3.1));   // -3
+WriteLn(Trunc(3.9));    // 3  
+WriteLn(Trunc(3.1));    // 3  
+WriteLn(Trunc(-3.9));   // -3  
+WriteLn(Trunc(-3.1));   // -3  
 ```
 
 #### Frac - Partie fractionnaire
@@ -206,10 +206,10 @@ function Frac(x: Real): Real;
 
 **Exemples :**
 ```pascal
-WriteLn(Frac(3.14):0:2);    // 0.14
-WriteLn(Frac(5.75):0:2);    // 0.75
-WriteLn(Frac(-2.8):0:1);    // -0.8
-WriteLn(Frac(7):0:0);       // 0
+WriteLn(Frac(3.14):0:2);    // 0.14  
+WriteLn(Frac(5.75):0:2);    // 0.75  
+WriteLn(Frac(-2.8):0:1);    // -0.8  
+WriteLn(Frac(7):0:0);       // 0  
 ```
 
 #### Int - Partie entière
@@ -222,8 +222,8 @@ function Int(x: Real): Real;
 
 **Exemples :**
 ```pascal
-WriteLn(Int(3.14):0:0);     // 3
-WriteLn(Int(-5.7):0:0);     // -5
+WriteLn(Int(3.14):0:0);     // 3  
+WriteLn(Int(-5.7):0:0);     // -5  
 ```
 
 ### Fonctions Min/Max (unité Math)
@@ -231,20 +231,20 @@ WriteLn(Int(-5.7):0:0);     // -5
 ```pascal
 uses Math;
 
-function Min(a, b: Integer): Integer;
-function Max(a, b: Integer): Integer;
-function Min(a, b: Real): Real;
-function Max(a, b: Real): Real;
+function Min(a, b: Integer): Integer;  
+function Max(a, b: Integer): Integer;  
+function Min(a, b: Real): Real;  
+function Max(a, b: Real): Real;  
 ```
 
 **Exemples :**
 ```pascal
 uses Math;
 
-WriteLn(Min(5, 3));         // 3
-WriteLn(Max(5, 3));         // 5
-WriteLn(Min(2.5, 7.8):0:1); // 2.5
-WriteLn(Max(2.5, 7.8):0:1); // 7.8
+WriteLn(Min(5, 3));         // 3  
+WriteLn(Max(5, 3));         // 5  
+WriteLn(Min(2.5, 7.8):0:1); // 2.5  
+WriteLn(Max(2.5, 7.8):0:1); // 7.8  
 ```
 
 ## Fonctions de manipulation de chaînes
@@ -259,10 +259,10 @@ function Length(const s: String): Integer;
 
 **Exemples :**
 ```pascal
-WriteLn(Length('Bonjour'));      // 7
-WriteLn(Length(''));             // 0
-WriteLn(Length('A'));            // 1
-WriteLn(Length('Pascal 123'));   // 10
+WriteLn(Length('Bonjour'));      // 7  
+WriteLn(Length(''));             // 0  
+WriteLn(Length('A'));            // 1  
+WriteLn(Length('Pascal 123'));   // 10  
 ```
 
 ### Copy - Extraire une sous-chaîne
@@ -370,10 +370,10 @@ function UpCase(c: Char): Char;
 
 **Exemples :**
 ```pascal
-WriteLn(UpCase('a'));   // 'A'
-WriteLn(UpCase('z'));   // 'Z'
-WriteLn(UpCase('A'));   // 'A'
-WriteLn(UpCase('5'));   // '5' (pas de changement)
+WriteLn(UpCase('a'));   // 'A'  
+WriteLn(UpCase('z'));   // 'Z'  
+WriteLn(UpCase('A'));   // 'A'  
+WriteLn(UpCase('5'));   // '5' (pas de changement)  
 ```
 
 ### UpperCase et LowerCase - Majuscules/minuscules (chaîne)
@@ -383,17 +383,17 @@ Convertit toute une chaîne.
 ```pascal
 uses SysUtils;
 
-function UpperCase(const s: String): String;
-function LowerCase(const s: String): String;
+function UpperCase(const s: String): String;  
+function LowerCase(const s: String): String;  
 ```
 
 **Exemples :**
 ```pascal
 uses SysUtils;
 
-WriteLn(UpperCase('bonjour'));      // 'BONJOUR'
-WriteLn(LowerCase('PASCAL'));       // 'pascal'
-WriteLn(UpperCase('Test 123'));     // 'TEST 123'
+WriteLn(UpperCase('bonjour'));      // 'BONJOUR'  
+WriteLn(LowerCase('PASCAL'));       // 'pascal'  
+WriteLn(UpperCase('Test 123'));     // 'TEST 123'  
 ```
 
 ### Trim - Supprimer espaces début/fin
@@ -401,18 +401,18 @@ WriteLn(UpperCase('Test 123'));     // 'TEST 123'
 ```pascal
 uses SysUtils;
 
-function Trim(const s: String): String;      // Début et fin
-function TrimLeft(const s: String): String;  // Début seulement
-function TrimRight(const s: String): String; // Fin seulement
+function Trim(const s: String): String;      // Début et fin  
+function TrimLeft(const s: String): String;  // Début seulement  
+function TrimRight(const s: String): String; // Fin seulement  
 ```
 
 **Exemples :**
 ```pascal
 uses SysUtils;
 
-WriteLn('[' + Trim('  Bonjour  ') + ']');      // '[Bonjour]'
-WriteLn('[' + TrimLeft('  Test') + ']');       // '[Test]'
-WriteLn('[' + TrimRight('Test  ') + ']');      // '[Test]'
+WriteLn('[' + Trim('  Bonjour  ') + ']');      // '[Bonjour]'  
+WriteLn('[' + TrimLeft('  Test') + ']');       // '[Test]'  
+WriteLn('[' + TrimRight('Test  ') + ']');      // '[Test]'  
 ```
 
 ## Fonctions de conversion
@@ -422,8 +422,8 @@ WriteLn('[' + TrimRight('Test  ') + ']');      // '[Test]'
 ```pascal
 uses SysUtils;
 
-function IntToStr(value: Integer): String;
-function StrToInt(const s: String): Integer;
+function IntToStr(value: Integer): String;  
+function StrToInt(const s: String): Integer;  
 ```
 
 **Exemples :**
@@ -449,8 +449,8 @@ end.
 ```pascal
 uses SysUtils;
 
-function FloatToStr(value: Real): String;
-function StrToFloat(const s: String): Real;
+function FloatToStr(value: Real): String;  
+function StrToFloat(const s: String): Real;  
 ```
 
 **Exemples :**
@@ -511,19 +511,19 @@ end.
 ### Chr et Ord - Caractère ↔ Code ASCII
 
 ```pascal
-function Chr(code: Byte): Char;
-function Ord(c: Char): Byte;
+function Chr(code: Byte): Char;  
+function Ord(c: Char): Byte;  
 ```
 
 **Exemples :**
 ```pascal
-WriteLn(Chr(65));          // 'A'
-WriteLn(Chr(97));          // 'a'
-WriteLn(Chr(48));          // '0'
+WriteLn(Chr(65));          // 'A'  
+WriteLn(Chr(97));          // 'a'  
+WriteLn(Chr(48));          // '0'  
 
-WriteLn(Ord('A'));         // 65
-WriteLn(Ord('a'));         // 97
-WriteLn(Ord('0'));         // 48
+WriteLn(Ord('A'));         // 65  
+WriteLn(Ord('a'));         // 97  
+WriteLn(Ord('0'));         // 48  
 ```
 
 ## Fonctions de génération aléatoire
@@ -531,8 +531,8 @@ WriteLn(Ord('0'));         // 48
 ### Random - Nombre aléatoire
 
 ```pascal
-function Random: Real;            // Entre 0.0 et 1.0
-function Random(max: Integer): Integer;  // Entre 0 et max-1
+function Random: Real;            // Entre 0.0 et 1.0  
+function Random(max: Integer): Integer;  // Entre 0 et max-1  
 ```
 
 **Exemples :**
@@ -599,16 +599,16 @@ end.
 ```pascal
 uses SysUtils;
 
-function Date: TDateTime;  // Date sans l'heure
-function Time: TDateTime;  // Heure sans la date
+function Date: TDateTime;  // Date sans l'heure  
+function Time: TDateTime;  // Heure sans la date  
 ```
 
 **Exemples :**
 ```pascal
 uses SysUtils;
 
-WriteLn('Date : ', DateToStr(Date));      // 12/10/2025
-WriteLn('Heure : ', TimeToStr(Time));     // 14:30:25
+WriteLn('Date : ', DateToStr(Date));      // 12/10/2025  
+WriteLn('Heure : ', TimeToStr(Time));     // 14:30:25  
 ```
 
 ### Extraction de composants
@@ -616,8 +616,8 @@ WriteLn('Heure : ', TimeToStr(Time));     // 14:30:25
 ```pascal
 uses SysUtils;
 
-procedure DecodeDate(date: TDateTime; var annee, mois, jour: Word);
-procedure DecodeTime(time: TDateTime; var heure, minute, seconde, milli: Word);
+procedure DecodeDate(date: TDateTime; var annee, mois, jour: Word);  
+procedure DecodeTime(time: TDateTime; var heure, minute, seconde, milli: Word);  
 ```
 
 **Exemples :**
@@ -680,10 +680,10 @@ function Odd(x: Integer): Boolean;
 
 **Exemples :**
 ```pascal
-WriteLn(Odd(5));    // True
-WriteLn(Odd(6));    // False
-WriteLn(Odd(0));    // False
-WriteLn(Odd(-3));   // True
+WriteLn(Odd(5));    // True  
+WriteLn(Odd(6));    // False  
+WriteLn(Odd(0));    // False  
+WriteLn(Odd(-3));   // True  
 ```
 
 ### Fonctions IsXXX (unité SysUtils)
@@ -712,10 +712,10 @@ end.
 ### Inc et Dec - Incrémenter/décrémenter
 
 ```pascal
-procedure Inc(var x: Integer);              // Incrémente de 1
-procedure Inc(var x: Integer; delta: Integer);  // Incrémente de delta
-procedure Dec(var x: Integer);              // Décrémente de 1
-procedure Dec(var x: Integer; delta: Integer);  // Décrémente de delta
+procedure Inc(var x: Integer);              // Incrémente de 1  
+procedure Inc(var x: Integer; delta: Integer);  // Incrémente de delta  
+procedure Dec(var x: Integer);              // Décrémente de 1  
+procedure Dec(var x: Integer; delta: Integer);  // Décrémente de delta  
 ```
 
 **Exemples :**
@@ -738,20 +738,20 @@ end.
 ### Succ et Pred - Successeur/prédécesseur
 
 ```pascal
-function Succ(x: Ordinal): Ordinal;
-function Pred(x: Ordinal): Ordinal;
+function Succ(x: Ordinal): Ordinal;  
+function Pred(x: Ordinal): Ordinal;  
 ```
 
 **Exemples :**
 ```pascal
-WriteLn(Succ(5));      // 6
-WriteLn(Pred(5));      // 4
+WriteLn(Succ(5));      // 6  
+WriteLn(Pred(5));      // 4  
 
-WriteLn(Succ('A'));    // 'B'
-WriteLn(Pred('C'));    // 'B'
+WriteLn(Succ('A'));    // 'B'  
+WriteLn(Pred('C'));    // 'B'  
 
-WriteLn(Succ(True));   // (erreur si déjà au max)
-WriteLn(Pred(False));  // (erreur si déjà au min)
+WriteLn(Succ(True));   // (erreur si déjà au max)  
+WriteLn(Pred(False));  // (erreur si déjà au min)  
 ```
 
 ## Exemple complet : mini-calculatrice
@@ -762,8 +762,8 @@ program MiniCalculatrice;
 uses
   SysUtils, Math;
 
-procedure AfficherMenu;
-begin
+procedure AfficherMenu;  
+begin  
   WriteLn('=== CALCULATRICE ===');
   WriteLn('1. Addition');
   WriteLn('2. Multiplication');

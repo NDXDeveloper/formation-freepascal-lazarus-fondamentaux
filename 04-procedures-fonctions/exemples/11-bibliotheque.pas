@@ -32,16 +32,16 @@ var
 // MODULE : GESTION DES LIVRES
 // ============================================================================
 
-function CreerLivre(const titre, auteur: String; annee: Integer): TLivre;
-begin
+function CreerLivre(const titre, auteur: String; annee: Integer): TLivre;  
+begin  
   Result.Titre := titre;
   Result.Auteur := auteur;
   Result.Annee := annee;
   Result.Disponible := True;
 end;
 
-function AjouterLivre(const livre: TLivre): Boolean;
-begin
+function AjouterLivre(const livre: TLivre): Boolean;  
+begin  
   if nbLivres < MAX_LIVRES then
   begin
     Inc(nbLivres);  // Inc incrémente : équivalent de nbLivres := nbLivres + 1
@@ -52,8 +52,8 @@ begin
     Result := False;
 end;
 
-function RechercherLivre(const titre: String): Integer;
-var
+function RechercherLivre(const titre: String): Integer;  
+var  
   i: Integer;
 begin
   Result := -1;
@@ -65,14 +65,14 @@ begin
     end;
 end;
 
-procedure EmprunterLivre(index: Integer);
-begin
+procedure EmprunterLivre(index: Integer);  
+begin  
   if (index > 0) and (index <= nbLivres) then
     livres[index].Disponible := False;
 end;
 
-procedure RetournerLivre(index: Integer);
-begin
+procedure RetournerLivre(index: Integer);  
+begin  
   if (index > 0) and (index <= nbLivres) then
     livres[index].Disponible := True;
 end;
@@ -81,20 +81,20 @@ end;
 // MODULE : AFFICHAGE
 // ============================================================================
 
-procedure AfficherSeparateur;
-begin
+procedure AfficherSeparateur;  
+begin  
   WriteLn('------------------------------------------------');
 end;
 
-procedure AfficherEntete;
-begin
+procedure AfficherEntete;  
+begin  
   AfficherSeparateur;
   WriteLn('SYSTÈME DE GESTION DE BIBLIOTHÈQUE');
   AfficherSeparateur;
 end;
 
-procedure AfficherLivre(const livre: TLivre);
-var
+procedure AfficherLivre(const livre: TLivre);  
+var  
   statut: String;
 begin
   if livre.Disponible then
@@ -106,8 +106,8 @@ begin
           [livre.Titre, livre.Auteur, livre.Annee, statut]));
 end;
 
-procedure AfficherTousLesLivres;
-var
+procedure AfficherTousLesLivres;  
+var  
   i: Integer;
 begin
   WriteLn(Format('Total : %d livre(s)', [nbLivres]));
@@ -120,8 +120,8 @@ begin
   end;
 end;
 
-procedure AfficherMenu;
-begin
+procedure AfficherMenu;  
+begin  
   WriteLn;
   WriteLn('=== MENU ===');
   WriteLn('1. Ajouter un livre');
@@ -136,15 +136,15 @@ end;
 // MODULE : SAISIE UTILISATEUR
 // ============================================================================
 
-function LireTexte(const prompt: String): String;
-begin
+function LireTexte(const prompt: String): String;  
+begin  
   Write(prompt, ' : ');
   ReadLn(Result);
   Result := Trim(Result);
 end;
 
-function LireEntier(const prompt: String): Integer;
-var
+function LireEntier(const prompt: String): Integer;  
+var  
   texte: String;
 begin
   Write(prompt, ' : ');
@@ -152,8 +152,8 @@ begin
   Result := StrToIntDef(texte, 0);
 end;
 
-function LireChoix: Integer;
-begin
+function LireChoix: Integer;  
+begin  
   Result := LireEntier('Choix');
 end;
 
@@ -161,8 +161,8 @@ end;
 // MODULE : ACTIONS MÉTIER
 // ============================================================================
 
-procedure ActionAjouterLivre;
-var
+procedure ActionAjouterLivre;  
+var  
   titre, auteur: String;
   annee: Integer;
   livre: TLivre;
@@ -180,8 +180,8 @@ begin
     WriteLn('Erreur : bibliothèque pleine');
 end;
 
-procedure ActionListerLivres;
-begin
+procedure ActionListerLivres;  
+begin  
   WriteLn('=== LISTE DES LIVRES ===');
   if nbLivres = 0 then
     WriteLn('Aucun livre dans la bibliothèque')
@@ -189,8 +189,8 @@ begin
     AfficherTousLesLivres;
 end;
 
-procedure ActionEmprunter;
-var
+procedure ActionEmprunter;  
+var  
   titre: String;
   index: Integer;
 begin
@@ -209,8 +209,8 @@ begin
   end;
 end;
 
-procedure ActionRetourner;
-var
+procedure ActionRetourner;  
+var  
   titre: String;
   index: Integer;
 begin

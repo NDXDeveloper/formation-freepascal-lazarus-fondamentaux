@@ -5,8 +5,8 @@
   ============================================================================ }
 program ExempleParametre;
 
-procedure DireBonjour(prenom: String);
-begin
+procedure DireBonjour(prenom: String);  
+begin  
   WriteLn('Bonjour ', prenom, ' !');
 end;
 

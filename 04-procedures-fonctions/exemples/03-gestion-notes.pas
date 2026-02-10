@@ -7,20 +7,20 @@
 program GestionNotes;
 
 // Fonction avec un paramètre
-function EstReussi(note: Real): Boolean;
-begin
+function EstReussi(note: Real): Boolean;  
+begin  
   Result := note >= 10;
 end;
 
 // Fonction avec plusieurs paramètres
-function CalculerMoyenne(n1, n2, n3: Real): Real;
-begin
+function CalculerMoyenne(n1, n2, n3: Real): Real;  
+begin  
   Result := (n1 + n2 + n3) / 3;
 end;
 
 // Procédure avec plusieurs paramètres
-procedure AfficherResultat(nom: String; moyenne: Real);
-begin
+procedure AfficherResultat(nom: String; moyenne: Real);  
+begin  
   WriteLn('Étudiant : ', nom);
   WriteLn('Moyenne : ', moyenne:0:2);
   if EstReussi(moyenne) then

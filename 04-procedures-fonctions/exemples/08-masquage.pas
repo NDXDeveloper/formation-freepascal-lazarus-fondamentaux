@@ -8,8 +8,8 @@ program Masquage;
 var
   nombre: Integer;  // Variable globale
 
-procedure Test;
-var
+procedure Test;  
+var  
   nombre: Integer;  // Variable locale (même nom)
 begin
   nombre := 50;  // Modifie la variable LOCALE

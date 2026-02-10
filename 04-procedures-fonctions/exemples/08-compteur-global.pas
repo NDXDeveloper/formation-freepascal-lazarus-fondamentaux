@@ -8,13 +8,13 @@ program CompteurGlobal;
 var
   compteur: Integer;  // Variable globale
 
-procedure Incrementer;
-begin
+procedure Incrementer;  
+begin  
   compteur := compteur + 1;
 end;
 
-procedure Afficher;
-begin
+procedure Afficher;  
+begin  
   WriteLn('Compteur : ', compteur);
 end;
 

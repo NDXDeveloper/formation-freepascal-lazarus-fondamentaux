@@ -5,8 +5,8 @@
   ============================================================================ }
 program ExempleProcedure;
 
-procedure AfficherMessage;
-begin
+procedure AfficherMessage;  
+begin  
   WriteLn('Bonjour ! Bienvenue dans le programme.');
 end;
 

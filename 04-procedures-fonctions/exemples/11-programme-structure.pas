@@ -35,13 +35,13 @@ var
 // SECTION 3 : FONCTIONS UTILITAIRES DE BAS NIVEAU
 // ========================================
 
-function EstChaineVide(const s: String): Boolean;
-begin
+function EstChaineVide(const s: String): Boolean;  
+begin  
   Result := Trim(s) = '';
 end;
 
-function LireEntierPositif(const prompt: String): Integer;
-var
+function LireEntierPositif(const prompt: String): Integer;  
+var  
   texte: String;
   valeur: Integer;
 begin
@@ -57,14 +57,14 @@ end;
 // SECTION 4 : FONCTIONS MÉTIER
 // ========================================
 
-function CreerUtilisateur(const nom: String; age: Integer): TUtilisateur;
-begin
+function CreerUtilisateur(const nom: String; age: Integer): TUtilisateur;  
+begin  
   Result.Nom := nom;
   Result.Age := age;
 end;
 
-procedure AjouterUtilisateur(const user: TUtilisateur);
-begin
+procedure AjouterUtilisateur(const user: TUtilisateur);  
+begin  
   if nbUtilisateurs < MAX_USERS then
   begin
     Inc(nbUtilisateurs);
@@ -76,16 +76,16 @@ end;
 // SECTION 5 : INTERFACE UTILISATEUR
 // ========================================
 
-procedure AfficherMenu;
-begin
+procedure AfficherMenu;  
+begin  
   WriteLn('=== MENU ===');
   WriteLn('1. Ajouter utilisateur');
   WriteLn('2. Lister utilisateurs');
   WriteLn('0. Quitter');
 end;
 
-procedure TraiterAjout;
-var
+procedure TraiterAjout;  
+var  
   nom: String;
   age: Integer;
   user: TUtilisateur;

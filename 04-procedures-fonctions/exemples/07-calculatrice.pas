@@ -7,42 +7,42 @@
 program Calculatrice;
 
 // overload : permet plusieurs fonctions avec le même nom mais des paramètres différents
-function Additionner(a, b: Integer): Integer; overload;
-begin
+function Additionner(a, b: Integer): Integer; overload;  
+begin  
   Result := a + b;
 end;
 
 // Addition avec 3 nombres
-function Additionner(a, b, c: Integer): Integer; overload;
-begin
+function Additionner(a, b, c: Integer): Integer; overload;  
+begin  
   Result := a + b + c;
 end;
 
 // Addition de réels
-function Additionner(a, b: Real): Real; overload;
-begin
+function Additionner(a, b: Real): Real; overload;  
+begin  
   Result := a + b;
 end;
 
 // Multiplication
-function Multiplier(a, b: Integer): Integer; overload;
-begin
+function Multiplier(a, b: Integer): Integer; overload;  
+begin  
   Result := a * b;
 end;
 
-function Multiplier(a, b: Real): Real; overload;
-begin
+function Multiplier(a, b: Real): Real; overload;  
+begin  
   Result := a * b;
 end;
 
 // Affichage du résultat
-procedure AfficherResultat(operation: String; resultat: Integer); overload;
-begin
+procedure AfficherResultat(operation: String; resultat: Integer); overload;  
+begin  
   WriteLn(operation, ' = ', resultat);
 end;
 
-procedure AfficherResultat(operation: String; resultat: Real); overload;
-begin
+procedure AfficherResultat(operation: String; resultat: Real); overload;  
+begin  
   WriteLn(operation, ' = ', resultat:0:2);
 end;
 

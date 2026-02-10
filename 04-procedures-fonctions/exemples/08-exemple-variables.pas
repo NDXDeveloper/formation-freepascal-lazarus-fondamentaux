@@ -9,13 +9,13 @@ program Exemple;
 var
   variableGlobale: Integer;  // Variable globale
 
-procedure MaProcedure;
-begin
+procedure MaProcedure;  
+begin  
   variableGlobale := 10;  // Accessible ici
 end;
 
-function MaFonction: Integer;
-begin
+function MaFonction: Integer;  
+begin  
   Result := variableGlobale + 5;  // Accessible ici aussi
 end;
 

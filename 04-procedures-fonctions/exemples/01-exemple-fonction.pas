@@ -5,8 +5,8 @@
   ============================================================================ }
 program ExempleFonction;
 
-function CalculerCarre(nombre: Integer): Integer;
-begin
+function CalculerCarre(nombre: Integer): Integer;  
+begin  
   CalculerCarre := nombre * nombre;  // En Pascal, on retourne une valeur en assignant au nom de la fonction
 end;
 

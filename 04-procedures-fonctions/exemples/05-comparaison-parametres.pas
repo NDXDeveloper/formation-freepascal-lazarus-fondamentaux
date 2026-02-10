@@ -6,22 +6,22 @@
 program ComparaisonParametres;
 
 // 1. Par valeur (copie)
-procedure ParValeur(texte: String);
-begin
+procedure ParValeur(texte: String);  
+begin  
   WriteLn('Par valeur : ', texte);
   texte := 'Modifié';  // Possible mais n'affecte pas l'original
 end;
 
 // 2. Par référence (var)
-procedure ParReference(var texte: String);
-begin
+procedure ParReference(var texte: String);  
+begin  
   WriteLn('Par référence : ', texte);
   texte := 'Modifié';  // Possible et affecte l'original
 end;
 
 // 3. Constant (const)
-procedure ParConstant(const texte: String);
-begin
+procedure ParConstant(const texte: String);  
+begin  
   WriteLn('Par constant : ', texte);
   // texte := 'Modifié';  // ERREUR de compilation !
 end;

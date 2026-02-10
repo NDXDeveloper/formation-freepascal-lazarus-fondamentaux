@@ -13,16 +13,16 @@ var
   numeroCompte: String;
 
 // Initialiser le compte
-procedure InitialiserCompte(nom, numero: String);
-begin
+procedure InitialiserCompte(nom, numero: String);  
+begin  
   nomTitulaire := nom;
   numeroCompte := numero;
   solde := 0.0;
 end;
 
 // Déposer de l'argent
-procedure Deposer(montant: Real);
-var
+procedure Deposer(montant: Real);  
+var  
   frais: Real;  // Variable locale
 begin
   frais := 0.0;  // Pas de frais pour un dépôt
@@ -31,8 +31,8 @@ begin
 end;
 
 // Retirer de l'argent
-function Retirer(montant: Real): Boolean;
-var
+function Retirer(montant: Real): Boolean;  
+var  
   frais: Real;  // Variable locale
 begin
   frais := 1.50;  // Frais de retrait
@@ -51,8 +51,8 @@ begin
 end;
 
 // Afficher les informations du compte
-procedure AfficherInfos;
-begin
+procedure AfficherInfos;  
+begin  
   WriteLn('=== Informations du compte ===');
   WriteLn('Titulaire : ', nomTitulaire);
   WriteLn('Numéro : ', numeroCompte);

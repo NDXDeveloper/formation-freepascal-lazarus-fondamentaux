@@ -5,13 +5,13 @@
   ============================================================================ }
 program Correct;
 
-procedure Procedure1;
-begin
+procedure Procedure1;  
+begin  
   WriteLn('Procédure 1');
 end;
 
-procedure Procedure2;
-begin
+procedure Procedure2;  
+begin  
   Procedure1;  // OK : Procedure1 est déjà déclarée au-dessus
 end;
 

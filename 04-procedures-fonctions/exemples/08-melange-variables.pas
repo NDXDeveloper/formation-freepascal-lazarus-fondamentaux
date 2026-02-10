@@ -8,16 +8,16 @@ program MelangeVariables;
 var
   total: Integer;  // Globale
 
-procedure AjouterDix;
-var
+procedure AjouterDix;  
+var  
   valeur: Integer;  // Locale
 begin
   valeur := 10;
   total := total + valeur;
 end;
 
-procedure AjouterVingt;
-var
+procedure AjouterVingt;  
+var  
   valeur: Integer;  // Locale (différente de celle de AjouterDix)
 begin
   valeur := 20;

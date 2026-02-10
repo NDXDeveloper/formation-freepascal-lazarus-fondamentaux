@@ -12,13 +12,13 @@ Maintenant que nous savons qu'il existe des procédures et des fonctions, appren
 program MonProgramme;
 
 // 1. Déclarations des procédures et fonctions
-procedure MaProcedure;
-begin
+procedure MaProcedure;  
+begin  
   // Code de la procédure
 end;
 
-function MaFonction: Integer;
-begin
+function MaFonction: Integer;  
+begin  
   // Code de la fonction
 end;
 
@@ -37,8 +37,8 @@ end.
 ### Syntaxe de base
 
 ```pascal
-procedure NomDeLaProcedure;
-begin
+procedure NomDeLaProcedure;  
+begin  
   // Instructions
 end;
 ```
@@ -48,8 +48,8 @@ end;
 ```pascal
 program ExempleDeclaration;
 
-procedure DireBonjour;
-begin
+procedure DireBonjour;  
+begin  
   WriteLn('Bonjour tout le monde !');
   WriteLn('Comment allez-vous ?');
 end;
@@ -61,8 +61,8 @@ end.
 
 **Résultat à l'écran :**
 ```
-Bonjour tout le monde !
-Comment allez-vous ?
+Bonjour tout le monde !  
+Comment allez-vous ?  
 ```
 
 ### Règles de nommage
@@ -74,17 +74,17 @@ Comment allez-vous ?
 
 **Exemples valides :**
 ```pascal
-procedure AfficherMenu;
-procedure Calculer_Total;
-procedure Etape1;
-procedure InitialiserVariables;
+procedure AfficherMenu;  
+procedure Calculer_Total;  
+procedure Etape1;  
+procedure InitialiserVariables;  
 ```
 
 **Exemples invalides :**
 ```pascal
-procedure 1ereProcedure;   // ❌ Commence par un chiffre
-procedure Afficher Menu;    // ❌ Contient un espace
-procedure begin;            // ❌ Mot réservé
+procedure 1ereProcedure;   // ❌ Commence par un chiffre  
+procedure Afficher Menu;    // ❌ Contient un espace  
+procedure begin;            // ❌ Mot réservé  
 ```
 
 ## Déclaration de fonctions
@@ -92,8 +92,8 @@ procedure begin;            // ❌ Mot réservé
 ### Syntaxe de base
 
 ```pascal
-function NomDeLaFonction: TypeDeRetour;
-begin
+function NomDeLaFonction: TypeDeRetour;  
+begin  
   // Instructions
   Result := valeur;  // ou NomDeLaFonction := valeur;
 end;
@@ -105,8 +105,8 @@ end;
 {$mode objfpc}{$H+}
 program ExempleFonction;
 
-function ObtenirAge: Integer;
-begin
+function ObtenirAge: Integer;  
+begin  
   Result := 25;  // Result nécessite {$mode objfpc} ; sinon utiliser NomFonction := valeur
 end;
 
@@ -121,28 +121,28 @@ end.
 ### Types de retour courants
 
 ```pascal
-function RetourneEntier: Integer;
-begin
+function RetourneEntier: Integer;  
+begin  
   Result := 42;
 end;
 
-function RetourneReel: Real;
-begin
+function RetourneReel: Real;  
+begin  
   Result := 3.14;
 end;
 
-function RetourneTexte: String;
-begin
+function RetourneTexte: String;  
+begin  
   Result := 'Bonjour';
 end;
 
-function RetourneBooleen: Boolean;
-begin
+function RetourneBooleen: Boolean;  
+begin  
   Result := True;
 end;
 
-function RetourneCaractere: Char;
-begin
+function RetourneCaractere: Char;  
+begin  
   Result := 'A';
 end;
 ```
@@ -154,13 +154,13 @@ Une procédure s'appelle simplement par son nom, suivi d'un point-virgule.
 ```pascal
 program AppelProcedure;
 
-procedure Message1;
-begin
+procedure Message1;  
+begin  
   WriteLn('Premier message');
 end;
 
-procedure Message2;
-begin
+procedure Message2;  
+begin  
   WriteLn('Deuxième message');
 end;
 
@@ -173,9 +173,9 @@ end.
 
 **Résultat :**
 ```
-Premier message
-Deuxième message
-Premier message
+Premier message  
+Deuxième message  
+Premier message  
 ```
 
 ### Appels multiples
@@ -183,8 +183,8 @@ Premier message
 On peut appeler une procédure autant de fois qu'on le souhaite :
 
 ```pascal
-procedure AfficherEtoile;
-begin
+procedure AfficherEtoile;  
+begin  
   Write('* ');
 end;
 
@@ -209,8 +209,8 @@ Une fonction s'appelle dans une **expression** ou une **affectation** car elle r
 {$mode objfpc}{$H+}
 program AppelFonction;
 
-function ObtenirNombre: Integer;
-begin
+function ObtenirNombre: Integer;  
+begin  
   Result := 100;
 end;
 
@@ -225,8 +225,8 @@ end.
 ### Dans une expression
 
 ```pascal
-function ObtenirDix: Integer;
-begin
+function ObtenirDix: Integer;  
+begin  
   Result := 10;
 end;
 
@@ -242,8 +242,8 @@ end;
 ### Directement dans WriteLn
 
 ```pascal
-function ObtenirMessage: String;
-begin
+function ObtenirMessage: String;  
+begin  
   Result := 'Ceci est un message';
 end;
 
@@ -255,8 +255,8 @@ end.
 ### Dans une condition
 
 ```pascal
-function EstPositif: Boolean;
-begin
+function EstPositif: Boolean;  
+begin  
   Result := True;
 end;
 
@@ -275,13 +275,13 @@ En Pascal, les procédures et fonctions doivent être déclarées **avant** d'ê
 ```pascal
 program Correct;
 
-procedure Procedure1;
-begin
+procedure Procedure1;  
+begin  
   WriteLn('Procédure 1');
 end;
 
-procedure Procedure2;
-begin
+procedure Procedure2;  
+begin  
   Procedure1;  // OK : Procedure1 est déjà déclarée au-dessus
 end;
 
@@ -295,13 +295,13 @@ end.
 ```pascal
 program Incorrect;
 
-procedure Procedure2;
-begin
+procedure Procedure2;  
+begin  
   Procedure1;  // ❌ ERREUR : Procedure1 n'est pas encore déclarée
 end;
 
-procedure Procedure1;
-begin
+procedure Procedure1;  
+begin  
   WriteLn('Procédure 1');
 end;
 
@@ -319,13 +319,13 @@ program AvecForward;
 
 procedure Procedure1; forward;  // Déclaration anticipée
 
-procedure Procedure2;
-begin
+procedure Procedure2;  
+begin  
   Procedure1;  // OK maintenant
 end;
 
-procedure Procedure1;  // Définition complète
-begin
+procedure Procedure1;  // Définition complète  
+begin  
   WriteLn('Procédure 1');
 end;
 
@@ -339,13 +339,13 @@ end.
 Jusqu'ici, nous avons vu uniquement des procédures/fonctions **sans paramètres**. Elles s'exécutent toujours de la même manière.
 
 ```pascal
-function DonnerReponse: Integer;
-begin
+function DonnerReponse: Integer;  
+begin  
   Result := 42;  // Retourne toujours 42
 end;
 
-procedure DireBonjour;
-begin
+procedure DireBonjour;  
+begin  
   WriteLn('Bonjour');  // Affiche toujours la même chose
 end;
 ```
@@ -359,8 +359,8 @@ On peut déclarer des variables **locales** qui n'existent que dans la procédur
 ### Dans une procédure
 
 ```pascal
-procedure AfficherCalcul;
-var
+procedure AfficherCalcul;  
+var  
   a, b, somme: Integer;  // Variables locales
 begin
   a := 10;
@@ -373,8 +373,8 @@ end;
 ### Dans une fonction
 
 ```pascal
-function CalculerSomme: Integer;
-var
+function CalculerSomme: Integer;  
+var  
   x, y: Integer;  // Variables locales
 begin
   x := 15;
@@ -392,20 +392,20 @@ end;
 program ExempleComplet;
 
 // Déclaration d'une procédure
-procedure AfficherSeparateur;
-begin
+procedure AfficherSeparateur;  
+begin  
   WriteLn('====================');
 end;
 
 // Déclaration d'une fonction
-function ObtenirAnneeActuelle: Integer;
-begin
+function ObtenirAnneeActuelle: Integer;  
+begin  
   Result := 2025;
 end;
 
 // Déclaration d'une fonction avec calcul
-function CalculerDoubleAnnee: Integer;
-var
+function CalculerDoubleAnnee: Integer;  
+var  
   annee: Integer;  // Variable locale
 begin
   annee := ObtenirAnneeActuelle;
@@ -429,8 +429,8 @@ end.
 **Résultat à l'écran :**
 ```
 ====================
-Année actuelle : 2025
-Le double : 4050
+Année actuelle : 2025  
+Le double : 4050  
 ====================
 ```
 
@@ -439,13 +439,13 @@ Le double : 4050
 ### 1. Oublier le type de retour d'une fonction
 
 ```pascal
-function MaFonction;  // ❌ ERREUR : type de retour manquant
-begin
+function MaFonction;  // ❌ ERREUR : type de retour manquant  
+begin  
   Result := 10;
 end;
 
-function MaFonction: Integer;  // ✅ CORRECT
-begin
+function MaFonction: Integer;  // ✅ CORRECT  
+begin  
   Result := 10;
 end;
 ```
@@ -453,14 +453,14 @@ end;
 ### 2. Oublier d'affecter une valeur de retour
 
 ```pascal
-function ObtenirNombre: Integer;
-begin
+function ObtenirNombre: Integer;  
+begin  
   WriteLn('Fonction appelée');
   // ❌ ERREUR : pas de Result := ...
 end;
 
-function ObtenirNombre: Integer;
-begin
+function ObtenirNombre: Integer;  
+begin  
   WriteLn('Fonction appelée');
   Result := 5;  // ✅ CORRECT
 end;
@@ -469,8 +469,8 @@ end;
 ### 3. Utiliser une fonction comme une procédure
 
 ```pascal
-function Calculer: Integer;
-begin
+function Calculer: Integer;  
+begin  
   Result := 100;
 end;
 
@@ -484,8 +484,8 @@ end;
 ### 4. Essayer d'affecter une valeur de retour à une procédure
 
 ```pascal
-procedure MaProcedure;
-begin
+procedure MaProcedure;  
+begin  
   Result := 10;  // ❌ ERREUR : les procédures ne retournent rien
 end;
 ```

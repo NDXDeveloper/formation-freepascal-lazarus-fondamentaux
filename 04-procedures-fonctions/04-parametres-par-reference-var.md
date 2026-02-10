@@ -11,8 +11,8 @@ Dans la section précédente, nous avons vu les **paramètres par valeur** qui c
 Imaginons que vous voulez créer une procédure qui double un nombre :
 
 ```pascal
-procedure DoublerNombre(n: Integer);
-begin
+procedure DoublerNombre(n: Integer);  
+begin  
   n := n * 2;
 end;
 
@@ -32,8 +32,8 @@ end.
 En ajoutant le mot-clé `var` devant le paramètre, on indique à Pascal de passer la **référence** (l'adresse mémoire) de la variable plutôt qu'une copie.
 
 ```pascal
-procedure DoublerNombre(var n: Integer);
-begin
+procedure DoublerNombre(var n: Integer);  
+begin  
   n := n * 2;
 end;
 
@@ -53,8 +53,8 @@ end.
 ### Pour une procédure
 
 ```pascal
-procedure NomProcedure(var nomParametre: Type);
-begin
+procedure NomProcedure(var nomParametre: Type);  
+begin  
   // Modifications de nomParametre affectent la variable originale
 end;
 ```
@@ -62,8 +62,8 @@ end;
 ### Pour une fonction
 
 ```pascal
-function NomFonction(var nomParametre: Type): TypeRetour;
-begin
+function NomFonction(var nomParametre: Type): TypeRetour;  
+begin  
   // Modifications de nomParametre affectent la variable originale
   Result := ...;
 end;
@@ -74,8 +74,8 @@ end;
 ### Avec paramètre par valeur (sans var)
 
 ```pascal
-procedure ModifierParValeur(n: Integer);
-begin
+procedure ModifierParValeur(n: Integer);  
+begin  
   n := 100;
   WriteLn('Dans la procédure : ', n);  // 100
 end;
@@ -93,8 +93,8 @@ end.
 ### Avec paramètre par référence (avec var)
 
 ```pascal
-procedure ModifierParReference(var n: Integer);
-begin
+procedure ModifierParReference(var n: Integer);  
+begin  
   n := 100;
   WriteLn('Dans la procédure : ', n);  // 100
 end;
@@ -115,16 +115,16 @@ end.
 ```
 Programme : x = 5
               ↓ (copie)
-Procédure : n = 5 (copie indépendante)
-Modification de n n'affecte pas x
+Procédure : n = 5 (copie indépendante)  
+Modification de n n'affecte pas x  
 ```
 
 ### Paramètre par référence
 ```
 Programme : x = 5
               ↓ (référence/adresse)
-Procédure : n pointe vers x (même emplacement mémoire)
-Modification de n = modification de x
+Procédure : n pointe vers x (même emplacement mémoire)  
+Modification de n = modification de x  
 ```
 
 ## Exemples pratiques
@@ -132,8 +132,8 @@ Modification de n = modification de x
 ### 1. Échanger deux valeurs
 
 ```pascal
-procedure Echanger(var a, b: Integer);
-var
+procedure Echanger(var a, b: Integer);  
+var  
   temp: Integer;
 begin
   temp := a;
@@ -156,15 +156,15 @@ end.
 
 **Résultat :**
 ```
-Avant : x = 10, y = 20
-Après : x = 20, y = 10
+Avant : x = 10, y = 20  
+Après : x = 20, y = 10  
 ```
 
 ### 2. Incrémenter une variable
 
 ```pascal
-procedure Incrementer(var n: Integer);
-begin
+procedure Incrementer(var n: Integer);  
+begin  
   n := n + 1;
 end;
 
@@ -185,14 +185,14 @@ end.
 ### 3. Lire des valeurs de l'utilisateur
 
 ```pascal
-procedure DemanderAge(var age: Integer);
-begin
+procedure DemanderAge(var age: Integer);  
+begin  
   Write('Entrez votre âge : ');
   ReadLn(age);
 end;
 
-procedure DemanderNom(var nom: String);
-begin
+procedure DemanderNom(var nom: String);  
+begin  
   Write('Entrez votre nom : ');
   ReadLn(nom);
 end;
@@ -213,8 +213,8 @@ end.
 Une fonction ne peut retourner qu'une seule valeur. Avec `var`, on peut obtenir plusieurs résultats :
 
 ```pascal
-procedure CalculerCercle(rayon: Real; var aire, perimetre: Real);
-const
+procedure CalculerCercle(rayon: Real; var aire, perimetre: Real);  
+const  
   PI = 3.14159;
 begin
   aire := PI * rayon * rayon;
@@ -235,16 +235,16 @@ end.
 
 **Résultat :**
 ```
-Rayon : 5.00
-Aire : 78.54
-Périmètre : 31.42
+Rayon : 5.00  
+Aire : 78.54  
+Périmètre : 31.42  
 ```
 
 ### 5. Fonction avec retour + modification de paramètre
 
 ```pascal
-function Diviser(dividende, diviseur: Integer; var reste: Integer): Integer;
-begin
+function Diviser(dividende, diviseur: Integer; var reste: Integer): Integer;  
+begin  
   Result := dividende div diviseur;  // Quotient
   reste := dividende mod diviseur;   // Reste
 end;
@@ -270,8 +270,8 @@ Reste : 2
 On peut combiner les deux types dans une même procédure/fonction :
 
 ```pascal
-procedure AjouterTaxe(prixHT: Real; tauxTaxe: Real; var prixTTC: Real);
-begin
+procedure AjouterTaxe(prixHT: Real; tauxTaxe: Real; var prixTTC: Real);  
+begin  
   prixTTC := prixHT * (1 + tauxTaxe / 100);
 end;
 
@@ -333,8 +333,8 @@ end.
 ### 1. On ne peut passer que des variables
 
 ```pascal
-procedure Modifier(var n: Integer);
-begin
+procedure Modifier(var n: Integer);  
+begin  
   n := 10;
 end;
 
@@ -352,8 +352,8 @@ end.
 ### 2. Le type doit correspondre exactement
 
 ```pascal
-procedure ModifierEntier(var n: Integer);
-begin
+procedure ModifierEntier(var n: Integer);  
+begin  
   n := 10;
 end;
 
@@ -372,27 +372,27 @@ end.
 program GestionCoordonnees;
 
 // Initialiser des coordonnées
-procedure InitialiserPosition(var x, y: Integer);
-begin
+procedure InitialiserPosition(var x, y: Integer);  
+begin  
   x := 0;
   y := 0;
 end;
 
 // Déplacer vers la droite
-procedure DeplacerDroite(var x: Integer; distance: Integer);
-begin
+procedure DeplacerDroite(var x: Integer; distance: Integer);  
+begin  
   x := x + distance;
 end;
 
 // Déplacer vers le haut
-procedure DeplacerHaut(var y: Integer; distance: Integer);
-begin
+procedure DeplacerHaut(var y: Integer; distance: Integer);  
+begin  
   y := y + distance;
 end;
 
 // Afficher la position
-procedure AfficherPosition(x, y: Integer);
-begin
+procedure AfficherPosition(x, y: Integer);  
+begin  
   WriteLn('Position actuelle : (', x, ', ', y, ')');
 end;
 
@@ -415,10 +415,10 @@ end.
 
 **Résultat :**
 ```
-Position actuelle : (0, 0)
-Position actuelle : (5, 0)
-Position actuelle : (5, 3)
-Position actuelle : (3, 3)
+Position actuelle : (0, 0)  
+Position actuelle : (5, 0)  
+Position actuelle : (5, 3)  
+Position actuelle : (3, 3)  
 ```
 
 ## Erreurs courantes à éviter
@@ -426,8 +426,8 @@ Position actuelle : (3, 3)
 ### 1. Oublier var alors qu'on veut modifier
 
 ```pascal
-procedure Doubler(n: Integer);  // ❌ Oubli de var
-begin
+procedure Doubler(n: Integer);  // ❌ Oubli de var  
+begin  
   n := n * 2;
 end;
 
@@ -449,14 +449,14 @@ procedure Doubler(var n: Integer);  // ✅ Ajout de var
 
 ```pascal
 // ❌ Mauvaise pratique : on ne modifie pas n
-function Carre(var n: Integer): Integer;
-begin
+function Carre(var n: Integer): Integer;  
+begin  
   Result := n * n;
 end;
 
 // ✅ Meilleure pratique
-function Carre(n: Integer): Integer;
-begin
+function Carre(n: Integer): Integer;  
+begin  
   Result := n * n;
 end;
 ```
@@ -464,8 +464,8 @@ end;
 ### 3. Passer une expression avec var
 
 ```pascal
-procedure Test(var n: Integer);
-begin
+procedure Test(var n: Integer);  
+begin  
   n := 10;
 end;
 

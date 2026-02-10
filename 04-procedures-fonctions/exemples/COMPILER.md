@@ -44,8 +44,8 @@ for f in *.pas; do echo "=== Compilation de $f ===" && fpc "$f" 2>&1; done
 ## Nettoyer les fichiers générés (binaires et .o)
 
 ```bash
-rm -f *.o
-find . -maxdepth 1 -type f ! -name "*.pas" ! -name "*.md" -executable -delete
+rm -f *.o  
+find . -maxdepth 1 -type f ! -name "*.pas" ! -name "*.md" -executable -delete  
 ```
 
 ## Liste des exemples

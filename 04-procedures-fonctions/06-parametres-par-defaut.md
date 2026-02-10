@@ -11,8 +11,8 @@ Parfois, certains paramètres d'une procédure ou fonction ont souvent la même 
 Imaginons une procédure pour afficher un message avec un séparateur :
 
 ```pascal
-procedure AfficherMessage(texte: String; caractere: Char; longueur: Integer);
-var
+procedure AfficherMessage(texte: String; caractere: Char; longueur: Integer);  
+var  
   i: Integer;
 begin
   for i := 1 to longueur do
@@ -39,8 +39,8 @@ end.
 En définissant des valeurs par défaut, ces paramètres deviennent optionnels :
 
 ```pascal
-procedure AfficherMessage(texte: String; caractere: Char = '='; longueur: Integer = 20);
-var
+procedure AfficherMessage(texte: String; caractere: Char = '='; longueur: Integer = 20);  
+var  
   i: Integer;
 begin
   for i := 1 to longueur do
@@ -66,8 +66,8 @@ end.
 ### Déclaration
 
 ```pascal
-procedure NomProcedure(param1: Type; param2: Type = valeurDefaut);
-function NomFonction(param1: Type; param2: Type = valeurDefaut): TypeRetour;
+procedure NomProcedure(param1: Type; param2: Type = valeurDefaut);  
+function NomFonction(param1: Type; param2: Type = valeurDefaut): TypeRetour;  
 ```
 
 ### Exemples de déclarations
@@ -151,8 +151,8 @@ procedure Correct(n: Integer = 10);
 ```pascal
 uses SysUtils;
 
-procedure AfficherNombre(nombre: Integer; largeur: Integer = 5; remplissage: Char = ' ');
-var
+procedure AfficherNombre(nombre: Integer; largeur: Integer = 5; remplissage: Char = ' ');  
+var  
   texte: String;
   i: Integer;
 begin
@@ -175,8 +175,8 @@ end.
 ### 2. Fonction de calcul avec valeur par défaut
 
 ```pascal
-function Puissance(base: Real; exposant: Integer = 2): Real;
-var
+function Puissance(base: Real; exposant: Integer = 2): Real;  
+var  
   i: Integer;
   resultat: Real;
 begin
@@ -197,8 +197,8 @@ end.
 ### 3. Procédure de journalisation (logging)
 
 ```pascal
-procedure Log(message: String; niveau: String = 'INFO'; afficherDate: Boolean = True);
-begin
+procedure Log(message: String; niveau: String = 'INFO'; afficherDate: Boolean = True);  
+begin  
   if afficherDate then
     Write('[2025-10-12] ');
 
@@ -373,8 +373,8 @@ end.
 ```pascal
 uses Math;
 
-function Arrondir(valeur: Real; decimales: Integer = 2): Real;
-var
+function Arrondir(valeur: Real; decimales: Integer = 2): Real;  
+var  
   multiplicateur: Real;
 begin
   multiplicateur := Power(10, decimales);

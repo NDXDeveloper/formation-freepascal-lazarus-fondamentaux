@@ -5,8 +5,8 @@
   ============================================================================ }
 program ExempleDeclaration;
 
-procedure DireBonjour;
-begin
+procedure DireBonjour;  
+begin  
   WriteLn('Bonjour tout le monde !');
   WriteLn('Comment allez-vous ?');
 end;

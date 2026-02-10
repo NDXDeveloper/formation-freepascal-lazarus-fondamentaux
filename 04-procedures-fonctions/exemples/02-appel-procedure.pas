@@ -5,13 +5,13 @@
   ============================================================================ }
 program AppelProcedure;
 
-procedure Message1;
-begin
+procedure Message1;  
+begin  
   WriteLn('Premier message');
 end;
 
-procedure Message2;
-begin
+procedure Message2;  
+begin  
   WriteLn('Deuxième message');
 end;
 

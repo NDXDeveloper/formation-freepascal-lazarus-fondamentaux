@@ -5,8 +5,8 @@
   ============================================================================ }
 program ToursHanoi;
 
-procedure DeplacerDisques(n: Integer; source, destination, auxiliaire: Char);
-begin
+procedure DeplacerDisques(n: Integer; source, destination, auxiliaire: Char);  
+begin  
   if n = 1 then
   begin
     // Cas de base : déplacer un seul disque

@@ -19,13 +19,13 @@ program Exemple;
 var
   variableGlobale: Integer;  // Variable globale
 
-procedure MaProcedure;
-begin
+procedure MaProcedure;  
+begin  
   variableGlobale := 10;  // Accessible ici
 end;
 
-function MaFonction: Integer;
-begin
+function MaFonction: Integer;  
+begin  
   Result := variableGlobale + 5;  // Accessible ici aussi
 end;
 
@@ -50,8 +50,8 @@ Une **variable locale** est déclarée à l'intérieur d'une procédure ou fonct
 ### Syntaxe
 
 ```pascal
-procedure MaProcedure;
-var
+procedure MaProcedure;  
+var  
   variableLocale: Integer;  // Variable locale
 begin
   variableLocale := 10;
@@ -79,16 +79,16 @@ program Demonstration;
 var
   globale: Integer;
 
-procedure Proc1;
-var
+procedure Proc1;  
+var  
   locale1: Integer;
 begin
   globale := 5;
   locale1 := 10;
 end;
 
-procedure Proc2;
-var
+procedure Proc2;  
+var  
   locale2: Integer;
 begin
   globale := 15;
@@ -113,13 +113,13 @@ program CompteurGlobal;
 var
   compteur: Integer;  // Variable globale
 
-procedure Incrementer;
-begin
+procedure Incrementer;  
+begin  
   compteur := compteur + 1;
 end;
 
-procedure Afficher;
-begin
+procedure Afficher;  
+begin  
   WriteLn('Compteur : ', compteur);
 end;
 
@@ -139,8 +139,8 @@ end.
 ### 2. Variables locales : calculs indépendants
 
 ```pascal
-procedure CalculerCarre;
-var
+procedure CalculerCarre;  
+var  
   nombre, resultat: Integer;  // Variables locales
 begin
   nombre := 5;
@@ -148,8 +148,8 @@ begin
   WriteLn('Carré de ', nombre, ' = ', resultat);
 end;
 
-procedure CalculerCube;
-var
+procedure CalculerCube;  
+var  
   nombre, resultat: Integer;  // Variables locales différentes
 begin
   nombre := 3;
@@ -173,16 +173,16 @@ program MelangeVariables;
 var
   total: Integer;  // Globale
 
-procedure AjouterDix;
-var
+procedure AjouterDix;  
+var  
   valeur: Integer;  // Locale
 begin
   valeur := 10;
   total := total + valeur;
 end;
 
-procedure AjouterVingt;
-var
+procedure AjouterVingt;  
+var  
   valeur: Integer;  // Locale (différente de celle de AjouterDix)
 begin
   valeur := 20;
@@ -213,8 +213,8 @@ program Masquage;
 var
   nombre: Integer;  // Variable globale
 
-procedure Test;
-var
+procedure Test;  
+var  
   nombre: Integer;  // Variable locale (même nom)
 begin
   nombre := 50;  // Modifie la variable LOCALE
@@ -233,9 +233,9 @@ end.
 
 **Résultat :**
 ```
-Avant Test : 100
-Dans Test : 50
-Après Test : 100
+Avant Test : 100  
+Dans Test : 50  
+Après Test : 100  
 ```
 
 **Explication :** Dans la procédure `Test`, quand on écrit `nombre`, on fait référence à la variable locale, pas à la globale. Les deux variables sont complètement indépendantes.
@@ -248,8 +248,8 @@ En Pascal standard, il n'existe pas de moyen direct d'accéder à une variable g
 var
   nombreGlobal: Integer;  // Nom explicite
 
-procedure Test;
-var
+procedure Test;  
+var  
   nombreLocal: Integer;  // Nom différent
 begin
   nombreLocal := 50;
@@ -268,8 +268,8 @@ Les variables globales existent pendant **toute la durée d'exécution** du prog
 var
   compteur: Integer;
 
-procedure Incrementer;
-begin
+procedure Incrementer;  
+begin  
   compteur := compteur + 1;  // La valeur persiste entre les appels
 end;
 
@@ -287,8 +287,8 @@ end.
 Les variables locales sont **créées** à chaque appel et **détruites** à la sortie.
 
 ```pascal
-procedure Test;
-var
+procedure Test;  
+var  
   compteur: Integer;
 begin
   compteur := compteur + 1;  // ⚠️ DANGER : variable non initialisée !
@@ -305,8 +305,8 @@ end.
 **Important :** Les variables locales ne sont **pas initialisées automatiquement**. Il faut toujours les initialiser avant de les utiliser :
 
 ```pascal
-procedure TestCorrect;
-var
+procedure TestCorrect;  
+var  
   compteur: Integer;
 begin
   compteur := 0;  // ✅ Initialisation
@@ -366,14 +366,14 @@ end;
 var
   a, b, resultat: Integer;  // Globales
 
-procedure Additionner;
-begin
+procedure Additionner;  
+begin  
   resultat := a + b;
 end;
 
 // ✅ Bonne pratique
-function Additionner(a, b: Integer): Integer;
-var
+function Additionner(a, b: Integer): Integer;  
+var  
   resultat: Integer;  // Locale
 begin
   resultat := a + b;
@@ -388,8 +388,8 @@ end;
 var
   largeur, hauteur: Integer;
 
-procedure CalculerAire;
-var
+procedure CalculerAire;  
+var  
   aire: Integer;
 begin
   aire := largeur * hauteur;
@@ -397,8 +397,8 @@ begin
 end;
 
 // ✅ Bonne pratique : utilise des paramètres
-function CalculerAire(largeur, hauteur: Integer): Integer;
-begin
+function CalculerAire(largeur, hauteur: Integer): Integer;  
+begin  
   Result := largeur * hauteur;
 end;
 ```
@@ -407,16 +407,16 @@ end;
 
 ```pascal
 // ❌ Mauvaise pratique
-procedure Test;
-var
+procedure Test;  
+var  
   x: Integer;
 begin
   WriteLn(x);  // Valeur aléatoire !
 end;
 
 // ✅ Bonne pratique
-procedure Test;
-var
+procedure Test;  
+var  
   x: Integer;
 begin
   x := 0;  // Initialisation
@@ -431,8 +431,8 @@ end;
 var
   valeur: Integer;
 
-procedure Test;
-var
+procedure Test;  
+var  
   valeur: Integer;  // Masque la globale
 begin
   // Confusion possible
@@ -442,8 +442,8 @@ end;
 var
   valeurGlobale: Integer;
 
-procedure Test;
-var
+procedure Test;  
+var  
   valeurLocale: Integer;
 begin
   // Clair et sans confusion
@@ -470,16 +470,16 @@ var
   numeroCompte: String;
 
 // Initialiser le compte
-procedure InitialiserCompte(nom, numero: String);
-begin
+procedure InitialiserCompte(nom, numero: String);  
+begin  
   nomTitulaire := nom;
   numeroCompte := numero;
   solde := 0.0;
 end;
 
 // Déposer de l'argent
-procedure Deposer(montant: Real);
-var
+procedure Deposer(montant: Real);  
+var  
   frais: Real;  // Variable locale
 begin
   frais := 0.0;  // Pas de frais pour un dépôt
@@ -488,8 +488,8 @@ begin
 end;
 
 // Retirer de l'argent
-function Retirer(montant: Real): Boolean;
-var
+function Retirer(montant: Real): Boolean;  
+var  
   frais: Real;  // Variable locale
 begin
   frais := 1.50;  // Frais de retrait
@@ -508,8 +508,8 @@ begin
 end;
 
 // Afficher les informations du compte
-procedure AfficherInfos;
-begin
+procedure AfficherInfos;  
+begin  
   WriteLn('=== Informations du compte ===');
   WriteLn('Titulaire : ', nomTitulaire);
   WriteLn('Numéro : ', numeroCompte);
@@ -535,18 +535,18 @@ end.
 **Résultat :**
 ```
 === Informations du compte ===
-Titulaire : Dupont Jean
-Numéro : FR76 1234 5678 9012
-Solde : 0.00 €
+Titulaire : Dupont Jean  
+Numéro : FR76 1234 5678 9012  
+Solde : 0.00 €  
 ==============================
-Dépôt de 1000.00 €. Nouveau solde : 1000.00 €
-Dépôt de 500.00 €. Nouveau solde : 1500.00 €
-Retrait de 200.00 €. Nouveau solde : 1298.50 €
-Solde insuffisant !
+Dépôt de 1000.00 €. Nouveau solde : 1000.00 €  
+Dépôt de 500.00 €. Nouveau solde : 1500.00 €  
+Retrait de 200.00 €. Nouveau solde : 1298.50 €  
+Solde insuffisant !  
 === Informations du compte ===
-Titulaire : Dupont Jean
-Numéro : FR76 1234 5678 9012
-Solde : 1298.50 €
+Titulaire : Dupont Jean  
+Numéro : FR76 1234 5678 9012  
+Solde : 1298.50 €  
 ==============================
 ```
 
@@ -567,8 +567,8 @@ En Pascal, il n'existe pas de variables locales "statiques" comme dans certains 
 ### 1. Utiliser une variable locale non initialisée
 
 ```pascal
-procedure Test;
-var
+procedure Test;  
+var  
   x: Integer;
 begin
   WriteLn(x);  // ❌ x contient n'importe quoi
@@ -581,8 +581,8 @@ end;
 ### 2. Espérer qu'une variable locale persiste
 
 ```pascal
-procedure Compter;
-var
+procedure Compter;  
+var  
   compteur: Integer;
 begin
   compteur := compteur + 1;  // ❌ Valeur aléatoire
@@ -613,8 +613,8 @@ var
 var
   resultat: Integer;  // Globale
 
-procedure Calculer;
-begin
+procedure Calculer;  
+begin  
   resultat := 42;  // Modifie une globale sans que ce soit évident
 end;
 

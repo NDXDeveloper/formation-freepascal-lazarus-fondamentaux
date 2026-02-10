@@ -13,8 +13,8 @@ Un **paramètre par valeur** est la façon la plus simple et la plus courante de
 Imaginons que vous voulez une fonction pour calculer le carré d'un nombre. Sans paramètre, vous seriez limité :
 
 ```pascal
-function CarreDeCinq: Integer;
-begin
+function CarreDeCinq: Integer;  
+begin  
   Result := 5 * 5;  // Calcule toujours le carré de 5
 end;
 ```
@@ -22,17 +22,17 @@ end;
 Avec un paramètre, la fonction devient flexible :
 
 ```pascal
-function Carre(nombre: Integer): Integer;
-begin
+function Carre(nombre: Integer): Integer;  
+begin  
   Result := nombre * nombre;  // Calcule le carré du nombre reçu
 end;
 ```
 
 Maintenant vous pouvez calculer le carré de n'importe quel nombre :
 ```pascal
-WriteLn(Carre(5));   // 25
-WriteLn(Carre(10));  // 100
-WriteLn(Carre(3));   // 9
+WriteLn(Carre(5));   // 25  
+WriteLn(Carre(10));  // 100  
+WriteLn(Carre(3));   // 9  
 ```
 
 ## Déclaration de paramètres dans une procédure
@@ -40,8 +40,8 @@ WriteLn(Carre(3));   // 9
 ### Syntaxe de base
 
 ```pascal
-procedure NomProcedure(nomParametre: Type);
-begin
+procedure NomProcedure(nomParametre: Type);  
+begin  
   // Utilisation de nomParametre
 end;
 ```
@@ -51,8 +51,8 @@ end;
 ```pascal
 program ExempleParametre;
 
-procedure DireBonjour(prenom: String);
-begin
+procedure DireBonjour(prenom: String);  
+begin  
   WriteLn('Bonjour ', prenom, ' !');
 end;
 
@@ -68,8 +68,8 @@ end.
 On peut passer plusieurs paramètres en les séparant par des point-virgules :
 
 ```pascal
-procedure AfficherPersonne(nom: String; age: Integer);
-begin
+procedure AfficherPersonne(nom: String; age: Integer);  
+begin  
   WriteLn('Nom : ', nom);
   WriteLn('Age : ', age, ' ans');
   WriteLn('---');
@@ -83,11 +83,11 @@ end.
 
 **Résultat :**
 ```
-Nom : Dupont
-Age : 25 ans
+Nom : Dupont  
+Age : 25 ans  
 ---
-Nom : Martin
-Age : 30 ans
+Nom : Martin  
+Age : 30 ans  
 ---
 ```
 
@@ -100,8 +100,8 @@ Si plusieurs paramètres ont le même type, on peut les regrouper :
 procedure Additionner(a: Integer; b: Integer; c: Integer);
 
 // Version courte (équivalente)
-procedure Additionner(a, b, c: Integer);
-begin
+procedure Additionner(a, b, c: Integer);  
+begin  
   WriteLn('Somme : ', a + b + c);
 end;
 ```
@@ -111,8 +111,8 @@ end;
 ### Syntaxe de base
 
 ```pascal
-function NomFonction(nomParametre: Type): TypeRetour;
-begin
+function NomFonction(nomParametre: Type): TypeRetour;  
+begin  
   // Utilisation de nomParametre
   Result := ...;
 end;
@@ -121,8 +121,8 @@ end;
 ### Exemple simple
 
 ```pascal
-function Carre(nombre: Integer): Integer;
-begin
+function Carre(nombre: Integer): Integer;  
+begin  
   Result := nombre * nombre;
 end;
 
@@ -137,13 +137,13 @@ end.
 ### Avec plusieurs paramètres
 
 ```pascal
-function Additionner(a, b: Integer): Integer;
-begin
+function Additionner(a, b: Integer): Integer;  
+begin  
   Result := a + b;
 end;
 
-function Multiplier(x, y: Real): Real;
-begin
+function Multiplier(x, y: Real): Real;  
+begin  
   Result := x * y;
 end;
 
@@ -156,8 +156,8 @@ end.
 ### Paramètres de types différents
 
 ```pascal
-function RepeterTexte(texte: String; fois: Integer): String;
-var
+function RepeterTexte(texte: String; fois: Integer): String;  
+var  
   i: Integer;
   resultat: String;
 begin
@@ -185,8 +185,8 @@ Quand vous passez un paramètre **par valeur**, le programme :
 ```pascal
 program DemonstrationValeur;
 
-procedure ModifierNombre(n: Integer);
-begin
+procedure ModifierNombre(n: Integer);  
+begin  
   WriteLn('Dans la procédure, n vaut : ', n);
   n := n + 10;  // Modification de la copie
   WriteLn('Dans la procédure, n vaut maintenant : ', n);
@@ -206,10 +206,10 @@ end.
 
 **Résultat :**
 ```
-Avant l'appel, nombre vaut : 5
-Dans la procédure, n vaut : 5
-Dans la procédure, n vaut maintenant : 15
-Après l'appel, nombre vaut : 5
+Avant l'appel, nombre vaut : 5  
+Dans la procédure, n vaut : 5  
+Dans la procédure, n vaut maintenant : 15  
+Après l'appel, nombre vaut : 5  
 ```
 
 **Explication :** La variable `nombre` conserve sa valeur originale (5) car la procédure a travaillé avec une **copie**.
@@ -219,8 +219,8 @@ Après l'appel, nombre vaut : 5
 ### Avec des constantes
 
 ```pascal
-procedure Afficher(nombre: Integer);
-begin
+procedure Afficher(nombre: Integer);  
+begin  
   WriteLn('Nombre : ', nombre);
 end;
 
@@ -259,8 +259,8 @@ end.
 ### 1. Fonction de calcul de surface
 
 ```pascal
-function CalculerAireRectangle(longueur, largeur: Real): Real;
-begin
+function CalculerAireRectangle(longueur, largeur: Real): Real;  
+begin  
   Result := longueur * largeur;
 end;
 
@@ -278,8 +278,8 @@ end.
 ### 2. Fonction de vérification
 
 ```pascal
-function EstPair(nombre: Integer): Boolean;
-begin
+function EstPair(nombre: Integer): Boolean;  
+begin  
   Result := (nombre mod 2 = 0);
 end;
 
@@ -295,8 +295,8 @@ end.
 ### 3. Procédure d'affichage formaté
 
 ```pascal
-procedure AfficherLigne(caractere: Char; longueur: Integer);
-var
+procedure AfficherLigne(caractere: Char; longueur: Integer);  
+var  
   i: Integer;
 begin
   for i := 1 to longueur do
@@ -325,8 +325,8 @@ Contenu...
 ### 4. Fonction de calcul de moyenne
 
 ```pascal
-function CalculerMoyenne(note1, note2, note3: Real): Real;
-begin
+function CalculerMoyenne(note1, note2, note3: Real): Real;  
+begin  
   Result := (note1 + note2 + note3) / 3;
 end;
 
@@ -341,13 +341,13 @@ end.
 ### 5. Fonction de conversion de température
 
 ```pascal
-function CelsiusVersFahrenheit(celsius: Real): Real;
-begin
+function CelsiusVersFahrenheit(celsius: Real): Real;  
+begin  
   Result := (celsius * 9 / 5) + 32;
 end;
 
-function FahrenheitVersCelsius(fahrenheit: Real): Real;
-begin
+function FahrenheitVersCelsius(fahrenheit: Real): Real;  
+begin  
   Result := (fahrenheit - 32) * 5 / 9;
 end;
 
@@ -362,8 +362,8 @@ end.
 L'ordre des paramètres lors de l'appel doit correspondre à l'ordre de la déclaration.
 
 ```pascal
-procedure AfficherCoordonnees(x: Integer; y: Integer; z: Integer);
-begin
+procedure AfficherCoordonnees(x: Integer; y: Integer; z: Integer);  
+begin  
   WriteLn('X = ', x, ', Y = ', y, ', Z = ', z);
 end;
 
@@ -381,8 +381,8 @@ Les paramètres se comportent comme des **variables locales** :
 - Ils disparaissent quand la procédure/fonction se termine
 
 ```pascal
-function Calculer(a, b: Integer): Integer;
-begin
+function Calculer(a, b: Integer): Integer;  
+begin  
   Result := a + b;
   // a et b existent uniquement ici
 end;
@@ -398,8 +398,8 @@ end.
 ### 1. Nombre de paramètres incorrect
 
 ```pascal
-procedure Afficher(texte: String; nombre: Integer);
-begin
+procedure Afficher(texte: String; nombre: Integer);  
+begin  
   WriteLn(texte, ' : ', nombre);
 end;
 
@@ -413,8 +413,8 @@ end;
 ### 2. Type de paramètre incorrect
 
 ```pascal
-function Doubler(n: Integer): Integer;
-begin
+function Doubler(n: Integer): Integer;  
+begin  
   Result := n * 2;
 end;
 
@@ -431,8 +431,8 @@ end;
 var
   x: Integer;
 
-procedure Test(x: Integer);  // Ce x est différent du x global
-begin
+procedure Test(x: Integer);  // Ce x est différent du x global  
+begin  
   x := 10;  // Modifie le paramètre, pas la variable globale
 end;
 
@@ -457,20 +457,20 @@ end.
 program GestionNotes;
 
 // Fonction avec un paramètre
-function EstReussi(note: Real): Boolean;
-begin
+function EstReussi(note: Real): Boolean;  
+begin  
   Result := note >= 10;
 end;
 
 // Fonction avec plusieurs paramètres
-function CalculerMoyenne(n1, n2, n3: Real): Real;
-begin
+function CalculerMoyenne(n1, n2, n3: Real): Real;  
+begin  
   Result := (n1 + n2 + n3) / 3;
 end;
 
 // Procédure avec plusieurs paramètres
-procedure AfficherResultat(nom: String; moyenne: Real);
-begin
+procedure AfficherResultat(nom: String; moyenne: Real);  
+begin  
   WriteLn('Étudiant : ', nom);
   WriteLn('Moyenne : ', moyenne:0:2);
   if EstReussi(moyenne) then
@@ -494,12 +494,12 @@ end.
 **Résultat :**
 ```
 Étudiant : Dupont Jean
-Moyenne : 13.67
-Résultat : ADMIS
+Moyenne : 13.67  
+Résultat : ADMIS  
 ---
 Étudiant : Martin Sophie
-Moyenne : 8.33
-Résultat : REFUSÉ
+Moyenne : 8.33  
+Résultat : REFUSÉ  
 ---
 ```
 

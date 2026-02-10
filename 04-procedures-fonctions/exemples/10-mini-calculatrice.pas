@@ -8,8 +8,8 @@ program MiniCalculatrice;
 uses
   SysUtils, Math;
 
-procedure AfficherMenu;
-begin
+procedure AfficherMenu;  
+begin  
   WriteLn('=== CALCULATRICE ===');
   WriteLn('1. Addition');
   WriteLn('2. Multiplication');

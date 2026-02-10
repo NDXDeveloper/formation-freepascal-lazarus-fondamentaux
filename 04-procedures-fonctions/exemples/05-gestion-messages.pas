@@ -15,8 +15,8 @@ type
   end;
 
 // Affichage (lecture seule, pas de modification)
-procedure AfficherMessage(const msg: TMessage);
-begin
+procedure AfficherMessage(const msg: TMessage);  
+begin  
   WriteLn('=== MESSAGE ===');
   WriteLn('De : ', msg.Expediteur);
   WriteLn('À : ', msg.Destinataire);
@@ -27,8 +27,8 @@ begin
 end;
 
 // Vérification (lecture seule)
-function EstMessageVide(const msg: TMessage): Boolean;
-begin
+function EstMessageVide(const msg: TMessage): Boolean;  
+begin  
   Result := (Length(msg.Contenu) = 0);
 end;
 

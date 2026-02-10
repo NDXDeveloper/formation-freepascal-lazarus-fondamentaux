@@ -10,16 +10,16 @@ uses SysUtils;
 
 // === MODULE INTERFACE UTILISATEUR ===
 
-procedure AfficherMenu;
-begin
+procedure AfficherMenu;  
+begin  
   WriteLn('=== MENU ===');
   WriteLn('1. Inscription');
   WriteLn('2. Calculer moyenne');
   WriteLn('3. Quitter');
 end;
 
-function LireChoix: Integer;
-var
+function LireChoix: Integer;  
+var  
   texte: String;
 begin
   Write('Choix : ');
@@ -29,14 +29,14 @@ end;
 
 // === MODULE INSCRIPTION ===
 
-function LireTexte(const prompt: String): String;
-begin
+function LireTexte(const prompt: String): String;  
+begin  
   Write(prompt, ' : ');
   ReadLn(Result);
 end;
 
-function LireAge: Integer;
-var
+function LireAge: Integer;  
+var  
   texte: String;
 begin
   Write('Age : ');
@@ -44,13 +44,13 @@ begin
   Result := StrToIntDef(texte, 0);
 end;
 
-function EstMajeur(age: Integer): Boolean;
-begin
+function EstMajeur(age: Integer): Boolean;  
+begin  
   Result := age >= 18;
 end;
 
-procedure Inscrire;
-var
+procedure Inscrire;  
+var  
   nom, prenom, email: String;
   age: Integer;
 begin
@@ -69,8 +69,8 @@ end;
 
 // === MODULE CALCULS ===
 
-function LirePrix(const prompt: String): Real;
-var
+function LirePrix(const prompt: String): Real;  
+var  
   texte: String;
 begin
   Write(prompt, ' : ');
@@ -78,13 +78,13 @@ begin
   Result := StrToFloatDef(texte, 0.0);  // Convertit en réel, retourne 0.0 si invalide
 end;
 
-function CalculerMoyenne(v1, v2, v3: Real): Real;
-begin
+function CalculerMoyenne(v1, v2, v3: Real): Real;  
+begin  
   Result := (v1 + v2 + v3) / 3;
 end;
 
-procedure AfficherMoyenne;
-var
+procedure AfficherMoyenne;  
+var  
   prix1, prix2, prix3, moyenne: Real;
 begin
   prix1 := LirePrix('Prix 1');

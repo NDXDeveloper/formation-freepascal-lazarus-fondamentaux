@@ -77,16 +77,16 @@ uses SysUtils;
 
 // === MODULE INTERFACE UTILISATEUR ===
 
-procedure AfficherMenu;
-begin
+procedure AfficherMenu;  
+begin  
   WriteLn('=== MENU ===');
   WriteLn('1. Inscription');
   WriteLn('2. Calculer moyenne');
   WriteLn('3. Quitter');
 end;
 
-function LireChoix: Integer;
-var
+function LireChoix: Integer;  
+var  
   texte: String;
 begin
   Write('Choix : ');
@@ -96,14 +96,14 @@ end;
 
 // === MODULE INSCRIPTION ===
 
-function LireTexte(const prompt: String): String;
-begin
+function LireTexte(const prompt: String): String;  
+begin  
   Write(prompt, ' : ');
   ReadLn(Result);
 end;
 
-function LireAge: Integer;
-var
+function LireAge: Integer;  
+var  
   texte: String;
 begin
   Write('Age : ');
@@ -111,13 +111,13 @@ begin
   Result := StrToIntDef(texte, 0);
 end;
 
-function EstMajeur(age: Integer): Boolean;
-begin
+function EstMajeur(age: Integer): Boolean;  
+begin  
   Result := age >= 18;
 end;
 
-procedure Inscrire;
-var
+procedure Inscrire;  
+var  
   nom, prenom, email: String;
   age: Integer;
 begin
@@ -136,8 +136,8 @@ end;
 
 // === MODULE CALCULS ===
 
-function LirePrix(const prompt: String): Real;
-var
+function LirePrix(const prompt: String): Real;  
+var  
   texte: String;
 begin
   Write(prompt, ' : ');
@@ -145,13 +145,13 @@ begin
   Result := StrToFloatDef(texte, 0.0);  // Convertit en réel, retourne 0.0 si invalide
 end;
 
-function CalculerMoyenne(v1, v2, v3: Real): Real;
-begin
+function CalculerMoyenne(v1, v2, v3: Real): Real;  
+begin  
   Result := (v1 + v2 + v3) / 3;
 end;
 
-procedure AfficherMoyenne;
-var
+procedure AfficherMoyenne;  
+var  
   prix1, prix2, prix3, moyenne: Real;
 begin
   prix1 := LirePrix('Prix 1');
@@ -194,8 +194,8 @@ Chaque fonction/procédure doit avoir **une seule responsabilité** clairement d
 
 ```pascal
 // ❌ Mauvais : fait trop de choses
-procedure TraiterUtilisateur;
-begin
+procedure TraiterUtilisateur;  
+begin  
   Write('Nom : ');
   ReadLn(nom);
   if nom = '' then
@@ -207,32 +207,32 @@ begin
 end;
 
 // ✅ Bon : chaque fonction fait une chose
-function LireNom: String;
-begin
+function LireNom: String;  
+begin  
   Write('Nom : ');
   ReadLn(Result);
 end;
 
-function NomOuDefaut(const nom: String): String;
-begin
+function NomOuDefaut(const nom: String): String;  
+begin  
   if nom = '' then
     Result := 'Anonyme'
   else
     Result := nom;
 end;
 
-procedure Saluer(const nom: String);
-begin
+procedure Saluer(const nom: String);  
+begin  
   WriteLn('Bienvenue ', UpperCase(nom));
 end;
 
-procedure IncrementerCompteur;
-begin
+procedure IncrementerCompteur;  
+begin  
   compteur := compteur + 1;
 end;
 
-procedure AfficherTotal;
-begin
+procedure AfficherTotal;  
+begin  
   WriteLn('Total utilisateurs : ', compteur);
 end;
 ```
@@ -243,18 +243,18 @@ Les fonctions d'un même module doivent être **fortement liées** entre elles.
 
 ```pascal
 // MODULE : Gestion de géométrie
-function CalculerAireRectangle(largeur, hauteur: Real): Real;
-begin
+function CalculerAireRectangle(largeur, hauteur: Real): Real;  
+begin  
   Result := largeur * hauteur;
 end;
 
-function CalculerPerimetreRectangle(largeur, hauteur: Real): Real;
-begin
+function CalculerPerimetreRectangle(largeur, hauteur: Real): Real;  
+begin  
   Result := 2 * (largeur + hauteur);
 end;
 
-function CalculerAireCercle(rayon: Real): Real;
-const
+function CalculerAireCercle(rayon: Real): Real;  
+const  
   PI = 3.14159;
 begin
   Result := PI * rayon * rayon;
@@ -273,14 +273,14 @@ var
   utilisateurNom: String;
   utilisateurAge: Integer;
 
-procedure AfficherUtilisateur;
-begin
+procedure AfficherUtilisateur;  
+begin  
   WriteLn(utilisateurNom, ' - ', utilisateurAge, ' ans');
 end;
 
 // ✅ Bon : couplage faible (utilise des paramètres)
-procedure AfficherUtilisateur(const nom: String; age: Integer);
-begin
+procedure AfficherUtilisateur(const nom: String; age: Integer);  
+begin  
   WriteLn(nom, ' - ', age, ' ans');
 end;
 ```
@@ -291,8 +291,8 @@ Séparez les **niveaux d'abstraction** : haut niveau (quoi faire) et bas niveau 
 
 ```pascal
 // Haut niveau : décrit ce qu'on fait
-procedure TraiterCommande;
-var
+procedure TraiterCommande;  
+var  
   articles: array of TArticle;
   total: Real;
 begin
@@ -303,8 +303,8 @@ begin
 end;
 
 // Bas niveau : détails d'implémentation
-function CalculerTotal(const articles: array of TArticle): Real;
-var
+function CalculerTotal(const articles: array of TArticle): Real;  
+var  
   i: Integer;
 begin
   Result := 0;
@@ -350,13 +350,13 @@ var
 // SECTION 3 : FONCTIONS UTILITAIRES DE BAS NIVEAU
 // ========================================
 
-function EstChaineVide(const s: String): Boolean;
-begin
+function EstChaineVide(const s: String): Boolean;  
+begin  
   Result := Trim(s) = '';
 end;
 
-function LireEntierPositif(const prompt: String): Integer;
-var
+function LireEntierPositif(const prompt: String): Integer;  
+var  
   texte: String;
   valeur: Integer;
 begin
@@ -372,14 +372,14 @@ end;
 // SECTION 4 : FONCTIONS MÉTIER
 // ========================================
 
-function CreerUtilisateur(const nom: String; age: Integer): TUtilisateur;
-begin
+function CreerUtilisateur(const nom: String; age: Integer): TUtilisateur;  
+begin  
   Result.Nom := nom;
   Result.Age := age;
 end;
 
-procedure AjouterUtilisateur(const user: TUtilisateur);
-begin
+procedure AjouterUtilisateur(const user: TUtilisateur);  
+begin  
   if nbUtilisateurs < MAX_USERS then
   begin
     Inc(nbUtilisateurs);
@@ -391,16 +391,16 @@ end;
 // SECTION 5 : INTERFACE UTILISATEUR
 // ========================================
 
-procedure AfficherMenu;
-begin
+procedure AfficherMenu;  
+begin  
   WriteLn('=== MENU ===');
   WriteLn('1. Ajouter utilisateur');
   WriteLn('2. Lister utilisateurs');
   WriteLn('0. Quitter');
 end;
 
-procedure TraiterAjout;
-var
+procedure TraiterAjout;  
+var  
   nom: String;
   age: Integer;
   user: TUtilisateur;
@@ -455,19 +455,19 @@ end.
 
 ```pascal
 // Module de validation
-function EstEmailValide(const email: String): Boolean;
-function EstAgeValide(age: Integer): Boolean;
-function EstNomValide(const nom: String): Boolean;
+function EstEmailValide(const email: String): Boolean;  
+function EstAgeValide(age: Integer): Boolean;  
+function EstNomValide(const nom: String): Boolean;  
 
 // Module de calculs
-function CalculerTotalHT(quantite: Integer; prixUnitaire: Real): Real;
-function CalculerTVA(montantHT: Real; tauxTVA: Real): Real;
-function CalculerTotalTTC(montantHT, montantTVA: Real): Real;
+function CalculerTotalHT(quantite: Integer; prixUnitaire: Real): Real;  
+function CalculerTVA(montantHT: Real; tauxTVA: Real): Real;  
+function CalculerTotalTTC(montantHT, montantTVA: Real): Real;  
 
 // Module d'interface
-procedure AfficherEntete;
-procedure AfficherLigne(const texte: String);
-procedure AfficherSeparateur;
+procedure AfficherEntete;  
+procedure AfficherLigne(const texte: String);  
+procedure AfficherSeparateur;  
 ```
 
 ## Documentation et commentaires
@@ -487,8 +487,8 @@ procedure AfficherSeparateur;
 //   - nom : nom complet de l'utilisateur
 //   - email : adresse email valide
 // Retour : un enregistrement TUtilisateur
-function CreerUtilisateur(const nom, email: String): TUtilisateur;
-begin
+function CreerUtilisateur(const nom, email: String): TUtilisateur;  
+begin  
   Result.Nom := Trim(nom);
   Result.Email := LowerCase(Trim(email));
   Result.DateCreation := Now;
@@ -498,8 +498,8 @@ end;
 // Paramètres :
 //   - email : email à rechercher
 // Retour : True si l'utilisateur existe, False sinon
-function UtilisateurExiste(const email: String): Boolean;
-var
+function UtilisateurExiste(const email: String): Boolean;  
+var  
   i: Integer;
 begin
   Result := False;
@@ -515,8 +515,8 @@ end;
 ### Commenter les algorithmes complexes
 
 ```pascal
-function CalculerRemise(montant: Real; nbAchats: Integer): Real;
-begin
+function CalculerRemise(montant: Real; nbAchats: Integer): Real;  
+begin  
   // Système de remise progressif :
   // - Moins de 5 achats : pas de remise
   // - 5 à 9 achats : 5% de remise
@@ -563,16 +563,16 @@ var
 // MODULE : GESTION DES LIVRES
 // ============================================================================
 
-function CreerLivre(const titre, auteur: String; annee: Integer): TLivre;
-begin
+function CreerLivre(const titre, auteur: String; annee: Integer): TLivre;  
+begin  
   Result.Titre := titre;
   Result.Auteur := auteur;
   Result.Annee := annee;
   Result.Disponible := True;
 end;
 
-function AjouterLivre(const livre: TLivre): Boolean;
-begin
+function AjouterLivre(const livre: TLivre): Boolean;  
+begin  
   if nbLivres < MAX_LIVRES then
   begin
     Inc(nbLivres);  // Inc incrémente : équivalent de nbLivres := nbLivres + 1
@@ -583,8 +583,8 @@ begin
     Result := False;
 end;
 
-function RechercherLivre(const titre: String): Integer;
-var
+function RechercherLivre(const titre: String): Integer;  
+var  
   i: Integer;
 begin
   Result := -1;
@@ -596,14 +596,14 @@ begin
     end;
 end;
 
-procedure EmprunterLivre(index: Integer);
-begin
+procedure EmprunterLivre(index: Integer);  
+begin  
   if (index > 0) and (index <= nbLivres) then
     livres[index].Disponible := False;
 end;
 
-procedure RetournerLivre(index: Integer);
-begin
+procedure RetournerLivre(index: Integer);  
+begin  
   if (index > 0) and (index <= nbLivres) then
     livres[index].Disponible := True;
 end;
@@ -612,20 +612,20 @@ end;
 // MODULE : AFFICHAGE
 // ============================================================================
 
-procedure AfficherSeparateur;
-begin
+procedure AfficherSeparateur;  
+begin  
   WriteLn('------------------------------------------------');
 end;
 
-procedure AfficherEntete;
-begin
+procedure AfficherEntete;  
+begin  
   AfficherSeparateur;
   WriteLn('SYSTÈME DE GESTION DE BIBLIOTHÈQUE');
   AfficherSeparateur;
 end;
 
-procedure AfficherLivre(const livre: TLivre);
-var
+procedure AfficherLivre(const livre: TLivre);  
+var  
   statut: String;
 begin
   if livre.Disponible then
@@ -637,8 +637,8 @@ begin
           [livre.Titre, livre.Auteur, livre.Annee, statut]));
 end;
 
-procedure AfficherTousLesLivres;
-var
+procedure AfficherTousLesLivres;  
+var  
   i: Integer;
 begin
   WriteLn(Format('Total : %d livre(s)', [nbLivres]));
@@ -651,8 +651,8 @@ begin
   end;
 end;
 
-procedure AfficherMenu;
-begin
+procedure AfficherMenu;  
+begin  
   WriteLn;
   WriteLn('=== MENU ===');
   WriteLn('1. Ajouter un livre');
@@ -667,15 +667,15 @@ end;
 // MODULE : SAISIE UTILISATEUR
 // ============================================================================
 
-function LireTexte(const prompt: String): String;
-begin
+function LireTexte(const prompt: String): String;  
+begin  
   Write(prompt, ' : ');
   ReadLn(Result);
   Result := Trim(Result);
 end;
 
-function LireEntier(const prompt: String): Integer;
-var
+function LireEntier(const prompt: String): Integer;  
+var  
   texte: String;
 begin
   Write(prompt, ' : ');
@@ -683,8 +683,8 @@ begin
   Result := StrToIntDef(texte, 0);
 end;
 
-function LireChoix: Integer;
-begin
+function LireChoix: Integer;  
+begin  
   Result := LireEntier('Choix');
 end;
 
@@ -692,8 +692,8 @@ end;
 // MODULE : ACTIONS MÉTIER
 // ============================================================================
 
-procedure ActionAjouterLivre;
-var
+procedure ActionAjouterLivre;  
+var  
   titre, auteur: String;
   annee: Integer;
   livre: TLivre;
@@ -711,8 +711,8 @@ begin
     WriteLn('Erreur : bibliothèque pleine');
 end;
 
-procedure ActionListerLivres;
-begin
+procedure ActionListerLivres;  
+begin  
   WriteLn('=== LISTE DES LIVRES ===');
   if nbLivres = 0 then
     WriteLn('Aucun livre dans la bibliothèque')
@@ -720,8 +720,8 @@ begin
     AfficherTousLesLivres;
 end;
 
-procedure ActionEmprunter;
-var
+procedure ActionEmprunter;  
+var  
   titre: String;
   index: Integer;
 begin
@@ -740,8 +740,8 @@ begin
   end;
 end;
 
-procedure ActionRetourner;
-var
+procedure ActionRetourner;  
+var  
   titre: String;
   index: Integer;
 begin
@@ -806,14 +806,14 @@ Une fonction devrait faire **entre 5 et 30 lignes** idéalement. Si elle est plu
 
 ```pascal
 // ❌ Trop long
-procedure TraiterCommande;
-begin
+procedure TraiterCommande;  
+begin  
   // 100 lignes de code...
 end;
 
 // ✅ Bien découpé
-procedure TraiterCommande;
-begin
+procedure TraiterCommande;  
+begin  
   ValiderCommande;
   CalculerTotaux;
   AppliquerRemises;
@@ -831,14 +831,14 @@ Préférez les **paramètres** aux **variables globales**.
 var
   resultat: Real;
 
-procedure Calculer;
-begin
+procedure Calculer;  
+begin  
   resultat := 10 * 20;
 end;
 
 // ✅ Bon : utilise un paramètre de retour
-function Calculer: Real;
-begin
+function Calculer: Real;  
+begin  
   Result := 10 * 20;
 end;
 ```

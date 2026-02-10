@@ -6,27 +6,27 @@
 program GestionCoordonnees;
 
 // Initialiser des coordonnées
-procedure InitialiserPosition(var x, y: Integer);
-begin
+procedure InitialiserPosition(var x, y: Integer);  
+begin  
   x := 0;
   y := 0;
 end;
 
 // Déplacer vers la droite
-procedure DeplacerDroite(var x: Integer; distance: Integer);
-begin
+procedure DeplacerDroite(var x: Integer; distance: Integer);  
+begin  
   x := x + distance;
 end;
 
 // Déplacer vers le haut
-procedure DeplacerHaut(var y: Integer; distance: Integer);
-begin
+procedure DeplacerHaut(var y: Integer; distance: Integer);  
+begin  
   y := y + distance;
 end;
 
 // Afficher la position
-procedure AfficherPosition(x, y: Integer);
-begin
+procedure AfficherPosition(x, y: Integer);  
+begin  
   WriteLn('Position actuelle : (', x, ', ', y, ')');
 end;
 

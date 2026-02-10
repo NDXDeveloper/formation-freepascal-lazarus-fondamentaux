@@ -13,8 +13,8 @@ Une **procédure** est un bloc de code qui effectue une ou plusieurs actions, ma
 ### Syntaxe de base
 
 ```pascal
-procedure NomDeLaProcedure;
-begin
+procedure NomDeLaProcedure;  
+begin  
   // Instructions à exécuter
 end;
 ```
@@ -22,8 +22,8 @@ end;
 ### Exemple concret
 
 ```pascal
-procedure AfficherMessage;
-begin
+procedure AfficherMessage;  
+begin  
   WriteLn('Bonjour ! Bienvenue dans le programme.');
 end;
 ```
@@ -33,8 +33,8 @@ end;
 ```pascal
 program ExempleProcedure;
 
-procedure AfficherMessage;
-begin
+procedure AfficherMessage;  
+begin  
   WriteLn('Bonjour ! Bienvenue dans le programme.');
 end;
 
@@ -53,8 +53,8 @@ Une **fonction** est un bloc de code qui effectue des calculs ou des opérations
 ### Syntaxe de base
 
 ```pascal
-function NomDeLaFonction: TypeDeRetour;
-begin
+function NomDeLaFonction: TypeDeRetour;  
+begin  
   // Instructions à exécuter
   NomDeLaFonction := valeur;  // Affectation du résultat
 end;
@@ -63,8 +63,8 @@ end;
 ### Exemple concret
 
 ```pascal
-function CalculerCarre(nombre: Integer): Integer;
-begin
+function CalculerCarre(nombre: Integer): Integer;  
+begin  
   CalculerCarre := nombre * nombre;
 end;
 ```
@@ -74,8 +74,8 @@ end;
 ```pascal
 program ExempleFonction;
 
-function CalculerCarre(nombre: Integer): Integer;
-begin
+function CalculerCarre(nombre: Integer): Integer;  
+begin  
   CalculerCarre := nombre * nombre;  // En Pascal, on retourne une valeur en assignant au nom de la fonction
 end;
 
@@ -110,8 +110,8 @@ Imaginez que vous demandez quelque chose à un ami :
 ### Avec procédure
 
 ```pascal
-procedure AfficherDouble(nombre: Integer);
-begin
+procedure AfficherDouble(nombre: Integer);  
+begin  
   WriteLn('Le double de ', nombre, ' est ', nombre * 2);
 end;
 
@@ -124,8 +124,8 @@ La procédure affiche directement le résultat. On ne peut pas récupérer la va
 ### Avec fonction
 
 ```pascal
-function CalculerDouble(nombre: Integer): Integer;
-begin
+function CalculerDouble(nombre: Integer): Integer;  
+begin  
   CalculerDouble := nombre * 2;
 end;
 
@@ -174,13 +174,13 @@ La fonction retourne la valeur, ce qui permet de la stocker et de la réutiliser
 ```pascal
 program ProcedureVsFonction;
 
-function EstPair(nombre: Integer): Boolean;
-begin
+function EstPair(nombre: Integer): Boolean;  
+begin  
   EstPair := (nombre mod 2 = 0);
 end;
 
-procedure AfficherParite(nombre: Integer);
-begin
+procedure AfficherParite(nombre: Integer);  
+begin  
   if EstPair(nombre) then
     WriteLn(nombre, ' est pair.')
   else
@@ -216,8 +216,8 @@ end.
 En Pascal moderne (FreePascal), on peut aussi utiliser le mot-clé `Result` pour affecter la valeur de retour d'une fonction :
 
 ```pascal
-function CalculerCarre(nombre: Integer): Integer;
-begin
+function CalculerCarre(nombre: Integer): Integer;  
+begin  
   Result := nombre * nombre;  // Équivalent à : CalculerCarre := nombre * nombre;
 end;
 ```

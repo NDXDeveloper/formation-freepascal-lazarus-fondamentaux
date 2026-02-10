@@ -5,13 +5,13 @@
   ============================================================================ }
 program ProcedureVsFonction;
 
-function EstPair(nombre: Integer): Boolean;
-begin
+function EstPair(nombre: Integer): Boolean;  
+begin  
   EstPair := (nombre mod 2 = 0);
 end;
 
-procedure AfficherParite(nombre: Integer);
-begin
+procedure AfficherParite(nombre: Integer);  
+begin  
   if EstPair(nombre) then
     WriteLn(nombre, ' est pair.')
   else

@@ -7,20 +7,20 @@
 program ExempleComplet;
 
 // Déclaration d'une procédure
-procedure AfficherSeparateur;
-begin
+procedure AfficherSeparateur;  
+begin  
   WriteLn('====================');
 end;
 
 // Déclaration d'une fonction
-function ObtenirAnneeActuelle: Integer;
-begin
+function ObtenirAnneeActuelle: Integer;  
+begin  
   Result := 2025;
 end;
 
 // Déclaration d'une fonction avec calcul
-function CalculerDoubleAnnee: Integer;
-var
+function CalculerDoubleAnnee: Integer;  
+var  
   annee: Integer;  // Variable locale
 begin
   annee := ObtenirAnneeActuelle;

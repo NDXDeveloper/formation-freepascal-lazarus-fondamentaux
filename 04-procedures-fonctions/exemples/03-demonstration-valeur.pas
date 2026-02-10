@@ -5,8 +5,8 @@
   ============================================================================ }
 program DemonstrationValeur;
 
-procedure ModifierNombre(n: Integer);
-begin
+procedure ModifierNombre(n: Integer);  
+begin  
   WriteLn('Dans la procédure, n vaut : ', n);
   n := n + 10;  // Modification de la copie
   WriteLn('Dans la procédure, n vaut maintenant : ', n);

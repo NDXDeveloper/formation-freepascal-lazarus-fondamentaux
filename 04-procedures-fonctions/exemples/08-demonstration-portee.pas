@@ -8,16 +8,16 @@ program Demonstration;
 var
   globale: Integer;
 
-procedure Proc1;
-var
+procedure Proc1;  
+var  
   locale1: Integer;
 begin
   globale := 5;
   locale1 := 10;
 end;
 
-procedure Proc2;
-var
+procedure Proc2;  
+var  
   locale2: Integer;
 begin
   globale := 15;
