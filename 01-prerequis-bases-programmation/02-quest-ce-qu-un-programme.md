@@ -74,10 +74,10 @@ Ce sont les programmes les plus simples :
 
 **Exemple :** un programme qui calcule la moyenne de notes
 ```
-Entrez la première note : 15
-Entrez la deuxième note : 18
-Entrez la troisième note : 12
-Moyenne : 15
+Entrez la première note : 15  
+Entrez la deuxième note : 18  
+Entrez la troisième note : 12  
+Moyenne : 15  
 ```
 
 **Avantages :**
@@ -136,8 +136,8 @@ C'est la phase où le programmeur :
 
 **Exemple de code source en Pascal :**
 ```pascal
-program Bonjour;
-begin
+program Bonjour;  
+begin  
   WriteLn('Bonjour le monde !');
 end.
 ```
@@ -399,8 +399,8 @@ var nombreEleves, totalPoints, moyenne: Integer;
 ### 3. Indentez correctement
 ```pascal
 // Bon
-if condition then
-begin
+if condition then  
+begin  
   instruction1;
   instruction2;
 end;

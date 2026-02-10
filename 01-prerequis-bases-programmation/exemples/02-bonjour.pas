@@ -3,7 +3,7 @@
   Description : Programme minimal affichant "Bonjour le monde !"
   Fichier source : 02-quest-ce-qu-un-programme.md
   ============================================================================ }
-program Bonjour;
-begin
+program Bonjour;  
+begin  
   WriteLn('Bonjour le monde !');
 end.

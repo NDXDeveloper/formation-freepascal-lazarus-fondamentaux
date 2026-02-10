@@ -51,9 +51,9 @@ En programmation, les algorithmes décrivent comment transformer des données d'
 
 **Exemple : Calculer la moyenne de trois notes**
 ```
-Entrées : note1, note2, note3
-Traitement : moyenne = (note1 + note2 + note3) / 3
-Sortie : moyenne
+Entrées : note1, note2, note3  
+Traitement : moyenne = (note1 + note2 + note3) / 3  
+Sortie : moyenne  
 ```
 
 ## Le pseudo-code
@@ -93,23 +93,23 @@ Il n'existe pas de standard unique, mais voici des conventions courantes :
 
 **Affectation (donner une valeur à une variable) :**
 ```
-variable ← valeur
-nombre ← 10
-nom ← "Alice"
+variable ← valeur  
+nombre ← 10  
+nom ← "Alice"  
 ```
 
 **Affichage (montrer quelque chose à l'utilisateur) :**
 ```
-AFFICHER "message"
-AFFICHER variable
-AFFICHER "La somme est : ", somme
+AFFICHER "message"  
+AFFICHER variable  
+AFFICHER "La somme est : ", somme  
 ```
 
 **Saisie (demander une information à l'utilisateur) :**
 ```
-LIRE variable
-SAISIR age
-DEMANDER nom
+LIRE variable  
+SAISIR age  
+DEMANDER nom  
 ```
 
 **Commentaires :**
@@ -176,8 +176,8 @@ FIN TANT QUE
 
 **Exemple :**
 ```
-compteur ← 1
-TANT QUE compteur <= 10 FAIRE
+compteur ← 1  
+TANT QUE compteur <= 10 FAIRE  
     AFFICHER compteur
     compteur ← compteur + 1
 FIN TANT QUE
@@ -228,8 +228,8 @@ FIN
 
 **En Pascal :**
 ```pascal
-program AireRectangle;
-var
+program AireRectangle;  
+var  
   longueur, largeur, aire: Real;
 begin
   WriteLn('Entrez la longueur : ');
@@ -269,8 +269,8 @@ FIN
 
 **En Pascal :**
 ```pascal
-program PairOuImpair;
-var
+program PairOuImpair;  
+var  
   nombre: Integer;
 begin
   WriteLn('Entrez un nombre entier : ');
@@ -552,23 +552,23 @@ Pour les algorithmes complexes, on les décompose en parties plus petites.
 
 **Pseudo-code :**
 ```
-FONCTION Addition(a, b : réel) : réel
-DÉBUT
+FONCTION Addition(a, b : réel) : réel  
+DÉBUT  
     RETOURNER a + b
 FIN
 
-FONCTION Soustraction(a, b : réel) : réel
-DÉBUT
+FONCTION Soustraction(a, b : réel) : réel  
+DÉBUT  
     RETOURNER a - b
 FIN
 
-FONCTION Multiplication(a, b : réel) : réel
-DÉBUT
+FONCTION Multiplication(a, b : réel) : réel  
+DÉBUT  
     RETOURNER a × b
 FIN
 
-FONCTION Division(a, b : réel) : réel
-DÉBUT
+FONCTION Division(a, b : réel) : réel  
+DÉBUT  
     SI b = 0 ALORS
         AFFICHER "Erreur : division par zéro"
         RETOURNER 0
@@ -687,8 +687,8 @@ C'est une notation mathématique pour décrire l'efficacité :
 ```
 ALGORITHME Factorielle
 
-FONCTION Fact(n : entier) : entier
-DÉBUT
+FONCTION Fact(n : entier) : entier  
+DÉBUT  
     SI n <= 1 ALORS
         RETOURNER 1
     SINON
@@ -714,8 +714,8 @@ FIN
 ```pascal
 program Factorielle;
 
-function Fact(n: Integer): Integer;
-begin
+function Fact(n: Integer): Integer;  
+begin  
   if n <= 1 then
     Fact := 1
   else
@@ -774,8 +774,8 @@ FIN POUR
 
 ```
 // Calculer la moyenne des notes positives uniquement
-somme ← 0
-compteur ← 0
+somme ← 0  
+compteur ← 0  
 
 POUR chaque note FAIRE
     SI note > 0 ALORS
@@ -797,11 +797,11 @@ Suivez l'algorithme étape par étape avec des valeurs d'exemple pour vérifier 
 ```
 Entrée : n = 7
 
-i = 2 : 7 mod 2 = 1 (différent de 0, continuer)
-i = 3 : 7 mod 3 = 1 (différent de 0, continuer)
-i = 4 : 7 mod 4 = 3 (différent de 0, continuer)
-i = 5 : 7 mod 5 = 2 (différent de 0, continuer)
-i = 6 : 7 mod 6 = 1 (différent de 0, continuer)
+i = 2 : 7 mod 2 = 1 (différent de 0, continuer)  
+i = 3 : 7 mod 3 = 1 (différent de 0, continuer)  
+i = 4 : 7 mod 4 = 3 (différent de 0, continuer)  
+i = 5 : 7 mod 5 = 2 (différent de 0, continuer)  
+i = 6 : 7 mod 6 = 1 (différent de 0, continuer)  
 
 Aucun diviseur trouvé → 7 est premier ✓
 ```
@@ -822,8 +822,8 @@ SI tableau est vide ALORS
     RETOURNER
 FIN SI
 
-minimum ← tableau[0]
-POUR i DE 1 À longueur-1 FAIRE
+minimum ← tableau[0]  
+POUR i DE 1 À longueur-1 FAIRE  
     SI tableau[i] < minimum ALORS
         minimum ← tableau[i]
     FIN SI
@@ -836,8 +836,8 @@ FIN POUR
 
 ```
 // ERREUR : la condition ne devient jamais fausse
-i ← 1
-TANT QUE i > 0 FAIRE
+i ← 1  
+TANT QUE i > 0 FAIRE  
     AFFICHER i
     i ← i + 1  // i augmente, ne diminue jamais !
 FIN TANT QUE
@@ -847,8 +847,8 @@ FIN TANT QUE
 
 ```
 // ERREUR : dépassement de tableau
-tableau de taille 10 (indices 0 à 9)
-POUR i DE 0 À 10 FAIRE  // i = 10 est hors limites !
+tableau de taille 10 (indices 0 à 9)  
+POUR i DE 0 À 10 FAIRE  // i = 10 est hors limites !  
     AFFICHER tableau[i]
 FIN POUR
 ```
@@ -862,8 +862,8 @@ POUR i DE 1 À 10 FAIRE
 FIN POUR
 
 // CORRECT
-somme ← 0  // Initialisation
-POUR i DE 1 À 10 FAIRE
+somme ← 0  // Initialisation  
+POUR i DE 1 À 10 FAIRE  
     somme ← somme + i
 FIN POUR
 ```

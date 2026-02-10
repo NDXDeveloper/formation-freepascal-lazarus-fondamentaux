@@ -35,8 +35,8 @@ Avec ce premier programme, vous allez :
 Voici le code complet de votre premier programme :
 
 ```pascal
-program HelloWorld;
-begin
+program HelloWorld;  
+begin  
   WriteLn('Hello, World!');
 end.
 ```
@@ -48,8 +48,8 @@ end.
 Voici le même programme avec des commentaires explicatifs :
 
 ```pascal
-program HelloWorld;              // Déclaration du nom du programme
-begin                            // Début du programme principal
+program HelloWorld;              // Déclaration du nom du programme  
+begin                            // Début du programme principal  
   WriteLn('Hello, World!');      // Afficher un message
 end.                             // Fin du programme
 ```
@@ -76,16 +76,16 @@ program HelloWorld;
 
 **Exemples valides :**
 ```pascal
-program MonPremierProgramme;
-program Test123;
-program Calcul_Simple;
+program MonPremierProgramme;  
+program Test123;  
+program Calcul_Simple;  
 ```
 
 **Exemples invalides :**
 ```pascal
-program Mon Programme;        // Espace interdit
-program 1erProgramme;         // Ne peut pas commencer par un chiffre
-program Programme-Test;       // Tiret interdit
+program Mon Programme;        // Espace interdit  
+program 1erProgramme;         // Ne peut pas commencer par un chiffre  
+program Programme-Test;       // Tiret interdit  
 ```
 
 **Note importante :**
@@ -137,8 +137,8 @@ WriteLn('Hello, World!');
 
 **Variante : `Write` vs `WriteLn`**
 ```pascal
-Write('Hello');      // Affiche sans passer à la ligne
-WriteLn('World!');   // Affiche et passe à la ligne
+Write('Hello');      // Affiche sans passer à la ligne  
+WriteLn('World!');   // Affiche et passe à la ligne  
 ```
 
 Résultat :
@@ -148,14 +148,14 @@ HelloWorld!
 
 Avec deux `WriteLn` :
 ```pascal
-WriteLn('Hello');
-WriteLn('World!');
+WriteLn('Hello');  
+WriteLn('World!');  
 ```
 
 Résultat :
 ```
-Hello
-World!
+Hello  
+World!  
 ```
 
 ### Ligne 4 : `end.`
@@ -175,8 +175,8 @@ end.
 
 **Exemple de structure complète :**
 ```pascal
-program Test;
-begin
+program Test;  
+begin  
   if True then
   begin
     WriteLn('Bloc interne');
@@ -205,8 +205,8 @@ end.                // ← POINT pour la fin du programme
 
 **Conseil :** Créez un dossier dédié à vos programmes Pascal
 ```
-Windows : C:\MesProgrammesPascal\
-Linux :   ~/MesProgrammesPascal/
+Windows : C:\MesProgrammesPascal\  
+Linux :   ~/MesProgrammesPascal/  
 ```
 
 ### Étape 2 : Compiler le programme
@@ -235,11 +235,11 @@ Linux :   ~/MesProgrammesPascal/
 
 **Ce qui se passe pendant la compilation :**
 ```
-Free Pascal Compiler version 3.2.2 [2024/05/21] for x86_64
-Copyright (c) 1993-2021 by Florian Klaempfl and others
-Target OS: Linux for x86-64
-Compiling hello.pas
-Linking hello
+Free Pascal Compiler version 3.2.2 [2024/05/21] for x86_64  
+Copyright (c) 1993-2021 by Florian Klaempfl and others  
+Target OS: Linux for x86-64  
+Compiling hello.pas  
+Linking hello  
 9 lines compiled, 0.1 sec
 ```
 
@@ -304,8 +304,8 @@ uses
   Classes
   { you can add units after this };
 
-begin
-end.
+begin  
+end.  
 ```
 
 **Modifier le code :** Entre `begin` et `end.`, ajoutez :
@@ -340,8 +340,8 @@ end.
 **Version simplifiée (fonctionne aussi) :**
 Vous pouvez effacer tout et écrire simplement :
 ```pascal
-program HelloWorld;
-begin
+program HelloWorld;  
+begin  
   WriteLn('Hello, World!');
 end.
 ```
@@ -376,8 +376,8 @@ La fenêtre peut se fermer immédiatement. Pour la garder ouverte, voir la secti
 
 **Solution 1 : Ajouter une pause**
 ```pascal
-program HelloWorld;
-begin
+program HelloWorld;  
+begin  
   WriteLn('Hello, World!');
   WriteLn('Appuyez sur Entrée pour continuer...');
   ReadLn;    // Attend que l'utilisateur appuie sur Entrée
@@ -397,8 +397,8 @@ end.
 ### Afficher plusieurs lignes
 
 ```pascal
-program HelloMultiline;
-begin
+program HelloMultiline;  
+begin  
   WriteLn('Bonjour !');
   WriteLn('Je suis votre premier programme.');
   WriteLn('Félicitations !');
@@ -407,16 +407,16 @@ end.
 
 Résultat :
 ```
-Bonjour !
-Je suis votre premier programme.
-Félicitations !
+Bonjour !  
+Je suis votre premier programme.  
+Félicitations !  
 ```
 
 ### Utiliser Write au lieu de WriteLn
 
 ```pascal
-program HelloWrite;
-begin
+program HelloWrite;  
+begin  
   Write('Hello, ');
   Write('World!');
 end.
@@ -430,8 +430,8 @@ Hello, World!
 ### Afficher des caractères spéciaux
 
 ```pascal
-program HelloSpecial;
-begin
+program HelloSpecial;  
+begin  
   WriteLn('Hello, World!');
   WriteLn('-------------');
   WriteLn('* Bienvenue *');
@@ -450,8 +450,8 @@ Hello, World!
 ### Utiliser des séquences d'échappement
 
 ```pascal
-program HelloEscape;
-begin
+program HelloEscape;  
+begin  
   WriteLn('Ligne 1');
   WriteLn('Ligne 2');
   WriteLn('');                    // Ligne vide
@@ -475,8 +475,8 @@ C'est super !
 ### Avec des commentaires
 
 ```pascal
-program HelloCommented;
-begin
+program HelloCommented;  
+begin  
   // Ceci est un commentaire sur une ligne
   WriteLn('Hello, World!');
 
@@ -493,8 +493,8 @@ end.
 
 **Code erroné :**
 ```pascal
-program Hello;
-begin
+program Hello;  
+begin  
   WriteLn('Hello')     // ← Manque le point-virgule
 end.
 ```
@@ -514,8 +514,8 @@ WriteLn('Hello');
 
 **Code erroné :**
 ```pascal
-program Hello;
-begin
+program Hello;  
+begin  
   WriteLn('Hello, World!);     // ← Manque l'apostrophe finale
 end.
 ```
@@ -535,8 +535,8 @@ WriteLn('Hello, World!');
 
 **Code erroné :**
 ```pascal
-program Hello;
-begin
+program Hello;  
+begin  
   WriteLn('Hello');
 end;                  // ← Devrait être end. avec un point
 ```
@@ -556,8 +556,8 @@ end.
 
 **Code erroné :**
 ```pascal
-program Hello;
-begin
+program Hello;  
+begin  
   WriteLn 'Hello';     // ← Manquent les parenthèses
 end.
 ```
@@ -587,8 +587,8 @@ program Hello;
 
 **Code :**
 ```pascal
-program Bonjour;
-begin
+program Bonjour;  
+begin  
   WriteLn('Bonjour ! Comment ça va ?');
 end.
 ```
@@ -762,18 +762,18 @@ program prog1;
 
 ```pascal
 // Bon
-program Test;
-begin
+program Test;  
+begin  
   WriteLn('Ligne 1');
   WriteLn('Ligne 2');
 end.
 
 // Mauvais (même si ça compile)
-program Test;
-begin
-WriteLn('Ligne 1');
-WriteLn('Ligne 2');
-end.
+program Test;  
+begin  
+WriteLn('Ligne 1');  
+WriteLn('Ligne 2');  
+end.  
 ```
 
 ### 3. Commentaires utiles

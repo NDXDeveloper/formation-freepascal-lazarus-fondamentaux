@@ -19,8 +19,8 @@ Pour écrire du code, vous avez besoin d'un outil adapté. Il existe deux grande
 **Exemple de problème :**
 Si vous écrivez du code dans Word :
 ```pascal
-program Bonjour;  ← Word peut remplacer les guillemets droits " par des guillemets typographiques "
-begin
+program Bonjour;  ← Word peut remplacer les guillemets droits " par des guillemets typographiques "  
+begin  
     WriteLn('Hello'); ← Les apostrophes peuvent être modifiées
 end.
 ```
@@ -120,12 +120,12 @@ Le compilateur ne comprendra pas ces caractères spéciaux et produira des erreu
 
 **Commandes de base :**
 ```bash
-nano fichier.pas         # Ouvrir un fichier
-Ctrl+O                   # Sauvegarder
-Ctrl+X                   # Quitter
-Ctrl+K                   # Couper une ligne
-Ctrl+U                   # Coller
-Ctrl+W                   # Rechercher
+nano fichier.pas         # Ouvrir un fichier  
+Ctrl+O                   # Sauvegarder  
+Ctrl+X                   # Quitter  
+Ctrl+K                   # Couper une ligne  
+Ctrl+U                   # Coller  
+Ctrl+W                   # Rechercher  
 ```
 
 #### vim / vi
@@ -389,12 +389,12 @@ Lazarus utilise des fenêtres flottantes ou ancrables :
 
 **Structure d'un projet :**
 ```
-MonProjet.lpi            # Fichier projet principal
-MonProjet.lpr            # Code source principal
-Unit1.pas                # Unité Pascal
-Unit1.lfm                # Formulaire (interface)
-backup/                  # Sauvegardes automatiques
-lib/                     # Fichiers de compilation
+MonProjet.lpi            # Fichier projet principal  
+MonProjet.lpr            # Code source principal  
+Unit1.pas                # Unité Pascal  
+Unit1.lfm                # Formulaire (interface)  
+backup/                  # Sauvegardes automatiques  
+lib/                     # Fichiers de compilation  
 ```
 
 **Options de projet :**
@@ -586,13 +586,13 @@ lib/                     # Fichiers de compilation
 **Linux (Ubuntu) :**
 ```bash
 # Via les dépôts officiels
-sudo apt update
-sudo apt install lazarus
+sudo apt update  
+sudo apt install lazarus  
 
 # Ou depuis le site officiel pour la dernière version
 # Télécharger le .deb et l'installer
-sudo dpkg -i lazarus-project*.deb
-sudo apt-get install -f  # Résoudre les dépendances
+sudo dpkg -i lazarus-project*.deb  
+sudo apt-get install -f  # Résoudre les dépendances  
 ```
 
 ### Premier lancement de Lazarus
@@ -636,17 +636,17 @@ sudo apt-get install -f  # Résoudre les dépendances
 
 **Raccourcis essentiels Lazarus :**
 ```
-F9              → Compiler et exécuter
-Ctrl+F9         → Compiler seulement
-F12             → Basculer Form/Code
-Ctrl+Espace     → Complétion de code
-Ctrl+Shift+C    → Complétion de classe
-Ctrl+Click      → Aller à la déclaration
-F1              → Aide
-Ctrl+S          → Sauvegarder
-Ctrl+F          → Rechercher
-Ctrl+H          → Remplacer
-F7/F8           → Débogage pas à pas
+F9              → Compiler et exécuter  
+Ctrl+F9         → Compiler seulement  
+F12             → Basculer Form/Code  
+Ctrl+Espace     → Complétion de code  
+Ctrl+Shift+C    → Complétion de classe  
+Ctrl+Click      → Aller à la déclaration  
+F1              → Aide  
+Ctrl+S          → Sauvegarder  
+Ctrl+F          → Rechercher  
+Ctrl+H          → Remplacer  
+F7/F8           → Débogage pas à pas  
 ```
 
 ### 2. Organisez vos projets
@@ -719,8 +719,8 @@ Exécuter → Tout recompiler (ou Shift+F9) en cas de doute
 Fermer accidentellement une fenêtre importante
 
 **Solution :**
-Affichage → [Nom de la fenêtre] pour la réafficher
-Ou : Affichage → Bureau → Réinitialiser
+Affichage → [Nom de la fenêtre] pour la réafficher  
+Ou : Affichage → Bureau → Réinitialiser  
 
 ### 5. Problèmes de chemins
 

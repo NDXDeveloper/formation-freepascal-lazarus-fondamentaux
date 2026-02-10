@@ -4,8 +4,8 @@
                 Les deux Write s'affichent sur la meme ligne
   Fichier source : 10-premier-programme-hello-world-pascal.md
   ============================================================================ }
-program HelloWrite;
-begin
+program HelloWrite;  
+begin  
   Write('Hello, ');
   Write('World!');
 end.

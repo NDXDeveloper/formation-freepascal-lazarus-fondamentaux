@@ -4,8 +4,8 @@
                 Illustre la structure conditionnelle if/else
   Fichier source : 05-algorithmes-pseudo-code.md
   ============================================================================ }
-program PairOuImpair;
-var
+program PairOuImpair;  
+var  
   nombre: Integer;
 begin
   WriteLn('Entrez un nombre entier : ');

@@ -4,8 +4,8 @@
                 largeur saisies par l'utilisateur
   Fichier source : 05-algorithmes-pseudo-code.md
   ============================================================================ }
-program AireRectangle;
-var
+program AireRectangle;  
+var  
   longueur, largeur, aire: Real;
 begin
   WriteLn('Entrez la longueur : ');

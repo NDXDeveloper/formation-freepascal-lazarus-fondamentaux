@@ -92,9 +92,9 @@ Résultat : 1101
 
 Convertissons 10110 en décimal :
 ```
-Position:  4    3    2    1    0
-Bit:       1    0    1    1    0
-Poids:    16    8    4    2    1
+Position:  4    3    2    1    0  
+Bit:       1    0    1    1    0  
+Poids:    16    8    4    2    1  
 
 Calcul: (1×16) + (0×8) + (1×4) + (1×2) + (0×1)
       = 16 + 0 + 4 + 2 + 0
@@ -114,8 +114,8 @@ Le système hexadécimal est très utilisé en informatique comme notation compa
 **Pourquoi l'hexadécimal ?**
 4 bits = 1 chiffre hexadécimal, donc c'est plus compact que le binaire :
 ```
-Binaire:      1111 0101 1010 0011
-Hexadécimal:   F    5    A    3
+Binaire:      1111 0101 1010 0011  
+Hexadécimal:   F    5    A    3  
 ```
 
 **Correspondance binaire-hexadécimal :**
@@ -450,8 +450,8 @@ L'octet de poids faible est stocké en premier.
 
 **Exemple : le nombre 0x12345678 (305 419 896)**
 ```
-Adresse :  0x00    0x01    0x02    0x03
-Valeur  :  0x78    0x56    0x34    0x12
+Adresse :  0x00    0x01    0x02    0x03  
+Valeur  :  0x78    0x56    0x34    0x12  
 ```
 
 ### Big Endian (Motorola, PowerPC, réseau)
@@ -460,8 +460,8 @@ L'octet de poids fort est stocké en premier.
 
 **Exemple : le même nombre 0x12345678**
 ```
-Adresse :  0x00    0x01    0x02    0x03
-Valeur  :  0x12    0x34    0x56    0x78
+Adresse :  0x00    0x01    0x02    0x03  
+Valeur  :  0x12    0x34    0x56    0x78  
 ```
 
 **Impact :** Important lors de la communication réseau ou de la lecture de fichiers binaires créés sur d'autres systèmes.

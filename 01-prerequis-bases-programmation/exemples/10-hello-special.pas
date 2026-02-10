@@ -4,8 +4,8 @@
                 etoiles) pour creer un encadrement visuel
   Fichier source : 10-premier-programme-hello-world-pascal.md
   ============================================================================ }
-program HelloSpecial;
-begin
+program HelloSpecial;  
+begin  
   WriteLn('Hello, World!');
   WriteLn('-------------');
   WriteLn('* Bienvenue *');

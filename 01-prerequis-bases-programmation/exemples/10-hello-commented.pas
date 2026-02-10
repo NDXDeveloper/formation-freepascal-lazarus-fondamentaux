@@ -5,8 +5,8 @@
                 (* commentaire sur plusieurs lignes *)
   Fichier source : 10-premier-programme-hello-world-pascal.md
   ============================================================================ }
-program HelloCommented;
-begin
+program HelloCommented;  
+begin  
   // Ceci est un commentaire sur une ligne
   WriteLn('Hello, World!');
 

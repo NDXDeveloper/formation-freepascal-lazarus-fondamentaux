@@ -57,10 +57,10 @@ end.
 
 **Exemples concrets :**
 ```
-NOT (Il pleut) = Il ne pleut pas
-NOT (La porte est ouverte) = La porte est fermée
-NOT (VRAI) = FAUX
-NOT (FAUX) = VRAI
+NOT (Il pleut) = Il ne pleut pas  
+NOT (La porte est ouverte) = La porte est fermée  
+NOT (VRAI) = FAUX  
+NOT (FAUX) = VRAI  
 ```
 
 **En Pascal :**
@@ -340,8 +340,8 @@ if ((age >= 18) and (age <= 65)) or estRetraite then ...
 
 **Loi de commutativité :**
 ```
-A AND B = B AND A
-A OR B = B OR A
+A AND B = B AND A  
+A OR B = B OR A  
 ```
 
 **Loi d'associativité :**
@@ -352,26 +352,26 @@ A OR B = B OR A
 
 **Loi de distributivité :**
 ```
-A AND (B OR C) = (A AND B) OR (A AND C)
-A OR (B AND C) = (A OR B) AND (A OR C)
+A AND (B OR C) = (A AND B) OR (A AND C)  
+A OR (B AND C) = (A OR B) AND (A OR C)  
 ```
 
 **Loi de l'identité :**
 ```
-A AND VRAI = A
-A OR FAUX = A
+A AND VRAI = A  
+A OR FAUX = A  
 ```
 
 **Loi de l'élément absorbant :**
 ```
-A AND FAUX = FAUX
-A OR VRAI = VRAI
+A AND FAUX = FAUX  
+A OR VRAI = VRAI  
 ```
 
 **Loi de complémentarité :**
 ```
-A AND (NOT A) = FAUX
-A OR (NOT A) = VRAI
+A AND (NOT A) = FAUX  
+A OR (NOT A) = VRAI  
 ```
 
 **Loi de la double négation :**
@@ -625,12 +625,12 @@ if estConnecté and aLesPermissions or not estVerrouillé then ...
 
 ```pascal
 // Mauvais
-if estActif = True then ...
-if estFermé = False then ...
+if estActif = True then ...  
+if estFermé = False then ...  
 
 // Bon
-if estActif then ...
-if not estFermé then ...
+if estActif then ...  
+if not estFermé then ...  
 ```
 
 ### 3. Utilisez des parenthèses pour la clarté

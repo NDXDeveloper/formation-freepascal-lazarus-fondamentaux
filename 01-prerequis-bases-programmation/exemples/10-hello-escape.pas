@@ -4,8 +4,8 @@
                 et apostrophe echappee avec '' (double apostrophe)
   Fichier source : 10-premier-programme-hello-world-pascal.md
   ============================================================================ }
-program HelloEscape;
-begin
+program HelloEscape;  
+begin  
   WriteLn('Ligne 1');
   WriteLn('Ligne 2');
   WriteLn('');

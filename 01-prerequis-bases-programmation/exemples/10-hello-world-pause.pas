@@ -4,8 +4,8 @@
                 la console de se fermer immediatement sous Windows
   Fichier source : 10-premier-programme-hello-world-pascal.md
   ============================================================================ }
-program HelloWorldPause;
-begin
+program HelloWorldPause;  
+begin  
   WriteLn('Hello, World!');
   WriteLn('Appuyez sur Entrée pour continuer...');
   ReadLn;

@@ -66,8 +66,8 @@ fpc -B 10-hello-world.pas
 
 ```bash
 # Linux/macOS
-rm -f *.o
-find . -maxdepth 1 -type f -executable -delete
+rm -f *.o  
+find . -maxdepth 1 -type f -executable -delete  
 
 # Windows (PowerShell)
 Remove-Item *.o, *.exe -ErrorAction SilentlyContinue
@@ -98,9 +98,9 @@ Bonjour le monde !
 
 ### 05-aire-rectangle.pas (avec 5 et 3 en entrée)
 ```
-Entrez la longueur :
-Entrez la largeur :
-L'aire du rectangle est : 15.00
+Entrez la longueur :  
+Entrez la largeur :  
+L'aire du rectangle est : 15.00  
 ```
 
 ### 05-pair-ou-impair.pas (avec 4 en entrée)
@@ -111,8 +111,8 @@ Entrez un nombre entier :
 
 ### 05-factorielle.pas (avec 5 en entrée)
 ```
-Entrez un nombre :
-Factorielle de 5 = 120
+Entrez un nombre :  
+Factorielle de 5 = 120  
 ```
 
 ### 10-hello-world.pas
@@ -122,15 +122,15 @@ Hello, World!
 
 ### 10-hello-world-pause.pas
 ```
-Hello, World!
-Appuyez sur Entrée pour continuer...
+Hello, World!  
+Appuyez sur Entrée pour continuer...  
 ```
 
 ### 10-hello-multiline.pas
 ```
-Bonjour !
-Je suis votre premier programme.
-Félicitations !
+Bonjour !  
+Je suis votre premier programme.  
+Félicitations !  
 ```
 
 ### 10-hello-write.pas
@@ -148,14 +148,14 @@ Hello, World!
 
 ### 10-hello-escape.pas
 ```
-Ligne 1
-Ligne 2
+Ligne 1  
+Ligne 2  
 
 Guillemets : '
 ```
 
 ### 10-hello-commented.pas
 ```
-Hello, World!
-Programme terminé.
+Hello, World!  
+Programme terminé.  
 ```

@@ -7,8 +7,8 @@
   ============================================================================ }
 program Factorielle;
 
-function Fact(n: Integer): Integer;
-begin
+function Fact(n: Integer): Integer;  
+begin  
   if n <= 1 then
     Fact := 1
   else
