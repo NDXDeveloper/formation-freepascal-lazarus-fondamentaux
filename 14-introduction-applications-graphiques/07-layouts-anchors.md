@@ -155,8 +155,8 @@ Button1.Anchors := [akRight, akBottom];
 **Exemple pratique :**
 ```pascal
 // Bouton OK toujours en bas à droite
-ButtonOK.Anchors := [akRight, akBottom];
-ButtonAnnuler.Anchors := [akRight, akBottom];
+ButtonOK.Anchors := [akRight, akBottom];  
+ButtonAnnuler.Anchors := [akRight, akBottom];  
 ```
 
 #### 3. Étirement horizontal : [akLeft, akTop, akRight]
@@ -187,9 +187,9 @@ Edit1.Anchors := [akLeft, akTop, akRight];
 **Exemple pratique :**
 ```pascal
 // Champ de recherche qui s'étire
-EditRecherche.Anchors := [akLeft, akTop, akRight];
-EditRecherche.Left := 10;
-EditRecherche.Top := 10;
+EditRecherche.Anchors := [akLeft, akTop, akRight];  
+EditRecherche.Left := 10;  
+EditRecherche.Top := 10;  
 // La distance de 10 pixels à gauche et à droite sera maintenue
 ```
 
@@ -272,8 +272,8 @@ type
     procedure FormCreate(Sender: TObject);
   end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Titre : reste en haut à gauche
   LabelTitre.Anchors := [akLeft, akTop];
 
@@ -348,8 +348,8 @@ Panel1.Align := alTop;
 #### alTop : Bande horizontale en haut
 
 ```pascal
-Panel1.Align := alTop;
-Panel1.Height := 50;  // La largeur est automatique
+Panel1.Align := alTop;  
+Panel1.Height := 50;  // La largeur est automatique  
 ```
 
 **Résultat :**
@@ -369,15 +369,15 @@ Panel1.Height := 50;  // La largeur est automatique
 **Exemple :**
 ```pascal
 // Barre d'outils en haut
-ToolBar1.Align := alTop;
-ToolBar1.Height := 40;
+ToolBar1.Align := alTop;  
+ToolBar1.Height := 40;  
 ```
 
 #### alBottom : Bande horizontale en bas
 
 ```pascal
-Panel1.Align := alBottom;
-Panel1.Height := 30;
+Panel1.Align := alBottom;  
+Panel1.Height := 30;  
 ```
 
 **Résultat :**
@@ -403,8 +403,8 @@ StatusBar1.Align := alBottom;
 #### alLeft : Bande verticale à gauche
 
 ```pascal
-Panel1.Align := alLeft;
-Panel1.Width := 200;
+Panel1.Align := alLeft;  
+Panel1.Width := 200;  
 ```
 
 **Résultat :**
@@ -425,15 +425,15 @@ Panel1 (alLeft)
 **Exemple :**
 ```pascal
 // Menu de navigation à gauche
-PanelMenu.Align := alLeft;
-PanelMenu.Width := 200;
+PanelMenu.Align := alLeft;  
+PanelMenu.Width := 200;  
 ```
 
 #### alRight : Bande verticale à droite
 
 ```pascal
-Panel1.Align := alRight;
-Panel1.Width := 150;
+Panel1.Align := alRight;  
+Panel1.Width := 150;  
 ```
 
 **Résultat :**
@@ -481,16 +481,16 @@ L'ordre de création importe ! Lazarus remplit l'espace dans l'ordre où les com
 
 ```pascal
 // 1. Barre d'outils en haut
-ToolBar1.Align := alTop;
-ToolBar1.Height := 40;
+ToolBar1.Align := alTop;  
+ToolBar1.Height := 40;  
 
 // 2. Barre d'état en bas
-StatusBar1.Align := alBottom;
-StatusBar1.Height := 25;
+StatusBar1.Align := alBottom;  
+StatusBar1.Height := 25;  
 
 // 3. Menu latéral à gauche
-PanelMenu.Align := alLeft;
-PanelMenu.Width := 200;
+PanelMenu.Align := alLeft;  
+PanelMenu.Width := 200;  
 
 // 4. Zone principale remplit le reste
 MemoContenu.Align := alClient;
@@ -521,14 +521,14 @@ Si plusieurs composants ont le même Align, le **dernier créé** est au-dessus.
 
 **Exemple :**
 ```pascal
-Panel1.Align := alClient;
-Panel2.Align := alClient;  // Panel2 sera au-dessus
+Panel1.Align := alClient;  
+Panel2.Align := alClient;  // Panel2 sera au-dessus  
 ```
 
 Pour changer l'ordre :
 ```pascal
-Panel1.BringToFront;  // Amener devant
-Panel2.SendToBack;    // Envoyer derrière
+Panel1.BringToFront;  // Amener devant  
+Panel2.SendToBack;    // Envoyer derrière  
 ```
 
 ---
@@ -541,12 +541,12 @@ Un **Splitter** permet à l'utilisateur de redimensionner les zones avec la sour
 
 ```pascal
 // 1. Panneau gauche
-PanelGauche.Align := alLeft;
-PanelGauche.Width := 200;
+PanelGauche.Align := alLeft;  
+PanelGauche.Width := 200;  
 
 // 2. Splitter (séparateur)
-Splitter1.Align := alLeft;  // Même alignement que le panneau
-Splitter1.Width := 5;
+Splitter1.Align := alLeft;  // Même alignement que le panneau  
+Splitter1.Width := 5;  
 
 // 3. Zone principale
 PanelDroit.Align := alClient;
@@ -569,19 +569,19 @@ L'utilisateur peut glisser le splitter pour ajuster les tailles !
 **Exemple complet :**
 ```pascal
 // Explorateur de fichiers à gauche
-TreeView1.Parent := PanelGauche;
-TreeView1.Align := alClient;
-PanelGauche.Align := alLeft;
-PanelGauche.Width := 200;
+TreeView1.Parent := PanelGauche;  
+TreeView1.Align := alClient;  
+PanelGauche.Align := alLeft;  
+PanelGauche.Width := 200;  
 
 // Splitter
-Splitter1.Align := alLeft;
-Splitter1.Left := PanelGauche.Width + 1;  // Juste après le panneau
+Splitter1.Align := alLeft;  
+Splitter1.Left := PanelGauche.Width + 1;  // Juste après le panneau  
 
 // Visualiseur de fichiers à droite
-Memo1.Parent := PanelDroit;
-Memo1.Align := alClient;
-PanelDroit.Align := alClient;
+Memo1.Parent := PanelDroit;  
+Memo1.Align := alClient;  
+PanelDroit.Align := alClient;  
 ```
 
 ### Position du Splitter
@@ -604,10 +604,10 @@ Les **Constraints** (contraintes) limitent les dimensions minimales et maximales
 ### Propriété Constraints
 
 ```pascal
-Form1.Constraints.MinWidth := 400;
-Form1.Constraints.MinHeight := 300;
-Form1.Constraints.MaxWidth := 1920;
-Form1.Constraints.MaxHeight := 1080;
+Form1.Constraints.MinWidth := 400;  
+Form1.Constraints.MinHeight := 300;  
+Form1.Constraints.MaxWidth := 1920;  
+Form1.Constraints.MaxHeight := 1080;  
 ```
 
 **Type :** TSizeConstraints  
@@ -622,8 +622,8 @@ Form1.Constraints.MaxHeight := 1080;
 #### 1. Empêcher une fenêtre de devenir trop petite
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // L'utilisateur ne peut pas réduire en dessous de 600x400
   Form1.Constraints.MinWidth := 600;
   Form1.Constraints.MinHeight := 400;
@@ -636,16 +636,16 @@ end;
 
 ```pascal
 // Boîte de dialogue : pas besoin d'être énorme
-FormDialogue.Constraints.MaxWidth := 800;
-FormDialogue.Constraints.MaxHeight := 600;
+FormDialogue.Constraints.MaxWidth := 800;  
+FormDialogue.Constraints.MaxHeight := 600;  
 ```
 
 #### 3. Rapport d'aspect fixe
 
 ```pascal
 // Forcer un carré (pas directement supporté, mais possible par code)
-procedure TForm1.FormResize(Sender: TObject);
-begin
+procedure TForm1.FormResize(Sender: TObject);  
+begin  
   if Width <> Height then
     Height := Width;  // Forcer la hauteur = largeur
 end;
@@ -679,22 +679,22 @@ Les **Panels** sont des conteneurs qui regroupent d'autres composants.
 
 ```pascal
 // Panneau supérieur : formulaire
-PanelFormulaire.Align := alTop;
-PanelFormulaire.Height := 200;
+PanelFormulaire.Align := alTop;  
+PanelFormulaire.Height := 200;  
 
 // À l'intérieur du PanelFormulaire
-LabelNom.Parent := PanelFormulaire;
-EditNom.Parent := PanelFormulaire;
-LabelPrenom.Parent := PanelFormulaire;
-EditPrenom.Parent := PanelFormulaire;
+LabelNom.Parent := PanelFormulaire;  
+EditNom.Parent := PanelFormulaire;  
+LabelPrenom.Parent := PanelFormulaire;  
+EditPrenom.Parent := PanelFormulaire;  
 
 // Panneau inférieur : boutons
-PanelBoutons.Align := alBottom;
-PanelBoutons.Height := 50;
+PanelBoutons.Align := alBottom;  
+PanelBoutons.Height := 50;  
 
 // À l'intérieur du PanelBoutons
-ButtonOK.Parent := PanelBoutons;
-ButtonAnnuler.Parent := PanelBoutons;
+ButtonOK.Parent := PanelBoutons;  
+ButtonAnnuler.Parent := PanelBoutons;  
 
 // Zone centrale : résultats
 MemoResultats.Align := alClient;
@@ -724,8 +724,8 @@ MemoResultats.Align := alClient;
 
 **BevelInner et BevelOuter**
 ```pascal
-Panel1.BevelOuter := bvRaised;   // Bordure extérieure relevée
-Panel1.BevelInner := bvLowered;  // Bordure intérieure enfoncée
+Panel1.BevelOuter := bvRaised;   // Bordure extérieure relevée  
+Panel1.BevelInner := bvLowered;  // Bordure intérieure enfoncée  
 ```
 
 **Valeurs :**
@@ -749,13 +749,13 @@ Panel1.Caption := '';  // Généralement vide (pas de texte affiché)
 Les **GroupBox** sont comme les Panels, mais avec un cadre et un titre.
 
 ```pascal
-GroupBox1.Caption := 'Informations personnelles';
-GroupBox1.Align := alTop;
-GroupBox1.Height := 150;
+GroupBox1.Caption := 'Informations personnelles';  
+GroupBox1.Align := alTop;  
+GroupBox1.Height := 150;  
 
 // Composants à l'intérieur
-LabelNom.Parent := GroupBox1;
-EditNom.Parent := GroupBox1;
+LabelNom.Parent := GroupBox1;  
+EditNom.Parent := GroupBox1;  
 ```
 
 **Apparence :**
@@ -779,11 +779,11 @@ EditNom.Parent := GroupBox1;
 ### 1. Marges et espacement avec BorderSpacing
 
 ```pascal
-Button1.BorderSpacing.Around := 10;  // 10 pixels tout autour
-Button1.BorderSpacing.Left := 5;
-Button1.BorderSpacing.Top := 5;
-Button1.BorderSpacing.Right := 5;
-Button1.BorderSpacing.Bottom := 5;
+Button1.BorderSpacing.Around := 10;  // 10 pixels tout autour  
+Button1.BorderSpacing.Left := 5;  
+Button1.BorderSpacing.Top := 5;  
+Button1.BorderSpacing.Right := 5;  
+Button1.BorderSpacing.Bottom := 5;  
 ```
 
 **BorderSpacing** définit l'espace minimal entre le composant et son parent ou ses voisins.
@@ -791,8 +791,8 @@ Button1.BorderSpacing.Bottom := 5;
 ### 2. AutoSize : Ajustement automatique
 
 ```pascal
-Label1.AutoSize := True;  // La taille s'ajuste au contenu
-Panel1.AutoSize := True;  // La taille s'ajuste aux enfants
+Label1.AutoSize := True;  // La taille s'ajuste au contenu  
+Panel1.AutoSize := True;  // La taille s'ajuste aux enfants  
 ```
 
 **Utile pour :** Labels dont le texte change, panels qui s'adaptent à leur contenu.
@@ -802,10 +802,10 @@ Panel1.AutoSize := True;  // La taille s'ajuste aux enfants
 Les Panels ont une propriété `ChildSizing` qui permet de disposer automatiquement les composants enfants en grille.
 
 ```pascal
-Panel1.ChildSizing.Layout := cclLeftToRightThenTopToBottom;
-Panel1.ChildSizing.ControlsPerLine := 3;  // 3 composants par ligne
-Panel1.ChildSizing.HorizontalSpacing := 10;
-Panel1.ChildSizing.VerticalSpacing := 10;
+Panel1.ChildSizing.Layout := cclLeftToRightThenTopToBottom;  
+Panel1.ChildSizing.ControlsPerLine := 3;  // 3 composants par ligne  
+Panel1.ChildSizing.HorizontalSpacing := 10;  
+Panel1.ChildSizing.VerticalSpacing := 10;  
 ```
 
 **Layouts possibles :**
@@ -828,12 +828,12 @@ Panel1.ChildSizing.VerticalSpacing := 10;
 Si votre contenu dépasse la taille disponible, utilisez un **TScrollBox** :
 
 ```pascal
-ScrollBox1.Align := alClient;
-ScrollBox1.AutoScroll := True;
+ScrollBox1.Align := alClient;  
+ScrollBox1.AutoScroll := True;  
 
 // Placer les composants dans le ScrollBox
-Panel1.Parent := ScrollBox1;
-Panel2.Parent := ScrollBox1;
+Panel1.Parent := ScrollBox1;  
+Panel2.Parent := ScrollBox1;  
 // etc.
 ```
 
@@ -853,8 +853,8 @@ MainMenu1.Align := alTop;
 ToolBar1.Align := alTop;
 
 // Zone de texte (remplit le reste)
-Memo1.Align := alClient;
-Memo1.ScrollBars := ssBoth;
+Memo1.Align := alClient;  
+Memo1.ScrollBars := ssBoth;  
 
 // Barre d'état en bas
 StatusBar1.Align := alBottom;
@@ -864,15 +864,15 @@ StatusBar1.Align := alBottom;
 
 ```pascal
 // Barre d'adresse/outils en haut
-PanelTop.Align := alTop;
-PanelTop.Height := 40;
+PanelTop.Align := alTop;  
+PanelTop.Height := 40;  
 
 // Zone de visualisation
 WebBrowser1.Align := alClient;
 
 // Optionnel : panneau latéral pour signets
-PanelSignets.Align := alLeft;
-PanelSignets.Width := 200;
+PanelSignets.Align := alLeft;  
+PanelSignets.Width := 200;  
 
 Splitter1.Align := alLeft;
 ```
@@ -881,10 +881,10 @@ Splitter1.Align := alLeft;
 
 ```pascal
 // Panneau gauche : liste des éléments
-PanelListe.Align := alLeft;
-PanelListe.Width := 250;
-ListBox1.Parent := PanelListe;
-ListBox1.Align := alClient;
+PanelListe.Align := alLeft;  
+PanelListe.Width := 250;  
+ListBox1.Parent := PanelListe;  
+ListBox1.Align := alClient;  
 
 // Séparateur
 Splitter1.Align := alLeft;
@@ -912,23 +912,23 @@ PanelDetails.Align := alClient;
 
 ```pascal
 // Écran en haut
-EditEcran.Align := alTop;
-EditEcran.Height := 40;
-EditEcran.ReadOnly := True;
-EditEcran.Alignment := taRightJustify;
+EditEcran.Align := alTop;  
+EditEcran.Height := 40;  
+EditEcran.ReadOnly := True;  
+EditEcran.Alignment := taRightJustify;  
 
 // Panneau pour les boutons
 PanelBoutons.Align := alClient;
 
 // Utiliser ChildSizing pour disposer les boutons en grille
-PanelBoutons.ChildSizing.Layout := cclLeftToRightThenTopToBottom;
-PanelBoutons.ChildSizing.ControlsPerLine := 4;  // 4 boutons par ligne
-PanelBoutons.ChildSizing.EnlargeHorizontal := crsHomogenousChildResize;
-PanelBoutons.ChildSizing.EnlargeVertical := crsHomogenousChildResize;
+PanelBoutons.ChildSizing.Layout := cclLeftToRightThenTopToBottom;  
+PanelBoutons.ChildSizing.ControlsPerLine := 4;  // 4 boutons par ligne  
+PanelBoutons.ChildSizing.EnlargeHorizontal := crsHomogenousChildResize;  
+PanelBoutons.ChildSizing.EnlargeVertical := crsHomogenousChildResize;  
 
 // Créer les boutons dynamiquement
-for i := 0 to 15 do
-begin
+for i := 0 to 15 do  
+begin  
   Btn := TButton.Create(Self);
   Btn.Parent := PanelBoutons;
   Btn.Caption := IntToStr(i);
@@ -951,18 +951,18 @@ end;
 
 ❌ **Mauvais :** Tous les composants directement sur le formulaire
 ```pascal
-Button1.Anchors := [akRight, akBottom];
-Button2.Anchors := [akRight, akBottom];
-Button3.Anchors := [akRight, akBottom];
+Button1.Anchors := [akRight, akBottom];  
+Button2.Anchors := [akRight, akBottom];  
+Button3.Anchors := [akRight, akBottom];  
 // Difficile à gérer !
 ```
 
 ✅ **Bon :** Grouper dans des Panels
 ```pascal
-PanelBoutons.Align := alBottom;
-Button1.Parent := PanelBoutons;
-Button2.Parent := PanelBoutons;
-Button3.Parent := PanelBoutons;
+PanelBoutons.Align := alBottom;  
+Button1.Parent := PanelBoutons;  
+Button2.Parent := PanelBoutons;  
+Button3.Parent := PanelBoutons;  
 // Facile à déplacer et gérer !
 ```
 
@@ -974,13 +974,13 @@ Button3.Parent := PanelBoutons;
 
 ```pascal
 // Structure avec Align
-PanelTop.Align := alTop;
-PanelBottom.Align := alBottom;
-PanelCenter.Align := alClient;
+PanelTop.Align := alTop;  
+PanelBottom.Align := alBottom;  
+PanelCenter.Align := alClient;  
 
 // Détails avec Anchors
-ButtonOK.Parent := PanelBottom;
-ButtonOK.Anchors := [akRight, akBottom];
+ButtonOK.Parent := PanelBottom;  
+ButtonOK.Anchors := [akRight, akBottom];  
 ```
 
 ### 4. Tester à différentes tailles
@@ -995,8 +995,8 @@ ButtonOK.Anchors := [akRight, akBottom];
 
 ```pascal
 // Toujours définir une taille minimale raisonnable
-Form1.Constraints.MinWidth := 640;
-Form1.Constraints.MinHeight := 480;
+Form1.Constraints.MinWidth := 640;  
+Form1.Constraints.MinHeight := 480;  
 ```
 
 ### 6. Ordre de création important avec Align
@@ -1010,8 +1010,8 @@ Créez les composants dans l'ordre logique :
 
 ```pascal
 // Ajouter des marges autour des composants
-Button1.BorderSpacing.Around := 5;
-Edit1.BorderSpacing.Around := 5;
+Button1.BorderSpacing.Around := 5;  
+Edit1.BorderSpacing.Around := 5;  
 ```
 
 **Résultat :** Interface plus aérée et professionnelle.
@@ -1042,8 +1042,8 @@ MonComposant.BringToFront;
 
 **Solution :** Recréez les composants dans le bon ordre ou utilisez :
 ```pascal
-Panel1.Top := 0;  // Forcer l'ordre
-Panel2.Top := Panel1.Height;
+Panel1.Top := 0;  // Forcer l'ordre  
+Panel2.Top := Panel1.Height;  
 ```
 
 ### Problème : Espace vide inexpliqué
@@ -1052,8 +1052,8 @@ Panel2.Top := Panel1.Height;
 
 **Vérifiez :**
 ```pascal
-Panel1.BorderWidth := 0;
-Panel1.BorderSpacing.Around := 0;
+Panel1.BorderWidth := 0;  
+Panel1.BorderSpacing.Around := 0;  
 ```
 
 ---

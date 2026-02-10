@@ -152,8 +152,8 @@ type
   end;
 
 // Dans la section implementation
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   // Votre code ici
 end;
 ```
@@ -195,13 +195,13 @@ type
 
 implementation
 
-procedure TForm1.MonHandler(Sender: TObject);  // 2. Implémenter
-begin
+procedure TForm1.MonHandler(Sender: TObject);  // 2. Implémenter  
+begin  
   ShowMessage('Mon handler personnalisé');
 end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   Button1.OnClick := @MonHandler;  // 3. Associer
 end;
 ```
@@ -222,8 +222,8 @@ end;
 `Sender` est de type `TObject`, le type le plus générique. Pour l'utiliser, vous devez souvent le **transtyper** :
 
 ```pascal
-procedure TForm1.Button1Click(Sender: TObject);
-var
+procedure TForm1.Button1Click(Sender: TObject);  
+var  
   MonBouton: TButton;
 begin
   // Transtypage sûr avec "as"
@@ -244,8 +244,8 @@ Parce que **tous** les composants peuvent déclencher des événements, pas seul
 Avant de transtyper, vous pouvez vérifier le type :
 
 ```pascal
-procedure TForm1.ComposantClick(Sender: TObject);
-begin
+procedure TForm1.ComposantClick(Sender: TObject);  
+begin  
   if Sender is TButton then
     ShowMessage('C''est un bouton')
   else if Sender is TLabel then
@@ -268,16 +268,16 @@ type
     procedure BoutonClick(Sender: TObject);  // Handler unique
   end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Associer le même handler aux 3 boutons
   Button1.OnClick := @BoutonClick;
   Button2.OnClick := @BoutonClick;
   Button3.OnClick := @BoutonClick;
 end;
 
-procedure TForm1.BoutonClick(Sender: TObject);
-var
+procedure TForm1.BoutonClick(Sender: TObject);  
+var  
   Bouton: TButton;
 begin
   Bouton := Sender as TButton;
@@ -318,8 +318,8 @@ TNotifyEvent = procedure(Sender: TObject) of object;
 
 **Exemple :**
 ```pascal
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   ShowMessage('Événement simple');
 end;
 ```
@@ -342,8 +342,8 @@ TKeyEvent = procedure(Sender: TObject; var Key: Word; Shift: TShiftState) of obj
 
 **Exemple :**
 ```pascal
-procedure TForm1.Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-begin
+procedure TForm1.Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);  
+begin  
   // Détecter Ctrl+S
   if (ssCtrl in Shift) and (Key = VK_S) then
   begin
@@ -403,8 +403,8 @@ TKeyPressEvent = procedure(Sender: TObject; var Key: Char) of object;
 
 **Exemple :**
 ```pascal
-procedure TForm1.Edit1KeyPress(Sender: TObject; var Key: Char);
-begin
+procedure TForm1.Edit1KeyPress(Sender: TObject; var Key: Char);  
+begin  
   // Accepter uniquement les chiffres
   if not (Key in ['0'..'9', #8, #13]) then  // #8=Backspace, #13=Enter
   begin
@@ -483,8 +483,8 @@ TMouseMoveEvent = procedure(Sender: TObject; Shift: TShiftState;
 
 **Exemple :**
 ```pascal
-procedure TForm1.FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
-begin
+procedure TForm1.FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);  
+begin  
   // Afficher les coordonnées
   StatusBar1.SimpleText := Format('Position: %d, %d', [X, Y]);
 
@@ -510,8 +510,8 @@ TCloseEvent = procedure(Sender: TObject; var Action: TCloseAction) of object;
 
 **Exemple :**
 ```pascal
-procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
+procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);  
+begin  
   if MessageDlg('Voulez-vous vraiment quitter ?',
                 mtConfirmation, [mbYes, mbNo], 0) = mrNo then
   begin
@@ -540,8 +540,8 @@ TCloseQueryEvent = procedure(Sender: TObject; var CanClose: Boolean) of object;
 
 **Exemple :**
 ```pascal
-procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-begin
+procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: Boolean);  
+begin  
   if DataModified then
   begin
     case MessageDlg('Les données ont été modifiées. Sauvegarder ?',
@@ -616,14 +616,14 @@ Quand l'utilisateur clique sur un bouton, plusieurs événements se déclenchent
 
 **Exemple pratique :**
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Initialiser des données
   LoadConfiguration;
 end;
 
-procedure TForm1.FormShow(Sender: TObject);
-begin
+procedure TForm1.FormShow(Sender: TObject);  
+begin  
   // Utiliser les données chargées
   Edit1.Text := FConfiguration.LastValue;
   Edit1.SetFocus;
@@ -639,8 +639,8 @@ end;
 ### Associer dynamiquement
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Créer un bouton dynamiquement
   MyButton := TButton.Create(Self);
   MyButton.Parent := Self;
@@ -652,8 +652,8 @@ begin
   MyButton.OnClick := @MonHandler;
 end;
 
-procedure TForm1.MonHandler(Sender: TObject);
-begin
+procedure TForm1.MonHandler(Sender: TObject);  
+begin  
   ShowMessage('Bouton dynamique cliqué !');
 end;
 ```
@@ -661,13 +661,13 @@ end;
 ### Changer le handler
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   Button1.OnClick := @Handler1;
 end;
 
-procedure TForm1.CheckBox1Change(Sender: TObject);
-begin
+procedure TForm1.CheckBox1Change(Sender: TObject);  
+begin  
   // Changer le comportement selon la case à cocher
   if CheckBox1.Checked then
     Button1.OnClick := @Handler2
@@ -675,13 +675,13 @@ begin
     Button1.OnClick := @Handler1;
 end;
 
-procedure TForm1.Handler1(Sender: TObject);
-begin
+procedure TForm1.Handler1(Sender: TObject);  
+begin  
   ShowMessage('Handler 1');
 end;
 
-procedure TForm1.Handler2(Sender: TObject);
-begin
+procedure TForm1.Handler2(Sender: TObject);  
+begin  
   ShowMessage('Handler 2');
 end;
 ```
@@ -699,10 +699,10 @@ Button1.OnClick := nil;
 
 ```pascal
 // Plusieurs composants partagent le même handler
-Button1.OnClick := @MonHandler;
-Button2.OnClick := @MonHandler;
-Button3.OnClick := @MonHandler;
-MenuItem1.OnClick := @MonHandler;
+Button1.OnClick := @MonHandler;  
+Button2.OnClick := @MonHandler;  
+Button3.OnClick := @MonHandler;  
+MenuItem1.OnClick := @MonHandler;  
 ```
 
 ---
@@ -715,8 +715,8 @@ Certains événements peuvent être "consommés" pour empêcher leur traitement 
 
 **OnKeyPress :**
 ```pascal
-procedure TForm1.Edit1KeyPress(Sender: TObject; var Key: Char);
-begin
+procedure TForm1.Edit1KeyPress(Sender: TObject; var Key: Char);  
+begin  
   if Key = #13 then  // Enter
   begin
     ProcessData;
@@ -727,8 +727,8 @@ end;
 
 **OnKeyDown :**
 ```pascal
-procedure TForm1.Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-begin
+procedure TForm1.Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);  
+begin  
   if Key = VK_ESCAPE then
   begin
     Edit1.Text := '';
@@ -739,8 +739,8 @@ end;
 
 **OnCloseQuery :**
 ```pascal
-procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-begin
+procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: Boolean);  
+begin  
   if not DataSaved then
   begin
     ShowMessage('Sauvegardez d''abord !');
@@ -771,8 +771,8 @@ type
     property OnMonEvenement: TMonEvenement read FOnMonEvenement write FOnMonEvenement;
   end;
 
-procedure TMaClasse.Declencher(V: Integer);
-begin
+procedure TMaClasse.Declencher(V: Integer);  
+begin  
   // Vérifier qu'un handler est associé
   if Assigned(FOnMonEvenement) then
     FOnMonEvenement(Self, V);
@@ -789,19 +789,19 @@ type
     procedure MonHandler(Sender: TObject; const Valeur: Integer);
   end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   FMaClasse := TMaClasse.Create;
   FMaClasse.OnMonEvenement := @MonHandler;
 end;
 
-procedure TForm1.MonHandler(Sender: TObject; const Valeur: Integer);
-begin
+procedure TForm1.MonHandler(Sender: TObject; const Valeur: Integer);  
+begin  
   ShowMessage('Valeur reçue : ' + IntToStr(Valeur));
 end;
 
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   FMaClasse.Declencher(42);  // Déclenche l'événement
 end;
 ```
@@ -813,8 +813,8 @@ end;
 ### Avec Assigned
 
 ```pascal
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   // Vérifier avant d'appeler
   if Assigned(Button2.OnClick) then
     Button2.OnClick(Button2)  // Déclencher manuellement
@@ -826,8 +826,8 @@ end;
 ### Appel sécurisé d'événement
 
 ```pascal
-procedure TForm1.Declencher;
-begin
+procedure TForm1.Declencher;  
+begin  
   if Assigned(FOnMonEvenement) then
     FOnMonEvenement(Self);
 end;
@@ -846,26 +846,26 @@ ComposantÉvénement
 
 **Exemples :**
 ```pascal
-Button1Click
-Edit1Change
-FormCreate
-Timer1Timer
-ListBox1Click
+Button1Click  
+Edit1Change  
+FormCreate  
+Timer1Timer  
+ListBox1Click  
 ```
 
 **Évitez :**
 ```pascal
-btn1  // Pas clair
-HandleButton  // Trop générique
-DoSomething  // Pas descriptif
+btn1  // Pas clair  
+HandleButton  // Trop générique  
+DoSomething  // Pas descriptif  
 ```
 
 ### 2. Un handler = Une responsabilité
 
 ❌ **Mauvais :** Handler trop complexe
 ```pascal
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   // 200 lignes de code...
   ValidateInput;
   ProcessData;
@@ -879,8 +879,8 @@ end;
 
 ✅ **Bon :** Handler délègue
 ```pascal
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   if not ValidateInput then
     Exit;
 
@@ -892,8 +892,8 @@ end;
 ### 3. Gérer les erreurs
 
 ```pascal
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   try
     // Code qui peut échouer
     ProcessData;
@@ -911,8 +911,8 @@ end;
 
 ❌ **Danger :**
 ```pascal
-procedure TForm1.Edit1Change(Sender: TObject);
-begin
+procedure TForm1.Edit1Change(Sender: TObject);  
+begin  
   Edit1.Text := UpperCase(Edit1.Text);  // Déclenche OnChange !
   // Boucle infinie !
 end;
@@ -920,8 +920,8 @@ end;
 
 ✅ **Solution :**
 ```pascal
-procedure TForm1.Edit1Change(Sender: TObject);
-var
+procedure TForm1.Edit1Change(Sender: TObject);  
+var  
   OldText: string;
 begin
   OldText := Edit1.Text;
@@ -934,8 +934,8 @@ end;
 
 ✅ **Meilleure solution :**
 ```pascal
-procedure TForm1.Edit1KeyPress(Sender: TObject; var Key: Char);
-begin
+procedure TForm1.Edit1KeyPress(Sender: TObject; var Key: Char);  
+begin  
   Key := UpCase(Key);  // Convertir directement, pas de boucle
 end;
 ```
@@ -943,8 +943,8 @@ end;
 ### 5. Désactiver temporairement les handlers
 
 ```pascal
-procedure TForm1.LoadData;
-var
+procedure TForm1.LoadData;  
+var  
   OldHandler: TNotifyEvent;
 begin
   // Sauvegarder le handler
@@ -967,8 +967,8 @@ end;
 ### 6. Utiliser les tags pour identifier les composants
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   Button1.Tag := 1;
   Button2.Tag := 2;
   Button3.Tag := 3;
@@ -978,8 +978,8 @@ begin
   Button3.OnClick := @BoutonClick;
 end;
 
-procedure TForm1.BoutonClick(Sender: TObject);
-begin
+procedure TForm1.BoutonClick(Sender: TObject);  
+begin  
   case (Sender as TButton).Tag of
     1: ShowMessage('Action 1');
     2: ShowMessage('Action 2');
@@ -991,8 +991,8 @@ end;
 ### 7. Libérer les ressources
 
 ```pascal
-procedure TForm1.FormDestroy(Sender: TObject);
-begin
+procedure TForm1.FormDestroy(Sender: TObject);  
+begin  
   // Dissocier les événements avant de détruire
   Button1.OnClick := nil;
 
@@ -1009,8 +1009,8 @@ end;
 ### Afficher quand un événement se déclenche
 
 ```pascal
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   // Message de debug
   ShowMessage('Button1Click déclenché');
 
@@ -1031,8 +1031,8 @@ Dans Lazarus, placez un point d'arrêt (F5) dans votre handler pour inspecter :
 ### Vérifier l'association
 
 ```pascal
-procedure TForm1.FormShow(Sender: TObject);
-begin
+procedure TForm1.FormShow(Sender: TObject);  
+begin  
   if Assigned(Button1.OnClick) then
     ShowMessage('Handler associé')
   else
@@ -1051,8 +1051,8 @@ Les événements GUI doivent être appelés depuis le **thread principal** uniqu
 ❌ **Dangereux :**
 ```pascal
 // Dans un thread secondaire
-procedure MonThread.Execute;
-begin
+procedure MonThread.Execute;  
+begin  
   Form1.Label1.Caption := 'Terminé';  // ERREUR !
 end;
 ```
@@ -1060,13 +1060,13 @@ end;
 ✅ **Correct :**
 ```pascal
 // Dans un thread secondaire
-procedure MonThread.Execute;
-begin
+procedure MonThread.Execute;  
+begin  
   Synchronize(@UpdateUI);
 end;
 
-procedure MonThread.UpdateUI;
-begin
+procedure MonThread.UpdateUI;  
+begin  
   Form1.Label1.Caption := 'Terminé';  // OK dans le thread principal
 end;
 ```

@@ -77,8 +77,8 @@ Form1.Caption := 'Gestionnaire de clients';
 
 #### Width et Height
 ```pascal
-Form1.Width := 800;   // Largeur en pixels
-Form1.Height := 600;  // Hauteur en pixels
+Form1.Width := 800;   // Largeur en pixels  
+Form1.Height := 600;  // Hauteur en pixels  
 ```
 **Description :** Dimensions de la fenêtre  
 **Type :** Integer  
@@ -86,9 +86,9 @@ Form1.Height := 600;  // Hauteur en pixels
 
 #### Color
 ```pascal
-Form1.Color := clWhite;      // Blanc
-Form1.Color := clBtnFace;    // Couleur système (recommandé)
-Form1.Color := $00FF8800;    // Couleur personnalisée (BGR)
+Form1.Color := clWhite;      // Blanc  
+Form1.Color := clBtnFace;    // Couleur système (recommandé)  
+Form1.Color := $00FF8800;    // Couleur personnalisée (BGR)  
 ```
 **Description :** Couleur de fond du formulaire  
 **Type :** TColor  
@@ -104,10 +104,10 @@ Form1.Color := $00FF8800;    // Couleur personnalisée (BGR)
 
 #### Font
 ```pascal
-Form1.Font.Name := 'Arial';
-Form1.Font.Size := 10;
-Form1.Font.Style := [fsBold];
-Form1.Font.Color := clNavy;
+Form1.Font.Name := 'Arial';  
+Form1.Font.Size := 10;  
+Form1.Font.Style := [fsBold];  
+Form1.Font.Color := clNavy;  
 ```
 **Description :** Police par défaut pour le formulaire et ses composants  
 **Type :** TFont  
@@ -205,12 +205,12 @@ Form1.FormStyle := fsNormal;
 #### Constraints
 ```pascal
 // Taille minimale
-Form1.Constraints.MinWidth := 400;
-Form1.Constraints.MinHeight := 300;
+Form1.Constraints.MinWidth := 400;  
+Form1.Constraints.MinHeight := 300;  
 
 // Taille maximale
-Form1.Constraints.MaxWidth := 1920;
-Form1.Constraints.MaxHeight := 1080;
+Form1.Constraints.MaxWidth := 1920;  
+Form1.Constraints.MaxHeight := 1080;  
 ```
 
 **Description :** Limites de redimensionnement  
@@ -220,16 +220,16 @@ Form1.Constraints.MaxHeight := 1080;
 
 #### Visible
 ```pascal
-Form1.Visible := True;   // Visible
-Form1.Visible := False;  // Caché
+Form1.Visible := True;   // Visible  
+Form1.Visible := False;  // Caché  
 ```
 **Description :** Contrôle si le formulaire est affiché  
 **Type :** Boolean  
 
 #### Enabled
 ```pascal
-Form1.Enabled := True;   // Actif (par défaut)
-Form1.Enabled := False;  // Désactivé (grisé, n'accepte plus d'événements)
+Form1.Enabled := True;   // Actif (par défaut)  
+Form1.Enabled := False;  // Désactivé (grisé, n'accepte plus d'événements)  
 ```
 **Description :** Contrôle si le formulaire répond aux interactions  
 **Type :** Boolean  
@@ -296,8 +296,8 @@ Form1.SetBounds(100, 100, 800, 600);
 #### CenterScreen
 ```pascal
 // Centrer le formulaire sur l'écran
-Form1.Left := (Screen.Width - Form1.Width) div 2;
-Form1.Top := (Screen.Height - Form1.Height) div 2;
+Form1.Left := (Screen.Width - Form1.Width) div 2;  
+Form1.Top := (Screen.Height - Form1.Height) div 2;  
 
 // Ou plus simplement :
 Form1.Position := poScreenCenter;
@@ -346,8 +346,8 @@ end;
 
 #### OnCreate
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Code exécuté UNE SEULE FOIS à la création du formulaire
   Caption := 'Application démarrée à ' + TimeToStr(Now);
 
@@ -363,8 +363,8 @@ end;
 
 #### OnShow
 ```pascal
-procedure TForm1.FormShow(Sender: TObject);
-begin
+procedure TForm1.FormShow(Sender: TObject);  
+begin  
   // Code exécuté CHAQUE FOIS que le formulaire est affiché
   Edit1.SetFocus;  // Met le focus sur Edit1
   RefreshData;     // Rafraîchit les données
@@ -375,8 +375,8 @@ end;
 
 #### OnActivate
 ```pascal
-procedure TForm1.FormActivate(Sender: TObject);
-begin
+procedure TForm1.FormActivate(Sender: TObject);  
+begin  
   // Code exécuté quand le formulaire devient actif
   StatusBar1.SimpleText := 'Fenêtre active';
 end;
@@ -386,8 +386,8 @@ end;
 
 #### OnDeactivate
 ```pascal
-procedure TForm1.FormDeactivate(Sender: TObject);
-begin
+procedure TForm1.FormDeactivate(Sender: TObject);  
+begin  
   // Code exécuté quand le formulaire perd le focus
   StatusBar1.SimpleText := 'Fenêtre inactive';
 end;
@@ -396,8 +396,8 @@ end;
 
 #### OnClose
 ```pascal
-procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
+procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);  
+begin  
   // Demander confirmation
   if MessageDlg('Voulez-vous vraiment quitter ?',
                 mtConfirmation, [mbYes, mbNo], 0) = mrNo then
@@ -426,8 +426,8 @@ end;
 
 #### OnCloseQuery
 ```pascal
-procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-begin
+procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: Boolean);  
+begin  
   // Vérifier si on peut fermer
   if DataModified then
   begin
@@ -453,8 +453,8 @@ end;
 
 #### OnDestroy
 ```pascal
-procedure TForm1.FormDestroy(Sender: TObject);
-begin
+procedure TForm1.FormDestroy(Sender: TObject);  
+begin  
   // Code exécuté à la destruction du formulaire
   // Libération des ressources
   FMyObject.Free;
@@ -468,8 +468,8 @@ end;
 
 #### OnResize
 ```pascal
-procedure TForm1.FormResize(Sender: TObject);
-begin
+procedure TForm1.FormResize(Sender: TObject);  
+begin  
   // Ajuster les composants
   Panel1.Width := Form1.ClientWidth div 2;
 
@@ -485,8 +485,8 @@ end;
 
 #### OnKeyPress
 ```pascal
-procedure TForm1.FormKeyPress(Sender: TObject; var Key: Char);
-begin
+procedure TForm1.FormKeyPress(Sender: TObject; var Key: Char);  
+begin  
   // Réagir aux touches
   if Key = #27 then  // Échap
     Close;
@@ -500,8 +500,8 @@ end;
 
 #### OnKeyDown / OnKeyUp
 ```pascal
-procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-begin
+procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);  
+begin  
   // Touches spéciales et modificateurs
   if (ssCtrl in Shift) and (Key = VK_S) then
   begin
@@ -520,21 +520,21 @@ end;
 
 #### OnClick / OnDblClick
 ```pascal
-procedure TForm1.FormClick(Sender: TObject);
-begin
+procedure TForm1.FormClick(Sender: TObject);  
+begin  
   ShowMessage('Vous avez cliqué sur le formulaire');
 end;
 
-procedure TForm1.FormDblClick(Sender: TObject);
-begin
+procedure TForm1.FormDblClick(Sender: TObject);  
+begin  
   ShowMessage('Double-clic détecté !');
 end;
 ```
 
 #### OnMouseMove
 ```pascal
-procedure TForm1.FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
-begin
+procedure TForm1.FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);  
+begin  
   // Afficher les coordonnées
   StatusBar1.SimpleText := Format('Position: X=%d, Y=%d', [X, Y]);
 end;
@@ -610,16 +610,16 @@ end;
 
 **Méthode 1 : Formulaire non-modal**
 ```pascal
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   Form2.Show;
 end;
 ```
 
 **Méthode 2 : Formulaire modal**
 ```pascal
-procedure TForm1.Button1Click(Sender: TObject);
-var
+procedure TForm1.Button1Click(Sender: TObject);  
+var  
   Resultat: Integer;
 begin
   Resultat := Form2.ShowModal;
@@ -633,8 +633,8 @@ end;
 
 **Méthode 3 : Création dynamique**
 ```pascal
-procedure TForm1.Button1Click(Sender: TObject);
-var
+procedure TForm1.Button1Click(Sender: TObject);  
+var  
   MonForm: TForm2;
 begin
   MonForm := TForm2.Create(Self);
@@ -651,8 +651,8 @@ end;
 #### Méthode 1 : Accès direct (déconseillé)
 ```pascal
 // Dans Form2
-procedure TForm2.Button1Click(Sender: TObject);
-begin
+procedure TForm2.Button1Click(Sender: TObject);  
+begin  
   Form1.Caption := 'Modifié depuis Form2';  // Couplage fort !
 end;
 ```
@@ -668,14 +668,14 @@ type
     function GetNom: string;
   end;
 
-function TForm2.GetNom: string;
-begin
+function TForm2.GetNom: string;  
+begin  
   Result := Edit1.Text;
 end;
 
 // Dans Form1
-procedure TForm1.Button1Click(Sender: TObject);
-var
+procedure TForm1.Button1Click(Sender: TObject);  
+var  
   Nom: string;
 begin
   if Form2.ShowModal = mrOK then
@@ -756,8 +756,8 @@ end;
 **Pour les formulaires non-modaux :**
 ```pascal
 // Dans OnClose du formulaire secondaire :
-procedure TFormSecondaire.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
+procedure TFormSecondaire.FormClose(Sender: TObject; var Action: TCloseAction);  
+begin  
   Action := caFree;  // Se libère automatiquement
 end;
 ```
@@ -778,16 +778,16 @@ end;
 
 ❌ **Mauvais :** Tout dans le formulaire
 ```pascal
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   // 200 lignes de logique métier ici...
 end;
 ```
 
 ✅ **Bon :** Séparer interface et logique
 ```pascal
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   FGestionnaireClients.AjouterClient(Edit1.Text);
   RefreshList;
 end;
@@ -796,8 +796,8 @@ end;
 ### 5. Gestion des erreurs
 
 ```pascal
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   try
     // Code qui peut échouer
     LoadData;
@@ -817,8 +817,8 @@ end;
 
 ### AlphaBlend et AlphaBlendValue
 ```pascal
-Form1.AlphaBlend := True;
-Form1.AlphaBlendValue := 200;  // 0 (transparent) à 255 (opaque)
+Form1.AlphaBlend := True;  
+Form1.AlphaBlendValue := 200;  // 0 (transparent) à 255 (opaque)  
 ```
 **Description :** Rendre le formulaire semi-transparent  
 

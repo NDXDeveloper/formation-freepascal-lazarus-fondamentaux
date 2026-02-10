@@ -1,4 +1,4 @@
-unit Unit1;
+unit Unit1;  
 
 {$mode objfpc}{$H+}
 
@@ -38,8 +38,8 @@ implementation
 
 {$R *.lfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   { Handler partagé : assigner le même handler à 3 boutons }
   Button1.OnClick := @BoutonSharedClick;
   Button2.OnClick := @BoutonSharedClick;
@@ -55,8 +55,8 @@ begin
   BtnBleu.OnClick := @BoutonCouleurClick;
 end;
 
-procedure TForm1.BoutonSharedClick(Sender: TObject);
-var
+procedure TForm1.BoutonSharedClick(Sender: TObject);  
+var  
   Bouton: TButton;
 begin
   { Identifier le Sender avec 'as' }
@@ -65,8 +65,8 @@ begin
     ' (Name = ' + Bouton.Name + ')';
 end;
 
-procedure TForm1.BoutonCouleurClick(Sender: TObject);
-var
+procedure TForm1.BoutonCouleurClick(Sender: TObject);  
+var  
   Bouton: TButton;
 begin
   { Utiliser le Tag pour appliquer la couleur }
@@ -75,8 +75,8 @@ begin
   LabelCouleur.Caption := 'Couleur appliquée par ' + Bouton.Caption;
 end;
 
-procedure TForm1.CheckBoxActiverChange(Sender: TObject);
-begin
+procedure TForm1.CheckBoxActiverChange(Sender: TObject);  
+begin  
   { Assigner ou retirer un handler dynamiquement }
   if CheckBoxActiver.Checked then
   begin
@@ -90,8 +90,8 @@ begin
   end;
 end;
 
-procedure TForm1.HandlerActif(Sender: TObject);
-begin
+procedure TForm1.HandlerActif(Sender: TObject);  
+begin  
   LabelDynamic.Caption := 'Clic détecté ! (' +
     FormatDateTime('hh:nn:ss', Now) + ')';
 end;

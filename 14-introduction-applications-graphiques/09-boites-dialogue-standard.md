@@ -58,8 +58,8 @@ Le composant apparaît dans la zone des composants non visuels.
 #### Utilisation de base
 
 ```pascal
-procedure TForm1.ButtonOuvrirClick(Sender: TObject);
-begin
+procedure TForm1.ButtonOuvrirClick(Sender: TObject);  
+begin  
   if OpenDialog1.Execute then
   begin
     // L'utilisateur a sélectionné un fichier
@@ -140,8 +140,8 @@ OpenDialog1.Filter :=
 
 ##### FilterIndex
 ```pascal
-OpenDialog1.FilterIndex := 1;  // Premier filtre par défaut (1-based)
-OpenDialog1.FilterIndex := 2;  // Deuxième filtre par défaut
+OpenDialog1.FilterIndex := 1;  // Premier filtre par défaut (1-based)  
+OpenDialog1.FilterIndex := 2;  // Deuxième filtre par défaut  
 ```
 
 **Type :** Integer  
@@ -149,8 +149,8 @@ OpenDialog1.FilterIndex := 2;  // Deuxième filtre par défaut
 
 ##### Title
 ```pascal
-OpenDialog1.Title := 'Ouvrir un document';
-OpenDialog1.Title := 'Sélectionner une image';
+OpenDialog1.Title := 'Ouvrir un document';  
+OpenDialog1.Title := 'Sélectionner une image';  
 ```
 
 **Type :** String  
@@ -191,8 +191,8 @@ OpenDialog1.Options := [
 // Activer la sélection multiple
 OpenDialog1.Options := OpenDialog1.Options + [ofAllowMultiSelect];
 
-procedure TForm1.ButtonOuvrirClick(Sender: TObject);
-var
+procedure TForm1.ButtonOuvrirClick(Sender: TObject);  
+var  
   i: Integer;
 begin
   if OpenDialog1.Execute then
@@ -214,8 +214,8 @@ end;
 #### Exemple complet
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Configuration du dialogue
   OpenDialog1.Title := 'Ouvrir un document';
   OpenDialog1.InitialDir := GetUserDir + 'Documents';
@@ -226,8 +226,8 @@ begin
   OpenDialog1.Options := [ofFileMustExist, ofEnableSizing];
 end;
 
-procedure TForm1.MenuOuvrirClick(Sender: TObject);
-begin
+procedure TForm1.MenuOuvrirClick(Sender: TObject);  
+begin  
   if OpenDialog1.Execute then
   begin
     try
@@ -255,8 +255,8 @@ Le **TSaveDialog** permet à l'utilisateur de choisir où enregistrer un fichier
 **Très similaire à TOpenDialog**, mais avec quelques différences :
 
 ```pascal
-procedure TForm1.MenuEnregistrerClick(Sender: TObject);
-begin
+procedure TForm1.MenuEnregistrerClick(Sender: TObject);  
+begin  
   if SaveDialog1.Execute then
   begin
     try
@@ -293,8 +293,8 @@ SaveDialog1.Options := [
 SaveDialog1.DefaultExt := 'txt';
 
 // Exemple
-if SaveDialog1.Execute then
-begin
+if SaveDialog1.Execute then  
+begin  
   // Si l'utilisateur tape "document", ça devient "document.txt"
   Memo1.Lines.SaveToFile(SaveDialog1.FileName);
 end;
@@ -303,8 +303,8 @@ end;
 #### Exemple complet
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Configuration du dialogue
   SaveDialog1.Title := 'Enregistrer le document';
   SaveDialog1.InitialDir := GetUserDir + 'Documents';
@@ -319,8 +319,8 @@ begin
   ];
 end;
 
-procedure TForm1.MenuEnregistrerClick(Sender: TObject);
-begin
+procedure TForm1.MenuEnregistrerClick(Sender: TObject);  
+begin  
   if SaveDialog1.Execute then
   begin
     try
@@ -346,8 +346,8 @@ end;
 Le **TSelectDirectoryDialog** permet de choisir un dossier (pas un fichier).
 
 ```pascal
-procedure TForm1.ButtonChoisirDossierClick(Sender: TObject);
-begin
+procedure TForm1.ButtonChoisirDossierClick(Sender: TObject);  
+begin  
   if SelectDirectoryDialog1.Execute then
   begin
     ShowMessage('Dossier sélectionné : ' + SelectDirectoryDialog1.FileName);
@@ -359,15 +359,15 @@ end;
 #### Propriétés
 
 ```pascal
-SelectDirectoryDialog1.Title := 'Sélectionner un dossier de destination';
-SelectDirectoryDialog1.InitialDir := GetUserDir;
+SelectDirectoryDialog1.Title := 'Sélectionner un dossier de destination';  
+SelectDirectoryDialog1.InitialDir := GetUserDir;  
 ```
 
 #### Exemple : Sélectionner un dossier de sauvegarde
 
 ```pascal
-procedure TForm1.ButtonDestinationClick(Sender: TObject);
-begin
+procedure TForm1.ButtonDestinationClick(Sender: TObject);  
+begin  
   SelectDirectoryDialog1.Title := 'Choisir le dossier de sauvegarde';
   SelectDirectoryDialog1.InitialDir := ExtractFilePath(Application.ExeName);
 
@@ -414,8 +414,8 @@ Le **TColorDialog** affiche une palette de couleurs.
 #### Utilisation simple
 
 ```pascal
-procedure TForm1.ButtonCouleurClick(Sender: TObject);
-begin
+procedure TForm1.ButtonCouleurClick(Sender: TObject);  
+begin  
   // Définir la couleur actuelle
   ColorDialog1.Color := Panel1.Color;
 
@@ -444,8 +444,8 @@ if ColorDialog1.Execute then
 ColorDialog1.CustomColors.CommaText := IniFile.ReadString('Config', 'CustomColors', '');
 
 // Après le dialogue, sauvegarder
-if ColorDialog1.Execute then
-begin
+if ColorDialog1.Execute then  
+begin  
   IniFile.WriteString('Config', 'CustomColors', ColorDialog1.CustomColors.CommaText);
 end;
 ```
@@ -454,8 +454,8 @@ end;
 
 **Choisir la couleur de fond :**
 ```pascal
-procedure TForm1.MenuCouleurFondClick(Sender: TObject);
-begin
+procedure TForm1.MenuCouleurFondClick(Sender: TObject);  
+begin  
   ColorDialog1.Color := Memo1.Color;
 
   if ColorDialog1.Execute then
@@ -468,8 +468,8 @@ end;
 
 **Choisir la couleur du texte :**
 ```pascal
-procedure TForm1.MenuCouleurTexteClick(Sender: TObject);
-begin
+procedure TForm1.MenuCouleurTexteClick(Sender: TObject);  
+begin  
   ColorDialog1.Color := Memo1.Font.Color;
 
   if ColorDialog1.Execute then
@@ -481,8 +481,8 @@ end;
 
 **Palette de couleurs rapide :**
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-var
+procedure TForm1.FormCreate(Sender: TObject);  
+var  
   Btn: TButton;
   i: Integer;
   Couleurs: array[0..7] of TColor;
@@ -511,8 +511,8 @@ begin
   end;
 end;
 
-procedure TForm1.BoutonCouleurClick(Sender: TObject);
-begin
+procedure TForm1.BoutonCouleurClick(Sender: TObject);  
+begin  
   Panel1.Color := TColor((Sender as TButton).Tag);
 end;
 ```
@@ -548,8 +548,8 @@ Le **TFontDialog** permet de sélectionner une police de caractères.
 #### Utilisation simple
 
 ```pascal
-procedure TForm1.ButtonPoliceClick(Sender: TObject);
-begin
+procedure TForm1.ButtonPoliceClick(Sender: TObject);  
+begin  
   // Définir la police actuelle
   FontDialog1.Font := Memo1.Font;
 
@@ -566,13 +566,13 @@ end;
 ##### Font
 ```pascal
 // Accès à la police complète
-FontDialog1.Font.Name := 'Arial';
-FontDialog1.Font.Size := 12;
-FontDialog1.Font.Color := clBlack;
-FontDialog1.Font.Style := [fsBold];
+FontDialog1.Font.Name := 'Arial';  
+FontDialog1.Font.Size := 12;  
+FontDialog1.Font.Color := clBlack;  
+FontDialog1.Font.Style := [fsBold];  
 
-if FontDialog1.Execute then
-begin
+if FontDialog1.Execute then  
+begin  
   // Récupérer tous les attributs
   Label1.Font := FontDialog1.Font;
 end;
@@ -598,8 +598,8 @@ FontDialog1.Options := [fdEffects, fdFixedPitchOnly];
 
 **Changer la police d'un memo :**
 ```pascal
-procedure TForm1.MenuPoliceClick(Sender: TObject);
-begin
+procedure TForm1.MenuPoliceClick(Sender: TObject);  
+begin  
   FontDialog1.Font := Memo1.Font;
   FontDialog1.Options := [fdEffects];  // Avec couleur
 
@@ -614,8 +614,8 @@ end;
 
 **Polices à espacement fixe uniquement (code) :**
 ```pascal
-procedure TForm1.MenuPoliceCodeClick(Sender: TObject);
-begin
+procedure TForm1.MenuPoliceCodeClick(Sender: TObject);  
+begin  
   FontDialog1.Font := MemoCode.Font;
   FontDialog1.Options := [fdFixedPitchOnly];  // Courier, Consolas, etc.
 
@@ -627,8 +627,8 @@ end;
 **Sauvegarder les préférences :**
 ```pascal
 // Sauvegarder
-procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
+procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);  
+begin  
   IniFile.WriteString('Font', 'Name', Memo1.Font.Name);
   IniFile.WriteInteger('Font', 'Size', Memo1.Font.Size);
   IniFile.WriteInteger('Font', 'Color', Memo1.Font.Color);
@@ -636,8 +636,8 @@ begin
 end;
 
 // Charger
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   Memo1.Font.Name := IniFile.ReadString('Font', 'Name', 'Arial');
   Memo1.Font.Size := IniFile.ReadInteger('Font', 'Size', 10);
   Memo1.Font.Color := IniFile.ReadInteger('Font', 'Color', clBlack);
@@ -653,8 +653,8 @@ end;
 La fonction **ShowMessage** affiche un message simple avec un bouton OK.
 
 ```pascal
-ShowMessage('Fichier enregistré avec succès !');
-ShowMessage('Erreur : Fichier introuvable');
+ShowMessage('Fichier enregistré avec succès !');  
+ShowMessage('Erreur : Fichier introuvable');  
 ```
 
 **Apparence :**
@@ -714,8 +714,8 @@ function MessageDlg(const Msg: string;
 
 **Confirmation simple :**
 ```pascal
-procedure TForm1.MenuQuitterClick(Sender: TObject);
-begin
+procedure TForm1.MenuQuitterClick(Sender: TObject);  
+begin  
   if MessageDlg('Voulez-vous vraiment quitter ?',
                 mtConfirmation, [mbYes, mbNo], 0) = mrYes then
   begin
@@ -726,8 +726,8 @@ end;
 
 **Confirmation avec 3 options :**
 ```pascal
-procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-var
+procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: Boolean);  
+var  
   Reponse: Integer;
 begin
   if Memo1.Modified then
@@ -755,8 +755,8 @@ end;
 
 **Message d'erreur :**
 ```pascal
-procedure TForm1.OuvrirFichier(const NomFichier: string);
-begin
+procedure TForm1.OuvrirFichier(const NomFichier: string);  
+begin  
   if not FileExists(NomFichier) then
   begin
     MessageDlg('Erreur : Le fichier n''existe pas !' + sLineBreak +
@@ -777,8 +777,8 @@ end;
 
 **Avertissement :**
 ```pascal
-procedure TForm1.ButtonSupprimerClick(Sender: TObject);
-begin
+procedure TForm1.ButtonSupprimerClick(Sender: TObject);  
+begin  
   if MessageDlg('Attention : Cette action est irréversible !' + sLineBreak +
                 'Continuer ?',
                 mtWarning, [mbYes, mbNo], 0) = mrYes then
@@ -790,8 +790,8 @@ end;
 
 **Information :**
 ```pascal
-procedure TForm1.MenuAProposClick(Sender: TObject);
-begin
+procedure TForm1.MenuAProposClick(Sender: TObject);  
+begin  
   MessageDlg('Mon Application v1.0' + sLineBreak +
              'Par Votre Nom' + sLineBreak +
              '© 2025',
@@ -801,8 +801,8 @@ end;
 
 **Opérations multiples (Oui pour tout / Non pour tout) :**
 ```pascal
-procedure TForm1.TraiterFichiers;
-var
+procedure TForm1.TraiterFichiers;  
+var  
   i: Integer;
   Reponse: Integer;
   AppliquerATous: Boolean;
@@ -841,8 +841,8 @@ function InputBox(const ACaption, APrompt, ADefault: string): string;
 
 **Exemple :**
 ```pascal
-procedure TForm1.ButtonNomClick(Sender: TObject);
-var
+procedure TForm1.ButtonNomClick(Sender: TObject);  
+var  
   Nom: string;
 begin
   Nom := InputBox('Votre nom', 'Entrez votre nom :', 'Jean Dupont');
@@ -859,8 +859,8 @@ function InputQuery(const ACaption, APrompt: string; var Value: string): Boolean
 
 **Exemple :**
 ```pascal
-procedure TForm1.ButtonAgeClick(Sender: TObject);
-var
+procedure TForm1.ButtonAgeClick(Sender: TObject);  
+var  
   AgeStr: string;
   Age: Integer;
 begin
@@ -883,8 +883,8 @@ end;
 
 **Exemple : Renommer un élément**
 ```pascal
-procedure TForm1.MenuRenommerClick(Sender: TObject);
-var
+procedure TForm1.MenuRenommerClick(Sender: TObject);  
+var  
   NouveauNom: string;
 begin
   if ListBox1.ItemIndex = -1 then
@@ -940,13 +940,13 @@ type
     procedure FindDialog1Find(Sender: TObject);
   end;
 
-procedure TForm1.MenuRechercherClick(Sender: TObject);
-begin
+procedure TForm1.MenuRechercherClick(Sender: TObject);  
+begin  
   FindDialog1.Execute;
 end;
 
-procedure TForm1.FindDialog1Find(Sender: TObject);
-var
+procedure TForm1.FindDialog1Find(Sender: TObject);  
+var  
   FoundPos, StartPos: Integer;
   SearchText: string;
 begin
@@ -1002,13 +1002,13 @@ type
     procedure ReplaceDialog1Replace(Sender: TObject);
   end;
 
-procedure TForm1.MenuRemplacerClick(Sender: TObject);
-begin
+procedure TForm1.MenuRemplacerClick(Sender: TObject);  
+begin  
   ReplaceDialog1.Execute;
 end;
 
-procedure TForm1.ReplaceDialog1Replace(Sender: TObject);
-var
+procedure TForm1.ReplaceDialog1Replace(Sender: TObject);  
+var  
   Pos: Integer;
   TexteComplet: string;
 begin
@@ -1046,8 +1046,8 @@ end;
 
 ❌ **Mauvais :**
 ```pascal
-OpenDialog1.Execute;
-Memo1.Lines.LoadFromFile(OpenDialog1.FileName);  // Et si annulé ?
+OpenDialog1.Execute;  
+Memo1.Lines.LoadFromFile(OpenDialog1.FileName);  // Et si annulé ?  
 ```
 
 ✅ **Bon :**
@@ -1059,8 +1059,8 @@ if OpenDialog1.Execute then
 ### 2. Gérer les exceptions
 
 ```pascal
-if OpenDialog1.Execute then
-begin
+if OpenDialog1.Execute then  
+begin  
   try
     Memo1.Lines.LoadFromFile(OpenDialog1.FileName);
   except
@@ -1077,8 +1077,8 @@ end;
 var
   DernierDossier: string = '';
 
-procedure TForm1.MenuOuvrirClick(Sender: TObject);
-begin
+procedure TForm1.MenuOuvrirClick(Sender: TObject);  
+begin  
   if DernierDossier <> '' then
     OpenDialog1.InitialDir := DernierDossier
   else
@@ -1126,8 +1126,8 @@ MessageDlg('Impossible d''ouvrir le fichier :' + sLineBreak +
 ### 6. Confirmer les actions destructives
 
 ```pascal
-procedure TForm1.MenuEffacerToutClick(Sender: TObject);
-begin
+procedure TForm1.MenuEffacerToutClick(Sender: TObject);  
+begin  
   if MessageDlg('Êtes-vous sûr de vouloir tout effacer ?' + sLineBreak +
                 'Cette action est irréversible.',
                 mtWarning, [mbYes, mbNo], 0) = mrYes then
@@ -1141,15 +1141,15 @@ end;
 
 ```pascal
 // Sauvegarder le dernier dossier utilisé
-procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
+procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);  
+begin  
   IniFile.WriteString('Paths', 'LastOpenDir', OpenDialog1.InitialDir);
   IniFile.WriteString('Paths', 'LastSaveDir', SaveDialog1.InitialDir);
 end;
 
 // Restaurer au démarrage
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   OpenDialog1.InitialDir := IniFile.ReadString('Paths', 'LastOpenDir', GetUserDir);
   SaveDialog1.InitialDir := IniFile.ReadString('Paths', 'LastSaveDir', GetUserDir);
 end;
@@ -1205,8 +1205,8 @@ var
 
 implementation
 
-procedure TFormEditeur.FormCreate(Sender: TObject);
-begin
+procedure TFormEditeur.FormCreate(Sender: TObject);  
+begin  
   // Configuration des dialogues
   OpenDialog1.Filter := 'Fichiers texte (*.txt)|*.txt|Tous les fichiers (*.*)|*.*';
   OpenDialog1.Options := [ofFileMustExist, ofEnableSizing];
@@ -1221,16 +1221,16 @@ begin
   NouveauDocument;
 end;
 
-procedure TFormEditeur.NouveauDocument;
-begin
+procedure TFormEditeur.NouveauDocument;  
+begin  
   Memo1.Clear;
   Memo1.Modified := False;
   FFichierCourant := '';
   Caption := 'Éditeur - Sans titre';
 end;
 
-procedure TFormEditeur.MenuNouveauClick(Sender: TObject);
-begin
+procedure TFormEditeur.MenuNouveauClick(Sender: TObject);  
+begin  
   if Memo1.Modified then
   begin
     case MessageDlg('Enregistrer les modifications ?',
@@ -1243,16 +1243,16 @@ begin
   NouveauDocument;
 end;
 
-procedure TFormEditeur.MenuOuvrirClick(Sender: TObject);
-begin
+procedure TFormEditeur.MenuOuvrirClick(Sender: TObject);  
+begin  
   if OpenDialog1.Execute then
   begin
     OuvrirDocument(OpenDialog1.FileName);
   end;
 end;
 
-procedure TFormEditeur.OuvrirDocument(const Fichier: string);
-begin
+procedure TFormEditeur.OuvrirDocument(const Fichier: string);  
+begin  
   try
     Memo1.Lines.LoadFromFile(Fichier);
     Memo1.Modified := False;
@@ -1265,16 +1265,16 @@ begin
   end;
 end;
 
-procedure TFormEditeur.MenuEnregistrerClick(Sender: TObject);
-begin
+procedure TFormEditeur.MenuEnregistrerClick(Sender: TObject);  
+begin  
   if FFichierCourant = '' then
     MenuEnregistrerSous.Click
   else
     EnregistrerDocument(FFichierCourant);
 end;
 
-procedure TFormEditeur.MenuEnregistrerSousClick(Sender: TObject);
-begin
+procedure TFormEditeur.MenuEnregistrerSousClick(Sender: TObject);  
+begin  
   if FFichierCourant <> '' then
     SaveDialog1.FileName := FFichierCourant;
 
@@ -1284,8 +1284,8 @@ begin
   end;
 end;
 
-procedure TFormEditeur.EnregistrerDocument(const Fichier: string);
-begin
+procedure TFormEditeur.EnregistrerDocument(const Fichier: string);  
+begin  
   try
     Memo1.Lines.SaveToFile(Fichier);
     Memo1.Modified := False;
@@ -1298,13 +1298,13 @@ begin
   end;
 end;
 
-procedure TFormEditeur.MenuQuitterClick(Sender: TObject);
-begin
+procedure TFormEditeur.MenuQuitterClick(Sender: TObject);  
+begin  
   Close;
 end;
 
-procedure TFormEditeur.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-begin
+procedure TFormEditeur.FormCloseQuery(Sender: TObject; var CanClose: Boolean);  
+begin  
   if Memo1.Modified then
   begin
     case MessageDlg('Enregistrer les modifications ?',
@@ -1324,34 +1324,34 @@ begin
     CanClose := True;
 end;
 
-procedure TFormEditeur.MenuCouleurFondClick(Sender: TObject);
-begin
+procedure TFormEditeur.MenuCouleurFondClick(Sender: TObject);  
+begin  
   ColorDialog1.Color := Memo1.Color;
 
   if ColorDialog1.Execute then
     Memo1.Color := ColorDialog1.Color;
 end;
 
-procedure TFormEditeur.MenuPoliceClick(Sender: TObject);
-begin
+procedure TFormEditeur.MenuPoliceClick(Sender: TObject);  
+begin  
   FontDialog1.Font := Memo1.Font;
 
   if FontDialog1.Execute then
     Memo1.Font := FontDialog1.Font;
 end;
 
-procedure TFormEditeur.MenuRechercherClick(Sender: TObject);
-begin
+procedure TFormEditeur.MenuRechercherClick(Sender: TObject);  
+begin  
   FindDialog1.Execute;
 end;
 
-procedure TFormEditeur.MenuRemplacerClick(Sender: TObject);
-begin
+procedure TFormEditeur.MenuRemplacerClick(Sender: TObject);  
+begin  
   ReplaceDialog1.Execute;
 end;
 
-procedure TFormEditeur.FindDialog1Find(Sender: TObject);
-var
+procedure TFormEditeur.FindDialog1Find(Sender: TObject);  
+var  
   Pos, StartPos: Integer;
   SearchText: string;
 begin

@@ -76,8 +76,8 @@ Une **application graphique** (ou **GUI** - Graphical User Interface) est un pro
 
 **Exemple console :**
 ```pascal
-program HelloConsole;
-begin
+program HelloConsole;  
+begin  
   WriteLn('Bonjour le monde !');
   ReadLn;
 end.

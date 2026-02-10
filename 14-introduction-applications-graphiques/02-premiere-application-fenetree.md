@@ -346,8 +346,8 @@ Pendant que votre fenêtre est ouverte, `Application.Run` tourne en boucle :
 
 ```pascal
 // Pseudo-code de ce que fait Application.Run
-while not ApplicationTerminated do
-begin
+while not ApplicationTerminated do  
+begin  
   if EventAvailable then
   begin
     Event := GetNextEvent;
@@ -420,8 +420,8 @@ Essayez de modifier ces propriétés dans l'Inspecteur d'Objets :
 
 **2. Width et Height**
 ```
-Width: 320 → 640
-Height: 240 → 480
+Width: 320 → 640  
+Height: 240 → 480  
 ```
 
 **3. Position**
@@ -453,8 +453,8 @@ Appuyez sur **F9** pour voir vos modifications !
 ### Projet Console (ancien style)
 
 ```pascal
-program HelloConsole;
-begin
+program HelloConsole;  
+begin  
   WriteLn('Hello World!');
   ReadLn;
 end.
@@ -469,8 +469,8 @@ end.
 ### Projet GUI (nouveau style)
 
 ```pascal
-program HelloGUI;
-uses
+program HelloGUI;  
+uses  
   Interfaces, Forms, Unit1;
 begin
   Application.Initialize;

@@ -1,4 +1,4 @@
-unit Unit1;
+unit Unit1;  
 
 {$mode objfpc}{$H+}
 
@@ -27,8 +27,8 @@ implementation
 
 {$R *.lfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   Caption := 'Demo Événements TForm';
   LabelInfo.Caption :=
     'Événements TForm démontrés :' + LineEnding +
@@ -45,15 +45,15 @@ begin
   MettreAJourStatusBar;
 end;
 
-procedure TForm1.MettreAJourStatusBar;
-begin
+procedure TForm1.MettreAJourStatusBar;  
+begin  
   StatusBar1.Panels[0].Text := Format('Taille : %d x %d', [Width, Height]);
   StatusBar1.Panels[1].Text := Format('Client : %d x %d', [ClientWidth, ClientHeight]);
   StatusBar1.Panels[2].Text := Format('Position : %d, %d', [Left, Top]);
 end;
 
-procedure TForm1.FormResize(Sender: TObject);
-begin
+procedure TForm1.FormResize(Sender: TObject);  
+begin  
   MettreAJourStatusBar;
 end;
 
@@ -66,8 +66,8 @@ begin
     WindowState := wsMinimized;
 end;
 
-procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-begin
+procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: Boolean);  
+begin  
   CanClose := MessageDlg('Confirmation',
     'Voulez-vous vraiment quitter ?',
     mtConfirmation, [mbYes, mbNo], 0) = mrYes;

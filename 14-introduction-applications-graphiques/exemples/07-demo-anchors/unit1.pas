@@ -1,4 +1,4 @@
-unit Unit1;
+unit Unit1;  
 
 {$mode objfpc}{$H+}
 
@@ -28,8 +28,8 @@ implementation
 
 {$R *.lfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   { Les Anchors sont définis dans le .lfm mais on peut
     aussi les configurer en code comme dans le .md :
     LabelTitre.Anchors := [akLeft, akTop];
@@ -48,8 +48,8 @@ begin
   MemoResultats.Lines.Add('  • ButtonOK/Annuler : ancrés Right+Bottom (suivent le coin bas-droit)');
 end;
 
-procedure TForm1.ButtonRechercherClick(Sender: TObject);
-var
+procedure TForm1.ButtonRechercherClick(Sender: TObject);  
+var  
   Terme: String;
 begin
   Terme := EditRecherche.Text;
@@ -67,13 +67,13 @@ begin
   MemoResultats.Lines.Add('Résultat 3 : Note sur ' + Terme);
 end;
 
-procedure TForm1.ButtonOKClick(Sender: TObject);
-begin
+procedure TForm1.ButtonOKClick(Sender: TObject);  
+begin  
   ShowMessage('Sélection confirmée.');
 end;
 
-procedure TForm1.ButtonAnnulerClick(Sender: TObject);
-begin
+procedure TForm1.ButtonAnnulerClick(Sender: TObject);  
+begin  
   Close;
 end;
 

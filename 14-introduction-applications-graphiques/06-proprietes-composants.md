@@ -104,8 +104,8 @@ C'est quand votre programme **s'exécute**.
 **Modification :** Via le **code Pascal**
 
 ```pascal
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   Button1.Caption := 'Cliqué !';      // Changer au run-time
   Button1.Width := Button1.Width + 10;
   Button1.Enabled := False;
@@ -132,13 +132,13 @@ end;
 **Exemple pratique :**
 ```pascal
 // Design-time (Inspecteur d'Objets)
-Button1.Caption := 'Calculer'
-Button1.Width := 100
-Button1.Top := 50
+Button1.Caption := 'Calculer'  
+Button1.Width := 100  
+Button1.Top := 50  
 
 // Run-time (Code)
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   // Adapter dynamiquement
   if Edit1.Text = '' then
   begin
@@ -265,8 +265,8 @@ Button1.Top := 50;
 
 **Exemple : Centrer un bouton**
 ```pascal
-Button1.Left := (Form1.ClientWidth - Button1.Width) div 2;
-Button1.Top := (Form1.ClientHeight - Button1.Height) div 2;
+Button1.Left := (Form1.ClientWidth - Button1.Width) div 2;  
+Button1.Top := (Form1.ClientHeight - Button1.Height) div 2;  
 ```
 
 ### Width et Height
@@ -284,8 +284,8 @@ Button1.Height := 30;
 
 **Exemple : Agrandir progressivement**
 ```pascal
-procedure TForm1.Timer1Timer(Sender: TObject);
-begin
+procedure TForm1.Timer1Timer(Sender: TObject);  
+begin  
   Button1.Width := Button1.Width + 1;
   if Button1.Width > 200 then
     Timer1.Enabled := False;
@@ -371,9 +371,9 @@ Button1.Name := 'ButtonCalculer';
 ### Caption
 
 ```pascal
-Button1.Caption := 'Cliquez-moi';
-Label1.Caption := 'Entrez votre nom :';
-Form1.Caption := 'Ma superbe application';
+Button1.Caption := 'Cliquez-moi';  
+Label1.Caption := 'Entrez votre nom :';  
+Form1.Caption := 'Ma superbe application';  
 ```
 
 **Type :** String  
@@ -395,8 +395,8 @@ Label1.Caption := 'Prix : 5 && 10';  // Affiche "Prix : 5 & 10"
 ### Text
 
 ```pascal
-Edit1.Text := 'Contenu initial';
-Memo1.Text := 'Ligne 1' + sLineBreak + 'Ligne 2';
+Edit1.Text := 'Contenu initial';  
+Memo1.Text := 'Ligne 1' + sLineBreak + 'Ligne 2';  
 ```
 
 **Type :** String  
@@ -410,9 +410,9 @@ Memo1.Text := 'Ligne 1' + sLineBreak + 'Ligne 2';
 ### Color
 
 ```pascal
-Button1.Color := clRed;           // Couleur prédéfinie
-Panel1.Color := $00FF00;          // Valeur hexadécimale (BGR)
-Label1.Color := RGBToColor(255, 128, 0);  // RGB
+Button1.Color := clRed;           // Couleur prédéfinie  
+Panel1.Color := $00FF00;          // Valeur hexadécimale (BGR)  
+Label1.Color := RGBToColor(255, 128, 0);  // RGB  
 ```
 
 **Type :** TColor  
@@ -437,20 +437,20 @@ Label1.Color := RGBToColor(255, 128, 0);  // RGB
 **Format BGR :**
 ```pascal
 // $00BBGGRR (Bleu-Vert-Rouge)
-Color := $00FF0000;  // Bleu pur
-Color := $0000FF00;  // Vert pur
-Color := $000000FF;  // Rouge pur
-Color := $00FFFF00;  // Cyan (Bleu + Vert)
+Color := $00FF0000;  // Bleu pur  
+Color := $0000FF00;  // Vert pur  
+Color := $000000FF;  // Rouge pur  
+Color := $00FFFF00;  // Cyan (Bleu + Vert)  
 ```
 
 ### Font
 
 ```pascal
 // Accès aux sous-propriétés
-Button1.Font.Name := 'Arial';
-Button1.Font.Size := 12;
-Button1.Font.Style := [fsBold, fsItalic];
-Button1.Font.Color := clNavy;
+Button1.Font.Name := 'Arial';  
+Button1.Font.Size := 12;  
+Button1.Font.Style := [fsBold, fsItalic];  
+Button1.Font.Color := clNavy;  
 ```
 
 **Type :** TFont (objet)  
@@ -458,9 +458,9 @@ Button1.Font.Color := clNavy;
 
 #### Font.Name
 ```pascal
-Label1.Font.Name := 'Arial';
-Label1.Font.Name := 'Courier New';
-Label1.Font.Name := 'Times New Roman';
+Label1.Font.Name := 'Arial';  
+Label1.Font.Name := 'Courier New';  
+Label1.Font.Name := 'Times New Roman';  
 ```
 **Type :** String  
 **Description :** Nom de la police  
@@ -474,9 +474,9 @@ Label1.Font.Name := 'Times New Roman';
 
 #### Font.Size
 ```pascal
-Label1.Font.Size := 10;   // Taille normale
-Label1.Font.Size := 14;   // Grand titre
-Label1.Font.Size := 8;    // Petit texte
+Label1.Font.Size := 10;   // Taille normale  
+Label1.Font.Size := 14;   // Grand titre  
+Label1.Font.Size := 8;    // Petit texte  
 ```
 **Type :** Integer  
 **Unité :** Points (pt)  
@@ -484,12 +484,12 @@ Label1.Font.Size := 8;    // Petit texte
 
 #### Font.Style
 ```pascal
-Label1.Font.Style := [];                      // Normal
-Label1.Font.Style := [fsBold];                // Gras
-Label1.Font.Style := [fsItalic];              // Italique
-Label1.Font.Style := [fsBold, fsItalic];      // Gras + Italique
-Label1.Font.Style := [fsUnderline];           // Souligné
-Label1.Font.Style := [fsStrikeOut];           // Barré
+Label1.Font.Style := [];                      // Normal  
+Label1.Font.Style := [fsBold];                // Gras  
+Label1.Font.Style := [fsItalic];              // Italique  
+Label1.Font.Style := [fsBold, fsItalic];      // Gras + Italique  
+Label1.Font.Style := [fsUnderline];           // Souligné  
+Label1.Font.Style := [fsStrikeOut];           // Barré  
 ```
 **Type :** Set de TFontStyle  
 **Valeurs possibles :**  
@@ -513,9 +513,9 @@ if fsBold in Label1.Font.Style then
 
 #### Font.Color
 ```pascal
-Label1.Font.Color := clBlack;   // Noir (défaut)
-Label1.Font.Color := clRed;     // Rouge
-Label1.Font.Color := clWhite;   // Blanc
+Label1.Font.Color := clBlack;   // Noir (défaut)  
+Label1.Font.Color := clRed;     // Rouge  
+Label1.Font.Color := clWhite;   // Blanc  
 ```
 **Type :** TColor  
 **Description :** Couleur du texte  
@@ -523,9 +523,9 @@ Label1.Font.Color := clWhite;   // Blanc
 ### Cursor
 
 ```pascal
-Button1.Cursor := crHandPoint;   // Main pointée
-Edit1.Cursor := crIBeam;         // Curseur texte
-Panel1.Cursor := crCross;        // Croix
+Button1.Cursor := crHandPoint;   // Main pointée  
+Edit1.Cursor := crIBeam;         // Curseur texte  
+Panel1.Cursor := crCross;        // Croix  
 ```
 
 **Type :** TCursor  
@@ -545,10 +545,10 @@ Panel1.Cursor := crCross;        // Croix
 **Exemple d'utilisation :**  
 ```pascal
 // Label cliquable qui ressemble à un lien
-Label1.Caption := 'Cliquez ici';
-Label1.Font.Color := clBlue;
-Label1.Font.Style := [fsUnderline];
-Label1.Cursor := crHandPoint;
+Label1.Caption := 'Cliquez ici';  
+Label1.Font.Color := clBlue;  
+Label1.Font.Style := [fsUnderline];  
+Label1.Cursor := crHandPoint;  
 ```
 
 ---
@@ -558,8 +558,8 @@ Label1.Cursor := crHandPoint;
 ### Enabled
 
 ```pascal
-Button1.Enabled := True;   // Actif (défaut)
-Button1.Enabled := False;  // Désactivé (grisé)
+Button1.Enabled := True;   // Actif (défaut)  
+Button1.Enabled := False;  // Désactivé (grisé)  
 ```
 
 **Type :** Boolean  
@@ -572,8 +572,8 @@ Button1.Enabled := False;  // Désactivé (grisé)
 **Usage typique :**  
 ```pascal
 // Désactiver le bouton Valider si le champ est vide
-procedure TForm1.Edit1Change(Sender: TObject);
-begin
+procedure TForm1.Edit1Change(Sender: TObject);  
+begin  
   ButtonValider.Enabled := Edit1.Text <> '';
 end;
 ```
@@ -583,8 +583,8 @@ end;
 ### Visible
 
 ```pascal
-Panel1.Visible := True;   // Visible (défaut)
-Panel1.Visible := False;  // Caché
+Panel1.Visible := True;   // Visible (défaut)  
+Panel1.Visible := False;  // Caché  
 ```
 
 **Type :** Boolean  
@@ -597,8 +597,8 @@ Panel1.Visible := False;  // Caché
 **Usage typique :**  
 ```pascal
 // Afficher/Cacher un panneau d'options avancées
-procedure TForm1.CheckBoxAvanceClick(Sender: TObject);
-begin
+procedure TForm1.CheckBoxAvanceClick(Sender: TObject);  
+begin  
   PanelAvance.Visible := CheckBoxAvance.Checked;
 end;
 ```
@@ -608,8 +608,8 @@ end;
 ### Hint (Bulle d'aide)
 
 ```pascal
-Button1.Hint := 'Cliquez ici pour valider';
-Button1.ShowHint := True;
+Button1.Hint := 'Cliquez ici pour valider';  
+Button1.ShowHint := True;  
 ```
 
 **Type :** String  
@@ -633,8 +633,8 @@ Button1.Hint := 'Valider|Cliquez pour valider le formulaire et sauvegarder';
 ### ShowHint
 
 ```pascal
-Button1.ShowHint := True;   // Afficher la bulle d'aide
-Button1.ShowHint := False;  // Ne pas afficher
+Button1.ShowHint := True;   // Afficher la bulle d'aide  
+Button1.ShowHint := False;  // Ne pas afficher  
 ```
 
 **Type :** Boolean  
@@ -663,8 +663,8 @@ Edit1.PopupMenu := PopupMenu1;
 ### TabStop
 
 ```pascal
-Edit1.TabStop := True;   // Peut recevoir le focus avec Tab
-Label1.TabStop := False; // Ne peut pas recevoir le focus
+Edit1.TabStop := True;   // Peut recevoir le focus avec Tab  
+Label1.TabStop := False; // Ne peut pas recevoir le focus  
 ```
 
 **Type :** Boolean  
@@ -677,9 +677,9 @@ Label1.TabStop := False; // Ne peut pas recevoir le focus
 ### TabOrder
 
 ```pascal
-Edit1.TabOrder := 0;      // Premier
-Edit2.TabOrder := 1;      // Deuxième
-Button1.TabOrder := 2;    // Troisième
+Edit1.TabOrder := 0;      // Premier  
+Edit2.TabOrder := 1;      // Deuxième  
+Button1.TabOrder := 2;    // Troisième  
 ```
 
 **Type :** Integer  
@@ -692,9 +692,9 @@ Button1.TabOrder := 2;    // Troisième
 ### Anchors
 
 ```pascal
-Button1.Anchors := [akLeft, akTop];              // Défaut
-Button1.Anchors := [akRight, akBottom];          // Ancré en bas à droite
-Button1.Anchors := [akLeft, akTop, akRight];     // S'étire horizontalement
+Button1.Anchors := [akLeft, akTop];              // Défaut  
+Button1.Anchors := [akRight, akBottom];          // Ancré en bas à droite  
+Button1.Anchors := [akLeft, akTop, akRight];     // S'étire horizontalement  
 ```
 
 **Type :** Set de TAnchorKind  
@@ -728,10 +728,10 @@ Memo1.Anchors := [akLeft, akTop, akRight, akBottom];
 ### Align
 
 ```pascal
-Panel1.Align := alTop;      // En haut, pleine largeur
-Panel2.Align := alBottom;   // En bas, pleine largeur
-Panel3.Align := alLeft;     // À gauche, pleine hauteur
-Panel4.Align := alClient;   // Remplit l'espace restant
+Panel1.Align := alTop;      // En haut, pleine largeur  
+Panel2.Align := alBottom;   // En bas, pleine largeur  
+Panel3.Align := alLeft;     // À gauche, pleine hauteur  
+Panel4.Align := alClient;   // Remplit l'espace restant  
 ```
 
 **Type :** TAlign  
@@ -768,9 +768,9 @@ Memo1.Align := alClient;
 ### Tag
 
 ```pascal
-Button1.Tag := 1;
-Button2.Tag := 2;
-Button3.Tag := 3;
+Button1.Tag := 1;  
+Button2.Tag := 2;  
+Button3.Tag := 3;  
 ```
 
 **Type :** PtrInt (entier)  
@@ -781,8 +781,8 @@ Button3.Tag := 3;
 **Exemple :**
 ```pascal
 // Associer des boutons à des actions
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   ButtonNouveau.Tag := 1;
   ButtonOuvrir.Tag := 2;
   ButtonEnregistrer.Tag := 3;
@@ -792,8 +792,8 @@ begin
   ButtonEnregistrer.OnClick := @BoutonClick;
 end;
 
-procedure TForm1.BoutonClick(Sender: TObject);
-begin
+procedure TForm1.BoutonClick(Sender: TObject);  
+begin  
   case (Sender as TButton).Tag of
     1: NouveauFichier;
     2: OuvrirFichier;
@@ -806,8 +806,8 @@ end;
 
 ```pascal
 // Changer le parent d'un composant
-Button1.Parent := Panel1;  // Button1 est maintenant dans Panel1
-Button1.Parent := Form1;   // Button1 est maintenant sur Form1
+Button1.Parent := Panel1;  // Button1 est maintenant dans Panel1  
+Button1.Parent := Form1;   // Button1 est maintenant sur Form1  
 ```
 
 **Type :** TWinControl  
@@ -889,8 +889,8 @@ end;
 ### ClassName
 
 ```pascal
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   ShowMessage('Type : ' + Sender.ClassName);  // Affiche "TButton"
 end;
 ```
@@ -968,14 +968,14 @@ type
 
 ❌ **Mauvais :**
 ```pascal
-Button1, Button2, Button3
-Edit1, Edit2, Edit3
+Button1, Button2, Button3  
+Edit1, Edit2, Edit3  
 ```
 
 ✅ **Bon :**
 ```pascal
-ButtonValider, ButtonAnnuler, ButtonQuitter
-EditNom, EditPrenom, EditEmail
+ButtonValider, ButtonAnnuler, ButtonQuitter  
+EditNom, EditPrenom, EditEmail  
 ```
 
 ### 2. Utiliser les propriétés plutôt que les méthodes
@@ -987,18 +987,18 @@ Button1.SetBounds(10, 10, Button1.Width, Button1.Height);
 
 ✅ **Plus clair :**
 ```pascal
-Button1.Left := 10;
-Button1.Top := 10;
+Button1.Left := 10;  
+Button1.Top := 10;  
 ```
 
 ### 3. Grouper les modifications
 
 ❌ **Plusieurs redessin :**
 ```pascal
-Button1.Left := 10;    // Redessin
-Button1.Top := 50;     // Redessin
-Button1.Width := 100;  // Redessin
-Button1.Height := 30;  // Redessin
+Button1.Left := 10;    // Redessin  
+Button1.Top := 50;     // Redessin  
+Button1.Width := 100;  // Redessin  
+Button1.Height := 30;  // Redessin  
 ```
 
 ✅ **Un seul redessin :**
@@ -1010,8 +1010,8 @@ Button1.SetBounds(10, 50, 100, 30);  // Un seul redessin
 
 ```pascal
 // Bloquer le redessin
-Form1.DisableAutoSizing;
-try
+Form1.DisableAutoSizing;  
+try  
   // Faire plein de modifications
   for i := 0 to 100 do
   begin
@@ -1028,8 +1028,8 @@ end;
 
 ```pascal
 // Éviter les valeurs négatives
-procedure TForm1.EditWidthChange(Sender: TObject);
-var
+procedure TForm1.EditWidthChange(Sender: TObject);  
+var  
   W: Integer;
 begin
   if TryStrToInt(EditWidth.Text, W) then

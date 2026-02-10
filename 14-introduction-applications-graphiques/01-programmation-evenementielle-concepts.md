@@ -96,8 +96,8 @@ Quand un événement se produit, le système appelle automatiquement le gestionn
 **Exemple conceptuel :**
 ```pascal
 // Gestionnaire pour le clic sur un bouton
-procedure TForm1.BoutonCalculerClick(Sender: TObject);
-begin
+procedure TForm1.BoutonCalculerClick(Sender: TObject);  
+begin  
   // Votre code ici : que faire quand on clique ?
   ShowMessage('Bouton cliqué !');
 end;
@@ -243,8 +243,8 @@ while not BoutonClique do
 ✅ **Correct :** Laisser la boucle d'événements gérer l'attente
 ```pascal
 // Créez simplement le gestionnaire d'événement
-procedure BoutonClick(Sender: TObject);
-begin
+procedure BoutonClick(Sender: TObject);  
+begin  
   // Votre code ici
 end;
 ```
@@ -252,9 +252,9 @@ end;
 ### 2. Bloquer la boucle d'événements
 ❌ **Erreur :** Effectuer des opérations longues dans un gestionnaire
 ```pascal
-procedure BoutonClick(Sender: TObject);
-var i: integer;
-begin
+procedure BoutonClick(Sender: TObject);  
+var i: integer;  
+begin  
   for i := 1 to 1000000000 do
     Calcul; // L'interface se fige !
 end;

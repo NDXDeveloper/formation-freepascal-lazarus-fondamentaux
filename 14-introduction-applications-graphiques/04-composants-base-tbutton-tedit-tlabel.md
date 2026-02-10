@@ -89,10 +89,10 @@ Label1.Caption := 'Ligne 1' + sLineBreak + 'Ligne 2';
 
 #### Font
 ```pascal
-Label1.Font.Name := 'Arial';
-Label1.Font.Size := 12;
-Label1.Font.Style := [fsBold];
-Label1.Font.Color := clBlue;
+Label1.Font.Name := 'Arial';  
+Label1.Font.Size := 12;  
+Label1.Font.Style := [fsBold];  
+Label1.Font.Color := clBlue;  
 ```
 **Description :** Police de caractères du texte
 
@@ -111,72 +111,72 @@ Label1.Font.Style := [fsBold, fsItalic];  // Gras ET italique
 
 #### Color
 ```pascal
-Label1.Color := clYellow;      // Couleur de fond jaune
-Label1.Transparent := False;   // Doit être False pour voir la couleur
+Label1.Color := clYellow;      // Couleur de fond jaune  
+Label1.Transparent := False;   // Doit être False pour voir la couleur  
 ```
 **Description :** Couleur de fond du label  
 **Attention :** Par défaut, `Transparent := True` (le fond est transparent)  
 
 #### Transparent
 ```pascal
-Label1.Transparent := True;   // Fond transparent (par défaut)
-Label1.Transparent := False;  // Fond opaque avec la couleur définie
+Label1.Transparent := True;   // Fond transparent (par défaut)  
+Label1.Transparent := False;  // Fond opaque avec la couleur définie  
 ```
 
 #### Alignment
 ```pascal
-Label1.Alignment := taLeftJustify;   // Gauche (défaut)
-Label1.Alignment := taCenter;        // Centre
-Label1.Alignment := taRightJustify;  // Droite
+Label1.Alignment := taLeftJustify;   // Gauche (défaut)  
+Label1.Alignment := taCenter;        // Centre  
+Label1.Alignment := taRightJustify;  // Droite  
 ```
 **Description :** Alignement horizontal du texte  
 
 #### Layout
 ```pascal
-Label1.Layout := tlTop;     // Haut (défaut)
-Label1.Layout := tlCenter;  // Centre vertical
-Label1.Layout := tlBottom;  // Bas
+Label1.Layout := tlTop;     // Haut (défaut)  
+Label1.Layout := tlCenter;  // Centre vertical  
+Label1.Layout := tlBottom;  // Bas  
 ```
 **Description :** Alignement vertical du texte  
 
 #### WordWrap
 ```pascal
-Label1.WordWrap := True;   // Le texte revient à la ligne automatiquement
-Label1.WordWrap := False;  // Le texte reste sur une ligne
+Label1.WordWrap := True;   // Le texte revient à la ligne automatiquement  
+Label1.WordWrap := False;  // Le texte reste sur une ligne  
 ```
 **Description :** Activer le retour à la ligne automatique  
 
 #### AutoSize
 ```pascal
-Label1.AutoSize := True;   // Taille ajustée au contenu (défaut)
-Label1.AutoSize := False;  // Taille fixe
+Label1.AutoSize := True;   // Taille ajustée au contenu (défaut)  
+Label1.AutoSize := False;  // Taille fixe  
 ```
 **Description :** Ajuster automatiquement la taille au texte  
 
 **Important :** Si `AutoSize = True`, le label s'agrandira automatiquement. Si vous voulez un label de taille fixe avec retour à la ligne, mettez :  
 ```pascal
-Label1.AutoSize := False;
-Label1.WordWrap := True;
+Label1.AutoSize := False;  
+Label1.WordWrap := True;  
 ```
 
 #### Visible
 ```pascal
-Label1.Visible := True;   // Visible
-Label1.Visible := False;  // Caché
+Label1.Visible := True;   // Visible  
+Label1.Visible := False;  // Caché  
 ```
 
 #### Enabled
 ```pascal
-Label1.Enabled := True;   // Normal
-Label1.Enabled := False;  // Grisé
+Label1.Enabled := True;   // Normal  
+Label1.Enabled := False;  // Grisé  
 ```
 
 ### Événements courants
 
 #### OnClick
 ```pascal
-procedure TForm1.Label1Click(Sender: TObject);
-begin
+procedure TForm1.Label1Click(Sender: TObject);  
+begin  
   ShowMessage('Vous avez cliqué sur le label !');
 end;
 ```
@@ -185,8 +185,8 @@ end;
 
 #### OnDblClick
 ```pascal
-procedure TForm1.Label1DblClick(Sender: TObject);
-begin
+procedure TForm1.Label1DblClick(Sender: TObject);  
+begin  
   Label1.Font.Size := Label1.Font.Size + 2;  // Augmente la taille
 end;
 ```
@@ -195,36 +195,36 @@ end;
 
 **Titre d'application :**
 ```pascal
-LabelTitre.Caption := 'Gestionnaire de Clients';
-LabelTitre.Font.Size := 18;
-LabelTitre.Font.Style := [fsBold];
-LabelTitre.Font.Color := clNavy;
-LabelTitre.Alignment := taCenter;
+LabelTitre.Caption := 'Gestionnaire de Clients';  
+LabelTitre.Font.Size := 18;  
+LabelTitre.Font.Style := [fsBold];  
+LabelTitre.Font.Color := clNavy;  
+LabelTitre.Alignment := taCenter;  
 ```
 
 **Label d'information :**
 ```pascal
-LabelInfo.Caption := 'Remplissez tous les champs obligatoires';
-LabelInfo.Font.Color := clGray;
-LabelInfo.Font.Style := [fsItalic];
+LabelInfo.Caption := 'Remplissez tous les champs obligatoires';  
+LabelInfo.Font.Color := clGray;  
+LabelInfo.Font.Style := [fsItalic];  
 ```
 
 **Label de résultat :**
 ```pascal
-LabelResultat.Caption := 'Total : 150,00 €';
-LabelResultat.Font.Size := 14;
-LabelResultat.Font.Style := [fsBold];
-LabelResultat.Font.Color := clGreen;
+LabelResultat.Caption := 'Total : 150,00 €';  
+LabelResultat.Font.Size := 14;  
+LabelResultat.Font.Style := [fsBold];  
+LabelResultat.Font.Color := clGreen;  
 ```
 
 **Label qui accompagne un champ de saisie :**
 ```pascal
-LabelNom.Caption := 'Nom :';
-LabelNom.Left := 10;
-LabelNom.Top := 50;
+LabelNom.Caption := 'Nom :';  
+LabelNom.Left := 10;  
+LabelNom.Top := 50;  
 
-EditNom.Left := 80;  // Aligné avec le label
-EditNom.Top := 47;   // Légèrement ajusté pour être aligné verticalement
+EditNom.Left := 80;  // Aligné avec le label  
+EditNom.Top := 47;   // Légèrement ajusté pour être aligné verticalement  
 ```
 
 ---
@@ -271,8 +271,8 @@ end;
 
 #### MaxLength
 ```pascal
-Edit1.MaxLength := 50;  // Limite à 50 caractères
-Edit1.MaxLength := 0;   // Pas de limite (défaut)
+Edit1.MaxLength := 50;  // Limite à 50 caractères  
+Edit1.MaxLength := 0;   // Pas de limite (défaut)  
 ```
 **Description :** Nombre maximum de caractères autorisés
 
@@ -283,22 +283,22 @@ EditCodePostal.MaxLength := 5;
 
 #### PasswordChar
 ```pascal
-Edit1.PasswordChar := '*';   // Affiche des astérisques
-Edit1.PasswordChar := '•';   // Affiche des points
-Edit1.PasswordChar := #0;    // Texte normal (défaut)
+Edit1.PasswordChar := '*';   // Affiche des astérisques  
+Edit1.PasswordChar := '•';   // Affiche des points  
+Edit1.PasswordChar := #0;    // Texte normal (défaut)  
 ```
 **Description :** Caractère de masquage pour les mots de passe
 
 **Exemple :**
 ```pascal
-EditMotDePasse.PasswordChar := '*';
-EditMotDePasse.MaxLength := 20;
+EditMotDePasse.PasswordChar := '*';  
+EditMotDePasse.MaxLength := 20;  
 ```
 
 #### ReadOnly
 ```pascal
-Edit1.ReadOnly := True;   // Lecture seule (non modifiable)
-Edit1.ReadOnly := False;  // Modifiable (défaut)
+Edit1.ReadOnly := True;   // Lecture seule (non modifiable)  
+Edit1.ReadOnly := False;  // Modifiable (défaut)  
 ```
 **Description :** Empêche la modification du contenu
 
@@ -308,22 +308,22 @@ Edit1.ReadOnly := False;  // Modifiable (défaut)
 
 #### Alignment
 ```pascal
-Edit1.Alignment := taLeftJustify;   // Gauche (défaut)
-Edit1.Alignment := taCenter;        // Centre
-Edit1.Alignment := taRightJustify;  // Droite
+Edit1.Alignment := taLeftJustify;   // Gauche (défaut)  
+Edit1.Alignment := taCenter;        // Centre  
+Edit1.Alignment := taRightJustify;  // Droite  
 ```
 
 **Usage :** `taRightJustify` est utile pour les montants :
 ```pascal
-EditMontant.Alignment := taRightJustify;
-EditMontant.Text := '150,00';
+EditMontant.Alignment := taRightJustify;  
+EditMontant.Text := '150,00';  
 ```
 
 #### CharCase
 ```pascal
-Edit1.CharCase := ecNormal;      // Mixte (défaut)
-Edit1.CharCase := ecUpperCase;   // TOUT EN MAJUSCULES
-Edit1.CharCase := ecLowerCase;   // tout en minuscules
+Edit1.CharCase := ecNormal;      // Mixte (défaut)  
+Edit1.CharCase := ecUpperCase;   // TOUT EN MAJUSCULES  
+Edit1.CharCase := ecLowerCase;   // tout en minuscules  
 ```
 **Description :** Conversion automatique de la casse
 
@@ -334,8 +334,8 @@ EditCodeClient.CharCase := ecUpperCase;  // Les codes clients sont toujours en m
 
 #### NumbersOnly
 ```pascal
-Edit1.NumbersOnly := True;   // Accepte uniquement les chiffres
-Edit1.NumbersOnly := False;  // Accepte tous les caractères (défaut)
+Edit1.NumbersOnly := True;   // Accepte uniquement les chiffres  
+Edit1.NumbersOnly := False;  // Accepte tous les caractères (défaut)  
 ```
 **Description :** Restreindre la saisie aux chiffres
 
@@ -343,9 +343,9 @@ Edit1.NumbersOnly := False;  // Accepte tous les caractères (défaut)
 
 #### Color
 ```pascal
-Edit1.Color := clWhite;    // Blanc (défaut)
-Edit1.Color := clYellow;   // Jaune
-Edit1.Color := clMoneyGreen;  // Vert pâle
+Edit1.Color := clWhite;    // Blanc (défaut)  
+Edit1.Color := clYellow;   // Jaune  
+Edit1.Color := clMoneyGreen;  // Vert pâle  
 ```
 
 **Usage :** Mettre en évidence un champ :
@@ -359,9 +359,9 @@ else
 
 #### Font
 ```pascal
-Edit1.Font.Name := 'Courier New';  // Police à espacement fixe
-Edit1.Font.Size := 10;
-Edit1.Font.Style := [fsBold];
+Edit1.Font.Name := 'Courier New';  // Police à espacement fixe  
+Edit1.Font.Size := 10;  
+Edit1.Font.Style := [fsBold];  
 ```
 
 ### Propriétés de sélection
@@ -393,8 +393,8 @@ Edit1.SelText := 'Nouveau texte';
 
 **Exemple : Sélectionner tout le texte**
 ```pascal
-procedure TForm1.Edit1Enter(Sender: TObject);
-begin
+procedure TForm1.Edit1Enter(Sender: TObject);  
+begin  
   // Sélectionne tout quand on entre dans le champ
   Edit1.SelectAll;
   // Ou :
@@ -417,9 +417,9 @@ Edit1.SelectAll;  // Sélectionne tout le texte
 
 #### CopyToClipboard, CutToClipboard, PasteFromClipboard
 ```pascal
-Edit1.CopyToClipboard;   // Copier
-Edit1.CutToClipboard;    // Couper
-Edit1.PasteFromClipboard;  // Coller
+Edit1.CopyToClipboard;   // Copier  
+Edit1.CutToClipboard;    // Couper  
+Edit1.PasteFromClipboard;  // Coller  
 ```
 
 #### SetFocus
@@ -429,8 +429,8 @@ Edit1.SetFocus;  // Place le curseur dans ce champ
 
 **Usage :** Mettre le focus sur un champ au démarrage :
 ```pascal
-procedure TForm1.FormShow(Sender: TObject);
-begin
+procedure TForm1.FormShow(Sender: TObject);  
+begin  
   EditNom.SetFocus;
 end;
 ```
@@ -439,8 +439,8 @@ end;
 
 #### OnChange
 ```pascal
-procedure TForm1.Edit1Change(Sender: TObject);
-begin
+procedure TForm1.Edit1Change(Sender: TObject);  
+begin  
   // Déclenché à CHAQUE modification du texte
   Label1.Caption := 'Vous avez saisi : ' + Edit1.Text;
 
@@ -453,8 +453,8 @@ end;
 
 #### OnKeyPress
 ```pascal
-procedure TForm1.Edit1KeyPress(Sender: TObject; var Key: Char);
-begin
+procedure TForm1.Edit1KeyPress(Sender: TObject; var Key: Char);  
+begin  
   // Accepter uniquement les chiffres
   if not (Key in ['0'..'9', #8, #13]) then  // #8=Backspace, #13=Enter
   begin
@@ -475,8 +475,8 @@ end;
 
 #### OnKeyDown
 ```pascal
-procedure TForm1.Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-begin
+procedure TForm1.Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);  
+begin  
   // Ctrl+A pour tout sélectionner
   if (ssCtrl in Shift) and (Key = Ord('A')) then
   begin
@@ -490,15 +490,15 @@ end;
 
 #### OnEnter / OnExit
 ```pascal
-procedure TForm1.Edit1Enter(Sender: TObject);
-begin
+procedure TForm1.Edit1Enter(Sender: TObject);  
+begin  
   // Quand on entre dans le champ
   Edit1.Color := clYellow;  // Surligner le champ actif
   Edit1.SelectAll;          // Sélectionner tout
 end;
 
-procedure TForm1.Edit1Exit(Sender: TObject);
-begin
+procedure TForm1.Edit1Exit(Sender: TObject);  
+begin  
   // Quand on sort du champ
   Edit1.Color := clWhite;   // Retour à la normale
 
@@ -517,42 +517,42 @@ end;
 
 **Champ de saisie de nom :**
 ```pascal
-EditNom.Text := '';
-EditNom.MaxLength := 50;
-EditNom.CharCase := ecNormal;
-EditNom.TabOrder := 0;  // Premier champ dans l'ordre de tabulation
+EditNom.Text := '';  
+EditNom.MaxLength := 50;  
+EditNom.CharCase := ecNormal;  
+EditNom.TabOrder := 0;  // Premier champ dans l'ordre de tabulation  
 ```
 
 **Champ de saisie de code postal (France) :**
 ```pascal
-EditCodePostal.Text := '';
-EditCodePostal.MaxLength := 5;
-EditCodePostal.NumbersOnly := True;  // Sous Windows
+EditCodePostal.Text := '';  
+EditCodePostal.MaxLength := 5;  
+EditCodePostal.NumbersOnly := True;  // Sous Windows  
 ```
 
 **Champ de mot de passe :**
 ```pascal
-EditMotDePasse.PasswordChar := '*';
-EditMotDePasse.MaxLength := 50;
+EditMotDePasse.PasswordChar := '*';  
+EditMotDePasse.MaxLength := 50;  
 ```
 
 **Champ de montant :**
 ```pascal
-EditMontant.Alignment := taRightJustify;
-EditMontant.Text := '0,00';
+EditMontant.Alignment := taRightJustify;  
+EditMontant.Text := '0,00';  
 ```
 
 **Validation simple de nombre :**
 ```pascal
-procedure TForm1.EditAgeKeyPress(Sender: TObject; var Key: Char);
-begin
+procedure TForm1.EditAgeKeyPress(Sender: TObject; var Key: Char);  
+begin  
   // Accepter uniquement chiffres, backspace, enter
   if not (Key in ['0'..'9', #8, #13]) then
     Key := #0;
 end;
 
-procedure TForm1.ButtonValiderClick(Sender: TObject);
-var
+procedure TForm1.ButtonValiderClick(Sender: TObject);  
+var  
   Age: Integer;
 begin
   if TryStrToInt(EditAge.Text, Age) then
@@ -594,32 +594,32 @@ Un bouton apparaît avec le texte "Button1".
 
 #### Caption
 ```pascal
-Button1.Caption := 'Valider';
-Button1.Caption := 'Annuler';
-Button1.Caption := 'OK';
-Button1.Caption := 'Calculer';
+Button1.Caption := 'Valider';  
+Button1.Caption := 'Annuler';  
+Button1.Caption := 'OK';  
+Button1.Caption := 'Calculer';  
 ```
 **Description :** Le texte affiché sur le bouton  
 **Type :** String  
 
 **Astuce :** Utilisez le caractère `&` pour créer un raccourci clavier :
 ```pascal
-Button1.Caption := '&Valider';    // Alt+V pour cliquer
-Button2.Caption := '&Annuler';    // Alt+A pour cliquer
-Button3.Caption := '&Quitter';    // Alt+Q pour cliquer
+Button1.Caption := '&Valider';    // Alt+V pour cliquer  
+Button2.Caption := '&Annuler';    // Alt+A pour cliquer  
+Button3.Caption := '&Quitter';    // Alt+Q pour cliquer  
 ```
 La lettre suivant `&` sera soulignée et deviendra le raccourci.
 
 #### Enabled
 ```pascal
-Button1.Enabled := True;   // Actif, cliquable (défaut)
-Button1.Enabled := False;  // Désactivé, grisé, non cliquable
+Button1.Enabled := True;   // Actif, cliquable (défaut)  
+Button1.Enabled := False;  // Désactivé, grisé, non cliquable  
 ```
 
 **Usage :** Désactiver un bouton jusqu'à ce qu'une condition soit remplie :
 ```pascal
-procedure TForm1.Edit1Change(Sender: TObject);
-begin
+procedure TForm1.Edit1Change(Sender: TObject);  
+begin  
   // Activer le bouton uniquement si le champ n'est pas vide
   ButtonValider.Enabled := Edit1.Text <> '';
 end;
@@ -627,8 +627,8 @@ end;
 
 #### Visible
 ```pascal
-Button1.Visible := True;   // Visible
-Button1.Visible := False;  // Caché
+Button1.Visible := True;   // Visible  
+Button1.Visible := False;  // Caché  
 ```
 
 #### Default
@@ -641,8 +641,8 @@ Button1.Default := True;  // Ce bouton sera cliqué quand on appuie sur Enter
 
 **Usage :** Bouton "OK" ou "Valider" :
 ```pascal
-ButtonOK.Default := True;      // Enter = cliquer sur OK
-ButtonOK.Caption := '&OK';
+ButtonOK.Default := True;      // Enter = cliquer sur OK  
+ButtonOK.Caption := '&OK';  
 ```
 
 #### Cancel
@@ -655,14 +655,14 @@ Button1.Cancel := True;  // Ce bouton sera cliqué quand on appuie sur Échap
 
 **Usage :** Bouton "Annuler" ou "Fermer" :
 ```pascal
-ButtonAnnuler.Cancel := True;      // Échap = cliquer sur Annuler
-ButtonAnnuler.Caption := '&Annuler';
+ButtonAnnuler.Cancel := True;      // Échap = cliquer sur Annuler  
+ButtonAnnuler.Caption := '&Annuler';  
 ```
 
 #### ModalResult
 ```pascal
-ButtonOK.ModalResult := mrOK;
-ButtonAnnuler.ModalResult := mrCancel;
+ButtonOK.ModalResult := mrOK;  
+ButtonAnnuler.ModalResult := mrCancel;  
 ```
 **Description :** Valeur retournée quand le bouton est cliqué dans un formulaire modal
 
@@ -681,8 +681,8 @@ ButtonAnnuler.ModalResult := mrCancel;
 **Usage dans un formulaire modal :**
 ```pascal
 // Dans le formulaire de dialogue :
-ButtonOK.ModalResult := mrOK;
-ButtonAnnuler.ModalResult := mrCancel;
+ButtonOK.ModalResult := mrOK;  
+ButtonAnnuler.ModalResult := mrCancel;  
 
 // Dans le formulaire appelant :
 if FormDialogue.ShowModal = mrOK then
@@ -695,19 +695,19 @@ else
 
 #### TabOrder
 ```pascal
-Edit1.TabOrder := 0;     // Premier
-Edit2.TabOrder := 1;     // Deuxième
-Button1.TabOrder := 2;   // Troisième
+Edit1.TabOrder := 0;     // Premier  
+Edit2.TabOrder := 1;     // Deuxième  
+Button1.TabOrder := 2;   // Troisième  
 ```
 **Description :** Ordre de navigation avec la touche Tab
 
 #### Font et Color
 Comme les autres composants, vous pouvez personnaliser la police et la couleur :
 ```pascal
-Button1.Font.Size := 12;
-Button1.Font.Style := [fsBold];
-Button1.Font.Color := clWhite;
-Button1.Color := clGreen;
+Button1.Font.Size := 12;  
+Button1.Font.Style := [fsBold];  
+Button1.Font.Color := clWhite;  
+Button1.Color := clGreen;  
 ```
 
 **Note :** L'apparence exacte dépend du système d'exploitation et du thème.
@@ -716,8 +716,8 @@ Button1.Color := clGreen;
 
 #### OnClick
 ```pascal
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   ShowMessage('Bouton cliqué !');
 
   // Effectuer une action
@@ -754,22 +754,22 @@ Button1.SetFocus;  // Donne le focus au bouton
 
 **Bouton de validation standard :**
 ```pascal
-ButtonValider.Caption := '&Valider';
-ButtonValider.Default := True;
-ButtonValider.TabOrder := 10;  // Dernier dans l'ordre de tabulation
+ButtonValider.Caption := '&Valider';  
+ButtonValider.Default := True;  
+ButtonValider.TabOrder := 10;  // Dernier dans l'ordre de tabulation  
 ```
 
 **Bouton d'annulation standard :**
 ```pascal
-ButtonAnnuler.Caption := '&Annuler';
-ButtonAnnuler.Cancel := True;
-ButtonAnnuler.TabOrder := 11;
+ButtonAnnuler.Caption := '&Annuler';  
+ButtonAnnuler.Cancel := True;  
+ButtonAnnuler.TabOrder := 11;  
 ```
 
 **Bouton de calcul :**
 ```pascal
-procedure TForm1.ButtonCalculerClick(Sender: TObject);
-var
+procedure TForm1.ButtonCalculerClick(Sender: TObject);  
+var  
   A, B, Resultat: Double;
 begin
   // Validation et conversion
@@ -797,16 +797,16 @@ end;
 
 **Bouton pour ouvrir une autre fenêtre :**
 ```pascal
-procedure TForm1.ButtonParametresClick(Sender: TObject);
-begin
+procedure TForm1.ButtonParametresClick(Sender: TObject);  
+begin  
   FormParametres.ShowModal;
 end;
 ```
 
 **Bouton qui se désactive après utilisation :**
 ```pascal
-procedure TForm1.ButtonEnvoyerClick(Sender: TObject);
-begin
+procedure TForm1.ButtonEnvoyerClick(Sender: TObject);  
+begin  
   // Désactiver pour éviter les double-clics
   ButtonEnvoyer.Enabled := False;
 
@@ -897,8 +897,8 @@ Maintenant, cliquer sur le label donnera le focus à l'Edit associé !
 **Configuration complète :**
 ```pascal
 // Dans OnCreate ou visuellement dans l'Inspecteur d'Objets
-LabelNom.Caption := '&Nom :';         // & pour le raccourci Alt+N
-LabelNom.FocusControl := EditNom;     // Clic sur label = focus sur Edit
+LabelNom.Caption := '&Nom :';         // & pour le raccourci Alt+N  
+LabelNom.FocusControl := EditNom;     // Clic sur label = focus sur Edit  
 ```
 
 **Résultat :**
@@ -928,8 +928,8 @@ type
     procedure ButtonAnnulerClick(Sender: TObject);
   end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Configuration des labels
   LabelNom.Caption := '&Nom :';
   LabelNom.FocusControl := EditNom;
@@ -957,16 +957,16 @@ begin
   EditNom.SetFocus;
 end;
 
-procedure TForm1.EditChange(Sender: TObject);
-begin
+procedure TForm1.EditChange(Sender: TObject);  
+begin  
   // Activer le bouton Valider uniquement si tous les champs sont remplis
   ButtonValider.Enabled := (EditNom.Text <> '') and
                            (EditEmail.Text <> '') and
                            (EditAge.Text <> '');
 end;
 
-procedure TForm1.ButtonValiderClick(Sender: TObject);
-var
+procedure TForm1.ButtonValiderClick(Sender: TObject);  
+var  
   Age: Integer;
 begin
   // Validation de l'âge
@@ -1001,8 +1001,8 @@ begin
   // Fermer le formulaire ou continuer le traitement...
 end;
 
-procedure TForm1.ButtonAnnulerClick(Sender: TObject);
-begin
+procedure TForm1.ButtonAnnulerClick(Sender: TObject);  
+begin  
   Close;
 end;
 ```
@@ -1048,39 +1048,39 @@ end;
 
 ❌ **Mauvais :**
 ```pascal
-Label1, Label2, Label3
-Edit1, Edit2, Edit3
-Button1, Button2
+Label1, Label2, Label3  
+Edit1, Edit2, Edit3  
+Button1, Button2  
 ```
 
 ✅ **Bon :**
 ```pascal
-LabelNom, LabelPrenom, LabelEmail
-EditNom, EditPrenom, EditEmail
-ButtonValider, ButtonAnnuler
+LabelNom, LabelPrenom, LabelEmail  
+EditNom, EditPrenom, EditEmail  
+ButtonValider, ButtonAnnuler  
 ```
 
 ### 2. Donnez toujours un Caption significatif
 
 ```pascal
 // Remplacez les Caption par défaut
-LabelNom.Caption := 'Nom :';  // Au lieu de 'Label1'
-ButtonValider.Caption := 'Valider';  // Au lieu de 'Button1'
+LabelNom.Caption := 'Nom :';  // Au lieu de 'Label1'  
+ButtonValider.Caption := 'Valider';  // Au lieu de 'Button1'  
 ```
 
 ### 3. Utilisez les raccourcis clavier
 
 ```pascal
-LabelNom.Caption := '&Nom :';        // Alt+N
-ButtonValider.Caption := '&Valider';  // Alt+V
-ButtonAnnuler.Caption := '&Annuler';  // Alt+A
+LabelNom.Caption := '&Nom :';        // Alt+N  
+ButtonValider.Caption := '&Valider';  // Alt+V  
+ButtonAnnuler.Caption := '&Annuler';  // Alt+A  
 ```
 
 ### 4. Définissez Default et Cancel
 
 ```pascal
-ButtonValider.Default := True;   // Enter pour valider
-ButtonAnnuler.Cancel := True;    // Échap pour annuler
+ButtonValider.Default := True;   // Enter pour valider  
+ButtonAnnuler.Cancel := True;    // Échap pour annuler  
 ```
 
 ### 5. Validez les saisies
@@ -1097,8 +1097,8 @@ else
 
 ```pascal
 // Désactiver les boutons pendant les traitements
-ButtonEnvoyer.Enabled := False;
-try
+ButtonEnvoyer.Enabled := False;  
+try  
   TraiterDonnees;
 finally
   ButtonEnvoyer.Enabled := True;
@@ -1109,8 +1109,8 @@ end;
 
 ```pascal
 // Activez le bouton uniquement si tous les champs sont remplis
-procedure VerifierChamps;
-begin
+procedure VerifierChamps;  
+begin  
   ButtonValider.Enabled := (EditNom.Text <> '') and
                            (EditPrenom.Text <> '') and
                            (EditEmail.Text <> '');

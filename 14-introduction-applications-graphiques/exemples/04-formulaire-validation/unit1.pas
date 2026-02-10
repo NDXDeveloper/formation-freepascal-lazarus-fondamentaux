@@ -1,4 +1,4 @@
-unit Unit1;
+unit Unit1;  
 
 {$mode objfpc}{$H+}
 
@@ -30,8 +30,8 @@ implementation
 
 {$R *.lfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   { Configuration des labels }
   LabelNom.Caption := '&Nom :';
   LabelNom.FocusControl := EditNom;
@@ -59,15 +59,15 @@ begin
   ActiveControl := EditNom;
 end;
 
-procedure TForm1.EditChange(Sender: TObject);
-begin
+procedure TForm1.EditChange(Sender: TObject);  
+begin  
   ButtonValider.Enabled := (EditNom.Text <> '') and
                            (EditEmail.Text <> '') and
                            (EditAge.Text <> '');
 end;
 
-procedure TForm1.ButtonValiderClick(Sender: TObject);
-var
+procedure TForm1.ButtonValiderClick(Sender: TObject);  
+var  
   Age: Integer;
 begin
   if not TryStrToInt(EditAge.Text, Age) then
@@ -97,8 +97,8 @@ begin
               'Âge : ' + EditAge.Text);
 end;
 
-procedure TForm1.ButtonAnnulerClick(Sender: TObject);
-begin
+procedure TForm1.ButtonAnnulerClick(Sender: TObject);  
+begin  
   Close;
 end;
 

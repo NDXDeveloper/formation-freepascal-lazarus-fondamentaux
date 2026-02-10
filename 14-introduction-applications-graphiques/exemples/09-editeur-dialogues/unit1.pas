@@ -1,4 +1,4 @@
-unit Unit1;
+unit Unit1;  
 
 {$mode objfpc}{$H+}
 
@@ -59,8 +59,8 @@ implementation
 
 {$R *.lfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   OpenDialog1.Filter :=
     'Fichiers texte (*.txt)|*.txt|Fichiers Pascal (*.pas)|*.pas|Tous les fichiers (*.*)|*.*';
   OpenDialog1.Options := OpenDialog1.Options + [ofFileMustExist, ofEnableSizing];
@@ -74,16 +74,16 @@ begin
   NouveauDocument;
 end;
 
-procedure TForm1.NouveauDocument;
-begin
+procedure TForm1.NouveauDocument;  
+begin  
   Memo1.Clear;
   Memo1.Modified := False;
   FFichierCourant := '';
   Caption := 'Éditeur - Sans titre';
 end;
 
-function TForm1.VerifierModifications: Boolean;
-begin
+function TForm1.VerifierModifications: Boolean;  
+begin  
   Result := True;
   if Memo1.Modified then
   begin
@@ -102,21 +102,21 @@ begin
   end;
 end;
 
-procedure TForm1.MenuNouveauClick(Sender: TObject);
-begin
+procedure TForm1.MenuNouveauClick(Sender: TObject);  
+begin  
   if VerifierModifications then
     NouveauDocument;
 end;
 
-procedure TForm1.MenuOuvrirClick(Sender: TObject);
-begin
+procedure TForm1.MenuOuvrirClick(Sender: TObject);  
+begin  
   if VerifierModifications then
     if OpenDialog1.Execute then
       OuvrirDocument(OpenDialog1.FileName);
 end;
 
-procedure TForm1.OuvrirDocument(const Fichier: String);
-begin
+procedure TForm1.OuvrirDocument(const Fichier: String);  
+begin  
   try
     Memo1.Lines.LoadFromFile(Fichier);
     Memo1.Modified := False;
@@ -129,24 +129,24 @@ begin
   end;
 end;
 
-procedure TForm1.MenuEnregistrerClick(Sender: TObject);
-begin
+procedure TForm1.MenuEnregistrerClick(Sender: TObject);  
+begin  
   if FFichierCourant = '' then
     MenuEnregistrerSousClick(Sender)
   else
     EnregistrerDocument(FFichierCourant);
 end;
 
-procedure TForm1.MenuEnregistrerSousClick(Sender: TObject);
-begin
+procedure TForm1.MenuEnregistrerSousClick(Sender: TObject);  
+begin  
   if FFichierCourant <> '' then
     SaveDialog1.FileName := FFichierCourant;
   if SaveDialog1.Execute then
     EnregistrerDocument(SaveDialog1.FileName);
 end;
 
-procedure TForm1.EnregistrerDocument(const Fichier: String);
-begin
+procedure TForm1.EnregistrerDocument(const Fichier: String);  
+begin  
   try
     Memo1.Lines.SaveToFile(Fichier);
     Memo1.Modified := False;
@@ -159,42 +159,42 @@ begin
   end;
 end;
 
-procedure TForm1.MenuQuitterClick(Sender: TObject);
-begin
+procedure TForm1.MenuQuitterClick(Sender: TObject);  
+begin  
   Close;
 end;
 
-procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-begin
+procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: Boolean);  
+begin  
   CanClose := VerifierModifications;
 end;
 
-procedure TForm1.MenuCouleurFondClick(Sender: TObject);
-begin
+procedure TForm1.MenuCouleurFondClick(Sender: TObject);  
+begin  
   ColorDialog1.Color := Memo1.Color;
   if ColorDialog1.Execute then
     Memo1.Color := ColorDialog1.Color;
 end;
 
-procedure TForm1.MenuPoliceClick(Sender: TObject);
-begin
+procedure TForm1.MenuPoliceClick(Sender: TObject);  
+begin  
   FontDialog1.Font := Memo1.Font;
   if FontDialog1.Execute then
     Memo1.Font := FontDialog1.Font;
 end;
 
-procedure TForm1.MenuRechercherClick(Sender: TObject);
-begin
+procedure TForm1.MenuRechercherClick(Sender: TObject);  
+begin  
   FindDialog1.Execute;
 end;
 
-procedure TForm1.MenuRemplacerClick(Sender: TObject);
-begin
+procedure TForm1.MenuRemplacerClick(Sender: TObject);  
+begin  
   ReplaceDialog1.Execute;
 end;
 
-procedure TForm1.FindDialog1Find(Sender: TObject);
-var
+procedure TForm1.FindDialog1Find(Sender: TObject);  
+var  
   FoundPos, StartPos: Integer;
   SearchText, MemoText: String;
 begin
@@ -225,8 +225,8 @@ begin
                mtInformation, [mbOK], 0);
 end;
 
-procedure TForm1.ReplaceDialog1Replace(Sender: TObject);
-var
+procedure TForm1.ReplaceDialog1Replace(Sender: TObject);  
+var  
   FoundPos, StartPos: Integer;
   SearchText, MemoText: String;
 begin

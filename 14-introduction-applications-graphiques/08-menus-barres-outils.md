@@ -150,9 +150,9 @@ MenuItem1.Caption := '&Nouveau';
 
 **Cas spéciaux :**
 ```pascal
-Caption := '-';       // Séparateur
-Caption := '&Fichier';  // F souligné, Alt+F pour ouvrir
-Caption := 'A && B';    // Affiche "A & B" (double &&)
+Caption := '-';       // Séparateur  
+Caption := '&Fichier';  // F souligné, Alt+F pour ouvrir  
+Caption := 'A && B';    // Affiche "A & B" (double &&)  
 ```
 
 #### ShortCut
@@ -165,27 +165,27 @@ MenuItem1.ShortCut := TextToShortCut('Ctrl+N');
 
 **Raccourcis courants :**
 ```pascal
-MenuNouveau.ShortCut := TextToShortCut('Ctrl+N');
-MenuOuvrir.ShortCut := TextToShortCut('Ctrl+O');
-MenuEnregistrer.ShortCut := TextToShortCut('Ctrl+S');
-MenuQuitter.ShortCut := TextToShortCut('Alt+F4');
-MenuCouper.ShortCut := TextToShortCut('Ctrl+X');
-MenuCopier.ShortCut := TextToShortCut('Ctrl+C');
-MenuColler.ShortCut := TextToShortCut('Ctrl+V');
-MenuSupprimer.ShortCut := TextToShortCut('Del');
+MenuNouveau.ShortCut := TextToShortCut('Ctrl+N');  
+MenuOuvrir.ShortCut := TextToShortCut('Ctrl+O');  
+MenuEnregistrer.ShortCut := TextToShortCut('Ctrl+S');  
+MenuQuitter.ShortCut := TextToShortCut('Alt+F4');  
+MenuCouper.ShortCut := TextToShortCut('Ctrl+X');  
+MenuCopier.ShortCut := TextToShortCut('Ctrl+C');  
+MenuColler.ShortCut := TextToShortCut('Ctrl+V');  
+MenuSupprimer.ShortCut := TextToShortCut('Del');  
 ```
 
 **Le raccourci s'affiche automatiquement dans le menu :**
 ```
-Nouveau     Ctrl+N
-Ouvrir...   Ctrl+O
+Nouveau     Ctrl+N  
+Ouvrir...   Ctrl+O  
 ```
 
 #### Checked
 
 ```pascal
-MenuItem1.Checked := True;  // Coche visible
-MenuItem1.Checked := False; // Pas de coche
+MenuItem1.Checked := True;  // Coche visible  
+MenuItem1.Checked := False; // Pas de coche  
 ```
 
 **Description :** Affiche une coche ✓ devant l'item
@@ -195,16 +195,16 @@ MenuItem1.Checked := False; // Pas de coche
 **Exemple :**
 ```pascal
 // Menu Affichage
-MenuBarreOutils.Checked := True;   // ✓ Barre d'outils
-MenuBarreEtat.Checked := True;     // ✓ Barre d'état
-MenuReglages.Checked := False;     //   Réglages
+MenuBarreOutils.Checked := True;   // ✓ Barre d'outils  
+MenuBarreEtat.Checked := True;     // ✓ Barre d'état  
+MenuReglages.Checked := False;     //   Réglages  
 ```
 
 #### Enabled
 
 ```pascal
-MenuItem1.Enabled := True;   // Actif
-MenuItem1.Enabled := False;  // Grisé, non cliquable
+MenuItem1.Enabled := True;   // Actif  
+MenuItem1.Enabled := False;  // Grisé, non cliquable  
 ```
 
 **Usage :** Désactiver les options non disponibles
@@ -222,8 +222,8 @@ MenuColler.Enabled := Clipboard.HasFormat(CF_TEXT);
 #### Visible
 
 ```pascal
-MenuItem1.Visible := True;   // Visible
-MenuItem1.Visible := False;  // Caché
+MenuItem1.Visible := True;   // Visible  
+MenuItem1.Visible := False;  // Caché  
 ```
 
 **Usage :** Cacher complètement un item (vs Enabled qui le grise)
@@ -231,8 +231,8 @@ MenuItem1.Visible := False;  // Caché
 #### RadioItem
 
 ```pascal
-MenuItem1.RadioItem := True;
-MenuItem1.GroupIndex := 1;
+MenuItem1.RadioItem := True;  
+MenuItem1.GroupIndex := 1;  
 ```
 
 **Description :** Crée des items mutuellement exclusifs (boutons radio)
@@ -240,17 +240,17 @@ MenuItem1.GroupIndex := 1;
 **Exemple : Tailles de police**
 ```pascal
 // Tous dans le même GroupIndex
-MenuPetit.RadioItem := True;
-MenuPetit.GroupIndex := 1;
-MenuPetit.Checked := False;
+MenuPetit.RadioItem := True;  
+MenuPetit.GroupIndex := 1;  
+MenuPetit.Checked := False;  
 
-MenuMoyen.RadioItem := True;
-MenuMoyen.GroupIndex := 1;
-MenuMoyen.Checked := True;  // Sélectionné par défaut
+MenuMoyen.RadioItem := True;  
+MenuMoyen.GroupIndex := 1;  
+MenuMoyen.Checked := True;  // Sélectionné par défaut  
 
-MenuGrand.RadioItem := True;
-MenuGrand.GroupIndex := 1;
-MenuGrand.Checked := False;
+MenuGrand.RadioItem := True;  
+MenuGrand.GroupIndex := 1;  
+MenuGrand.Checked := False;  
 ```
 
 Quand on clique sur un, les autres se décochent automatiquement !
@@ -266,15 +266,15 @@ MenuItem1.ImageIndex := 0;  // Première image de l'ImageList
 ### Événement principal : OnClick
 
 ```pascal
-procedure TForm1.MenuNouveauClick(Sender: TObject);
-begin
+procedure TForm1.MenuNouveauClick(Sender: TObject);  
+begin  
   // Code exécuté quand on clique sur "Nouveau"
   NouveauDocument;
   StatusBar1.SimpleText := 'Nouveau document créé';
 end;
 
-procedure TForm1.MenuOuvrirClick(Sender: TObject);
-begin
+procedure TForm1.MenuOuvrirClick(Sender: TObject);  
+begin  
   if OpenDialog1.Execute then
   begin
     OuvrirFichier(OpenDialog1.FileName);
@@ -282,8 +282,8 @@ begin
   end;
 end;
 
-procedure TForm1.MenuQuitterClick(Sender: TObject);
-begin
+procedure TForm1.MenuQuitterClick(Sender: TObject);  
+begin  
   Close;
 end;
 ```
@@ -361,9 +361,9 @@ PopupMenu1
 **Étape 3 : Associer à un composant**
 
 ```pascal
-Edit1.PopupMenu := PopupMenu1;
-Memo1.PopupMenu := PopupMenu1;
-Panel1.PopupMenu := PopupMenu1;
+Edit1.PopupMenu := PopupMenu1;  
+Memo1.PopupMenu := PopupMenu1;  
+Panel1.PopupMenu := PopupMenu1;  
 ```
 
 Maintenant, un clic droit sur Edit1 affichera le menu !
@@ -389,8 +389,8 @@ type
     procedure PopupMenu1Popup(Sender: TObject);
   end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Associer le menu contextuel au Memo
   Memo1.PopupMenu := PopupMenu1;
 
@@ -401,33 +401,33 @@ begin
   MenuSelectionneTout.ShortCut := TextToShortCut('Ctrl+A');
 end;
 
-procedure TForm1.MenuCouperClick(Sender: TObject);
-begin
+procedure TForm1.MenuCouperClick(Sender: TObject);  
+begin  
   Memo1.CutToClipboard;
 end;
 
-procedure TForm1.MenuCopierClick(Sender: TObject);
-begin
+procedure TForm1.MenuCopierClick(Sender: TObject);  
+begin  
   Memo1.CopyToClipboard;
 end;
 
-procedure TForm1.MenuCollerClick(Sender: TObject);
-begin
+procedure TForm1.MenuCollerClick(Sender: TObject);  
+begin  
   Memo1.PasteFromClipboard;
 end;
 
-procedure TForm1.MenuSupprimerClick(Sender: TObject);
-begin
+procedure TForm1.MenuSupprimerClick(Sender: TObject);  
+begin  
   Memo1.SelText := '';
 end;
 
-procedure TForm1.MenuSelectionneToutClick(Sender: TObject);
-begin
+procedure TForm1.MenuSelectionneToutClick(Sender: TObject);  
+begin  
   Memo1.SelectAll;
 end;
 
-procedure TForm1.PopupMenu1Popup(Sender: TObject);
-begin
+procedure TForm1.PopupMenu1Popup(Sender: TObject);  
+begin  
   // Activer/désactiver selon le contexte
   MenuCouper.Enabled := Memo1.SelLength > 0;
   MenuCopier.Enabled := Memo1.SelLength > 0;
@@ -439,8 +439,8 @@ end;
 ### Événement OnPopup
 
 ```pascal
-procedure TForm1.PopupMenu1Popup(Sender: TObject);
-begin
+procedure TForm1.PopupMenu1Popup(Sender: TObject);  
+begin  
   // Appelé AVANT l'affichage du menu
   // Parfait pour activer/désactiver des items selon le contexte
 
@@ -454,8 +454,8 @@ end;
 ### Afficher un PopupMenu par code
 
 ```pascal
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   // Afficher à la position de la souris
   PopupMenu1.Popup(Mouse.CursorPos.X, Mouse.CursorPos.Y);
 
@@ -551,8 +551,8 @@ ToolButton1.Style := tbsButton;  // Bouton normal (défaut)
 BtnNouveau.Style := tbsButton;
 
 // Séparateur
-ToolButton1.Style := tbsSeparator;
-ToolButton1.Width := 8;  // Largeur du séparateur
+ToolButton1.Style := tbsSeparator;  
+ToolButton1.Width := 8;  // Largeur du séparateur  
 
 // Bouton toggle (gras, italique, etc.)
 BtnGras.Style := tbsCheck;
@@ -571,8 +571,8 @@ ToolButton1.Caption := 'Nouveau';
 #### Hint et ShowHint
 
 ```pascal
-ToolButton1.Hint := 'Créer un nouveau document (Ctrl+N)';
-ToolButton1.ShowHint := True;
+ToolButton1.Hint := 'Créer un nouveau document (Ctrl+N)';  
+ToolButton1.ShowHint := True;  
 ```
 
 **Important :** Les hints sont essentiels pour les barres d'outils avec icônes !
@@ -589,22 +589,22 @@ ToolButton1.ImageIndex := 0;  // Première image
 
 Comme tous les composants :
 ```pascal
-ToolButton1.Enabled := DocumentOuvert;
-ToolButton1.Visible := ModeAvance;
+ToolButton1.Enabled := DocumentOuvert;  
+ToolButton1.Visible := ModeAvance;  
 ```
 
 #### Grouped et GroupIndex
 
 Pour créer des boutons mutuellement exclusifs :
 ```pascal
-BtnGauche.Grouped := True;
-BtnGauche.GroupIndex := 1;
+BtnGauche.Grouped := True;  
+BtnGauche.GroupIndex := 1;  
 
-BtnCentre.Grouped := True;
-BtnCentre.GroupIndex := 1;
+BtnCentre.Grouped := True;  
+BtnCentre.GroupIndex := 1;  
 
-BtnDroite.Grouped := True;
-BtnDroite.GroupIndex := 1;
+BtnDroite.Grouped := True;  
+BtnDroite.GroupIndex := 1;  
 ```
 
 Un seul peut être enfoncé à la fois (comme des boutons radio).
@@ -612,8 +612,8 @@ Un seul peut être enfoncé à la fois (comme des boutons radio).
 ### Événement OnClick
 
 ```pascal
-procedure TForm1.ToolButton1Click(Sender: TObject);
-begin
+procedure TForm1.ToolButton1Click(Sender: TObject);  
+begin  
   // Action du bouton
   NouveauDocument;
 end;
@@ -640,16 +640,16 @@ ToolBar1.Images := ImageList1;
 
 **Étape 4 : Définir les ImageIndex**
 ```pascal
-BtnNouveau.ImageIndex := 0;    // Première image
-BtnOuvrir.ImageIndex := 1;     // Deuxième image
-BtnEnregistrer.ImageIndex := 2; // Troisième image
+BtnNouveau.ImageIndex := 0;    // Première image  
+BtnOuvrir.ImageIndex := 1;     // Deuxième image  
+BtnEnregistrer.ImageIndex := 2; // Troisième image  
 ```
 
 ### Exemple complet de ToolBar
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Configuration de la ToolBar
   ToolBar1.Align := alTop;
   ToolBar1.Images := ImageList1;
@@ -679,13 +679,13 @@ begin
   BtnColler.Hint := 'Coller (Ctrl+V)';
 end;
 
-procedure TForm1.BtnNouveauClick(Sender: TObject);
-begin
+procedure TForm1.BtnNouveauClick(Sender: TObject);  
+begin  
   NouveauDocument;
 end;
 
-procedure TForm1.BtnOuvrirClick(Sender: TObject);
-begin
+procedure TForm1.BtnOuvrirClick(Sender: TObject);  
+begin  
   if OpenDialog1.Execute then
     OuvrirDocument(OpenDialog1.FileName);
 end;
@@ -706,18 +706,18 @@ Imaginez : vous avez une fonction "Copier" accessible par :
 **Sans TActionList :**
 ```pascal
 // 4 handlers différents qui font la même chose !
-procedure TForm1.MenuCopierClick(Sender: TObject);
-begin
+procedure TForm1.MenuCopierClick(Sender: TObject);  
+begin  
   Memo1.CopyToClipboard;
 end;
 
-procedure TForm1.BtnCopierClick(Sender: TObject);
-begin
+procedure TForm1.BtnCopierClick(Sender: TObject);  
+begin  
   Memo1.CopyToClipboard;
 end;
 
-procedure TForm1.PopupCopierClick(Sender: TObject);
-begin
+procedure TForm1.PopupCopierClick(Sender: TObject);  
+begin  
   Memo1.CopyToClipboard;
 end;
 // etc.
@@ -737,15 +737,15 @@ Une **Action** centralise :
 **Avec TActionList :**
 ```pascal
 // UN SEUL handler !
-procedure TForm1.ActionCopierExecute(Sender: TObject);
-begin
+procedure TForm1.ActionCopierExecute(Sender: TObject);  
+begin  
   Memo1.CopyToClipboard;
 end;
 
 // Et tous les composants utilisent cette action :
-MenuCopier.Action := ActionCopier;
-BtnCopier.Action := ActionCopier;
-PopupCopier.Action := ActionCopier;
+MenuCopier.Action := ActionCopier;  
+BtnCopier.Action := ActionCopier;  
+PopupCopier.Action := ActionCopier;  
 ```
 
 ### Créer un TActionList
@@ -818,8 +818,8 @@ ActionNouveau.ImageIndex := 0;
 #### Category
 
 ```pascal
-ActionNouveau.Category := 'Fichier';
-ActionCopier.Category := 'Édition';
+ActionNouveau.Category := 'Fichier';  
+ActionCopier.Category := 'Édition';  
 ```
 
 **Description :** Catégorie pour organiser les actions
@@ -827,8 +827,8 @@ ActionCopier.Category := 'Édition';
 ### Événement OnExecute
 
 ```pascal
-procedure TForm1.ActionNouveauExecute(Sender: TObject);
-begin
+procedure TForm1.ActionNouveauExecute(Sender: TObject);  
+begin  
   // Code exécuté quand l'action est déclenchée
   NouveauDocument;
   StatusBar1.SimpleText := 'Nouveau document créé';
@@ -844,8 +844,8 @@ end;
 ### Événement OnUpdate
 
 ```pascal
-procedure TForm1.ActionCopierUpdate(Sender: TObject);
-begin
+procedure TForm1.ActionCopierUpdate(Sender: TObject);  
+begin  
   // Appelé régulièrement (souvent à chaque mouvement de souris)
   // Permet de mettre à jour l'état de l'action
   ActionCopier.Enabled := Memo1.SelLength > 0;
@@ -865,8 +865,8 @@ end;
 
 **Par code :**
 ```pascal
-MenuNouveau.Action := ActionNouveau;
-BtnNouveau.Action := ActionNouveau;
+MenuNouveau.Action := ActionNouveau;  
+BtnNouveau.Action := ActionNouveau;  
 ```
 
 **Résultat :** Le composant hérite automatiquement de :
@@ -923,8 +923,8 @@ type
     procedure ActionCollerUpdate(Sender: TObject);
   end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Configuration des actions
   ActionNouveau.Caption := '&Nouveau';
   ActionNouveau.ShortCut := TextToShortCut('Ctrl+N');
@@ -970,45 +970,45 @@ begin
 end;
 
 // UN SEUL handler par action !
-procedure TForm1.ActionNouveauExecute(Sender: TObject);
-begin
+procedure TForm1.ActionNouveauExecute(Sender: TObject);  
+begin  
   Memo1.Clear;
 end;
 
-procedure TForm1.ActionOuvrirExecute(Sender: TObject);
-begin
+procedure TForm1.ActionOuvrirExecute(Sender: TObject);  
+begin  
   if OpenDialog1.Execute then
     Memo1.Lines.LoadFromFile(OpenDialog1.FileName);
 end;
 
-procedure TForm1.ActionCouperExecute(Sender: TObject);
-begin
+procedure TForm1.ActionCouperExecute(Sender: TObject);  
+begin  
   Memo1.CutToClipboard;
 end;
 
-procedure TForm1.ActionCopierExecute(Sender: TObject);
-begin
+procedure TForm1.ActionCopierExecute(Sender: TObject);  
+begin  
   Memo1.CopyToClipboard;
 end;
 
-procedure TForm1.ActionCollerExecute(Sender: TObject);
-begin
+procedure TForm1.ActionCollerExecute(Sender: TObject);  
+begin  
   Memo1.PasteFromClipboard;
 end;
 
 // Mise à jour automatique de l'état
-procedure TForm1.ActionCopierUpdate(Sender: TObject);
-begin
+procedure TForm1.ActionCopierUpdate(Sender: TObject);  
+begin  
   ActionCopier.Enabled := Memo1.SelLength > 0;
 end;
 
-procedure TForm1.ActionCouperUpdate(Sender: TObject);
-begin
+procedure TForm1.ActionCouperUpdate(Sender: TObject);  
+begin  
   ActionCouper.Enabled := Memo1.SelLength > 0;
 end;
 
-procedure TForm1.ActionCollerUpdate(Sender: TObject);
-begin
+procedure TForm1.ActionCollerUpdate(Sender: TObject);  
+begin  
   ActionColler.Enabled := Clipboard.HasFormat(CF_TEXT);
 end;
 ```
@@ -1028,22 +1028,22 @@ end;
 
 ```pascal
 // Ctrl
-ShortCut := TextToShortCut('Ctrl+S');
-ShortCut := TextToShortCut('Ctrl+Shift+S');
+ShortCut := TextToShortCut('Ctrl+S');  
+ShortCut := TextToShortCut('Ctrl+Shift+S');  
 
 // Alt
-ShortCut := TextToShortCut('Alt+F4');
-ShortCut := TextToShortCut('Alt+Enter');
+ShortCut := TextToShortCut('Alt+F4');  
+ShortCut := TextToShortCut('Alt+Enter');  
 
 // Touches de fonction
-ShortCut := TextToShortCut('F1');
-ShortCut := TextToShortCut('Shift+F1');
-ShortCut := TextToShortCut('Ctrl+F5');
+ShortCut := TextToShortCut('F1');  
+ShortCut := TextToShortCut('Shift+F1');  
+ShortCut := TextToShortCut('Ctrl+F5');  
 
 // Autres touches
-ShortCut := TextToShortCut('Del');
-ShortCut := TextToShortCut('Shift+Del');
-ShortCut := TextToShortCut('Ins');
+ShortCut := TextToShortCut('Del');  
+ShortCut := TextToShortCut('Shift+Del');  
+ShortCut := TextToShortCut('Ins');  
 ```
 
 ### Raccourcis standards à respecter
@@ -1071,9 +1071,9 @@ ShortCut := TextToShortCut('Ins');
 Pour des fonctions spécifiques à votre application :
 ```pascal
 // Fonctions avancées
-ActionCompiler.ShortCut := TextToShortCut('F9');
-ActionDeboguer.ShortCut := TextToShortCut('F5');
-ActionFormat.ShortCut := TextToShortCut('Ctrl+Shift+F');
+ActionCompiler.ShortCut := TextToShortCut('F9');  
+ActionDeboguer.ShortCut := TextToShortCut('F5');  
+ActionFormat.ShortCut := TextToShortCut('Ctrl+Shift+F');  
 ```
 
 **Conseil :** Documentez les raccourcis non-standards dans l'aide ou un menu "Raccourcis clavier".
@@ -1117,15 +1117,15 @@ ActionFormat.ShortCut := TextToShortCut('Ctrl+Shift+F');
 Créez plusieurs TImageList pour différentes tailles :
 
 ```pascal
-ImageList16.Width := 16;
-ImageList16.Height := 16;
+ImageList16.Width := 16;  
+ImageList16.Height := 16;  
 
-ImageList24.Width := 24;
-ImageList24.Height := 24;
+ImageList24.Width := 24;  
+ImageList24.Height := 24;  
 
 // Associer selon le contexte
-MainMenu1.Images := ImageList16;  // Petites icônes pour menus
-ToolBar1.Images := ImageList24;   // Grandes icônes pour toolbar
+MainMenu1.Images := ImageList16;  // Petites icônes pour menus  
+ToolBar1.Images := ImageList24;   // Grandes icônes pour toolbar  
 ```
 
 ---
@@ -1207,8 +1207,8 @@ type
     procedure ActionCollerUpdate(Sender: TObject);
   end;
 
-procedure TFormPrincipal.FormCreate(Sender: TObject);
-begin
+procedure TFormPrincipal.FormCreate(Sender: TObject);  
+begin  
   ConfigurerActions;
   ConfigurerMenus;
   ConfigurerToolbar;
@@ -1222,8 +1222,8 @@ begin
   Form1.Height := 600;
 end;
 
-procedure TFormPrincipal.ConfigurerActions;
-begin
+procedure TFormPrincipal.ConfigurerActions;  
+begin  
   // Fichier
   ActionNouveau.Caption := '&Nouveau';
   ActionNouveau.ShortCut := TextToShortCut('Ctrl+N');
@@ -1263,8 +1263,8 @@ begin
   ActionSelectionnerTout.ShortCut := TextToShortCut('Ctrl+A');
 end;
 
-procedure TFormPrincipal.ConfigurerMenus;
-begin
+procedure TFormPrincipal.ConfigurerMenus;  
+begin  
   // Structure du menu Fichier
   MenuNouveau.Action := ActionNouveau;
   MenuOuvrir.Action := ActionOuvrir;
@@ -1280,8 +1280,8 @@ begin
   MenuSelectionnerTout.Action := ActionSelectionnerTout;
 end;
 
-procedure TFormPrincipal.ConfigurerToolbar;
-begin
+procedure TFormPrincipal.ConfigurerToolbar;  
+begin  
   ToolBar1.Align := alTop;
   ToolBar1.Images := ImageList1;
   ToolBar1.ShowCaptions := False;
@@ -1300,8 +1300,8 @@ begin
 end;
 
 // Implémentation des actions
-procedure TFormPrincipal.ActionNouveauExecute(Sender: TObject);
-begin
+procedure TFormPrincipal.ActionNouveauExecute(Sender: TObject);  
+begin  
   if Memo1.Modified then
   begin
     case MessageDlg('Enregistrer les modifications ?',
@@ -1316,8 +1316,8 @@ begin
   StatusBar1.SimpleText := 'Nouveau document';
 end;
 
-procedure TFormPrincipal.ActionOuvrirExecute(Sender: TObject);
-begin
+procedure TFormPrincipal.ActionOuvrirExecute(Sender: TObject);  
+begin  
   if OpenDialog1.Execute then
   begin
     Memo1.Lines.LoadFromFile(OpenDialog1.FileName);
@@ -1326,8 +1326,8 @@ begin
   end;
 end;
 
-procedure TFormPrincipal.ActionEnregistrerExecute(Sender: TObject);
-begin
+procedure TFormPrincipal.ActionEnregistrerExecute(Sender: TObject);  
+begin  
   if SaveDialog1.Execute then
   begin
     Memo1.Lines.SaveToFile(SaveDialog1.FileName);
@@ -1336,44 +1336,44 @@ begin
   end;
 end;
 
-procedure TFormPrincipal.ActionQuitterExecute(Sender: TObject);
-begin
+procedure TFormPrincipal.ActionQuitterExecute(Sender: TObject);  
+begin  
   Close;
 end;
 
-procedure TFormPrincipal.ActionCouperExecute(Sender: TObject);
-begin
+procedure TFormPrincipal.ActionCouperExecute(Sender: TObject);  
+begin  
   Memo1.CutToClipboard;
 end;
 
-procedure TFormPrincipal.ActionCopierExecute(Sender: TObject);
-begin
+procedure TFormPrincipal.ActionCopierExecute(Sender: TObject);  
+begin  
   Memo1.CopyToClipboard;
 end;
 
-procedure TFormPrincipal.ActionCollerExecute(Sender: TObject);
-begin
+procedure TFormPrincipal.ActionCollerExecute(Sender: TObject);  
+begin  
   Memo1.PasteFromClipboard;
 end;
 
-procedure TFormPrincipal.ActionSelectionnerToutExecute(Sender: TObject);
-begin
+procedure TFormPrincipal.ActionSelectionnerToutExecute(Sender: TObject);  
+begin  
   Memo1.SelectAll;
 end;
 
 // Mise à jour de l'état des actions
-procedure TFormPrincipal.ActionCouperUpdate(Sender: TObject);
-begin
+procedure TFormPrincipal.ActionCouperUpdate(Sender: TObject);  
+begin  
   ActionCouper.Enabled := Memo1.SelLength > 0;
 end;
 
-procedure TFormPrincipal.ActionCopierUpdate(Sender: TObject);
-begin
+procedure TFormPrincipal.ActionCopierUpdate(Sender: TObject);  
+begin  
   ActionCopier.Enabled := Memo1.SelLength > 0;
 end;
 
-procedure TFormPrincipal.ActionCollerUpdate(Sender: TObject);
-begin
+procedure TFormPrincipal.ActionCollerUpdate(Sender: TObject);  
+begin  
   ActionColler.Enabled := Clipboard.HasFormat(CF_TEXT);
 end;
 ```
@@ -1433,8 +1433,8 @@ Action.Hint := 'Copier la sélection (Ctrl+C)';
 ### 5. Désactivez les actions non disponibles
 
 ```pascal
-procedure ActionUpdate(Sender: TObject);
-begin
+procedure ActionUpdate(Sender: TObject);  
+begin  
   ActionCopier.Enabled := SelLength > 0;
   ActionEnregistrer.Enabled := Modified;
   ActionAnnuler.Enabled := CanUndo;
@@ -1447,9 +1447,9 @@ end;
 
 Groupez les fonctions similaires :
 ```
-Nouveau
-Ouvrir
-Enregistrer
+Nouveau  
+Ouvrir  
+Enregistrer  
 ────────    ← Séparateur
 Imprimer
 ────────    ← Séparateur

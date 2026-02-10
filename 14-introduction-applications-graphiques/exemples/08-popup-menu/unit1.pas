@@ -1,4 +1,4 @@
-unit Unit1;
+unit Unit1;  
 
 {$mode objfpc}{$H+}
 
@@ -46,8 +46,8 @@ implementation
 
 {$R *.lfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   Memo1.Lines.Clear;
   Memo1.Lines.Add('Bienvenue dans la démo Menus !');
   Memo1.Lines.Add('');
@@ -61,43 +61,43 @@ begin
   Memo1.Lines.Add('  Ctrl+A : Tout sélectionner');
 end;
 
-procedure TForm1.MenuNouveauClick(Sender: TObject);
-begin
+procedure TForm1.MenuNouveauClick(Sender: TObject);  
+begin  
   Memo1.Clear;
 end;
 
-procedure TForm1.MenuQuitterClick(Sender: TObject);
-begin
+procedure TForm1.MenuQuitterClick(Sender: TObject);  
+begin  
   Close;
 end;
 
-procedure TForm1.CouperClick(Sender: TObject);
-begin
+procedure TForm1.CouperClick(Sender: TObject);  
+begin  
   Memo1.CutToClipboard;
 end;
 
-procedure TForm1.CopierClick(Sender: TObject);
-begin
+procedure TForm1.CopierClick(Sender: TObject);  
+begin  
   Memo1.CopyToClipboard;
 end;
 
-procedure TForm1.CollerClick(Sender: TObject);
-begin
+procedure TForm1.CollerClick(Sender: TObject);  
+begin  
   Memo1.PasteFromClipboard;
 end;
 
-procedure TForm1.SupprimerClick(Sender: TObject);
-begin
+procedure TForm1.SupprimerClick(Sender: TObject);  
+begin  
   Memo1.SelText := '';
 end;
 
-procedure TForm1.SelectToutClick(Sender: TObject);
-begin
+procedure TForm1.SelectToutClick(Sender: TObject);  
+begin  
   Memo1.SelectAll;
 end;
 
-procedure TForm1.PopupMenu1Popup(Sender: TObject);
-var
+procedure TForm1.PopupMenu1Popup(Sender: TObject);  
+var  
   HasSelection: Boolean;
 begin
   HasSelection := Memo1.SelLength > 0;
