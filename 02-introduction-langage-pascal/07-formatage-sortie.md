@@ -27,8 +27,8 @@ WriteLn(variable:largeurTotale:nombreDecimales);
 ### Contrôler les décimales
 
 ```pascal
-program FormateDecimales;
-var
+program FormateDecimales;  
+var  
   pi: real;
 begin
   pi := 3.14159265358979;
@@ -57,8 +57,8 @@ Sans formatage    :  3.1415926536E+00
 La largeur totale inclut tous les caractères : le signe, les chiffres avant et après la virgule, et la virgule elle-même.
 
 ```pascal
-program FormateLargeur;
-var
+program FormateLargeur;  
+var  
   prix: real;
 begin
   prix := 19.99;
@@ -110,8 +110,8 @@ WriteLn(variable:largeur);
 ### Exemples de formatage d'entiers
 
 ```pascal
-program FormateEntiers;
-var
+program FormateEntiers;  
+var  
   nombre: integer;
 begin
   nombre := 42;
@@ -152,8 +152,8 @@ end.
 Le formatage d'entiers est particulièrement utile pour créer des tableaux bien alignés :
 
 ```pascal
-program TableauAligneNum;
-begin
+program TableauAligneNum;  
+begin  
   WriteLn('Numéro':8, 'Quantité':12, 'Prix':10);
   WriteLn('------':8, '--------':12, '----':10);
   WriteLn(1:8, 150:12, 2500:10);
@@ -185,8 +185,8 @@ WriteLn(chaine:largeur);
 ### Alignement à droite (largeur positive)
 
 ```pascal
-program AlignementDroite;
-var
+program AlignementDroite;  
+var  
   nom: string;
 begin
   nom := 'Alice';
@@ -209,8 +209,8 @@ end.
 ### Alignement à gauche (largeur négative)
 
 ```pascal
-program AlignementGauche;
-var
+program AlignementGauche;  
+var  
   nom: string;
 begin
   nom := 'Alice';
@@ -231,8 +231,8 @@ end.
 ### Application pratique : tableau de noms
 
 ```pascal
-program TableauNoms;
-begin
+program TableauNoms;  
+begin  
   WriteLn('Prénom':15, 'Nom':15, 'Ville':20);
   WriteLn('--------------':15, '--------------':15, '-------------------':20);
   WriteLn('Alice':15, 'Dupont':15, 'Paris':20);
@@ -246,8 +246,8 @@ end.
 ### Tableau simple avec bordures
 
 ```pascal
-program TableauBordures;
-begin
+program TableauBordures;  
+begin  
   WriteLn('+', '-----------------':17, '+', '---------':9, '+', '---------':9, '+');
   WriteLn('|', 'Article':17, '|', 'Prix':9, '|', 'Qté':9, '|');
   WriteLn('+', '-----------------':17, '+', '---------':9, '+', '---------':9, '+');
@@ -272,8 +272,8 @@ end.
 ### Tableau avec totaux
 
 ```pascal
-program TableauTotaux;
-const
+program TableauTotaux;  
+const  
   Separateur = '================================';
 var
   prix1, prix2, prix3, total: real;
@@ -319,8 +319,8 @@ end.
 Pour les prix, utilisez toujours **2 décimales** :
 
 ```pascal
-program FormatPrix;
-var
+program FormatPrix;  
+var  
   prixHT, tva, prixTTC: real;
 begin
   prixHT := 100.0;
@@ -335,16 +335,16 @@ end.
 
 **Résultat :**
 ```
-Prix HT    :   100.00 €
-TVA (20%)  :    20.00 €
-Prix TTC   :   120.00 €
+Prix HT    :   100.00 €  
+TVA (20%)  :    20.00 €  
+Prix TTC   :   120.00 €  
 ```
 
 ### Facture complète avec formatage
 
 ```pascal
-program FactureComplete;
-const
+program FactureComplete;  
+const  
   TauxTVA = 20.0;
   LargeurNom = 25;
   LargeurQte = 8;
@@ -408,8 +408,8 @@ end.
 ### Rapport avec pourcentages
 
 ```pascal
-program RapportPourcentages;
-var
+program RapportPourcentages;  
+var  
   totalVentes, ventes1, ventes2, ventes3: real;
   pct1, pct2, pct3: real;
 begin
@@ -446,9 +446,9 @@ end.
 
 Région               Ventes      Part
 --------------    --------------  ---------
-Nord                    15000.00      30.0%
-Sud                     25000.00      50.0%
-Est                     10000.00      20.0%
+Nord                    15000.00      30.0%  
+Sud                     25000.00      50.0%  
+Est                     10000.00      20.0%  
 --------------    --------------  ---------
 TOTAL                   50000.00     100.0%
 ========================================
@@ -459,8 +459,8 @@ TOTAL                   50000.00     100.0%
 ### Menu simple bien formaté
 
 ```pascal
-program MenuFormate;
-begin
+program MenuFormate;  
+begin  
   WriteLn;
   WriteLn('╔════════════════════════════════╗');
   WriteLn('║      MENU PRINCIPAL            ║');
@@ -481,8 +481,8 @@ end.
 **Note :** Les caractères spéciaux (╔, ═, ║, etc.) peuvent ne pas s'afficher correctement sur tous les systèmes. Utilisez plutôt des caractères standards :
 
 ```pascal
-program MenuFormate;
-begin
+program MenuFormate;  
+begin  
   WriteLn;
   WriteLn('+================================+');
   WriteLn('|      MENU PRINCIPAL            |');
@@ -503,8 +503,8 @@ end.
 ### Menu avec numérotation alignée
 
 ```pascal
-program MenuNumerate;
-var
+program MenuNumerate;  
+var  
   i: integer;
 begin
   WriteLn;
@@ -544,8 +544,8 @@ end.
 Pour centrer du texte, calculez le nombre d'espaces nécessaires :
 
 ```pascal
-program CentrerTexte;
-const
+program CentrerTexte;  
+const  
   LargeurEcran = 50;
 var
   texte: string;
@@ -562,8 +562,8 @@ end.
 ### Créer des barres de progression textuelles
 
 ```pascal
-program BarreProgression;
-var
+program BarreProgression;  
+var  
   pourcentage: integer;
   i: integer;
 begin
@@ -591,8 +591,8 @@ Progression : [=============       ] 65%
 ### Formatage de dates et heures
 
 ```pascal
-program FormatDateTime;
-var
+program FormatDateTime;  
+var  
   jour, mois, annee: integer;
   heure, minute, seconde: integer;
 begin
@@ -627,9 +627,9 @@ end.
 
 **Résultat :**
 ```
-Date : 15/ 3/2024
-Date : 15/03/2024
-Heure : 14:05:07
+Date : 15/ 3/2024  
+Date : 15/03/2024  
+Heure : 14:05:07  
 ```
 
 ## Formatage conditionnel
@@ -639,8 +639,8 @@ Heure : 14:05:07
 Bien que la console standard ne supporte pas les couleurs facilement, vous pouvez utiliser des symboles :
 
 ```pascal
-program FormatConditionnel;
-var
+program FormatConditionnel;  
+var  
   solde: real;
   symbole: string;
 begin
@@ -662,8 +662,8 @@ end.
 ### Afficher des notes avec appréciation
 
 ```pascal
-program NotesFormatees;
-var
+program NotesFormatees;  
+var  
   note: real;
   appreciation: string;
   etoiles: string;
@@ -727,8 +727,8 @@ Avantage : modifier une seule constante met à jour tout le formatage.
 ### 2. Créer des procédures de formatage
 
 ```pascal
-procedure AfficherLigne(nom: string; age: integer; ville: string);
-const
+procedure AfficherLigne(nom: string; age: integer; ville: string);  
+const  
   L1 = 20;
   L2 = 5;
   L3 = 15;
@@ -746,13 +746,13 @@ end.
 ### 3. Séparer visuellement les sections
 
 ```pascal
-procedure AfficherSeparateur;
-begin
+procedure AfficherSeparateur;  
+begin  
   WriteLn('================================================');
 end;
 
-procedure AfficherTitre(titre: string);
-begin
+procedure AfficherTitre(titre: string);  
+begin  
   AfficherSeparateur;
   WriteLn('  ', titre);
   AfficherSeparateur;

@@ -3,8 +3,8 @@
   Description : Centrage de texte en calculant les espaces necessaires
   Fichier source : 07-formatage-sortie.md
   ============================================================================ }
-program CentrerTexte;
-const
+program CentrerTexte;  
+const  
   LargeurEcran = 50;
 var
   texte: string;

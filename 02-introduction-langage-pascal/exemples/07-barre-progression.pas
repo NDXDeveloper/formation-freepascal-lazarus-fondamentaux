@@ -3,8 +3,8 @@
   Description : Barre de progression textuelle avec caracteres = et espaces
   Fichier source : 07-formatage-sortie.md
   ============================================================================ }
-program BarreProgression;
-var
+program BarreProgression;  
+var  
   pourcentage: integer;
   i: integer;
 begin

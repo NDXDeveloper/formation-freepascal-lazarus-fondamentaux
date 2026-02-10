@@ -4,8 +4,8 @@
                 avec zero-padding manuel
   Fichier source : 07-formatage-sortie.md
   ============================================================================ }
-program FormatDateTime;
-var
+program FormatDateTime;  
+var  
   jour, mois, annee: integer;
   heure, minute, seconde: integer;
 begin

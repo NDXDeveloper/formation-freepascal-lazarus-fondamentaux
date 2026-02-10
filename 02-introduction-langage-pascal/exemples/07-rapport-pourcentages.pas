@@ -3,8 +3,8 @@
   Description : Rapport de ventes par region avec pourcentages
   Fichier source : 07-formatage-sortie.md
   ============================================================================ }
-program RapportPourcentages;
-var
+program RapportPourcentages;  
+var  
   totalVentes, ventes1, ventes2, ventes3: real;
   pct1, pct2, pct3: real;
 begin

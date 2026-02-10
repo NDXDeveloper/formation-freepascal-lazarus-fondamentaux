@@ -4,8 +4,8 @@
                 d'un operateur (+, -, *, /) - utilise case..of
   Fichier source : 06-entrees-sorties-console.md
   ============================================================================ }
-program CalculatriceInteractive;
-var
+program CalculatriceInteractive;  
+var  
   nombre1, nombre2: real;
   operateur: char;
   resultat: real;

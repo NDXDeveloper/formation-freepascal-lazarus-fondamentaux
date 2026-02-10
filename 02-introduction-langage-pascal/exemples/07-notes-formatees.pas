@@ -3,8 +3,8 @@
   Description : Affichage de notes avec appreciation et etoiles
   Fichier source : 07-formatage-sortie.md
   ============================================================================ }
-program NotesFormatees;
-var
+program NotesFormatees;  
+var  
   note: real;
   appreciation: string;
   etoiles: string;

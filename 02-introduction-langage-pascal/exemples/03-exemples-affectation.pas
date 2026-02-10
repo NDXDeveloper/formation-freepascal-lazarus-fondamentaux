@@ -4,8 +4,8 @@
                 (string, integer, real, boolean)
   Fichier source : 03-variables-constantes.md
   ============================================================================ }
-program ExemplesAffectation;
-var
+program ExemplesAffectation;  
+var  
   prenom: string;
   age: integer;
   taille: real;

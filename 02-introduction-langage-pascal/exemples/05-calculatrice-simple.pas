@@ -3,8 +3,8 @@
   Description : Calculatrice simple avec les 4 operations de base
   Fichier source : 05-operateurs-arithmetiques-logiques.md
   ============================================================================ }
-program CalculatriceSimple;
-var
+program CalculatriceSimple;  
+var  
   a, b: real;
   choix: integer;
   resultat: real;

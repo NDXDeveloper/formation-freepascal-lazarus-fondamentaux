@@ -3,8 +3,8 @@
   Description : Calcul de la surface d'un cercle avec une constante PI
   Fichier source : 02-structure-programme-pascal.md
   ============================================================================ }
-program Calcul;
-const
+program Calcul;  
+const  
   PI = 3.14159;
 var
   rayon: real;

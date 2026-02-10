@@ -234,8 +234,8 @@ end.
 **Attention :** Ne confondez pas `=` (comparaison) avec `:=` (affectation) !
 
 ```pascal
-x := 5;      // Affectation : on met 5 dans x
-x = 5        // Comparaison : est-ce que x vaut 5 ?
+x := 5;      // Affectation : on met 5 dans x  
+x = 5        // Comparaison : est-ce que x vaut 5 ?  
 ```
 
 ### Différent (<>)
@@ -316,8 +316,8 @@ end.
 ### Exemple pratique de comparaisons
 
 ```pascal
-program ComparaisonsAge;
-var
+program ComparaisonsAge;  
+var  
   age: integer;
   estEnfant: boolean;
   estAdolescent: boolean;
@@ -639,8 +639,8 @@ end.
 ### Combiner plusieurs opérateurs
 
 ```pascal
-program ExpressionsComplexes;
-var
+program ExpressionsComplexes;  
+var  
   a, b, c, resultat: integer;
 begin
   a := 10;
@@ -662,8 +662,8 @@ end.
 ### Expressions logiques complexes
 
 ```pascal
-program ConditionsComplexes;
-var
+program ConditionsComplexes;  
+var  
   age: integer;
   aPermis: boolean;
   aVoiture: boolean;
@@ -689,8 +689,8 @@ end.
 ### Exemple 1 : Calculatrice simple
 
 ```pascal
-program CalculatriceSimple;
-var
+program CalculatriceSimple;  
+var  
   a, b: real;
   choix: integer;
   resultat: real;
@@ -742,8 +742,8 @@ end.
 ### Exemple 2 : Validation de conditions multiples
 
 ```pascal
-program ValidationInscription;
-var
+program ValidationInscription;  
+var  
   age: integer;
   aParent: boolean;
   estResident: boolean;
@@ -769,8 +769,8 @@ end.
 ### Exemple 3 : Calcul de remise
 
 ```pascal
-program CalculRemise;
-const
+program CalculRemise;  
+const  
   SeuilRemise1 = 50.0;
   SeuilRemise2 = 100.0;
   TauxRemise1 = 5.0;   // 5%
@@ -805,8 +805,8 @@ end.
 ### Exemple 4 : Test de divisibilité
 
 ```pascal
-program TestDivisibilite;
-var
+program TestDivisibilite;  
+var  
   nombre: integer;
   divisiblePar2: boolean;
   divisiblePar3: boolean;

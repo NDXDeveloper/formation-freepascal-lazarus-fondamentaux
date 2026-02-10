@@ -4,8 +4,8 @@
                 et de la largeur d'affichage (syntaxe :largeur:decimales)
   Fichier source : 06-entrees-sorties-console.md
   ============================================================================ }
-program FormatageReal;
-var
+program FormatageReal;  
+var  
   prix: real;
 begin
   prix := 19.99;

@@ -4,8 +4,8 @@
                 d'affichage (syntaxe :largeur)
   Fichier source : 06-entrees-sorties-console.md
   ============================================================================ }
-program FormatageInteger;
-var
+program FormatageInteger;  
+var  
   nombre: integer;
 begin
   nombre := 42;

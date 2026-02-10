@@ -3,8 +3,8 @@
   Description : Declaration et utilisation de variables (string et integer)
   Fichier source : 02-structure-programme-pascal.md
   ============================================================================ }
-program AvecVariables;
-var
+program AvecVariables;  
+var  
   prenom: string;
   age: integer;
 begin

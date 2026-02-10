@@ -3,8 +3,8 @@
   Description : Declaration et utilisation de variables de type integer
   Fichier source : 04-types-donnees-primitifs.md
   ============================================================================ }
-program ExempleInteger;
-var
+program ExempleInteger;  
+var  
   age: integer;
   nombreEleves: integer;
   temperature: integer;

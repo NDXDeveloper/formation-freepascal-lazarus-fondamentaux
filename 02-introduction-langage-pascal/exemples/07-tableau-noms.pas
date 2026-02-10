@@ -3,8 +3,8 @@
   Description : Tableau de noms et villes avec colonnes alignees
   Fichier source : 07-formatage-sortie.md
   ============================================================================ }
-program TableauNoms;
-begin
+program TableauNoms;  
+begin  
   WriteLn('Prénom':15, 'Nom':15, 'Ville':20);
   WriteLn('--------------':15, '--------------':15, '-------------------':20);
   WriteLn('Alice':15, 'Dupont':15, 'Paris':20);

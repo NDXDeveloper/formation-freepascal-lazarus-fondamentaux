@@ -4,8 +4,8 @@
                 (true/false)
   Fichier source : 04-types-donnees-primitifs.md
   ============================================================================ }
-program ExempleBoolean;
-var
+program ExempleBoolean;  
+var  
   estMajeur: boolean;
   aReussi: boolean;
   estConnecte: boolean;

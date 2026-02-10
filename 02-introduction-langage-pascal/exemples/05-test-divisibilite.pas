@@ -4,8 +4,8 @@
                 avec l'operateur mod
   Fichier source : 05-operateurs-arithmetiques-logiques.md
   ============================================================================ }
-program TestDivisibilite;
-var
+program TestDivisibilite;  
+var  
   nombre: integer;
   divisiblePar2: boolean;
   divisiblePar3: boolean;

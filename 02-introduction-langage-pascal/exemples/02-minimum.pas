@@ -3,7 +3,7 @@
   Description : Programme minimal - la structure la plus simple possible
   Fichier source : 02-structure-programme-pascal.md
   ============================================================================ }
-program Minimum;
-begin
+program Minimum;  
+begin  
   writeln('Ceci est un programme minimal');
 end.

@@ -3,8 +3,8 @@
   Description : Menu interactif avec boucle while et case..of
   Fichier source : 06-entrees-sorties-console.md
   ============================================================================ }
-program MenuInteractif;
-var
+program MenuInteractif;  
+var  
   choix: integer;
   continuer: boolean;
 begin

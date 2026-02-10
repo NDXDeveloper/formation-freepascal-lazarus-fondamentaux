@@ -17,8 +17,8 @@ C'est le moyen le plus simple pour un programme de communiquer avec l'utilisateu
 La procédure `Write` affiche du texte ou des valeurs à l'écran, **sans retour à la ligne**.
 
 ```pascal
-program ExempleWrite;
-begin
+program ExempleWrite;  
+begin  
   Write('Bonjour');
   Write(' ');
   Write('le monde');
@@ -33,8 +33,8 @@ Le curseur reste sur la même ligne après chaque `Write`, donc tout s'affiche �
 La procédure `WriteLn` affiche du texte ou des valeurs, puis **passe à la ligne suivante**.
 
 ```pascal
-program ExempleWriteLn;
-begin
+program ExempleWriteLn;  
+begin  
   WriteLn('Première ligne');
   WriteLn('Deuxième ligne');
   WriteLn('Troisième ligne');
@@ -43,9 +43,9 @@ end.
 
 **Résultat :**
 ```
-Première ligne
-Deuxième ligne
-Troisième ligne
+Première ligne  
+Deuxième ligne  
+Troisième ligne  
 ```
 
 **Note :** `WriteLn` signifie "Write Line" (écrire une ligne). Le "Ln" est l'abréviation de "Line".
@@ -53,8 +53,8 @@ Troisième ligne
 ### Différence entre Write et WriteLn
 
 ```pascal
-program DifferenceWriteWriteLn;
-begin
+program DifferenceWriteWriteLn;  
+begin  
   Write('A');
   Write('B');
   Write('C');
@@ -66,8 +66,8 @@ end.
 
 **Résultat :**
 ```
-ABCD
-EF
+ABCD  
+EF  
 ```
 
 - Les trois premiers `Write` affichent sur la même ligne : ABC
@@ -99,8 +99,8 @@ Ligne 3
 Vous pouvez afficher le contenu de variables avec `Write` et `WriteLn` :
 
 ```pascal
-program AfficherVariables;
-var
+program AfficherVariables;  
+var  
   nom: string;
   age: integer;
   taille: real;
@@ -131,8 +131,8 @@ Taille :  1.6500000000E+00
 Vous pouvez afficher plusieurs valeurs en les séparant par des virgules :
 
 ```pascal
-program PlusieursSorties;
-var
+program PlusieursSorties;  
+var  
   prenom: string;
   nom: string;
   age: integer;
@@ -156,8 +156,8 @@ Bonjour Marie Dupont, vous avez 25 ans.
 Vous pouvez afficher directement le résultat de calculs :
 
 ```pascal
-program AfficherCalculs;
-var
+program AfficherCalculs;  
+var  
   a, b: integer;
 begin
   a := 10;
@@ -172,10 +172,10 @@ end.
 
 **Résultat :**
 ```
-Somme : 15
-Différence : 5
-Produit : 50
-Quotient :  2.0000000000E+00
+Somme : 15  
+Différence : 5  
+Produit : 50  
+Quotient :  2.0000000000E+00  
 ```
 
 ## Formatage des sorties
@@ -198,8 +198,8 @@ end.
 Pour contrôler l'affichage des `real`, utilisez la notation `:largeur:decimales` :
 
 ```pascal
-program FormatageReal;
-var
+program FormatageReal;  
+var  
   prix: real;
 begin
   prix := 19.99;
@@ -237,8 +237,8 @@ end.
 Pour les entiers, vous pouvez spécifier la largeur minimale :
 
 ```pascal
-program FormatageInteger;
-var
+program FormatageInteger;  
+var  
   nombre: integer;
 begin
   nombre := 42;
@@ -254,8 +254,8 @@ end.
 C'est particulièrement utile pour aligner des colonnes :
 
 ```pascal
-program TableauAligne;
-begin
+program TableauAligne;  
+begin  
   // :N fonctionne aussi sur les littéraux (strings et entiers), pas seulement les variables
   WriteLn('Nom':15, 'Age':5, 'Ville':15);
   WriteLn('---------------':15, '-----':5, '---------------':15);
@@ -330,8 +330,8 @@ end.
 ### Différence entre Read et ReadLn
 
 ```pascal
-program DifferenceReadReadLn;
-var
+program DifferenceReadReadLn;  
+var  
   a, b: integer;
 begin
   WriteLn('=== Avec Read ===');
@@ -510,8 +510,8 @@ end.
 ### Exemple 1 : Calculatrice interactive
 
 ```pascal
-program CalculatriceInteractive;
-var
+program CalculatriceInteractive;  
+var  
   nombre1, nombre2: real;
   operateur: char;
   resultat: real;
@@ -560,8 +560,8 @@ end.
 ### Exemple 2 : Fiche d'identité
 
 ```pascal
-program FicheIdentite;
-var
+program FicheIdentite;  
+var  
   nom, prenom, ville: string;
   age: integer;
   taille: real;
@@ -605,8 +605,8 @@ end.
 ### Exemple 3 : Calcul de moyenne
 
 ```pascal
-program CalculMoyenneIO;
-var
+program CalculMoyenneIO;  
+var  
   note1, note2, note3: real;
   moyenne: real;
   appreciation: string;
@@ -655,8 +655,8 @@ end.
 ### Exemple 4 : Conversion de température
 
 ```pascal
-program ConversionTemperatureIO;
-var
+program ConversionTemperatureIO;  
+var  
   celsius, fahrenheit: real;
   choix: integer;
 begin
@@ -702,8 +702,8 @@ end.
 ### Exemple 5 : Menu interactif
 
 ```pascal
-program MenuInteractif;
-var
+program MenuInteractif;  
+var  
   choix: integer;
   continuer: boolean;
 begin
@@ -795,10 +795,10 @@ end.
 Utilisez l'alignement et le formatage pour rendre l'affichage professionnel :
 
 ```pascal
-WriteLn('Nom':20, 'Prix':10, 'Quantité':10);
-WriteLn('--------------------':20, '----------':10, '----------':10);
-WriteLn('Article 1':20, 19.99:10:2, 5:10);
-WriteLn('Article 2':20, 25.50:10:2, 3:10);
+WriteLn('Nom':20, 'Prix':10, 'Quantité':10);  
+WriteLn('--------------------':20, '----------':10, '----------':10);  
+WriteLn('Article 1':20, 19.99:10:2, 5:10);  
+WriteLn('Article 2':20, 25.50:10:2, 3:10);  
 ```
 
 ### 4. Empêcher la fermeture immédiate
@@ -820,15 +820,15 @@ end.
 Utilisez des lignes vides et des séparateurs pour améliorer la lisibilité :
 
 ```pascal
-WriteLn('=========================');
-WriteLn('   MON PROGRAMME');
-WriteLn('=========================');
-WriteLn;
+WriteLn('=========================');  
+WriteLn('   MON PROGRAMME');  
+WriteLn('=========================');  
+WriteLn;  
 
 // ... contenu ...
 
-WriteLn;
-WriteLn('=========================');
+WriteLn;  
+WriteLn('=========================');  
 ```
 
 ## Erreurs courantes à éviter

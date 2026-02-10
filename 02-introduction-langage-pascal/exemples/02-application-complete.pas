@@ -14,8 +14,8 @@ var
   choix: integer;
   continuer: boolean;
 
-procedure AfficherMenu;
-begin
+procedure AfficherMenu;  
+begin  
   writeln('=== ', NomApplication, ' v', Version, ' ===');
   writeln('1. Option 1');
   writeln('2. Option 2');

@@ -3,8 +3,8 @@
   Description : Affichage de plusieurs valeurs sur une seule ligne
   Fichier source : 06-entrees-sorties-console.md
   ============================================================================ }
-program PlusieursSorties;
-var
+program PlusieursSorties;  
+var  
   prenom: string;
   nom: string;
   age: integer;

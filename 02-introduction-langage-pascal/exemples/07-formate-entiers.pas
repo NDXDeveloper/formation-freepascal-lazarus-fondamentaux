@@ -3,8 +3,8 @@
   Description : Formatage de nombres entiers avec largeur variable
   Fichier source : 07-formatage-sortie.md
   ============================================================================ }
-program FormateEntiers;
-var
+program FormateEntiers;  
+var  
   nombre: integer;
 begin
   nombre := 42;

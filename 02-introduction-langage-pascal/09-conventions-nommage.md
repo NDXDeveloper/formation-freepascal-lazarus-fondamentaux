@@ -65,10 +65,10 @@ Ces règles sont **imposées** par le langage Pascal :
 
 **Exemples valides :**
 ```pascal
-age
-nomUtilisateur
-prix_total
-compteur1
+age  
+nomUtilisateur  
+prix_total  
+compteur1  
 _temporaire
 MaClasse
 ```
@@ -76,10 +76,10 @@ MaClasse
 **Exemples invalides :**
 ```pascal
 1nombre          // Commence par un chiffre
-mon-nom          // Contient un tiret
-prix total       // Contient un espace
-montant€         // Caractère spécial
-var              // Mot-clé réservé
+mon-nom          // Contient un tiret  
+prix total       // Contient un espace  
+montant€         // Caractère spécial  
+var              // Mot-clé réservé  
 ```
 
 ### Insensibilité à la casse
@@ -276,16 +276,16 @@ const
 **Principe :** verbe + complément (car elles effectuent une action)
 
 ```pascal
-procedure AfficherMenu;
-procedure CalculerTotal;
-procedure InitialiserVariables;
-procedure SauvegarderDonnees;
-procedure ValiderSaisie;
+procedure AfficherMenu;  
+procedure CalculerTotal;  
+procedure InitialiserVariables;  
+procedure SauvegarderDonnees;  
+procedure ValiderSaisie;  
 
-function ObtenirNom: string;
-function CalculerMoyenne(notes: array of real): real;
-function EstPair(nombre: integer): boolean;
-function ConvertirEnMajuscules(texte: string): string;
+function ObtenirNom: string;  
+function CalculerMoyenne(notes: array of real): real;  
+function EstPair(nombre: integer): boolean;  
+function ConvertirEnMajuscules(texte: string): string;  
 ```
 
 **Bonnes pratiques :**
@@ -295,19 +295,19 @@ function ConvertirEnMajuscules(texte: string): string;
 
 **Mauvais exemples :**
 ```pascal
-procedure Faire;               // Trop vague
-procedure X;                   // Incompréhensible
-function Get: string;          // Get quoi ?
-function Calc: integer;        // Calcule quoi ?
+procedure Faire;               // Trop vague  
+procedure X;                   // Incompréhensible  
+function Get: string;          // Get quoi ?  
+function Calc: integer;        // Calcule quoi ?  
 ```
 
 **Bons exemples :**
 ```pascal
-procedure AfficherResultat;
-procedure EnregistrerClient;
-function CalculerPrixTTC(prixHT: real): real;
-function EstNombreValide(nombre: integer): boolean;
-function ObtenirDateDuJour: string;
+procedure AfficherResultat;  
+procedure EnregistrerClient;  
+function CalculerPrixTTC(prixHT: real): real;  
+function EstNombreValide(nombre: integer): boolean;  
+function ObtenirDateDuJour: string;  
 ```
 
 ### Types personnalisés
@@ -367,16 +367,16 @@ type
 **Principe :** même style que les variables, mais souvent avec préfixe pour éviter les conflits
 
 ```pascal
-procedure EnregistrerPersonne(leNom: string; lAge: integer);
-function CalculerRemise(lePrix: real; lePourcentage: real): real;
-procedure AfficherInfo(unNom: string; unAge: integer);
+procedure EnregistrerPersonne(leNom: string; lAge: integer);  
+function CalculerRemise(lePrix: real; lePourcentage: real): real;  
+procedure AfficherInfo(unNom: string; unAge: integer);  
 ```
 
 **Alternative :** utiliser un style légèrement différent
 
 ```pascal
-procedure EnregistrerPersonne(aNom: string; aAge: integer);
-function CalculerRemise(prixBase: real; tauxRemise: real): real;
+procedure EnregistrerPersonne(aNom: string; aAge: integer);  
+function CalculerRemise(prixBase: real; tauxRemise: real): real;  
 ```
 
 ### Variables locales vs globales
@@ -384,8 +384,8 @@ function CalculerRemise(prixBase: real; tauxRemise: real): real;
 **Variables locales :** style standard camelCase
 
 ```pascal
-procedure TraiterDonnees;
-var
+procedure TraiterDonnees;  
+var  
   compteur: integer;           // Variable locale
   total: real;                 // Variable locale
 begin
@@ -528,14 +528,14 @@ var
   moyenneGenerale: real;
   appreciation: string;
 
-function CalculerMoyenne(n1, n2, n3: real): real;
-begin
+function CalculerMoyenne(n1, n2, n3: real): real;  
+begin  
   { Result est la variable spéciale pour renvoyer la valeur d'une fonction }
   Result := (n1 + n2 + n3) / NOMBRE_NOTES;
 end;
 
-function ObtenirAppreciation(moyenne: real): string;
-begin
+function ObtenirAppreciation(moyenne: real): string;  
+begin  
   if moyenne >= 16 then
     Result := 'Très bien'
   else if moyenne >= 14 then
@@ -548,8 +548,8 @@ begin
     Result := 'Insuffisant';
 end;
 
-procedure AfficherResultat(moyenne: real; appre: string);
-begin
+procedure AfficherResultat(moyenne: real; appre: string);  
+begin  
   WriteLn('Moyenne : ', moyenne:0:2, '/20');
   WriteLn('Appréciation : ', appre);
 end;
@@ -599,27 +599,27 @@ var
 
 { var devant le paramètre = passage par référence : les modifications
   sont répercutées sur la variable de l'appelant }
-procedure InitialiserArticle(var unArticle: TArticle);
-begin
+procedure InitialiserArticle(var unArticle: TArticle);  
+begin  
   unArticle.code := 'ART001';
   unArticle.designation := 'Clavier USB';
   unArticle.prixHT := 25.00;
   unArticle.quantiteStock := 15;
 end;
 
-function CalculerPrixTTC(prixHT: real): real;
-begin
+function CalculerPrixTTC(prixHT: real): real;  
+begin  
   { Result est la variable spéciale pour renvoyer la valeur d'une fonction }
   Result := prixHT * (1 + TAUX_TVA / 100);
 end;
 
-function EstEnRuptureStock(quantite: integer): boolean;
-begin
+function EstEnRuptureStock(quantite: integer): boolean;  
+begin  
   Result := quantite < STOCK_MINIMUM;
 end;
 
-procedure AfficherArticle(unArticle: TArticle);
-begin
+procedure AfficherArticle(unArticle: TArticle);  
+begin  
   WriteLn('Code : ', unArticle.code);
   WriteLn('Désignation : ', unArticle.designation);
   WriteLn('Prix HT : ', unArticle.prixHT:0:2, ' €');

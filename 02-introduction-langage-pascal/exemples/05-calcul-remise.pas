@@ -3,8 +3,8 @@
   Description : Calcul de remise selon le montant d'achat avec des seuils
   Fichier source : 05-operateurs-arithmetiques-logiques.md
   ============================================================================ }
-program CalculRemise;
-const
+program CalculRemise;  
+const  
   SeuilRemise1 = 50.0;
   SeuilRemise2 = 100.0;
   TauxRemise1 = 5.0;   // 5%

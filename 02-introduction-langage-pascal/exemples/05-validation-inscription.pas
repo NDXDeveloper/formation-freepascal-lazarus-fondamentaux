@@ -4,8 +4,8 @@
                 (age, accord parental, residence)
   Fichier source : 05-operateurs-arithmetiques-logiques.md
   ============================================================================ }
-program ValidationInscription;
-var
+program ValidationInscription;  
+var  
   age: integer;
   aParent: boolean;
   estResident: boolean;

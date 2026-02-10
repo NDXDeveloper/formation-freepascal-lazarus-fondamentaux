@@ -4,8 +4,8 @@
                 affichage d'un recapitulatif formate
   Fichier source : 06-entrees-sorties-console.md
   ============================================================================ }
-program FicheIdentite;
-var
+program FicheIdentite;  
+var  
   nom, prenom, ville: string;
   age: integer;
   taille: real;

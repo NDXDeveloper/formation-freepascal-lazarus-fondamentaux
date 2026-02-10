@@ -3,8 +3,8 @@
   Description : Affichage direct du resultat de calculs dans WriteLn
   Fichier source : 06-entrees-sorties-console.md
   ============================================================================ }
-program AfficherCalculs;
-var
+program AfficherCalculs;  
+var  
   a, b: integer;
 begin
   a := 10;

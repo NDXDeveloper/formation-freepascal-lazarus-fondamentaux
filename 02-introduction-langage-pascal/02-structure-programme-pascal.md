@@ -76,8 +76,8 @@ var
   prix: real;
 
 // Section des procédures et fonctions
-procedure Afficher;
-begin
+procedure Afficher;  
+begin  
   writeln('Fonction personnalisée');
 end;
 
@@ -146,8 +146,8 @@ end.
 Le point final apparaît **une seule fois** dans tout le programme : après le dernier `end` du bloc principal.
 
 ```pascal
-program Test;
-begin
+program Test;  
+begin  
   writeln('Bonjour');
 end.   // Le point est obligatoire ici !
 ```
@@ -159,8 +159,8 @@ Oublier ce point est une erreur fréquente chez les débutants !
 ### Exemple 1 : Le strict minimum
 
 ```pascal
-program Minimum;
-begin
+program Minimum;  
+begin  
   writeln('Ceci est un programme minimal');
 end.
 ```
@@ -170,8 +170,8 @@ Ce programme affiche simplement un message. C'est la structure la plus simple po
 ### Exemple 2 : Avec des variables
 
 ```pascal
-program AvecVariables;
-var
+program AvecVariables;  
+var  
   prenom: string;
   age: integer;
 begin
@@ -187,8 +187,8 @@ Ici, nous déclarons deux variables dans la section `var`, puis nous les utiliso
 ### Exemple 3 : Avec constante et calcul
 
 ```pascal
-program Calcul;
-const
+program Calcul;  
+const  
   PI = 3.14159;
 var
   rayon: real;
@@ -216,8 +216,8 @@ var
   choix: integer;
   continuer: boolean;
 
-procedure AfficherMenu;
-begin
+procedure AfficherMenu;  
+begin  
   writeln('=== ', NomApplication, ' v', Version, ' ===');
   writeln('1. Option 1');
   writeln('2. Option 2');
@@ -267,8 +267,8 @@ Bien que Pascal ne l'impose pas strictement, voici les conventions recommandées
 
 **Indentation :**
 ```pascal
-program BonStyle;
-var
+program BonStyle;  
+var  
   x: integer;
 begin
   x := 10;
@@ -288,15 +288,15 @@ end.
 
 **Mauvais style :**
 ```pascal
-program MauvaisStyle;
-var x:integer;y:integer;
-begin x:=10;y:=20;writeln(x+y);end.
+program MauvaisStyle;  
+var x:integer;y:integer;  
+begin x:=10;y:=20;writeln(x+y);end.  
 ```
 
 **Bon style :**
 ```pascal
-program BonStyle;
-var
+program BonStyle;  
+var  
   premierNombre: integer;
   deuxiemeNombre: integer;
   somme: integer;
@@ -314,8 +314,8 @@ Les deux programmes font la même chose, mais le second est infiniment plus faci
 
 ### 1. Oublier le point final
 ```pascal
-program Erreur;
-begin
+program Erreur;  
+begin  
   writeln('Bonjour');
 end     // ERREUR : manque le point !
 ```
@@ -340,8 +340,8 @@ end.
 
 ### 4. Mal placer les déclarations
 ```pascal
-program Erreur;
-begin
+program Erreur;  
+begin  
   var x: integer;   // ERREUR : var doit être avant begin
   x := 10;
 end.
@@ -365,8 +365,8 @@ var
   // Variables
 
 // 2. Procédures et fonctions (optionnelles)
-procedure MaProcedure;
-begin
+procedure MaProcedure;  
+begin  
   // Code de la procédure
 end;
 

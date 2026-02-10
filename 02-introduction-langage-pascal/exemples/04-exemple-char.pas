@@ -4,8 +4,8 @@
                 (caractere unique)
   Fichier source : 04-types-donnees-primitifs.md
   ============================================================================ }
-program ExempleChar;
-var
+program ExempleChar;  
+var  
   initiale: char;
   note: char;
   symbole: char;

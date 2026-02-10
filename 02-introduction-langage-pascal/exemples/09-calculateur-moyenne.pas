@@ -17,14 +17,14 @@ var
   moyenneGenerale: real;
   appreciation: string;
 
-function CalculerMoyenne(n1, n2, n3: real): real;
-begin
+function CalculerMoyenne(n1, n2, n3: real): real;  
+begin  
   { Result est la variable spéciale pour renvoyer la valeur d'une fonction }
   Result := (n1 + n2 + n3) / NOMBRE_NOTES;
 end;
 
-function ObtenirAppreciation(moyenne: real): string;
-begin
+function ObtenirAppreciation(moyenne: real): string;  
+begin  
   if moyenne >= 16 then
     Result := 'Très bien'
   else if moyenne >= 14 then
@@ -37,8 +37,8 @@ begin
     Result := 'Insuffisant';
 end;
 
-procedure AfficherResultat(moyenne: real; appre: string);
-begin
+procedure AfficherResultat(moyenne: real; appre: string);  
+begin  
   WriteLn('Moyenne : ', moyenne:0:2, '/20');
   WriteLn('Appréciation : ', appre);
 end;

@@ -3,8 +3,8 @@
   Description : Formatage de prix avec calcul HT, TVA et TTC
   Fichier source : 07-formatage-sortie.md
   ============================================================================ }
-program FormatPrix;
-var
+program FormatPrix;  
+var  
   prixHT, tva, prixTTC: real;
 begin
   prixHT := 100.0;

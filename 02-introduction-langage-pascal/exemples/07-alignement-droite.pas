@@ -3,8 +3,8 @@
   Description : Alignement de chaines a droite avec :largeur positive
   Fichier source : 07-formatage-sortie.md
   ============================================================================ }
-program AlignementDroite;
-var
+program AlignementDroite;  
+var  
   nom: string;
 begin
   nom := 'Alice';

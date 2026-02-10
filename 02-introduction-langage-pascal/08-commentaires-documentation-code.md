@@ -221,8 +221,8 @@ end.
 // Algorithme de tri à bulles
 // Principe : on compare chaque paire d'éléments adjacents
 // et on les échange s'ils sont dans le mauvais ordre
-for i := 1 to n - 1 do
-begin
+for i := 1 to n - 1 do  
+begin  
   for j := 1 to n - i do
   begin
     if tableau[j] > tableau[j + 1] then
@@ -625,8 +625,8 @@ implementation
 
   Note : Pour de gros tableaux, préférer QuickSort
 *)
-procedure TrierTableau(var t: TTableauEntiers);
-var
+procedure TrierTableau(var t: TTableauEntiers);  
+var  
   i, j, temp: integer;
   n: integer;
 begin

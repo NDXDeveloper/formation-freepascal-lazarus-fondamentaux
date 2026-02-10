@@ -4,8 +4,8 @@
                 (comparaisons affectees a des variables boolean)
   Fichier source : 04-types-donnees-primitifs.md
   ============================================================================ }
-program ValidationAge;
-var
+program ValidationAge;  
+var  
   age: integer;
   peutConduire: boolean;
   peutVoter: boolean;

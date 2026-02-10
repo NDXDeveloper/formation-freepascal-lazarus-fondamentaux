@@ -3,8 +3,8 @@
   Description : Demonstration de la difference entre Write et WriteLn
   Fichier source : 06-entrees-sorties-console.md
   ============================================================================ }
-program DifferenceWriteWriteLn;
-begin
+program DifferenceWriteWriteLn;  
+begin  
   Write('A');
   Write('B');
   Write('C');

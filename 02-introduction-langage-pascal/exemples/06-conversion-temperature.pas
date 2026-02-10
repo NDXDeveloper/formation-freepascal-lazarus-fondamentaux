@@ -3,8 +3,8 @@
   Description : Conversion bidirectionnelle Celsius/Fahrenheit avec menu
   Fichier source : 06-entrees-sorties-console.md
   ============================================================================ }
-program ConversionTemperatureIO;
-var
+program ConversionTemperatureIO;  
+var  
   celsius, fahrenheit: real;
   choix: integer;
 begin

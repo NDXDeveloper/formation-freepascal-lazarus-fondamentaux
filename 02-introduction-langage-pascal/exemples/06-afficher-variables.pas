@@ -3,8 +3,8 @@
   Description : Affichage du contenu de variables de differents types
   Fichier source : 06-entrees-sorties-console.md
   ============================================================================ }
-program AfficherVariables;
-var
+program AfficherVariables;  
+var  
   nom: string;
   age: integer;
   taille: real;

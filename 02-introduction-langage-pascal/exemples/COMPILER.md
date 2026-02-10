@@ -37,8 +37,8 @@ Ceci est un programme minimal
 
 **Sortie attendue `02-avec-variables` :**
 ```
-Bonjour Alice
-Vous avez 25 ans
+Bonjour Alice  
+Vous avez 25 ans  
 ```
 
 **Sortie attendue `02-calcul` :**
@@ -52,8 +52,8 @@ Surface du cercle : 78.54
 1. Option 1
 2. Option 2
 0. Quitter
-Votre choix : Vous avez choisi l'option : 0
-Fin du programme
+Votre choix : Vous avez choisi l'option : 0  
+Fin du programme  
 ```
 
 ### Section 2.3 : Variables et constantes (6 fichiers)
@@ -71,31 +71,31 @@ Fin du programme
 ```
 Prénom : Sophie
 Âge : 30 ans
-Taille : 1.68 m
-Adulte : TRUE
+Taille : 1.68 m  
+Adulte : TRUE  
 ```
 
 **Sortie attendue `03-calcul-surface` :**
 ```
 === Cercle ===
-Rayon : 7.50 cm
-Circonférence : 47.12 cm
-Surface : 176.71 cm²
+Rayon : 7.50 cm  
+Circonférence : 47.12 cm  
+Surface : 176.71 cm²  
 ```
 
 **Sortie attendue `03-calcul-prix-ttc` :**
 ```
-Prix HT : 100.00 €
-TVA (20%) : 20.00 €
-Prix TTC : 120.00 €
+Prix HT : 100.00 €  
+TVA (20%) : 20.00 €  
+Prix TTC : 120.00 €  
 ```
 
 **Sortie attendue `03-fiche-personnelle` :**
 ```
 === FICHE PERSONNELLE ===
-Nom : Dupont
-Prénom : Marie
-Année de naissance : 1990
+Nom : Dupont  
+Prénom : Marie  
+Année de naissance : 1990  
 Âge : 34 ans
 Ville : Paris
 ```
@@ -124,30 +124,30 @@ Conversion Celsius vers Fahrenheit
 **Sortie attendue `04-exemple-integer` :**
 ```
 Âge : 25
-Nombre d'élèves : 30
-Température : -5 °C
-Année : 2024
+Nombre d'élèves : 30  
+Température : -5 °C  
+Année : 2024  
 ```
 
 **Sortie attendue `04-calcul-moyenne` :**
 ```
-Note 1 : 15.5
-Note 2 : 12.0
-Note 3 : 14.5
-Moyenne : 14.00
-A réussi : TRUE
+Note 1 : 15.5  
+Note 2 : 12.0  
+Note 3 : 14.5  
+Moyenne : 14.00  
+A réussi : TRUE  
 ```
 
 **Sortie attendue `04-info-produit` :**
 ```
 === FICHE PRODUIT ===
-Produit : Clavier sans fil
-Catégorie : I
-Prix HT : 35.50 €
-Prix TTC : 42.60 €
-Quantité : 5
-En stock : TRUE
-Montant total : 213.00 €
+Produit : Clavier sans fil  
+Catégorie : I  
+Prix HT : 35.50 €  
+Prix TTC : 42.60 €  
+Quantité : 5  
+En stock : TRUE  
+Montant total : 213.00 €  
 ```
 
 ### Section 2.5 : Opérateurs (7 fichiers)
@@ -165,10 +165,10 @@ Montant total : 213.00 €
 **Sortie attendue `05-comparaisons-age` :**
 ```
 Âge : 25
-Enfant : FALSE
-Adolescent : FALSE
-Adulte : TRUE
-Senior : FALSE
+Enfant : FALSE  
+Adolescent : FALSE  
+Adulte : TRUE  
+Senior : FALSE  
 ```
 
 **Sortie attendue `05-expressions-complexes` :**
@@ -179,11 +179,11 @@ Résultat : 28
 **Sortie attendue `05-test-divisibilite` :**
 ```
 === TEST DE DIVISIBILITÉ ===
-Nombre : 30
-Divisible par 2 : TRUE
-Divisible par 3 : TRUE
-Divisible par 5 : TRUE
-Divisible par 10 : TRUE
+Nombre : 30  
+Divisible par 2 : TRUE  
+Divisible par 3 : TRUE  
+Divisible par 5 : TRUE  
+Divisible par 10 : TRUE  
 
 Vérification : TRUE
 ```
@@ -211,8 +211,8 @@ Bonjour le monde
 
 **Sortie attendue `06-difference-write-writeln` :**
 ```
-ABCD
-EF
+ABCD  
+EF  
 ```
 
 **Sortie attendue `06-formatage-real` :**
@@ -247,9 +247,9 @@ EF
 ```
 === CALCULATRICE ===
 
-Premier nombre : 15
-Opérateur (+, -, *, /) : +
-Deuxième nombre : 4
+Premier nombre : 15  
+Opérateur (+, -, *, /) : +  
+Deuxième nombre : 4  
 
 Résultat : 15.00 + 4.00 = 19.00
 ```
@@ -258,17 +258,17 @@ Résultat : 15.00 + 4.00 = 19.00
 ```
 === CALCUL DE MOYENNE ===
 
-Note 1 : 14
-Note 2 : 16
-Note 3 : 12
+Note 1 : 14  
+Note 2 : 16  
+Note 3 : 12  
 
 --- RÉSULTAT ---
-Note 1   : 14.00
-Note 2   : 16.00
-Note 3   : 12.00
+Note 1   : 14.00  
+Note 2   : 16.00  
+Note 3   : 12.00  
 ----------------
-Moyenne  : 14.00
-Appréciation : Bien
+Moyenne  : 14.00  
+Appréciation : Bien  
 ```
 
 ### Section 2.7 : Formatage de sortie (19 fichiers)
@@ -329,8 +329,8 @@ Solde : - 150.50 €
 
 **Sortie attendue `07-notes-formatees` :**
 ```
-Note : 15.5/20
-Appréciation : Bien            ***
+Note : 15.5/20  
+Appréciation : Bien            ***  
 ```
 
 ### Section 2.9 : Conventions de nommage (2 fichiers)
@@ -344,22 +344,22 @@ Appréciation : Bien            ***
 
 **Sortie attendue `09-gestion-articles` :**
 ```
-Code : ART001
-Désignation : Clavier USB
-Prix HT : 25.00 €
-Prix TTC : 30.00 €
-Stock : 15
+Code : ART001  
+Désignation : Clavier USB  
+Prix HT : 25.00 €  
+Prix TTC : 30.00 €  
+Stock : 15  
 ```
 
 **Exemple d'exécution `09-calculateur-moyenne` (entrée : 14, 16, 18) :**
 ```
 === CALCUL DE MOYENNE ===
-Note 1 : 14
-Note 2 : 16
-Note 3 : 18
+Note 1 : 14  
+Note 2 : 16  
+Note 3 : 18  
 
-Moyenne : 16.00/20
-Appréciation : Très bien
+Moyenne : 16.00/20  
+Appréciation : Très bien  
 ```
 
 ## Nettoyage
@@ -367,8 +367,8 @@ Appréciation : Très bien
 Pour supprimer les fichiers compilés :
 
 ```bash
-rm -f *.o *.ppu
-for f in *.pas; do rm -f "${f%.pas}"; done
+rm -f *.o *.ppu  
+for f in *.pas; do rm -f "${f%.pas}"; done  
 ```
 
 ## Résumé

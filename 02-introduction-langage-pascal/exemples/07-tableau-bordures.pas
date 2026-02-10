@@ -3,8 +3,8 @@
   Description : Tableau avec bordures de caracteres (+, -, |)
   Fichier source : 07-formatage-sortie.md
   ============================================================================ }
-program TableauBordures;
-begin
+program TableauBordures;  
+begin  
   WriteLn('+', '-----------------':17, '+', '---------':9, '+', '---------':9, '+');
   WriteLn('|', 'Article':17, '|', 'Prix':9, '|', 'Qté':9, '|');
   WriteLn('+', '-----------------':17, '+', '---------':9, '+', '---------':9, '+');

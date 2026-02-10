@@ -4,8 +4,8 @@
                 priorite des operateurs
   Fichier source : 05-operateurs-arithmetiques-logiques.md
   ============================================================================ }
-program ExpressionsComplexes;
-var
+program ExpressionsComplexes;  
+var  
   a, b, c, resultat: integer;
 begin
   a := 10;

@@ -18,8 +18,8 @@ En programmation, une variable est un **espace mémoire nommé** qui peut stocke
 Sans variables, nous serions obligés d'écrire directement les valeurs dans notre code :
 
 ```pascal
-writeln('Bonjour Alice');
-writeln('Alice a 25 ans');
+writeln('Bonjour Alice');  
+writeln('Alice a 25 ans');  
 ```
 
 Si nous voulons changer le nom, nous devons modifier le code à plusieurs endroits. Avec des variables :
@@ -101,22 +101,22 @@ Un nom de variable en Pascal doit respecter ces règles :
 
 **Noms valides :**
 ```pascal
-age
-prenom
-prix_total
-montantHT
-temperature_moyenne
-compteur1
+age  
+prenom  
+prix_total  
+montantHT  
+temperature_moyenne  
+compteur1  
 _temporaire
 ```
 
 **Noms invalides :**
 ```pascal
 1nombre        // Commence par un chiffre
-mon age        // Contient un espace
-prix-total     // Contient un tiret
-montant€       // Contient un caractère spécial
-begin          // Mot-clé réservé
+mon age        // Contient un espace  
+prix-total     // Contient un tiret  
+montant€       // Contient un caractère spécial  
+begin          // Mot-clé réservé  
 ```
 
 ### Conventions recommandées (bonnes pratiques)
@@ -181,8 +181,8 @@ end.
 ### Exemples d'affectations
 
 ```pascal
-program ExemplesAffectation;
-var
+program ExemplesAffectation;  
+var  
   prenom: string;
   age: integer;
   taille: real;

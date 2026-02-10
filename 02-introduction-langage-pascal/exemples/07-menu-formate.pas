@@ -3,8 +3,8 @@
   Description : Menu formate avec caracteres Unicode (bordures)
   Fichier source : 07-formatage-sortie.md
   ============================================================================ }
-program MenuFormate;
-begin
+program MenuFormate;  
+begin  
   WriteLn;
   WriteLn('+================================+');
   WriteLn('|      MENU PRINCIPAL            |');

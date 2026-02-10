@@ -4,8 +4,8 @@
                 operateurs logiques (and)
   Fichier source : 05-operateurs-arithmetiques-logiques.md
   ============================================================================ }
-program ComparaisonsAge;
-var
+program ComparaisonsAge;  
+var  
   age: integer;
   estEnfant: boolean;
   estAdolescent: boolean;

@@ -4,8 +4,8 @@
                 (string, real, integer, boolean, char) avec calcul TTC
   Fichier source : 04-types-donnees-primitifs.md
   ============================================================================ }
-program InfoProduit;
-const
+program InfoProduit;  
+const  
   TauxTVA = 20.0;  // const = valeur fixe, non modifiable
 var
   nomProduit: string;

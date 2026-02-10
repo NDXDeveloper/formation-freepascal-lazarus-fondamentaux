@@ -56,8 +56,8 @@ C'est largement suffisant pour la plupart des usages quotidiens (compter des per
 ### Déclaration et utilisation
 
 ```pascal
-program ExempleInteger;
-var
+program ExempleInteger;  
+var  
   age: integer;
   nombreEleves: integer;
   temperature: integer;
@@ -149,8 +149,8 @@ end.
 ### Déclaration et utilisation
 
 ```pascal
-program ExempleReal;
-var
+program ExempleReal;  
+var  
   prix: real;
   taille: real;
   temperature: real;
@@ -266,8 +266,8 @@ C'est comme un interrupteur : allumé ou éteint, il n'y a pas d'état interméd
 ### Déclaration et utilisation
 
 ```pascal
-program ExempleBoolean;
-var
+program ExempleBoolean;  
+var  
   estMajeur: boolean;
   aReussi: boolean;
   estConnecte: boolean;
@@ -351,8 +351,8 @@ end.
 ### Utilisation pratique
 
 ```pascal
-program ValidationAge;
-var
+program ValidationAge;  
+var  
   age: integer;
   peutConduire: boolean;
   peutVoter: boolean;
@@ -389,8 +389,8 @@ Le type `char` stocke **un seul caractère** : une lettre, un chiffre, un symbol
 ### Déclaration et utilisation
 
 ```pascal
-program ExempleChar;
-var
+program ExempleChar;  
+var  
   initiale: char;
   note: char;
   symbole: char;
@@ -574,8 +574,8 @@ end.
 ### Exemple 1 : Calcul de moyenne
 
 ```pascal
-program CalculMoyenne;
-var
+program CalculMoyenne;  
+var  
   note1, note2, note3: real;
   moyenne: real;
   aReussi: boolean;
@@ -598,8 +598,8 @@ end.
 ### Exemple 2 : Informations de produit
 
 ```pascal
-program InfoProduit;
-const
+program InfoProduit;  
+const  
   TauxTVA = 20.0;  // const = valeur fixe, non modifiable
 var
   nomProduit: string;
@@ -633,8 +633,8 @@ end.
 ### Exemple 3 : Validation d'âge
 
 ```pascal
-program ValidationAgeComplete;
-var
+program ValidationAgeComplete;  
+var  
   nom: string;
   age: integer;
   estMajeur: boolean;

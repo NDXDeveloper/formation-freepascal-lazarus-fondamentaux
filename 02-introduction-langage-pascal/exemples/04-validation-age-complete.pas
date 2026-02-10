@@ -4,8 +4,8 @@
                 initiale (char), nom (string), age (integer), booleens
   Fichier source : 04-types-donnees-primitifs.md
   ============================================================================ }
-program ValidationAgeComplete;
-var
+program ValidationAgeComplete;  
+var  
   nom: string;
   age: integer;
   estMajeur: boolean;

@@ -3,8 +3,8 @@
   Description : Utilisation de WriteLn (avec retour a la ligne automatique)
   Fichier source : 06-entrees-sorties-console.md
   ============================================================================ }
-program ExempleWriteLn;
-begin
+program ExempleWriteLn;  
+begin  
   WriteLn('Première ligne');
   WriteLn('Deuxième ligne');
   WriteLn('Troisième ligne');

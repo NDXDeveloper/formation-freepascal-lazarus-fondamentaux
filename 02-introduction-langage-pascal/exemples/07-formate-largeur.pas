@@ -3,8 +3,8 @@
   Description : Controle de la largeur d'affichage (alignement a droite)
   Fichier source : 07-formatage-sortie.md
   ============================================================================ }
-program FormateLargeur;
-var
+program FormateLargeur;  
+var  
   prix: real;
 begin
   prix := 19.99;

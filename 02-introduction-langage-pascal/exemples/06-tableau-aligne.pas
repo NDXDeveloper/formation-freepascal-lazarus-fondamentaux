@@ -3,8 +3,8 @@
   Description : Tableau avec colonnes alignees grace au formatage
   Fichier source : 06-entrees-sorties-console.md
   ============================================================================ }
-program TableauAligne;
-begin
+program TableauAligne;  
+begin  
   // :N fonctionne aussi sur les litteraux (strings et entiers), pas seulement les variables
   WriteLn('Nom':15, 'Age':5, 'Ville':15);
   WriteLn('---------------':15, '-----':5, '---------------':15);

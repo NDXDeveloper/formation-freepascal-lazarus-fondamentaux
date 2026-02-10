@@ -4,8 +4,8 @@
                 sous-total HT, TVA et total TTC
   Fichier source : 07-formatage-sortie.md
   ============================================================================ }
-program FactureComplete;
-const
+program FactureComplete;  
+const  
   TauxTVA = 20.0;
   LargeurNom = 25;
   LargeurQte = 8;

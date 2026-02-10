@@ -4,8 +4,8 @@
                 d'un solde bancaire
   Fichier source : 07-formatage-sortie.md
   ============================================================================ }
-program FormatConditionnel;
-var
+program FormatConditionnel;  
+var  
   solde: real;
   symbole: string;
 begin

@@ -4,8 +4,8 @@
                 de reussite avec un booleen
   Fichier source : 04-types-donnees-primitifs.md
   ============================================================================ }
-program CalculMoyenne;
-var
+program CalculMoyenne;  
+var  
   note1, note2, note3: real;
   moyenne: real;
   aReussi: boolean;

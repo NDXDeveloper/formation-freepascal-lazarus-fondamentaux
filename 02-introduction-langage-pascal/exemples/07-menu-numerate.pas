@@ -3,8 +3,8 @@
   Description : Menu avec numerotation alignee grace a une boucle for
   Fichier source : 07-formatage-sortie.md
   ============================================================================ }
-program MenuNumerate;
-var
+program MenuNumerate;  
+var  
   i: integer;
 begin
   WriteLn;

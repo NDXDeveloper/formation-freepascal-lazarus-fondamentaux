@@ -3,8 +3,8 @@
   Description : Alignement de chaines a gauche avec :largeur negative
   Fichier source : 07-formatage-sortie.md
   ============================================================================ }
-program AlignementGauche;
-var
+program AlignementGauche;  
+var  
   nom: string;
 begin
   nom := 'Alice';

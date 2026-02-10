@@ -3,8 +3,8 @@
   Description : Evaluation de conditions logiques complexes avec and/or
   Fichier source : 05-operateurs-arithmetiques-logiques.md
   ============================================================================ }
-program ConditionsComplexes;
-var
+program ConditionsComplexes;  
+var  
   age: integer;
   aPermis: boolean;
   aVoiture: boolean;

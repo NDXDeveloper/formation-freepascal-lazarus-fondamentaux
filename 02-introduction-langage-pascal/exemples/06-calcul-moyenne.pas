@@ -4,8 +4,8 @@
                 automatique (Tres bien, Bien, Assez bien, etc.)
   Fichier source : 06-entrees-sorties-console.md
   ============================================================================ }
-program CalculMoyenneIO;
-var
+program CalculMoyenneIO;  
+var  
   note1, note2, note3: real;
   moyenne: real;
   appreciation: string;

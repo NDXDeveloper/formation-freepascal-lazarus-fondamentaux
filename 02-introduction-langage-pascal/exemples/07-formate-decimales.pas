@@ -3,8 +3,8 @@
   Description : Controle du nombre de decimales affichees (syntaxe :0:N)
   Fichier source : 07-formatage-sortie.md
   ============================================================================ }
-program FormateDecimales;
-var
+program FormateDecimales;  
+var  
   pi: real;
 begin
   pi := 3.14159265358979;

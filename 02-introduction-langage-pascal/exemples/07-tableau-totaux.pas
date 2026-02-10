@@ -3,8 +3,8 @@
   Description : Facture avec sous-totaux et ligne de separation
   Fichier source : 07-formatage-sortie.md
   ============================================================================ }
-program TableauTotaux;
-const
+program TableauTotaux;  
+const  
   Separateur = '================================';
 var
   prix1, prix2, prix3, total: real;

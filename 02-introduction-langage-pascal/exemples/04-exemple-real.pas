@@ -4,8 +4,8 @@
                 (nombres a virgule)
   Fichier source : 04-types-donnees-primitifs.md
   ============================================================================ }
-program ExempleReal;
-var
+program ExempleReal;  
+var  
   prix: real;
   taille: real;
   temperature: real;
