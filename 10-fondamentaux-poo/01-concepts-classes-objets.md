@@ -18,13 +18,13 @@ var
   CouleurVoiture: string;
   VitesseVoiture: Integer;
 
-procedure Accelerer(var Vitesse: Integer; Increment: Integer);
-begin
+procedure Accelerer(var Vitesse: Integer; Increment: Integer);  
+begin  
   Vitesse := Vitesse + Increment;
 end;
 
-procedure Freiner(var Vitesse: Integer; Decrement: Integer);
-begin
+procedure Freiner(var Vitesse: Integer; Decrement: Integer);  
+begin  
   Vitesse := Vitesse - Decrement;
   if Vitesse < 0 then
     Vitesse := 0;
@@ -169,18 +169,18 @@ type
     procedure Afficher;
   end;
 
-procedure TCompteur.Incrementer;
-begin
+procedure TCompteur.Incrementer;  
+begin  
   FValeur := FValeur + 1;
 end;
 
-procedure TCompteur.Decrementer;
-begin
+procedure TCompteur.Decrementer;  
+begin  
   FValeur := FValeur - 1;
 end;
 
-procedure TCompteur.Afficher;
-begin
+procedure TCompteur.Afficher;  
+begin  
   WriteLn('Valeur du compteur : ', FValeur);
 end;
 

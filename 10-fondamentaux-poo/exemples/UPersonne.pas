@@ -29,29 +29,29 @@ type
 implementation
 
 // Implémentation dans la section implementation
-procedure TPersonne.DefinirNom(const Valeur: string);
-begin
+procedure TPersonne.DefinirNom(const Valeur: string);  
+begin  
   FNom := Valeur;
 end;
 
-procedure TPersonne.DefinirAge(Valeur: Integer);
-begin
+procedure TPersonne.DefinirAge(Valeur: Integer);  
+begin  
   if (Valeur >= 0) and (Valeur <= 150) then
     FAge := Valeur;
 end;
 
-function TPersonne.ObtenirNom: string;
-begin
+function TPersonne.ObtenirNom: string;  
+begin  
   Result := FNom;
 end;
 
-function TPersonne.ObtenirAge: Integer;
-begin
+function TPersonne.ObtenirAge: Integer;  
+begin  
   Result := FAge;
 end;
 
-procedure TPersonne.Afficher;
-begin
+procedure TPersonne.Afficher;  
+begin  
   WriteLn('Nom : ', FNom, ', Age : ', FAge, ' ans');
 end;
 

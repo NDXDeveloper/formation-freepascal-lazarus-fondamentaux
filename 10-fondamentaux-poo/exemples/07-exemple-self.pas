@@ -36,35 +36,35 @@ type
 
 // === IMPLÉMENTATION ===
 
-constructor TPoint.Create(X, Y: Real);
-begin
+constructor TPoint.Create(X, Y: Real);  
+begin  
   inherited Create;
   Self.FX := X;  // Self explicite pour la clarté
   Self.FY := Y;
   WriteLn('Point créé : (', X:0:2, ', ', Y:0:2, ')');
 end;
 
-function TPoint.Deplacer(DeltaX, DeltaY: Real): TPoint;
-begin
+function TPoint.Deplacer(DeltaX, DeltaY: Real): TPoint;  
+begin  
   FX := FX + DeltaX;
   FY := FY + DeltaY;
   Result := Self;  // Retourne l'objet pour permettre le chaînage
 end;
 
-function TPoint.DefinirX(X: Real): TPoint;
-begin
+function TPoint.DefinirX(X: Real): TPoint;  
+begin  
   Self.FX := X;
   Result := Self;
 end;
 
-function TPoint.DefinirY(Y: Real): TPoint;
-begin
+function TPoint.DefinirY(Y: Real): TPoint;  
+begin  
   Self.FY := Y;
   Result := Self;
 end;
 
-function TPoint.DistanceVers(Autre: TPoint): Real;
-var
+function TPoint.DistanceVers(Autre: TPoint): Real;  
+var  
   DX, DY: Real;
 begin
   // Self représente le point actuel, Autre est le point de comparaison
@@ -73,8 +73,8 @@ begin
   Result := Sqrt(DX * DX + DY * DY);
 end;
 
-function TPoint.EstPlusProcheQue(Point1, Point2: TPoint): Boolean;
-var
+function TPoint.EstPlusProcheQue(Point1, Point2: TPoint): Boolean;  
+var  
   Distance1, Distance2: Real;
 begin
   // Self est le point de référence
@@ -83,25 +83,25 @@ begin
   Result := Distance1 < Distance2;
 end;
 
-function TPoint.EstALOrigine: Boolean;
-begin
+function TPoint.EstALOrigine: Boolean;  
+begin  
   Result := (Self.FX = 0) and (Self.FY = 0);
 end;
 
-function TPoint.Cloner: TPoint;
-begin
+function TPoint.Cloner: TPoint;  
+begin  
   // Crée une copie de Self
   Result := TPoint.Create(Self.FX, Self.FY);
 end;
 
-procedure TPoint.Afficher;
-begin
+procedure TPoint.Afficher;  
+begin  
   WriteLn('Point : (', FX:0:2, ', ', FY:0:2, ')');
   WriteLn('Adresse mémoire : ', IntToHex(PtrUInt(Self), 16));
 end;
 
-procedure TPoint.CopierVers(Destination: TPoint);
-begin
+procedure TPoint.CopierVers(Destination: TPoint);  
+begin  
   // Copie les coordonnées de Self vers Destination
   Destination.FX := Self.FX;
   Destination.FY := Self.FY;

@@ -24,8 +24,8 @@ type
     procedure Afficher;
   end;
 
-procedure TPersonne.Afficher;
-begin
+procedure TPersonne.Afficher;  
+begin  
   // Ces deux lignes sont équivalentes :
   WriteLn('Nom : ', FNom);        // Accès implicite
   WriteLn('Nom : ', Self.FNom);   // Accès explicite avec Self
@@ -37,8 +37,8 @@ end;
 Parfois, il est nécessaire ou utile d'utiliser `Self` explicitement :
 
 ```pascal
-procedure TPersonne.SePresenter;
-begin
+procedure TPersonne.SePresenter;  
+begin  
   WriteLn('Je suis ', Self.FNom);  // Self clarifie qu'on parle de cet objet
 end;
 ```
@@ -59,14 +59,14 @@ type
   end;
 
 // ✗ PROBLÈME sans Self
-procedure TPersonne.DefinirNom(Nom: string);
-begin
+procedure TPersonne.DefinirNom(Nom: string);  
+begin  
   Nom := Nom;  // Confusion ! Assigne le paramètre à lui-même
 end;
 
 // ✓ SOLUTION avec Self
-procedure TPersonne.DefinirNom(Nom: string);
-begin
+procedure TPersonne.DefinirNom(Nom: string);  
+begin  
   Self.FNom := Nom;  // Clair : attribut de l'objet = paramètre
   // Ou mieux, utiliser la convention F :
   FNom := Nom;  // Pas d'ambiguïté si on suit la convention
@@ -89,8 +89,8 @@ type
     procedure AjouterAListe(Liste: TList);
   end;
 
-procedure TPersonne.AjouterAListe(Liste: TList);
-begin
+procedure TPersonne.AjouterAListe(Liste: TList);  
+begin  
   Liste.Add(Self);  // Ajoute cet objet (Self) à la liste
 end;
 
@@ -124,20 +124,20 @@ type
     function ObtenirTexte: string;
   end;
 
-function TConstructeurChaine.Ajouter(const S: string): TConstructeurChaine;
-begin
+function TConstructeurChaine.Ajouter(const S: string): TConstructeurChaine;  
+begin  
   FTexte := FTexte + S;
   Result := Self;  // Retourne l'objet lui-même
 end;
 
-function TConstructeurChaine.AjouterLigne(const S: string): TConstructeurChaine;
-begin
+function TConstructeurChaine.AjouterLigne(const S: string): TConstructeurChaine;  
+begin  
   FTexte := FTexte + S + sLineBreak;
   Result := Self;  // Retourne l'objet lui-même
 end;
 
-function TConstructeurChaine.ObtenirTexte: string;
-begin
+function TConstructeurChaine.ObtenirTexte: string;  
+begin  
   Result := FTexte;
 end;
 
@@ -177,14 +177,14 @@ type
     function EstIdentique(Autre: TPersonne): Boolean;
   end;
 
-function TPersonne.EstPlusAgeeQue(Autre: TPersonne): Boolean;
-begin
+function TPersonne.EstPlusAgeeQue(Autre: TPersonne): Boolean;  
+begin  
   Result := Self.FAge > Autre.FAge;
   // Ou simplement : Result := FAge > Autre.FAge;
 end;
 
-function TPersonne.EstIdentique(Autre: TPersonne): Boolean;
-begin
+function TPersonne.EstIdentique(Autre: TPersonne): Boolean;  
+begin  
   Result := Self = Autre;  // Compare les références
 end;
 
@@ -223,16 +223,16 @@ type
     constructor Create;
   end;
 
-constructor TMonFormulaire.Create;
-begin
+constructor TMonFormulaire.Create;  
+begin  
   inherited Create;
   FBouton := TButton.Create(Self);  // Self est le propriétaire
   FBouton.Parent := Self;
   FBouton.OnClick := @GererClicBouton;
 end;
 
-procedure TMonFormulaire.GererClicBouton(Sender: TObject);
-begin
+procedure TMonFormulaire.GererClicBouton(Sender: TObject);  
+begin  
   if Sender = FBouton then
     WriteLn('Le bouton a été cliqué');
   // Sender peut être comparé avec Self.FBouton
@@ -244,8 +244,8 @@ end;
 ### Dans les méthodes normales
 
 ```pascal
-procedure TPersonne.Afficher;
-begin
+procedure TPersonne.Afficher;  
+begin  
   // Self fait référence à l'objet TPersonne sur lequel Afficher est appelée
   WriteLn('Nom : ', Self.FNom);
   WriteLn('Adresse de l''objet : ', IntToHex(PtrUInt(Self), 16));
@@ -255,8 +255,8 @@ end;
 ### Dans les constructeurs
 
 ```pascal
-constructor TPersonne.Create(const Nom: string);
-begin
+constructor TPersonne.Create(const Nom: string);  
+begin  
   inherited Create;
   // Self fait référence au nouvel objet en cours de création
   Self.FNom := Nom;
@@ -267,8 +267,8 @@ end;
 ### Dans les destructeurs
 
 ```pascal
-destructor TPersonne.Destroy;
-begin
+destructor TPersonne.Destroy;  
+begin  
   // Self fait référence à l'objet en cours de destruction
   WriteLn('Destruction de ', Self.FNom);
   inherited Destroy;
@@ -311,35 +311,35 @@ type
 
 // === IMPLÉMENTATION ===
 
-constructor TPoint.Create(X, Y: Real);
-begin
+constructor TPoint.Create(X, Y: Real);  
+begin  
   inherited Create;
   Self.FX := X;  // Self explicite pour la clarté
   Self.FY := Y;
   WriteLn('Point créé : (', X:0:2, ', ', Y:0:2, ')');
 end;
 
-function TPoint.Deplacer(DeltaX, DeltaY: Real): TPoint;
-begin
+function TPoint.Deplacer(DeltaX, DeltaY: Real): TPoint;  
+begin  
   FX := FX + DeltaX;
   FY := FY + DeltaY;
   Result := Self;  // Retourne l'objet pour permettre le chaînage
 end;
 
-function TPoint.DefinirX(X: Real): TPoint;
-begin
+function TPoint.DefinirX(X: Real): TPoint;  
+begin  
   Self.FX := X;
   Result := Self;
 end;
 
-function TPoint.DefinirY(Y: Real): TPoint;
-begin
+function TPoint.DefinirY(Y: Real): TPoint;  
+begin  
   Self.FY := Y;
   Result := Self;
 end;
 
-function TPoint.DistanceVers(Autre: TPoint): Real;
-var
+function TPoint.DistanceVers(Autre: TPoint): Real;  
+var  
   DX, DY: Real;
 begin
   // Self représente le point actuel, Autre est le point de comparaison
@@ -348,8 +348,8 @@ begin
   Result := Sqrt(DX * DX + DY * DY);
 end;
 
-function TPoint.EstPlusProcheQue(Point1, Point2: TPoint): Boolean;
-var
+function TPoint.EstPlusProcheQue(Point1, Point2: TPoint): Boolean;  
+var  
   Distance1, Distance2: Real;
 begin
   // Self est le point de référence
@@ -358,25 +358,25 @@ begin
   Result := Distance1 < Distance2;
 end;
 
-function TPoint.EstALOrigine: Boolean;
-begin
+function TPoint.EstALOrigine: Boolean;  
+begin  
   Result := (Self.FX = 0) and (Self.FY = 0);
 end;
 
-function TPoint.Cloner: TPoint;
-begin
+function TPoint.Cloner: TPoint;  
+begin  
   // Crée une copie de Self
   Result := TPoint.Create(Self.FX, Self.FY);
 end;
 
-procedure TPoint.Afficher;
-begin
+procedure TPoint.Afficher;  
+begin  
   WriteLn('Point : (', FX:0:2, ', ', FY:0:2, ')');
   WriteLn('Adresse mémoire : ', IntToHex(PtrUInt(Self), 16));
 end;
 
-procedure TPoint.CopierVers(Destination: TPoint);
-begin
+procedure TPoint.CopierVers(Destination: TPoint);  
+begin  
   // Copie les coordonnées de Self vers Destination
   Destination.FX := Self.FX;
   Destination.FY := Self.FY;
@@ -455,14 +455,14 @@ type
     property NomMajuscules: string read GetNomMajuscules;
   end;
 
-function TPersonne.GetNomMajuscules: string;
-begin
+function TPersonne.GetNomMajuscules: string;  
+begin  
   Result := UpperCase(Self.FNom);  // Self explicite
   // Ou simplement : Result := UpperCase(FNom);
 end;
 
-procedure TPersonne.SetNom(const Valeur: string);
-begin
+procedure TPersonne.SetNom(const Valeur: string);  
+begin  
   if Length(Valeur) > 0 then
     Self.FNom := Valeur
   else
@@ -477,8 +477,8 @@ end;
 Dans la plupart des situations, vous n'avez pas besoin d'écrire `Self` :
 
 ```pascal
-procedure TPersonne.Afficher;
-begin
+procedure TPersonne.Afficher;  
+begin  
   // Ces deux versions sont identiques :
 
   // Version 1 : sans Self (recommandée)
@@ -519,15 +519,15 @@ type
     procedure Actualiser(Subject: TSubject);
   end;
 
-constructor TObservateur.Create(const Nom: string; Subject: TSubject);
-begin
+constructor TObservateur.Create(const Nom: string; Subject: TSubject);  
+begin  
   inherited Create;
   FNom := Nom;
   Subject.AjouterObservateur(Self);  // S'enregistre lui-même
 end;
 
-procedure TObservateur.Actualiser(Subject: TSubject);
-begin
+procedure TObservateur.Actualiser(Subject: TSubject);  
+begin  
   WriteLn(FNom, ' a été notifié');
 end;
 ```
@@ -545,14 +545,14 @@ type
     function EstEquivalent(Autre: TPersonne): Boolean;
   end;
 
-function TPersonne.EstMemeReference(Autre: TPersonne): Boolean;
-begin
+function TPersonne.EstMemeReference(Autre: TPersonne): Boolean;  
+begin  
   // Compare les adresses mémoire
   Result := Self = Autre;
 end;
 
-function TPersonne.EstEquivalent(Autre: TPersonne): Boolean;
-begin
+function TPersonne.EstEquivalent(Autre: TPersonne): Boolean;  
+begin  
   // Compare les valeurs
   Result := (Self.FNom = Autre.FNom) and (Self.FAge = Autre.FAge);
 end;
@@ -588,14 +588,14 @@ type
     function ObtenirInterface: IComparable;
   end;
 
-function TPersonne.ComparerAvec(Autre: IComparable): Integer;
-begin
+function TPersonne.ComparerAvec(Autre: IComparable): Integer;  
+begin  
   // Implémentation
   Result := 0;
 end;
 
-function TPersonne.ObtenirInterface: IComparable;
-begin
+function TPersonne.ObtenirInterface: IComparable;  
+begin  
   Result := Self;  // Self peut être converti en interface
 end;
 ```
@@ -606,14 +606,14 @@ end;
 
 ```pascal
 // ✓ BON : Self nécessaire pour lever l'ambiguïté
-procedure TPersonne.DefinirNom(Nom: string);
-begin
+procedure TPersonne.DefinirNom(Nom: string);  
+begin  
   Self.FNom := Nom;
 end;
 
 // ✓ BON : Self nécessaire pour passer l'objet
-procedure TPersonne.AjouterAListe(Liste: TList);
-begin
+procedure TPersonne.AjouterAListe(Liste: TList);  
+begin  
   Liste.Add(Self);
 end;
 ```
@@ -622,15 +622,15 @@ end;
 
 ```pascal
 // ✓ BON : simple et clair
-procedure TPersonne.Afficher;
-begin
+procedure TPersonne.Afficher;  
+begin  
   WriteLn(FNom);
   WriteLn(FAge);
 end;
 
 // ✗ VERBEUX : Self inutile ici
-procedure TPersonne.Afficher;
-begin
+procedure TPersonne.Afficher;  
+begin  
   WriteLn(Self.FNom);
   WriteLn(Self.FAge);
 end;
@@ -640,8 +640,8 @@ end;
 
 ```pascal
 // ✓ BON : permet le chaînage fluent
-function TConstructeur.Ajouter(const S: string): TConstructeur;
-begin
+function TConstructeur.Ajouter(const S: string): TConstructeur;  
+begin  
   FTexte := FTexte + S;
   Result := Self;
 end;
@@ -651,8 +651,8 @@ end;
 
 ```pascal
 // ✓ BON : commentaire expliquant pourquoi Self est utilisé
-function TPersonne.Cloner: TPersonne;
-begin
+function TPersonne.Cloner: TPersonne;  
+begin  
   // Crée une copie indépendante de Self
   Result := TPersonne.Create;
   Result.FNom := Self.FNom;
@@ -666,15 +666,15 @@ end;
 
 ```pascal
 // ✗ ERREUR : Self n'est pas encore complètement initialisé
-constructor TPersonne.Create;
-begin
+constructor TPersonne.Create;  
+begin  
   Self.FNom := 'Test';  // Peut causer des problèmes
   inherited Create;
 end;
 
 // ✓ CORRECT
-constructor TPersonne.Create;
-begin
+constructor TPersonne.Create;  
+begin  
   inherited Create;
   Self.FNom := 'Test';
 end;
@@ -684,14 +684,14 @@ end;
 
 ```pascal
 // ✗ ERREUR : confusion dans la logique
-function TPersonne.EstPlusAgeeQue(Autre: TPersonne): Boolean;
-begin
+function TPersonne.EstPlusAgeeQue(Autre: TPersonne): Boolean;  
+begin  
   Result := Autre.FAge > Self.FAge;  // Inversé !
 end;
 
 // ✓ CORRECT
-function TPersonne.EstPlusAgeeQue(Autre: TPersonne): Boolean;
-begin
+function TPersonne.EstPlusAgeeQue(Autre: TPersonne): Boolean;  
+begin  
   Result := Self.FAge > Autre.FAge;
 end;
 ```
@@ -700,15 +700,15 @@ end;
 
 ```pascal
 // ✗ ERREUR : ne retourne pas Self
-function TConstructeur.Ajouter(const S: string): TConstructeur;
-begin
+function TConstructeur.Ajouter(const S: string): TConstructeur;  
+begin  
   FTexte := FTexte + S;
   // Oubli de : Result := Self;
 end;
 
 // ✓ CORRECT
-function TConstructeur.Ajouter(const S: string): TConstructeur;
-begin
+function TConstructeur.Ajouter(const S: string): TConstructeur;  
+begin  
   FTexte := FTexte + S;
   Result := Self;
 end;
@@ -718,8 +718,8 @@ end;
 
 ```pascal
 // ✗ ERREUR : Self n'est plus valide après Free
-procedure TPersonne.SeDetruire;
-begin
+procedure TPersonne.SeDetruire;  
+begin  
   Self.Free;
   WriteLn(Self.FNom);  // PLANTAGE ! Self est détruit
 end;

@@ -52,8 +52,8 @@ type
     destructor Destroy; override;
   end;
 
-destructor TPersonne.Destroy;
-begin
+destructor TPersonne.Destroy;  
+begin  
   WriteLn('Destruction de la personne');
   inherited Destroy;  // Appelle le destructeur parent
 end;
@@ -66,8 +66,8 @@ end;
 `Free` est une **méthode sécurisée** héritée de `TObject` qui vérifie si l'objet existe avant d'appeler `Destroy` :
 
 ```pascal
-procedure TObject.Free;
-begin
+procedure TObject.Free;  
+begin  
   if Self <> nil then
     Destroy;
 end;
@@ -98,8 +98,8 @@ type
     destructor Destroy; override;
   end;
 
-destructor TClasse.Destroy;
-begin
+destructor TClasse.Destroy;  
+begin  
   // Code de nettoyage
   inherited Destroy;  // IMPORTANT : appel du destructeur parent
 end;
@@ -149,15 +149,15 @@ type
     destructor Destroy; override;
   end;
 
-constructor TCompteur.Create;
-begin
+constructor TCompteur.Create;  
+begin  
   inherited Create;
   FValeur := 0;
   WriteLn('Compteur créé');
 end;
 
-destructor TCompteur.Destroy;
-begin
+destructor TCompteur.Destroy;  
+begin  
   WriteLn('Compteur détruit (valeur finale : ', FValeur, ')');
   inherited Destroy;
 end;
@@ -194,15 +194,15 @@ type
     destructor Destroy; override;
   end;
 
-constructor TPersonne.Create;
-begin
+constructor TPersonne.Create;  
+begin  
   inherited Create;
   FNom := 'Anonyme';
   FAdresse := TAdresse.Create;  // Création de l'objet contenu
 end;
 
-destructor TPersonne.Destroy;
-begin
+destructor TPersonne.Destroy;  
+begin  
   FAdresse.Free;  // ✓ IMPORTANT : libération de l'objet contenu
   inherited Destroy;
 end;
@@ -226,16 +226,16 @@ type
     destructor Destroy; override;
   end;
 
-constructor TEntreprise.Create;
-begin
+constructor TEntreprise.Create;  
+begin  
   inherited Create;
   FAdresse := TAdresse.Create;      // 1. Créé en premier
   FDirecteur := TPersonne.Create;   // 2. Créé en deuxième
   FComptable := TPersonne.Create;   // 3. Créé en troisième
 end;
 
-destructor TEntreprise.Destroy;
-begin
+destructor TEntreprise.Destroy;  
+begin  
   FComptable.Free;   // 3. Libéré en premier
   FDirecteur.Free;   // 2. Libéré en deuxième
   FAdresse.Free;     // 1. Libéré en dernier
@@ -258,14 +258,14 @@ type
     procedure AjouterMembre(const Nom: string);
   end;
 
-constructor TEquipe.Create;
-begin
+constructor TEquipe.Create;  
+begin  
   inherited Create;
   SetLength(FMembres, 0);
 end;
 
-destructor TEquipe.Destroy;
-var
+destructor TEquipe.Destroy;  
+var  
   I: Integer;
 begin
   // Libérer chaque objet du tableau
@@ -278,8 +278,8 @@ begin
   inherited Destroy;
 end;
 
-procedure TEquipe.AjouterMembre(const Nom: string);
-var
+procedure TEquipe.AjouterMembre(const Nom: string);  
+var  
   Index: Integer;
 begin
   Index := Length(FMembres);
@@ -381,8 +381,8 @@ type
 
 // === IMPLÉMENTATION ===
 
-constructor TFichierLog.Create(const NomFichier: string);
-begin
+constructor TFichierLog.Create(const NomFichier: string);  
+begin  
   inherited Create;
   FNomFichier := NomFichier;
   FEstOuvert := False;
@@ -404,8 +404,8 @@ begin
   end;
 end;
 
-destructor TFichierLog.Destroy;
-begin
+destructor TFichierLog.Destroy;  
+begin  
   // Fermer le fichier s'il est ouvert
   if FEstOuvert then
   begin
@@ -421,8 +421,8 @@ begin
   inherited Destroy;  // Toujours en dernier
 end;
 
-procedure TFichierLog.Ecrire(const Message: string);
-begin
+procedure TFichierLog.Ecrire(const Message: string);  
+begin  
   if FEstOuvert then
   begin
     try
@@ -435,8 +435,8 @@ begin
   end;
 end;
 
-procedure TFichierLog.EcrireAvecDate(const Message: string);
-var
+procedure TFichierLog.EcrireAvecDate(const Message: string);  
+var  
   Ligne: string;
 begin
   Ligne := FormatDateTime('yyyy-mm-dd hh:nn:ss', Now) + ' - ' + Message;
@@ -492,8 +492,8 @@ end;
 2. Met la variable à `nil`
 
 ```pascal
-procedure FreeAndNil(var Obj);
-begin
+procedure FreeAndNil(var Obj);  
+begin  
   if Assigned(Obj) then
   begin
     TObject(Obj).Free;
@@ -525,8 +525,8 @@ type
     function CreerDocument(const Titre: string): TDocument;
   end;
 
-destructor TGestionnaireDocuments.Destroy;
-var
+destructor TGestionnaireDocuments.Destroy;  
+var  
   I: Integer;
 begin
   // Le gestionnaire est responsable de libérer les documents
@@ -537,8 +537,8 @@ begin
   inherited Destroy;
 end;
 
-function TGestionnaireDocuments.CreerDocument(const Titre: string): TDocument;
-var
+function TGestionnaireDocuments.CreerDocument(const Titre: string): TDocument;  
+var  
   Index: Integer;
 begin
   Index := Length(FDocuments);
@@ -579,8 +579,8 @@ end;
 ### 2. Libérer dans l'ordre inverse de création
 
 ```pascal
-destructor TClasse.Destroy;
-begin
+destructor TClasse.Destroy;  
+begin  
   FObjet3.Free;  // Créé en 3ème, libéré en 1er
   FObjet2.Free;  // Créé en 2ème, libéré en 2ème
   FObjet1.Free;  // Créé en 1er, libéré en 3ème
@@ -591,8 +591,8 @@ end;
 ### 3. Toujours appeler inherited Destroy
 
 ```pascal
-destructor TClasse.Destroy;
-begin
+destructor TClasse.Destroy;  
+begin  
   // Nettoyage de vos ressources
   FObjet.Free;
 
@@ -603,8 +603,8 @@ end;
 ### 4. Initialiser les objets à nil
 
 ```pascal
-constructor TClasse.Create;
-begin
+constructor TClasse.Create;  
+begin  
   inherited Create;
   FObjet1 := nil;  // ✓ BON
   FObjet2 := nil;  // Même si c'est automatique, c'est plus clair
@@ -614,8 +614,8 @@ end;
 ### 5. Utiliser FreeAndNil quand approprié
 
 ```pascal
-procedure TForm.DetruireObjet;
-begin
+procedure TForm.DetruireObjet;  
+begin  
   FreeAndNil(FMonObjet);  // Libère et met à nil
   // Maintenant FMonObjet = nil, évite les accès à un objet détruit
 end;
@@ -666,15 +666,15 @@ end;
 ### Erreur n°4 : Ne pas libérer les objets contenus
 
 ```pascal
-destructor TPersonne.Destroy;
-begin
+destructor TPersonne.Destroy;  
+begin  
   // ✗ ERREUR : FAdresse n'est pas libéré → fuite mémoire
   inherited Destroy;
 end;
 
 // ✓ CORRECT
-destructor TPersonne.Destroy;
-begin
+destructor TPersonne.Destroy;  
+begin  
   FAdresse.Free;
   inherited Destroy;
 end;
@@ -683,15 +683,15 @@ end;
 ### Erreur n°5 : Oublier inherited Destroy
 
 ```pascal
-destructor TClasse.Destroy;
-begin
+destructor TClasse.Destroy;  
+begin  
   FObjet.Free;
   // ✗ ERREUR : manque inherited Destroy
 end;
 
 // ✓ CORRECT
-destructor TClasse.Destroy;
-begin
+destructor TClasse.Destroy;  
+begin  
   FObjet.Free;
   inherited Destroy;
 end;
@@ -741,8 +741,8 @@ type
     constructor Create(const Nom: string);
   end;
 
-constructor TPersonne.Create(const Nom: string);
-begin
+constructor TPersonne.Create(const Nom: string);  
+begin  
   inherited Create;
   FNom := Nom;
 end;

@@ -51,8 +51,8 @@ type
 
 // === IMPLÉMENTATION ===
 
-constructor TCompteBancaire.Create(const NumeroCompte, Titulaire: string; SoldeInitial: Real);
-begin
+constructor TCompteBancaire.Create(const NumeroCompte, Titulaire: string; SoldeInitial: Real);  
+begin  
   inherited Create;
   FNumeroCompte := NumeroCompte;
   FTitulaire := Titulaire;
@@ -62,14 +62,14 @@ begin
   AjouterHistorique('Ouverture du compte avec solde : ' + FloatToStr(SoldeInitial) + ' €');
 end;
 
-destructor TCompteBancaire.Destroy;
-begin
+destructor TCompteBancaire.Destroy;  
+begin  
   SetLength(FHistorique, 0);
   inherited Destroy;
 end;
 
-procedure TCompteBancaire.AjouterHistorique(const Operation: string);
-var
+procedure TCompteBancaire.AjouterHistorique(const Operation: string);  
+var  
   Index: Integer;
 begin
   Index := Length(FHistorique);
@@ -77,23 +77,23 @@ begin
   FHistorique[Index] := FormatDateTime('yyyy-mm-dd hh:nn:ss', Now) + ' - ' + Operation;
 end;
 
-function TCompteBancaire.GetSoldeFormate: string;
-begin
+function TCompteBancaire.GetSoldeFormate: string;  
+begin  
   Result := FormatFloat('#,##0.00', FSolde) + ' €';
 end;
 
-function TCompteBancaire.GetInteretsAnnuels: Real;
-begin
+function TCompteBancaire.GetInteretsAnnuels: Real;  
+begin  
   Result := FSolde * FTauxInteret;
 end;
 
-function TCompteBancaire.GetNombreOperations: Integer;
-begin
+function TCompteBancaire.GetNombreOperations: Integer;  
+begin  
   Result := Length(FHistorique);
 end;
 
-procedure TCompteBancaire.SetTitulaire(const Valeur: string);
-begin
+procedure TCompteBancaire.SetTitulaire(const Valeur: string);  
+begin  
   if Length(Valeur) > 0 then
   begin
     FTitulaire := Valeur;
@@ -103,8 +103,8 @@ begin
     WriteLn('Erreur : nom de titulaire invalide');
 end;
 
-procedure TCompteBancaire.SetTauxInteret(Valeur: Real);
-begin
+procedure TCompteBancaire.SetTauxInteret(Valeur: Real);  
+begin  
   if (Valeur >= 0) and (Valeur <= 0.10) then  // Max 10%
   begin
     FTauxInteret := Valeur;
@@ -114,8 +114,8 @@ begin
     WriteLn('Erreur : taux d''intérêt invalide (doit être entre 0 et 10%)');
 end;
 
-procedure TCompteBancaire.Crediter(Montant: Real);
-begin
+procedure TCompteBancaire.Crediter(Montant: Real);  
+begin  
   if Montant > 0 then
   begin
     FSolde := FSolde + Montant;
@@ -126,8 +126,8 @@ begin
     WriteLn('Erreur : montant invalide');
 end;
 
-procedure TCompteBancaire.Debiter(Montant: Real);
-begin
+procedure TCompteBancaire.Debiter(Montant: Real);  
+begin  
   if Montant > 0 then
   begin
     if FSolde >= Montant then
@@ -143,8 +143,8 @@ begin
     WriteLn('Erreur : montant invalide');
 end;
 
-procedure TCompteBancaire.AfficherHistorique;
-var
+procedure TCompteBancaire.AfficherHistorique;  
+var  
   I: Integer;
 begin
   WriteLn('=== Historique du compte ', FNumeroCompte, ' ===');

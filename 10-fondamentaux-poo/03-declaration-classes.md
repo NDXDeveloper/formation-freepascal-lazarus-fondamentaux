@@ -195,23 +195,23 @@ type
 L'**implémentation** se fait en dehors de la déclaration, en préfixant par `TNomClasse.` :
 
 ```pascal
-procedure TCalculatrice.Additionner(A, B: Real);
-begin
+procedure TCalculatrice.Additionner(A, B: Real);  
+begin  
   FResultat := A + B;
 end;
 
-procedure TCalculatrice.Reinitialiser;
-begin
+procedure TCalculatrice.Reinitialiser;  
+begin  
   FResultat := 0;
 end;
 
-function TCalculatrice.ObtenirResultat: Real;
-begin
+function TCalculatrice.ObtenirResultat: Real;  
+begin  
   Result := FResultat;
 end;
 
-function TCalculatrice.Diviser(A, B: Real): Real;
-begin
+function TCalculatrice.Diviser(A, B: Real): Real;  
+begin  
   if B <> 0 then
     Result := A / B
   else
@@ -251,31 +251,31 @@ type
   end;
 
 // Implémentation des méthodes
-procedure TPersonne.DefinirNom(const Valeur: string);
-begin
+procedure TPersonne.DefinirNom(const Valeur: string);  
+begin  
   FNom := Valeur;
 end;
 
-procedure TPersonne.DefinirAge(Valeur: Integer);
-begin
+procedure TPersonne.DefinirAge(Valeur: Integer);  
+begin  
   if (Valeur >= 0) and (Valeur <= 150) then
     FAge := Valeur
   else
     WriteLn('Erreur : âge invalide');
 end;
 
-function TPersonne.ObtenirNom: string;
-begin
+function TPersonne.ObtenirNom: string;  
+begin  
   Result := FNom;
 end;
 
-function TPersonne.ObtenirAge: Integer;
-begin
+function TPersonne.ObtenirAge: Integer;  
+begin  
   Result := FAge;
 end;
 
-procedure TPersonne.Afficher;
-begin
+procedure TPersonne.Afficher;  
+begin  
   WriteLn('Nom : ', FNom);
   WriteLn('Age : ', FAge, ' ans');
 end;
@@ -324,29 +324,29 @@ type
 implementation
 
 // Implémentation dans la section implementation
-procedure TPersonne.DefinirNom(const Valeur: string);
-begin
+procedure TPersonne.DefinirNom(const Valeur: string);  
+begin  
   FNom := Valeur;
 end;
 
-procedure TPersonne.DefinirAge(Valeur: Integer);
-begin
+procedure TPersonne.DefinirAge(Valeur: Integer);  
+begin  
   if (Valeur >= 0) and (Valeur <= 150) then
     FAge := Valeur;
 end;
 
-function TPersonne.ObtenirNom: string;
-begin
+function TPersonne.ObtenirNom: string;  
+begin  
   Result := FNom;
 end;
 
-function TPersonne.ObtenirAge: Integer;
-begin
+function TPersonne.ObtenirAge: Integer;  
+begin  
   Result := FAge;
 end;
 
-procedure TPersonne.Afficher;
-begin
+procedure TPersonne.Afficher;  
+begin  
   WriteLn('Nom : ', FNom, ', Age : ', FAge, ' ans');
 end;
 
@@ -393,54 +393,54 @@ type
 
 // === IMPLÉMENTATION ===
 
-function TRectangle.ValiderDimension(Valeur: Real): Boolean;
-begin
+function TRectangle.ValiderDimension(Valeur: Real): Boolean;  
+begin  
   Result := Valeur > 0;
 end;
 
-procedure TRectangle.DefinirLargeur(Valeur: Real);
-begin
+procedure TRectangle.DefinirLargeur(Valeur: Real);  
+begin  
   if ValiderDimension(Valeur) then
     FLargeur := Valeur
   else
     WriteLn('Erreur : largeur invalide');
 end;
 
-procedure TRectangle.DefinirHauteur(Valeur: Real);
-begin
+procedure TRectangle.DefinirHauteur(Valeur: Real);  
+begin  
   if ValiderDimension(Valeur) then
     FHauteur := Valeur
   else
     WriteLn('Erreur : hauteur invalide');
 end;
 
-function TRectangle.ObtenirLargeur: Real;
-begin
+function TRectangle.ObtenirLargeur: Real;  
+begin  
   Result := FLargeur;
 end;
 
-function TRectangle.ObtenirHauteur: Real;
-begin
+function TRectangle.ObtenirHauteur: Real;  
+begin  
   Result := FHauteur;
 end;
 
-function TRectangle.CalculerSurface: Real;
-begin
+function TRectangle.CalculerSurface: Real;  
+begin  
   Result := FLargeur * FHauteur;
 end;
 
-function TRectangle.CalculerPerimetre: Real;
-begin
+function TRectangle.CalculerPerimetre: Real;  
+begin  
   Result := 2 * (FLargeur + FHauteur);
 end;
 
-function TRectangle.EstCarre: Boolean;
-begin
+function TRectangle.EstCarre: Boolean;  
+begin  
   Result := FLargeur = FHauteur;
 end;
 
-procedure TRectangle.Afficher;
-begin
+procedure TRectangle.Afficher;  
+begin  
   WriteLn('=== Rectangle ===');
   WriteLn('Largeur : ', FLargeur:0:2, ' cm');
   WriteLn('Hauteur : ', FHauteur:0:2, ' cm');
@@ -451,8 +451,8 @@ begin
   WriteLn('================');
 end;
 
-procedure TRectangle.Redimensionner(FacteurEchelle: Real);
-begin
+procedure TRectangle.Redimensionner(FacteurEchelle: Real);  
+begin  
   if ValiderDimension(FacteurEchelle) then
   begin
     FLargeur := FLargeur * FacteurEchelle;
@@ -569,14 +569,14 @@ type
 ### Erreur n°3 : Oublier le préfixe de classe dans l'implémentation
 
 ```pascal
-procedure Afficher;  // ✗ ERREUR : manque TPersonne.
-begin
+procedure Afficher;  // ✗ ERREUR : manque TPersonne.  
+begin  
   WriteLn(FNom);
 end;
 
 // ✓ CORRECT :
-procedure TPersonne.Afficher;
-begin
+procedure TPersonne.Afficher;  
+begin  
   WriteLn(FNom);
 end;
 ```
@@ -591,14 +591,14 @@ type
 
 // ✗ ERREUR : nom de paramètre différent (pas grave)
 // mais type différent serait une vraie erreur
-procedure TPersonne.DefinirAge(NouvelAge: Integer);
-begin
+procedure TPersonne.DefinirAge(NouvelAge: Integer);  
+begin  
   FAge := NouvelAge;
 end;
 
 // ✓ MEILLEUR : garder le même nom
-procedure TPersonne.DefinirAge(Age: Integer);
-begin
+procedure TPersonne.DefinirAge(Age: Integer);  
+begin  
   FAge := Age;
 end;
 ```

@@ -28,14 +28,14 @@ type
   end;
 
 // Implémentation de la méthode privée
-function TCompteBancaire.VerifierMontantValide(Montant: Real): Boolean;
-begin
+function TCompteBancaire.VerifierMontantValide(Montant: Real): Boolean;  
+begin  
   Result := Montant > 0;
 end;
 
 // Implémentation des méthodes publiques
-procedure TCompteBancaire.Crediter(Montant: Real);
-begin
+procedure TCompteBancaire.Crediter(Montant: Real);  
+begin  
   if VerifierMontantValide(Montant) then
   begin
     FSolde := FSolde + Montant;
@@ -45,8 +45,8 @@ begin
     WriteLn('Erreur : montant invalide.');
 end;
 
-procedure TCompteBancaire.Debiter(Montant: Real);
-begin
+procedure TCompteBancaire.Debiter(Montant: Real);  
+begin  
   if not VerifierMontantValide(Montant) then
   begin
     WriteLn('Erreur : montant invalide.');
@@ -62,13 +62,13 @@ begin
     WriteLn('Erreur : solde insuffisant.');
 end;
 
-function TCompteBancaire.ObtenirSolde: Real;
-begin
+function TCompteBancaire.ObtenirSolde: Real;  
+begin  
   Result := FSolde;
 end;
 
-procedure TCompteBancaire.AfficherInfos;
-begin
+procedure TCompteBancaire.AfficherInfos;  
+begin  
   WriteLn('=== Informations du compte ===');
   WriteLn('Titulaire : ', FTitulaire);
   WriteLn('Numéro : ', FNumeroCompte);
@@ -76,8 +76,8 @@ begin
   WriteLn('==============================');
 end;
 
-procedure TCompteBancaire.DefinirTitulaire(const Nom: string);
-begin
+procedure TCompteBancaire.DefinirTitulaire(const Nom: string);  
+begin  
   if Length(Nom) > 0 then
     FTitulaire := Nom
   else

@@ -22,31 +22,31 @@ type
     property Hauteur: Real read FHauteur write FHauteur;
   end;
 
-constructor TRectangle.Create(L, H: Real);
-begin
+constructor TRectangle.Create(L, H: Real);  
+begin  
   inherited Create;
   FLargeur := L;
   FHauteur := H;
 end;
 
-function TRectangle.CalculerSurface: Real;
-begin
+function TRectangle.CalculerSurface: Real;  
+begin  
   Result := FLargeur * FHauteur;
 end;
 
-function TRectangle.CalculerPerimetre: Real;
-begin
+function TRectangle.CalculerPerimetre: Real;  
+begin  
   Result := 2 * (FLargeur + FHauteur);
 end;
 
-procedure TRectangle.Redimensionner(Facteur: Real);
-begin
+procedure TRectangle.Redimensionner(Facteur: Real);  
+begin  
   FLargeur := FLargeur * Facteur;
   FHauteur := FHauteur * Facteur;
 end;
 
-procedure TRectangle.Afficher;
-begin
+procedure TRectangle.Afficher;  
+begin  
   WriteLn('Rectangle:');
   WriteLn('  Largeur: ', FLargeur:0:2);
   WriteLn('  Hauteur: ', FHauteur:0:2);

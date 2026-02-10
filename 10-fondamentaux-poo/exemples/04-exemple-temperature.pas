@@ -40,73 +40,73 @@ type
 
 // === IMPLÉMENTATION ===
 
-function TTemperature.TemperatureValide(Temp: Real): Boolean;
-begin
+function TTemperature.TemperatureValide(Temp: Real): Boolean;  
+begin  
   // Le zéro absolu est -273.15°C
   Result := Temp >= -273.15;
 end;
 
-procedure TTemperature.DefinirCelsius(Valeur: Real);
-begin
+procedure TTemperature.DefinirCelsius(Valeur: Real);  
+begin  
   if TemperatureValide(Valeur) then
     FCelsius := Valeur
   else
     WriteLn('Erreur : température invalide (< -273.15°C)');
 end;
 
-procedure TTemperature.DefinirFahrenheit(Valeur: Real);
-var
+procedure TTemperature.DefinirFahrenheit(Valeur: Real);  
+var  
   TempCelsius: Real;
 begin
   TempCelsius := (Valeur - 32) * 5 / 9;
   DefinirCelsius(TempCelsius);
 end;
 
-procedure TTemperature.DefinirKelvin(Valeur: Real);
-var
+procedure TTemperature.DefinirKelvin(Valeur: Real);  
+var  
   TempCelsius: Real;
 begin
   TempCelsius := Valeur - 273.15;
   DefinirCelsius(TempCelsius);
 end;
 
-function TTemperature.ObtenirCelsius: Real;
-begin
+function TTemperature.ObtenirCelsius: Real;  
+begin  
   Result := FCelsius;
 end;
 
-function TTemperature.ObtenirFahrenheit: Real;
-begin
+function TTemperature.ObtenirFahrenheit: Real;  
+begin  
   Result := (FCelsius * 9 / 5) + 32;
 end;
 
-function TTemperature.ObtenirKelvin: Real;
-begin
+function TTemperature.ObtenirKelvin: Real;  
+begin  
   Result := FCelsius + 273.15;
 end;
 
-procedure TTemperature.Augmenter(Delta: Real);
-begin
+procedure TTemperature.Augmenter(Delta: Real);  
+begin  
   DefinirCelsius(FCelsius + Delta);
 end;
 
-procedure TTemperature.Diminuer(Delta: Real);
-begin
+procedure TTemperature.Diminuer(Delta: Real);  
+begin  
   DefinirCelsius(FCelsius - Delta);
 end;
 
-function TTemperature.EstGelant: Boolean;
-begin
+function TTemperature.EstGelant: Boolean;  
+begin  
   Result := FCelsius <= 0;
 end;
 
-function TTemperature.EstBouillant: Boolean;
-begin
+function TTemperature.EstBouillant: Boolean;  
+begin  
   Result := FCelsius >= 100;
 end;
 
-procedure TTemperature.Afficher;
-begin
+procedure TTemperature.Afficher;  
+begin  
   WriteLn('=== Température ===');
   WriteLn('Celsius    : ', ObtenirCelsius:0:2, ' °C');
   WriteLn('Fahrenheit : ', ObtenirFahrenheit:0:2, ' °F');

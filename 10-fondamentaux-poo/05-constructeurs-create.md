@@ -50,8 +50,8 @@ type
     constructor Create(const NumeroCompte, Titulaire: string; SoldeInitial: Real);
   end;
 
-constructor TCompteBancaire.Create(const NumeroCompte, Titulaire: string; SoldeInitial: Real);
-begin
+constructor TCompteBancaire.Create(const NumeroCompte, Titulaire: string; SoldeInitial: Real);  
+begin  
   FNumeroCompte := NumeroCompte;
   FTitulaire := Titulaire;
   FSolde := SoldeInitial;
@@ -78,8 +78,8 @@ type
     constructor Create;
   end;
 
-constructor TPersonne.Create;
-begin
+constructor TPersonne.Create;  
+begin  
   // Code d'initialisation
 end;
 ```
@@ -93,8 +93,8 @@ Toutes les classes héritent de `TObject`, qui possède déjà un constructeur `
 Quand vous définissez votre propre constructeur, vous devez d'abord appeler le constructeur parent avec `inherited` :
 
 ```pascal
-constructor TPersonne.Create;
-begin
+constructor TPersonne.Create;  
+begin  
   inherited Create;  // Appelle le constructeur de TObject
   // Votre code d'initialisation personnalisé
   FNom := 'Anonyme';
@@ -119,8 +119,8 @@ type
     function ObtenirValeur: Integer;
   end;
 
-constructor TCompteur.Create;
-begin
+constructor TCompteur.Create;  
+begin  
   inherited Create;
   FValeur := 0;  // Initialisation explicite
   WriteLn('Compteur créé avec valeur = 0');
@@ -151,8 +151,8 @@ type
     constructor Create;
   end;
 
-constructor TJoueur.Create;
-begin
+constructor TJoueur.Create;  
+begin  
   inherited Create;
   FNom := 'Joueur 1';
   FScore := 0;
@@ -176,8 +176,8 @@ type
     constructor Create(const Nom: string);
   end;
 
-constructor TPersonne.Create(const Nom: string);
-begin
+constructor TPersonne.Create(const Nom: string);  
+begin  
   inherited Create;
   FNom := Nom;
   FAge := 0;  // Valeur par défaut
@@ -205,8 +205,8 @@ type
     function CalculerSurface: Real;
   end;
 
-constructor TRectangle.Create(Largeur, Hauteur: Real);
-begin
+constructor TRectangle.Create(Largeur, Hauteur: Real);  
+begin  
   inherited Create;
 
   // Validation des paramètres
@@ -223,8 +223,8 @@ begin
   end;
 end;
 
-function TRectangle.CalculerSurface: Real;
-begin
+function TRectangle.CalculerSurface: Real;  
+begin  
   Result := FLargeur * FHauteur;
 end;
 
@@ -256,8 +256,8 @@ type
   end;
 
 // Constructeur sans paramètres
-constructor TPersonne.Create;
-begin
+constructor TPersonne.Create;  
+begin  
   inherited Create;
   FNom := 'Inconnu';
   FPrenom := 'Inconnu';
@@ -265,8 +265,8 @@ begin
 end;
 
 // Constructeur avec nom seulement
-constructor TPersonne.Create(const Nom: string);
-begin
+constructor TPersonne.Create(const Nom: string);  
+begin  
   inherited Create;
   FNom := Nom;
   FPrenom := 'Inconnu';
@@ -274,8 +274,8 @@ begin
 end;
 
 // Constructeur complet
-constructor TPersonne.Create(const Nom, Prenom: string; Age: Integer);
-begin
+constructor TPersonne.Create(const Nom, Prenom: string; Age: Integer);  
+begin  
   inherited Create;
   FNom := Nom;
   FPrenom := Prenom;
@@ -318,8 +318,8 @@ type
   end;
 
 // Constructeur complet
-constructor TPersonne.Create(const Nom, Prenom: string; Age: Integer);
-begin
+constructor TPersonne.Create(const Nom, Prenom: string; Age: Integer);  
+begin  
   inherited Create;
   FNom := Nom;
   FPrenom := Prenom;
@@ -331,8 +331,8 @@ begin
 end;
 
 // Constructeur simple qui appelle le constructeur complet
-constructor TPersonne.Create;
-begin
+constructor TPersonne.Create;  
+begin  
   Create('Inconnu', 'Inconnu', 0);  // Appelle l'autre constructeur
 end;
 ```
@@ -360,23 +360,23 @@ type
     destructor Destroy; override;
   end;
 
-constructor TAdresse.Create(const Rue, Ville: string);
-begin
+constructor TAdresse.Create(const Rue, Ville: string);  
+begin  
   inherited Create;
   FRue := Rue;
   FVille := Ville;
 end;
 
-constructor TPersonne.Create(const Nom, Rue, Ville: string);
-begin
+constructor TPersonne.Create(const Nom, Rue, Ville: string);  
+begin  
   inherited Create;
   FNom := Nom;
   // IMPORTANT : créer l'objet contenu
   FAdresse := TAdresse.Create(Rue, Ville);
 end;
 
-destructor TPersonne.Destroy;
-begin
+destructor TPersonne.Destroy;  
+begin  
   // IMPORTANT : libérer l'objet contenu
   FAdresse.Free;
   inherited Destroy;
@@ -418,14 +418,14 @@ type
 
 // === IMPLÉMENTATION ===
 
-function TArticle.PrixValide(Prix: Real): Boolean;
-begin
+function TArticle.PrixValide(Prix: Real): Boolean;  
+begin  
   Result := Prix >= 0;
 end;
 
 // Constructeur par défaut
-constructor TArticle.Create;
-begin
+constructor TArticle.Create;  
+begin  
   inherited Create;
   FCode := 'ART000';
   FLibelle := 'Article sans nom';
@@ -436,8 +436,8 @@ begin
 end;
 
 // Constructeur avec code et libellé
-constructor TArticle.Create(const Code, Libelle: string);
-begin
+constructor TArticle.Create(const Code, Libelle: string);  
+begin  
   inherited Create;
   FCode := Code;
   FLibelle := Libelle;
@@ -448,8 +448,8 @@ begin
 end;
 
 // Constructeur complet
-constructor TArticle.Create(const Code, Libelle: string; PrixHT: Real; Quantite: Integer);
-begin
+constructor TArticle.Create(const Code, Libelle: string; PrixHT: Real; Quantite: Integer);  
+begin  
   inherited Create;
   FCode := Code;
   FLibelle := Libelle;
@@ -476,13 +476,13 @@ begin
   WriteLn('Article créé : ', Code, ' - ', Libelle);
 end;
 
-function TArticle.CalculerPrixTTC: Real;
-begin
+function TArticle.CalculerPrixTTC: Real;  
+begin  
   Result := FPrixHT * (1 + FTauxTVA);
 end;
 
-procedure TArticle.Afficher;
-begin
+procedure TArticle.Afficher;  
+begin  
   WriteLn('=== Article ===');
   WriteLn('Code        : ', FCode);
   WriteLn('Libellé     : ', FLibelle);
@@ -528,8 +528,8 @@ end.
 Si l'initialisation échoue, vous pouvez lever une exception :
 
 ```pascal
-constructor TCompteBancaire.Create(const NumeroCompte: string; SoldeInitial: Real);
-begin
+constructor TCompteBancaire.Create(const NumeroCompte: string; SoldeInitial: Real);  
+begin  
   inherited Create;
 
   if Length(NumeroCompte) < 5 then
@@ -560,8 +560,8 @@ end;
 Alternative : accepter les paramètres mais corriger les valeurs invalides :
 
 ```pascal
-constructor TPersonne.Create(const Nom: string; Age: Integer);
-begin
+constructor TPersonne.Create(const Nom: string; Age: Integer);  
+begin  
   inherited Create;
 
   // Correction silencieuse
@@ -606,8 +606,8 @@ end;
 ### 1. Toujours appeler inherited
 
 ```pascal
-constructor TPersonne.Create;
-begin
+constructor TPersonne.Create;  
+begin  
   inherited Create;  // ✓ Important !
   // Votre code...
 end;
@@ -616,8 +616,8 @@ end;
 ### 2. Initialiser tous les attributs
 
 ```pascal
-constructor TPersonne.Create;
-begin
+constructor TPersonne.Create;  
+begin  
   inherited Create;
   FNom := '';        // ✓ Initialisation explicite
   FPrenom := '';     // ✓ même si c'est la valeur par défaut
@@ -629,8 +629,8 @@ end;
 ### 3. Valider les paramètres
 
 ```pascal
-constructor TRectangle.Create(Largeur, Hauteur: Real);
-begin
+constructor TRectangle.Create(Largeur, Hauteur: Real);  
+begin  
   inherited Create;
 
   // ✓ Toujours valider
@@ -647,8 +647,8 @@ end;
 ### 4. Créer les objets contenus
 
 ```pascal
-constructor TPersonne.Create;
-begin
+constructor TPersonne.Create;  
+begin  
   inherited Create;
   FNom := 'Anonyme';
   FAdresse := TAdresse.Create;  // ✓ Créer l'objet contenu
@@ -675,8 +675,8 @@ type
 ### Erreur n°1 : Oublier d'appeler inherited
 
 ```pascal
-constructor TPersonne.Create;
-begin
+constructor TPersonne.Create;  
+begin  
   // ✗ ERREUR : oubli de inherited Create
   FNom := 'Test';
 end;
@@ -685,8 +685,8 @@ end;
 ### Erreur n°2 : Ne pas valider les paramètres
 
 ```pascal
-constructor TRectangle.Create(Largeur, Hauteur: Real);
-begin
+constructor TRectangle.Create(Largeur, Hauteur: Real);  
+begin  
   inherited Create;
   FLargeur := Largeur;   // ✗ Et si Largeur est négative ?
   FHauteur := Hauteur;   // ✗ Pas de validation
@@ -706,8 +706,8 @@ type
 ### Erreur n°4 : Ne pas créer les objets contenus
 
 ```pascal
-constructor TPersonne.Create;
-begin
+constructor TPersonne.Create;  
+begin  
   inherited Create;
   FNom := 'Test';
   // ✗ ERREUR : FAdresse n'est pas créé (reste nil)

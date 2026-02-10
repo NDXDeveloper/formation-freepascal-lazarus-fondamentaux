@@ -56,8 +56,8 @@ type
   end;
 
 // Méthode privée : utilisée uniquement en interne
-procedure TCompteBancaire.AjouterHistorique(const Operation: string);
-var
+procedure TCompteBancaire.AjouterHistorique(const Operation: string);  
+var  
   Index: Integer;
 begin
   Index := Length(FHistorique);
@@ -65,14 +65,14 @@ begin
   FHistorique[Index] := FormatDateTime('yyyy-mm-dd hh:nn:ss', Now) + ' - ' + Operation;
 end;
 
-function TCompteBancaire.VerifierCodeSecret(Code: Integer): Boolean;
-begin
+function TCompteBancaire.VerifierCodeSecret(Code: Integer): Boolean;  
+begin  
   Result := Code = FCodeSecret;
 end;
 
 // Méthode publique qui utilise les méthodes privées
-procedure TCompteBancaire.Crediter(Montant: Real; Code: Integer);
-begin
+procedure TCompteBancaire.Crediter(Montant: Real; Code: Integer);  
+begin  
   if not VerifierCodeSecret(Code) then
   begin
     WriteLn('Code secret incorrect');
@@ -144,31 +144,31 @@ type
     procedure Presenter;
   end;
 
-constructor TAnimal.Create(const Nom: string; Age: Integer);
-begin
+constructor TAnimal.Create(const Nom: string; Age: Integer);  
+begin  
   inherited Create;
   FNom := Nom;    // OK : accessible dans TAnimal
   FAge := Age;
 end;
 
-procedure TAnimal.FaireUnBruit;
-begin
+procedure TAnimal.FaireUnBruit;  
+begin  
   WriteLn('L''animal fait un bruit');
 end;
 
-procedure TAnimal.Afficher;
-begin
+procedure TAnimal.Afficher;  
+begin  
   WriteLn('Animal : ', FNom, ', Age : ', FAge);
 end;
 
-procedure TChien.Aboyer;
-begin
+procedure TChien.Aboyer;  
+begin  
   // ✓ OK : FNom est protected, donc accessible ici
   WriteLn(FNom, ' aboie : Ouaf ! Ouaf !');
 end;
 
-procedure TChien.Presenter;
-begin
+procedure TChien.Presenter;  
+begin  
   // ✓ OK : FNom et FAge sont protected
   WriteLn('Je m''appelle ', FNom, ' et j''ai ', FAge, ' ans');
 
@@ -212,8 +212,8 @@ type
     procedure AfficherDetails;
   end;
 
-procedure TEmploye.AfficherDetails;
-begin
+procedure TEmploye.AfficherDetails;  
+begin  
   // ✓ OK : FNom et FAge sont protected
   WriteLn('Employé : ', FNom, ', ', FAge, ' ans');
 
@@ -314,8 +314,8 @@ type
     procedure DefinirHauteur(Valeur: Real);
   end;
 
-procedure TRectangleBon.DefinirLargeur(Valeur: Real);
-begin
+procedure TRectangleBon.DefinirLargeur(Valeur: Real);  
+begin  
   if Valeur > 0 then
     FLargeur := Valeur
   else
@@ -355,8 +355,8 @@ type
     property Visible: Boolean read FVisible write FVisible;
   end;
 
-procedure TMonComposant.SetTitre(const Valeur: string);
-begin
+procedure TMonComposant.SetTitre(const Valeur: string);  
+begin  
   if FTitre <> Valeur then
   begin
     FTitre := Valeur;
@@ -455,8 +455,8 @@ type
     procedure TesterAcces;
   end;
 
-procedure TClasse.TesterAcces;
-begin
+procedure TClasse.TesterAcces;  
+begin  
   // ✓ Depuis la classe elle-même : TOUS accessibles
   FPrivate := 1;
   FProtected := 2;
@@ -470,8 +470,8 @@ type
     procedure TesterAccesDeriv;
   end;
 
-procedure TClasseDerivee.TesterAccesDeriv;
-begin
+procedure TClasseDerivee.TesterAccesDeriv;  
+begin  
   // ✗ Private n'est PAS accessible
   // FPrivate := 1;
 
@@ -555,48 +555,48 @@ type
 
 // === IMPLÉMENTATION TPersonne ===
 
-constructor TPersonne.Create(const Nom, Prenom: string; DateNaissance: TDateTime);
-begin
+constructor TPersonne.Create(const Nom, Prenom: string; DateNaissance: TDateTime);  
+begin  
   inherited Create;
   FNom := Nom;
   FPrenom := Prenom;
   FDateNaissance := DateNaissance;
 end;
 
-function TPersonne.ObtenirNomComplet: string;
-begin
+function TPersonne.ObtenirNomComplet: string;  
+begin  
   Result := FPrenom + ' ' + FNom;
 end;
 
-function TPersonne.CalculerAge: Integer;
-begin
+function TPersonne.CalculerAge: Integer;  
+begin  
   Result := YearsBetween(Now, FDateNaissance);
 end;
 
-procedure TPersonne.Afficher;
-begin
+procedure TPersonne.Afficher;  
+begin  
   WriteLn('Nom : ', ObtenirNomComplet);
   WriteLn('Age : ', CalculerAge, ' ans');
 end;
 
 // === IMPLÉMENTATION TEtudiant ===
 
-constructor TEtudiant.Create(const Nom, Prenom: string; DateNaissance: TDateTime; const NumeroEtudiant: string);
-begin
+constructor TEtudiant.Create(const Nom, Prenom: string; DateNaissance: TDateTime; const NumeroEtudiant: string);  
+begin  
   inherited Create(Nom, Prenom, DateNaissance);
   FNumeroEtudiant := NumeroEtudiant;
   SetLength(FNotes, 0);
   FFormation := 'Non définie';
 end;
 
-destructor TEtudiant.Destroy;
-begin
+destructor TEtudiant.Destroy;  
+begin  
   SetLength(FNotes, 0);
   inherited Destroy;
 end;
 
-function TEtudiant.NotesValidees: Boolean;
-var
+function TEtudiant.NotesValidees: Boolean;  
+var  
   I: Integer;
 begin
   Result := True;
@@ -608,8 +608,8 @@ begin
     end;
 end;
 
-procedure TEtudiant.TrierNotes;
-var
+procedure TEtudiant.TrierNotes;  
+var  
   I, J: Integer;
   Temp: Real;
 begin
@@ -623,8 +623,8 @@ begin
       end;
 end;
 
-procedure TEtudiant.AjouterNote(Note: Real);
-var
+procedure TEtudiant.AjouterNote(Note: Real);  
+var  
   Index: Integer;
 begin
   if (Note >= 0) and (Note <= 20) then
@@ -638,8 +638,8 @@ begin
     WriteLn('Erreur : note invalide (doit être entre 0 et 20)');
 end;
 
-function TEtudiant.CalculerMoyenne: Real;
-var
+function TEtudiant.CalculerMoyenne: Real;  
+var  
   I: Integer;
   Somme: Real;
 begin
@@ -656,8 +656,8 @@ begin
   Result := Somme / Length(FNotes);
 end;
 
-function TEtudiant.ObtenirMeilleureNote: Real;
-var
+function TEtudiant.ObtenirMeilleureNote: Real;  
+var  
   I: Integer;
 begin
   if Length(FNotes) = 0 then
@@ -672,8 +672,8 @@ begin
       Result := FNotes[I];
 end;
 
-function TEtudiant.ObtenirPireNote: Real;
-var
+function TEtudiant.ObtenirPireNote: Real;  
+var  
   I: Integer;
 begin
   if Length(FNotes) = 0 then
@@ -688,13 +688,13 @@ begin
       Result := FNotes[I];
 end;
 
-function TEtudiant.ObtenirNombreNotes: Integer;
-begin
+function TEtudiant.ObtenirNombreNotes: Integer;  
+begin  
   Result := Length(FNotes);
 end;
 
-procedure TEtudiant.AfficherNotes;
-var
+procedure TEtudiant.AfficherNotes;  
+var  
   I: Integer;
 begin
   WriteLn('=== Notes de ', ObtenirNomComplet, ' ===');
@@ -716,8 +716,8 @@ begin
   WriteLn('==================');
 end;
 
-procedure TEtudiant.Afficher;
-begin
+procedure TEtudiant.Afficher;  
+begin  
   WriteLn('=== Étudiant ===');
   inherited Afficher;  // Affiche nom et âge
   WriteLn('Numéro étudiant : ', FNumeroEtudiant);

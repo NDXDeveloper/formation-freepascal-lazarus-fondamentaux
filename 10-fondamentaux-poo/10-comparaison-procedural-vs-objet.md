@@ -36,30 +36,30 @@ type
   end;
 
 // Procédures et fonctions séparées
-procedure InitialiserRectangle(var R: TRectangle; L, H: Real);
-begin
+procedure InitialiserRectangle(var R: TRectangle; L, H: Real);  
+begin  
   R.Largeur := L;
   R.Hauteur := H;
 end;
 
-function CalculerSurface(R: TRectangle): Real;
-begin
+function CalculerSurface(R: TRectangle): Real;  
+begin  
   Result := R.Largeur * R.Hauteur;
 end;
 
-function CalculerPerimetre(R: TRectangle): Real;
-begin
+function CalculerPerimetre(R: TRectangle): Real;  
+begin  
   Result := 2 * (R.Largeur + R.Hauteur);
 end;
 
-procedure Redimensionner(var R: TRectangle; Facteur: Real);
-begin
+procedure Redimensionner(var R: TRectangle; Facteur: Real);  
+begin  
   R.Largeur := R.Largeur * Facteur;
   R.Hauteur := R.Hauteur * Facteur;
 end;
 
-procedure AfficherRectangle(R: TRectangle);
-begin
+procedure AfficherRectangle(R: TRectangle);  
+begin  
   WriteLn('Rectangle:');
   WriteLn('  Largeur: ', R.Largeur:0:2);
   WriteLn('  Hauteur: ', R.Hauteur:0:2);
@@ -108,31 +108,31 @@ type
     property Hauteur: Real read FHauteur write FHauteur;
   end;
 
-constructor TRectangle.Create(L, H: Real);
-begin
+constructor TRectangle.Create(L, H: Real);  
+begin  
   inherited Create;
   FLargeur := L;
   FHauteur := H;
 end;
 
-function TRectangle.CalculerSurface: Real;
-begin
+function TRectangle.CalculerSurface: Real;  
+begin  
   Result := FLargeur * FHauteur;
 end;
 
-function TRectangle.CalculerPerimetre: Real;
-begin
+function TRectangle.CalculerPerimetre: Real;  
+begin  
   Result := 2 * (FLargeur + FHauteur);
 end;
 
-procedure TRectangle.Redimensionner(Facteur: Real);
-begin
+procedure TRectangle.Redimensionner(Facteur: Real);  
+begin  
   FLargeur := FLargeur * Facteur;
   FHauteur := FHauteur * Facteur;
 end;
 
-procedure TRectangle.Afficher;
-begin
+procedure TRectangle.Afficher;  
+begin  
   WriteLn('Rectangle:');
   WriteLn('  Largeur: ', FLargeur:0:2);
   WriteLn('  Hauteur: ', FHauteur:0:2);
@@ -184,8 +184,8 @@ type
 var
   Comptes: TArrayComptes;
 
-procedure AjouterCompte(var Comptes: TArrayComptes; const Numero, Titulaire: string; SoldeInitial: Real);
-var
+procedure AjouterCompte(var Comptes: TArrayComptes; const Numero, Titulaire: string; SoldeInitial: Real);  
+var  
   Index: Integer;
 begin
   Index := Length(Comptes);
@@ -195,8 +195,8 @@ begin
   Comptes[Index].Solde := SoldeInitial;
 end;
 
-function TrouverCompte(const Comptes: TArrayComptes; const Numero: string): Integer;
-var
+function TrouverCompte(const Comptes: TArrayComptes; const Numero: string): Integer;  
+var  
   I: Integer;
 begin
   Result := -1;
@@ -208,8 +208,8 @@ begin
     end;
 end;
 
-procedure Crediter(var Compte: TCompte; Montant: Real);
-begin
+procedure Crediter(var Compte: TCompte; Montant: Real);  
+begin  
   if Montant > 0 then
   begin
     Compte.Solde := Compte.Solde + Montant;
@@ -219,8 +219,8 @@ begin
     WriteLn('Erreur: montant invalide');
 end;
 
-procedure Debiter(var Compte: TCompte; Montant: Real);
-begin
+procedure Debiter(var Compte: TCompte; Montant: Real);  
+begin  
   if Montant > 0 then
   begin
     if Compte.Solde >= Montant then
@@ -235,8 +235,8 @@ begin
     WriteLn('Erreur: montant invalide');
 end;
 
-procedure AfficherCompte(const Compte: TCompte);
-begin
+procedure AfficherCompte(const Compte: TCompte);  
+begin  
   WriteLn('Compte: ', Compte.NumeroCompte);
   WriteLn('Titulaire: ', Compte.Titulaire);
   WriteLn('Solde: ', Compte.Solde:0:2, ' €');
@@ -306,16 +306,16 @@ type
 
 // Implémentation TCompte
 
-constructor TCompte.Create(const Numero, Titulaire: string; SoldeInitial: Real);
-begin
+constructor TCompte.Create(const Numero, Titulaire: string; SoldeInitial: Real);  
+begin  
   inherited Create;
   FNumeroCompte := Numero;
   FTitulaire := Titulaire;
   FSolde := SoldeInitial;
 end;
 
-procedure TCompte.Crediter(Montant: Real);
-begin
+procedure TCompte.Crediter(Montant: Real);  
+begin  
   if Montant > 0 then
   begin
     FSolde := FSolde + Montant;
@@ -325,8 +325,8 @@ begin
     WriteLn('Erreur: montant invalide');
 end;
 
-procedure TCompte.Debiter(Montant: Real);
-begin
+procedure TCompte.Debiter(Montant: Real);  
+begin  
   if Montant > 0 then
   begin
     if FSolde >= Montant then
@@ -341,8 +341,8 @@ begin
     WriteLn('Erreur: montant invalide');
 end;
 
-procedure TCompte.Afficher;
-begin
+procedure TCompte.Afficher;  
+begin  
   WriteLn('Compte: ', FNumeroCompte);
   WriteLn('Titulaire: ', FTitulaire);
   WriteLn('Solde: ', FSolde:0:2, ' €');
@@ -350,14 +350,14 @@ end;
 
 // Implémentation TBanque
 
-constructor TBanque.Create;
-begin
+constructor TBanque.Create;  
+begin  
   inherited Create;
   FComptes := TList.Create;
 end;
 
-destructor TBanque.Destroy;
-var
+destructor TBanque.Destroy;  
+var  
   I: Integer;
 begin
   for I := 0 to FComptes.Count - 1 do
@@ -366,13 +366,13 @@ begin
   inherited Destroy;
 end;
 
-procedure TBanque.AjouterCompte(Compte: TCompte);
-begin
+procedure TBanque.AjouterCompte(Compte: TCompte);  
+begin  
   FComptes.Add(Compte);
 end;
 
-function TBanque.TrouverCompte(const Numero: string): TCompte;
-var
+function TBanque.TrouverCompte(const Numero: string): TCompte;  
+var  
   I: Integer;
 begin
   Result := nil;
@@ -431,8 +431,8 @@ type
   end;
 
 // Fonctions séparées
-procedure Vieillir(var P: TPersonne);
-function EstMajeur(P: TPersonne): Boolean;
+procedure Vieillir(var P: TPersonne);  
+function EstMajeur(P: TPersonne): Boolean;  
 ```
 
 **Objet :**
@@ -478,8 +478,8 @@ type
   TVoiture = record ... end;
   TMoto = record ... end;
 
-procedure AccelererVoiture(var V: TVoiture);
-procedure AccelererMoto(var M: TMoto);
+procedure AccelererVoiture(var V: TVoiture);  
+procedure AccelererMoto(var M: TMoto);  
 // Duplication de code
 ```
 
@@ -501,8 +501,8 @@ type
 **Procédural :**
 ```pascal
 // À mesure que le programme grandit, on a des centaines de fonctions
-procedure Fonction1(var Data: TData);
-procedure Fonction2(var Data: TData);
+procedure Fonction1(var Data: TData);  
+procedure Fonction2(var Data: TData);  
 // ... 100 fonctions plus tard ...
 procedure Fonction100(var Data: TData);
 // Difficile de savoir quelle fonction utiliser
@@ -538,8 +538,8 @@ type
   end;
 
 // Il faut trouver et modifier TOUTES les fonctions qui l'utilisent
-procedure Afficher(P: TPersonne);
-procedure Sauvegarder(P: TPersonne);
+procedure Afficher(P: TPersonne);  
+procedure Sauvegarder(P: TPersonne);  
 // ... beaucoup de fonctions à modifier
 ```
 
@@ -563,8 +563,8 @@ type
 ✓ **Le programme est simple et petit**
 ```pascal
 // Script simple de calcul
-program CalculMoyenne;
-var
+program CalculMoyenne;  
+var  
   Notes: array[1..5] of Real;
   Moyenne: Real;
 begin
@@ -722,8 +722,8 @@ Oui ! Dans FreePascal, vous pouvez combiner les deux approches :
 
 ```pascal
 // Fonctions utilitaires (procédural)
-function Max(A, B: Integer): Integer;
-begin
+function Max(A, B: Integer): Integer;  
+begin  
   if A > B then Result := A else Result := B;
 end;
 
@@ -734,8 +734,8 @@ type
     function CalculerMax(A, B: Integer): Integer;
   end;
 
-function TCalculateur.CalculerMax(A, B: Integer): Integer;
-begin
+function TCalculateur.CalculerMax(A, B: Integer): Integer;  
+begin  
   Result := Max(A, B);  // Utilise la fonction procédurale
 end;
 ```
@@ -759,8 +759,8 @@ end;
 
 ### Phase 1 : Script simple (procédural)
 ```pascal
-program Script;
-var
+program Script;  
+var  
   X, Y: Integer;
 begin
   X := 10;
@@ -773,8 +773,8 @@ end.
 ```pascal
 program Programme;
 
-function Additionner(A, B: Integer): Integer;
-begin
+function Additionner(A, B: Integer): Integer;  
+begin  
   Result := A + B;
 end;
 

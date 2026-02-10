@@ -38,54 +38,54 @@ type
 
 // === IMPLÉMENTATION ===
 
-function TRectangle.ValiderDimension(Valeur: Real): Boolean;
-begin
+function TRectangle.ValiderDimension(Valeur: Real): Boolean;  
+begin  
   Result := Valeur > 0;
 end;
 
-procedure TRectangle.DefinirLargeur(Valeur: Real);
-begin
+procedure TRectangle.DefinirLargeur(Valeur: Real);  
+begin  
   if ValiderDimension(Valeur) then
     FLargeur := Valeur
   else
     WriteLn('Erreur : largeur invalide');
 end;
 
-procedure TRectangle.DefinirHauteur(Valeur: Real);
-begin
+procedure TRectangle.DefinirHauteur(Valeur: Real);  
+begin  
   if ValiderDimension(Valeur) then
     FHauteur := Valeur
   else
     WriteLn('Erreur : hauteur invalide');
 end;
 
-function TRectangle.ObtenirLargeur: Real;
-begin
+function TRectangle.ObtenirLargeur: Real;  
+begin  
   Result := FLargeur;
 end;
 
-function TRectangle.ObtenirHauteur: Real;
-begin
+function TRectangle.ObtenirHauteur: Real;  
+begin  
   Result := FHauteur;
 end;
 
-function TRectangle.CalculerSurface: Real;
-begin
+function TRectangle.CalculerSurface: Real;  
+begin  
   Result := FLargeur * FHauteur;
 end;
 
-function TRectangle.CalculerPerimetre: Real;
-begin
+function TRectangle.CalculerPerimetre: Real;  
+begin  
   Result := 2 * (FLargeur + FHauteur);
 end;
 
-function TRectangle.EstCarre: Boolean;
-begin
+function TRectangle.EstCarre: Boolean;  
+begin  
   Result := FLargeur = FHauteur;
 end;
 
-procedure TRectangle.Afficher;
-begin
+procedure TRectangle.Afficher;  
+begin  
   WriteLn('=== Rectangle ===');
   WriteLn('Largeur : ', FLargeur:0:2, ' cm');
   WriteLn('Hauteur : ', FHauteur:0:2, ' cm');
@@ -96,8 +96,8 @@ begin
   WriteLn('================');
 end;
 
-procedure TRectangle.Redimensionner(FacteurEchelle: Real);
-begin
+procedure TRectangle.Redimensionner(FacteurEchelle: Real);  
+begin  
   if ValiderDimension(FacteurEchelle) then
   begin
     FLargeur := FLargeur * FacteurEchelle;

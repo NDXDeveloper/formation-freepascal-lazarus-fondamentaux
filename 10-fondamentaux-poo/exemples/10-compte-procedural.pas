@@ -19,8 +19,8 @@ type
 var
   Comptes: TArrayComptes;
 
-procedure AjouterCompte(var Comptes: TArrayComptes; const Numero, Titulaire: string; SoldeInitial: Real);
-var
+procedure AjouterCompte(var Comptes: TArrayComptes; const Numero, Titulaire: string; SoldeInitial: Real);  
+var  
   Index: Integer;
 begin
   Index := Length(Comptes);
@@ -30,8 +30,8 @@ begin
   Comptes[Index].Solde := SoldeInitial;
 end;
 
-function TrouverCompte(const Comptes: TArrayComptes; const Numero: string): Integer;
-var
+function TrouverCompte(const Comptes: TArrayComptes; const Numero: string): Integer;  
+var  
   I: Integer;
 begin
   Result := -1;
@@ -43,8 +43,8 @@ begin
     end;
 end;
 
-procedure Crediter(var Compte: TCompte; Montant: Real);
-begin
+procedure Crediter(var Compte: TCompte; Montant: Real);  
+begin  
   if Montant > 0 then
   begin
     Compte.Solde := Compte.Solde + Montant;
@@ -54,8 +54,8 @@ begin
     WriteLn('Erreur: montant invalide');
 end;
 
-procedure Debiter(var Compte: TCompte; Montant: Real);
-begin
+procedure Debiter(var Compte: TCompte; Montant: Real);  
+begin  
   if Montant > 0 then
   begin
     if Compte.Solde >= Montant then
@@ -70,8 +70,8 @@ begin
     WriteLn('Erreur: montant invalide');
 end;
 
-procedure AfficherCompte(const Compte: TCompte);
-begin
+procedure AfficherCompte(const Compte: TCompte);  
+begin  
   WriteLn('Compte: ', Compte.NumeroCompte);
   WriteLn('Titulaire: ', Compte.Titulaire);
   WriteLn('Solde: ', Compte.Solde:0:2, ' €');

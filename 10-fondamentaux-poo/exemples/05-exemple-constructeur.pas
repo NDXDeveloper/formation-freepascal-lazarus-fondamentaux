@@ -35,14 +35,14 @@ type
 
 // === IMPLÉMENTATION ===
 
-function TArticle.PrixValide(Prix: Real): Boolean;
-begin
+function TArticle.PrixValide(Prix: Real): Boolean;  
+begin  
   Result := Prix >= 0;
 end;
 
 // Constructeur par défaut
-constructor TArticle.Create;
-begin
+constructor TArticle.Create;  
+begin  
   inherited Create;
   FCode := 'ART000';
   FLibelle := 'Article sans nom';
@@ -53,8 +53,8 @@ begin
 end;
 
 // Constructeur avec code et libellé
-constructor TArticle.Create(const Code, Libelle: string);
-begin
+constructor TArticle.Create(const Code, Libelle: string);  
+begin  
   inherited Create;
   FCode := Code;
   FLibelle := Libelle;
@@ -65,8 +65,8 @@ begin
 end;
 
 // Constructeur complet
-constructor TArticle.Create(const Code, Libelle: string; PrixHT: Real; Quantite: Integer);
-begin
+constructor TArticle.Create(const Code, Libelle: string; PrixHT: Real; Quantite: Integer);  
+begin  
   inherited Create;
   FCode := Code;
   FLibelle := Libelle;
@@ -93,13 +93,13 @@ begin
   WriteLn('Article créé : ', Code, ' - ', Libelle);
 end;
 
-function TArticle.CalculerPrixTTC: Real;
-begin
+function TArticle.CalculerPrixTTC: Real;  
+begin  
   Result := FPrixHT * (1 + FTauxTVA);
 end;
 
-procedure TArticle.Afficher;
-begin
+procedure TArticle.Afficher;  
+begin  
   WriteLn('=== Article ===');
   WriteLn('Code        : ', FCode);
   WriteLn('Libellé     : ', FLibelle);

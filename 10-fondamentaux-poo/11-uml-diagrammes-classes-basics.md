@@ -100,8 +100,8 @@ Les symboles indiquent la visibilité des membres :
 ### Format général
 
 ```
-attribut: Type
-méthode(paramètre: Type): TypeRetour
+attribut: Type  
+méthode(paramètre: Type): TypeRetour  
 ```
 
 ### Exemples détaillés
@@ -272,8 +272,8 @@ type
     destructor Destroy; override;  // Libère les départements
   end;
 
-destructor TEntreprise.Destroy;
-var
+destructor TEntreprise.Destroy;  
+var  
   I: Integer;
 begin
   for I := 0 to High(FDepartements) do
@@ -309,8 +309,8 @@ type
     destructor Destroy; override;
   end;
 
-destructor TEquipe.Destroy;
-begin
+destructor TEquipe.Destroy;  
+begin  
   SetLength(FJoueurs, 0);  // Libère le tableau, mais pas les joueurs
   inherited Destroy;
 end;
@@ -522,18 +522,18 @@ type
 ### Étape 3 : Implémenter
 
 ```pascal
-procedure TCalculatrice.Additionner(A, B: Real);
-begin
+procedure TCalculatrice.Additionner(A, B: Real);  
+begin  
   FResultat := A + B;
 end;
 
-procedure TCalculatrice.Soustraire(A, B: Real);
-begin
+procedure TCalculatrice.Soustraire(A, B: Real);  
+begin  
   FResultat := A - B;
 end;
 
-function TCalculatrice.ObtenirResultat: Real;
-begin
+function TCalculatrice.ObtenirResultat: Real;  
+begin  
   Result := FResultat;
 end;
 ```

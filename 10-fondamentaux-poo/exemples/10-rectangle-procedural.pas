@@ -14,30 +14,30 @@ type
   end;
 
 // Procédures et fonctions séparées
-procedure InitialiserRectangle(var R: TRectangle; L, H: Real);
-begin
+procedure InitialiserRectangle(var R: TRectangle; L, H: Real);  
+begin  
   R.Largeur := L;
   R.Hauteur := H;
 end;
 
-function CalculerSurface(R: TRectangle): Real;
-begin
+function CalculerSurface(R: TRectangle): Real;  
+begin  
   Result := R.Largeur * R.Hauteur;
 end;
 
-function CalculerPerimetre(R: TRectangle): Real;
-begin
+function CalculerPerimetre(R: TRectangle): Real;  
+begin  
   Result := 2 * (R.Largeur + R.Hauteur);
 end;
 
-procedure Redimensionner(var R: TRectangle; Facteur: Real);
-begin
+procedure Redimensionner(var R: TRectangle; Facteur: Real);  
+begin  
   R.Largeur := R.Largeur * Facteur;
   R.Hauteur := R.Hauteur * Facteur;
 end;
 
-procedure AfficherRectangle(R: TRectangle);
-begin
+procedure AfficherRectangle(R: TRectangle);  
+begin  
   WriteLn('Rectangle:');
   WriteLn('  Largeur: ', R.Largeur:0:2);
   WriteLn('  Hauteur: ', R.Hauteur:0:2);

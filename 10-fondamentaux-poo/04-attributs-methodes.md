@@ -144,13 +144,13 @@ type
     procedure Afficher;
   end;
 
-procedure TCompteur.Incrementer;
-begin
+procedure TCompteur.Incrementer;  
+begin  
   FValeur := FValeur + 1;  // Accès direct
 end;
 
-procedure TCompteur.Afficher;
-begin
+procedure TCompteur.Afficher;  
+begin  
   WriteLn('Valeur : ', FValeur);  // Accès direct
 end;
 ```
@@ -190,13 +190,13 @@ type
     procedure Afficher;
   end;
 
-procedure TVoiture.Accelerer(Increment: Integer);
-begin
+procedure TVoiture.Accelerer(Increment: Integer);  
+begin  
   FVitesse := FVitesse + Increment;
 end;
 
-procedure TVoiture.Afficher;
-begin
+procedure TVoiture.Afficher;  
+begin  
   WriteLn('Vitesse actuelle : ', FVitesse, ' km/h');
 end;
 ```
@@ -215,18 +215,18 @@ type
     function EstCarre: Boolean;
   end;
 
-function TRectangle.CalculerSurface: Real;
-begin
+function TRectangle.CalculerSurface: Real;  
+begin  
   Result := FLargeur * FHauteur;
 end;
 
-function TRectangle.CalculerPerimetre: Real;
-begin
+function TRectangle.CalculerPerimetre: Real;  
+begin  
   Result := 2 * (FLargeur + FHauteur);
 end;
 
-function TRectangle.EstCarre: Boolean;
-begin
+function TRectangle.EstCarre: Boolean;  
+begin  
   Result := FLargeur = FHauteur;
 end;
 ```
@@ -238,8 +238,8 @@ end;
 La méthode reçoit une **copie** de la valeur :
 
 ```pascal
-procedure TVoiture.DefinirVitesse(Vitesse: Integer);
-begin
+procedure TVoiture.DefinirVitesse(Vitesse: Integer);  
+begin  
   if (Vitesse >= 0) and (Vitesse <= 200) then
     FVitesse := Vitesse;
   // Modifier 'Vitesse' ici n'affecte pas la variable originale
@@ -257,8 +257,8 @@ type
     procedure Diviser(A, B: Real; var Quotient, Reste: Real);
   end;
 
-procedure TCalculatrice.Diviser(A, B: Real; var Quotient, Reste: Real);
-begin
+procedure TCalculatrice.Diviser(A, B: Real; var Quotient, Reste: Real);  
+begin  
   if B <> 0 then
   begin
     Quotient := A / B;
@@ -290,8 +290,8 @@ type
     procedure AfficherMessage(const Msg: string);
   end;
 
-procedure TPersonne.DefinirNom(const Nom: string);
-begin
+procedure TPersonne.DefinirNom(const Nom: string);  
+begin  
   FNom := Nom;  // OK, on peut lire
   // Nom := 'autre';  // ✗ ERREUR : on ne peut pas modifier
 end;
@@ -314,13 +314,13 @@ type
     function ObtenirNumeroCompte: string;
   end;
 
-function TCompteBancaire.ObtenirSolde: Real;
-begin
+function TCompteBancaire.ObtenirSolde: Real;  
+begin  
   Result := FSolde;
 end;
 
-function TCompteBancaire.ObtenirNumeroCompte: string;
-begin
+function TCompteBancaire.ObtenirNumeroCompte: string;  
+begin  
   Result := FNumeroCompte;
 end;
 ```
@@ -340,22 +340,22 @@ type
     procedure Debiter(Montant: Real);
   end;
 
-procedure TCompteBancaire.DefinirSolde(Montant: Real);
-begin
+procedure TCompteBancaire.DefinirSolde(Montant: Real);  
+begin  
   if Montant >= 0 then
     FSolde := Montant
   else
     WriteLn('Erreur : solde ne peut pas être négatif');
 end;
 
-procedure TCompteBancaire.Crediter(Montant: Real);
-begin
+procedure TCompteBancaire.Crediter(Montant: Real);  
+begin  
   if Montant > 0 then
     FSolde := FSolde + Montant;
 end;
 
-procedure TCompteBancaire.Debiter(Montant: Real);
-begin
+procedure TCompteBancaire.Debiter(Montant: Real);  
+begin  
   if (Montant > 0) and (FSolde >= Montant) then
     FSolde := FSolde - Montant
   else
@@ -379,22 +379,22 @@ type
     function CalculerDiametre: Real;
   end;
 
-function TCercle.CalculerSurface: Real;
-const
+function TCercle.CalculerSurface: Real;  
+const  
   PI = 3.14159265359;
 begin
   Result := PI * FRayon * FRayon;
 end;
 
-function TCercle.CalculerCirconference: Real;
-const
+function TCercle.CalculerCirconference: Real;  
+const  
   PI = 3.14159265359;
 begin
   Result := 2 * PI * FRayon;
 end;
 
-function TCercle.CalculerDiametre: Real;
-begin
+function TCercle.CalculerDiametre: Real;  
+begin  
   Result := 2 * FRayon;
 end;
 ```
@@ -417,8 +417,8 @@ type
     function ObtenirNomComplet: string;
   end;
 
-procedure TPersonne.Afficher;
-begin
+procedure TPersonne.Afficher;  
+begin  
   WriteLn('Nom complet : ', ObtenirNomComplet);
   WriteLn('Age : ', FAge, ' ans');
   if EstMajeur then
@@ -427,19 +427,19 @@ begin
     WriteLn('Statut : Mineur');
 end;
 
-procedure TPersonne.Vieillir;
-begin
+procedure TPersonne.Vieillir;  
+begin  
   FAge := FAge + 1;
   WriteLn(FNom, ' a maintenant ', FAge, ' ans');
 end;
 
-function TPersonne.EstMajeur: Boolean;
-begin
+function TPersonne.EstMajeur: Boolean;  
+begin  
   Result := FAge >= 18;
 end;
 
-function TPersonne.ObtenirNomComplet: string;
-begin
+function TPersonne.ObtenirNomComplet: string;  
+begin  
   Result := FPrenom + ' ' + FNom;
 end;
 ```
@@ -461,26 +461,26 @@ type
     function Distance(Autre: TPoint): Real;
   end;
 
-procedure TPoint.Deplacer(DeltaX, DeltaY: Real);
-begin
+procedure TPoint.Deplacer(DeltaX, DeltaY: Real);  
+begin  
   FX := FX + DeltaX;
   FY := FY + DeltaY;
 end;
 
-procedure TPoint.DeplacerVers(NouveauX, NouveauY: Real);
-begin
+procedure TPoint.DeplacerVers(NouveauX, NouveauY: Real);  
+begin  
   FX := NouveauX;
   FY := NouveauY;
 end;
 
-procedure TPoint.Centrer;
-begin
+procedure TPoint.Centrer;  
+begin  
   FX := 0;
   FY := 0;
 end;
 
-function TPoint.Distance(Autre: TPoint): Real;
-var
+function TPoint.Distance(Autre: TPoint): Real;  
+var  
   DX, DY: Real;
 begin
   DX := FX - Autre.FX;
@@ -503,21 +503,21 @@ type
     procedure Transferer(Destination: TCompteBancaire; Montant: Real);
   end;
 
-function TCompteBancaire.PeutDebiter(Montant: Real): Boolean;
-begin
+function TCompteBancaire.PeutDebiter(Montant: Real): Boolean;  
+begin  
   Result := (FSolde - Montant) >= -FDecouvertAutorise;
 end;
 
-procedure TCompteBancaire.Debiter(Montant: Real);
-begin
+procedure TCompteBancaire.Debiter(Montant: Real);  
+begin  
   if PeutDebiter(Montant) then  // Appel d'une autre méthode
     FSolde := FSolde - Montant
   else
     WriteLn('Débit refusé : dépassement du découvert autorisé');
 end;
 
-procedure TCompteBancaire.Transferer(Destination: TCompteBancaire; Montant: Real);
-begin
+procedure TCompteBancaire.Transferer(Destination: TCompteBancaire; Montant: Real);  
+begin  
   if PeutDebiter(Montant) then
   begin
     Debiter(Montant);              // Appel d'une méthode de l'objet
@@ -569,73 +569,73 @@ type
 
 // === IMPLÉMENTATION ===
 
-function TTemperature.TemperatureValide(Temp: Real): Boolean;
-begin
+function TTemperature.TemperatureValide(Temp: Real): Boolean;  
+begin  
   // Le zéro absolu est -273.15°C
   Result := Temp >= -273.15;
 end;
 
-procedure TTemperature.DefinirCelsius(Valeur: Real);
-begin
+procedure TTemperature.DefinirCelsius(Valeur: Real);  
+begin  
   if TemperatureValide(Valeur) then
     FCelsius := Valeur
   else
     WriteLn('Erreur : température invalide (< -273.15°C)');
 end;
 
-procedure TTemperature.DefinirFahrenheit(Valeur: Real);
-var
+procedure TTemperature.DefinirFahrenheit(Valeur: Real);  
+var  
   TempCelsius: Real;
 begin
   TempCelsius := (Valeur - 32) * 5 / 9;
   DefinirCelsius(TempCelsius);
 end;
 
-procedure TTemperature.DefinirKelvin(Valeur: Real);
-var
+procedure TTemperature.DefinirKelvin(Valeur: Real);  
+var  
   TempCelsius: Real;
 begin
   TempCelsius := Valeur - 273.15;
   DefinirCelsius(TempCelsius);
 end;
 
-function TTemperature.ObtenirCelsius: Real;
-begin
+function TTemperature.ObtenirCelsius: Real;  
+begin  
   Result := FCelsius;
 end;
 
-function TTemperature.ObtenirFahrenheit: Real;
-begin
+function TTemperature.ObtenirFahrenheit: Real;  
+begin  
   Result := (FCelsius * 9 / 5) + 32;
 end;
 
-function TTemperature.ObtenirKelvin: Real;
-begin
+function TTemperature.ObtenirKelvin: Real;  
+begin  
   Result := FCelsius + 273.15;
 end;
 
-procedure TTemperature.Augmenter(Delta: Real);
-begin
+procedure TTemperature.Augmenter(Delta: Real);  
+begin  
   DefinirCelsius(FCelsius + Delta);
 end;
 
-procedure TTemperature.Diminuer(Delta: Real);
-begin
+procedure TTemperature.Diminuer(Delta: Real);  
+begin  
   DefinirCelsius(FCelsius - Delta);
 end;
 
-function TTemperature.EstGelant: Boolean;
-begin
+function TTemperature.EstGelant: Boolean;  
+begin  
   Result := FCelsius <= 0;
 end;
 
-function TTemperature.EstBouillant: Boolean;
-begin
+function TTemperature.EstBouillant: Boolean;  
+begin  
   Result := FCelsius >= 100;
 end;
 
-procedure TTemperature.Afficher;
-begin
+procedure TTemperature.Afficher;  
+begin  
   WriteLn('=== Température ===');
   WriteLn('Celsius    : ', ObtenirCelsius:0:2, ' °C');
   WriteLn('Fahrenheit : ', ObtenirFahrenheit:0:2, ' °F');
@@ -725,37 +725,37 @@ type
 
 ```pascal
 // ✓ BON : noms explicites
-procedure DefinirNom(const Valeur: string);
-function ObtenirAge: Integer;
-function CalculerSalaireAnnuel: Real;
-procedure AfficherDetails;
+procedure DefinirNom(const Valeur: string);  
+function ObtenirAge: Integer;  
+function CalculerSalaireAnnuel: Real;  
+procedure AfficherDetails;  
 
 // ✗ MAUVAIS : noms vagues
-procedure Set1(V: string);
-function Get2: Integer;
-function Calc: Real;
-procedure Show;
+procedure Set1(V: string);  
+function Get2: Integer;  
+function Calc: Real;  
+procedure Show;  
 ```
 
 ### 2. Une méthode = une responsabilité
 
 ```pascal
 // ✗ MAUVAIS : fait trop de choses
-procedure TPersonne.ToutFaire;
-begin
+procedure TPersonne.ToutFaire;  
+begin  
   FAge := FAge + 1;
   FSalaire := FSalaire * 1.05;
   WriteLn('Fait');
 end;
 
 // ✓ BON : méthodes séparées
-procedure TPersonne.Vieillir;
-begin
+procedure TPersonne.Vieillir;  
+begin  
   FAge := FAge + 1;
 end;
 
-procedure TPersonne.AugmenterSalaire(Pourcentage: Real);
-begin
+procedure TPersonne.AugmenterSalaire(Pourcentage: Real);  
+begin  
   FSalaire := FSalaire * (1 + Pourcentage / 100);
 end;
 ```
@@ -763,8 +763,8 @@ end;
 ### 3. Valider les données dans les setters
 
 ```pascal
-procedure TPersonne.DefinirAge(Valeur: Integer);
-begin
+procedure TPersonne.DefinirAge(Valeur: Integer);  
+begin  
   if (Valeur >= 0) and (Valeur <= 150) then
     FAge := Valeur
   else

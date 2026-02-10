@@ -17,18 +17,18 @@ type
     procedure Afficher;
   end;
 
-procedure TCompteur.Incrementer;
-begin
+procedure TCompteur.Incrementer;  
+begin  
   FValeur := FValeur + 1;
 end;
 
-procedure TCompteur.Decrementer;
-begin
+procedure TCompteur.Decrementer;  
+begin  
   FValeur := FValeur - 1;
 end;
 
-procedure TCompteur.Afficher;
-begin
+procedure TCompteur.Afficher;  
+begin  
   WriteLn('Valeur du compteur : ', FValeur);
 end;
 

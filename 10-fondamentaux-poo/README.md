@@ -40,8 +40,8 @@ var
   CouleurVoiture: string;
   VitesseVoiture: Integer;
 
-procedure Accelerer(var Vitesse: Integer);
-procedure Freiner(var Vitesse: Integer);
+procedure Accelerer(var Vitesse: Integer);  
+procedure Freiner(var Vitesse: Integer);  
 ```
 
 En programmation orientée objet, tout est regroupé :

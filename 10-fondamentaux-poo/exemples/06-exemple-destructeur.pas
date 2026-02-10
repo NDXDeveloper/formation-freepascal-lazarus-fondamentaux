@@ -27,8 +27,8 @@ type
 
 // === IMPLÉMENTATION ===
 
-constructor TFichierLog.Create(const NomFichier: string);
-begin
+constructor TFichierLog.Create(const NomFichier: string);  
+begin  
   inherited Create;
   FNomFichier := NomFichier;
   FEstOuvert := False;
@@ -50,8 +50,8 @@ begin
   end;
 end;
 
-destructor TFichierLog.Destroy;
-begin
+destructor TFichierLog.Destroy;  
+begin  
   // Fermer le fichier s'il est ouvert
   if FEstOuvert then
   begin
@@ -67,8 +67,8 @@ begin
   inherited Destroy;  // Toujours en dernier
 end;
 
-procedure TFichierLog.Ecrire(const Message: string);
-begin
+procedure TFichierLog.Ecrire(const Message: string);  
+begin  
   if FEstOuvert then
   begin
     try
@@ -81,8 +81,8 @@ begin
   end;
 end;
 
-procedure TFichierLog.EcrireAvecDate(const Message: string);
-var
+procedure TFichierLog.EcrireAvecDate(const Message: string);  
+var  
   Ligne: string;
 begin
   Ligne := FormatDateTime('yyyy-mm-dd hh:nn:ss', Now) + ' - ' + Message;

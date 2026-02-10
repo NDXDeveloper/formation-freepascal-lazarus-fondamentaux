@@ -38,16 +38,16 @@ type
 
 // Implémentation TCompte
 
-constructor TCompte.Create(const Numero, Titulaire: string; SoldeInitial: Real);
-begin
+constructor TCompte.Create(const Numero, Titulaire: string; SoldeInitial: Real);  
+begin  
   inherited Create;
   FNumeroCompte := Numero;
   FTitulaire := Titulaire;
   FSolde := SoldeInitial;
 end;
 
-procedure TCompte.Crediter(Montant: Real);
-begin
+procedure TCompte.Crediter(Montant: Real);  
+begin  
   if Montant > 0 then
   begin
     FSolde := FSolde + Montant;
@@ -57,8 +57,8 @@ begin
     WriteLn('Erreur: montant invalide');
 end;
 
-procedure TCompte.Debiter(Montant: Real);
-begin
+procedure TCompte.Debiter(Montant: Real);  
+begin  
   if Montant > 0 then
   begin
     if FSolde >= Montant then
@@ -73,8 +73,8 @@ begin
     WriteLn('Erreur: montant invalide');
 end;
 
-procedure TCompte.Afficher;
-begin
+procedure TCompte.Afficher;  
+begin  
   WriteLn('Compte: ', FNumeroCompte);
   WriteLn('Titulaire: ', FTitulaire);
   WriteLn('Solde: ', FSolde:0:2, ' €');
@@ -82,14 +82,14 @@ end;
 
 // Implémentation TBanque
 
-constructor TBanque.Create;
-begin
+constructor TBanque.Create;  
+begin  
   inherited Create;
   FComptes := TList.Create;
 end;
 
-destructor TBanque.Destroy;
-var
+destructor TBanque.Destroy;  
+var  
   I: Integer;
 begin
   for I := 0 to FComptes.Count - 1 do
@@ -98,13 +98,13 @@ begin
   inherited Destroy;
 end;
 
-procedure TBanque.AjouterCompte(Compte: TCompte);
-begin
+procedure TBanque.AjouterCompte(Compte: TCompte);  
+begin  
   FComptes.Add(Compte);
 end;
 
-function TBanque.TrouverCompte(const Numero: string): TCompte;
-var
+function TBanque.TrouverCompte(const Numero: string): TCompte;  
+var  
   I: Integer;
 begin
   Result := nil;

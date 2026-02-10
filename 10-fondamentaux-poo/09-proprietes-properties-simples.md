@@ -144,8 +144,8 @@ type
     property Valeur: Integer read FValeur;  // Pas de write
   end;
 
-procedure TCompteur.Incrementer;
-begin
+procedure TCompteur.Incrementer;  
+begin  
   FValeur := FValeur + 1;
 end;
 
@@ -200,8 +200,8 @@ type
     property NomComplet: string read GetNomComplet;
   end;
 
-function TPersonne.GetNomComplet: string;
-begin
+function TPersonne.GetNomComplet: string;  
+begin  
   Result := FPrenom + ' ' + FNom;
 end;
 
@@ -230,8 +230,8 @@ type
     property Age: Integer read FAge write SetAge;
   end;
 
-procedure TPersonne.SetAge(Valeur: Integer);
-begin
+procedure TPersonne.SetAge(Valeur: Integer);  
+begin  
   if (Valeur >= 0) and (Valeur <= 150) then
     FAge := Valeur
   else
@@ -267,16 +267,16 @@ type
     property Surface: Real read GetSurface;  // Lecture seule calculée
   end;
 
-procedure TRectangle.SetLargeur(Valeur: Real);
-begin
+procedure TRectangle.SetLargeur(Valeur: Real);  
+begin  
   if Valeur > 0 then
     FLargeur := Valeur
   else
     raise Exception.Create('Largeur doit être positive');
 end;
 
-function TRectangle.GetSurface: Real;
-begin
+function TRectangle.GetSurface: Real;  
+begin  
   Result := FLargeur * FHauteur;
 end;
 ```
@@ -301,25 +301,25 @@ type
     property Surface: Real read GetSurface;              // Calculée, lecture seule
   end;
 
-function TCercle.GetDiametre: Real;
-begin
+function TCercle.GetDiametre: Real;  
+begin  
   Result := FRayon * 2;
 end;
 
-procedure TCercle.SetDiametre(Valeur: Real);
-begin
+procedure TCercle.SetDiametre(Valeur: Real);  
+begin  
   FRayon := Valeur / 2;
 end;
 
-function TCercle.GetCirconference: Real;
-const
+function TCercle.GetCirconference: Real;  
+const  
   PI = 3.14159265359;
 begin
   Result := 2 * PI * FRayon;
 end;
 
-function TCercle.GetSurface: Real;
-const
+function TCercle.GetSurface: Real;  
+const  
   PI = 3.14159265359;
 begin
   Result := PI * FRayon * FRayon;
@@ -429,8 +429,8 @@ type
 
 // === IMPLÉMENTATION ===
 
-constructor TCompteBancaire.Create(const NumeroCompte, Titulaire: string; SoldeInitial: Real);
-begin
+constructor TCompteBancaire.Create(const NumeroCompte, Titulaire: string; SoldeInitial: Real);  
+begin  
   inherited Create;
   FNumeroCompte := NumeroCompte;
   FTitulaire := Titulaire;
@@ -440,14 +440,14 @@ begin
   AjouterHistorique('Ouverture du compte avec solde : ' + FloatToStr(SoldeInitial) + ' €');
 end;
 
-destructor TCompteBancaire.Destroy;
-begin
+destructor TCompteBancaire.Destroy;  
+begin  
   SetLength(FHistorique, 0);
   inherited Destroy;
 end;
 
-procedure TCompteBancaire.AjouterHistorique(const Operation: string);
-var
+procedure TCompteBancaire.AjouterHistorique(const Operation: string);  
+var  
   Index: Integer;
 begin
   Index := Length(FHistorique);
@@ -455,23 +455,23 @@ begin
   FHistorique[Index] := FormatDateTime('yyyy-mm-dd hh:nn:ss', Now) + ' - ' + Operation;
 end;
 
-function TCompteBancaire.GetSoldeFormate: string;
-begin
+function TCompteBancaire.GetSoldeFormate: string;  
+begin  
   Result := FormatFloat('#,##0.00', FSolde) + ' €';
 end;
 
-function TCompteBancaire.GetInteretsAnnuels: Real;
-begin
+function TCompteBancaire.GetInteretsAnnuels: Real;  
+begin  
   Result := FSolde * FTauxInteret;
 end;
 
-function TCompteBancaire.GetNombreOperations: Integer;
-begin
+function TCompteBancaire.GetNombreOperations: Integer;  
+begin  
   Result := Length(FHistorique);
 end;
 
-procedure TCompteBancaire.SetTitulaire(const Valeur: string);
-begin
+procedure TCompteBancaire.SetTitulaire(const Valeur: string);  
+begin  
   if Length(Valeur) > 0 then
   begin
     FTitulaire := Valeur;
@@ -481,8 +481,8 @@ begin
     WriteLn('Erreur : nom de titulaire invalide');
 end;
 
-procedure TCompteBancaire.SetTauxInteret(Valeur: Real);
-begin
+procedure TCompteBancaire.SetTauxInteret(Valeur: Real);  
+begin  
   if (Valeur >= 0) and (Valeur <= 0.10) then  // Max 10%
   begin
     FTauxInteret := Valeur;
@@ -492,8 +492,8 @@ begin
     WriteLn('Erreur : taux d''intérêt invalide (doit être entre 0 et 10%)');
 end;
 
-procedure TCompteBancaire.Crediter(Montant: Real);
-begin
+procedure TCompteBancaire.Crediter(Montant: Real);  
+begin  
   if Montant > 0 then
   begin
     FSolde := FSolde + Montant;
@@ -504,8 +504,8 @@ begin
     WriteLn('Erreur : montant invalide');
 end;
 
-procedure TCompteBancaire.Debiter(Montant: Real);
-begin
+procedure TCompteBancaire.Debiter(Montant: Real);  
+begin  
   if Montant > 0 then
   begin
     if FSolde >= Montant then
@@ -521,8 +521,8 @@ begin
     WriteLn('Erreur : montant invalide');
 end;
 
-procedure TCompteBancaire.AfficherHistorique;
-var
+procedure TCompteBancaire.AfficherHistorique;  
+var  
   I: Integer;
 begin
   WriteLn('=== Historique du compte ', FNumeroCompte, ' ===');
@@ -598,30 +598,30 @@ type
     property Taille: Integer read GetTaille;
   end;
 
-constructor TListeNombres.Create(Taille: Integer);
-begin
+constructor TListeNombres.Create(Taille: Integer);  
+begin  
   inherited Create;
   SetLength(FNombres, Taille);
 end;
 
-function TListeNombres.GetNombre(Index: Integer): Integer;
-begin
+function TListeNombres.GetNombre(Index: Integer): Integer;  
+begin  
   if (Index >= 0) and (Index < Length(FNombres)) then
     Result := FNombres[Index]
   else
     raise Exception.Create('Index hors limites');
 end;
 
-procedure TListeNombres.SetNombre(Index: Integer; Valeur: Integer);
-begin
+procedure TListeNombres.SetNombre(Index: Integer; Valeur: Integer);  
+begin  
   if (Index >= 0) and (Index < Length(FNombres)) then
     FNombres[Index] := Valeur
   else
     raise Exception.Create('Index hors limites');
 end;
 
-function TListeNombres.GetTaille: Integer;
-begin
+function TListeNombres.GetTaille: Integer;  
+begin  
   Result := Length(FNombres);
 end;
 
@@ -650,12 +650,12 @@ end;
 
 ```pascal
 // Avec propriétés
-P.Age := 30;
-WriteLn(P.Age);
+P.Age := 30;  
+WriteLn(P.Age);  
 
 // Sans propriétés (méthodes)
-P.DefinirAge(30);
-WriteLn(P.ObtenirAge);
+P.DefinirAge(30);  
+WriteLn(P.ObtenirAge);  
 ```
 
 ### 2. Validation transparente
@@ -763,8 +763,8 @@ MonObjet.Age := -5;
 
 ```pascal
 // ✗ MAUVAIS : setter inutile
-procedure TPersonne.SetNom(const Valeur: string);
-begin
+procedure TPersonne.SetNom(const Valeur: string);  
+begin  
   FNom := Valeur;  // Pas de validation, autant utiliser l'accès direct
 end;
 
@@ -786,8 +786,8 @@ procedure SetNom(const Valeur: string);
 
 ```pascal
 // ✗ DÉCONSEILLÉ : setter avec calcul lourd
-procedure TClasse.SetValeurComplexe(Valeur: Integer);
-begin
+procedure TClasse.SetValeurComplexe(Valeur: Integer);  
+begin  
   // Calculs très lourds...
   FValeur := { résultat complexe };
 end;
@@ -827,9 +827,9 @@ type
 - La syntaxe `Objet.Propriete` est naturelle
 
 ```pascal
-property Nom: string read FNom write SetNom;
-property Age: Integer read GetAge;
-property Surface: Real read GetSurface;
+property Nom: string read FNom write SetNom;  
+property Age: Integer read GetAge;  
+property Surface: Real read GetSurface;  
 ```
 
 ### Utilisez une méthode quand :
@@ -839,9 +839,9 @@ property Surface: Real read GetSurface;
 - Vous avez besoin de **plusieurs paramètres**
 
 ```pascal
-procedure CalculerStatistiquesCompletes;  // Opération lourde
-procedure EnvoyerEmail(const Destinataire, Sujet: string);  // Plusieurs paramètres
-function TrouverUtilisateur(ID: Integer): TUtilisateur;  // Action explicite
+procedure CalculerStatistiquesCompletes;  // Opération lourde  
+procedure EnvoyerEmail(const Destinataire, Sujet: string);  // Plusieurs paramètres  
+function TrouverUtilisateur(ID: Integer): TUtilisateur;  // Action explicite  
 ```
 
 ## Points clés à retenir
