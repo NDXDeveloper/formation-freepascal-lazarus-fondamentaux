@@ -100,8 +100,8 @@ Chaque module contient :
 
 #### Ubuntu/Linux
 ```bash
-sudo apt update
-sudo apt install lazarus
+sudo apt update  
+sudo apt install lazarus  
 ```
 
 ### 📚 Ressources complémentaires

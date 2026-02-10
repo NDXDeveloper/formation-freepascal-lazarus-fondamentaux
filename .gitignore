@@ -7,16 +7,16 @@
 *.rsj
 *.lps
 *.bak*
-backup/
-lib/
+backup/  
+lib/  
 *.exe
 *.dll
 *.so
 *.dylib
 
 # Project binaries
-bin/
-build/
+bin/  
+build/  
 
 # IDE
 .vscode/
