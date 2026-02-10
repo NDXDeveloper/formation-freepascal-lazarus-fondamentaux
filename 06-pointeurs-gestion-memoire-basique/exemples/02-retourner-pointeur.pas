@@ -4,12 +4,12 @@
   Fichier source : 02-declaration-utilisation-pointeurs.md
   ============================================================================ }
 {$mode objfpc}{$H+}
-program RetournerPointeur;
-type
+program RetournerPointeur;  
+type  
   PInteger = ^Integer;
 
-function TrouverMaximum(var a, b: Integer): PInteger;  // var obligatoire : sans var, @a pointerait vers une copie locale détruite au retour
-begin
+function TrouverMaximum(var a, b: Integer): PInteger;  // var obligatoire : sans var, @a pointerait vers une copie locale détruite au retour  
+begin  
   if a > b then
     Result := @a
   else

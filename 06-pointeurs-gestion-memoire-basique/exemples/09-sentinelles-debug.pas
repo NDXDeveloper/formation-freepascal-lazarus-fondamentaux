@@ -4,8 +4,8 @@
   Fichier source : 09-debogage-problemes-memoire.md
   ============================================================================ }
 {$mode objfpc}{$H+}
-program SentinellesDebug;
-type
+program SentinellesDebug;  
+type  
   PNoeudDebug = ^TNoeudDebug;
   TNoeudDebug = record
     magicDebut: Cardinal;     // = $DEADBEEF
@@ -14,8 +14,8 @@ type
     magicFin: Cardinal;       // = $DEADBEEF
   end;
 
-function CreerNoeudDebug(val: Integer): PNoeudDebug;
-begin
+function CreerNoeudDebug(val: Integer): PNoeudDebug;  
+begin  
   New(Result);
   Result^.magicDebut := $DEADBEEF;
   Result^.donnee := val;
@@ -23,8 +23,8 @@ begin
   Result^.magicFin := $DEADBEEF;
 end;
 
-procedure VerifierNoeud(p: PNoeudDebug; id: Integer);
-begin
+procedure VerifierNoeud(p: PNoeudDebug; id: Integer);  
+begin  
   if p^.magicDebut <> $DEADBEEF then
     WriteLn('CORRUPTION : Début du noeud #', id, ' écrasé !')
   else
@@ -36,8 +36,8 @@ begin
     WriteLn('Noeud #', id, ' fin OK');
 end;
 
-procedure LibererListe(var liste: PNoeudDebug);
-var
+procedure LibererListe(var liste: PNoeudDebug);  
+var  
   courant, suivant: PNoeudDebug;
 begin
   courant := liste;

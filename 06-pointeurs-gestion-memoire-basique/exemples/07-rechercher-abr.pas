@@ -4,8 +4,8 @@
   Fichier source : 07-arbres-binaires-basics.md
   ============================================================================ }
 {$mode objfpc}{$H+}
-program RechercherABR;
-type
+program RechercherABR;  
+type  
   PNoeud = ^TNoeud;
   TNoeud = record
     donnee: Integer;
@@ -13,16 +13,16 @@ type
     droite: PNoeud;
   end;
 
-function CreerNoeud(valeur: Integer): PNoeud;
-begin
+function CreerNoeud(valeur: Integer): PNoeud;  
+begin  
   New(Result);
   Result^.donnee := valeur;
   Result^.gauche := nil;
   Result^.droite := nil;
 end;
 
-procedure Inserer(var racine: PNoeud; valeur: Integer);
-begin
+procedure Inserer(var racine: PNoeud; valeur: Integer);  
+begin  
   if racine = nil then
   begin
     racine := CreerNoeud(valeur);
@@ -35,8 +35,8 @@ begin
     Inserer(racine^.droite, valeur);
 end;
 
-function Rechercher(racine: PNoeud; valeur: Integer): Boolean;
-begin
+function Rechercher(racine: PNoeud; valeur: Integer): Boolean;  
+begin  
   // Cas de base : arbre vide
   if racine = nil then
   begin
@@ -58,8 +58,8 @@ begin
     Result := Rechercher(racine^.droite, valeur);
 end;
 
-procedure LibererArbre(var racine: PNoeud);
-begin
+procedure LibererArbre(var racine: PNoeud);  
+begin  
   if racine = nil then
     Exit;
   LibererArbre(racine^.gauche);

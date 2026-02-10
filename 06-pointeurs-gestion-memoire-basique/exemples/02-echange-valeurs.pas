@@ -3,12 +3,12 @@
   Description : Echange de valeurs entre deux variables via pointeurs
   Fichier source : 02-declaration-utilisation-pointeurs.md
   ============================================================================ }
-program EchangeValeurs;
-type
+program EchangeValeurs;  
+type  
   PInteger = ^Integer;
 
-procedure Echanger(a, b: PInteger);
-var
+procedure Echanger(a, b: PInteger);  
+var  
   temp: Integer;
 begin
   if (a <> nil) and (b <> nil) then

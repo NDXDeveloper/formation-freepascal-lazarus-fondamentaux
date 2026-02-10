@@ -3,8 +3,8 @@
   Description : Enregistrement dynamique avec tableau dynamique de notes
   Fichier source : 05-pointeurs-enregistrements.md
   ============================================================================ }
-program EtudiantNotes;
-type
+program EtudiantNotes;  
+type  
   PEtudiant = ^TEtudiant;
   TEtudiant = record
     nom: String;

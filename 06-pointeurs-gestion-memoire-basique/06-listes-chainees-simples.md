@@ -79,8 +79,8 @@ end;
 Encapsulation pour plus de clarté :
 
 ```pascal
-function CreerNoeud(valeur: Integer): PNoeud;
-begin
+function CreerNoeud(valeur: Integer): PNoeud;  
+begin  
   New(Result);
   Result^.donnee := valeur;
   Result^.suivant := nil;
@@ -101,8 +101,8 @@ end;
 **La plus simple et la plus rapide** : O(1)
 
 ```pascal
-procedure InsererDebut(var liste: PNoeud; valeur: Integer);
-var
+procedure InsererDebut(var liste: PNoeud; valeur: Integer);  
+var  
   nouveau: PNoeud;
 begin
   // Créer le nouveau noeud
@@ -133,14 +133,14 @@ end;
 État initial (liste vide) :
 liste = nil
 
-Après InsererDebut(liste, 30) :
-liste -> [30|nil]
+Après InsererDebut(liste, 30) :  
+liste -> [30|nil]  
 
-Après InsererDebut(liste, 20) :
-liste -> [20|●] -> [30|nil]
+Après InsererDebut(liste, 20) :  
+liste -> [20|●] -> [30|nil]  
 
-Après InsererDebut(liste, 10) :
-liste -> [10|●] -> [20|●] -> [30|nil]
+Après InsererDebut(liste, 10) :  
+liste -> [10|●] -> [20|●] -> [30|nil]  
 ```
 
 ### Insertion en Queue (Fin)
@@ -148,8 +148,8 @@ liste -> [10|●] -> [20|●] -> [30|nil]
 Plus complexe car il faut parcourir toute la liste : O(n)
 
 ```pascal
-procedure InsererFin(var liste: PNoeud; valeur: Integer);
-var
+procedure InsererFin(var liste: PNoeud; valeur: Integer);  
+var  
   nouveau, courant: PNoeud;
 begin
   // Créer le nouveau noeud
@@ -189,8 +189,8 @@ end;
 Insérer après le n-ième élément :
 
 ```pascal
-procedure InsererApres(liste: PNoeud; position, valeur: Integer);
-var
+procedure InsererApres(liste: PNoeud; position, valeur: Integer);  
+var  
   nouveau, courant: PNoeud;
   i: Integer;
 begin
@@ -238,16 +238,16 @@ end;
 ### Affichage Complet
 
 ```pascal
-program AfficherListeDemo;
-type
+program AfficherListeDemo;  
+type  
   PNoeud = ^TNoeud;
   TNoeud = record
     donnee: Integer;
     suivant: PNoeud;
   end;
 
-procedure InsererFin(var liste: PNoeud; valeur: Integer);
-var
+procedure InsererFin(var liste: PNoeud; valeur: Integer);  
+var  
   nouveau, courant: PNoeud;
 begin
   New(nouveau);
@@ -265,8 +265,8 @@ begin
   end;
 end;
 
-procedure AfficherListe(liste: PNoeud);
-var
+procedure AfficherListe(liste: PNoeud);  
+var  
   courant: PNoeud;
 begin
   if liste = nil then
@@ -287,8 +287,8 @@ begin
   WriteLn;
 end;
 
-procedure LibererListe(var liste: PNoeud);
-var
+procedure LibererListe(var liste: PNoeud);  
+var  
   courant, suivant: PNoeud;
 begin
   courant := liste;
@@ -318,16 +318,16 @@ end.
 ### Parcours avec Traitement
 
 ```pascal
-program DoublerValeursDemo;
-type
+program DoublerValeursDemo;  
+type  
   PNoeud = ^TNoeud;
   TNoeud = record
     donnee: Integer;
     suivant: PNoeud;
   end;
 
-procedure InsererFin(var liste: PNoeud; valeur: Integer);
-var
+procedure InsererFin(var liste: PNoeud; valeur: Integer);  
+var  
   nouveau, courant: PNoeud;
 begin
   New(nouveau);
@@ -345,8 +345,8 @@ begin
   end;
 end;
 
-procedure AfficherListe(liste: PNoeud);
-var
+procedure AfficherListe(liste: PNoeud);  
+var  
   courant: PNoeud;
 begin
   if liste = nil then
@@ -367,8 +367,8 @@ begin
   WriteLn;
 end;
 
-procedure DoublerValeurs(liste: PNoeud);
-var
+procedure DoublerValeurs(liste: PNoeud);  
+var  
   courant: PNoeud;
 begin
   courant := liste;
@@ -379,8 +379,8 @@ begin
   end;
 end;
 
-procedure LibererListe(var liste: PNoeud);
-var
+procedure LibererListe(var liste: PNoeud);  
+var  
   courant, suivant: PNoeud;
 begin
   courant := liste;
@@ -415,16 +415,16 @@ end.
 
 ```pascal
 {$mode objfpc}{$H+}
-program RechercherDemo;
-type
+program RechercherDemo;  
+type  
   PNoeud = ^TNoeud;
   TNoeud = record
     donnee: Integer;
     suivant: PNoeud;
   end;
 
-procedure InsererFin(var liste: PNoeud; valeur: Integer);
-var
+procedure InsererFin(var liste: PNoeud; valeur: Integer);  
+var  
   nouveau, courant: PNoeud;
 begin
   New(nouveau);
@@ -442,8 +442,8 @@ begin
   end;
 end;
 
-function Rechercher(liste: PNoeud; valeur: Integer): Boolean;
-var
+function Rechercher(liste: PNoeud; valeur: Integer): Boolean;  
+var  
   courant: PNoeud;
 begin
   courant := liste;
@@ -459,8 +459,8 @@ begin
   Result := False;
 end;
 
-procedure LibererListe(var liste: PNoeud);
-var
+procedure LibererListe(var liste: PNoeud);  
+var  
   courant, suivant: PNoeud;
 begin
   courant := liste;
@@ -494,16 +494,16 @@ end.
 
 ```pascal
 {$mode objfpc}{$H+}
-program TrouverPositionDemo;
-type
+program TrouverPositionDemo;  
+type  
   PNoeud = ^TNoeud;
   TNoeud = record
     donnee: Integer;
     suivant: PNoeud;
   end;
 
-procedure InsererFin(var liste: PNoeud; valeur: Integer);
-var
+procedure InsererFin(var liste: PNoeud; valeur: Integer);  
+var  
   nouveau, courant: PNoeud;
 begin
   New(nouveau);
@@ -521,8 +521,8 @@ begin
   end;
 end;
 
-function TrouverPosition(liste: PNoeud; valeur: Integer): Integer;
-var
+function TrouverPosition(liste: PNoeud; valeur: Integer): Integer;  
+var  
   courant: PNoeud;
   position: Integer;
 begin
@@ -543,8 +543,8 @@ begin
   Result := -1;  // Non trouvé
 end;
 
-procedure LibererListe(var liste: PNoeud);
-var
+procedure LibererListe(var liste: PNoeud);  
+var  
   courant, suivant: PNoeud;
 begin
   courant := liste;
@@ -579,8 +579,8 @@ end.
 ### Obtenir un Élément par Position
 
 ```pascal
-function ObtenirElement(liste: PNoeud; position: Integer): Integer;
-var
+function ObtenirElement(liste: PNoeud; position: Integer): Integer;  
+var  
   courant: PNoeud;
   i: Integer;
 begin
@@ -612,16 +612,16 @@ end;
 ### Supprimer le Premier Élément
 
 ```pascal
-program SupprimerDebutDemo;
-type
+program SupprimerDebutDemo;  
+type  
   PNoeud = ^TNoeud;
   TNoeud = record
     donnee: Integer;
     suivant: PNoeud;
   end;
 
-procedure InsererFin(var liste: PNoeud; valeur: Integer);
-var
+procedure InsererFin(var liste: PNoeud; valeur: Integer);  
+var  
   nouveau, courant: PNoeud;
 begin
   New(nouveau);
@@ -639,8 +639,8 @@ begin
   end;
 end;
 
-procedure AfficherListe(liste: PNoeud);
-var
+procedure AfficherListe(liste: PNoeud);  
+var  
   courant: PNoeud;
 begin
   if liste = nil then
@@ -661,8 +661,8 @@ begin
   WriteLn;
 end;
 
-procedure SupprimerDebut(var liste: PNoeud);
-var
+procedure SupprimerDebut(var liste: PNoeud);  
+var  
   temp: PNoeud;
 begin
   if liste = nil then
@@ -676,8 +676,8 @@ begin
   Dispose(temp);              // Libérer l'ancien premier
 end;
 
-procedure LibererListe(var liste: PNoeud);
-var
+procedure LibererListe(var liste: PNoeud);  
+var  
   courant, suivant: PNoeud;
 begin
   courant := liste;
@@ -709,24 +709,24 @@ end.
 **Visualisation :**
 
 ```
-Avant SupprimerDebut :
-liste -> [10|●] -> [20|●] -> [30|nil]
+Avant SupprimerDebut :  
+liste -> [10|●] -> [20|●] -> [30|nil]  
          temp
 
-Après liste := liste^.suivant :
-liste --------> [20|●] -> [30|nil]
-temp -> [10|●]
+Après liste := liste^.suivant :  
+liste --------> [20|●] -> [30|nil]  
+temp -> [10|●]  
 
-Après Dispose(temp) :
-liste -> [20|●] -> [30|nil]
-temp = LIBÉRÉ
+Après Dispose(temp) :  
+liste -> [20|●] -> [30|nil]  
+temp = LIBÉRÉ  
 ```
 
 ### Supprimer le Dernier Élément
 
 ```pascal
-procedure SupprimerFin(var liste: PNoeud);
-var
+procedure SupprimerFin(var liste: PNoeud);  
+var  
   courant, precedent: PNoeud;
 begin
   if liste = nil then
@@ -762,16 +762,16 @@ end;
 ### Supprimer par Valeur
 
 ```pascal
-program SupprimerValeurDemo;
-type
+program SupprimerValeurDemo;  
+type  
   PNoeud = ^TNoeud;
   TNoeud = record
     donnee: Integer;
     suivant: PNoeud;
   end;
 
-procedure InsererFin(var liste: PNoeud; valeur: Integer);
-var
+procedure InsererFin(var liste: PNoeud; valeur: Integer);  
+var  
   nouveau, courant: PNoeud;
 begin
   New(nouveau);
@@ -789,8 +789,8 @@ begin
   end;
 end;
 
-procedure AfficherListe(liste: PNoeud);
-var
+procedure AfficherListe(liste: PNoeud);  
+var  
   courant: PNoeud;
 begin
   if liste = nil then
@@ -811,8 +811,8 @@ begin
   WriteLn;
 end;
 
-procedure SupprimerValeur(var liste: PNoeud; valeur: Integer);
-var
+procedure SupprimerValeur(var liste: PNoeud; valeur: Integer);  
+var  
   courant, precedent: PNoeud;
 begin
   if liste = nil then
@@ -846,8 +846,8 @@ begin
   WriteLn('Valeur non trouvée');
 end;
 
-procedure LibererListe(var liste: PNoeud);
-var
+procedure LibererListe(var liste: PNoeud);  
+var  
   courant, suivant: PNoeud;
 begin
   courant := liste;
@@ -882,16 +882,16 @@ end.
 
 ```pascal
 {$mode objfpc}{$H+}
-program CompterElementsDemo;
-type
+program CompterElementsDemo;  
+type  
   PNoeud = ^TNoeud;
   TNoeud = record
     donnee: Integer;
     suivant: PNoeud;
   end;
 
-procedure InsererFin(var liste: PNoeud; valeur: Integer);
-var
+procedure InsererFin(var liste: PNoeud; valeur: Integer);  
+var  
   nouveau, courant: PNoeud;
 begin
   New(nouveau);
@@ -909,8 +909,8 @@ begin
   end;
 end;
 
-function CompterElements(liste: PNoeud): Integer;
-var
+function CompterElements(liste: PNoeud): Integer;  
+var  
   courant: PNoeud;
   compte: Integer;
 begin
@@ -926,8 +926,8 @@ begin
   Result := compte;
 end;
 
-procedure LibererListe(var liste: PNoeud);
-var
+procedure LibererListe(var liste: PNoeud);  
+var  
   courant, suivant: PNoeud;
 begin
   courant := liste;
@@ -957,8 +957,8 @@ end.
 ### Vérifier si la Liste est Vide
 
 ```pascal
-function EstVide(liste: PNoeud): Boolean;
-begin
+function EstVide(liste: PNoeud): Boolean;  
+begin  
   Result := (liste = nil);
 end;
 ```
@@ -966,8 +966,8 @@ end;
 ### Trouver le Minimum
 
 ```pascal
-function TrouverMin(liste: PNoeud): Integer;
-var
+function TrouverMin(liste: PNoeud): Integer;  
+var  
   courant: PNoeud;
   minimum: Integer;
 begin
@@ -995,8 +995,8 @@ end;
 ### Trouver le Maximum
 
 ```pascal
-function TrouverMax(liste: PNoeud): Integer;
-var
+function TrouverMax(liste: PNoeud): Integer;  
+var  
   courant: PNoeud;
   maximum: Integer;
 begin
@@ -1024,8 +1024,8 @@ end;
 ### Calculer la Somme
 
 ```pascal
-function Somme(liste: PNoeud): Integer;
-var
+function Somme(liste: PNoeud): Integer;  
+var  
   courant: PNoeud;
   total: Integer;
 begin
@@ -1049,16 +1049,16 @@ end;
 **Essentiel :** Ne jamais oublier de libérer toute la liste !
 
 ```pascal
-program LibererListeDemo;
-type
+program LibererListeDemo;  
+type  
   PNoeud = ^TNoeud;
   TNoeud = record
     donnee: Integer;
     suivant: PNoeud;
   end;
 
-procedure InsererFin(var liste: PNoeud; valeur: Integer);
-var
+procedure InsererFin(var liste: PNoeud; valeur: Integer);  
+var  
   nouveau, courant: PNoeud;
 begin
   New(nouveau);
@@ -1076,8 +1076,8 @@ begin
   end;
 end;
 
-procedure AfficherListe(liste: PNoeud);
-var
+procedure AfficherListe(liste: PNoeud);  
+var  
   courant: PNoeud;
 begin
   if liste = nil then
@@ -1098,8 +1098,8 @@ begin
   WriteLn;
 end;
 
-procedure LibererListe(var liste: PNoeud);
-var
+procedure LibererListe(var liste: PNoeud);  
+var  
   courant, suivant: PNoeud;
 begin
   courant := liste;
@@ -1132,12 +1132,12 @@ end.
 **Pourquoi sauvegarder le suivant ?**
 
 ```
-Sans sauvegarde (ERREUR) :
-courant -> [10|●] -> [20|●] -> [30|nil]
-Dispose(courant)  ← On perd l'accès au reste !
+Sans sauvegarde (ERREUR) :  
+courant -> [10|●] -> [20|●] -> [30|nil]  
+Dispose(courant)  ← On perd l'accès au reste !  
 
-Avec sauvegarde (CORRECT) :
-courant -> [10|●] -> [20|●] -> [30|nil]
+Avec sauvegarde (CORRECT) :  
+courant -> [10|●] -> [20|●] -> [30|nil]  
            suivant
 Dispose(courant), puis courant := suivant
 ```
@@ -1147,16 +1147,16 @@ Dispose(courant), puis courant := suivant
 ### Inverser une Liste
 
 ```pascal
-program InverserListeDemo;
-type
+program InverserListeDemo;  
+type  
   PNoeud = ^TNoeud;
   TNoeud = record
     donnee: Integer;
     suivant: PNoeud;
   end;
 
-procedure InsererFin(var liste: PNoeud; valeur: Integer);
-var
+procedure InsererFin(var liste: PNoeud; valeur: Integer);  
+var  
   nouveau, courant: PNoeud;
 begin
   New(nouveau);
@@ -1174,8 +1174,8 @@ begin
   end;
 end;
 
-procedure AfficherListe(liste: PNoeud);
-var
+procedure AfficherListe(liste: PNoeud);  
+var  
   courant: PNoeud;
 begin
   if liste = nil then
@@ -1196,8 +1196,8 @@ begin
   WriteLn;
 end;
 
-procedure InverserListe(var liste: PNoeud);
-var
+procedure InverserListe(var liste: PNoeud);  
+var  
   precedent, courant, suivant: PNoeud;
 begin
   if liste = nil then
@@ -1217,8 +1217,8 @@ begin
   liste := precedent;  // Le dernier devient le premier
 end;
 
-procedure LibererListe(var liste: PNoeud);
-var
+procedure LibererListe(var liste: PNoeud);  
+var  
   courant, suivant: PNoeud;
 begin
   courant := liste;
@@ -1251,16 +1251,16 @@ end.
 
 ```pascal
 {$mode objfpc}{$H+}
-program CopierListeDemo;
-type
+program CopierListeDemo;  
+type  
   PNoeud = ^TNoeud;
   TNoeud = record
     donnee: Integer;
     suivant: PNoeud;
   end;
 
-procedure InsererFin(var liste: PNoeud; valeur: Integer);
-var
+procedure InsererFin(var liste: PNoeud; valeur: Integer);  
+var  
   nouveau, courant: PNoeud;
 begin
   New(nouveau);
@@ -1278,8 +1278,8 @@ begin
   end;
 end;
 
-procedure AfficherListe(liste: PNoeud);
-var
+procedure AfficherListe(liste: PNoeud);  
+var  
   courant: PNoeud;
 begin
   if liste = nil then
@@ -1300,8 +1300,8 @@ begin
   WriteLn;
 end;
 
-function CopierListe(liste: PNoeud): PNoeud;
-var
+function CopierListe(liste: PNoeud): PNoeud;  
+var  
   nouvelle, courant, dernier: PNoeud;
 begin
   if liste = nil then
@@ -1330,8 +1330,8 @@ begin
   Result := nouvelle;
 end;
 
-procedure LibererListe(var liste: PNoeud);
-var
+procedure LibererListe(var liste: PNoeud);  
+var  
   courant, suivant: PNoeud;
 begin
   courant := liste;
@@ -1364,16 +1364,16 @@ end.
 ### Trier une Liste (Tri à Bulles)
 
 ```pascal
-program TrierListeDemo;
-type
+program TrierListeDemo;  
+type  
   PNoeud = ^TNoeud;
   TNoeud = record
     donnee: Integer;
     suivant: PNoeud;
   end;
 
-procedure InsererFin(var liste: PNoeud; valeur: Integer);
-var
+procedure InsererFin(var liste: PNoeud; valeur: Integer);  
+var  
   nouveau, courant: PNoeud;
 begin
   New(nouveau);
@@ -1391,8 +1391,8 @@ begin
   end;
 end;
 
-procedure AfficherListe(liste: PNoeud);
-var
+procedure AfficherListe(liste: PNoeud);  
+var  
   courant: PNoeud;
 begin
   if liste = nil then
@@ -1413,8 +1413,8 @@ begin
   WriteLn;
 end;
 
-procedure TrierListe(liste: PNoeud);
-var
+procedure TrierListe(liste: PNoeud);  
+var  
   i, j: PNoeud;
   temp: Integer;
 begin
@@ -1440,8 +1440,8 @@ begin
   end;
 end;
 
-procedure LibererListe(var liste: PNoeud);
-var
+procedure LibererListe(var liste: PNoeud);  
+var  
   courant, suivant: PNoeud;
 begin
   courant := liste;
@@ -1482,8 +1482,8 @@ type
     suivant: PNoeud;
   end;
 
-procedure InsererFin(var liste: PNoeud; valeur: Integer);
-var
+procedure InsererFin(var liste: PNoeud; valeur: Integer);  
+var  
   nouveau, courant: PNoeud;
 begin
   New(nouveau);
@@ -1501,8 +1501,8 @@ begin
   end;
 end;
 
-procedure AfficherListe(liste: PNoeud);
-var
+procedure AfficherListe(liste: PNoeud);  
+var  
   courant: PNoeud;
 begin
   if liste = nil then
@@ -1523,8 +1523,8 @@ begin
   WriteLn;
 end;
 
-procedure LibererListe(var liste: PNoeud);
-var
+procedure LibererListe(var liste: PNoeud);  
+var  
   courant, suivant: PNoeud;
 begin
   courant := liste;
@@ -1592,28 +1592,28 @@ end.
 
 ```pascal
 // ✗ MAUVAIS
-New(noeud);
-noeud^.donnee := 10;
+New(noeud);  
+noeud^.donnee := 10;  
 // Oubli : noeud^.suivant contient n'importe quoi !
 
 // ✓ BON
-New(noeud);
-noeud^.donnee := 10;
-noeud^.suivant := nil;
+New(noeud);  
+noeud^.donnee := 10;  
+noeud^.suivant := nil;  
 ```
 
 ### 2. Perdre la Référence de la Tête
 
 ```pascal
 // ✗ MAUVAIS
-procedure Erreur(liste: PNoeud);
-begin
+procedure Erreur(liste: PNoeud);  
+begin  
   liste := liste^.suivant;  // Perd le premier !
 end;
 
 // ✓ BON
-procedure Correct(var liste: PNoeud);  // Paramètre var
-begin
+procedure Correct(var liste: PNoeud);  // Paramètre var  
+begin  
   liste := liste^.suivant;
 end;
 ```
@@ -1622,14 +1622,14 @@ end;
 
 ```pascal
 // ✗ MAUVAIS
-procedure MauvaiseLiberation(liste: PNoeud);
-begin
+procedure MauvaiseLiberation(liste: PNoeud);  
+begin  
   Dispose(liste);  // Ne libère que le premier !
 end;
 
 // ✓ BON
-procedure BonneLiberation(var liste: PNoeud);
-var
+procedure BonneLiberation(var liste: PNoeud);  
+var  
   courant, suivant: PNoeud;
 begin
   courant := liste;

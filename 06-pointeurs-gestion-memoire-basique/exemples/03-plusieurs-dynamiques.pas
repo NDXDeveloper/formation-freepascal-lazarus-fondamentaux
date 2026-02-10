@@ -3,8 +3,8 @@
   Description : Creation de plusieurs variables dynamiques
   Fichier source : 03-allocation-dynamique-new-dispose.md
   ============================================================================ }
-program PlusieursDynamiques;
-var
+program PlusieursDynamiques;  
+var  
   p1, p2, p3: ^Integer;
 begin
   // Création de 3 entiers dynamiques

@@ -3,8 +3,8 @@
   Description : Tableau dynamique array of avec redimensionnement SetLength
   Fichier source : 04-pointeurs-tableaux.md
   ============================================================================ }
-program ArrayOfRedim;
-var
+program ArrayOfRedim;  
+var  
   donnees: array of Integer;
 begin
   // Démarrer petit

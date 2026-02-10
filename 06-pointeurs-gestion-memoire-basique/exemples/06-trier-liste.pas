@@ -3,16 +3,16 @@
   Description : Tri a bulles d'une liste chainee
   Fichier source : 06-listes-chainees-simples.md
   ============================================================================ }
-program TrierListeDemo;
-type
+program TrierListeDemo;  
+type  
   PNoeud = ^TNoeud;
   TNoeud = record
     donnee: Integer;
     suivant: PNoeud;
   end;
 
-procedure InsererFin(var liste: PNoeud; valeur: Integer);
-var
+procedure InsererFin(var liste: PNoeud; valeur: Integer);  
+var  
   nouveau, courant: PNoeud;
 begin
   New(nouveau);
@@ -30,8 +30,8 @@ begin
   end;
 end;
 
-procedure AfficherListe(liste: PNoeud);
-var
+procedure AfficherListe(liste: PNoeud);  
+var  
   courant: PNoeud;
 begin
   if liste = nil then
@@ -52,8 +52,8 @@ begin
   WriteLn;
 end;
 
-procedure TrierListe(liste: PNoeud);
-var
+procedure TrierListe(liste: PNoeud);  
+var  
   i, j: PNoeud;
   temp: Integer;
 begin
@@ -79,8 +79,8 @@ begin
   end;
 end;
 
-procedure LibererListe(var liste: PNoeud);
-var
+procedure LibererListe(var liste: PNoeud);  
+var  
   courant, suivant: PNoeud;
 begin
   courant := liste;

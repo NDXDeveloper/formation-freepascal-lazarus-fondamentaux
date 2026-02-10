@@ -3,8 +3,8 @@
   Description : Matrice dynamique 2D avec array of array of
   Fichier source : 04-pointeurs-tableaux.md
   ============================================================================ }
-program MatriceDynamique;
-type
+program MatriceDynamique;  
+type  
   TMatrice = array of array of Integer;
 
 var

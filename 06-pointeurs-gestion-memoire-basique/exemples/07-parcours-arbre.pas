@@ -5,8 +5,8 @@
   Fichier source : 07-arbres-binaires-basics.md
   ============================================================================ }
 {$mode objfpc}{$H+}
-program ParcoursArbre;
-type
+program ParcoursArbre;  
+type  
   PNoeud = ^TNoeud;
   TNoeud = record
     donnee: Integer;
@@ -14,16 +14,16 @@ type
     droite: PNoeud;
   end;
 
-function CreerNoeud(valeur: Integer): PNoeud;
-begin
+function CreerNoeud(valeur: Integer): PNoeud;  
+begin  
   New(Result);
   Result^.donnee := valeur;
   Result^.gauche := nil;
   Result^.droite := nil;
 end;
 
-procedure Inserer(var racine: PNoeud; valeur: Integer);
-begin
+procedure Inserer(var racine: PNoeud; valeur: Integer);  
+begin  
   if racine = nil then
   begin
     racine := CreerNoeud(valeur);
@@ -37,8 +37,8 @@ begin
 end;
 
 // Parcours Préfixe : Racine -> Gauche -> Droite
-procedure ParcoursPreordre(racine: PNoeud);
-begin
+procedure ParcoursPreordre(racine: PNoeud);  
+begin  
   if racine = nil then
     Exit;
 
@@ -48,8 +48,8 @@ begin
 end;
 
 // Parcours Infixe : Gauche -> Racine -> Droite
-procedure ParcoursInfixe(racine: PNoeud);
-begin
+procedure ParcoursInfixe(racine: PNoeud);  
+begin  
   if racine = nil then
     Exit;
 
@@ -59,8 +59,8 @@ begin
 end;
 
 // Parcours Postfixe : Gauche -> Droite -> Racine
-procedure ParcoursPostordre(racine: PNoeud);
-begin
+procedure ParcoursPostordre(racine: PNoeud);  
+begin  
   if racine = nil then
     Exit;
 
@@ -70,8 +70,8 @@ begin
 end;
 
 // Parcours en Largeur : niveau par niveau
-procedure ParcoursLargeur(racine: PNoeud);
-var
+procedure ParcoursLargeur(racine: PNoeud);  
+var  
   fileAttente: array[1..100] of PNoeud;
   debut, fin: Integer;
   courant: PNoeud;
@@ -105,8 +105,8 @@ begin
   end;
 end;
 
-procedure LibererArbre(var racine: PNoeud);
-begin
+procedure LibererArbre(var racine: PNoeud);  
+begin  
   if racine = nil then
     Exit;
   LibererArbre(racine^.gauche);

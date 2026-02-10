@@ -3,8 +3,8 @@
   Description : Enregistrement avec plusieurs pointeurs (relations conjoint)
   Fichier source : 05-pointeurs-enregistrements.md
   ============================================================================ }
-program RelationsPointeurs;
-type
+program RelationsPointeurs;  
+type  
   PPersonne = ^TPersonne;
   TPersonne = record
     nom: String;

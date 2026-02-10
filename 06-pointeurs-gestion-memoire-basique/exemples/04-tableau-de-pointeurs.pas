@@ -3,8 +3,8 @@
   Description : Tableau ou chaque element est un pointeur vers un record
   Fichier source : 04-pointeurs-tableaux.md
   ============================================================================ }
-program TableauDePointeurs;
-uses SysUtils;
+program TableauDePointeurs;  
+uses SysUtils;  
 
 type
   PPerson = ^TPerson;

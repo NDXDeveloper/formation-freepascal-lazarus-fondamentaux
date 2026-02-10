@@ -4,8 +4,8 @@
   Fichier source : 05-pointeurs-enregistrements.md
   ============================================================================ }
 {$mode objfpc}{$H+}
-program FileAttente;
-type
+program FileAttente;  
+type  
   PNoeud = ^TNoeud;
   TNoeud = record
     donnee: String;
@@ -17,8 +17,8 @@ type
     dernier: PNoeud;
   end;
 
-procedure Enfiler(var f: TFile; valeur: String);
-var
+procedure Enfiler(var f: TFile; valeur: String);  
+var  
   nouveau: PNoeud;
 begin
   New(nouveau);
@@ -37,8 +37,8 @@ begin
   end;
 end;
 
-function Defiler(var f: TFile): String;
-var
+function Defiler(var f: TFile): String;  
+var  
   temp: PNoeud;
 begin
   if f.premier = nil then

@@ -61,9 +61,9 @@ Dans cet arbre :
      / \    / \
     20 40  60 80 ← Niveau 2 (Feuilles)
 
-Hauteur de l'arbre : 2
-Nombre de noeuds : 7
-Nombre de feuilles : 4
+Hauteur de l'arbre : 2  
+Nombre de noeuds : 7  
+Nombre de feuilles : 4  
 ```
 
 ## Structure d'un Noeud
@@ -97,8 +97,8 @@ type
 ### Créer un Noeud Simple
 
 ```pascal
-function CreerNoeud(valeur: Integer): PNoeud;
-begin
+function CreerNoeud(valeur: Integer): PNoeud;  
+begin  
   New(Result);
   Result^.donnee := valeur;
   Result^.gauche := nil;
@@ -189,8 +189,8 @@ Pour insérer une valeur :
 ### Fonction d'Insertion Récursive
 
 ```pascal
-procedure Inserer(var racine: PNoeud; valeur: Integer);
-begin
+procedure Inserer(var racine: PNoeud; valeur: Integer);  
+begin  
   // Cas de base : arbre vide ou place trouvée
   if racine = nil then
   begin
@@ -255,8 +255,8 @@ Insérons successivement : 50, 30, 70, 20
 Version sans récursion :
 
 ```pascal
-procedure InsererIteratif(var racine: PNoeud; valeur: Integer);
-var
+procedure InsererIteratif(var racine: PNoeud; valeur: Integer);  
+var  
   nouveau, courant, parent: PNoeud;
 begin
   nouveau := CreerNoeud(valeur);
@@ -304,8 +304,8 @@ Les arbres peuvent être parcourus de différentes manières. Chaque méthode vi
 **Ordre :** Racine → Gauche → Droite
 
 ```pascal
-procedure ParcoursPreordre(racine: PNoeud);
-begin
+procedure ParcoursPreordre(racine: PNoeud);  
+begin  
   if racine = nil then
     Exit;
 
@@ -333,8 +333,8 @@ Résultat : 50 30 20 40 70
 **Ordre :** Gauche → Racine → Droite
 
 ```pascal
-procedure ParcoursInfixe(racine: PNoeud);
-begin
+procedure ParcoursInfixe(racine: PNoeud);  
+begin  
   if racine = nil then
     Exit;
 
@@ -362,8 +362,8 @@ Résultat : 20 30 40 50 70
 **Ordre :** Gauche → Droite → Racine
 
 ```pascal
-procedure ParcoursPostordre(racine: PNoeud);
-begin
+procedure ParcoursPostordre(racine: PNoeud);  
+begin  
   if racine = nil then
     Exit;
 
@@ -391,8 +391,8 @@ Résultat : 20 40 30 70 50
 **Ordre :** Niveau par niveau, de gauche à droite
 
 ```pascal
-procedure ParcoursLargeur(racine: PNoeud);
-var
+procedure ParcoursLargeur(racine: PNoeud);  
+var  
   fileAttente: array[1..100] of PNoeud;
   debut, fin: Integer;
   courant: PNoeud;
@@ -443,8 +443,8 @@ Résultat : 50 30 70 20 40
 ### Recherche Récursive
 
 ```pascal
-function Rechercher(racine: PNoeud; valeur: Integer): Boolean;
-begin
+function Rechercher(racine: PNoeud; valeur: Integer): Boolean;  
+begin  
   // Cas de base : arbre vide
   if racine = nil then
   begin
@@ -491,8 +491,8 @@ end.
 ### Recherche Itérative
 
 ```pascal
-function RechercherIteratif(racine: PNoeud; valeur: Integer): Boolean;
-var
+function RechercherIteratif(racine: PNoeud; valeur: Integer): Boolean;  
+var  
   courant: PNoeud;
 begin
   courant := racine;
@@ -523,8 +523,8 @@ end;
 ### Compter les Noeuds
 
 ```pascal
-function CompterNoeuds(racine: PNoeud): Integer;
-begin
+function CompterNoeuds(racine: PNoeud): Integer;  
+begin  
   if racine = nil then
     Result := 0
   else
@@ -535,8 +535,8 @@ end;
 ### Compter les Feuilles
 
 ```pascal
-function CompterFeuilles(racine: PNoeud): Integer;
-begin
+function CompterFeuilles(racine: PNoeud): Integer;  
+begin  
   if racine = nil then
   begin
     Result := 0;
@@ -554,8 +554,8 @@ end;
 ### Calculer la Hauteur
 
 ```pascal
-function Hauteur(racine: PNoeud): Integer;
-var
+function Hauteur(racine: PNoeud): Integer;  
+var  
   hauteurGauche, hauteurDroite: Integer;
 begin
   if racine = nil then
@@ -579,8 +579,8 @@ end;
 Dans un ABR, le minimum est le noeud le plus à gauche :
 
 ```pascal
-function TrouverMin(racine: PNoeud): Integer;
-begin
+function TrouverMin(racine: PNoeud): Integer;  
+begin  
   if racine = nil then
   begin
     WriteLn('Erreur : arbre vide');
@@ -601,8 +601,8 @@ end;
 Dans un ABR, le maximum est le noeud le plus à droite :
 
 ```pascal
-function TrouverMax(racine: PNoeud): Integer;
-begin
+function TrouverMax(racine: PNoeud): Integer;  
+begin  
   if racine = nil then
   begin
     WriteLn('Erreur : arbre vide');
@@ -626,8 +626,8 @@ La suppression est l'opération la plus complexe. Il y a trois cas à gérer.
 
 ```pascal
 // Simplement supprimer le noeud
-procedure SupprimerFeuille(var noeud: PNoeud);
-begin
+procedure SupprimerFeuille(var noeud: PNoeud);  
+begin  
   Dispose(noeud);
   noeud := nil;
 end;
@@ -645,8 +645,8 @@ Avant :     50        Après :    50
 
 ```pascal
 // Remplacer le noeud par son enfant
-procedure SupprimerUnEnfant(var noeud: PNoeud);
-var
+procedure SupprimerUnEnfant(var noeud: PNoeud);  
+var  
   temp: PNoeud;
 begin
   temp := noeud;
@@ -673,15 +673,15 @@ Avant :     50           Après :    50
 Stratégie : Remplacer par le successeur (minimum du sous-arbre droit) ou le prédécesseur (maximum du sous-arbre gauche).
 
 ```pascal
-function TrouverMinNoeud(racine: PNoeud): PNoeud;
-begin
+function TrouverMinNoeud(racine: PNoeud): PNoeud;  
+begin  
   while racine^.gauche <> nil do
     racine := racine^.gauche;
   Result := racine;
 end;
 
-procedure Supprimer(var racine: PNoeud; valeur: Integer);
-var
+procedure Supprimer(var racine: PNoeud; valeur: Integer);  
+var  
   temp, successeur: PNoeud;
 begin
   if racine = nil then
@@ -730,8 +730,8 @@ end;
 **Important :** Toujours libérer tous les noeuds à la fin !
 
 ```pascal
-procedure LibererArbre(var racine: PNoeud);
-begin
+procedure LibererArbre(var racine: PNoeud);  
+begin  
   if racine = nil then
     Exit;
 
@@ -766,8 +766,8 @@ end;
 ### Affichage Horizontal
 
 ```pascal
-procedure AfficherArbre(racine: PNoeud; profondeur: Integer);
-var
+procedure AfficherArbre(racine: PNoeud; profondeur: Integer);  
+var  
   i: Integer;
 begin
   if racine = nil then
@@ -824,16 +824,16 @@ type
     droite: PNoeud;
   end;
 
-function CreerNoeud(valeur: Integer): PNoeud;
-begin
+function CreerNoeud(valeur: Integer): PNoeud;  
+begin  
   New(Result);
   Result^.donnee := valeur;
   Result^.gauche := nil;
   Result^.droite := nil;
 end;
 
-procedure Inserer(var racine: PNoeud; valeur: Integer);
-begin
+procedure Inserer(var racine: PNoeud; valeur: Integer);  
+begin  
   if racine = nil then
   begin
     racine := CreerNoeud(valeur);
@@ -846,8 +846,8 @@ begin
     Inserer(racine^.droite, valeur);
 end;
 
-procedure ParcoursInfixe(racine: PNoeud);
-begin
+procedure ParcoursInfixe(racine: PNoeud);  
+begin  
   if racine = nil then
     Exit;
 
@@ -856,8 +856,8 @@ begin
   ParcoursInfixe(racine^.droite);      // 3. Parcourir droite
 end;
 
-function Rechercher(racine: PNoeud; valeur: Integer): Boolean;
-begin
+function Rechercher(racine: PNoeud; valeur: Integer): Boolean;  
+begin  
   // Cas de base : arbre vide
   if racine = nil then
   begin
@@ -875,8 +875,8 @@ begin
     Result := Rechercher(racine^.droite, valeur);
 end;
 
-procedure LibererArbre(var racine: PNoeud);
-begin
+procedure LibererArbre(var racine: PNoeud);  
+begin  
   if racine = nil then
     Exit;
 
@@ -948,31 +948,31 @@ end.
 
 ```pascal
 // ✗ MAUVAIS
-New(noeud);
-noeud^.donnee := 10;
+New(noeud);  
+noeud^.donnee := 10;  
 // Oubli : gauche et droite non initialisés !
 
 // ✓ BON
-New(noeud);
-noeud^.donnee := 10;
-noeud^.gauche := nil;
-noeud^.droite := nil;
+New(noeud);  
+noeud^.donnee := 10;  
+noeud^.gauche := nil;  
+noeud^.droite := nil;  
 ```
 
 ### 2. Libération dans le Mauvais Ordre
 
 ```pascal
 // ✗ MAUVAIS (préfixe)
-procedure MauvaiseLiberation(racine: PNoeud);
-begin
+procedure MauvaiseLiberation(racine: PNoeud);  
+begin  
   if racine = nil then Exit;
   Dispose(racine);  // Perd l'accès aux enfants !
   LibererArbre(racine^.gauche);  // Crash !
 end;
 
 // ✓ BON (postfixe)
-procedure BonneLiberation(var racine: PNoeud);
-begin
+procedure BonneLiberation(var racine: PNoeud);  
+begin  
   if racine = nil then Exit;
   LibererArbre(racine^.gauche);   // Enfants d'abord
   LibererArbre(racine^.droite);
@@ -985,15 +985,15 @@ end;
 
 ```pascal
 // ✗ MAUVAIS
-procedure Inserer(racine: PNoeud; valeur: Integer);
-begin
+procedure Inserer(racine: PNoeud; valeur: Integer);  
+begin  
   if racine = nil then
     racine := CreerNoeud(valeur);  // Ne modifie pas l'original !
 end;
 
 // ✓ BON
-procedure Inserer(var racine: PNoeud; valeur: Integer);
-begin
+procedure Inserer(var racine: PNoeud; valeur: Integer);  
+begin  
   if racine = nil then
     racine := CreerNoeud(valeur);  // Modifie l'original
 end;
@@ -1003,10 +1003,10 @@ end;
 
 ```pascal
 // Insérer dans l'ordre croissant crée une liste !
-Inserer(arbre, 10);
-Inserer(arbre, 20);
-Inserer(arbre, 30);
-Inserer(arbre, 40);
+Inserer(arbre, 10);  
+Inserer(arbre, 20);  
+Inserer(arbre, 30);  
+Inserer(arbre, 40);  
 
 // Résultat : arbre dégénéré
 // 10

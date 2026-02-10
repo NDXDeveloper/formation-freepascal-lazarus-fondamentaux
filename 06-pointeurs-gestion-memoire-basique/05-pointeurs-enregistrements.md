@@ -94,12 +94,12 @@ Deux notations possibles pour accéder aux champs :
 
 ```pascal
 // Notation 1 : Avec ^
-pPersonne^.nom := 'Bob';
-pPersonne^.age := 25;
+pPersonne^.nom := 'Bob';  
+pPersonne^.age := 25;  
 
 // Notation 2 : Avec With (plus lisible)
-with pPersonne^ do
-begin
+with pPersonne^ do  
+begin  
   nom := 'Charlie';
   age := 35;
 end;
@@ -179,15 +179,15 @@ type
   end;
   PPerson = ^TPerson;
 
-function CreerPersonne(n: String; a: Integer): PPerson;
-begin
+function CreerPersonne(n: String; a: Integer): PPerson;  
+begin  
   New(Result);
   Result^.nom := n;
   Result^.age := a;
 end;
 
-procedure LibererPersonne(var p: PPerson);
-begin
+procedure LibererPersonne(var p: PPerson);  
+begin  
   if p <> nil then
   begin
     Dispose(p);
@@ -224,8 +224,8 @@ type
 ### Création d'une Liste Simple
 
 ```pascal
-program ListeSimple;
-type
+program ListeSimple;  
+type  
   PNoeud = ^TNoeud;  // Déclaration anticipée : Pascal autorise ^Type avant que Type soit défini
   TNoeud = record
     valeur: Integer;
@@ -289,8 +289,8 @@ Créons une petite bibliothèque pour gérer une liste :
 
 ```pascal
 {$mode objfpc}{$H+}
-program ListeChainee;
-type
+program ListeChainee;  
+type  
   PNoeud = ^TNoeud;
   TNoeud = record
     donnee: Integer;
@@ -298,8 +298,8 @@ type
   end;
 
 // Ajouter un élément au début
-function AjouterDebut(liste: PNoeud; valeur: Integer): PNoeud;
-var
+function AjouterDebut(liste: PNoeud; valeur: Integer): PNoeud;  
+var  
   nouveau: PNoeud;
 begin
   New(nouveau);
@@ -309,8 +309,8 @@ begin
 end;
 
 // Afficher tous les éléments
-procedure AfficherListe(liste: PNoeud);
-var
+procedure AfficherListe(liste: PNoeud);  
+var  
   courant: PNoeud;
 begin
   courant := liste;
@@ -324,8 +324,8 @@ begin
 end;
 
 // Libérer toute la liste
-procedure LibererListe(var liste: PNoeud);
-var
+procedure LibererListe(var liste: PNoeud);  
+var  
   courant, suivant: PNoeud;
 begin
   courant := liste;
@@ -359,8 +359,8 @@ end.
 #### Compter les Éléments
 
 ```pascal
-function CompterElements(liste: PNoeud): Integer;
-var
+function CompterElements(liste: PNoeud): Integer;  
+var  
   courant: PNoeud;
   compte: Integer;
 begin
@@ -378,8 +378,8 @@ end;
 #### Rechercher une Valeur
 
 ```pascal
-function Rechercher(liste: PNoeud; valeur: Integer): Boolean;
-var
+function Rechercher(liste: PNoeud; valeur: Integer): Boolean;  
+var  
   courant: PNoeud;
 begin
   courant := liste;
@@ -399,8 +399,8 @@ end;
 #### Ajouter à la Fin
 
 ```pascal
-procedure AjouterFin(var liste: PNoeud; valeur: Integer);
-var
+procedure AjouterFin(var liste: PNoeud; valeur: Integer);  
+var  
   nouveau, courant: PNoeud;
 begin
   New(nouveau);
@@ -424,8 +424,8 @@ end;
 ### Enregistrement avec Plusieurs Pointeurs
 
 ```pascal
-program RelationsPointeurs;
-type
+program RelationsPointeurs;  
+type  
   PPersonne = ^TPersonne;
   TPersonne = record
     nom: String;
@@ -468,8 +468,8 @@ end.
 ### Enregistrement avec Tableau Dynamique
 
 ```pascal
-program EtudiantNotes;
-type
+program EtudiantNotes;  
+type  
   PEtudiant = ^TEtudiant;
   TEtudiant = record
     nom: String;
@@ -507,8 +507,8 @@ end.
 ### Par Valeur (Copie du Pointeur)
 
 ```pascal
-procedure AfficherPersonne(p: PPerson);
-begin
+procedure AfficherPersonne(p: PPerson);  
+begin  
   if p <> nil then
     WriteLn(p^.nom, ', ', p^.age, ' ans');
 end;
@@ -532,15 +532,15 @@ end;
 Utile quand on veut modifier le pointeur lui-même :
 
 ```pascal
-procedure CreerEtInitialiser(var p: PPerson; n: String; a: Integer);
-begin
+procedure CreerEtInitialiser(var p: PPerson; n: String; a: Integer);  
+begin  
   New(p);
   p^.nom := n;
   p^.age := a;
 end;
 
-procedure Liberer(var p: PPerson);
-begin
+procedure Liberer(var p: PPerson);  
+begin  
   if p <> nil then
   begin
     Dispose(p);
@@ -564,8 +564,8 @@ end.
 ### 1. Carnet d'Adresses
 
 ```pascal
-program CarnetAdresses;
-type
+program CarnetAdresses;  
+type  
   PContact = ^TContact;
   TContact = record
     nom: String;
@@ -574,8 +574,8 @@ type
     suivant: PContact;
   end;
 
-procedure AjouterContact(var carnet: PContact; n, tel, mail: String);
-var
+procedure AjouterContact(var carnet: PContact; n, tel, mail: String);  
+var  
   nouveau: PContact;
 begin
   New(nouveau);
@@ -586,8 +586,8 @@ begin
   carnet := nouveau;
 end;
 
-procedure AfficherCarnet(carnet: PContact);
-var
+procedure AfficherCarnet(carnet: PContact);  
+var  
   courant: PContact;
 begin
   courant := carnet;
@@ -602,8 +602,8 @@ begin
   end;
 end;
 
-procedure LibererCarnet(var carnet: PContact);
-var
+procedure LibererCarnet(var carnet: PContact);  
+var  
   courant, suivant: PContact;
 begin
   courant := carnet;
@@ -634,8 +634,8 @@ end.
 
 ```pascal
 {$mode objfpc}{$H+}
-program FileAttente;
-type
+program FileAttente;  
+type  
   PNoeud = ^TNoeud;
   TNoeud = record
     donnee: String;
@@ -647,8 +647,8 @@ type
     dernier: PNoeud;
   end;
 
-procedure Enfiler(var f: TFile; valeur: String);
-var
+procedure Enfiler(var f: TFile; valeur: String);  
+var  
   nouveau: PNoeud;
 begin
   New(nouveau);
@@ -667,8 +667,8 @@ begin
   end;
 end;
 
-function Defiler(var f: TFile): String;
-var
+function Defiler(var f: TFile): String;  
+var  
   temp: PNoeud;
 begin
   if f.premier = nil then
@@ -748,15 +748,15 @@ type
     compteurRef: Integer;  // Compte les utilisateurs
   end;
 
-function Acquerir(p: PDonnee): PDonnee;
-begin
+function Acquerir(p: PDonnee): PDonnee;  
+begin  
   if p <> nil then
     Inc(p^.compteurRef);
   Result := p;
 end;
 
-procedure Liberer(var p: PDonnee);
-begin
+procedure Liberer(var p: PDonnee);  
+begin  
   if p <> nil then
   begin
     Dec(p^.compteurRef);
@@ -834,15 +834,15 @@ end;
 
 ```pascal
 // ✗ MAUVAIS : fuite mémoire
-procedure LibererMal(liste: PNoeud);
-begin
+procedure LibererMal(liste: PNoeud);  
+begin  
   if liste <> nil then
     Dispose(liste);  // Ne libère que le premier !
 end;
 
 // ✓ BON : libère tous les noeuds
-procedure LibererBien(var liste: PNoeud);
-var
+procedure LibererBien(var liste: PNoeud);  
+var  
   courant, suivant: PNoeud;
 begin
   courant := liste;
@@ -884,9 +884,9 @@ end;
 ### 1. Toujours Initialiser les Pointeurs
 
 ```pascal
-New(noeud);
-noeud^.valeur := 0;
-noeud^.suivant := nil;  // ✓ Important !
+New(noeud);  
+noeud^.valeur := 0;  
+noeud^.suivant := nil;  // ✓ Important !  
 ```
 
 ### 2. Vérifier nil Avant Déréférencement
@@ -899,8 +899,8 @@ if personne <> nil then
 ### 3. Utiliser des Fonctions d'Encapsulation
 
 ```pascal
-function CreerNoeud(val: Integer): PNoeud;
-begin
+function CreerNoeud(val: Integer): PNoeud;  
+begin  
   New(Result);
   Result^.valeur := val;
   Result^.suivant := nil;

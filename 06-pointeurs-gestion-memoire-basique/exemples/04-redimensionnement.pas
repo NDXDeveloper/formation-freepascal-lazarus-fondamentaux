@@ -3,8 +3,8 @@
   Description : Redimensionnement dynamique d'un tableau avec SetLength
   Fichier source : 04-pointeurs-tableaux.md
   ============================================================================ }
-program Redimensionnement;
-var
+program Redimensionnement;  
+var  
   data: array of Integer;
   ancienneTaille, nouvelleTaille: Integer;
 begin

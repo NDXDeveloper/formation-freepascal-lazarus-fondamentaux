@@ -170,15 +170,15 @@ Après pScore^ := 100 :
 Les pointeurs sont particulièrement utiles pour passer des données volumineuses aux fonctions sans les copier :
 
 ```pascal
-program PassagePointeurParametre;
-type
+program PassagePointeurParametre;  
+type  
   TGrosseStructure = record
     donnees: array[1..1000] of Integer;
   end;
   PGrosseStructure = ^TGrosseStructure;
 
-procedure TraiterDonnees(p: PGrosseStructure);
-begin
+procedure TraiterDonnees(p: PGrosseStructure);  
+begin  
   // Accès direct aux données via le pointeur
   if p <> nil then
   begin
@@ -203,12 +203,12 @@ Une fonction peut retourner un pointeur :
 
 ```pascal
 {$mode objfpc}{$H+}
-program RetournerPointeur;
-type
+program RetournerPointeur;  
+type  
   PInteger = ^Integer;
 
-function TrouverMaximum(var a, b: Integer): PInteger;  // var obligatoire : sans var, @a pointerait vers une copie locale détruite au retour
-begin
+function TrouverMaximum(var a, b: Integer): PInteger;  // var obligatoire : sans var, @a pointerait vers une copie locale détruite au retour  
+begin  
   if a > b then
     Result := @a
   else
@@ -376,8 +376,8 @@ end;
 Au lieu de passer de grosses structures en paramètre :
 
 ```pascal
-program PartageDonnees;
-type
+program PartageDonnees;  
+type  
   TConfiguration = record
     serveur: String;
     port: Integer;
@@ -385,8 +385,8 @@ type
   end;
   PConfiguration = ^TConfiguration;
 
-procedure AfficherConfig(cfg: PConfiguration);
-begin
+procedure AfficherConfig(cfg: PConfiguration);  
+begin  
   if cfg <> nil then
   begin
     WriteLn('Serveur : ', cfg^.serveur);
@@ -394,8 +394,8 @@ begin
   end;
 end;
 
-procedure ModifierPort(cfg: PConfiguration; nouveauPort: Integer);
-begin
+procedure ModifierPort(cfg: PConfiguration; nouveauPort: Integer);  
+begin  
   if cfg <> nil then
     cfg^.port := nouveauPort;
 end;
@@ -417,12 +417,12 @@ end.
 Une fonction classique utilisant des pointeurs :
 
 ```pascal
-program EchangeValeurs;
-type
+program EchangeValeurs;  
+type  
   PInteger = ^Integer;
 
-procedure Echanger(a, b: PInteger);
-var
+procedure Echanger(a, b: PInteger);  
+var  
   temp: Integer;
 begin
   if (a <> nil) and (b <> nil) then
@@ -465,8 +465,8 @@ end;
 ### 2. Vérifier Avant Déréférencer
 
 ```pascal
-procedure Afficher(p: ^Integer);
-begin
+procedure Afficher(p: ^Integer);  
+begin  
   if p <> nil then        // ✓ Bon : vérification
     WriteLn(p^)
   else
@@ -486,8 +486,8 @@ var
 
 ```pascal
 // Cette fonction NE libère PAS la mémoire pointée
-procedure TraiterDonnees(p: ^TData);
-begin
+procedure TraiterDonnees(p: ^TData);  
+begin  
   // ...
 end;
 ```

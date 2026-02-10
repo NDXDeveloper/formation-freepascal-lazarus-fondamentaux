@@ -3,8 +3,8 @@
   Description : Allocation manuelle d'un tableau avec New et Dispose
   Fichier source : 04-pointeurs-tableaux.md
   ============================================================================ }
-program TableauDynamiqueNew;
-type
+program TableauDynamiqueNew;  
+type  
   TTableau5 = array[1..5] of Integer;
   PTableau5 = ^TTableau5;
 

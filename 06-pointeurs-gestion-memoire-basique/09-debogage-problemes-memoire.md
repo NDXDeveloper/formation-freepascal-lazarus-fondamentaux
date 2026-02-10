@@ -169,8 +169,8 @@ Menu Projet → Options du projet → Compilation et édition de liens
 **Étape 2 : Activer le débogueur**
 
 ```
-Menu Exécuter → Options de débogage
-Type de débogueur : GNU debugger (gdb)
+Menu Exécuter → Options de débogage  
+Type de débogueur : GNU debugger (gdb)  
 ```
 
 ### Points d'Arrêt (Breakpoints)
@@ -181,8 +181,8 @@ Type de débogueur : GNU debugger (gdb)
 3. Le programme s'arrêtera à cette ligne
 
 ```pascal
-procedure TraiterDonnees;
-var
+procedure TraiterDonnees;  
+var  
   p: ^Integer;
 begin
   New(p);  // ← Mettre un point d'arrêt ici
@@ -248,8 +248,8 @@ end;
 **Exemple de session :**
 
 ```pascal
-procedure Exemple;
-var
+procedure Exemple;  
+var  
   p: ^Integer;
 begin
   p := nil;           // ← F8 : p vaut maintenant nil
@@ -270,20 +270,20 @@ Menu Vue → Fenêtres de débogage → Pile d'appels
 ```
 
 ```pascal
-procedure NiveauC;
-var
+procedure NiveauC;  
+var  
   p: ^Integer;
 begin
   WriteLn(p^);  // ← CRASH ici
 end;
 
-procedure NiveauB;
-begin
+procedure NiveauB;  
+begin  
   NiveauC;      // Appelée depuis ici
 end;
 
-procedure NiveauA;
-begin
+procedure NiveauA;  
+begin  
   NiveauB;      // Appelée depuis ici
 end;
 
@@ -294,10 +294,10 @@ end.
 
 **Call Stack affiché :**
 ```
-NiveauC      ← Erreur ici
-NiveauB
-NiveauA
-PROGRAMME
+NiveauC      ← Erreur ici  
+NiveauB  
+NiveauA  
+PROGRAMME  
 ```
 
 Permet de remonter la chaîne d'appels pour comprendre le contexte.
@@ -342,8 +342,8 @@ Heap dump by heaptrc unit
 127 memory blocks allocated : 2044/2136
 127 memory blocks freed     : 2044/2136
 0 unfreed memory blocks : 0
-True heap size : 98304
-True free heap : 98304
+True heap size : 98304  
+True free heap : 98304  
 ```
 
 **Avec fuite mémoire :**
@@ -353,9 +353,9 @@ Heap dump by heaptrc unit
 128 memory blocks allocated : 2048/2140
 127 memory blocks freed     : 2044/2136
 1 unfreed memory blocks : 4
-True heap size : 98304
-True free heap : 98300
-Should be : 98304
+True heap size : 98304  
+True free heap : 98300  
+Should be : 98304  
 
 Call trace for block $00410020 size 4
   $0040100C  PROGRAMME,  line 12 of test.pas
@@ -401,8 +401,8 @@ SetHeapExtraInfo(SizeOf(Pointer), True, True);
 **Tracer le flux d'exécution :**
 
 ```pascal
-procedure TraiterDonnees(var p: PNoeud);
-begin
+procedure TraiterDonnees(var p: PNoeud);  
+begin  
   WriteLn('DEBUG: Début TraiterDonnees, p=', PtrUInt(p));
 
   if p = nil then
@@ -434,8 +434,8 @@ end;
 **Vérifier les conditions :**
 
 ```pascal
-procedure Inserer(var liste: PNoeud; valeur: Integer);
-begin
+procedure Inserer(var liste: PNoeud; valeur: Integer);  
+begin  
   Assert(valeur > 0, 'La valeur doit être positive');
 
   // ... insertion ...
@@ -467,20 +467,20 @@ end;
 var
   LogFile: TextFile;
 
-procedure InitLog;
-begin
+procedure InitLog;  
+begin  
   Assign(LogFile, 'debug.log');
   Rewrite(LogFile);
 end;
 
-procedure Log(const msg: String);
-begin
+procedure Log(const msg: String);  
+begin  
   WriteLn(LogFile, FormatDateTime('hh:nn:ss', Now), ' - ', msg);
   Flush(LogFile);  // Écriture immédiate
 end;
 
-procedure CloseLog;
-begin
+procedure CloseLog;  
+begin  
   Close(LogFile);
 end;
 
@@ -505,15 +505,15 @@ var
   AllocCount: Integer = 0;
   FreeCount: Integer = 0;
 
-procedure DebugNew(var p: Pointer; taille: Integer);
-begin
+procedure DebugNew(var p: Pointer; taille: Integer);  
+begin  
   GetMem(p, taille);
   Inc(AllocCount);
   WriteLn('New #', AllocCount, ' à ', PtrUInt(p));
 end;
 
-procedure DebugDispose(var p: Pointer);
-begin
+procedure DebugDispose(var p: Pointer);  
+begin  
   if p <> nil then
   begin
     Inc(FreeCount);
@@ -546,8 +546,8 @@ end;
 4. **Répéter** sur la moitié problématique
 
 ```pascal
-procedure Complexe;
-begin
+procedure Complexe;  
+begin  
   PartieA;
   PartieB;
   PartieC;
@@ -567,21 +567,21 @@ end;
 
 ```pascal
 // Code original complexe (100 lignes)
-procedure Original;
-begin
+procedure Original;  
+begin  
   // ... beaucoup de code ...
   // Crash quelque part
 end;
 
 // Version simplifiée 1 (50 lignes)
-procedure Simplifie1;
-begin
+procedure Simplifie1;  
+begin  
   // Garder seulement ce qui cause le crash
 end;
 
 // Version simplifiée 2 (10 lignes)
-procedure Simplifie2;
-begin
+procedure Simplifie2;  
+begin  
   // Cas minimal qui reproduit le bug
   New(p);
   WriteLn(p^);  // Oups, pas initialisé !
@@ -593,8 +593,8 @@ end;
 **Checklist de débogage :**
 
 ```pascal
-procedure Verifier(p: Pointer);
-begin
+procedure Verifier(p: Pointer);  
+begin  
   // 1. Le pointeur est-il nil ?
   if p = nil then
   begin
@@ -623,8 +623,8 @@ end;
 ### Pattern 1 : Encadrement
 
 ```pascal
-procedure OperationCritique;
-begin
+procedure OperationCritique;  
+begin  
   WriteLn('>>> ENTRÉE OperationCritique');
 
   // Afficher l'état AVANT
@@ -644,8 +644,8 @@ end;
 
 ```pascal
 {$mode objfpc}{$H+}
-program SentinellesDebug;
-type
+program SentinellesDebug;  
+type  
   PNoeudDebug = ^TNoeudDebug;
   TNoeudDebug = record
     magicDebut: Cardinal;     // = $DEADBEEF
@@ -654,8 +654,8 @@ type
     magicFin: Cardinal;       // = $DEADBEEF
   end;
 
-function CreerNoeudDebug(val: Integer): PNoeudDebug;
-begin
+function CreerNoeudDebug(val: Integer): PNoeudDebug;  
+begin  
   New(Result);
   Result^.magicDebut := $DEADBEEF;
   Result^.donnee := val;
@@ -663,8 +663,8 @@ begin
   Result^.magicFin := $DEADBEEF;
 end;
 
-procedure VerifierNoeud(p: PNoeudDebug; id: Integer);
-begin
+procedure VerifierNoeud(p: PNoeudDebug; id: Integer);  
+begin  
   if p^.magicDebut <> $DEADBEEF then
     WriteLn('CORRUPTION : Début du noeud #', id, ' écrasé !')
   else
@@ -676,8 +676,8 @@ begin
     WriteLn('Noeud #', id, ' fin OK');
 end;
 
-procedure LibererListe(var liste: PNoeudDebug);
-var
+procedure LibererListe(var liste: PNoeudDebug);  
+var  
   courant, suivant: PNoeudDebug;
 begin
   courant := liste;
@@ -723,9 +723,9 @@ end.
 
 ```pascal
 {$mode objfpc}{$H+}
-program ModeVerbeux;
-uses SysUtils;
-type
+program ModeVerbeux;  
+uses SysUtils;  
+type  
   PNoeud = ^TNoeud;
   TNoeud = record
     donnee: Integer;
@@ -735,14 +735,14 @@ type
 const
   DEBUG_MODE = True;  // Mettre à False en production
 
-procedure DebugLog(const msg: String);
-begin
+procedure DebugLog(const msg: String);  
+begin  
   if DEBUG_MODE then
     WriteLn('[DEBUG] ', msg);
 end;
 
-procedure InsererFin(var liste: PNoeud; valeur: Integer);
-var
+procedure InsererFin(var liste: PNoeud; valeur: Integer);  
+var  
   nouveau, courant: PNoeud;
 begin
   DebugLog('InsererFin(' + IntToStr(valeur) + ')');
@@ -762,8 +762,8 @@ begin
   DebugLog('  -> Insertion réussie');
 end;
 
-procedure TraiterListe(liste: PNoeud);
-var
+procedure TraiterListe(liste: PNoeud);  
+var  
   courant: PNoeud;
   compteur: Integer;
 begin
@@ -782,8 +782,8 @@ begin
   DebugLog('Fin traitement, ' + IntToStr(compteur) + ' noeuds traités');
 end;
 
-procedure LibererListe(var liste: PNoeud);
-var
+procedure LibererListe(var liste: PNoeud);  
+var  
   courant, suivant: PNoeud;
   compteur: Integer;
 begin
@@ -836,8 +836,8 @@ fpc -g programme.pas
 valgrind --leak-check=full --show-leak-kinds=all ./programme
 
 # Options utiles
-valgrind --track-origins=yes  # Tracer l'origine des valeurs
-valgrind --log-file=valgrind.log  # Sauvegarder dans un fichier
+valgrind --track-origins=yes  # Tracer l'origine des valeurs  
+valgrind --log-file=valgrind.log  # Sauvegarder dans un fichier  
 ```
 
 **Sortie typique :**
@@ -877,8 +877,8 @@ fpc -g -O0 programme.pas
 **Problème :**
 ```pascal
 // Le programme plante parfois, pas toujours
-procedure Mystere;
-var
+procedure Mystere;  
+var  
   p: ^Integer;
 begin
   // ... code complexe ...
@@ -919,8 +919,8 @@ end;
 **Problème :**
 ```pascal
 // Mémoire augmente sans cesse
-procedure BouclePrincipale;
-var
+procedure BouclePrincipale;  
+var  
   i: Integer;
 begin
   for i := 1 to 10000 do
@@ -1045,8 +1045,8 @@ end;
 Après correction, créer un test :
 
 ```pascal
-procedure TestCorrectionBug123;
-var
+procedure TestCorrectionBug123;  
+var  
   p: ^Integer;
 begin
   p := nil;  // La correction

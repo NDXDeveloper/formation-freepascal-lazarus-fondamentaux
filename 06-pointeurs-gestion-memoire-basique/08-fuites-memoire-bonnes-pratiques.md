@@ -25,19 +25,19 @@ C'est exactement ce qui se passe avec la mémoire de votre ordinateur.
 ### Impact des Fuites Mémoire
 
 ```
-Démarrage du programme :
-Mémoire disponible : ████████████████████ 100%
+Démarrage du programme :  
+Mémoire disponible : ████████████████████ 100%  
 
-Après quelques fuites :
-Mémoire disponible : ████████████░░░░░░░░ 60%
+Après quelques fuites :  
+Mémoire disponible : ████████████░░░░░░░░ 60%  
                                  ↑ perdue !
 
-Après beaucoup de fuites :
-Mémoire disponible : ████░░░░░░░░░░░░░░░░ 20%
-Programme ralenti, risque de crash !
+Après beaucoup de fuites :  
+Mémoire disponible : ████░░░░░░░░░░░░░░░░ 20%  
+Programme ralenti, risque de crash !  
 
-Fin du programme :
-Mémoire disponible : ████████████████████ 100%
+Fin du programme :  
+Mémoire disponible : ████████████████████ 100%  
 (libérée automatiquement par l'OS)
 ```
 
@@ -51,8 +51,8 @@ Mémoire disponible : ███████████████████�
 
 ```pascal
 // ✗ FUITE MÉMOIRE
-procedure CreerDonnees;
-var
+procedure CreerDonnees;  
+var  
   p: ^Integer;
 begin
   New(p);
@@ -62,8 +62,8 @@ begin
 end;  // p est détruit, mais la mémoire allouée reste occupée !
 
 // ✓ CORRECT
-procedure CreerDonneesCorrect;
-var
+procedure CreerDonneesCorrect;  
+var  
   p: ^Integer;
 begin
   New(p);
@@ -134,8 +134,8 @@ end;
 
 ```pascal
 // ✗ FUITE MÉMOIRE
-procedure TraiterFichier;
-var
+procedure TraiterFichier;  
+var  
   buffer: ^array[1..1000] of Byte;
 begin
   New(buffer);
@@ -148,8 +148,8 @@ begin
 end;
 
 // ✓ CORRECT : Utiliser try-finally
-procedure TraiterFichierCorrect;
-var
+procedure TraiterFichierCorrect;  
+var  
   buffer: ^array[1..1000] of Byte;
 begin
   New(buffer);
@@ -168,15 +168,15 @@ end;
 
 ```pascal
 // ✗ FUITE MÉMOIRE
-procedure LibererMal(liste: PNoeud);
-begin
+procedure LibererMal(liste: PNoeud);  
+begin  
   if liste <> nil then
     Dispose(liste);  // Libère seulement le premier !
 end;  // Le reste de la liste est perdu !
 
 // ✓ CORRECT
-procedure LibererBien(var liste: PNoeud);
-var
+procedure LibererBien(var liste: PNoeud);  
+var  
   courant, suivant: PNoeud;
 begin
   courant := liste;
@@ -195,8 +195,8 @@ end;
 **Deux structures se pointent mutuellement**
 
 ```pascal
-program ReferencesCirculaires;
-type
+program ReferencesCirculaires;  
+type  
   PA = ^TA;
   PB = ^TB;
 
@@ -254,15 +254,15 @@ var
   compteurAlloc: Integer = 0;
   compteurFree: Integer = 0;
 
-procedure MonNew(var p: Pointer; taille: Integer);
-begin
+procedure MonNew(var p: Pointer; taille: Integer);  
+begin  
   GetMem(p, taille);
   Inc(compteurAlloc);
   WriteLn('Allocation #', compteurAlloc, ' - ', taille, ' octets');
 end;
 
-procedure MonDispose(var p: Pointer);
-begin
+procedure MonDispose(var p: Pointer);  
+begin  
   if p <> nil then
   begin
     FreeMem(p);
@@ -331,8 +331,8 @@ type
 var
   listeAllocations: PDebugInfo = nil;
 
-procedure EnregistrerAllocation(p: Pointer; t: Integer; f: String; l: Integer);
-var
+procedure EnregistrerAllocation(p: Pointer; t: Integer; f: String; l: Integer);  
+var  
   nouveau: PDebugInfo;
 begin
   New(nouveau);
@@ -344,8 +344,8 @@ begin
   listeAllocations := nouveau;
 end;
 
-procedure VerifierFuites;
-var
+procedure VerifierFuites;  
+var  
   courant: PDebugInfo;
 begin
   courant := listeAllocations;
@@ -366,8 +366,8 @@ end;
 
 ```pascal
 // ✓ BON PATTERN : Création et destruction au même niveau
-procedure TraiterDonnees;
-var
+procedure TraiterDonnees;  
+var  
   donnees: ^TGrosseStructure;
 begin
   New(donnees);  // Allocation
@@ -448,23 +448,23 @@ end;
 
 ```pascal
 {$mode objfpc}{$H+}
-program EncapsulationMemoire;
-type
+program EncapsulationMemoire;  
+type  
   PPerson = ^TPerson;
   TPerson = record
     nom: String;
     age: Integer;
   end;
 
-function CreerPersonne(n: String; a: Integer): PPerson;
-begin
+function CreerPersonne(n: String; a: Integer): PPerson;  
+begin  
   New(Result);
   Result^.nom := n;
   Result^.age := a;
 end;
 
-procedure DetruirePersonne(var p: PPerson);
-begin
+procedure DetruirePersonne(var p: PPerson);  
+begin  
   if p <> nil then
   begin
     Dispose(p);
@@ -495,22 +495,22 @@ end.
 
 ```pascal
 // Cette fonction CRÉE un objet : l'appelant doit le libérer
-function CreerConfiguration: PConfig;
-begin
+function CreerConfiguration: PConfig;  
+begin  
   New(Result);
   // ...
 end;
 
 // Cette fonction UTILISE un objet : elle ne le libère PAS
-procedure AfficherConfiguration(cfg: PConfig);
-begin
+procedure AfficherConfiguration(cfg: PConfig);  
+begin  
   // Ne pas faire Dispose ici !
   WriteLn(cfg^.serveur);
 end;
 
 // Cette fonction PREND OWNERSHIP : elle libère l'objet
-procedure AppliquerEtLiberer(var cfg: PConfig);
-begin
+procedure AppliquerEtLiberer(var cfg: PConfig);  
+begin  
   // ... utilisation ...
   Dispose(cfg);
   cfg := nil;
@@ -527,13 +527,13 @@ type
     ressource: ^TRessource;
   end;
 
-procedure Initialiser(var g: TGestionnaireRessource);
-begin
+procedure Initialiser(var g: TGestionnaireRessource);  
+begin  
   New(g.ressource);
 end;
 
-procedure Finaliser(var g: TGestionnaireRessource);
-begin
+procedure Finaliser(var g: TGestionnaireRessource);  
+begin  
   if g.ressource <> nil then
   begin
     Dispose(g.ressource);
@@ -561,8 +561,8 @@ end;
 **Libération complète obligatoire**
 
 ```pascal
-procedure LibererListe(var liste: PNoeud);
-var
+procedure LibererListe(var liste: PNoeud);  
+var  
   courant, suivant: PNoeud;
 begin
   courant := liste;
@@ -587,8 +587,8 @@ end;
 **Libération récursive en postfixe**
 
 ```pascal
-procedure LibererArbre(var racine: PNoeud);
-begin
+procedure LibererArbre(var racine: PNoeud);  
+begin  
   if racine = nil then
     Exit;
 
@@ -625,8 +625,8 @@ type
     nom: String;
   end;
 
-procedure LibererData(var p: PData);
-begin
+procedure LibererData(var p: PData);  
+begin  
   if p <> nil then
   begin
     SetLength(p^.tableau, 0);  // Libérer le tableau d'abord
@@ -656,30 +656,30 @@ Pour partager des ressources :
 
 ```pascal
 {$mode objfpc}{$H+}
-program CompteurReferences;
-type
+program CompteurReferences;  
+type  
   PDonneePartagee = ^TDonneePartagee;
   TDonneePartagee = record
     compteurRef: Integer;
     donnees: String;
   end;
 
-function Creer: PDonneePartagee;
-begin
+function Creer: PDonneePartagee;  
+begin  
   New(Result);
   Result^.compteurRef := 1;
   Result^.donnees := '';
 end;
 
-function Acquerir(p: PDonneePartagee): PDonneePartagee;
-begin
+function Acquerir(p: PDonneePartagee): PDonneePartagee;  
+begin  
   if p <> nil then
     Inc(p^.compteurRef);
   Result := p;
 end;
 
-procedure Liberer(var p: PDonneePartagee);
-begin
+procedure Liberer(var p: PDonneePartagee);  
+begin  
   if p <> nil then
   begin
     Dec(p^.compteurRef);
@@ -724,15 +724,15 @@ type
     utilise: Integer;
   end;
 
-procedure CreerPool(var pool: TMemoryPool; t: Integer);
-begin
+procedure CreerPool(var pool: TMemoryPool; t: Integer);  
+begin  
   GetMem(pool.buffer, t);
   pool.taille := t;
   pool.utilise := 0;
 end;
 
-function AllouerDansPool(var pool: TMemoryPool; t: Integer): Pointer;
-begin
+function AllouerDansPool(var pool: TMemoryPool; t: Integer): Pointer;  
+begin  
   if pool.utilise + t <= pool.taille then
   begin
     Result := pool.buffer + pool.utilise;
@@ -742,8 +742,8 @@ begin
     Result := nil;  // Pool plein
 end;
 
-procedure LibererPool(var pool: TMemoryPool);
-begin
+procedure LibererPool(var pool: TMemoryPool);  
+begin  
   FreeMem(pool.buffer);
   pool.buffer := nil;
   pool.taille := 0;

@@ -3,15 +3,15 @@
   Description : Passage de pointeur en parametre de procedure
   Fichier source : 02-declaration-utilisation-pointeurs.md
   ============================================================================ }
-program PassagePointeurParametre;
-type
+program PassagePointeurParametre;  
+type  
   TGrosseStructure = record
     donnees: array[1..1000] of Integer;
   end;
   PGrosseStructure = ^TGrosseStructure;
 
-procedure TraiterDonnees(p: PGrosseStructure);
-begin
+procedure TraiterDonnees(p: PGrosseStructure);  
+begin  
   // Accès direct aux données via le pointeur
   if p <> nil then
   begin

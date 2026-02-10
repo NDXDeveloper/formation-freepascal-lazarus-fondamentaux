@@ -3,16 +3,16 @@
   Description : Inverser une liste chainee
   Fichier source : 06-listes-chainees-simples.md
   ============================================================================ }
-program InverserListeDemo;
-type
+program InverserListeDemo;  
+type  
   PNoeud = ^TNoeud;
   TNoeud = record
     donnee: Integer;
     suivant: PNoeud;
   end;
 
-procedure InsererFin(var liste: PNoeud; valeur: Integer);
-var
+procedure InsererFin(var liste: PNoeud; valeur: Integer);  
+var  
   nouveau, courant: PNoeud;
 begin
   New(nouveau);
@@ -30,8 +30,8 @@ begin
   end;
 end;
 
-procedure AfficherListe(liste: PNoeud);
-var
+procedure AfficherListe(liste: PNoeud);  
+var  
   courant: PNoeud;
 begin
   if liste = nil then
@@ -52,8 +52,8 @@ begin
   WriteLn;
 end;
 
-procedure InverserListe(var liste: PNoeud);
-var
+procedure InverserListe(var liste: PNoeud);  
+var  
   precedent, courant, suivant: PNoeud;
 begin
   if liste = nil then
@@ -73,8 +73,8 @@ begin
   liste := precedent;  // Le dernier devient le premier
 end;
 
-procedure LibererListe(var liste: PNoeud);
-var
+procedure LibererListe(var liste: PNoeud);  
+var  
   courant, suivant: PNoeud;
 begin
   courant := liste;

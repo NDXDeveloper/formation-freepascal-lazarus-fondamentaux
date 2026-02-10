@@ -4,30 +4,30 @@
   Fichier source : 08-fuites-memoire-bonnes-pratiques.md
   ============================================================================ }
 {$mode objfpc}{$H+}
-program CompteurReferences;
-type
+program CompteurReferences;  
+type  
   PDonneePartagee = ^TDonneePartagee;
   TDonneePartagee = record
     compteurRef: Integer;
     donnees: String;
   end;
 
-function Creer: PDonneePartagee;
-begin
+function Creer: PDonneePartagee;  
+begin  
   New(Result);
   Result^.compteurRef := 1;
   Result^.donnees := '';
 end;
 
-function Acquerir(p: PDonneePartagee): PDonneePartagee;
-begin
+function Acquerir(p: PDonneePartagee): PDonneePartagee;  
+begin  
   if p <> nil then
     Inc(p^.compteurRef);
   Result := p;
 end;
 
-procedure Liberer(var p: PDonneePartagee);
-begin
+procedure Liberer(var p: PDonneePartagee);  
+begin  
   if p <> nil then
   begin
     Dec(p^.compteurRef);

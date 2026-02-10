@@ -4,8 +4,8 @@
   Fichier source : 05-pointeurs-enregistrements.md
   ============================================================================ }
 {$mode objfpc}{$H+}
-program ListeChainee;
-type
+program ListeChainee;  
+type  
   PNoeud = ^TNoeud;
   TNoeud = record
     donnee: Integer;
@@ -13,8 +13,8 @@ type
   end;
 
 // Ajouter un élément au début
-function AjouterDebut(liste: PNoeud; valeur: Integer): PNoeud;
-var
+function AjouterDebut(liste: PNoeud; valeur: Integer): PNoeud;  
+var  
   nouveau: PNoeud;
 begin
   New(nouveau);
@@ -24,8 +24,8 @@ begin
 end;
 
 // Afficher tous les éléments
-procedure AfficherListe(liste: PNoeud);
-var
+procedure AfficherListe(liste: PNoeud);  
+var  
   courant: PNoeud;
 begin
   courant := liste;
@@ -39,8 +39,8 @@ begin
 end;
 
 // Libérer toute la liste
-procedure LibererListe(var liste: PNoeud);
-var
+procedure LibererListe(var liste: PNoeud);  
+var  
   courant, suivant: PNoeud;
 begin
   courant := liste;

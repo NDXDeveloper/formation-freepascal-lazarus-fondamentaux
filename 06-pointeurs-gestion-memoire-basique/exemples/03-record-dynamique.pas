@@ -3,8 +3,8 @@
   Description : Allocation dynamique d'un enregistrement (record)
   Fichier source : 03-allocation-dynamique-new-dispose.md
   ============================================================================ }
-program RecordDynamique;
-type
+program RecordDynamique;  
+type  
   TPerson = record
     nom: String;
     age: Integer;

@@ -208,8 +208,8 @@ end;
 ### Les 4 Étapes
 
 ```pascal
-program CycleViePointeur;
-var
+program CycleViePointeur;  
+var  
   p: ^Integer;
 begin
   // ÉTAPE 1 : Déclaration
@@ -237,8 +237,8 @@ end.
 ### Allocation de Chaînes Dynamiques
 
 ```pascal
-program ChaineDynamique;
-var
+program ChaineDynamique;  
+var  
   pNom: ^String;
 begin
   New(pNom);
@@ -255,8 +255,8 @@ end.
 ### Allocation d'Enregistrements
 
 ```pascal
-program RecordDynamique;
-type
+program RecordDynamique;  
+type  
   TPerson = record
     nom: String;
     age: Integer;
@@ -286,8 +286,8 @@ end.
 ### Création de Plusieurs Variables Dynamiques
 
 ```pascal
-program PlusieursDynamiques;
-var
+program PlusieursDynamiques;  
+var  
   p1, p2, p3: ^Integer;
 begin
   // Création de 3 entiers dynamiques
@@ -319,23 +319,23 @@ end.
 
 ```pascal
 {$mode objfpc}{$H+}
-program CreerLibererPersonne;
-type
+program CreerLibererPersonne;  
+type  
   PPerson = ^TPerson;
   TPerson = record
     nom: String;
     age: Integer;
   end;
 
-function CreerPersonne(n: String; a: Integer): PPerson;
-begin
+function CreerPersonne(n: String; a: Integer): PPerson;  
+begin  
   New(Result);           // Allocation
   Result^.nom := n;      // Initialisation
   Result^.age := a;
 end;
 
-procedure LibererPersonne(var p: PPerson);  // var nécessaire pour que p := nil modifie le pointeur de l'appelant
-begin
+procedure LibererPersonne(var p: PPerson);  // var nécessaire pour que p := nil modifie le pointeur de l'appelant  
+begin  
   if p <> nil then
   begin
     Dispose(p);          // Libération
@@ -439,8 +439,8 @@ end;
 
 ```pascal
 // ✗ MAUVAIS : Fuite mémoire
-procedure ProblemeFuite;
-var
+procedure ProblemeFuite;  
+var  
   p: ^Integer;
 begin
   New(p);
@@ -455,8 +455,8 @@ end;  // La mémoire reste occupée !
 
 ```pascal
 // ✓ BON
-procedure Correct;
-var
+procedure Correct;  
+var  
   p: ^Integer;
 begin
   New(p);

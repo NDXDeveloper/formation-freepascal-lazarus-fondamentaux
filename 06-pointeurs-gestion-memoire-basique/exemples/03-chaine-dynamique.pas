@@ -3,8 +3,8 @@
   Description : Allocation dynamique d'une chaine de caracteres
   Fichier source : 03-allocation-dynamique-new-dispose.md
   ============================================================================ }
-program ChaineDynamique;
-var
+program ChaineDynamique;  
+var  
   pNom: ^String;
 begin
   New(pNom);

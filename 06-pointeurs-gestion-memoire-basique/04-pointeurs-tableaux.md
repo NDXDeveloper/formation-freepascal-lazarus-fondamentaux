@@ -37,8 +37,8 @@ end;
 Vous pouvez créer un pointeur qui pointe vers un tableau complet :
 
 ```pascal
-program PointeurVersTableau;
-type
+program PointeurVersTableau;  
+type  
   TTableau5 = array[1..5] of Integer;
   PTableau5 = ^TTableau5;
 var
@@ -116,8 +116,8 @@ end;
 **Note avancée :** En Pascal, vous pouvez parcourir un tableau en utilisant l'arithmétique de pointeurs, mais cette technique est plus avancée et moins courante que dans d'autres langages.
 
 ```pascal
-program ParcoursInc;
-var
+program ParcoursInc;  
+var  
   nombres: array[1..5] of Integer;
   p: ^Integer;
   i: Integer;
@@ -150,8 +150,8 @@ end.
 Vous pouvez créer un tableau dynamiquement avec `New` :
 
 ```pascal
-program TableauDynamiqueNew;
-type
+program TableauDynamiqueNew;  
+type  
   TTableau5 = array[1..5] of Integer;
   PTableau5 = ^TTableau5;
 
@@ -219,8 +219,8 @@ end;
 ### Avantages des array of
 
 ```pascal
-program ArrayOfRedim;
-var
+program ArrayOfRedim;  
+var  
   donnees: array of Integer;
 begin
   // Démarrer petit
@@ -303,8 +303,8 @@ end;
 ### Matrice Dynamique 2D
 
 ```pascal
-program MatriceDynamique;
-type
+program MatriceDynamique;  
+type  
   TMatrice = array of array of Integer;
 
 var
@@ -348,16 +348,16 @@ end.
 ```pascal
 program PassageTableau;
 
-procedure AfficherTableau(const tab: array of Integer);
-var
+procedure AfficherTableau(const tab: array of Integer);  
+var  
   i: Integer;
 begin
   for i := Low(tab) to High(tab) do
     WriteLn('Element ', i, ' : ', tab[i]);
 end;
 
-procedure InitialiserTableau(var tab: array of Integer; valeur: Integer);
-var
+procedure InitialiserTableau(var tab: array of Integer; valeur: Integer);  
+var  
   i: Integer;
 begin
   for i := Low(tab) to High(tab) do
@@ -387,8 +387,8 @@ type
   PIntArray = ^TIntArray;
   TIntArray = array[0..99] of Integer;
 
-procedure TraiterTableau(p: PIntArray; taille: Integer);
-var
+procedure TraiterTableau(p: PIntArray; taille: Integer);  
+var  
   i: Integer;
 begin
   if p <> nil then
@@ -418,8 +418,8 @@ end;
 ### 1. Redimensionnement Dynamique
 
 ```pascal
-program Redimensionnement;
-var
+program Redimensionnement;  
+var  
   data: array of Integer;
   ancienneTaille, nouvelleTaille: Integer;
 begin
@@ -469,8 +469,8 @@ end;
 Créer un tableau où chaque élément est un pointeur :
 
 ```pascal
-program TableauDePointeurs;
-uses SysUtils;
+program TableauDePointeurs;  
+uses SysUtils;  
 
 type
   PPerson = ^TPerson;
@@ -615,8 +615,8 @@ end;
 ### 3. Utiliser const pour Protection
 
 ```pascal
-procedure Lire(const tab: array of Integer);
-begin
+procedure Lire(const tab: array of Integer);  
+begin  
   // tab ne peut pas être modifié ici
   WriteLn(tab[0]);
 end;

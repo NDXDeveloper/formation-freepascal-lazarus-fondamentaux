@@ -3,8 +3,8 @@
   Description : Gestion des references circulaires entre structures
   Fichier source : 08-fuites-memoire-bonnes-pratiques.md
   ============================================================================ }
-program ReferencesCirculaires;
-type
+program ReferencesCirculaires;  
+type  
   PA = ^TA;
   PB = ^TB;
 

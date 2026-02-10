@@ -3,8 +3,8 @@
   Description : Parcours d'un tableau avec Inc (arithmetique de pointeurs)
   Fichier source : 04-pointeurs-tableaux.md
   ============================================================================ }
-program ParcoursInc;
-var
+program ParcoursInc;  
+var  
   nombres: array[1..5] of Integer;
   p: ^Integer;
   i: Integer;

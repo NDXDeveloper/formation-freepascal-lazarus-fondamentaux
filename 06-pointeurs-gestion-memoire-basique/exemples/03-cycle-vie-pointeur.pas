@@ -3,8 +3,8 @@
   Description : Les 4 etapes du cycle de vie d'un pointeur dynamique
   Fichier source : 03-allocation-dynamique-new-dispose.md
   ============================================================================ }
-program CycleViePointeur;
-var
+program CycleViePointeur;  
+var  
   p: ^Integer;
 begin
   // ÉTAPE 1 : Déclaration

@@ -4,23 +4,23 @@
   Fichier source : 08-fuites-memoire-bonnes-pratiques.md
   ============================================================================ }
 {$mode objfpc}{$H+}
-program EncapsulationMemoire;
-type
+program EncapsulationMemoire;  
+type  
   PPerson = ^TPerson;
   TPerson = record
     nom: String;
     age: Integer;
   end;
 
-function CreerPersonne(n: String; a: Integer): PPerson;
-begin
+function CreerPersonne(n: String; a: Integer): PPerson;  
+begin  
   New(Result);
   Result^.nom := n;
   Result^.age := a;
 end;
 
-procedure DetruirePersonne(var p: PPerson);
-begin
+procedure DetruirePersonne(var p: PPerson);  
+begin  
   if p <> nil then
   begin
     Dispose(p);

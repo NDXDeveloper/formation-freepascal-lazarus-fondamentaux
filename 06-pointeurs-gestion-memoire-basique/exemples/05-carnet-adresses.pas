@@ -3,8 +3,8 @@
   Description : Carnet d'adresses avec liste chainee de contacts
   Fichier source : 05-pointeurs-enregistrements.md
   ============================================================================ }
-program CarnetAdresses;
-type
+program CarnetAdresses;  
+type  
   PContact = ^TContact;
   TContact = record
     nom: String;
@@ -13,8 +13,8 @@ type
     suivant: PContact;
   end;
 
-procedure AjouterContact(var carnet: PContact; n, tel, mail: String);
-var
+procedure AjouterContact(var carnet: PContact; n, tel, mail: String);  
+var  
   nouveau: PContact;
 begin
   New(nouveau);
@@ -25,8 +25,8 @@ begin
   carnet := nouveau;
 end;
 
-procedure AfficherCarnet(carnet: PContact);
-var
+procedure AfficherCarnet(carnet: PContact);  
+var  
   courant: PContact;
 begin
   courant := carnet;
@@ -41,8 +41,8 @@ begin
   end;
 end;
 
-procedure LibererCarnet(var carnet: PContact);
-var
+procedure LibererCarnet(var carnet: PContact);  
+var  
   courant, suivant: PContact;
 begin
   courant := carnet;

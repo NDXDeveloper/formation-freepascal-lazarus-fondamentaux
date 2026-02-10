@@ -3,16 +3,16 @@
   Description : Suppression d'un element par valeur dans une liste chainee
   Fichier source : 06-listes-chainees-simples.md
   ============================================================================ }
-program SupprimerValeurDemo;
-type
+program SupprimerValeurDemo;  
+type  
   PNoeud = ^TNoeud;
   TNoeud = record
     donnee: Integer;
     suivant: PNoeud;
   end;
 
-procedure InsererFin(var liste: PNoeud; valeur: Integer);
-var
+procedure InsererFin(var liste: PNoeud; valeur: Integer);  
+var  
   nouveau, courant: PNoeud;
 begin
   New(nouveau);
@@ -30,8 +30,8 @@ begin
   end;
 end;
 
-procedure AfficherListe(liste: PNoeud);
-var
+procedure AfficherListe(liste: PNoeud);  
+var  
   courant: PNoeud;
 begin
   if liste = nil then
@@ -52,8 +52,8 @@ begin
   WriteLn;
 end;
 
-procedure SupprimerValeur(var liste: PNoeud; valeur: Integer);
-var
+procedure SupprimerValeur(var liste: PNoeud; valeur: Integer);  
+var  
   courant, precedent: PNoeud;
 begin
   if liste = nil then
@@ -87,8 +87,8 @@ begin
   WriteLn('Valeur non trouvée');
 end;
 
-procedure LibererListe(var liste: PNoeud);
-var
+procedure LibererListe(var liste: PNoeud);  
+var  
   courant, suivant: PNoeud;
 begin
   courant := liste;

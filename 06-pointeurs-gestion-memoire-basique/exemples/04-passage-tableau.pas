@@ -5,16 +5,16 @@
   ============================================================================ }
 program PassageTableau;
 
-procedure AfficherTableau(const tab: array of Integer);
-var
+procedure AfficherTableau(const tab: array of Integer);  
+var  
   i: Integer;
 begin
   for i := Low(tab) to High(tab) do
     WriteLn('Element ', i, ' : ', tab[i]);
 end;
 
-procedure InitialiserTableau(var tab: array of Integer; valeur: Integer);
-var
+procedure InitialiserTableau(var tab: array of Integer; valeur: Integer);  
+var  
   i: Integer;
 begin
   for i := Low(tab) to High(tab) do

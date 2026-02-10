@@ -4,16 +4,16 @@
   Fichier source : 06-listes-chainees-simples.md
   ============================================================================ }
 {$mode objfpc}{$H+}
-program RechercherDemo;
-type
+program RechercherDemo;  
+type  
   PNoeud = ^TNoeud;
   TNoeud = record
     donnee: Integer;
     suivant: PNoeud;
   end;
 
-procedure InsererFin(var liste: PNoeud; valeur: Integer);
-var
+procedure InsererFin(var liste: PNoeud; valeur: Integer);  
+var  
   nouveau, courant: PNoeud;
 begin
   New(nouveau);
@@ -31,8 +31,8 @@ begin
   end;
 end;
 
-function Rechercher(liste: PNoeud; valeur: Integer): Boolean;
-var
+function Rechercher(liste: PNoeud; valeur: Integer): Boolean;  
+var  
   courant: PNoeud;
 begin
   courant := liste;
@@ -48,8 +48,8 @@ begin
   Result := False;
 end;
 
-procedure LibererListe(var liste: PNoeud);
-var
+procedure LibererListe(var liste: PNoeud);  
+var  
   courant, suivant: PNoeud;
 begin
   courant := liste;

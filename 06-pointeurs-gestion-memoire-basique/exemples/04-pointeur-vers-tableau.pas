@@ -3,8 +3,8 @@
   Description : Pointeur vers un tableau entier - acces et modification
   Fichier source : 04-pointeurs-tableaux.md
   ============================================================================ }
-program PointeurVersTableau;
-type
+program PointeurVersTableau;  
+type  
   TTableau5 = array[1..5] of Integer;
   PTableau5 = ^TTableau5;
 var

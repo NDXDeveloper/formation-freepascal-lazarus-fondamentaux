@@ -3,8 +3,8 @@
   Description : Partage de donnees entre fonctions via pointeurs (configuration)
   Fichier source : 02-declaration-utilisation-pointeurs.md
   ============================================================================ }
-program PartageDonnees;
-type
+program PartageDonnees;  
+type  
   TConfiguration = record
     serveur: String;
     port: Integer;
@@ -12,8 +12,8 @@ type
   end;
   PConfiguration = ^TConfiguration;
 
-procedure AfficherConfig(cfg: PConfiguration);
-begin
+procedure AfficherConfig(cfg: PConfiguration);  
+begin  
   if cfg <> nil then
   begin
     WriteLn('Serveur : ', cfg^.serveur);
@@ -21,8 +21,8 @@ begin
   end;
 end;
 
-procedure ModifierPort(cfg: PConfiguration; nouveauPort: Integer);
-begin
+procedure ModifierPort(cfg: PConfiguration; nouveauPort: Integer);  
+begin  
   if cfg <> nil then
     cfg^.port := nouveauPort;
 end;

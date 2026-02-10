@@ -4,9 +4,9 @@
   Fichier source : 09-debogage-problemes-memoire.md
   ============================================================================ }
 {$mode objfpc}{$H+}
-program ModeVerbeux;
-uses SysUtils;
-type
+program ModeVerbeux;  
+uses SysUtils;  
+type  
   PNoeud = ^TNoeud;
   TNoeud = record
     donnee: Integer;
@@ -16,14 +16,14 @@ type
 const
   DEBUG_MODE = True;  // Mettre à False en production
 
-procedure DebugLog(const msg: String);
-begin
+procedure DebugLog(const msg: String);  
+begin  
   if DEBUG_MODE then
     WriteLn('[DEBUG] ', msg);
 end;
 
-procedure InsererFin(var liste: PNoeud; valeur: Integer);
-var
+procedure InsererFin(var liste: PNoeud; valeur: Integer);  
+var  
   nouveau, courant: PNoeud;
 begin
   DebugLog('InsererFin(' + IntToStr(valeur) + ')');
@@ -43,8 +43,8 @@ begin
   DebugLog('  -> Insertion réussie');
 end;
 
-procedure TraiterListe(liste: PNoeud);
-var
+procedure TraiterListe(liste: PNoeud);  
+var  
   courant: PNoeud;
   compteur: Integer;
 begin
@@ -63,8 +63,8 @@ begin
   DebugLog('Fin traitement, ' + IntToStr(compteur) + ' noeuds traités');
 end;
 
-procedure LibererListe(var liste: PNoeud);
-var
+procedure LibererListe(var liste: PNoeud);  
+var  
   courant, suivant: PNoeud;
   compteur: Integer;
 begin

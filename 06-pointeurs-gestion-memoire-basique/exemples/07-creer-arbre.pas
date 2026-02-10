@@ -4,8 +4,8 @@
   Fichier source : 07-arbres-binaires-basics.md
   ============================================================================ }
 {$mode objfpc}{$H+}
-program CreerArbre;
-type
+program CreerArbre;  
+type  
   PNoeud = ^TNoeud;
   TNoeud = record
     donnee: Integer;
@@ -13,16 +13,16 @@ type
     droite: PNoeud;
   end;
 
-function CreerNoeud(valeur: Integer): PNoeud;
-begin
+function CreerNoeud(valeur: Integer): PNoeud;  
+begin  
   New(Result);
   Result^.donnee := valeur;
   Result^.gauche := nil;
   Result^.droite := nil;
 end;
 
-procedure LibererArbre(var racine: PNoeud);
-begin
+procedure LibererArbre(var racine: PNoeud);  
+begin  
   if racine = nil then
     Exit;
   LibererArbre(racine^.gauche);

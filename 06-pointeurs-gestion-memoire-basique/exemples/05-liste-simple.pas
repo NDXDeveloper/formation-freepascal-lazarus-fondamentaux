@@ -3,8 +3,8 @@
   Description : Creation manuelle d'une liste chainee a 3 noeuds
   Fichier source : 05-pointeurs-enregistrements.md
   ============================================================================ }
-program ListeSimple;
-type
+program ListeSimple;  
+type  
   PNoeud = ^TNoeud;  // Déclaration anticipée : Pascal autorise ^Type avant que Type soit défini
   TNoeud = record
     valeur: Integer;
