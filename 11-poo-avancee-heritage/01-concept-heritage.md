@@ -137,45 +137,45 @@ type
 
 { Implémentation de TAnimal }
 
-constructor TAnimal.Create(ANom: string; AAge: Integer);
-begin
+constructor TAnimal.Create(ANom: string; AAge: Integer);  
+begin  
   FNom := ANom;
   FAge := AAge;
 end;
 
-procedure TAnimal.SePresenter;
-begin
+procedure TAnimal.SePresenter;  
+begin  
   WriteLn('Je m''appelle ', FNom, ' et j''ai ', FAge, ' ans.');
 end;
 
-procedure TAnimal.Manger;
-begin
+procedure TAnimal.Manger;  
+begin  
   WriteLn(FNom, ' est en train de manger.');
 end;
 
 { Implémentation de TChien }
 
-constructor TChien.Create(ANom: string; AAge: Integer; ARace: string);
-begin
+constructor TChien.Create(ANom: string; AAge: Integer; ARace: string);  
+begin  
   inherited Create(ANom, AAge);  // Appel du constructeur parent
   FRace := ARace;
 end;
 
-procedure TChien.Aboyer;
-begin
+procedure TChien.Aboyer;  
+begin  
   WriteLn(FNom, ' aboie : Wouaf wouaf !');
 end;
 
 { Implémentation de TChat }
 
-constructor TChat.Create(ANom: string; AAge: Integer; ACouleur: string);
-begin
+constructor TChat.Create(ANom: string; AAge: Integer; ACouleur: string);  
+begin  
   inherited Create(ANom, AAge);  // Appel du constructeur parent
   FCouleur := ACouleur;
 end;
 
-procedure TChat.Miauler;
-begin
+procedure TChat.Miauler;  
+begin  
   WriteLn(FNom, ' miaule : Miaou miaou !');
 end;
 
@@ -212,13 +212,13 @@ end.
 
 **Sortie du programme :**
 ```
-Je m'appelle Rex et j'ai 5 ans.
-Rex est en train de manger.
-Rex aboie : Wouaf wouaf !
+Je m'appelle Rex et j'ai 5 ans.  
+Rex est en train de manger.  
+Rex aboie : Wouaf wouaf !  
 
-Je m'appelle Félix et j'ai 3 ans.
-Félix est en train de manger.
-Félix miaule : Miaou miaou !
+Je m'appelle Félix et j'ai 3 ans.  
+Félix est en train de manger.  
+Félix miaule : Miaou miaou !  
 ```
 
 ## Que se passe-t-il dans cet exemple ?
@@ -240,8 +240,8 @@ Félix miaule : Miaou miaou !
 Vous avez remarqué le mot-clé `inherited` dans les constructeurs des classes enfants :
 
 ```pascal
-constructor TChien.Create(ANom: string; AAge: Integer; ARace: string);
-begin
+constructor TChien.Create(ANom: string; AAge: Integer; ARace: string);  
+begin  
   inherited Create(ANom, AAge);  // ← ICI
   FRace := ARace;
 end;

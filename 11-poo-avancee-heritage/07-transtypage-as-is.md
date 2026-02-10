@@ -241,114 +241,114 @@ type
 
 { === TAnimal === }
 
-constructor TAnimal.Create(ANom: string; AAge: Integer);
-begin
+constructor TAnimal.Create(ANom: string; AAge: Integer);  
+begin  
   inherited Create;
   FNom := ANom;
   FAge := AAge;
 end;
 
-procedure TAnimal.SePresenter;
-begin
+procedure TAnimal.SePresenter;  
+begin  
   WriteLn('Je suis ', FNom, ', j''ai ', FAge, ' ans');
 end;
 
-procedure TAnimal.FaireDuBruit;
-begin
+procedure TAnimal.FaireDuBruit;  
+begin  
   WriteLn('[Bruit d''animal générique]');
 end;
 
 { === TMammifere === }
 
-constructor TMammifere.Create(ANom: string; AAge: Integer; APoils: Boolean);
-begin
+constructor TMammifere.Create(ANom: string; AAge: Integer; APoils: Boolean);  
+begin  
   inherited Create(ANom, AAge);
   FPoils := APoils;
 end;
 
-procedure TMammifere.Allaiter;
-begin
+procedure TMammifere.Allaiter;  
+begin  
   WriteLn(FNom, ' allaite ses petits');
 end;
 
 { === TChien === }
 
-constructor TChien.Create(ANom: string; AAge: Integer; ARace: string);
-begin
+constructor TChien.Create(ANom: string; AAge: Integer; ARace: string);  
+begin  
   inherited Create(ANom, AAge, True);
   FRace := ARace;
 end;
 
-procedure TChien.Aboyer;
-begin
+procedure TChien.Aboyer;  
+begin  
   WriteLn('🐕 ', FNom, ' aboie : Wouaf wouaf !');
 end;
 
-procedure TChien.Garder;
-begin
+procedure TChien.Garder;  
+begin  
   WriteLn('🐕 ', FNom, ' monte la garde');
 end;
 
 { === TChat === }
 
-constructor TChat.Create(ANom: string; AAge: Integer; ACouleur: string);
-begin
+constructor TChat.Create(ANom: string; AAge: Integer; ACouleur: string);  
+begin  
   inherited Create(ANom, AAge, True);
   FCouleur := ACouleur;
 end;
 
-procedure TChat.Miauler;
-begin
+procedure TChat.Miauler;  
+begin  
   WriteLn('🐈 ', FNom, ' miaule : Miaou !');
 end;
 
-procedure TChat.Ronronner;
-begin
+procedure TChat.Ronronner;  
+begin  
   WriteLn('🐈 ', FNom, ' ronronne : Rrrrrr...');
 end;
 
 { === TOiseau === }
 
-constructor TOiseau.Create(ANom: string; AAge: Integer; AEnvergure: Real);
-begin
+constructor TOiseau.Create(ANom: string; AAge: Integer; AEnvergure: Real);  
+begin  
   inherited Create(ANom, AAge);
   FEnvergure := AEnvergure;
 end;
 
-procedure TOiseau.Voler;
-begin
+procedure TOiseau.Voler;  
+begin  
   WriteLn('🦅 ', FNom, ' vole avec ', FEnvergure:0:2, ' m d''envergure');
 end;
 
-procedure TOiseau.ChercherNourriture;
-begin
+procedure TOiseau.ChercherNourriture;  
+begin  
   WriteLn('🦅 ', FNom, ' cherche de la nourriture');
 end;
 
 { === TPerroquet === }
 
-constructor TPerroquet.Create(ANom: string; AAge: Integer; AEnvergure: Real; AVocabulaire: Integer);
-begin
+constructor TPerroquet.Create(ANom: string; AAge: Integer; AEnvergure: Real; AVocabulaire: Integer);  
+begin  
   inherited Create(ANom, AAge, AEnvergure);
   FVocabulaire := AVocabulaire;
 end;
 
-procedure TPerroquet.Parler(const Phrase: string);
-begin
+procedure TPerroquet.Parler(const Phrase: string);  
+begin  
   WriteLn('🦜 ', FNom, ' dit : "', Phrase, '"');
 end;
 
 { === TAigle === }
 
-procedure TAigle.Chasser;
-begin
+procedure TAigle.Chasser;  
+begin  
   WriteLn('🦅 ', FNom, ' chasse sa proie depuis le ciel');
 end;
 
 { === Fonctions utilisant le transtypage === }
 
-procedure IdentifierAnimal(Animal: TAnimal);
-begin
+procedure IdentifierAnimal(Animal: TAnimal);  
+begin  
   WriteLn('═══════════════════════════════════════════════');
   WriteLn('IDENTIFICATION D''UN ANIMAL');
   WriteLn('═══════════════════════════════════════════════');
@@ -442,8 +442,8 @@ begin
   WriteLn;
 end;
 
-procedure ComparaisonHierarchique(Animal: TAnimal);
-begin
+procedure ComparaisonHierarchique(Animal: TAnimal);  
+begin  
   WriteLn('═══════════════════════════════════════════════');
   WriteLn('ANALYSE HIERARCHIQUE');
   WriteLn('═══════════════════════════════════════════════');
@@ -461,8 +461,8 @@ begin
   WriteLn;
 end;
 
-procedure NourrirAnimaux(Animaux: array of TAnimal);
-var
+procedure NourrirAnimaux(Animaux: array of TAnimal);  
+var  
   i: Integer;
   Chien: TChien;
   Chat: TChat;
@@ -603,8 +603,8 @@ end;
 ### 1. Traitement différencié dans une boucle
 
 ```pascal
-procedure TraiterCollection(Liste: array of TAnimal);
-var
+procedure TraiterCollection(Liste: array of TAnimal);  
+var  
   i: Integer;
 begin
   for i := 0 to High(Liste) do
@@ -626,8 +626,8 @@ end;
 ### 2. Gestionnaire d'événements génériques
 
 ```pascal
-procedure TForm1.ComposantClick(Sender: TObject);
-begin
+procedure TForm1.ComposantClick(Sender: TObject);  
+begin  
   if Sender is TButton then
   begin
     ShowMessage('Bouton cliqué : ' + (Sender as TButton).Caption);
@@ -647,8 +647,8 @@ end;
 ### 3. Recherche dans une collection hétérogène
 
 ```pascal
-function TrouverPremierChien(Animaux: array of TAnimal): TChien;
-var
+function TrouverPremierChien(Animaux: array of TAnimal): TChien;  
+var  
   i: Integer;
 begin
   Result := nil;
@@ -667,8 +667,8 @@ end;
 ### 4. Statistiques par type
 
 ```pascal
-procedure AfficherStatistiques(Animaux: array of TAnimal);
-var
+procedure AfficherStatistiques(Animaux: array of TAnimal);  
+var  
   i, NbChiens, NbChats, NbOiseaux: Integer;
 begin
   NbChiens := 0;
@@ -734,8 +734,8 @@ end;
 
 **Solution** :
 ```pascal
-if Animal is TChien then
-begin
+if Animal is TChien then  
+begin  
   // ✅ Transtypage nécessaire
   (Animal as TChien).Aboyer;
 end;
@@ -785,8 +785,8 @@ Au lieu de transtyper plusieurs fois, stockez le résultat :
 ### ❌ Non optimisé
 
 ```pascal
-if Animal is TChien then
-begin
+if Animal is TChien then  
+begin  
   WriteLn((Animal as TChien).Race);
   (Animal as TChien).Aboyer;
   (Animal as TChien).Garder;
@@ -816,8 +816,8 @@ end;
 Ou avec `with` :
 
 ```pascal
-if Animal is TChien then
-begin
+if Animal is TChien then  
+begin  
   with Animal as TChien do
   begin
     WriteLn(Race);

@@ -163,16 +163,16 @@ type
 
 { === Implémentation TPersonne === }
 
-constructor TPersonne.Create(ANom, APrenom: string; ADateNaissance: TDateTime);
-begin
+constructor TPersonne.Create(ANom, APrenom: string; ADateNaissance: TDateTime);  
+begin  
   inherited Create;
   FNom := ANom;
   FPrenom := APrenom;
   FDateNaissance := ADateNaissance;
 end;
 
-procedure TPersonne.Afficher;
-begin
+procedure TPersonne.Afficher;  
+begin  
   WriteLn('╔════════════════════════════════════════════════');
   WriteLn('║ PERSONNE');
   WriteLn('╠════════════════════════════════════════════════');
@@ -183,13 +183,13 @@ begin
     WriteLn('║ Email : ', FEmail);
 end;
 
-function TPersonne.GetAge: Integer;
-begin
+function TPersonne.GetAge: Integer;  
+begin  
   Result := YearsBetween(Now, FDateNaissance);
 end;
 
-function TPersonne.GetNomComplet: string;
-begin
+function TPersonne.GetNomComplet: string;  
+begin  
   Result := FPrenom + ' ' + FNom;
 end;
 
@@ -204,8 +204,8 @@ begin
   FDateEmbauche := ADateEmbauche;
 end;
 
-procedure TEmploye.Afficher;
-begin
+procedure TEmploye.Afficher;  
+begin  
   inherited Afficher;
   WriteLn('╠════════════════════════════════════════════════');
   WriteLn('║ EMPLOYE');
@@ -216,13 +216,13 @@ begin
   WriteLn('║ Ancienneté : ', GetAnciennete, ' ans');
 end;
 
-function TEmploye.GetAnciennete: Integer;
-begin
+function TEmploye.GetAnciennete: Integer;  
+begin  
   Result := YearsBetween(Now, FDateEmbauche);
 end;
 
-procedure TEmploye.AugmenterSalaire(Pourcentage: Real);
-begin
+procedure TEmploye.AugmenterSalaire(Pourcentage: Real);  
+begin  
   FSalaire := FSalaire * (1 + Pourcentage / 100);
 end;
 
@@ -236,8 +236,8 @@ begin
   FMontantAchats := 0;
 end;
 
-procedure TClient.Afficher;
-begin
+procedure TClient.Afficher;  
+begin  
   inherited Afficher;
   WriteLn('╠════════════════════════════════════════════════');
   WriteLn('║ CLIENT');
@@ -247,13 +247,13 @@ begin
   WriteLn('║ Remise : ', GetRemise:0:1, '%');
 end;
 
-procedure TClient.AjouterAchat(Montant: Real);
-begin
+procedure TClient.AjouterAchat(Montant: Real);  
+begin  
   FMontantAchats := FMontantAchats + Montant;
 end;
 
-function TClient.GetRemise: Real;
-begin
+function TClient.GetRemise: Real;  
+begin  
   Result := 0;  // Pas de remise par défaut
 end;
 
@@ -267,8 +267,8 @@ begin
   FAvantages := AAvantages;
 end;
 
-procedure TEmployePermanent.Afficher;
-begin
+procedure TEmployePermanent.Afficher;  
+begin  
   inherited Afficher;
   WriteLn('╠════════════════════════════════════════════════');
   WriteLn('║ EMPLOYE PERMANENT');
@@ -286,8 +286,8 @@ begin
   FDateFin := ADateFin;
 end;
 
-procedure TEmployeTemporaire.Afficher;
-begin
+procedure TEmployeTemporaire.Afficher;  
+begin  
   inherited Afficher;
   WriteLn('╠════════════════════════════════════════════════');
   WriteLn('║ EMPLOYE TEMPORAIRE');
@@ -296,8 +296,8 @@ begin
   WriteLn('║ Statut : ', IfThen(EstEnCours, 'EN COURS', 'TERMINE'));
 end;
 
-function TEmployeTemporaire.EstEnCours: Boolean;
-begin
+function TEmployeTemporaire.EstEnCours: Boolean;  
+begin  
   Result := Now < FDateFin;
 end;
 
@@ -310,8 +310,8 @@ begin
   FProgrammeFidelite := AFidelite;
 end;
 
-procedure TClientParticulier.Afficher;
-begin
+procedure TClientParticulier.Afficher;  
+begin  
   inherited Afficher;
   WriteLn('╠════════════════════════════════════════════════');
   WriteLn('║ CLIENT PARTICULIER');
@@ -319,8 +319,8 @@ begin
   WriteLn('║ Programme fidélité : ', IfThen(FProgrammeFidelite, 'OUI', 'NON'));
 end;
 
-function TClientParticulier.GetRemise: Real;
-begin
+function TClientParticulier.GetRemise: Real;  
+begin  
   if FProgrammeFidelite then
     Result := 5.0  // 5% de remise
   else
@@ -337,8 +337,8 @@ begin
   FSiret := ASiret;
 end;
 
-procedure TClientEntreprise.Afficher;
-begin
+procedure TClientEntreprise.Afficher;  
+begin  
   inherited Afficher;
   WriteLn('╠════════════════════════════════════════════════');
   WriteLn('║ CLIENT ENTREPRISE');
@@ -347,8 +347,8 @@ begin
   WriteLn('║ SIRET : ', FSiret);
 end;
 
-function TClientEntreprise.GetRemise: Real;
-begin
+function TClientEntreprise.GetRemise: Real;  
+begin  
   if FMontantAchats > 10000 then
     Result := 15.0  // 15% si > 10k€
   else
@@ -365,8 +365,8 @@ begin
   FTailleEquipe := ATailleEquipe;
 end;
 
-procedure TManager.Afficher;
-begin
+procedure TManager.Afficher;  
+begin  
   inherited Afficher;
   WriteLn('╠════════════════════════════════════════════════');
   WriteLn('║ MANAGER');
@@ -375,8 +375,8 @@ begin
   WriteLn('╚════════════════════════════════════════════════');
 end;
 
-procedure TManager.AugmenterSalaire(Pourcentage: Real);
-begin
+procedure TManager.AugmenterSalaire(Pourcentage: Real);  
+begin  
   // Bonus supplémentaire pour les managers
   inherited AugmenterSalaire(Pourcentage + 2);
 end;
@@ -391,8 +391,8 @@ begin
   FDepartement := ADepartement;
 end;
 
-procedure TDirecteur.Afficher;
-begin
+procedure TDirecteur.Afficher;  
+begin  
   inherited Afficher;
   WriteLn('╠════════════════════════════════════════════════');
   WriteLn('║ DIRECTEUR');
@@ -411,8 +411,8 @@ begin
   FEcole := AEcole;
 end;
 
-procedure TStagiaire.Afficher;
-begin
+procedure TStagiaire.Afficher;  
+begin  
   inherited Afficher;
   WriteLn('╠════════════════════════════════════════════════');
   WriteLn('║ STAGIAIRE');
@@ -431,8 +431,8 @@ begin
   FAgence := AAgence;
 end;
 
-procedure TInterimaire.Afficher;
-begin
+procedure TInterimaire.Afficher;  
+begin  
   inherited Afficher;
   WriteLn('╠════════════════════════════════════════════════');
   WriteLn('║ INTERIMAIRE');
@@ -443,8 +443,8 @@ end;
 
 { === Fonctions utilitaires === }
 
-procedure AfficherHierarchie;
-begin
+procedure AfficherHierarchie;  
+begin  
   WriteLn('═══════════════════════════════════════════════════════════');
   WriteLn('               HIERARCHIE DES CLASSES');
   WriteLn('═══════════════════════════════════════════════════════════');
@@ -463,8 +463,8 @@ begin
   WriteLn;
 end;
 
-procedure AnalyserPersonnes(Personnes: array of TPersonne);
-var
+procedure AnalyserPersonnes(Personnes: array of TPersonne);  
+var  
   i: Integer;
   NbEmployes, NbClients, NbManagers: Integer;
 begin

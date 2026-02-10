@@ -147,108 +147,108 @@ type
 
 { === TVehicule === }
 
-constructor TVehicule.Create(AMarque, AModele: string);
-begin
+constructor TVehicule.Create(AMarque, AModele: string);  
+begin  
   inherited Create;
   FMarque := AMarque;
   FModele := AModele;
 end;
 
-procedure TVehicule.AfficherType;
-begin
+procedure TVehicule.AfficherType;  
+begin  
   WriteLn('Type : Véhicule générique');
 end;
 
-procedure TVehicule.Demarrer;
-begin
+procedure TVehicule.Demarrer;  
+begin  
   WriteLn('[Véhicule] Démarrage générique');
 end;
 
-procedure TVehicule.Accelerer;
-begin
+procedure TVehicule.Accelerer;  
+begin  
   WriteLn('[Véhicule] Accélération générique');
 end;
 
-procedure TVehicule.Freiner;
-begin
+procedure TVehicule.Freiner;  
+begin  
   WriteLn('[Véhicule] Freinage générique');
 end;
 
-function TVehicule.GetVitesseMax: Integer;
-begin
+function TVehicule.GetVitesseMax: Integer;  
+begin  
   Result := 100;
 end;
 
 { === TVoiture === }
 
-procedure TVoiture.Demarrer;
-begin
+procedure TVoiture.Demarrer;  
+begin  
   WriteLn('🚗 Tournez la clé, le moteur de la voiture ronronne');
 end;
 
-procedure TVoiture.Accelerer;
-begin
+procedure TVoiture.Accelerer;  
+begin  
   WriteLn('🚗 La voiture accélère en douceur');
 end;
 
-procedure TVoiture.Freiner;
-begin
+procedure TVoiture.Freiner;  
+begin  
   WriteLn('🚗 Freinage progressif de la voiture');
 end;
 
-function TVoiture.GetVitesseMax: Integer;
-begin
+function TVoiture.GetVitesseMax: Integer;  
+begin  
   Result := 180;
 end;
 
 { === TMoto === }
 
-procedure TMoto.Demarrer;
-begin
+procedure TMoto.Demarrer;  
+begin  
   WriteLn('🏍️  Vrrooom ! La moto démarre en trombe');
 end;
 
-procedure TMoto.Accelerer;
-begin
+procedure TMoto.Accelerer;  
+begin  
   WriteLn('🏍️  Accélération fulgurante de la moto !');
 end;
 
-procedure TMoto.Freiner;
-begin
+procedure TMoto.Freiner;  
+begin  
   WriteLn('🏍️  Freinage sportif de la moto');
 end;
 
-function TMoto.GetVitesseMax: Integer;
-begin
+function TMoto.GetVitesseMax: Integer;  
+begin  
   Result := 220;
 end;
 
 { === TCamion === }
 
-procedure TCamion.Demarrer;
-begin
+procedure TCamion.Demarrer;  
+begin  
   WriteLn('🚚 Le camion démarre lentement avec un bruit sourd');
 end;
 
-procedure TCamion.Accelerer;
-begin
+procedure TCamion.Accelerer;  
+begin  
   WriteLn('🚚 Le camion accélère péniblement');
 end;
 
-procedure TCamion.Freiner;
-begin
+procedure TCamion.Freiner;  
+begin  
   WriteLn('🚚 Long freinage du camion chargé');
 end;
 
-function TCamion.GetVitesseMax: Integer;
-begin
+function TCamion.GetVitesseMax: Integer;  
+begin  
   Result := 110;
 end;
 
 { === Procédures de test === }
 
-procedure TestVehicule(V: TVehicule);
-begin
+procedure TestVehicule(V: TVehicule);  
+begin  
   WriteLn('--- Test du véhicule : ', V.FMarque, ' ', V.FModele, ' ---');
   WriteLn;
 
@@ -266,8 +266,8 @@ begin
   WriteLn;
 end;
 
-procedure ComparerVehicules(V1, V2: TVehicule);
-begin
+procedure ComparerVehicules(V1, V2: TVehicule);  
+begin  
   WriteLn('=== COMPARAISON DE VEHICULES ===');
   WriteLn('Véhicule 1 : vitesse max = ', V1.GetVitesseMax, ' km/h');
   WriteLn('Véhicule 2 : vitesse max = ', V2.GetVitesseMax, ' km/h');
@@ -453,38 +453,38 @@ type
 
 { === TModePaiement === }
 
-constructor TModePaiement.Create(AMontant: Real);
-begin
+constructor TModePaiement.Create(AMontant: Real);  
+begin  
   inherited Create;
   FMontant := AMontant;
 end;
 
-function TModePaiement.Valider: Boolean;
-begin
+function TModePaiement.Valider: Boolean;  
+begin  
   Result := FMontant > 0;
 end;
 
-procedure TModePaiement.Traiter;
-begin
+procedure TModePaiement.Traiter;  
+begin  
   WriteLn('Traitement générique du paiement de ', FMontant:0:2, ' €');
 end;
 
-function TModePaiement.ObtenirRecu: string;
-begin
+function TModePaiement.ObtenirRecu: string;  
+begin  
   Result := Format('Reçu - Montant : %.2f €', [FMontant]);
 end;
 
 { === TPaiementCarte === }
 
-constructor TPaiementCarte.Create(AMontant: Real; ANumero, ACVV: string);
-begin
+constructor TPaiementCarte.Create(AMontant: Real; ANumero, ACVV: string);  
+begin  
   inherited Create(AMontant);
   FNumeroCarte := ANumero;
   FCodeCVV := ACVV;
 end;
 
-function TPaiementCarte.Valider: Boolean;
-begin
+function TPaiementCarte.Valider: Boolean;  
+begin  
   Result := inherited Valider;
   if Result then
   begin
@@ -494,8 +494,8 @@ begin
   end;
 end;
 
-procedure TPaiementCarte.Traiter;
-begin
+procedure TPaiementCarte.Traiter;  
+begin  
   WriteLn('💳 Traitement paiement par carte...');
   WriteLn('   Numéro : **** **** **** ', Copy(FNumeroCarte, 13, 4));
   WriteLn('   Connexion à la banque...');
@@ -503,8 +503,8 @@ begin
   WriteLn('   ✅ Paiement de ', FMontant:0:2, ' € accepté');
 end;
 
-function TPaiementCarte.ObtenirRecu: string;
-begin
+function TPaiementCarte.ObtenirRecu: string;  
+begin  
   Result := inherited ObtenirRecu + #13#10 +
             'Mode : Carte bancaire' + #13#10 +
             'Carte : **** ' + Copy(FNumeroCarte, 13, 4);
@@ -512,14 +512,14 @@ end;
 
 { === TPaiementPayPal === }
 
-constructor TPaiementPayPal.Create(AMontant: Real; AEmail: string);
-begin
+constructor TPaiementPayPal.Create(AMontant: Real; AEmail: string);  
+begin  
   inherited Create(AMontant);
   FEmail := AEmail;
 end;
 
-function TPaiementPayPal.Valider: Boolean;
-begin
+function TPaiementPayPal.Valider: Boolean;  
+begin  
   Result := inherited Valider;
   if Result then
   begin
@@ -529,8 +529,8 @@ begin
   end;
 end;
 
-procedure TPaiementPayPal.Traiter;
-begin
+procedure TPaiementPayPal.Traiter;  
+begin  
   WriteLn('💰 Traitement paiement PayPal...');
   WriteLn('   Email : ', FEmail);
   WriteLn('   Redirection vers PayPal...');
@@ -538,8 +538,8 @@ begin
   WriteLn('   ✅ Paiement de ', FMontant:0:2, ' € accepté');
 end;
 
-function TPaiementPayPal.ObtenirRecu: string;
-begin
+function TPaiementPayPal.ObtenirRecu: string;  
+begin  
   Result := inherited ObtenirRecu + #13#10 +
             'Mode : PayPal' + #13#10 +
             'Compte : ' + FEmail;
@@ -547,14 +547,14 @@ end;
 
 { === TPaiementEspeces === }
 
-constructor TPaiementEspeces.Create(AMontant, AMontantDonne: Real);
-begin
+constructor TPaiementEspeces.Create(AMontant, AMontantDonne: Real);  
+begin  
   inherited Create(AMontant);
   FMontantDonne := AMontantDonne;
 end;
 
-function TPaiementEspeces.Valider: Boolean;
-begin
+function TPaiementEspeces.Valider: Boolean;  
+begin  
   Result := inherited Valider;
   if Result then
   begin
@@ -564,8 +564,8 @@ begin
   end;
 end;
 
-procedure TPaiementEspeces.Traiter;
-var
+procedure TPaiementEspeces.Traiter;  
+var  
   Rendu: Real;
 begin
   WriteLn('💵 Traitement paiement en espèces...');
@@ -579,13 +579,13 @@ begin
   WriteLn('   ✅ Paiement accepté');
 end;
 
-function TPaiementEspeces.CalculerRendu: Real;
-begin
+function TPaiementEspeces.CalculerRendu: Real;  
+begin  
   Result := FMontantDonne - FMontant;
 end;
 
-function TPaiementEspeces.ObtenirRecu: string;
-var
+function TPaiementEspeces.ObtenirRecu: string;  
+var  
   Rendu: Real;
 begin
   Rendu := CalculerRendu;
@@ -598,8 +598,8 @@ end;
 
 { === Fonction polymorphe === }
 
-procedure ProcesserPaiement(Paiement: TModePaiement);
-begin
+procedure ProcesserPaiement(Paiement: TModePaiement);  
+begin  
   WriteLn('========================================');
   WriteLn('TRAITEMENT D''UN PAIEMENT');
   WriteLn('========================================');
@@ -689,8 +689,8 @@ type
     function GetStatut: string; override;
   end;
 
-procedure NotifierUtilisateur(Notif: TNotification);
-begin
+procedure NotifierUtilisateur(Notif: TNotification);  
+begin  
   // Fonction polymorphe : fonctionne avec tous les types de notifications
   Notif.Envoyer;
   WriteLn('Statut : ', Notif.GetStatut);
@@ -747,8 +747,8 @@ type
 ### Piège 4 : Ne pas appeler `inherited` quand nécessaire
 
 ```pascal
-procedure TEnfant.Create;
-begin
+procedure TEnfant.Create;  
+begin  
   // ❌ On oublie d'appeler inherited
   FMonAttribut := 10;
 end;

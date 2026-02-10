@@ -61,38 +61,38 @@ type
 
 { === TModePaiement === }
 
-constructor TModePaiement.Create(AMontant: Real);
-begin
+constructor TModePaiement.Create(AMontant: Real);  
+begin  
   inherited Create;
   FMontant := AMontant;
 end;
 
-function TModePaiement.Valider: Boolean;
-begin
+function TModePaiement.Valider: Boolean;  
+begin  
   Result := FMontant > 0;
 end;
 
-procedure TModePaiement.Traiter;
-begin
+procedure TModePaiement.Traiter;  
+begin  
   WriteLn('Traitement générique du paiement de ', FMontant:0:2, ' €');
 end;
 
-function TModePaiement.ObtenirRecu: string;
-begin
+function TModePaiement.ObtenirRecu: string;  
+begin  
   Result := Format('Reçu - Montant : %.2f €', [FMontant]);
 end;
 
 { === TPaiementCarte === }
 
-constructor TPaiementCarte.Create(AMontant: Real; ANumero, ACVV: string);
-begin
+constructor TPaiementCarte.Create(AMontant: Real; ANumero, ACVV: string);  
+begin  
   inherited Create(AMontant);
   FNumeroCarte := ANumero;
   FCodeCVV := ACVV;
 end;
 
-function TPaiementCarte.Valider: Boolean;
-begin
+function TPaiementCarte.Valider: Boolean;  
+begin  
   Result := inherited Valider;
   if Result then
   begin
@@ -102,8 +102,8 @@ begin
   end;
 end;
 
-procedure TPaiementCarte.Traiter;
-begin
+procedure TPaiementCarte.Traiter;  
+begin  
   WriteLn('💳 Traitement paiement par carte...');
   WriteLn('   Numéro : **** **** **** ', Copy(FNumeroCarte, 13, 4));
   WriteLn('   Connexion à la banque...');
@@ -111,8 +111,8 @@ begin
   WriteLn('   ✅ Paiement de ', FMontant:0:2, ' € accepté');
 end;
 
-function TPaiementCarte.ObtenirRecu: string;
-begin
+function TPaiementCarte.ObtenirRecu: string;  
+begin  
   Result := inherited ObtenirRecu + #13#10 +
             'Mode : Carte bancaire' + #13#10 +
             'Carte : **** ' + Copy(FNumeroCarte, 13, 4);
@@ -120,14 +120,14 @@ end;
 
 { === TPaiementPayPal === }
 
-constructor TPaiementPayPal.Create(AMontant: Real; AEmail: string);
-begin
+constructor TPaiementPayPal.Create(AMontant: Real; AEmail: string);  
+begin  
   inherited Create(AMontant);
   FEmail := AEmail;
 end;
 
-function TPaiementPayPal.Valider: Boolean;
-begin
+function TPaiementPayPal.Valider: Boolean;  
+begin  
   Result := inherited Valider;
   if Result then
   begin
@@ -137,8 +137,8 @@ begin
   end;
 end;
 
-procedure TPaiementPayPal.Traiter;
-begin
+procedure TPaiementPayPal.Traiter;  
+begin  
   WriteLn('💰 Traitement paiement PayPal...');
   WriteLn('   Email : ', FEmail);
   WriteLn('   Redirection vers PayPal...');
@@ -146,8 +146,8 @@ begin
   WriteLn('   ✅ Paiement de ', FMontant:0:2, ' € accepté');
 end;
 
-function TPaiementPayPal.ObtenirRecu: string;
-begin
+function TPaiementPayPal.ObtenirRecu: string;  
+begin  
   Result := inherited ObtenirRecu + #13#10 +
             'Mode : PayPal' + #13#10 +
             'Compte : ' + FEmail;
@@ -155,14 +155,14 @@ end;
 
 { === TPaiementEspeces === }
 
-constructor TPaiementEspeces.Create(AMontant, AMontantDonne: Real);
-begin
+constructor TPaiementEspeces.Create(AMontant, AMontantDonne: Real);  
+begin  
   inherited Create(AMontant);
   FMontantDonne := AMontantDonne;
 end;
 
-function TPaiementEspeces.Valider: Boolean;
-begin
+function TPaiementEspeces.Valider: Boolean;  
+begin  
   Result := inherited Valider;
   if Result then
   begin
@@ -172,8 +172,8 @@ begin
   end;
 end;
 
-procedure TPaiementEspeces.Traiter;
-var
+procedure TPaiementEspeces.Traiter;  
+var  
   Rendu: Real;
 begin
   WriteLn('💵 Traitement paiement en espèces...');
@@ -187,13 +187,13 @@ begin
   WriteLn('   ✅ Paiement accepté');
 end;
 
-function TPaiementEspeces.CalculerRendu: Real;
-begin
+function TPaiementEspeces.CalculerRendu: Real;  
+begin  
   Result := FMontantDonne - FMontant;
 end;
 
-function TPaiementEspeces.ObtenirRecu: string;
-var
+function TPaiementEspeces.ObtenirRecu: string;  
+var  
   Rendu: Real;
 begin
   Rendu := CalculerRendu;
@@ -206,8 +206,8 @@ end;
 
 { === Fonction polymorphe === }
 
-procedure ProcesserPaiement(Paiement: TModePaiement);
-begin
+procedure ProcesserPaiement(Paiement: TModePaiement);  
+begin  
   WriteLn('========================================');
   WriteLn('TRAITEMENT D''UN PAIEMENT');
   WriteLn('========================================');

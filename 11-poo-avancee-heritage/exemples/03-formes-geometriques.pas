@@ -63,52 +63,52 @@ type
 
 { === TForme === }
 
-constructor TForme.Create(ACouleur: string);
-begin
+constructor TForme.Create(ACouleur: string);  
+begin  
   inherited Create;
   FCouleur := ACouleur;
   FNom := 'Forme générique';
 end;
 
-function TForme.CalculerAire: Real;
-begin
+function TForme.CalculerAire: Real;  
+begin  
   Result := 0;
   WriteLn('Aire non définie pour une forme générique');
 end;
 
-function TForme.CalculerPerimetre: Real;
-begin
+function TForme.CalculerPerimetre: Real;  
+begin  
   Result := 0;
   WriteLn('Périmètre non défini pour une forme générique');
 end;
 
-procedure TForme.Afficher;
-begin
+procedure TForme.Afficher;  
+begin  
   WriteLn('Forme de couleur ', FCouleur);
 end;
 
 { === TRectangle === }
 
-constructor TRectangle.Create(ACouleur: string; ALargeur, AHauteur: Real);
-begin
+constructor TRectangle.Create(ACouleur: string; ALargeur, AHauteur: Real);  
+begin  
   inherited Create(ACouleur);
   FLargeur := ALargeur;
   FHauteur := AHauteur;
   FNom := 'Rectangle';
 end;
 
-function TRectangle.CalculerAire: Real;
-begin
+function TRectangle.CalculerAire: Real;  
+begin  
   Result := FLargeur * FHauteur;
 end;
 
-function TRectangle.CalculerPerimetre: Real;
-begin
+function TRectangle.CalculerPerimetre: Real;  
+begin  
   Result := 2 * (FLargeur + FHauteur);
 end;
 
-procedure TRectangle.Afficher;
-begin
+procedure TRectangle.Afficher;  
+begin  
   WriteLn('=== RECTANGLE ===');
   WriteLn('Couleur : ', FCouleur);
   WriteLn('Dimensions : ', FLargeur:0:2, ' x ', FHauteur:0:2);
@@ -119,25 +119,25 @@ end;
 
 { === TCercle === }
 
-constructor TCercle.Create(ACouleur: string; ARayon: Real);
-begin
+constructor TCercle.Create(ACouleur: string; ARayon: Real);  
+begin  
   inherited Create(ACouleur);
   FRayon := ARayon;
   FNom := 'Cercle';
 end;
 
-function TCercle.CalculerAire: Real;
-begin
+function TCercle.CalculerAire: Real;  
+begin  
   Result := Pi * Sqr(FRayon);
 end;
 
-function TCercle.CalculerPerimetre: Real;
-begin
+function TCercle.CalculerPerimetre: Real;  
+begin  
   Result := 2 * Pi * FRayon;
 end;
 
-procedure TCercle.Afficher;
-begin
+procedure TCercle.Afficher;  
+begin  
   WriteLn('=== CERCLE ===');
   WriteLn('Couleur : ', FCouleur);
   WriteLn('Rayon : ', FRayon:0:2);
@@ -148,8 +148,8 @@ end;
 
 { === TTriangle === }
 
-constructor TTriangle.Create(ACouleur: string; ACote1, ACote2, ACote3: Real);
-begin
+constructor TTriangle.Create(ACouleur: string; ACote1, ACote2, ACote3: Real);  
+begin  
   inherited Create(ACouleur);
   FCote1 := ACote1;
   FCote2 := ACote2;
@@ -157,8 +157,8 @@ begin
   FNom := 'Triangle';
 end;
 
-function TTriangle.CalculerAire: Real;
-var
+function TTriangle.CalculerAire: Real;  
+var  
   S: Real;  // Demi-périmètre
 begin
   // Formule de Héron
@@ -166,13 +166,13 @@ begin
   Result := Sqrt(S * (S - FCote1) * (S - FCote2) * (S - FCote3));
 end;
 
-function TTriangle.CalculerPerimetre: Real;
-begin
+function TTriangle.CalculerPerimetre: Real;  
+begin  
   Result := FCote1 + FCote2 + FCote3;
 end;
 
-procedure TTriangle.Afficher;
-begin
+procedure TTriangle.Afficher;  
+begin  
   WriteLn('=== TRIANGLE ===');
   WriteLn('Couleur : ', FCouleur);
   WriteLn('Côtés : ', FCote1:0:2, ', ', FCote2:0:2, ', ', FCote3:0:2);
@@ -183,14 +183,14 @@ end;
 
 { === Programme principal === }
 
-procedure AfficherInfosForme(Forme: TForme);
-begin
+procedure AfficherInfosForme(Forme: TForme);  
+begin  
   // Grâce au polymorphisme, la bonne méthode Afficher est appelée
   Forme.Afficher;
 end;
 
-procedure CalculerAireTotale(Formes: array of TForme);
-var
+procedure CalculerAireTotale(Formes: array of TForme);  
+var  
   AireTotal: Real;
   i: Integer;
 begin

@@ -79,183 +79,183 @@ type
 
 { === TAnimal === }
 
-constructor TAnimal.Create(ANom: string; AAge: Integer);
-begin
+constructor TAnimal.Create(ANom: string; AAge: Integer);  
+begin  
   inherited Create;
   FNom := ANom;
   FAge := AAge;
   FEspece := 'Animal générique';
 end;
 
-procedure TAnimal.Afficher;
-begin
+procedure TAnimal.Afficher;  
+begin  
   WriteLn('--- ', FEspece, ' ---');
   WriteLn('Nom : ', FNom);
   WriteLn('Age : ', FAge, ' ans');
 end;
 
-procedure TAnimal.FaireDuBruit;
-begin
+procedure TAnimal.FaireDuBruit;  
+begin  
   WriteLn('[Son générique d''animal]');
 end;
 
-procedure TAnimal.SeDeplacer;
-begin
+procedure TAnimal.SeDeplacer;  
+begin  
   WriteLn('[Déplacement générique]');
 end;
 
-procedure TAnimal.Manger;
-begin
+procedure TAnimal.Manger;  
+begin  
   WriteLn(FNom, ' mange de la nourriture');
 end;
 
-function TAnimal.GetInfo: string;
-begin
+function TAnimal.GetInfo: string;  
+begin  
   Result := Format('%s (%s, %d ans)', [FNom, FEspece, FAge]);
 end;
 
 { === TChien === }
 
-constructor TChien.Create(ANom: string; AAge: Integer);
-begin
+constructor TChien.Create(ANom: string; AAge: Integer);  
+begin  
   inherited Create(ANom, AAge);
   FEspece := 'Chien';
 end;
 
-procedure TChien.FaireDuBruit;
-begin
+procedure TChien.FaireDuBruit;  
+begin  
   WriteLn('🐕 ', FNom, ' aboie : Wouaf wouaf !');
 end;
 
-procedure TChien.SeDeplacer;
-begin
+procedure TChien.SeDeplacer;  
+begin  
   WriteLn('🐕 ', FNom, ' court à quatre pattes en remuant la queue');
 end;
 
-procedure TChien.Manger;
-begin
+procedure TChien.Manger;  
+begin  
   WriteLn('🐕 ', FNom, ' mange des croquettes');
 end;
 
 { === TChat === }
 
-constructor TChat.Create(ANom: string; AAge: Integer);
-begin
+constructor TChat.Create(ANom: string; AAge: Integer);  
+begin  
   inherited Create(ANom, AAge);
   FEspece := 'Chat';
 end;
 
-procedure TChat.FaireDuBruit;
-begin
+procedure TChat.FaireDuBruit;  
+begin  
   WriteLn('🐈 ', FNom, ' miaule : Miaou miaou !');
 end;
 
-procedure TChat.SeDeplacer;
-begin
+procedure TChat.SeDeplacer;  
+begin  
   WriteLn('🐈 ', FNom, ' se déplace silencieusement');
 end;
 
-procedure TChat.Manger;
-begin
+procedure TChat.Manger;  
+begin  
   WriteLn('🐈 ', FNom, ' mange du poisson');
 end;
 
 { === TLion === }
 
-constructor TLion.Create(ANom: string; AAge: Integer);
-begin
+constructor TLion.Create(ANom: string; AAge: Integer);  
+begin  
   inherited Create(ANom, AAge);
   FEspece := 'Lion';
 end;
 
-procedure TLion.FaireDuBruit;
-begin
+procedure TLion.FaireDuBruit;  
+begin  
   WriteLn('🦁 ', FNom, ' rugit : ROOAAAR !');
 end;
 
-procedure TLion.SeDeplacer;
-begin
+procedure TLion.SeDeplacer;  
+begin  
   WriteLn('🦁 ', FNom, ' marche majestueusement');
 end;
 
-procedure TLion.Manger;
-begin
+procedure TLion.Manger;  
+begin  
   WriteLn('🦁 ', FNom, ' dévore de la viande');
 end;
 
 { === TPerroquet === }
 
-constructor TPerroquet.Create(ANom: string; AAge: Integer);
-begin
+constructor TPerroquet.Create(ANom: string; AAge: Integer);  
+begin  
   inherited Create(ANom, AAge);
   FEspece := 'Perroquet';
 end;
 
-procedure TPerroquet.FaireDuBruit;
-begin
+procedure TPerroquet.FaireDuBruit;  
+begin  
   WriteLn('🦜 ', FNom, ' parle : Bonjour ! Bonjour !');
 end;
 
-procedure TPerroquet.SeDeplacer;
-begin
+procedure TPerroquet.SeDeplacer;  
+begin  
   WriteLn('🦜 ', FNom, ' vole de branche en branche');
 end;
 
-procedure TPerroquet.Manger;
-begin
+procedure TPerroquet.Manger;  
+begin  
   WriteLn('🦜 ', FNom, ' grignote des graines');
 end;
 
 { === TAigle === }
 
-constructor TAigle.Create(ANom: string; AAge: Integer);
-begin
+constructor TAigle.Create(ANom: string; AAge: Integer);  
+begin  
   inherited Create(ANom, AAge);
   FEspece := 'Aigle';
 end;
 
-procedure TAigle.FaireDuBruit;
-begin
+procedure TAigle.FaireDuBruit;  
+begin  
   WriteLn('🦅 ', FNom, ' crie : Crii crii !');
 end;
 
-procedure TAigle.SeDeplacer;
-begin
+procedure TAigle.SeDeplacer;  
+begin  
   WriteLn('🦅 ', FNom, ' plane majestueusement dans le ciel');
 end;
 
-procedure TAigle.Manger;
-begin
+procedure TAigle.Manger;  
+begin  
   WriteLn('🦅 ', FNom, ' chasse de petits animaux');
 end;
 
 { === TSerpent === }
 
-constructor TSerpent.Create(ANom: string; AAge: Integer);
-begin
+constructor TSerpent.Create(ANom: string; AAge: Integer);  
+begin  
   inherited Create(ANom, AAge);
   FEspece := 'Serpent';
 end;
 
-procedure TSerpent.FaireDuBruit;
-begin
+procedure TSerpent.FaireDuBruit;  
+begin  
   WriteLn('🐍 ', FNom, ' siffle : Ssssss !');
 end;
 
-procedure TSerpent.SeDeplacer;
-begin
+procedure TSerpent.SeDeplacer;  
+begin  
   WriteLn('🐍 ', FNom, ' rampe en ondulant');
 end;
 
-procedure TSerpent.Manger;
-begin
+procedure TSerpent.Manger;  
+begin  
   WriteLn('🐍 ', FNom, ' avale sa proie en entier');
 end;
 
 { === Fonctions polymorphes === }
 
-procedure PresentationAnimal(Animal: TAnimal);
-begin
+procedure PresentationAnimal(Animal: TAnimal);  
+begin  
   WriteLn('=================================');
   Animal.Afficher;
   WriteLn;
@@ -269,8 +269,8 @@ begin
   WriteLn;
 end;
 
-procedure NourrirTousLesAnimaux(Animaux: array of TAnimal);
-var
+procedure NourrirTousLesAnimaux(Animaux: array of TAnimal);  
+var  
   i: Integer;
 begin
   WriteLn('🍽️  HEURE DU REPAS DANS LE ZOO !');
@@ -283,8 +283,8 @@ begin
   end;
 end;
 
-procedure ConcertAnimal(Animaux: array of TAnimal);
-var
+procedure ConcertAnimal(Animaux: array of TAnimal);  
+var  
   i: Integer;
 begin
   WriteLn('🎵 CONCERT DES ANIMAUX !');
@@ -297,8 +297,8 @@ begin
   WriteLn;
 end;
 
-procedure CourseAnimale(Animaux: array of TAnimal);
-var
+procedure CourseAnimale(Animaux: array of TAnimal);  
+var  
   i: Integer;
 begin
   WriteLn('🏃 GRANDE COURSE DES ANIMAUX !');

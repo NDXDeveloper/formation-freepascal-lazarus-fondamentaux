@@ -57,13 +57,13 @@ type
     procedure Afficher;  // Même nom, mais PAS de redéfinition
   end;
 
-procedure TCompte.Afficher;
-begin
+procedure TCompte.Afficher;  
+begin  
   WriteLn('Compte de base');
 end;
 
-procedure TCompteEpargne.Afficher;
-begin
+procedure TCompteEpargne.Afficher;  
+begin  
   WriteLn('Compte épargne');
 end;
 ```
@@ -107,13 +107,13 @@ type
     procedure Afficher; override;  // ← Redéfinition
   end;
 
-procedure TCompte.Afficher;
-begin
+procedure TCompte.Afficher;  
+begin  
   WriteLn('Compte de base');
 end;
 
-procedure TCompteEpargne.Afficher;
-begin
+procedure TCompteEpargne.Afficher;  
+begin  
   WriteLn('Compte épargne');
 end;
 ```
@@ -202,77 +202,77 @@ type
 
 { === Implémentation de TAnimal === }
 
-constructor TAnimal.Create(ANom: string);
-begin
+constructor TAnimal.Create(ANom: string);  
+begin  
   inherited Create;
   FNom := ANom;
 end;
 
-procedure TAnimal.SePresenter;
-begin
+procedure TAnimal.SePresenter;  
+begin  
   WriteLn('Je suis un animal qui s''appelle ', FNom);
 end;
 
-procedure TAnimal.FaireDuBruit;
-begin
+procedure TAnimal.FaireDuBruit;  
+begin  
   WriteLn('[Animal générique fait du bruit]');
 end;
 
-procedure TAnimal.Manger;
-begin
+procedure TAnimal.Manger;  
+begin  
   WriteLn(FNom, ' mange de la nourriture générique.');
 end;
 
 { === Implémentation de TChien === }
 
-constructor TChien.Create(ANom, ARace: string);
-begin
+constructor TChien.Create(ANom, ARace: string);  
+begin  
   inherited Create(ANom);
   FRace := ARace;
 end;
 
-procedure TChien.SePresenter;
-begin
+procedure TChien.SePresenter;  
+begin  
   WriteLn('Je suis un chien ', FRace, ' qui s''appelle ', FNom);
 end;
 
-procedure TChien.FaireDuBruit;
-begin
+procedure TChien.FaireDuBruit;  
+begin  
   WriteLn(FNom, ' aboie : Wouaf wouaf !');
 end;
 
-procedure TChien.Manger;
-begin
+procedure TChien.Manger;  
+begin  
   WriteLn(FNom, ' le chien mange des croquettes.');
 end;
 
 { === Implémentation de TChat === }
 
-constructor TChat.Create(ANom, ACouleur: string);
-begin
+constructor TChat.Create(ANom, ACouleur: string);  
+begin  
   inherited Create(ANom);
   FCouleur := ACouleur;
 end;
 
-procedure TChat.SePresenter;
-begin
+procedure TChat.SePresenter;  
+begin  
   WriteLn('Je suis un chat ', FCouleur, ' qui s''appelle ', FNom);
 end;
 
-procedure TChat.FaireDuBruit;
-begin
+procedure TChat.FaireDuBruit;  
+begin  
   WriteLn(FNom, ' miaule : Miaou miaou !');
 end;
 
-procedure TChat.Manger;
-begin
+procedure TChat.Manger;  
+begin  
   WriteLn(FNom, ' le chat mange du poisson.');
 end;
 
 { === Programme principal === }
 
-procedure TesterAvecType(Animal: TAnimal);
-begin
+procedure TesterAvecType(Animal: TAnimal);  
+begin  
   WriteLn('--- Test avec variable de type TAnimal ---');
 
   // SePresenter n'est PAS virtuelle : masquage
@@ -363,14 +363,14 @@ TEST 1 : Utilisation directe (type exact)
 ========================================
 
 --- Appel direct sur MonChien (type TChien) ---
-Je suis un chien Berger Allemand qui s'appelle Rex
-Rex aboie : Wouaf wouaf !
-Rex le chien mange des croquettes.
+Je suis un chien Berger Allemand qui s'appelle Rex  
+Rex aboie : Wouaf wouaf !  
+Rex le chien mange des croquettes.  
 
 --- Appel direct sur MonChat (type TChat) ---
-Je suis un chat Tigré qui s'appelle Félix
-Félix miaule : Miaou miaou !
-Félix le chat mange du poisson.
+Je suis un chat Tigré qui s'appelle Félix  
+Félix miaule : Miaou miaou !  
+Félix le chat mange du poisson.  
 
 ========================================
 TEST 2 : Via variable de type TAnimal
@@ -378,25 +378,25 @@ TEST 2 : Via variable de type TAnimal
 
 ***** Chien vu comme Animal *****
 --- Test avec variable de type TAnimal ---
-SePresenter (masquée) :
-Je suis un animal qui s'appelle Rex      ← Version TAnimal appelée
+SePresenter (masquée) :  
+Je suis un animal qui s'appelle Rex      ← Version TAnimal appelée  
 
-FaireDuBruit (redéfinie) :
-Rex aboie : Wouaf wouaf !                ← Version TChien appelée ✓
+FaireDuBruit (redéfinie) :  
+Rex aboie : Wouaf wouaf !                ← Version TChien appelée ✓  
 
-Manger (redéfinie) :
-Rex le chien mange des croquettes.       ← Version TChien appelée ✓
+Manger (redéfinie) :  
+Rex le chien mange des croquettes.       ← Version TChien appelée ✓  
 
 ***** Chat vu comme Animal *****
 --- Test avec variable de type TAnimal ---
-SePresenter (masquée) :
-Je suis un animal qui s'appelle Félix    ← Version TAnimal appelée
+SePresenter (masquée) :  
+Je suis un animal qui s'appelle Félix    ← Version TAnimal appelée  
 
-FaireDuBruit (redéfinie) :
-Félix miaule : Miaou miaou !             ← Version TChat appelée ✓
+FaireDuBruit (redéfinie) :  
+Félix miaule : Miaou miaou !             ← Version TChat appelée ✓  
 
-Manger (redéfinie) :
-Félix le chat mange du poisson.          ← Version TChat appelée ✓
+Manger (redéfinie) :  
+Félix le chat mange du poisson.          ← Version TChat appelée ✓  
 ```
 
 ## Comprendre `virtual` et `override`
@@ -485,14 +485,14 @@ type
     procedure Deposer(Montant: Real); override;
   end;
 
-procedure TCompte.Deposer(Montant: Real);
-begin
+procedure TCompte.Deposer(Montant: Real);  
+begin  
   FSolde := FSolde + Montant;
   WriteLn('Dépôt de ', Montant:0:2, ' €');
 end;
 
-procedure TCompteEpargne.Deposer(Montant: Real);
-begin
+procedure TCompteEpargne.Deposer(Montant: Real);  
+begin  
   // D'abord, on fait le dépôt normal
   inherited Deposer(Montant);  // Appelle TCompte.Deposer
 
@@ -581,52 +581,52 @@ type
 
 { === TForme === }
 
-constructor TForme.Create(ACouleur: string);
-begin
+constructor TForme.Create(ACouleur: string);  
+begin  
   inherited Create;
   FCouleur := ACouleur;
   FNom := 'Forme générique';
 end;
 
-function TForme.CalculerAire: Real;
-begin
+function TForme.CalculerAire: Real;  
+begin  
   Result := 0;
   WriteLn('Aire non définie pour une forme générique');
 end;
 
-function TForme.CalculerPerimetre: Real;
-begin
+function TForme.CalculerPerimetre: Real;  
+begin  
   Result := 0;
   WriteLn('Périmètre non défini pour une forme générique');
 end;
 
-procedure TForme.Afficher;
-begin
+procedure TForme.Afficher;  
+begin  
   WriteLn('Forme de couleur ', FCouleur);
 end;
 
 { === TRectangle === }
 
-constructor TRectangle.Create(ACouleur: string; ALargeur, AHauteur: Real);
-begin
+constructor TRectangle.Create(ACouleur: string; ALargeur, AHauteur: Real);  
+begin  
   inherited Create(ACouleur);
   FLargeur := ALargeur;
   FHauteur := AHauteur;
   FNom := 'Rectangle';
 end;
 
-function TRectangle.CalculerAire: Real;
-begin
+function TRectangle.CalculerAire: Real;  
+begin  
   Result := FLargeur * FHauteur;
 end;
 
-function TRectangle.CalculerPerimetre: Real;
-begin
+function TRectangle.CalculerPerimetre: Real;  
+begin  
   Result := 2 * (FLargeur + FHauteur);
 end;
 
-procedure TRectangle.Afficher;
-begin
+procedure TRectangle.Afficher;  
+begin  
   WriteLn('=== RECTANGLE ===');
   WriteLn('Couleur : ', FCouleur);
   WriteLn('Dimensions : ', FLargeur:0:2, ' x ', FHauteur:0:2);
@@ -637,25 +637,25 @@ end;
 
 { === TCercle === }
 
-constructor TCercle.Create(ACouleur: string; ARayon: Real);
-begin
+constructor TCercle.Create(ACouleur: string; ARayon: Real);  
+begin  
   inherited Create(ACouleur);
   FRayon := ARayon;
   FNom := 'Cercle';
 end;
 
-function TCercle.CalculerAire: Real;
-begin
+function TCercle.CalculerAire: Real;  
+begin  
   Result := Pi * Sqr(FRayon);
 end;
 
-function TCercle.CalculerPerimetre: Real;
-begin
+function TCercle.CalculerPerimetre: Real;  
+begin  
   Result := 2 * Pi * FRayon;
 end;
 
-procedure TCercle.Afficher;
-begin
+procedure TCercle.Afficher;  
+begin  
   WriteLn('=== CERCLE ===');
   WriteLn('Couleur : ', FCouleur);
   WriteLn('Rayon : ', FRayon:0:2);
@@ -666,8 +666,8 @@ end;
 
 { === TTriangle === }
 
-constructor TTriangle.Create(ACouleur: string; ACote1, ACote2, ACote3: Real);
-begin
+constructor TTriangle.Create(ACouleur: string; ACote1, ACote2, ACote3: Real);  
+begin  
   inherited Create(ACouleur);
   FCote1 := ACote1;
   FCote2 := ACote2;
@@ -675,8 +675,8 @@ begin
   FNom := 'Triangle';
 end;
 
-function TTriangle.CalculerAire: Real;
-var
+function TTriangle.CalculerAire: Real;  
+var  
   S: Real;  // Demi-périmètre
 begin
   // Formule de Héron
@@ -684,13 +684,13 @@ begin
   Result := Sqrt(S * (S - FCote1) * (S - FCote2) * (S - FCote3));
 end;
 
-function TTriangle.CalculerPerimetre: Real;
-begin
+function TTriangle.CalculerPerimetre: Real;  
+begin  
   Result := FCote1 + FCote2 + FCote3;
 end;
 
-procedure TTriangle.Afficher;
-begin
+procedure TTriangle.Afficher;  
+begin  
   WriteLn('=== TRIANGLE ===');
   WriteLn('Couleur : ', FCouleur);
   WriteLn('Côtés : ', FCote1:0:2, ', ', FCote2:0:2, ', ', FCote3:0:2);
@@ -701,14 +701,14 @@ end;
 
 { === Programme principal === }
 
-procedure AfficherInfosForme(Forme: TForme);
-begin
+procedure AfficherInfosForme(Forme: TForme);  
+begin  
   // Grâce au polymorphisme, la bonne méthode Afficher est appelée
   Forme.Afficher;
 end;
 
-procedure CalculerAireTotale(Formes: array of TForme);
-var
+procedure CalculerAireTotale(Formes: array of TForme);  
+var  
   AireTotal: Real;
   i: Integer;
 begin

@@ -123,8 +123,8 @@ TChien (classe enfant)
 Un même code peut fonctionner avec **différents types d'objets** :
 
 ```pascal
-procedure NourrirAnimal(Animal: TAnimal);
-begin
+procedure NourrirAnimal(Animal: TAnimal);  
+begin  
   Animal.Manger;  // Fonctionne pour Chien, Chat, Lion, etc.
 end;
 ```
@@ -138,8 +138,8 @@ Créez des structures logiques qui reflètent le monde réel :
              ↓
     ┌────────┴────────┐
     ↓                 ↓
-Véhicule          Véhicule
-Terrestre          Aérien
+Véhicule          Véhicule  
+Terrestre          Aérien  
     ↓                 ↓
 ┌───┴───┐         ┌───┴───┐
 ↓       ↓         ↓       ↓
@@ -240,8 +240,8 @@ type
 ### 2. Exploiter le polymorphisme
 
 ```pascal
-procedure AfficherAires(Formes: array of TForme);
-var
+procedure AfficherAires(Formes: array of TForme);  
+var  
   i: Integer;
 begin
   for i := 0 to High(Formes) do
@@ -384,8 +384,8 @@ Une calculatrice **n'EST PAS** un logger. Utilisez la composition.
 ### ❌ Piège 3 : Oublier `inherited`
 
 ```pascal
-constructor TEnfant.Create;
-begin
+constructor TEnfant.Create;  
+begin  
   // ❌ OUBLI de inherited Create !
   FAttribut := 10;
 end;

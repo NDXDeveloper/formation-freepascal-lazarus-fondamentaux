@@ -26,8 +26,8 @@ type
     procedure Afficher; override;
   end;
 
-procedure TEnfant.Afficher;
-begin
+procedure TEnfant.Afficher;  
+begin  
   inherited Afficher;  // Appelle TParent.Afficher
   WriteLn('Code spécifique de TEnfant');
 end;
@@ -53,15 +53,15 @@ type
     constructor Create(ASoldeInitial: Real; ATauxInteret: Real);
   end;
 
-constructor TCompte.Create(ASoldeInitial: Real);
-begin
+constructor TCompte.Create(ASoldeInitial: Real);  
+begin  
   inherited Create;  // Initialise TObject
   FSolde := ASoldeInitial;
   WriteLn('Compte créé avec solde : ', ASoldeInitial:0:2);
 end;
 
-constructor TCompteEpargne.Create(ASoldeInitial: Real; ATauxInteret: Real);
-begin
+constructor TCompteEpargne.Create(ASoldeInitial: Real; ATauxInteret: Real);  
+begin  
   // ❌ Si on n'appelle pas inherited, FSolde n'est pas initialisé !
   FTauxInteret := ATauxInteret;
 end;
@@ -72,8 +72,8 @@ end;
 ### Solution avec `inherited`
 
 ```pascal
-constructor TCompteEpargne.Create(ASoldeInitial: Real; ATauxInteret: Real);
-begin
+constructor TCompteEpargne.Create(ASoldeInitial: Real; ATauxInteret: Real);  
+begin  
   inherited Create(ASoldeInitial);  // ✅ Initialise TCompte d'abord
   FTauxInteret := ATauxInteret;     // Puis la partie TCompteEpargne
   WriteLn('Compte épargne créé avec taux : ', ATauxInteret:0:2, '%');
@@ -87,8 +87,8 @@ end;
 Appelle la méthode **de même nom** dans la classe parent :
 
 ```pascal
-procedure TEnfant.MaMethode;
-begin
+procedure TEnfant.MaMethode;  
+begin  
   inherited;  // Appelle TParent.MaMethode
   // Code spécifique
 end;
@@ -99,8 +99,8 @@ end;
 Appelle explicitement une méthode du parent :
 
 ```pascal
-procedure TEnfant.MaMethode;
-begin
+procedure TEnfant.MaMethode;  
+begin  
   inherited MaMethode;  // Appelle TParent.MaMethode explicitement
   // Code spécifique
 end;
@@ -115,8 +115,8 @@ Les constructeurs sont l'endroit le plus important pour utiliser `inherited`.
 ### Règle d'or : TOUJOURS en premier
 
 ```pascal
-constructor TEnfant.Create(Param1, Param2: Integer);
-begin
+constructor TEnfant.Create(Param1, Param2: Integer);  
+begin  
   inherited Create(Param1);  // ← TOUJOURS en premier !
 
   // Ensuite, initialisation spécifique
@@ -175,8 +175,8 @@ type
 
 { === TPersonne === }
 
-constructor TPersonne.Create(ANom, APrenom: string; AAge: Integer);
-begin
+constructor TPersonne.Create(ANom, APrenom: string; AAge: Integer);  
+begin  
   inherited Create;  // Appelle TObject.Create
   WriteLn('[TPersonne.Create] Début');
 
@@ -187,14 +187,14 @@ begin
   WriteLn('[TPersonne.Create] ', APrenom, ' ', ANom, ' créé(e)');
 end;
 
-destructor TPersonne.Destroy;
-begin
+destructor TPersonne.Destroy;  
+begin  
   WriteLn('[TPersonne.Destroy] ', FPrenom, ' ', FNom, ' détruit(e)');
   inherited Destroy;  // Appelle TObject.Destroy
 end;
 
-procedure TPersonne.Afficher;
-begin
+procedure TPersonne.Afficher;  
+begin  
   WriteLn('=== PERSONNE ===');
   WriteLn('Nom : ', FNom);
   WriteLn('Prénom : ', FPrenom);
@@ -218,8 +218,8 @@ begin
   WriteLn('[TEmploye.Create] Employé #', ANumero, ' créé avec salaire ', ASalaire:0:2);
 end;
 
-destructor TEmploye.Destroy;
-begin
+destructor TEmploye.Destroy;  
+begin  
   WriteLn('[TEmploye.Destroy] Employé #', FNumeroEmploye);
 
   // Dans le destructeur, le code spécifique EN PREMIER
@@ -227,8 +227,8 @@ begin
   inherited Destroy;
 end;
 
-procedure TEmploye.Afficher;
-begin
+procedure TEmploye.Afficher;  
+begin  
   // Appelle la version parent pour afficher les infos de base
   inherited Afficher;
 
@@ -237,8 +237,8 @@ begin
   WriteLn('Salaire : ', FSalaire:0:2, ' €');
 end;
 
-procedure TEmploye.AugmenterSalaire(Pourcentage: Real);
-begin
+procedure TEmploye.AugmenterSalaire(Pourcentage: Real);  
+begin  
   FSalaire := FSalaire * (1 + Pourcentage / 100);
   WriteLn('Salaire augmenté de ', Pourcentage:0:1, '% → ', FSalaire:0:2, ' €');
 end;
@@ -258,14 +258,14 @@ begin
   WriteLn('[TManager.Create] Manager créé avec équipe de ', AEquipe, ' personnes');
 end;
 
-destructor TManager.Destroy;
-begin
+destructor TManager.Destroy;  
+begin  
   WriteLn('[TManager.Destroy] Manager avec équipe de ', FEquipe);
   inherited Destroy;
 end;
 
-procedure TManager.Afficher;
-begin
+procedure TManager.Afficher;  
+begin  
   // Appelle TEmploye.Afficher qui appelle TPersonne.Afficher
   inherited Afficher;
 
@@ -327,13 +327,13 @@ end.
 --- AFFICHAGE ---
 
 === PERSONNE ===
-Nom : Dupont
-Prénom : Marie
-Age : 35 ans
-Numéro employé : 1001
-Salaire : 4500.00 €
-Taille équipe : 8 personnes
-Rôle : MANAGER
+Nom : Dupont  
+Prénom : Marie  
+Age : 35 ans  
+Numéro employé : 1001  
+Salaire : 4500.00 €  
+Taille équipe : 8 personnes  
+Rôle : MANAGER  
 
 --- AUGMENTATION DE SALAIRE ---
 
@@ -388,14 +388,14 @@ type
     procedure Sauvegarder; override;
   end;
 
-procedure TDocument.Sauvegarder;
-begin
+procedure TDocument.Sauvegarder;  
+begin  
   WriteLn('Sauvegarde du document...');
   // Code de sauvegarde standard
 end;
 
-procedure TDocumentChiffre.Sauvegarder;
-begin
+procedure TDocumentChiffre.Sauvegarder;  
+begin  
   WriteLn('Chiffrement en cours...');
   // Code de chiffrement
 
@@ -419,13 +419,13 @@ type
     procedure AfficherSolde; override;
   end;
 
-procedure TCompte.AfficherSolde;
-begin
+procedure TCompte.AfficherSolde;  
+begin  
   WriteLn('Solde : ', FSolde:0:2, ' €');
 end;
 
-procedure TCompteVIP.AfficherSolde;
-begin
+procedure TCompteVIP.AfficherSolde;  
+begin  
   WriteLn('*** COMPTE VIP ***');
   inherited AfficherSolde;  // Réutilise l'affichage du parent
   WriteLn('Avantages : Frais réduits, Conseiller dédié');
@@ -479,28 +479,28 @@ type
 
 { === TLogger === }
 
-constructor TLogger.Create(ANomFichier: string);
-begin
+constructor TLogger.Create(ANomFichier: string);  
+begin  
   inherited Create;
   FNomFichier := ANomFichier;
   WriteLn('[TLogger] Fichier log : ', FNomFichier);
 end;
 
-procedure TLogger.Log(const Message: string);
-begin
+procedure TLogger.Log(const Message: string);  
+begin  
   WriteLn(Message);
 end;
 
-destructor TLogger.Destroy;
-begin
+destructor TLogger.Destroy;  
+begin  
   WriteLn('[TLogger] Fermeture du fichier log');
   inherited Destroy;
 end;
 
 { === TLoggerAvecDate === }
 
-procedure TLoggerAvecDate.Log(const Message: string);
-var
+procedure TLoggerAvecDate.Log(const Message: string);  
+var  
   MessageAvecDate: string;
 begin
   // Ajoute la date/heure
@@ -512,15 +512,15 @@ end;
 
 { === TLoggerAvecNiveau === }
 
-constructor TLoggerAvecNiveau.Create(ANomFichier: string; ANiveau: string);
-begin
+constructor TLoggerAvecNiveau.Create(ANomFichier: string; ANiveau: string);  
+begin  
   inherited Create(ANomFichier);
   FNiveau := ANiveau;
   WriteLn('[TLoggerAvecNiveau] Niveau : ', FNiveau);
 end;
 
-procedure TLoggerAvecNiveau.Log(const Message: string);
-var
+procedure TLoggerAvecNiveau.Log(const Message: string);  
+var  
   MessageAvecNiveau: string;
 begin
   // Ajoute le niveau
@@ -532,15 +532,15 @@ end;
 
 { === TLoggerComplet === }
 
-constructor TLoggerComplet.Create(ANomFichier, ANiveau, AContexte: string);
-begin
+constructor TLoggerComplet.Create(ANomFichier, ANiveau, AContexte: string);  
+begin  
   inherited Create(ANomFichier, ANiveau);
   FContexte := AContexte;
   WriteLn('[TLoggerComplet] Contexte : ', FContexte);
 end;
 
-procedure TLoggerComplet.Log(const Message: string);
-var
+procedure TLoggerComplet.Log(const Message: string);  
+var  
   MessageComplet: string;
 begin
   // Ajoute le contexte
@@ -642,13 +642,13 @@ type
     procedure Dormir; override;
   end;
 
-procedure TAnimal.Dormir;
-begin
+procedure TAnimal.Dormir;  
+begin  
   WriteLn('Dort la nuit');
 end;
 
-procedure TChauvesSouris.Dormir;
-begin
+procedure TChauvesSouris.Dormir;  
+begin  
   // PAS d'appel à inherited : comportement complètement différent
   WriteLn('Dort le jour, suspendue à l''envers');
 end;
@@ -666,8 +666,8 @@ type
     function CalculerAire: Real; override;
   end;
 
-function TRectangle.CalculerAire: Real;
-begin
+function TRectangle.CalculerAire: Real;  
+begin  
   // PAS d'appel à inherited : la méthode parent est abstraite
   Result := FLargeur * FHauteur;
 end;
@@ -678,8 +678,8 @@ end;
 ### Erreur 1 : Oublier `inherited` dans le constructeur
 
 ```pascal
-constructor TEnfant.Create;
-begin
+constructor TEnfant.Create;  
+begin  
   // ❌ OUBLI : inherited Create manquant
   FMonAttribut := 10;
 end;
@@ -689,8 +689,8 @@ end;
 
 **Solution** :
 ```pascal
-constructor TEnfant.Create;
-begin
+constructor TEnfant.Create;  
+begin  
   inherited Create;  // ✅ Toujours en premier
   FMonAttribut := 10;
 end;
@@ -699,8 +699,8 @@ end;
 ### Erreur 2 : Appeler `inherited` après le code
 
 ```pascal
-constructor TEnfant.Create;
-begin
+constructor TEnfant.Create;  
+begin  
   FMonAttribut := 10;    // ❌ Avant inherited
   inherited Create;      // Trop tard !
 end;
@@ -708,8 +708,8 @@ end;
 
 **Solution** :
 ```pascal
-constructor TEnfant.Create;
-begin
+constructor TEnfant.Create;  
+begin  
   inherited Create;      // ✅ En premier
   FMonAttribut := 10;
 end;
@@ -718,8 +718,8 @@ end;
 ### Erreur 3 : Ordre inversé dans le destructeur
 
 ```pascal
-destructor TEnfant.Destroy;
-begin
+destructor TEnfant.Destroy;  
+begin  
   inherited Destroy;     // ❌ Trop tôt
   // Nettoyage de FMonAttribut  // Code jamais exécuté !
 end;
@@ -727,8 +727,8 @@ end;
 
 **Solution** :
 ```pascal
-destructor TEnfant.Destroy;
-begin
+destructor TEnfant.Destroy;  
+begin  
   // Nettoyage de FMonAttribut  // ✅ D'abord le nettoyage
   inherited Destroy;             // Puis le parent
 end;
@@ -737,8 +737,8 @@ end;
 ### Erreur 4 : Appeler plusieurs fois `inherited`
 
 ```pascal
-procedure TEnfant.MaMethode;
-begin
+procedure TEnfant.MaMethode;  
+begin  
   inherited MaMethode;  // Premier appel
   // ...
   inherited MaMethode;  // ❌ Deuxième appel : généralement inutile
@@ -752,8 +752,8 @@ Sauf cas très spécifique, n'appelez `inherited` qu'**une seule fois**.
 ### `inherited` seul
 
 ```pascal
-procedure TEnfant.Test(X: Integer);
-begin
+procedure TEnfant.Test(X: Integer);  
+begin  
   inherited;  // Appelle TParent.Test avec les mêmes paramètres
 end;
 ```
@@ -763,8 +763,8 @@ end;
 ### `inherited NomMethode`
 
 ```pascal
-procedure TEnfant.Test(X: Integer);
-begin
+procedure TEnfant.Test(X: Integer);  
+begin  
   inherited Test(X * 2);  // Appelle avec des paramètres différents
 end;
 ```
@@ -789,8 +789,8 @@ type
     procedure Test; override;
   end;
 
-procedure TEnfant.Test;
-begin
+procedure TEnfant.Test;  
+begin  
   inherited Test;  // ✅ Appelle TParent.Test
 
   // ❌ IMPOSSIBLE : appeler directement TGrandParent.Test
@@ -873,21 +873,21 @@ type
     function Valider(const Valeur: string): Boolean; override;
   end;
 
-function TValidateur.Valider(const Valeur: string): Boolean;
-begin
+function TValidateur.Valider(const Valeur: string): Boolean;  
+begin  
   Result := True;  // Validation de base : tout est OK
 end;
 
-function TValidateurLongueur.Valider(const Valeur: string): Boolean;
-begin
+function TValidateurLongueur.Valider(const Valeur: string): Boolean;  
+begin  
   Result := inherited Valider(Valeur);  // D'abord validation parent
 
   if Result then
     Result := Length(Valeur) >= 3;  // Puis validation spécifique
 end;
 
-function TValidateurCaracteres.Valider(const Valeur: string): Boolean;
-begin
+function TValidateurCaracteres.Valider(const Valeur: string): Boolean;  
+begin  
   Result := inherited Valider(Valeur);  // Longueur OK ?
 
   if Result then
@@ -914,8 +914,8 @@ Le mot-clé **`inherited`** permet de :
 
 **Syntaxe :**
 ```pascal
-inherited;                    // Appelle la méthode de même nom
-inherited NomMethode(Params); // Appelle explicitement (recommandé)
+inherited;                    // Appelle la méthode de même nom  
+inherited NomMethode(Params); // Appelle explicitement (recommandé)  
 ```
 
 **Ordre d'exécution :**

@@ -49,8 +49,8 @@ type
 
 { === TPersonne === }
 
-constructor TPersonne.Create(ANom, APrenom: string; AAge: Integer);
-begin
+constructor TPersonne.Create(ANom, APrenom: string; AAge: Integer);  
+begin  
   inherited Create;  // Appelle TObject.Create
   WriteLn('[TPersonne.Create] Début');
 
@@ -61,14 +61,14 @@ begin
   WriteLn('[TPersonne.Create] ', APrenom, ' ', ANom, ' créé(e)');
 end;
 
-destructor TPersonne.Destroy;
-begin
+destructor TPersonne.Destroy;  
+begin  
   WriteLn('[TPersonne.Destroy] ', FPrenom, ' ', FNom, ' détruit(e)');
   inherited Destroy;  // Appelle TObject.Destroy
 end;
 
-procedure TPersonne.Afficher;
-begin
+procedure TPersonne.Afficher;  
+begin  
   WriteLn('=== PERSONNE ===');
   WriteLn('Nom : ', FNom);
   WriteLn('Prénom : ', FPrenom);
@@ -92,8 +92,8 @@ begin
   WriteLn('[TEmploye.Create] Employé #', ANumero, ' créé avec salaire ', ASalaire:0:2);
 end;
 
-destructor TEmploye.Destroy;
-begin
+destructor TEmploye.Destroy;  
+begin  
   WriteLn('[TEmploye.Destroy] Employé #', FNumeroEmploye);
 
   // Dans le destructeur, le code spécifique EN PREMIER
@@ -101,8 +101,8 @@ begin
   inherited Destroy;
 end;
 
-procedure TEmploye.Afficher;
-begin
+procedure TEmploye.Afficher;  
+begin  
   // Appelle la version parent pour afficher les infos de base
   inherited Afficher;
 
@@ -111,8 +111,8 @@ begin
   WriteLn('Salaire : ', FSalaire:0:2, ' €');
 end;
 
-procedure TEmploye.AugmenterSalaire(Pourcentage: Real);
-begin
+procedure TEmploye.AugmenterSalaire(Pourcentage: Real);  
+begin  
   FSalaire := FSalaire * (1 + Pourcentage / 100);
   WriteLn('Salaire augmenté de ', Pourcentage:0:1, '% → ', FSalaire:0:2, ' €');
 end;
@@ -132,14 +132,14 @@ begin
   WriteLn('[TManager.Create] Manager créé avec équipe de ', AEquipe, ' personnes');
 end;
 
-destructor TManager.Destroy;
-begin
+destructor TManager.Destroy;  
+begin  
   WriteLn('[TManager.Destroy] Manager avec équipe de ', FEquipe);
   inherited Destroy;
 end;
 
-procedure TManager.Afficher;
-begin
+procedure TManager.Afficher;  
+begin  
   // Appelle TEmploye.Afficher qui appelle TPersonne.Afficher
   inherited Afficher;
 

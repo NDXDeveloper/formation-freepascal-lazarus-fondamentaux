@@ -34,21 +34,21 @@ type
 
 { === TAnimal === }
 
-constructor TAnimal.Create(ANom: string);
-begin
+constructor TAnimal.Create(ANom: string);  
+begin  
   inherited Create;  // Appelle TObject.Create
   FNom := ANom;
   WriteLn('[', ClassName, '.Create] Création de ', FNom);
 end;
 
-destructor TAnimal.Destroy;
-begin
+destructor TAnimal.Destroy;  
+begin  
   WriteLn('[', ClassName, '.Destroy] Destruction de ', FNom);
   inherited Destroy;  // Appelle TObject.Destroy
 end;
 
-procedure TAnimal.Afficher;
-begin
+procedure TAnimal.Afficher;  
+begin  
   WriteLn('Animal : ', FNom);
   WriteLn('Classe : ', ClassName);
   WriteLn('Taille : ', InstanceSize, ' octets');
@@ -56,29 +56,29 @@ end;
 
 { === TChien === }
 
-constructor TChien.Create(ANom, ARace: string);
-begin
+constructor TChien.Create(ANom, ARace: string);  
+begin  
   inherited Create(ANom);
   FRace := ARace;
   WriteLn('[', ClassName, '.Create] Race : ', FRace);
 end;
 
-destructor TChien.Destroy;
-begin
+destructor TChien.Destroy;  
+begin  
   WriteLn('[', ClassName, '.Destroy] Nettoyage spécifique');
   inherited Destroy;
 end;
 
-procedure TChien.Afficher;
-begin
+procedure TChien.Afficher;  
+begin  
   inherited Afficher;
   WriteLn('Race : ', FRace);
 end;
 
 { === Fonctions de démonstration === }
 
-procedure AfficherInfosClasse(Obj: TObject);
-begin
+procedure AfficherInfosClasse(Obj: TObject);  
+begin  
   WriteLn('═══════════════════════════════════════════════');
   WriteLn('Informations sur l''objet');
   WriteLn('═══════════════════════════════════════════════');
@@ -88,8 +88,8 @@ begin
   WriteLn;
 end;
 
-procedure TesterHeritage;
-var
+procedure TesterHeritage;  
+var  
   Animal: TAnimal;
   Chien: TChien;
 begin
@@ -122,8 +122,8 @@ begin
   Chien.Free;
 end;
 
-procedure TesterPolymorphisme;
-var
+procedure TesterPolymorphisme;  
+var  
   Animal: TAnimal;
   Chien: TChien;
 begin
@@ -146,8 +146,8 @@ begin
   Chien.Free;
 end;
 
-procedure DemoFreeAndNil;
-var
+procedure DemoFreeAndNil;  
+var  
   Obj1, Obj2: TAnimal;
 begin
   WriteLn('═══════════════════════════════════════════════');

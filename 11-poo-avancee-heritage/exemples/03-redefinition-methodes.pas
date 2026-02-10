@@ -64,77 +64,77 @@ type
 
 { === Implémentation de TAnimal === }
 
-constructor TAnimal.Create(ANom: string);
-begin
+constructor TAnimal.Create(ANom: string);  
+begin  
   inherited Create;
   FNom := ANom;
 end;
 
-procedure TAnimal.SePresenter;
-begin
+procedure TAnimal.SePresenter;  
+begin  
   WriteLn('Je suis un animal qui s''appelle ', FNom);
 end;
 
-procedure TAnimal.FaireDuBruit;
-begin
+procedure TAnimal.FaireDuBruit;  
+begin  
   WriteLn('[Animal générique fait du bruit]');
 end;
 
-procedure TAnimal.Manger;
-begin
+procedure TAnimal.Manger;  
+begin  
   WriteLn(FNom, ' mange de la nourriture générique.');
 end;
 
 { === Implémentation de TChien === }
 
-constructor TChien.Create(ANom, ARace: string);
-begin
+constructor TChien.Create(ANom, ARace: string);  
+begin  
   inherited Create(ANom);
   FRace := ARace;
 end;
 
-procedure TChien.SePresenter;
-begin
+procedure TChien.SePresenter;  
+begin  
   WriteLn('Je suis un chien ', FRace, ' qui s''appelle ', FNom);
 end;
 
-procedure TChien.FaireDuBruit;
-begin
+procedure TChien.FaireDuBruit;  
+begin  
   WriteLn(FNom, ' aboie : Wouaf wouaf !');
 end;
 
-procedure TChien.Manger;
-begin
+procedure TChien.Manger;  
+begin  
   WriteLn(FNom, ' le chien mange des croquettes.');
 end;
 
 { === Implémentation de TChat === }
 
-constructor TChat.Create(ANom, ACouleur: string);
-begin
+constructor TChat.Create(ANom, ACouleur: string);  
+begin  
   inherited Create(ANom);
   FCouleur := ACouleur;
 end;
 
-procedure TChat.SePresenter;
-begin
+procedure TChat.SePresenter;  
+begin  
   WriteLn('Je suis un chat ', FCouleur, ' qui s''appelle ', FNom);
 end;
 
-procedure TChat.FaireDuBruit;
-begin
+procedure TChat.FaireDuBruit;  
+begin  
   WriteLn(FNom, ' miaule : Miaou miaou !');
 end;
 
-procedure TChat.Manger;
-begin
+procedure TChat.Manger;  
+begin  
   WriteLn(FNom, ' le chat mange du poisson.');
 end;
 
 { === Programme principal === }
 
-procedure TesterAvecType(Animal: TAnimal);
-begin
+procedure TesterAvecType(Animal: TAnimal);  
+begin  
   WriteLn('--- Test avec variable de type TAnimal ---');
 
   // SePresenter n'est PAS virtuelle : masquage

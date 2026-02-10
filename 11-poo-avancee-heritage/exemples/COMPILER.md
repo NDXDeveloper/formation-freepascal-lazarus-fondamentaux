@@ -6,23 +6,23 @@
 ## Compilation individuelle
 
 ```bash
-fpc 01-exemple-heritage.pas
-fpc 02-gestion-personnes.pas
-fpc 03-redefinition-methodes.pas
-fpc 03-formes-geometriques.pas
-fpc 04-liaison-dynamique.pas
-fpc 04-systeme-paiement.pas
-fpc 05-formes-abstraites.pas
-fpc 05-systeme-persistence.pas
-fpc 06-zoo-polymorphe.pas
-fpc 06-systeme-fichiers.pas
-fpc 07-transtypage-zoo.pas
-fpc 08-heritage-constructeurs.pas
-fpc 08-systeme-logging.pas
-fpc 09-hierarchie-personnel.pas
-fpc 10-demo-classname.pas
-fpc 10-demo-inheritsfrom.pas
-fpc 10-demo-tobject.pas
+fpc 01-exemple-heritage.pas  
+fpc 02-gestion-personnes.pas  
+fpc 03-redefinition-methodes.pas  
+fpc 03-formes-geometriques.pas  
+fpc 04-liaison-dynamique.pas  
+fpc 04-systeme-paiement.pas  
+fpc 05-formes-abstraites.pas  
+fpc 05-systeme-persistence.pas  
+fpc 06-zoo-polymorphe.pas  
+fpc 06-systeme-fichiers.pas  
+fpc 07-transtypage-zoo.pas  
+fpc 08-heritage-constructeurs.pas  
+fpc 08-systeme-logging.pas  
+fpc 09-hierarchie-personnel.pas  
+fpc 10-demo-classname.pas  
+fpc 10-demo-inheritsfrom.pas  
+fpc 10-demo-tobject.pas  
 ```
 
 ## Compilation de tous les exemples
@@ -34,14 +34,14 @@ for f in *.pas; do echo "=== $f ===" && fpc "$f"; done
 ## Nettoyage
 
 ```bash
-rm -f *.o *.ppu
-rm -f 01-exemple-heritage 02-gestion-personnes 03-redefinition-methodes
-rm -f 03-formes-geometriques 04-liaison-dynamique 04-systeme-paiement
-rm -f 05-formes-abstraites 05-systeme-persistence 06-zoo-polymorphe
-rm -f 06-systeme-fichiers 07-transtypage-zoo 08-heritage-constructeurs
-rm -f 08-systeme-logging 09-hierarchie-personnel
-rm -f 10-demo-classname 10-demo-inheritsfrom 10-demo-tobject
-rm -f donnees.txt
+rm -f *.o *.ppu  
+rm -f 01-exemple-heritage 02-gestion-personnes 03-redefinition-methodes  
+rm -f 03-formes-geometriques 04-liaison-dynamique 04-systeme-paiement  
+rm -f 05-formes-abstraites 05-systeme-persistence 06-zoo-polymorphe  
+rm -f 06-systeme-fichiers 07-transtypage-zoo 08-heritage-constructeurs  
+rm -f 08-systeme-logging 09-hierarchie-personnel  
+rm -f 10-demo-classname 10-demo-inheritsfrom 10-demo-tobject  
+rm -f donnees.txt  
 ```
 
 ## Liste des exemples (17 fichiers)

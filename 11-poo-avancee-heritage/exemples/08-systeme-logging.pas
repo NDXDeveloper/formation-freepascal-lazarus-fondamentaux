@@ -47,28 +47,28 @@ type
 
 { === TLogger === }
 
-constructor TLogger.Create(ANomFichier: string);
-begin
+constructor TLogger.Create(ANomFichier: string);  
+begin  
   inherited Create;
   FNomFichier := ANomFichier;
   WriteLn('[TLogger] Fichier log : ', FNomFichier);
 end;
 
-procedure TLogger.Log(const Message: string);
-begin
+procedure TLogger.Log(const Message: string);  
+begin  
   WriteLn(Message);
 end;
 
-destructor TLogger.Destroy;
-begin
+destructor TLogger.Destroy;  
+begin  
   WriteLn('[TLogger] Fermeture du fichier log');
   inherited Destroy;
 end;
 
 { === TLoggerAvecDate === }
 
-procedure TLoggerAvecDate.Log(const Message: string);
-var
+procedure TLoggerAvecDate.Log(const Message: string);  
+var  
   MessageAvecDate: string;
 begin
   // Ajoute la date/heure
@@ -80,15 +80,15 @@ end;
 
 { === TLoggerAvecNiveau === }
 
-constructor TLoggerAvecNiveau.Create(ANomFichier: string; ANiveau: string);
-begin
+constructor TLoggerAvecNiveau.Create(ANomFichier: string; ANiveau: string);  
+begin  
   inherited Create(ANomFichier);
   FNiveau := ANiveau;
   WriteLn('[TLoggerAvecNiveau] Niveau : ', FNiveau);
 end;
 
-procedure TLoggerAvecNiveau.Log(const Message: string);
-var
+procedure TLoggerAvecNiveau.Log(const Message: string);  
+var  
   MessageAvecNiveau: string;
 begin
   // Ajoute le niveau
@@ -100,15 +100,15 @@ end;
 
 { === TLoggerComplet === }
 
-constructor TLoggerComplet.Create(ANomFichier, ANiveau, AContexte: string);
-begin
+constructor TLoggerComplet.Create(ANomFichier, ANiveau, AContexte: string);  
+begin  
   inherited Create(ANomFichier, ANiveau);
   FContexte := AContexte;
   WriteLn('[TLoggerComplet] Contexte : ', FContexte);
 end;
 
-procedure TLoggerComplet.Log(const Message: string);
-var
+procedure TLoggerComplet.Log(const Message: string);  
+var  
   MessageComplet: string;
 begin
   // Ajoute le contexte

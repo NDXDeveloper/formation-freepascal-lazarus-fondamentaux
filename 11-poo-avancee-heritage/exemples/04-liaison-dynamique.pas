@@ -58,108 +58,108 @@ type
 
 { === TVehicule === }
 
-constructor TVehicule.Create(AMarque, AModele: string);
-begin
+constructor TVehicule.Create(AMarque, AModele: string);  
+begin  
   inherited Create;
   FMarque := AMarque;
   FModele := AModele;
 end;
 
-procedure TVehicule.AfficherType;
-begin
+procedure TVehicule.AfficherType;  
+begin  
   WriteLn('Type : Véhicule générique');
 end;
 
-procedure TVehicule.Demarrer;
-begin
+procedure TVehicule.Demarrer;  
+begin  
   WriteLn('[Véhicule] Démarrage générique');
 end;
 
-procedure TVehicule.Accelerer;
-begin
+procedure TVehicule.Accelerer;  
+begin  
   WriteLn('[Véhicule] Accélération générique');
 end;
 
-procedure TVehicule.Freiner;
-begin
+procedure TVehicule.Freiner;  
+begin  
   WriteLn('[Véhicule] Freinage générique');
 end;
 
-function TVehicule.GetVitesseMax: Integer;
-begin
+function TVehicule.GetVitesseMax: Integer;  
+begin  
   Result := 100;
 end;
 
 { === TVoiture === }
 
-procedure TVoiture.Demarrer;
-begin
+procedure TVoiture.Demarrer;  
+begin  
   WriteLn('🚗 Tournez la clé, le moteur de la voiture ronronne');
 end;
 
-procedure TVoiture.Accelerer;
-begin
+procedure TVoiture.Accelerer;  
+begin  
   WriteLn('🚗 La voiture accélère en douceur');
 end;
 
-procedure TVoiture.Freiner;
-begin
+procedure TVoiture.Freiner;  
+begin  
   WriteLn('🚗 Freinage progressif de la voiture');
 end;
 
-function TVoiture.GetVitesseMax: Integer;
-begin
+function TVoiture.GetVitesseMax: Integer;  
+begin  
   Result := 180;
 end;
 
 { === TMoto === }
 
-procedure TMoto.Demarrer;
-begin
+procedure TMoto.Demarrer;  
+begin  
   WriteLn('🏍️  Vrrooom ! La moto démarre en trombe');
 end;
 
-procedure TMoto.Accelerer;
-begin
+procedure TMoto.Accelerer;  
+begin  
   WriteLn('🏍️  Accélération fulgurante de la moto !');
 end;
 
-procedure TMoto.Freiner;
-begin
+procedure TMoto.Freiner;  
+begin  
   WriteLn('🏍️  Freinage sportif de la moto');
 end;
 
-function TMoto.GetVitesseMax: Integer;
-begin
+function TMoto.GetVitesseMax: Integer;  
+begin  
   Result := 220;
 end;
 
 { === TCamion === }
 
-procedure TCamion.Demarrer;
-begin
+procedure TCamion.Demarrer;  
+begin  
   WriteLn('🚚 Le camion démarre lentement avec un bruit sourd');
 end;
 
-procedure TCamion.Accelerer;
-begin
+procedure TCamion.Accelerer;  
+begin  
   WriteLn('🚚 Le camion accélère péniblement');
 end;
 
-procedure TCamion.Freiner;
-begin
+procedure TCamion.Freiner;  
+begin  
   WriteLn('🚚 Long freinage du camion chargé');
 end;
 
-function TCamion.GetVitesseMax: Integer;
-begin
+function TCamion.GetVitesseMax: Integer;  
+begin  
   Result := 110;
 end;
 
 { === Procédures de test === }
 
-procedure TestVehicule(V: TVehicule);
-begin
+procedure TestVehicule(V: TVehicule);  
+begin  
   WriteLn('--- Test du véhicule : ', V.FMarque, ' ', V.FModele, ' ---');
   WriteLn;
 
@@ -177,8 +177,8 @@ begin
   WriteLn;
 end;
 
-procedure ComparerVehicules(V1, V2: TVehicule);
-begin
+procedure ComparerVehicules(V1, V2: TVehicule);  
+begin  
   WriteLn('=== COMPARAISON DE VEHICULES ===');
   WriteLn('Véhicule 1 : vitesse max = ', V1.GetVitesseMax, ' km/h');
   WriteLn('Véhicule 2 : vitesse max = ', V2.GetVitesseMax, ' km/h');

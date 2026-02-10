@@ -169,8 +169,8 @@ type
 
 { === Implémentation de TPersonne === }
 
-constructor TPersonne.Create(ANom, APrenom: string; ADateNaissance: TDateTime);
-begin
+constructor TPersonne.Create(ANom, APrenom: string; ADateNaissance: TDateTime);  
+begin  
   inherited Create;  // Appelle le constructeur de TObject
   FNom := ANom;
   FPrenom := APrenom;
@@ -178,26 +178,26 @@ begin
   WriteLn('[TPersonne] Création de ', GetNomComplet);
 end;
 
-destructor TPersonne.Destroy;
-begin
+destructor TPersonne.Destroy;  
+begin  
   WriteLn('[TPersonne] Destruction de ', GetNomComplet);
   inherited Destroy;  // Appelle le destructeur de TObject
 end;
 
-procedure TPersonne.Afficher;
-begin
+procedure TPersonne.Afficher;  
+begin  
   WriteLn('Nom complet : ', GetNomComplet);
   WriteLn('Age : ', GetAge, ' ans');
   WriteLn('Né(e) le : ', DateToStr(FDateNaissance));
 end;
 
-function TPersonne.GetAge: Integer;
-begin
+function TPersonne.GetAge: Integer;  
+begin  
   Result := YearsBetween(Now, FDateNaissance);
 end;
 
-function TPersonne.GetNomComplet: string;
-begin
+function TPersonne.GetNomComplet: string;  
+begin  
   Result := FPrenom + ' ' + FNom;
 end;
 
@@ -216,8 +216,8 @@ begin
   WriteLn('[TEmploye] Numéro employé : ', ANumero);
 end;
 
-procedure TEmploye.Afficher;
-begin
+procedure TEmploye.Afficher;  
+begin  
   WriteLn('=== FICHE EMPLOYE ===');
   inherited Afficher;  // Affiche les infos de base (nom, âge, etc.)
   WriteLn('Numéro employé : ', FNumeroEmploye);
@@ -227,13 +227,13 @@ begin
   WriteLn('=====================');
 end;
 
-function TEmploye.GetAnciennete: Integer;
-begin
+function TEmploye.GetAnciennete: Integer;  
+begin  
   Result := YearsBetween(Now, FDateEmbauche);
 end;
 
-procedure TEmploye.AugmenterSalaire(Pourcentage: Real);
-begin
+procedure TEmploye.AugmenterSalaire(Pourcentage: Real);  
+begin  
   WriteLn('Augmentation de ', Pourcentage:0:1, '% pour ', GetNomComplet);
   FSalaire := FSalaire * (1 + Pourcentage / 100);
   WriteLn('Nouveau salaire : ', FSalaire:0:2, ' €');
@@ -250,8 +250,8 @@ begin
   WriteLn('[TClient] Numéro client : ', ANumeroClient);
 end;
 
-procedure TClient.Afficher;
-begin
+procedure TClient.Afficher;  
+begin  
   WriteLn('=== FICHE CLIENT ===');
   inherited Afficher;
   WriteLn('Numéro client : ', FNumeroClient);
@@ -263,14 +263,14 @@ begin
   WriteLn('====================');
 end;
 
-procedure TClient.AjouterAchat(Montant: Real);
-begin
+procedure TClient.AjouterAchat(Montant: Real);  
+begin  
   FMontantAchats := FMontantAchats + Montant;
   WriteLn('Achat de ', Montant:0:2, ' € ajouté pour ', GetNomComplet);
 end;
 
-function TClient.EstClientFidele: Boolean;
-begin
+function TClient.EstClientFidele: Boolean;  
+begin  
   Result := FMontantAchats >= 1000;  // Fidèle si > 1000€ d'achats
 end;
 
@@ -332,33 +332,33 @@ end.
 [TEmploye] Numéro employé : 1001
 
 === FICHE EMPLOYE ===
-Nom complet : Jean Dupont
-Age : 39 ans
-Né(e) le : 15/03/1985
-Numéro employé : 1001
-Salaire : 2500.00 €
-Date embauche : 10/01/2015
-Ancienneté : 9 ans
+Nom complet : Jean Dupont  
+Age : 39 ans  
+Né(e) le : 15/03/1985  
+Numéro employé : 1001  
+Salaire : 2500.00 €  
+Date embauche : 10/01/2015  
+Ancienneté : 9 ans  
 =====================
 
-Augmentation de 10.0% pour Jean Dupont
-Nouveau salaire : 2750.00 €
+Augmentation de 10.0% pour Jean Dupont  
+Nouveau salaire : 2750.00 €  
 
 --- Création d'un client ---
 [TPersonne] Création de Sophie Martin
 [TClient] Numéro client : CL-2024-001
 
-Achat de 450.00 € ajouté pour Sophie Martin
-Achat de 325.50 € ajouté pour Sophie Martin
-Achat de 280.00 € ajouté pour Sophie Martin
+Achat de 450.00 € ajouté pour Sophie Martin  
+Achat de 325.50 € ajouté pour Sophie Martin  
+Achat de 280.00 € ajouté pour Sophie Martin  
 
 === FICHE CLIENT ===
-Nom complet : Sophie Martin
-Age : 34 ans
-Né(e) le : 22/07/1990
-Numéro client : CL-2024-001
-Montant total achats : 1055.50 €
-Statut : CLIENT FIDELE ⭐
+Nom complet : Sophie Martin  
+Age : 34 ans  
+Né(e) le : 22/07/1990  
+Numéro client : CL-2024-001  
+Montant total achats : 1055.50 €  
+Statut : CLIENT FIDELE ⭐  
 ====================
 
 --- Libération des objets ---
@@ -387,8 +387,8 @@ type
     procedure Test;
   end;
 
-procedure TEnfant.Test;
-begin
+procedure TEnfant.Test;  
+begin  
   // FPrive := 10;    // ❌ ERREUR : membre privé
   FProtege := 20;     // ✅ OK : membre protégé
   FPublic := 30;      // ✅ OK : membre public
@@ -403,8 +403,8 @@ Lors de la création d'un objet dérivé, l'ordre est **toujours** :
 2. Code spécifique de la classe dérivée
 
 ```pascal
-constructor TEmploye.Create(...);
-begin
+constructor TEmploye.Create(...);  
+begin  
   inherited Create(...);  // 1. D'abord le parent
   FNumeroEmploye := ...;  // 2. Ensuite la partie enfant
 end;
@@ -420,8 +420,8 @@ Pour les destructeurs, c'est **l'inverse** :
 2. Destructeur du parent (via `inherited Destroy`)
 
 ```pascal
-destructor TEmploye.Destroy;
-begin
+destructor TEmploye.Destroy;  
+begin  
   // 1. D'abord nettoyage spécifique
   WriteLn('Nettoyage de TEmploye');
 

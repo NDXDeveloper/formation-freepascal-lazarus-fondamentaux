@@ -57,15 +57,15 @@ type
 
 { === TPersistence === }
 
-procedure TPersistence.AfficherStatut;
-begin
+procedure TPersistence.AfficherStatut;  
+begin  
   WriteLn('Système de persistence générique');
 end;
 
 { === TPersistenceFichier === }
 
-constructor TPersistenceFichier.Create(ANomFichier: string);
-begin
+constructor TPersistenceFichier.Create(ANomFichier: string);  
+begin  
   inherited Create;
   FNomFichier := ANomFichier;
   FListe := TStringList.Create;
@@ -79,15 +79,15 @@ begin
     WriteLn('→ Nouveau fichier : ', FNomFichier);
 end;
 
-destructor TPersistenceFichier.Destroy;
-begin
+destructor TPersistenceFichier.Destroy;  
+begin  
   FListe.SaveToFile(FNomFichier);
   FListe.Free;
   inherited Destroy;
 end;
 
-function TPersistenceFichier.Sauvegarder(const Cle, Valeur: string): Boolean;
-var
+function TPersistenceFichier.Sauvegarder(const Cle, Valeur: string): Boolean;  
+var  
   Index: Integer;
 begin
   Index := FListe.IndexOfName(Cle);
@@ -101,13 +101,13 @@ begin
   Result := True;
 end;
 
-function TPersistenceFichier.Charger(const Cle: string): string;
-begin
+function TPersistenceFichier.Charger(const Cle: string): string;  
+begin  
   Result := FListe.Values[Cle];
 end;
 
-function TPersistenceFichier.Supprimer(const Cle: string): Boolean;
-var
+function TPersistenceFichier.Supprimer(const Cle: string): Boolean;  
+var  
   Index: Integer;
 begin
   Index := FListe.IndexOfName(Cle);
@@ -122,13 +122,13 @@ begin
     Result := False;
 end;
 
-function TPersistenceFichier.Existe(const Cle: string): Boolean;
-begin
+function TPersistenceFichier.Existe(const Cle: string): Boolean;  
+begin  
   Result := FListe.IndexOfName(Cle) >= 0;
 end;
 
-procedure TPersistenceFichier.AfficherStatut;
-begin
+procedure TPersistenceFichier.AfficherStatut;  
+begin  
   WriteLn('📁 Persistence FICHIER');
   WriteLn('   Fichier : ', FNomFichier);
   WriteLn('   Entrées : ', FListe.Count);
@@ -136,21 +136,21 @@ end;
 
 { === TPersistenceMemoire === }
 
-constructor TPersistenceMemoire.Create;
-begin
+constructor TPersistenceMemoire.Create;  
+begin  
   inherited Create;
   FDonnees := TStringList.Create;
   WriteLn('→ Persistence en mémoire créée');
 end;
 
-destructor TPersistenceMemoire.Destroy;
-begin
+destructor TPersistenceMemoire.Destroy;  
+begin  
   FDonnees.Free;
   inherited Destroy;
 end;
 
-function TPersistenceMemoire.Sauvegarder(const Cle, Valeur: string): Boolean;
-var
+function TPersistenceMemoire.Sauvegarder(const Cle, Valeur: string): Boolean;  
+var  
   Index: Integer;
 begin
   Index := FDonnees.IndexOfName(Cle);
@@ -163,13 +163,13 @@ begin
   Result := True;
 end;
 
-function TPersistenceMemoire.Charger(const Cle: string): string;
-begin
+function TPersistenceMemoire.Charger(const Cle: string): string;  
+begin  
   Result := FDonnees.Values[Cle];
 end;
 
-function TPersistenceMemoire.Supprimer(const Cle: string): Boolean;
-var
+function TPersistenceMemoire.Supprimer(const Cle: string): Boolean;  
+var  
   Index: Integer;
 begin
   Index := FDonnees.IndexOfName(Cle);
@@ -183,21 +183,21 @@ begin
     Result := False;
 end;
 
-function TPersistenceMemoire.Existe(const Cle: string): Boolean;
-begin
+function TPersistenceMemoire.Existe(const Cle: string): Boolean;  
+begin  
   Result := FDonnees.IndexOfName(Cle) >= 0;
 end;
 
-procedure TPersistenceMemoire.AfficherStatut;
-begin
+procedure TPersistenceMemoire.AfficherStatut;  
+begin  
   WriteLn('💾 Persistence MEMOIRE');
   WriteLn('   Entrées : ', FDonnees.Count);
 end;
 
 { === Fonction polymorphe === }
 
-procedure TesterPersistence(P: TPersistence; const Nom: string);
-begin
+procedure TesterPersistence(P: TPersistence; const Nom: string);  
+begin  
   WriteLn('═══════════════════════════════════════════════');
   WriteLn('   TEST : ', Nom);
   WriteLn('═══════════════════════════════════════════════');

@@ -78,15 +78,15 @@ type
 
 { === TForme === }
 
-constructor TForme.Create(ACouleur: string);
-begin
+constructor TForme.Create(ACouleur: string);  
+begin  
   inherited Create;
   FCouleur := ACouleur;
   WriteLn('[TForme] Création d''une forme ', ACouleur);
 end;
 
-procedure TForme.AfficherInfos;
-begin
+procedure TForme.AfficherInfos;  
+begin  
   WriteLn('╔═══════════════════════════════════');
   WriteLn('║ Informations sur la forme');
   WriteLn('╠═══════════════════════════════════');
@@ -98,26 +98,26 @@ end;
 
 { === TRectangle === }
 
-constructor TRectangle.Create(ACouleur: string; ALargeur, AHauteur: Real);
-begin
+constructor TRectangle.Create(ACouleur: string; ALargeur, AHauteur: Real);  
+begin  
   inherited Create(ACouleur);
   FLargeur := ALargeur;
   FHauteur := AHauteur;
   WriteLn('[TRectangle] Dimensions : ', ALargeur:0:2, ' x ', AHauteur:0:2);
 end;
 
-function TRectangle.CalculerAire: Real;
-begin
+function TRectangle.CalculerAire: Real;  
+begin  
   Result := FLargeur * FHauteur;
 end;
 
-function TRectangle.CalculerPerimetre: Real;
-begin
+function TRectangle.CalculerPerimetre: Real;  
+begin  
   Result := 2 * (FLargeur + FHauteur);
 end;
 
-procedure TRectangle.Dessiner;
-begin
+procedure TRectangle.Dessiner;  
+begin  
   WriteLn('Dessin d''un rectangle ', FCouleur);
   WriteLn('┌────────────┐');
   WriteLn('│            │');
@@ -127,25 +127,25 @@ end;
 
 { === TCercle === }
 
-constructor TCercle.Create(ACouleur: string; ARayon: Real);
-begin
+constructor TCercle.Create(ACouleur: string; ARayon: Real);  
+begin  
   inherited Create(ACouleur);
   FRayon := ARayon;
   WriteLn('[TCercle] Rayon : ', ARayon:0:2);
 end;
 
-function TCercle.CalculerAire: Real;
-begin
+function TCercle.CalculerAire: Real;  
+begin  
   Result := Pi * Sqr(FRayon);
 end;
 
-function TCercle.CalculerPerimetre: Real;
-begin
+function TCercle.CalculerPerimetre: Real;  
+begin  
   Result := 2 * Pi * FRayon;
 end;
 
-procedure TCercle.Dessiner;
-begin
+procedure TCercle.Dessiner;  
+begin  
   WriteLn('Dessin d''un cercle ', FCouleur);
   WriteLn('    ****    ');
   WriteLn('  *      *  ');
@@ -156,8 +156,8 @@ end;
 
 { === TTriangle === }
 
-constructor TTriangle.Create(ACouleur: string; ACote1, ACote2, ACote3: Real);
-begin
+constructor TTriangle.Create(ACouleur: string; ACote1, ACote2, ACote3: Real);  
+begin  
   inherited Create(ACouleur);
   FCote1 := ACote1;
   FCote2 := ACote2;
@@ -168,16 +168,16 @@ begin
     WriteLn('  ⚠️  Attention : triangle invalide (inégalité triangulaire non respectée)');
 end;
 
-function TTriangle.EstValide: Boolean;
-begin
+function TTriangle.EstValide: Boolean;  
+begin  
   // Vérification de l'inégalité triangulaire
   Result := (FCote1 + FCote2 > FCote3) and
             (FCote1 + FCote3 > FCote2) and
             (FCote2 + FCote3 > FCote1);
 end;
 
-function TTriangle.CalculerAire: Real;
-var
+function TTriangle.CalculerAire: Real;  
+var  
   S: Real;  // Demi-périmètre
 begin
   if not EstValide then
@@ -191,13 +191,13 @@ begin
   Result := Sqrt(S * (S - FCote1) * (S - FCote2) * (S - FCote3));
 end;
 
-function TTriangle.CalculerPerimetre: Real;
-begin
+function TTriangle.CalculerPerimetre: Real;  
+begin  
   Result := FCote1 + FCote2 + FCote3;
 end;
 
-procedure TTriangle.Dessiner;
-begin
+procedure TTriangle.Dessiner;  
+begin  
   WriteLn('Dessin d''un triangle ', FCouleur);
   WriteLn('      /\      ');
   WriteLn('     /  \     ');
@@ -207,8 +207,8 @@ end;
 
 { === Fonctions de traitement polymorphes === }
 
-procedure AfficherDetailsFormes(Formes: array of TForme);
-var
+procedure AfficherDetailsFormes(Formes: array of TForme);  
+var  
   i: Integer;
 begin
   WriteLn('═══════════════════════════════════════════════');
@@ -226,8 +226,8 @@ begin
   end;
 end;
 
-function CalculerAireTotale(Formes: array of TForme): Real;
-var
+function CalculerAireTotale(Formes: array of TForme): Real;  
+var  
   i: Integer;
   Total: Real;
 begin
@@ -238,8 +238,8 @@ begin
   Result := Total;
 end;
 
-function TrouverPlusGrandeForme(Formes: array of TForme): Integer;
-var
+function TrouverPlusGrandeForme(Formes: array of TForme): Integer;  
+var  
   i, IndexMax: Integer;
   AireMax, Aire: Real;
 begin

@@ -76,8 +76,8 @@ TCollectionItem TComponent
 Le constructeur par défaut de toutes les classes.
 
 ```pascal
-constructor TObject.Create;
-begin
+constructor TObject.Create;  
+begin  
   // Initialisation de base de l'objet
 end;
 ```
@@ -102,8 +102,8 @@ type
     constructor Create;
   end;
 
-constructor MaClasse.Create;
-begin
+constructor MaClasse.Create;  
+begin  
   inherited Create;  // Appelle TObject.Create
   // Votre initialisation
 end;
@@ -114,8 +114,8 @@ end;
 Libère les ressources allouées par l'objet.
 
 ```pascal
-destructor TObject.Destroy;
-begin
+destructor TObject.Destroy;  
+begin  
   // Nettoyage de base
 end;
 ```
@@ -128,8 +128,8 @@ type
     destructor Destroy; override;
   end;
 
-destructor MaClasse.Destroy;
-begin
+destructor MaClasse.Destroy;  
+begin  
   // Votre nettoyage
   inherited Destroy;  // Appelle TObject.Destroy
 end;
@@ -140,8 +140,8 @@ end;
 La méthode la plus importante pour libérer un objet.
 
 ```pascal
-procedure TObject.Free;
-begin
+procedure TObject.Free;  
+begin  
   if Self <> nil then
     Destroy;
 end;
@@ -170,8 +170,8 @@ end;
 Libère l'objet ET met la variable à `nil`.
 
 ```pascal
-procedure FreeAndNil(var Obj);
-begin
+procedure FreeAndNil(var Obj);  
+begin  
   if Obj <> nil then
   begin
     TObject(Obj).Free;
@@ -385,21 +385,21 @@ type
 
 { === TAnimal === }
 
-constructor TAnimal.Create(ANom: string);
-begin
+constructor TAnimal.Create(ANom: string);  
+begin  
   inherited Create;  // Appelle TObject.Create
   FNom := ANom;
   WriteLn('[', ClassName, '.Create] Création de ', FNom);
 end;
 
-destructor TAnimal.Destroy;
-begin
+destructor TAnimal.Destroy;  
+begin  
   WriteLn('[', ClassName, '.Destroy] Destruction de ', FNom);
   inherited Destroy;  // Appelle TObject.Destroy
 end;
 
-procedure TAnimal.Afficher;
-begin
+procedure TAnimal.Afficher;  
+begin  
   WriteLn('Animal : ', FNom);
   WriteLn('Classe : ', ClassName);
   WriteLn('Taille : ', InstanceSize, ' octets');
@@ -407,29 +407,29 @@ end;
 
 { === TChien === }
 
-constructor TChien.Create(ANom, ARace: string);
-begin
+constructor TChien.Create(ANom, ARace: string);  
+begin  
   inherited Create(ANom);
   FRace := ARace;
   WriteLn('[', ClassName, '.Create] Race : ', FRace);
 end;
 
-destructor TChien.Destroy;
-begin
+destructor TChien.Destroy;  
+begin  
   WriteLn('[', ClassName, '.Destroy] Nettoyage spécifique');
   inherited Destroy;
 end;
 
-procedure TChien.Afficher;
-begin
+procedure TChien.Afficher;  
+begin  
   inherited Afficher;
   WriteLn('Race : ', FRace);
 end;
 
 { === Fonctions de démonstration === }
 
-procedure AfficherInfosClasse(Obj: TObject);
-begin
+procedure AfficherInfosClasse(Obj: TObject);  
+begin  
   WriteLn('═══════════════════════════════════════════════');
   WriteLn('Informations sur l''objet');
   WriteLn('═══════════════════════════════════════════════');
@@ -439,8 +439,8 @@ begin
   WriteLn;
 end;
 
-procedure TesterHeritage;
-var
+procedure TesterHeritage;  
+var  
   Animal: TAnimal;
   Chien: TChien;
 begin
@@ -473,8 +473,8 @@ begin
   Chien.Free;
 end;
 
-procedure TesterPolymorphisme;
-var
+procedure TesterPolymorphisme;  
+var  
   Animal: TAnimal;
   Chien: TChien;
 begin
@@ -497,8 +497,8 @@ begin
   Chien.Free;
 end;
 
-procedure DemoFreeAndNil;
-var
+procedure DemoFreeAndNil;  
+var  
   Obj1, Obj2: TAnimal;
 begin
   WriteLn('═══════════════════════════════════════════════');
@@ -574,8 +574,8 @@ type
     property Nom: string read FNom write FNom;
   end;
 
-procedure TPersonne.Assign(Source: TPersistent);
-begin
+procedure TPersonne.Assign(Source: TPersistent);  
+begin  
   if Source is TPersonne then
     FNom := TPersonne(Source).FNom
   else
@@ -807,8 +807,8 @@ class MaClasse(object):
 ### 1. Affichage d'informations de debug
 
 ```pascal
-procedure DebugObjet(Obj: TObject);
-begin
+procedure DebugObjet(Obj: TObject);  
+begin  
   if Obj = nil then
   begin
     WriteLn('Objet = nil');
@@ -824,8 +824,8 @@ end;
 ### 2. Copie polymorphe
 
 ```pascal
-function CopierObjet(Source: TObject): TObject;
-var
+function CopierObjet(Source: TObject): TObject;  
+var  
   TypeClasse: TClass;
 begin
   if Source = nil then
@@ -845,8 +845,8 @@ end;
 ### 3. Logger universel
 
 ```pascal
-procedure Log(Obj: TObject; const Message: string);
-var
+procedure Log(Obj: TObject; const Message: string);  
+var  
   NomClasse: string;
 begin
   if Obj <> nil then
@@ -880,8 +880,8 @@ type
     procedure Liberer;
   end;
 
-procedure TListeObjets.Ajouter(Obj: TObject);
-var
+procedure TListeObjets.Ajouter(Obj: TObject);  
+var  
   L: Integer;
 begin
   L := Length(FListe);
@@ -889,8 +889,8 @@ begin
   FListe[L] := Obj;
 end;
 
-procedure TListeObjets.Liberer;
-var
+procedure TListeObjets.Liberer;  
+var  
   i: Integer;
 begin
   for i := 0 to High(FListe) do
