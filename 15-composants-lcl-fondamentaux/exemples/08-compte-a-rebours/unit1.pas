@@ -41,8 +41,8 @@ implementation
 
 {$R *.lfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   Timer1.Interval := 1000;
   Timer1.Enabled := False;
   FCompteAReboursActif := False;
@@ -55,8 +55,8 @@ begin
   BtnAnnuler.Enabled := False;
 end;
 
-procedure TForm1.BtnDemarrerClick(Sender: TObject);
-begin
+procedure TForm1.BtnDemarrerClick(Sender: TObject);  
+begin  
   FSecondesRestantes := SpinEditMinutes.Value * 60;
   FCompteAReboursActif := True;
 
@@ -68,8 +68,8 @@ begin
   SpinEditMinutes.Enabled := False;
 end;
 
-procedure TForm1.BtnAnnulerClick(Sender: TObject);
-begin
+procedure TForm1.BtnAnnulerClick(Sender: TObject);  
+begin  
   Timer1.Enabled := False;
   FCompteAReboursActif := False;
 
@@ -80,8 +80,8 @@ begin
   LabelTemps.Font.Color := clBlack;
 end;
 
-procedure TForm1.Timer1Timer(Sender: TObject);
-begin
+procedure TForm1.Timer1Timer(Sender: TObject);  
+begin  
   if not FCompteAReboursActif then Exit;
 
   Dec(FSecondesRestantes);
@@ -98,8 +98,8 @@ begin
     TerminerCompteARebours;
 end;
 
-procedure TForm1.AfficherTemps;
-var
+procedure TForm1.AfficherTemps;  
+var  
   Minutes, Secondes: Integer;
 begin
   Minutes := FSecondesRestantes div 60;
@@ -107,8 +107,8 @@ begin
   LabelTemps.Caption := Format('%2.2d:%2.2d', [Minutes, Secondes]);
 end;
 
-procedure TForm1.TerminerCompteARebours;
-begin
+procedure TForm1.TerminerCompteARebours;  
+begin  
   Timer1.Enabled := False;
   FCompteAReboursActif := False;
 

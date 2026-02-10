@@ -42,8 +42,8 @@ implementation
 
 {$R *.lfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   { Quantité }
   SpinEditQuantite.MinValue := 1;
   SpinEditQuantite.MaxValue := 999;
@@ -69,13 +69,13 @@ begin
   LabelPrixTotal.Caption := '';
 end;
 
-procedure TForm1.TrackBarRemiseChange(Sender: TObject);
-begin
+procedure TForm1.TrackBarRemiseChange(Sender: TObject);  
+begin  
   LabelRemiseValeur.Caption := 'Remise : ' + IntToStr(TrackBarRemise.Position) + '%';
 end;
 
-procedure TForm1.BtnCalculerClick(Sender: TObject);
-var
+procedure TForm1.BtnCalculerClick(Sender: TObject);  
+var  
   PrixBase, Remise, PrixFinal: Double;
   DateLivraison: string;
 begin

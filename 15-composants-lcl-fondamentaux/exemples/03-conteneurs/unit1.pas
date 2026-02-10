@@ -41,15 +41,15 @@ implementation
 
 {$R *.lfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   PanelTop.Caption := 'Barre d''outils';
   PanelBottom.Caption := 'Prêt';
   RadioOption1.Checked := True;
 end;
 
-procedure TForm1.RadioOptionClick(Sender: TObject);
-begin
+procedure TForm1.RadioOptionClick(Sender: TObject);  
+begin  
   if RadioOption1.Checked then
     LabelInfo.Caption := 'Option A sélectionnée'
   else if RadioOption2.Checked then

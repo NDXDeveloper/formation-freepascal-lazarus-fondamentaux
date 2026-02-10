@@ -85,17 +85,17 @@ property Picture: TPicture;  // Contient l'image
 #### Propriétés de Mise en Page
 
 ```pascal
-property Stretch: Boolean;          // Étirer l'image pour remplir le composant
-property Proportional: Boolean;     // Conserver les proportions lors de l'étirement
-property Center: Boolean;           // Centrer l'image dans le composant
-property Transparent: Boolean;      // Transparence (si supportée par l'image)
+property Stretch: Boolean;          // Étirer l'image pour remplir le composant  
+property Proportional: Boolean;     // Conserver les proportions lors de l'étirement  
+property Center: Boolean;           // Centrer l'image dans le composant  
+property Transparent: Boolean;      // Transparence (si supportée par l'image)  
 ```
 
 #### Propriétés Visuelles
 
 ```pascal
-property Width: Integer;    // Largeur du composant
-property Height: Integer;   // Hauteur du composant
+property Width: Integer;    // Largeur du composant  
+property Height: Integer;   // Hauteur du composant  
 ```
 
 ### Charger une Image
@@ -113,8 +113,8 @@ Il existe plusieurs façons de charger une image dans un TImage.
 #### Méthode 2 : Par Code - LoadFromFile
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Charger une image depuis un fichier
   Image1.Picture.LoadFromFile('C:\Images\photo.jpg');
 end;
@@ -130,8 +130,8 @@ Image1.Picture.LoadFromResourceName(HInstance, 'MON_IMAGE');
 #### Méthode 4 : Créer Dynamiquement
 
 ```pascal
-procedure TForm1.CreerImageDynamique;
-var
+procedure TForm1.CreerImageDynamique;  
+var  
   Bmp: TBitmap;
 begin
   Bmp := TBitmap.Create;
@@ -164,8 +164,8 @@ else
 ### Sauvegarder une Image
 
 ```pascal
-procedure TForm1.SauvegarderImage;
-begin
+procedure TForm1.SauvegarderImage;  
+begin  
   if Assigned(Image1.Picture.Graphic) then
     Image1.Picture.SaveToFile('C:\Images\sauvegarde.bmp');
 end;
@@ -182,8 +182,8 @@ Image1.Picture.Clear;  // Efface l'image
 #### Mode Normal (par défaut)
 
 ```pascal
-Image1.Stretch := False;
-Image1.Center := False;
+Image1.Stretch := False;  
+Image1.Center := False;  
 ```
 
 L'image est affichée en taille réelle, ancrée en haut à gauche.
@@ -199,8 +199,8 @@ L'image est affichée en taille réelle, ancrée en haut à gauche.
 #### Mode Stretch (Étiré)
 
 ```pascal
-Image1.Stretch := True;
-Image1.Proportional := False;
+Image1.Stretch := True;  
+Image1.Proportional := False;  
 ```
 
 L'image remplit **tout le composant**, même si cela déforme l'image.
@@ -218,8 +218,8 @@ L'image remplit **tout le composant**, même si cela déforme l'image.
 #### Mode Stretch Proportionnel
 
 ```pascal
-Image1.Stretch := True;
-Image1.Proportional := True;
+Image1.Stretch := True;  
+Image1.Proportional := True;  
 ```
 
 L'image est **redimensionnée pour tenir** dans le composant tout en **conservant ses proportions**.
@@ -238,8 +238,8 @@ C'est généralement le **mode recommandé** pour afficher des photos.
 #### Mode Centré
 
 ```pascal
-Image1.Stretch := False;
-Image1.Center := True;
+Image1.Stretch := False;  
+Image1.Center := True;  
 ```
 
 L'image est affichée en taille réelle, **centrée** dans le composant.
@@ -270,8 +270,8 @@ type
     procedure CheckBoxProportionalChange(Sender: TObject);
   end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Configuration de l'image
   Image1.Align := alClient;
   Image1.Stretch := True;
@@ -286,8 +286,8 @@ begin
   CheckBoxProportional.Checked := Image1.Proportional;
 end;
 
-procedure TForm1.BtnChargerClick(Sender: TObject);
-begin
+procedure TForm1.BtnChargerClick(Sender: TObject);  
+begin  
   if OpenDialog1.Execute then
   begin
     try
@@ -306,13 +306,13 @@ begin
   end;
 end;
 
-procedure TForm1.CheckBoxStretchChange(Sender: TObject);
-begin
+procedure TForm1.CheckBoxStretchChange(Sender: TObject);  
+begin  
   Image1.Stretch := CheckBoxStretch.Checked;
 end;
 
-procedure TForm1.CheckBoxProportionalChange(Sender: TObject);
-begin
+procedure TForm1.CheckBoxProportionalChange(Sender: TObject);  
+begin  
   Image1.Proportional := CheckBoxProportional.Checked;
 end;
 ```
@@ -337,8 +337,8 @@ end;
 #### Redimensionner une Image
 
 ```pascal
-procedure TForm1.RedimensionnerImage(NouvelleLargeur, NouvelleHauteur: Integer);
-var
+procedure TForm1.RedimensionnerImage(NouvelleLargeur, NouvelleHauteur: Integer);  
+var  
   Bmp, BmpRedim: TBitmap;
 begin
   if not Assigned(Image1.Picture.Graphic) then Exit;
@@ -371,8 +371,8 @@ end;
 uses
   GraphUtil;  // Pour RotateBitmap
 
-procedure TForm1.PivoterImage90;
-var
+procedure TForm1.PivoterImage90;  
+var  
   Bmp: TBitmap;
 begin
   if not Assigned(Image1.Picture.Bitmap) then Exit;
@@ -395,8 +395,8 @@ end;
 #### Convertir en Niveaux de Gris
 
 ```pascal
-procedure TForm1.ConvertirNoirEtBlanc;
-var
+procedure TForm1.ConvertirNoirEtBlanc;  
+var  
   x, y: Integer;
   Pixel: TColor;
   Gris: Byte;
@@ -433,16 +433,16 @@ end;
 ### Événements
 
 ```pascal
-property OnClick: TNotifyEvent;      // Clic sur l'image
-property OnDblClick: TNotifyEvent;   // Double-clic
-property OnMouseMove: TMouseMoveEvent; // Mouvement de souris
+property OnClick: TNotifyEvent;      // Clic sur l'image  
+property OnDblClick: TNotifyEvent;   // Double-clic  
+property OnMouseMove: TMouseMoveEvent; // Mouvement de souris  
 ```
 
 #### Exemple : Afficher Coordonnées de Souris
 
 ```pascal
-procedure TForm1.Image1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
-begin
+procedure TForm1.Image1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);  
+begin  
   StatusBar1.SimpleText := Format('Position : X=%d, Y=%d', [X, Y]);
 end;
 ```
@@ -462,8 +462,8 @@ end;
 #### 1. Logo de l'Application
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   ImageLogo.Picture.LoadFromFile('logo.png');
   ImageLogo.Stretch := True;
   ImageLogo.Proportional := True;
@@ -482,8 +482,8 @@ type
     procedure ChargerPhoto(Index: Integer);
   end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   FPhotos := TStringList.Create;
   FPhotos.Add('photo1.jpg');
   FPhotos.Add('photo2.jpg');
@@ -493,8 +493,8 @@ begin
   ChargerPhoto(FIndex);
 end;
 
-procedure TForm1.ChargerPhoto(Index: Integer);
-begin
+procedure TForm1.ChargerPhoto(Index: Integer);  
+begin  
   if (Index >= 0) and (Index < FPhotos.Count) then
   begin
     Image1.Picture.LoadFromFile(FPhotos[Index]);
@@ -502,24 +502,24 @@ begin
   end;
 end;
 
-procedure TForm1.BtnSuivantClick(Sender: TObject);
-begin
+procedure TForm1.BtnSuivantClick(Sender: TObject);  
+begin  
   Inc(FIndex);
   if FIndex >= FPhotos.Count then
     FIndex := 0;
   ChargerPhoto(FIndex);
 end;
 
-procedure TForm1.BtnPrecedentClick(Sender: TObject);
-begin
+procedure TForm1.BtnPrecedentClick(Sender: TObject);  
+begin  
   Dec(FIndex);
   if FIndex < 0 then
     FIndex := FPhotos.Count - 1;
   ChargerPhoto(FIndex);
 end;
 
-procedure TForm1.FormDestroy(Sender: TObject);
-begin
+procedure TForm1.FormDestroy(Sender: TObject);  
+begin  
   FPhotos.Free;
 end;
 ```
@@ -527,8 +527,8 @@ end;
 #### 3. Aperçu d'Image (Thumbnail)
 
 ```pascal
-procedure TForm1.CreerMiniature(const NomFichier: string; Taille: Integer);
-var
+procedure TForm1.CreerMiniature(const NomFichier: string; Taille: Integer);  
+var  
   ImageSource: TImage;
   Bmp: TBitmap;
   Ratio: Double;
@@ -573,8 +573,8 @@ end;
 #### 4. Filigrane (Watermark)
 
 ```pascal
-procedure TForm1.AjouterFiligrane(const Texte: string);
-begin
+procedure TForm1.AjouterFiligrane(const Texte: string);  
+begin  
   if not Assigned(Image1.Picture.Bitmap) then Exit;
 
   with Image1.Picture.Bitmap.Canvas do
@@ -657,9 +657,9 @@ property Pen: TPen;  // Style de la bordure
 
 Propriétés du Pen :
 ```pascal
-Pen.Color: TColor;      // Couleur de la bordure
-Pen.Width: Integer;     // Épaisseur de la bordure
-Pen.Style: TPenStyle;   // Style (psSolid, psDash, psDot, etc.)
+Pen.Color: TColor;      // Couleur de la bordure  
+Pen.Width: Integer;     // Épaisseur de la bordure  
+Pen.Style: TPenStyle;   // Style (psSolid, psDash, psDot, etc.)  
 ```
 
 #### Remplissage (Brush)
@@ -670,8 +670,8 @@ property Brush: TBrush;  // Style de remplissage
 
 Propriétés du Brush :
 ```pascal
-Brush.Color: TColor;      // Couleur de remplissage
-Brush.Style: TBrushStyle; // Style (bsSolid, bsClear, bsHorizontal, etc.)
+Brush.Color: TColor;      // Couleur de remplissage  
+Brush.Style: TBrushStyle; // Style (bsSolid, bsClear, bsHorizontal, etc.)  
 ```
 
 ### Exemples de Formes
@@ -679,8 +679,8 @@ Brush.Style: TBrushStyle; // Style (bsSolid, bsClear, bsHorizontal, etc.)
 #### Rectangle Simple
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   Shape1.Shape := stRectangle;
   Shape1.Width := 100;
   Shape1.Height := 80;
@@ -693,44 +693,44 @@ end;
 #### Cercle Rouge
 
 ```pascal
-Shape2.Shape := stCircle;
-Shape2.Width := 50;
-Shape2.Height := 50;  // Même dimension pour un cercle parfait
-Shape2.Brush.Color := clRed;
-Shape2.Pen.Color := clMaroon;
-Shape2.Pen.Width := 3;
+Shape2.Shape := stCircle;  
+Shape2.Width := 50;  
+Shape2.Height := 50;  // Même dimension pour un cercle parfait  
+Shape2.Brush.Color := clRed;  
+Shape2.Pen.Color := clMaroon;  
+Shape2.Pen.Width := 3;  
 ```
 
 #### Ligne Horizontale (Séparateur)
 
 ```pascal
-ShapeLigne.Shape := stRectangle;
-ShapeLigne.Width := 300;
-ShapeLigne.Height := 2;
-ShapeLigne.Brush.Color := clGray;
-ShapeLigne.Pen.Style := psClear;  // Pas de bordure
+ShapeLigne.Shape := stRectangle;  
+ShapeLigne.Width := 300;  
+ShapeLigne.Height := 2;  
+ShapeLigne.Brush.Color := clGray;  
+ShapeLigne.Pen.Style := psClear;  // Pas de bordure  
 ```
 
 #### Ellipse Verte Semi-Transparente
 
 ```pascal
-Shape3.Shape := stEllipse;
-Shape3.Width := 120;
-Shape3.Height := 80;
-Shape3.Brush.Color := clLime;
-Shape3.Pen.Color := clGreen;
-Shape3.Pen.Width := 1;
+Shape3.Shape := stEllipse;  
+Shape3.Width := 120;  
+Shape3.Height := 80;  
+Shape3.Brush.Color := clLime;  
+Shape3.Pen.Color := clGreen;  
+Shape3.Pen.Width := 1;  
 ```
 
 #### Rectangle Arrondi
 
 ```pascal
-Shape4.Shape := stRoundRect;
-Shape4.Width := 100;
-Shape4.Height := 60;
-Shape4.Brush.Color := clYellow;
-Shape4.Pen.Color := clOlive;
-Shape4.Pen.Width := 2;
+Shape4.Shape := stRoundRect;  
+Shape4.Width := 100;  
+Shape4.Height := 60;  
+Shape4.Brush.Color := clYellow;  
+Shape4.Pen.Color := clOlive;  
+Shape4.Pen.Width := 2;  
 ```
 
 ### Styles de Bordure (Pen.Style)
@@ -750,9 +750,9 @@ type
 **Exemple :**
 
 ```pascal
-ShapeCadre.Pen.Style := psDash;     // Bordure en tirets
-ShapeCadre.Pen.Color := clBlack;
-ShapeCadre.Pen.Width := 1;
+ShapeCadre.Pen.Style := psDash;     // Bordure en tirets  
+ShapeCadre.Pen.Color := clBlack;  
+ShapeCadre.Pen.Width := 1;  
 ```
 
 ### Styles de Remplissage (Brush.Style)
@@ -775,8 +775,8 @@ type
 
 ```pascal
 // Forme avec motif hachuré
-ShapeMotif.Brush.Style := bsCross;
-ShapeMotif.Brush.Color := clRed;
+ShapeMotif.Brush.Style := bsCross;  
+ShapeMotif.Brush.Color := clRed;  
 ```
 
 ### Cas d'Usage Typiques
@@ -784,8 +784,8 @@ ShapeMotif.Brush.Color := clRed;
 #### 1. Séparateur Visuel
 
 ```pascal
-procedure TForm1.CreerSeparateur;
-begin
+procedure TForm1.CreerSeparateur;  
+begin  
   ShapeSeparateur.Shape := stRectangle;
   ShapeSeparateur.Align := alTop;
   ShapeSeparateur.Height := 2;
@@ -800,8 +800,8 @@ end;
 type
   TStatut = (stRouge, stOrange, stVert);
 
-procedure TForm1.AfficherStatut(Statut: TStatut);
-begin
+procedure TForm1.AfficherStatut(Statut: TStatut);  
+begin  
   // Réinitialiser
   ShapeRouge.Brush.Color := clGray;
   ShapeOrange.Brush.Color := clGray;
@@ -815,8 +815,8 @@ begin
   end;
 end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Configuration des 3 cercles
   ShapeRouge.Shape := stCircle;
   ShapeRouge.Width := 30;
@@ -837,8 +837,8 @@ end;
 #### 3. Barre de Progression Visuelle
 
 ```pascal
-procedure TForm1.AfficherProgression(Pourcentage: Integer);
-var
+procedure TForm1.AfficherProgression(Pourcentage: Integer);  
+var  
   Largeur: Integer;
 begin
   // Calculer la largeur de la barre
@@ -850,8 +850,8 @@ begin
   LabelPourcent.Caption := IntToStr(Pourcentage) + '%';
 end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Fond de la barre
   ShapeFond.Shape := stRectangle;
   ShapeFond.Brush.Color := clSilver;
@@ -876,8 +876,8 @@ end;
 #### 4. Cadre Décoratif
 
 ```pascal
-procedure TForm1.CreerCadreDecoratif;
-begin
+procedure TForm1.CreerCadreDecoratif;  
+begin  
   ShapeCadre.Shape := stRoundRect;
   ShapeCadre.Brush.Style := bsClear;  // Transparent
   ShapeCadre.Pen.Color := clBlue;
@@ -890,8 +890,8 @@ end;
 #### 5. Indicateur Coloré (Tag, Badge)
 
 ```pascal
-procedure TForm1.CreerBadge(const Couleur: TColor);
-begin
+procedure TForm1.CreerBadge(const Couleur: TColor);  
+begin  
   ShapeBadge.Shape := stCircle;
   ShapeBadge.Width := 20;
   ShapeBadge.Height := 20;
@@ -900,9 +900,9 @@ begin
 end;
 
 // Utilisation
-CreerBadge(clRed);    // Badge rouge (nouveau message)
-CreerBadge(clGreen);  // Badge vert (en ligne)
-CreerBadge(clOrange); // Badge orange (occupé)
+CreerBadge(clRed);    // Badge rouge (nouveau message)  
+CreerBadge(clGreen);  // Badge vert (en ligne)  
+CreerBadge(clOrange); // Badge orange (occupé)  
 ```
 
 ### Animer un TShape
@@ -917,8 +917,8 @@ type
     FCroissant: Boolean;
   end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   Shape1.Shape := stCircle;
   Shape1.Width := 50;
   Shape1.Height := 50;
@@ -929,8 +929,8 @@ begin
   FCroissant := True;
 end;
 
-procedure TForm1.Timer1Timer(Sender: TObject);
-begin
+procedure TForm1.Timer1Timer(Sender: TObject);  
+begin  
   // Animation : faire pulser le cercle
   if FCroissant then
   begin
@@ -956,8 +956,8 @@ end;
 ### Exemple : Cadre autour d'une Image
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Image
   Image1.Picture.LoadFromFile('photo.jpg');
   Image1.Stretch := True;
@@ -982,8 +982,8 @@ end;
 ### Exemple : Indicateur sur une Image
 
 ```pascal
-procedure TForm1.AfficherIndicateurSurImage(X, Y: Integer);
-begin
+procedure TForm1.AfficherIndicateurSurImage(X, Y: Integer);  
+begin  
   ShapeIndicateur.Shape := stCircle;
   ShapeIndicateur.Width := 20;
   ShapeIndicateur.Height := 20;
@@ -1000,8 +1000,8 @@ begin
   ShapeIndicateur.BringToFront;
 end;
 
-procedure TForm1.Image1Click(Sender: TObject);
-var
+procedure TForm1.Image1Click(Sender: TObject);  
+var  
   P: TPoint;
 begin
   P := Image1.ScreenToClient(Mouse.CursorPos);
@@ -1034,8 +1034,8 @@ end;
 // Si vous affichez une miniature 100x100, ne chargez pas une image 4000x3000
 
 // ❌ MAUVAIS : Charger des images énormes
-Image1.Picture.LoadFromFile('photo_20MB.jpg');  // Très lent !
-Image1.Stretch := True;  // Redimensionne à chaque affichage
+Image1.Picture.LoadFromFile('photo_20MB.jpg');  // Très lent !  
+Image1.Stretch := True;  // Redimensionne à chaque affichage  
 ```
 
 ### 2. Gérer les Erreurs de Chargement
@@ -1064,8 +1064,8 @@ Image1.Picture.LoadFromFile(NomFichier);  // Peut crasher !
 Image1.Picture.Clear;  // Libère la mémoire
 
 // Pour plusieurs images
-for i := 0 to ComponentCount - 1 do
-begin
+for i := 0 to ComponentCount - 1 do  
+begin  
   if Components[i] is TImage then
     TImage(Components[i]).Picture.Clear;
 end;
@@ -1100,15 +1100,15 @@ Image1.Picture.LoadFromFile(NomFichier);  // Exception si fichier absent
 
 ```pascal
 // ✅ BON : Utiliser Align pour les séparateurs
-ShapeSeparateur.Align := alTop;
-ShapeSeparateur.Height := 2;
+ShapeSeparateur.Align := alTop;  
+ShapeSeparateur.Height := 2;  
 
 // ✅ BON : Ancrer pour suivre le redimensionnement
 Shape1.Anchors := [akLeft, akTop, akRight];  // S'étire horizontalement
 
 // ❌ MAUVAIS : Position fixe sans ancrage
-Shape1.Left := 100;
-Shape1.Top := 50;
+Shape1.Left := 100;  
+Shape1.Top := 50;  
 // Ne s'adapte pas au redimensionnement du formulaire
 ```
 
@@ -1116,12 +1116,12 @@ Shape1.Top := 50;
 
 ```pascal
 // ✅ BON : Noms descriptifs
-ImageLogo, ImageProfil, ImageProduit
-ShapeSeparateur, ShapeIndicateur, ShapeCadre
+ImageLogo, ImageProfil, ImageProduit  
+ShapeSeparateur, ShapeIndicateur, ShapeCadre  
 
 // ❌ MAUVAIS : Noms génériques
-Image1, Image2, Image3
-Shape1, Shape2, Shape3
+Image1, Image2, Image3  
+Shape1, Shape2, Shape3  
 ```
 
 ---
@@ -1151,8 +1151,8 @@ type
     procedure MettreAJourIndicateurs;
   end;
 
-procedure TFormVisionneuse.FormCreate(Sender: TObject);
-begin
+procedure TFormVisionneuse.FormCreate(Sender: TObject);  
+begin  
   // Liste des images
   FImages := TStringList.Create;
   FImages.Add('photo1.jpg');
@@ -1197,8 +1197,8 @@ begin
   ChargerImage(FIndexCourant);
 end;
 
-procedure TFormVisionneuse.ChargerImage(Index: Integer);
-begin
+procedure TFormVisionneuse.ChargerImage(Index: Integer);  
+begin  
   if (Index >= 0) and (Index < FImages.Count) then
   begin
     try
@@ -1217,8 +1217,8 @@ begin
   end;
 end;
 
-procedure TFormVisionneuse.MettreAJourIndicateurs;
-begin
+procedure TFormVisionneuse.MettreAJourIndicateurs;  
+begin  
   // Indicateur gauche : rouge si on peut aller à gauche
   if FIndexCourant > 0 then
     ShapeIndicateurGauche.Brush.Color := clLime
@@ -1232,8 +1232,8 @@ begin
     ShapeIndicateurDroit.Brush.Color := clGray;
 end;
 
-procedure TFormVisionneuse.BtnPrecedentClick(Sender: TObject);
-begin
+procedure TFormVisionneuse.BtnPrecedentClick(Sender: TObject);  
+begin  
   if FIndexCourant > 0 then
   begin
     Dec(FIndexCourant);
@@ -1241,8 +1241,8 @@ begin
   end;
 end;
 
-procedure TFormVisionneuse.BtnSuivantClick(Sender: TObject);
-begin
+procedure TFormVisionneuse.BtnSuivantClick(Sender: TObject);  
+begin  
   if FIndexCourant < FImages.Count - 1 then
   begin
     Inc(FIndexCourant);
@@ -1250,8 +1250,8 @@ begin
   end;
 end;
 
-procedure TFormVisionneuse.Timer1Timer(Sender: TObject);
-begin
+procedure TFormVisionneuse.Timer1Timer(Sender: TObject);  
+begin  
   // Faire clignoter le cadre
   FClignotement := not FClignotement;
   if FClignotement then
@@ -1260,8 +1260,8 @@ begin
     ShapeCadre.Pen.Color := clSilver;
 end;
 
-procedure TFormVisionneuse.FormDestroy(Sender: TObject);
-begin
+procedure TFormVisionneuse.FormDestroy(Sender: TObject);  
+begin  
   FImages.Free;
 end;
 ```

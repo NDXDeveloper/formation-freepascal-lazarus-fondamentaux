@@ -48,8 +48,8 @@ implementation
 
 {$R *.lfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
-var
+procedure TForm1.FormCreate(Sender: TObject);  
+var  
   NodeProjet, NodeSrc, NodeBin, NodeDoc: TTreeNode;
 begin
   { Tab 1 : ListBox }
@@ -85,8 +85,8 @@ begin
   NodeProjet.Expand(True);
 end;
 
-procedure TForm1.BtnAjouterClick(Sender: TObject);
-begin
+procedure TForm1.BtnAjouterClick(Sender: TObject);  
+begin  
   if EditElement.Text <> '' then
   begin
     ListBox1.Items.Add(EditElement.Text);
@@ -95,20 +95,20 @@ begin
   end;
 end;
 
-procedure TForm1.BtnSupprimerClick(Sender: TObject);
-begin
+procedure TForm1.BtnSupprimerClick(Sender: TObject);  
+begin  
   if ListBox1.ItemIndex >= 0 then
     ListBox1.Items.Delete(ListBox1.ItemIndex);
 end;
 
-procedure TForm1.BtnViderClick(Sender: TObject);
-begin
+procedure TForm1.BtnViderClick(Sender: TObject);  
+begin  
   if MessageDlg('Vider la liste ?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
     ListBox1.Items.Clear;
 end;
 
-procedure TForm1.ComboBoxPaysChange(Sender: TObject);
-begin
+procedure TForm1.ComboBoxPaysChange(Sender: TObject);  
+begin  
   ComboBoxVille.Items.Clear;
   case ComboBoxPays.ItemIndex of
     0: begin
@@ -131,14 +131,14 @@ begin
     ComboBoxVille.ItemIndex := 0;
 end;
 
-procedure TForm1.BtnValiderClick(Sender: TObject);
-begin
+procedure TForm1.BtnValiderClick(Sender: TObject);  
+begin  
   ShowMessage(Format('Pays : %s, Ville : %s',
     [ComboBoxPays.Text, ComboBoxVille.Text]));
 end;
 
-procedure TForm1.TreeView1DblClick(Sender: TObject);
-var
+procedure TForm1.TreeView1DblClick(Sender: TObject);  
+var  
   Node: TTreeNode;
 begin
   Node := TreeView1.Selected;

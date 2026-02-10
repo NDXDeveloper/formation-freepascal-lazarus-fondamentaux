@@ -47,8 +47,8 @@ implementation
 
 {$R *.lfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   { Configuration feu tricolore }
   ShapeRouge.Shape := stCircle;
   ShapeOrange.Shape := stCircle;
@@ -64,8 +64,8 @@ begin
   Timer1.Enabled := True;
 end;
 
-procedure TForm1.AfficherStatut(ARouge, AOrange, AVert: Boolean);
-begin
+procedure TForm1.AfficherStatut(ARouge, AOrange, AVert: Boolean);  
+begin  
   if ARouge then
     ShapeRouge.Brush.Color := clRed
   else
@@ -82,23 +82,23 @@ begin
     ShapeVert.Brush.Color := clGray;
 end;
 
-procedure TForm1.BtnRougeClick(Sender: TObject);
-begin
+procedure TForm1.BtnRougeClick(Sender: TObject);  
+begin  
   AfficherStatut(True, False, False);
 end;
 
-procedure TForm1.BtnOrangeClick(Sender: TObject);
-begin
+procedure TForm1.BtnOrangeClick(Sender: TObject);  
+begin  
   AfficherStatut(False, True, False);
 end;
 
-procedure TForm1.BtnVertClick(Sender: TObject);
-begin
+procedure TForm1.BtnVertClick(Sender: TObject);  
+begin  
   AfficherStatut(False, False, True);
 end;
 
-procedure TForm1.Timer1Timer(Sender: TObject);
-begin
+procedure TForm1.Timer1Timer(Sender: TObject);  
+begin  
   if FPulseGrowing then
     Inc(FPulseSize, 2)
   else
@@ -115,8 +115,8 @@ begin
   ShapePulse.Top := 40 + (60 - FPulseSize) div 2;
 end;
 
-procedure TForm1.BtnToggleAnimationClick(Sender: TObject);
-begin
+procedure TForm1.BtnToggleAnimationClick(Sender: TObject);  
+begin  
   Timer1.Enabled := not Timer1.Enabled;
   if Timer1.Enabled then
     BtnToggleAnimation.Caption := 'Arrêter animation'

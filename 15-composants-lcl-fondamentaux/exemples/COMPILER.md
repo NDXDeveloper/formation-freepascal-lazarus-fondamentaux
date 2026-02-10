@@ -61,15 +61,15 @@ Chaque projet est un dossier contenant 4 fichiers : `.lpr`, `.lpi`, `unit1.pas`,
 ### Compiler un projet individuel
 
 ```bash
-cd exemples/03-conteneurs
-lazbuild DemoConteneurs.lpi
+cd exemples/03-conteneurs  
+lazbuild DemoConteneurs.lpi  
 ```
 
 ### Compilation en lot
 
 ```bash
-cd exemples
-for dir in 03-conteneurs 04-listes 05-grilles 06-calculateur-prix 07-shapes-demo 08-compte-a-rebours 09-editeur-actions; do
+cd exemples  
+for dir in 03-conteneurs 04-listes 05-grilles 06-calculateur-prix 07-shapes-demo 08-compte-a-rebours 09-editeur-actions; do  
   echo "=== $dir ==="
   (cd "$dir" && lazbuild *.lpi)
 done
@@ -78,8 +78,8 @@ done
 ## Nettoyage
 
 ```bash
-cd exemples
-for dir in 03-conteneurs 04-listes 05-grilles 06-calculateur-prix 07-shapes-demo 08-compte-a-rebours 09-editeur-actions; do
+cd exemples  
+for dir in 03-conteneurs 04-listes 05-grilles 06-calculateur-prix 07-shapes-demo 08-compte-a-rebours 09-editeur-actions; do  
   rm -rf "$dir/lib" "$dir"/*.res
   # Supprimer l'exécutable (nom sans extension sous Linux)
   find "$dir" -maxdepth 1 -type f -executable -delete

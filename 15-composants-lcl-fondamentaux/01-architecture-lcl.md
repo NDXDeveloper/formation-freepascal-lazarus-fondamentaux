@@ -251,8 +251,8 @@ Le Canvas est une abstraction qui vous permet de dessiner (lignes, rectangles, t
 ### Exemple simple
 
 ```pascal
-procedure TForm1.FormPaint(Sender: TObject);
-begin
+procedure TForm1.FormPaint(Sender: TObject);  
+begin  
   // Dessiner un rectangle bleu avec contour rouge
   Canvas.Pen.Color := clRed;
   Canvas.Brush.Color := clBlue;
@@ -389,10 +389,10 @@ Button1 := TButton.Create(Self);  // Self = propriétaire (souvent le Form)
 
 ### 2. Configuration
 ```pascal
-Button1.Parent := Self;  // Attaché au formulaire
-Button1.Caption := 'OK';
-Button1.Left := 10;
-Button1.Top := 10;
+Button1.Parent := Self;  // Attaché au formulaire  
+Button1.Caption := 'OK';  
+Button1.Left := 10;  
+Button1.Top := 10;  
 ```
 
 ### 3. Affichage

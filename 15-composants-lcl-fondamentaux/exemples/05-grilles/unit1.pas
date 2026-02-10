@@ -40,8 +40,8 @@ implementation
 
 {$R *.lfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   StringGrid1.ColCount := 4;
   StringGrid1.RowCount := 2;
   StringGrid1.FixedRows := 1;
@@ -61,8 +61,8 @@ begin
   StringGrid1.Options := StringGrid1.Options - [goEditing];
 end;
 
-procedure TForm1.BtnAjouterClick(Sender: TObject);
-var
+procedure TForm1.BtnAjouterClick(Sender: TObject);  
+var  
   Ligne: Integer;
 begin
   if (EditNom.Text = '') or (EditPrenom.Text = '') then
@@ -86,8 +86,8 @@ begin
   EditNom.SetFocus;
 end;
 
-procedure TForm1.BtnSupprimerClick(Sender: TObject);
-begin
+procedure TForm1.BtnSupprimerClick(Sender: TObject);  
+begin  
   if StringGrid1.Row < StringGrid1.FixedRows then Exit;
   if StringGrid1.RowCount <= StringGrid1.FixedRows + 1 then Exit;
 

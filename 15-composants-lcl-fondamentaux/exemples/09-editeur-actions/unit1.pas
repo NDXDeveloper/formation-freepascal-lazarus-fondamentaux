@@ -68,8 +68,8 @@ implementation
 
 {$R *.lfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   FFichierCourant := '';
   Memo1.Clear;
   MettreAJourTitre;
@@ -77,8 +77,8 @@ end;
 
 { --- Actions Fichier --- }
 
-procedure TForm1.ActNouveauExecute(Sender: TObject);
-begin
+procedure TForm1.ActNouveauExecute(Sender: TObject);  
+begin  
   if Memo1.Modified then
   begin
     case MessageDlg('Sauvegarder les modifications ?',
@@ -94,8 +94,8 @@ begin
   MettreAJourTitre;
 end;
 
-procedure TForm1.ActOuvrirExecute(Sender: TObject);
-begin
+procedure TForm1.ActOuvrirExecute(Sender: TObject);  
+begin  
   if OpenDialog1.Execute then
   begin
     try
@@ -110,8 +110,8 @@ begin
   end;
 end;
 
-procedure TForm1.ActSauvegarderExecute(Sender: TObject);
-begin
+procedure TForm1.ActSauvegarderExecute(Sender: TObject);  
+begin  
   if FFichierCourant = '' then
   begin
     if SaveDialog1.Execute then
@@ -131,59 +131,59 @@ begin
   end;
 end;
 
-procedure TForm1.ActQuitterExecute(Sender: TObject);
-begin
+procedure TForm1.ActQuitterExecute(Sender: TObject);  
+begin  
   Close;
 end;
 
 { --- Actions Édition --- }
 
-procedure TForm1.ActCouperExecute(Sender: TObject);
-begin
+procedure TForm1.ActCouperExecute(Sender: TObject);  
+begin  
   Memo1.CutToClipboard;
 end;
 
-procedure TForm1.ActCopierExecute(Sender: TObject);
-begin
+procedure TForm1.ActCopierExecute(Sender: TObject);  
+begin  
   Memo1.CopyToClipboard;
 end;
 
-procedure TForm1.ActCollerExecute(Sender: TObject);
-begin
+procedure TForm1.ActCollerExecute(Sender: TObject);  
+begin  
   Memo1.PasteFromClipboard;
 end;
 
-procedure TForm1.ActSelectionnerToutExecute(Sender: TObject);
-begin
+procedure TForm1.ActSelectionnerToutExecute(Sender: TObject);  
+begin  
   Memo1.SelectAll;
 end;
 
 { --- Mise à jour automatique --- }
 
-procedure TForm1.ActCouperUpdate(Sender: TObject);
-begin
+procedure TForm1.ActCouperUpdate(Sender: TObject);  
+begin  
   ActCouper.Enabled := Memo1.SelLength > 0;
 end;
 
-procedure TForm1.ActCopierUpdate(Sender: TObject);
-begin
+procedure TForm1.ActCopierUpdate(Sender: TObject);  
+begin  
   ActCopier.Enabled := Memo1.SelLength > 0;
 end;
 
-procedure TForm1.ActCollerUpdate(Sender: TObject);
-begin
+procedure TForm1.ActCollerUpdate(Sender: TObject);  
+begin  
   ActColler.Enabled := Clipboard.HasFormat(CF_TEXT);
 end;
 
-procedure TForm1.ActSauvegarderUpdate(Sender: TObject);
-begin
+procedure TForm1.ActSauvegarderUpdate(Sender: TObject);  
+begin  
   ActSauvegarder.Enabled := Memo1.Modified;
 end;
 
 { --- Utilitaires --- }
 
-procedure TForm1.MettreAJourTitre;
-begin
+procedure TForm1.MettreAJourTitre;  
+begin  
   if FFichierCourant = '' then
     Caption := 'Éditeur - Sans titre'
   else

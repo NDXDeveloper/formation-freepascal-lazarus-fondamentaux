@@ -42,8 +42,8 @@ Imaginez les composants comme des **briques de LEGO** : chaque brique a une form
 Dans la Partie I, vous avez créé des programmes en **mode console** :
 
 ```pascal
-program HelloWorld;
-begin
+program HelloWorld;  
+begin  
   WriteLn('Bonjour le monde !');
   ReadLn;
 end.
@@ -295,8 +295,8 @@ Vous ne contrôlez plus le flux d'exécution directement. Vous **répondez aux �
 
 **Programme Console (Partie I) :**
 ```pascal
-program CalculatriceMoyenne;
-var
+program CalculatriceMoyenne;  
+var  
   Note1, Note2, Note3: Real;
   Moyenne: Real;
 begin
@@ -316,8 +316,8 @@ end.
 
 **Application Graphique (Après ce Chapitre) :**
 ```pascal
-procedure TFormCalcul.BtnCalculerClick(Sender: TObject);
-var
+procedure TFormCalcul.BtnCalculerClick(Sender: TObject);  
+var  
   Note1, Note2, Note3, Moyenne: Real;
 begin
   Note1 := StrToFloat(EditNote1.Text);

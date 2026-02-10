@@ -57,18 +57,18 @@ TWinControl
 ### Propriétés Principales
 
 ```pascal
-property Value: Integer;        // Valeur actuelle
-property MinValue: Integer;     // Valeur minimum
-property MaxValue: Integer;     // Valeur maximum
-property Increment: Integer;    // Pas d'incrémentation (défaut: 1)
-property EditorEnabled: Boolean; // Autoriser la saisie directe
+property Value: Integer;        // Valeur actuelle  
+property MinValue: Integer;     // Valeur minimum  
+property MaxValue: Integer;     // Valeur maximum  
+property Increment: Integer;    // Pas d'incrémentation (défaut: 1)  
+property EditorEnabled: Boolean; // Autoriser la saisie directe  
 ```
 
 ### Exemple de Base
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Configuration de l'âge
   SpinEditAge.MinValue := 0;
   SpinEditAge.MaxValue := 120;
@@ -76,8 +76,8 @@ begin
   SpinEditAge.Increment := 1;
 end;
 
-procedure TForm1.SpinEditAgeChange(Sender: TObject);
-begin
+procedure TForm1.SpinEditAgeChange(Sender: TObject);  
+begin  
   LabelResultat.Caption := 'Âge : ' + IntToStr(SpinEditAge.Value) + ' ans';
 end;
 ```
@@ -93,26 +93,26 @@ property OnChange: TNotifyEvent;  // La valeur change
 #### 1. Quantité de produits
 
 ```pascal
-SpinEditQuantite.MinValue := 1;
-SpinEditQuantite.MaxValue := 99;
-SpinEditQuantite.Value := 1;
+SpinEditQuantite.MinValue := 1;  
+SpinEditQuantite.MaxValue := 99;  
+SpinEditQuantite.Value := 1;  
 ```
 
 #### 2. Réglage de volume (0-100)
 
 ```pascal
-SpinEditVolume.MinValue := 0;
-SpinEditVolume.MaxValue := 100;
-SpinEditVolume.Increment := 5;  // Incrémente par 5
-SpinEditVolume.Value := 50;
+SpinEditVolume.MinValue := 0;  
+SpinEditVolume.MaxValue := 100;  
+SpinEditVolume.Increment := 5;  // Incrémente par 5  
+SpinEditVolume.Value := 50;  
 ```
 
 #### 3. Année
 
 ```pascal
-SpinEditAnnee.MinValue := 1900;
-SpinEditAnnee.MaxValue := 2100;
-SpinEditAnnee.Value := 2025;
+SpinEditAnnee.MinValue := 1900;  
+SpinEditAnnee.MaxValue := 2100;  
+SpinEditAnnee.Value := 2025;  
 ```
 
 ### Validation
@@ -121,8 +121,8 @@ Le SpinEdit **empêche automatiquement** les valeurs hors limites :
 
 ```pascal
 // Si MinValue = 0 et MaxValue = 100
-SpinEdit1.Value := 150;  // Sera ramené automatiquement à 100
-SpinEdit1.Value := -10;  // Sera ramené automatiquement à 0
+SpinEdit1.Value := 150;  // Sera ramené automatiquement à 100  
+SpinEdit1.Value := -10;  // Sera ramené automatiquement à 0  
 ```
 
 ### Désactiver la Saisie Directe
@@ -142,18 +142,18 @@ SpinEdit1.EditorEnabled := False;  // Seuls les boutons fonctionnent
 ### Propriétés Principales
 
 ```pascal
-property Value: Double;           // Valeur actuelle (décimale)
-property MinValue: Double;        // Minimum
-property MaxValue: Double;        // Maximum
-property Increment: Double;       // Pas d'incrémentation
-property DecimalPlaces: Integer;  // Nombre de décimales affichées
+property Value: Double;           // Valeur actuelle (décimale)  
+property MinValue: Double;        // Minimum  
+property MaxValue: Double;        // Maximum  
+property Increment: Double;       // Pas d'incrémentation  
+property DecimalPlaces: Integer;  // Nombre de décimales affichées  
 ```
 
 ### Exemple : Prix
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   FloatSpinEditPrix.MinValue := 0.00;
   FloatSpinEditPrix.MaxValue := 9999.99;
   FloatSpinEditPrix.Increment := 0.10;  // Incrémente par 10 centimes
@@ -161,8 +161,8 @@ begin
   FloatSpinEditPrix.Value := 19.99;
 end;
 
-procedure TForm1.FloatSpinEditPrixChange(Sender: TObject);
-begin
+procedure TForm1.FloatSpinEditPrixChange(Sender: TObject);  
+begin  
   LabelPrix.Caption := Format('Prix : %.2f €', [FloatSpinEditPrix.Value]);
 end;
 ```
@@ -172,28 +172,28 @@ end;
 #### 1. Pourcentages
 
 ```pascal
-FloatSpinEditPourcent.MinValue := 0.0;
-FloatSpinEditPourcent.MaxValue := 100.0;
-FloatSpinEditPourcent.Increment := 0.5;
-FloatSpinEditPourcent.DecimalPlaces := 1;
+FloatSpinEditPourcent.MinValue := 0.0;  
+FloatSpinEditPourcent.MaxValue := 100.0;  
+FloatSpinEditPourcent.Increment := 0.5;  
+FloatSpinEditPourcent.DecimalPlaces := 1;  
 ```
 
 #### 2. Mesures (longueur, poids)
 
 ```pascal
-FloatSpinEditPoids.MinValue := 0.0;
-FloatSpinEditPoids.MaxValue := 500.0;
-FloatSpinEditPoids.Increment := 0.1;
-FloatSpinEditPoids.DecimalPlaces := 2;
+FloatSpinEditPoids.MinValue := 0.0;  
+FloatSpinEditPoids.MaxValue := 500.0;  
+FloatSpinEditPoids.Increment := 0.1;  
+FloatSpinEditPoids.DecimalPlaces := 2;  
 ```
 
 #### 3. Température
 
 ```pascal
-FloatSpinEditTemp.MinValue := -50.0;
-FloatSpinEditTemp.MaxValue := 50.0;
-FloatSpinEditTemp.Increment := 0.5;
-FloatSpinEditTemp.DecimalPlaces := 1;
+FloatSpinEditTemp.MinValue := -50.0;  
+FloatSpinEditTemp.MaxValue := 50.0;  
+FloatSpinEditTemp.Increment := 0.5;  
+FloatSpinEditTemp.DecimalPlaces := 1;  
 ```
 
 ---
@@ -216,8 +216,8 @@ TWinControl
 ### Propriété Fondamentale
 
 ```pascal
-property EditMask: string;  // Le masque de saisie
-property Text: string;      // Le texte saisi
+property EditMask: string;  // Le masque de saisie  
+property Text: string;      // Le texte saisi  
 ```
 
 ### Syntaxe des Masques
@@ -308,8 +308,8 @@ Le masque complet a trois parties séparées par des points-virgules :
 ### Exemple Complet
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Téléphone
   MaskEditTel.EditMask := '00 00 00 00 00;1;_';
   MaskEditTel.Text := '';
@@ -321,8 +321,8 @@ begin
   MaskEditDate.EditMask := '00/00/0000;1;_';
 end;
 
-procedure TForm1.BtnValiderClick(Sender: TObject);
-begin
+procedure TForm1.BtnValiderClick(Sender: TObject);  
+begin  
   // Vérifier si la saisie est complète
   if Pos('_', MaskEditTel.Text) > 0 then
     ShowMessage('Numéro de téléphone incomplet')
@@ -334,8 +334,8 @@ end;
 ### Validation de la Saisie
 
 ```pascal
-function TForm1.TelephoneComplet: Boolean;
-begin
+function TForm1.TelephoneComplet: Boolean;  
+begin  
   // Vérifier qu'il n'y a pas de caractères de remplacement
   Result := (Pos('_', MaskEditTel.Text) = 0) and
             (Length(MaskEditTel.Text) > 0);
@@ -369,18 +369,18 @@ end;
 ### Propriétés Principales
 
 ```pascal
-property Date: TDateTime;       // Date actuelle
-property Text: string;          // Texte affiché
-property ButtonWidth: Integer;  // Largeur du bouton calendrier
-property DialogTitle: string;   // Titre du calendrier
-property DateOrder: TDateOrder; // Ordre d'affichage (doJJ/MM/AAAA, etc.)
+property Date: TDateTime;       // Date actuelle  
+property Text: string;          // Texte affiché  
+property ButtonWidth: Integer;  // Largeur du bouton calendrier  
+property DialogTitle: string;   // Titre du calendrier  
+property DateOrder: TDateOrder; // Ordre d'affichage (doJJ/MM/AAAA, etc.)  
 ```
 
 ### Exemple de Base
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Date du jour par défaut
   DateEdit1.Date := Now;
 
@@ -388,8 +388,8 @@ begin
   DateEdit2.Date := EncodeDate(2025, 12, 25);  // Noël 2025
 end;
 
-procedure TForm1.DateEdit1Change(Sender: TObject);
-begin
+procedure TForm1.DateEdit1Change(Sender: TObject);  
+begin  
   ShowMessage('Date sélectionnée : ' + DateToStr(DateEdit1.Date));
 end;
 ```
@@ -411,15 +411,15 @@ DateEdit1.Date := EncodeDate(2025, 10, 14);  // 14 octobre 2025
 DateEdit1.Date := Date;  // ou Now
 
 // Calculer des dates
-DateEdit1.Date := Date + 7;  // Dans 7 jours
-DateEdit1.Date := Date - 30; // Il y a 30 jours
+DateEdit1.Date := Date + 7;  // Dans 7 jours  
+DateEdit1.Date := Date - 30; // Il y a 30 jours  
 ```
 
 ### Validation
 
 ```pascal
-procedure TForm1.BtnValiderClick(Sender: TObject);
-var
+procedure TForm1.BtnValiderClick(Sender: TObject);  
+var  
   Aujourd_hui: TDateTime;
 begin
   Aujourd_hui := Date;
@@ -436,8 +436,8 @@ end;
 ### Calculer un Âge
 
 ```pascal
-function TForm1.CalculerAge(DateNaissance: TDateTime): Integer;
-var
+function TForm1.CalculerAge(DateNaissance: TDateTime): Integer;  
+var  
   Aujourd_hui: TDateTime;
 begin
   Aujourd_hui := Date;
@@ -445,8 +445,8 @@ begin
 end;
 
 // Utilisation
-procedure TForm1.DateEditNaissanceChange(Sender: TObject);
-begin
+procedure TForm1.DateEditNaissanceChange(Sender: TObject);  
+begin  
   LabelAge.Caption := 'Âge : ' + IntToStr(CalculerAge(DateEditNaissance.Date)) + ' ans';
 end;
 ```
@@ -478,15 +478,15 @@ end;
 ### Propriétés Principales
 
 ```pascal
-property Time: TDateTime;  // Heure actuelle
-property Text: string;     // Texte affiché
+property Time: TDateTime;  // Heure actuelle  
+property Text: string;     // Texte affiché  
 ```
 
 ### Exemple de Base
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Heure actuelle
   TimeEdit1.Time := Now;
 
@@ -494,8 +494,8 @@ begin
   TimeEdit2.Time := EncodeTime(14, 30, 0, 0);  // 14:30:00
 end;
 
-procedure TForm1.TimeEdit1Change(Sender: TObject);
-begin
+procedure TForm1.TimeEdit1Change(Sender: TObject);  
+begin  
   ShowMessage('Heure : ' + TimeToStr(TimeEdit1.Time));
 end;
 ```
@@ -521,8 +521,8 @@ TimeEdit1.Time := TimeEdit1.Time + EncodeTime(1, 30, 0, 0);  // +1h30
 ### Calculer une Durée
 
 ```pascal
-function TForm1.CalculerDuree(Debut, Fin: TDateTime): string;
-var
+function TForm1.CalculerDuree(Debut, Fin: TDateTime): string;  
+var  
   Duree: TDateTime;
   H, M, S, MS: Word;
 begin
@@ -532,8 +532,8 @@ begin
 end;
 
 // Utilisation
-procedure TForm1.BtnCalculerClick(Sender: TObject);
-var
+procedure TForm1.BtnCalculerClick(Sender: TObject);  
+var  
   Duree: string;
 begin
   Duree := CalculerDuree(TimeEditDebut.Time, TimeEditFin.Time);
@@ -585,23 +585,23 @@ TWinControl
 ### Propriétés Principales
 
 ```pascal
-property Min: Integer;          // Valeur minimum
-property Max: Integer;          // Valeur maximum
-property Position: Integer;     // Position actuelle du curseur
-property Frequency: Integer;    // Espacement des graduations
-property TickMarks: TTickMark;  // Position des graduations (tmBottomRight, tmTopLeft, tmBoth)
-property TickStyle: TTickStyle; // Style des graduations (tsAuto, tsNone, tsManual)
-property Orientation: TTrackBarOrientation;  // Horizontal ou Vertical
-property LineSize: Integer;     // Déplacement par flèches clavier
-property PageSize: Integer;     // Déplacement par PageUp/PageDown
-property ShowSelRange: Boolean; // Afficher plage de sélection
+property Min: Integer;          // Valeur minimum  
+property Max: Integer;          // Valeur maximum  
+property Position: Integer;     // Position actuelle du curseur  
+property Frequency: Integer;    // Espacement des graduations  
+property TickMarks: TTickMark;  // Position des graduations (tmBottomRight, tmTopLeft, tmBoth)  
+property TickStyle: TTickStyle; // Style des graduations (tsAuto, tsNone, tsManual)  
+property Orientation: TTrackBarOrientation;  // Horizontal ou Vertical  
+property LineSize: Integer;     // Déplacement par flèches clavier  
+property PageSize: Integer;     // Déplacement par PageUp/PageDown  
+property ShowSelRange: Boolean; // Afficher plage de sélection  
 ```
 
 ### Exemple : Volume Audio
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Configuration du curseur de volume
   TrackBarVolume.Min := 0;
   TrackBarVolume.Max := 100;
@@ -610,8 +610,8 @@ begin
   TrackBarVolume.Orientation := trHorizontal;
 end;
 
-procedure TForm1.TrackBarVolumeChange(Sender: TObject);
-begin
+procedure TForm1.TrackBarVolumeChange(Sender: TObject);  
+begin  
   LabelVolume.Caption := 'Volume : ' + IntToStr(TrackBarVolume.Position) + '%';
   // Ici, appliquer le volume réel à un lecteur audio
 end;
@@ -621,14 +621,14 @@ end;
 
 ```pascal
 // Horizontal (par défaut)
-TrackBar1.Orientation := trHorizontal;
-TrackBar1.Width := 200;
-TrackBar1.Height := 30;
+TrackBar1.Orientation := trHorizontal;  
+TrackBar1.Width := 200;  
+TrackBar1.Height := 30;  
 
 // Vertical
-TrackBar2.Orientation := trVertical;
-TrackBar2.Width := 30;
-TrackBar2.Height := 200;
+TrackBar2.Orientation := trVertical;  
+TrackBar2.Width := 30;  
+TrackBar2.Height := 200;  
 ```
 
 ### Graduations
@@ -652,42 +652,42 @@ TrackBar1.Frequency := 5;  // Tous les 5 unités
 #### 1. Contrôle de volume
 
 ```pascal
-TrackBarVolume.Min := 0;
-TrackBarVolume.Max := 100;
-TrackBarVolume.Position := 50;
+TrackBarVolume.Min := 0;  
+TrackBarVolume.Max := 100;  
+TrackBarVolume.Position := 50;  
 ```
 
 #### 2. Luminosité
 
 ```pascal
-TrackBarLuminosite.Min := 0;
-TrackBarLuminosite.Max := 255;
-TrackBarLuminosite.Position := 128;
+TrackBarLuminosite.Min := 0;  
+TrackBarLuminosite.Max := 255;  
+TrackBarLuminosite.Position := 128;  
 ```
 
 #### 3. Zoom
 
 ```pascal
-TrackBarZoom.Min := 10;   // 10%
-TrackBarZoom.Max := 400;  // 400%
-TrackBarZoom.Position := 100;  // 100%
-TrackBarZoom.Frequency := 10;
+TrackBarZoom.Min := 10;   // 10%  
+TrackBarZoom.Max := 400;  // 400%  
+TrackBarZoom.Position := 100;  // 100%  
+TrackBarZoom.Frequency := 10;  
 ```
 
 #### 4. Sélection d'année
 
 ```pascal
-TrackBarAnnee.Min := 1900;
-TrackBarAnnee.Max := 2100;
-TrackBarAnnee.Position := 2025;
-TrackBarAnnee.Frequency := 10;
+TrackBarAnnee.Min := 1900;  
+TrackBarAnnee.Max := 2100;  
+TrackBarAnnee.Position := 2025;  
+TrackBarAnnee.Frequency := 10;  
 ```
 
 ### Combinaison avec un Label
 
 ```pascal
-procedure TForm1.TrackBar1Change(Sender: TObject);
-begin
+procedure TForm1.TrackBar1Change(Sender: TObject);  
+begin  
   LabelValeur.Caption := IntToStr(TrackBar1.Position);
 end;
 ```
@@ -712,20 +712,20 @@ end;
 ### Propriétés Principales
 
 ```pascal
-property Min: SmallInt;         // Valeur minimum
-property Max: SmallInt;         // Valeur maximum
-property Position: SmallInt;    // Position actuelle
-property Increment: SmallInt;   // Pas d'incrémentation
-property Associate: TWinControl; // Contrôle associé (souvent TEdit)
-property Orientation: TUDOrientation;  // Horizontal ou Vertical
-property Wrap: Boolean;         // Boucler (Max → Min)
+property Min: SmallInt;         // Valeur minimum  
+property Max: SmallInt;         // Valeur maximum  
+property Position: SmallInt;    // Position actuelle  
+property Increment: SmallInt;   // Pas d'incrémentation  
+property Associate: TWinControl; // Contrôle associé (souvent TEdit)  
+property Orientation: TUDOrientation;  // Horizontal ou Vertical  
+property Wrap: Boolean;         // Boucler (Max → Min)  
 ```
 
 ### Exemple : Associé à un TEdit
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Associer l'UpDown à l'Edit
   UpDown1.Associate := Edit1;
 
@@ -737,8 +737,8 @@ begin
   // La valeur sera automatiquement affichée dans Edit1
 end;
 
-procedure TForm1.UpDown1Click(Sender: TObject; Button: TUDBtnType);
-begin
+procedure TForm1.UpDown1Click(Sender: TObject; Button: TUDBtnType);  
+begin  
   LabelResultat.Caption := 'Valeur : ' + IntToStr(UpDown1.Position);
 end;
 ```
@@ -748,8 +748,8 @@ end;
 Vous pouvez aussi utiliser TUpDown seul :
 
 ```pascal
-procedure TForm1.UpDown1Click(Sender: TObject; Button: TUDBtnType);
-begin
+procedure TForm1.UpDown1Click(Sender: TObject; Button: TUDBtnType);  
+begin  
   // Button = btNext (▲) ou btPrev (▼)
   if Button = btNext then
     ShowMessage('Incrémenter')
@@ -763,9 +763,9 @@ end;
 ### Wrap (Bouclage)
 
 ```pascal
-UpDown1.Min := 0;
-UpDown1.Max := 10;
-UpDown1.Wrap := True;  // 10 → 0 et 0 → 10
+UpDown1.Min := 0;  
+UpDown1.Max := 10;  
+UpDown1.Wrap := True;  // 10 → 0 et 0 → 10  
 ```
 
 ### Orientation
@@ -803,13 +803,13 @@ property ButtonColor: TColor;  // Couleur sélectionnée
 ### Exemple
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   ColorButton1.ButtonColor := clRed;
 end;
 
-procedure TForm1.ColorButton1ColorChanged(Sender: TObject);
-begin
+procedure TForm1.ColorButton1ColorChanged(Sender: TObject);  
+begin  
   // Appliquer la couleur à un autre composant
   Panel1.Color := ColorButton1.ButtonColor;
 
@@ -851,26 +851,26 @@ end;
 ### Propriétés Principales
 
 ```pascal
-property Date: TDateTime;     // Date sélectionnée
-property DisplaySettings: TDisplaySettings;  // Configuration affichage
+property Date: TDateTime;     // Date sélectionnée  
+property DisplaySettings: TDisplaySettings;  // Configuration affichage  
 ```
 
 ### Exemple
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Date du jour par défaut
   Calendar1.Date := Date;
 end;
 
-procedure TForm1.Calendar1Click(Sender: TObject);
-begin
+procedure TForm1.Calendar1Click(Sender: TObject);  
+begin  
   ShowMessage('Date sélectionnée : ' + DateToStr(Calendar1.Date));
 end;
 
-procedure TForm1.Calendar1DblClick(Sender: TObject);
-begin
+procedure TForm1.Calendar1DblClick(Sender: TObject);  
+begin  
   // Double-clic pour valider
   DateEdit1.Date := Calendar1.Date;
   Panel1.Visible := False;  // Masquer le calendrier
@@ -920,8 +920,8 @@ type
     function FormulaireValide: Boolean;
   end;
 
-function TFormInscription.FormulaireValide: Boolean;
-var
+function TFormInscription.FormulaireValide: Boolean;  
+var  
   Age: Integer;
 begin
   Result := False;
@@ -970,8 +970,8 @@ begin
   Result := True;
 end;
 
-procedure TFormInscription.BtnValiderClick(Sender: TObject);
-begin
+procedure TFormInscription.BtnValiderClick(Sender: TObject);  
+begin  
   if FormulaireValide then
   begin
     ShowMessage('Inscription validée !');
@@ -989,8 +989,8 @@ end;
 La plupart des composants de saisie ont un événement `OnChange` déclenché quand la valeur change :
 
 ```pascal
-procedure TForm1.SpinEdit1Change(Sender: TObject);
-begin
+procedure TForm1.SpinEdit1Change(Sender: TObject);  
+begin  
   // Réagir au changement
   UpdateInterface;
 end;
@@ -1001,14 +1001,14 @@ end;
 Pour faire des actions quand le composant reçoit ou perd le focus :
 
 ```pascal
-procedure TForm1.Edit1Enter(Sender: TObject);
-begin
+procedure TForm1.Edit1Enter(Sender: TObject);  
+begin  
   // Composant actif
   Edit1.Color := clYellow;
 end;
 
-procedure TForm1.Edit1Exit(Sender: TObject);
-begin
+procedure TForm1.Edit1Exit(Sender: TObject);  
+begin  
   // Composant quitté
   Edit1.Color := clWhite;
   // Valider la saisie
@@ -1024,8 +1024,8 @@ end;
 ### Exemple : Interface Complète
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Grouper dans un GroupBox "Informations personnelles"
   GroupBox1.Caption := 'Informations personnelles';
 
@@ -1053,8 +1053,8 @@ begin
   ColorButtonTheme.ButtonColor := clBlue;
 end;
 
-procedure TForm1.DateEditNaissanceChange(Sender: TObject);
-begin
+procedure TForm1.DateEditNaissanceChange(Sender: TObject);  
+begin  
   // Calculer l'âge automatiquement
   SpinEditAge.Value := YearsBetween(DateEditNaissance.Date, Date);  // Nécessite uses DateUtils
 end;
@@ -1069,11 +1069,11 @@ end;
 Définissez l'ordre de navigation avec la touche **Tab** :
 
 ```pascal
-EditNom.TabOrder := 0;
-EditPrenom.TabOrder := 1;
-DateEditNaissance.TabOrder := 2;
-MaskEditTel.TabOrder := 3;
-BtnValider.TabOrder := 4;
+EditNom.TabOrder := 0;  
+EditPrenom.TabOrder := 1;  
+DateEditNaissance.TabOrder := 2;  
+MaskEditTel.TabOrder := 3;  
+BtnValider.TabOrder := 4;  
 ```
 
 ### 2. Touches de Raccourci (Accelerators)
@@ -1081,8 +1081,8 @@ BtnValider.TabOrder := 4;
 Utilisez `&` dans les Label pour créer des raccourcis :
 
 ```pascal
-Label1.Caption := '&Nom :';  // Alt+N active EditNom
-Label1.FocusControl := EditNom;
+Label1.Caption := '&Nom :';  // Alt+N active EditNom  
+Label1.FocusControl := EditNom;  
 ```
 
 ### 3. Hints (Infobulles)
@@ -1090,11 +1090,11 @@ Label1.FocusControl := EditNom;
 Ajoutez des infobulles explicatives :
 
 ```pascal
-MaskEditTel.Hint := 'Format : 01 23 45 67 89';
-MaskEditTel.ShowHint := True;
+MaskEditTel.Hint := 'Format : 01 23 45 67 89';  
+MaskEditTel.ShowHint := True;  
 
-DateEditNaissance.Hint := 'Cliquez sur ▼ pour ouvrir le calendrier';
-DateEditNaissance.ShowHint := True;
+DateEditNaissance.Hint := 'Cliquez sur ▼ pour ouvrir le calendrier';  
+DateEditNaissance.ShowHint := True;  
 ```
 
 ### 4. Valeurs par Défaut Intelligentes
@@ -1119,8 +1119,8 @@ SpinEditQuantite.Value := (SpinEditQuantite.MinValue + SpinEditQuantite.MaxValue
 Validez pendant la saisie, pas seulement à la fin :
 
 ```pascal
-procedure TForm1.SpinEditAgeChange(Sender: TObject);
-begin
+procedure TForm1.SpinEditAgeChange(Sender: TObject);  
+begin  
   if SpinEditAge.Value < 18 then
     LabelAvertissement.Caption := 'Âge insuffisant'
   else
@@ -1133,8 +1133,8 @@ end;
 Indiquez visuellement l'état :
 
 ```pascal
-procedure TForm1.EditChange(Sender: TObject);
-begin
+procedure TForm1.EditChange(Sender: TObject);  
+begin  
   if Edit1.Text = '' then
     Edit1.Color := clYellow  // Champ vide = jaune
   else
@@ -1166,12 +1166,12 @@ ShowMessage('Erreur');
 
 ```pascal
 // ✅ BON : Limites logiques
-SpinEditAge.MinValue := 0;
-SpinEditAge.MaxValue := 120;  // Âge maximum réaliste
+SpinEditAge.MinValue := 0;  
+SpinEditAge.MaxValue := 120;  // Âge maximum réaliste  
 
 // ❌ MAUVAIS : Limites absurdes
-SpinEditAge.MinValue := -100;
-SpinEditAge.MaxValue := 9999;
+SpinEditAge.MinValue := -100;  
+SpinEditAge.MaxValue := 9999;  
 ```
 
 ---
@@ -1194,8 +1194,8 @@ type
     procedure TrackBarRemiseChange(Sender: TObject);
   end;
 
-procedure TFormCalculateur.FormCreate(Sender: TObject);
-begin
+procedure TFormCalculateur.FormCreate(Sender: TObject);  
+begin  
   // Quantité
   SpinEditQuantite.MinValue := 1;
   SpinEditQuantite.MaxValue := 999;
@@ -1218,13 +1218,13 @@ begin
   TimeEditHeureLivraison.Time := EncodeTime(10, 0, 0, 0);  // 10:00
 end;
 
-procedure TFormCalculateur.TrackBarRemiseChange(Sender: TObject);
-begin
+procedure TFormCalculateur.TrackBarRemiseChange(Sender: TObject);  
+begin  
   LabelRemise.Caption := 'Remise : ' + IntToStr(TrackBarRemise.Position) + '%';
 end;
 
-procedure TFormCalculateur.BtnCalculerClick(Sender: TObject);
-var
+procedure TFormCalculateur.BtnCalculerClick(Sender: TObject);  
+var  
   PrixBase, Remise, PrixFinal: Double;
   DateLivraison: string;
 begin

@@ -1,4 +1,4 @@
-object Form1: TForm1
+object Form1: TForm1  
   Left = 200
   Height = 420
   Top = 100

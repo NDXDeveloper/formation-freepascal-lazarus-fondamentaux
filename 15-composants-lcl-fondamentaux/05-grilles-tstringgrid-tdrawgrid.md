@@ -75,40 +75,40 @@ TWinControl
 #### Dimensions de la Grille
 
 ```pascal
-property ColCount: Integer;    // Nombre de colonnes
-property RowCount: Integer;    // Nombre de lignes
-property FixedCols: Integer;   // Colonnes fixes (en-têtes gauche)
-property FixedRows: Integer;   // Lignes fixes (en-têtes haut)
+property ColCount: Integer;    // Nombre de colonnes  
+property RowCount: Integer;    // Nombre de lignes  
+property FixedCols: Integer;   // Colonnes fixes (en-têtes gauche)  
+property FixedRows: Integer;   // Lignes fixes (en-têtes haut)  
 ```
 
 **Exemple :**
 
 ```pascal
-StringGrid1.ColCount := 4;      // 4 colonnes
-StringGrid1.RowCount := 10;     // 10 lignes
-StringGrid1.FixedCols := 1;     // 1ère colonne fixe (numéros de ligne)
-StringGrid1.FixedRows := 1;     // 1ère ligne fixe (en-têtes)
+StringGrid1.ColCount := 4;      // 4 colonnes  
+StringGrid1.RowCount := 10;     // 10 lignes  
+StringGrid1.FixedCols := 1;     // 1ère colonne fixe (numéros de ligne)  
+StringGrid1.FixedRows := 1;     // 1ère ligne fixe (en-têtes)  
 ```
 
 #### Taille des Cellules
 
 ```pascal
-property DefaultColWidth: Integer;   // Largeur par défaut des colonnes
-property DefaultRowHeight: Integer;  // Hauteur par défaut des lignes
-property ColWidths[Col: Integer]: Integer;   // Largeur d'une colonne spécifique
-property RowHeights[Row: Integer]: Integer;  // Hauteur d'une ligne spécifique
+property DefaultColWidth: Integer;   // Largeur par défaut des colonnes  
+property DefaultRowHeight: Integer;  // Hauteur par défaut des lignes  
+property ColWidths[Col: Integer]: Integer;   // Largeur d'une colonne spécifique  
+property RowHeights[Row: Integer]: Integer;  // Hauteur d'une ligne spécifique  
 ```
 
 **Exemple :**
 
 ```pascal
 // Largeur par défaut
-StringGrid1.DefaultColWidth := 100;
-StringGrid1.DefaultRowHeight := 25;
+StringGrid1.DefaultColWidth := 100;  
+StringGrid1.DefaultRowHeight := 25;  
 
 // Personnaliser une colonne
-StringGrid1.ColWidths[0] := 50;   // 1ère colonne plus étroite
-StringGrid1.ColWidths[1] := 150;  // 2ème colonne plus large
+StringGrid1.ColWidths[0] := 50;   // 1ère colonne plus étroite  
+StringGrid1.ColWidths[1] := 150;  // 2ème colonne plus large  
 ```
 
 #### Accès aux Cellules
@@ -121,8 +121,8 @@ property Cells[Col, Row: Integer]: string;  // Contenu d'une cellule
 
 ```pascal
 // Écrire dans une cellule
-StringGrid1.Cells[0, 0] := 'Nom';
-StringGrid1.Cells[1, 0] := 'Prénom';
+StringGrid1.Cells[0, 0] := 'Nom';  
+StringGrid1.Cells[1, 0] := 'Prénom';  
 
 // Lire une cellule
 var
@@ -135,8 +135,8 @@ end;
 ### Exemple de Base
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Configuration de la grille
   StringGrid1.ColCount := 4;
   StringGrid1.RowCount := 5;
@@ -183,12 +183,12 @@ Les lignes/colonnes **fixes** sont des zones qui :
 
 ```pascal
 // En-tête de colonnes uniquement
-StringGrid1.FixedCols := 0;
-StringGrid1.FixedRows := 1;
+StringGrid1.FixedCols := 0;  
+StringGrid1.FixedRows := 1;  
 
 // En-tête de colonnes + numéros de lignes
-StringGrid1.FixedCols := 1;
-StringGrid1.FixedRows := 1;
+StringGrid1.FixedCols := 1;  
+StringGrid1.FixedRows := 1;  
 ```
 
 ### Sélection
@@ -196,9 +196,9 @@ StringGrid1.FixedRows := 1;
 #### Propriétés de Sélection
 
 ```pascal
-property Col: Integer;         // Colonne sélectionnée
-property Row: Integer;         // Ligne sélectionnée
-property Selection: TGridRect; // Rectangle de sélection (pour sélection multiple)
+property Col: Integer;         // Colonne sélectionnée  
+property Row: Integer;         // Ligne sélectionnée  
+property Selection: TGridRect; // Rectangle de sélection (pour sélection multiple)  
 ```
 
 #### Options de Sélection
@@ -210,11 +210,11 @@ property Options: TGridOptions;
 Options importantes dans `Options` :
 
 ```pascal
-goRowSelect       // Sélectionner la ligne entière
-goRangeSelect     // Permettre la sélection de plages
-goEditing         // Permettre l'édition des cellules
-goTabs            // Touche Tab change de cellule
-goAlwaysShowEditor // Toujours afficher l'éditeur
+goRowSelect       // Sélectionner la ligne entière  
+goRangeSelect     // Permettre la sélection de plages  
+goEditing         // Permettre l'édition des cellules  
+goTabs            // Touche Tab change de cellule  
+goAlwaysShowEditor // Toujours afficher l'éditeur  
 ```
 
 **Exemple :**
@@ -233,8 +233,8 @@ StringGrid1.Options := StringGrid1.Options - [goEditing];
 #### Obtenir la Cellule Sélectionnée
 
 ```pascal
-procedure TForm1.StringGrid1Click(Sender: TObject);
-begin
+procedure TForm1.StringGrid1Click(Sender: TObject);  
+begin  
   ShowMessage(Format('Cellule [%d, %d] = %s',
     [StringGrid1.Col, StringGrid1.Row,
      StringGrid1.Cells[StringGrid1.Col, StringGrid1.Row]]));
@@ -245,8 +245,8 @@ end;
 
 ```pascal
 // Sélectionner une cellule
-StringGrid1.Col := 2;
-StringGrid1.Row := 3;
+StringGrid1.Col := 2;  
+StringGrid1.Row := 3;  
 
 // Sélectionner une plage
 var
@@ -287,8 +287,8 @@ StringGrid1.RowCount := StringGrid1.RowCount + 1;
 
 ```pascal
 // Supprimer la ligne actuelle
-procedure TForm1.SupprimerLigneSelectionnee;
-var
+procedure TForm1.SupprimerLigneSelectionnee;  
+var  
   i, j: Integer;
 begin
   if StringGrid1.Row < StringGrid1.FixedRows then Exit;
@@ -309,8 +309,8 @@ end;
 
 ```pascal
 // Vider toutes les cellules
-procedure TForm1.ViderGrille;
-var
+procedure TForm1.ViderGrille;  
+var  
   i, j: Integer;
 begin
   for i := 0 to StringGrid1.ColCount - 1 do
@@ -326,8 +326,8 @@ StringGrid1.RowCount := StringGrid1.FixedRows + 1;  // Garde les en-têtes
 
 ```pascal
 // Parcourir toutes les cellules
-procedure TForm1.ParcoursComplet;
-var
+procedure TForm1.ParcoursComplet;  
+var  
   Col, Row: Integer;
 begin
   for Row := StringGrid1.FixedRows to StringGrid1.RowCount - 1 do
@@ -342,8 +342,8 @@ begin
 end;
 
 // Parcourir une colonne
-procedure TForm1.ParcoursColonne(NumCol: Integer);
-var
+procedure TForm1.ParcoursColonne(NumCol: Integer);  
+var  
   Row: Integer;
 begin
   for Row := StringGrid1.FixedRows to StringGrid1.RowCount - 1 do
@@ -353,8 +353,8 @@ begin
 end;
 
 // Parcourir une ligne
-procedure TForm1.ParcoursLigne(NumRow: Integer);
-var
+procedure TForm1.ParcoursLigne(NumRow: Integer);  
+var  
   Col: Integer;
 begin
   for Col := 0 to StringGrid1.ColCount - 1 do
@@ -367,8 +367,8 @@ end;
 ### Rechercher dans la Grille
 
 ```pascal
-function TForm1.RechercherTexte(const Texte: string): Boolean;
-var
+function TForm1.RechercherTexte(const Texte: string): Boolean;  
+var  
   Col, Row: Integer;
 begin
   Result := False;
@@ -391,13 +391,13 @@ end;
 ### Événements Importants
 
 ```pascal
-property OnSelectCell: TSelectCellEvent;    // Avant de sélectionner une cellule
-property OnClick: TNotifyEvent;             // Clic sur la grille
-property OnDblClick: TNotifyEvent;          // Double-clic
-property OnDrawCell: TOnDrawCell;           // Dessiner une cellule personnalisée
-property OnGetEditText: TGetEditEvent;      // Obtenir le texte à éditer
-property OnSetEditText: TSetEditEvent;      // Appliquer le texte édité
-property OnValidateEntry: TValidateEntryEvent;  // Valider la saisie
+property OnSelectCell: TSelectCellEvent;    // Avant de sélectionner une cellule  
+property OnClick: TNotifyEvent;             // Clic sur la grille  
+property OnDblClick: TNotifyEvent;          // Double-clic  
+property OnDrawCell: TOnDrawCell;           // Dessiner une cellule personnalisée  
+property OnGetEditText: TGetEditEvent;      // Obtenir le texte à éditer  
+property OnSetEditText: TSetEditEvent;      // Appliquer le texte édité  
+property OnValidateEntry: TValidateEntryEvent;  // Valider la saisie  
 ```
 
 #### Exemple : Valider la Saisie
@@ -435,9 +435,9 @@ end;
 #### Couleurs
 
 ```pascal
-property FixedColor: TColor;    // Couleur des cellules fixes
-property Color: TColor;          // Couleur de fond normale
-property Font: TFont;            // Police
+property FixedColor: TColor;    // Couleur des cellules fixes  
+property Color: TColor;          // Couleur de fond normale  
+property Font: TFont;            // Police  
 ```
 
 #### Lignes de Grille
@@ -455,8 +455,8 @@ uses
   Clipbrd;
 
 // Copier la sélection dans le presse-papier
-procedure TForm1.CopierSelection;
-var
+procedure TForm1.CopierSelection;  
+var  
   i, j: Integer;
   Texte: string;
   Rect: TGridRect;
@@ -482,8 +482,8 @@ end;
 ### Exporter vers CSV
 
 ```pascal
-procedure TForm1.ExporterCSV(const NomFichier: string);
-var
+procedure TForm1.ExporterCSV(const NomFichier: string);  
+var  
   Fichier: TextFile;
   Row, Col: Integer;
   Ligne: string;
@@ -515,8 +515,8 @@ end;
 ### Importer depuis CSV
 
 ```pascal
-procedure TForm1.ImporterCSV(const NomFichier: string);
-var
+procedure TForm1.ImporterCSV(const NomFichier: string);  
+var  
   Fichier: TextFile;
   Ligne: string;
   Liste: TStringList;
@@ -599,14 +599,14 @@ TWinControl
 TDrawGrid a les mêmes propriétés de base que TStringGrid :
 
 ```pascal
-property ColCount: Integer;
-property RowCount: Integer;
-property DefaultColWidth: Integer;
-property DefaultRowHeight: Integer;
-property FixedCols: Integer;
-property FixedRows: Integer;
-property Col: Integer;
-property Row: Integer;
+property ColCount: Integer;  
+property RowCount: Integer;  
+property DefaultColWidth: Integer;  
+property DefaultRowHeight: Integer;  
+property FixedCols: Integer;  
+property FixedRows: Integer;  
+property Col: Integer;  
+property Row: Integer;  
 ```
 
 Mais **pas** de propriété `Cells` !
@@ -642,8 +642,8 @@ TGridDrawState = set of (
 ### Exemple 1 : Palette de Couleurs
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Grille 8x8 pour palette de couleurs
   DrawGrid1.ColCount := 8;
   DrawGrid1.RowCount := 8;
@@ -674,8 +674,8 @@ begin
   end;
 end;
 
-procedure TForm1.DrawGrid1Click(Sender: TObject);
-var
+procedure TForm1.DrawGrid1Click(Sender: TObject);  
+var  
   Couleur: TColor;
 begin
   // Afficher la couleur sélectionnée
@@ -688,8 +688,8 @@ end;
 ### Exemple 2 : Échiquier
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Grille 8x8 pour échiquier
   DrawGrid1.ColCount := 8;
   DrawGrid1.RowCount := 8;
@@ -734,8 +734,8 @@ type
     FValeurs: array[0..9] of Integer;
   end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-var
+procedure TForm1.FormCreate(Sender: TObject);  
+var  
   i: Integer;
 begin
   // Générer des valeurs aléatoires
@@ -823,8 +823,8 @@ type
     FData: array of array of string;  // Tableau 2D
   end;
 
-procedure TForm1.InitialiserDonnees;
-var
+procedure TForm1.InitialiserDonnees;  
+var  
   i, j: Integer;
 begin
   // Créer le tableau
@@ -941,8 +941,8 @@ property ScrollBars: TScrollStyle;  // ssNone, ssHorizontal, ssVertical, ssBoth,
 ### 1. Cellules de Hauteurs Variables
 
 ```pascal
-procedure TForm1.AjusterHauteurLigne(NumLigne: Integer);
-var
+procedure TForm1.AjusterHauteurLigne(NumLigne: Integer);  
+var  
   MaxHauteur: Integer;
   Col: Integer;
 begin
@@ -1001,8 +1001,8 @@ end;
 ### 4. Auto-ajustement de Colonnes
 
 ```pascal
-procedure TForm1.AutoAjusterColonne(NumCol: Integer);
-var
+procedure TForm1.AutoAjusterColonne(NumCol: Integer);  
+var  
   Row: Integer;
   MaxLargeur: Integer;
   Largeur: Integer;
@@ -1020,8 +1020,8 @@ begin
 end;
 
 // Auto-ajuster toutes les colonnes
-procedure TForm1.AutoAjusterTout;
-var
+procedure TForm1.AutoAjusterTout;  
+var  
   i: Integer;
 begin
   for i := 0 to StringGrid1.ColCount - 1 do
@@ -1032,8 +1032,8 @@ end;
 ### 5. Tri de Grille
 
 ```pascal
-procedure TForm1.TrierParColonne(NumCol: Integer; Croissant: Boolean);
-var
+procedure TForm1.TrierParColonne(NumCol: Integer; Croissant: Boolean);  
+var  
   Liste: TStringList;
   i, j: Integer;
   Ligne: string;
@@ -1077,9 +1077,9 @@ end;
 
 ```pascal
 // ✅ BON : Définir les dimensions d'abord
-StringGrid1.ColCount := 5;
-StringGrid1.RowCount := 10;
-StringGrid1.FixedRows := 1;
+StringGrid1.ColCount := 5;  
+StringGrid1.RowCount := 10;  
+StringGrid1.FixedRows := 1;  
 // Puis remplir les cellules
 
 // ❌ MAUVAIS : Remplir sans définir les dimensions
@@ -1104,8 +1104,8 @@ StringGrid1.Cells[ACol, ARow] := 'Valeur';  // Peut crasher !
 
 ```pascal
 // ✅ BON : Pour beaucoup de modifications
-StringGrid1.BeginUpdate;
-try
+StringGrid1.BeginUpdate;  
+try  
   for i := 0 to 1000 do
     for j := 0 to 10 do
       StringGrid1.Cells[j, i] := Format('Cell[%d,%d]', [j, i]);
@@ -1137,8 +1137,8 @@ Si vous utilisez Objects pour associer des données :
 
 ```pascal
 // ✅ BON : Libérer avant de détruire
-for i := StringGrid1.FixedRows to StringGrid1.RowCount - 1 do
-begin
+for i := StringGrid1.FixedRows to StringGrid1.RowCount - 1 do  
+begin  
   if Assigned(StringGrid1.Objects[0, i]) then
     StringGrid1.Objects[0, i].Free;
 end;
@@ -1157,8 +1157,8 @@ type
     Email: string;
   end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Configuration grille
   StringGrid1.ColCount := 4;
   StringGrid1.RowCount := 1;
@@ -1183,8 +1183,8 @@ begin
                          goRowSelect, goColSizing];
 end;
 
-procedure TForm1.BtnAjouterClick(Sender: TObject);
-var
+procedure TForm1.BtnAjouterClick(Sender: TObject);  
+var  
   Contact: TContact;
   Ligne: Integer;
 begin
@@ -1221,8 +1221,8 @@ begin
   EditNom.SetFocus;
 end;
 
-procedure TForm1.BtnSupprimerClick(Sender: TObject);
-var
+procedure TForm1.BtnSupprimerClick(Sender: TObject);  
+var  
   Ligne: Integer;
 begin
   Ligne := StringGrid1.Row;
@@ -1236,8 +1236,8 @@ begin
   StringGrid1.DeleteRow(Ligne);
 end;
 
-procedure TForm1.FormDestroy(Sender: TObject);
-var
+procedure TForm1.FormDestroy(Sender: TObject);  
+var  
   i: Integer;
 begin
   // Libérer tous les contacts

@@ -79,42 +79,42 @@ property Items: TStrings;  // Liste des éléments
 **Méthodes principales de Items :**
 
 ```pascal
-Items.Add(s: string): Integer;           // Ajouter un élément
-Items.Insert(Index: Integer; s: string); // Insérer à une position
-Items.Delete(Index: Integer);            // Supprimer par index
-Items.Clear;                              // Vider la liste
-Items.Count: Integer;                     // Nombre d'éléments
-Items[Index]: string;                     // Accès par index
+Items.Add(s: string): Integer;           // Ajouter un élément  
+Items.Insert(Index: Integer; s: string); // Insérer à une position  
+Items.Delete(Index: Integer);            // Supprimer par index  
+Items.Clear;                              // Vider la liste  
+Items.Count: Integer;                     // Nombre d'éléments  
+Items[Index]: string;                     // Accès par index  
 ```
 
 #### Sélection
 
 ```pascal
-property ItemIndex: Integer;      // Index de l'élément sélectionné (-1 si aucun)
-property Selected[Index: Integer]: Boolean;  // État sélectionné d'un élément
-property SelCount: Integer;       // Nombre d'éléments sélectionnés
+property ItemIndex: Integer;      // Index de l'élément sélectionné (-1 si aucun)  
+property Selected[Index: Integer]: Boolean;  // État sélectionné d'un élément  
+property SelCount: Integer;       // Nombre d'éléments sélectionnés  
 ```
 
 #### Mode de Sélection
 
 ```pascal
-property MultiSelect: Boolean;    // Sélection multiple ?
-property ExtendedSelect: Boolean; // Sélection étendue (Ctrl, Shift) ?
+property MultiSelect: Boolean;    // Sélection multiple ?  
+property ExtendedSelect: Boolean; // Sélection étendue (Ctrl, Shift) ?  
 ```
 
 #### Apparence
 
 ```pascal
-property Sorted: Boolean;         // Tri automatique alphabétique
-property ItemHeight: Integer;     // Hauteur de chaque élément
-property Columns: Integer;        // Nombre de colonnes (0 = 1 colonne)
+property Sorted: Boolean;         // Tri automatique alphabétique  
+property ItemHeight: Integer;     // Hauteur de chaque élément  
+property Columns: Integer;        // Nombre de colonnes (0 = 1 colonne)  
 ```
 
 ### Exemple de Base
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Ajouter des éléments
   ListBox1.Items.Add('Paris');
   ListBox1.Items.Add('Londres');
@@ -126,8 +126,8 @@ begin
   ListBox1.Sorted := True;
 end;
 
-procedure TForm1.ListBox1Click(Sender: TObject);
-begin
+procedure TForm1.ListBox1Click(Sender: TObject);  
+begin  
   if ListBox1.ItemIndex >= 0 then
     ShowMessage('Vous avez sélectionné : ' + ListBox1.Items[ListBox1.ItemIndex]);
 end;
@@ -171,8 +171,8 @@ begin
 end;
 
 // Méthode 2 : Ajouter directement
-ListBox1.Items.BeginUpdate;  // Désactive le rafraîchissement
-try
+ListBox1.Items.BeginUpdate;  // Désactive le rafraîchissement  
+try  
   ListBox1.Items.Add('Element 1');
   ListBox1.Items.Add('Element 2');
   ListBox1.Items.Add('Element 3');
@@ -250,8 +250,8 @@ ListBox1.ItemIndex := -1;
 Pour permettre la sélection de plusieurs éléments :
 
 ```pascal
-ListBox1.MultiSelect := True;
-ListBox1.ExtendedSelect := True;  // Autorise Ctrl et Shift
+ListBox1.MultiSelect := True;  
+ListBox1.ExtendedSelect := True;  // Autorise Ctrl et Shift  
 ```
 
 **Comportement utilisateur :**
@@ -262,8 +262,8 @@ ListBox1.ExtendedSelect := True;  // Autorise Ctrl et Shift
 #### Obtenir les Éléments Sélectionnés
 
 ```pascal
-procedure TForm1.BtnAfficherSelectionClick(Sender: TObject);
-var
+procedure TForm1.BtnAfficherSelectionClick(Sender: TObject);  
+var  
   i: Integer;
   Selection: string;
 begin
@@ -294,8 +294,8 @@ ListBox1.Selected[3] := True;
 ListBox1.Selected[1] := False;
 
 // Sélectionner tous les éléments
-procedure SelectAll;
-var
+procedure SelectAll;  
+var  
   i: Integer;
 begin
   for i := 0 to ListBox1.Items.Count - 1 do
@@ -332,17 +332,17 @@ ListBox1.Sorted := True;  // Tri alphabétique automatique
 ### Événements Importants
 
 ```pascal
-property OnClick: TNotifyEvent;           // Clic sur un élément
-property OnDblClick: TNotifyEvent;        // Double-clic
-property OnSelectionChange: TNotifyEvent; // La sélection change
-property OnDrawItem: TDrawItemEvent;      // Dessin personnalisé (owner draw)
+property OnClick: TNotifyEvent;           // Clic sur un élément  
+property OnDblClick: TNotifyEvent;        // Double-clic  
+property OnSelectionChange: TNotifyEvent; // La sélection change  
+property OnDrawItem: TDrawItemEvent;      // Dessin personnalisé (owner draw)  
 ```
 
 ### Exemple Complet : Gestion d'une Liste
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Configuration
   ListBox1.MultiSelect := False;
   ListBox1.Sorted := True;
@@ -361,8 +361,8 @@ begin
 end;
 
 // Ajouter un élément
-procedure TForm1.BtnAddClick(Sender: TObject);
-begin
+procedure TForm1.BtnAddClick(Sender: TObject);  
+begin  
   if Edit1.Text <> '' then
   begin
     ListBox1.Items.Add(Edit1.Text);
@@ -371,15 +371,15 @@ begin
 end;
 
 // Supprimer l'élément sélectionné
-procedure TForm1.BtnDeleteClick(Sender: TObject);
-begin
+procedure TForm1.BtnDeleteClick(Sender: TObject);  
+begin  
   if ListBox1.ItemIndex >= 0 then
     ListBox1.Items.Delete(ListBox1.ItemIndex);
 end;
 
 // Vider la liste
-procedure TForm1.BtnClearClick(Sender: TObject);
-begin
+procedure TForm1.BtnClearClick(Sender: TObject);  
+begin  
   ListBox1.Items.Clear;
 end;
 ```
@@ -396,15 +396,15 @@ type
     constructor Create(ANom: string; AAge: Integer);
   end;
 
-constructor TPersonne.Create(ANom: string; AAge: Integer);
-begin
+constructor TPersonne.Create(ANom: string; AAge: Integer);  
+begin  
   Nom := ANom;
   Age := AAge;
 end;
 
 // Ajouter avec données associées
-procedure TForm1.AjouterPersonne;
-var
+procedure TForm1.AjouterPersonne;  
+var  
   P: TPersonne;
   Index: Integer;
 begin
@@ -414,8 +414,8 @@ begin
 end;
 
 // Récupérer les données
-procedure TForm1.ListBox1Click(Sender: TObject);
-var
+procedure TForm1.ListBox1Click(Sender: TObject);  
+var  
   P: TPersonne;
 begin
   if ListBox1.ItemIndex >= 0 then
@@ -426,8 +426,8 @@ begin
 end;
 
 // ⚠️ IMPORTANT : Libérer les objets avant de détruire la liste
-procedure TForm1.FormDestroy(Sender: TObject);
-var
+procedure TForm1.FormDestroy(Sender: TObject);  
+var  
   i: Integer;
 begin
   for i := 0 to ListBox1.Items.Count - 1 do
@@ -520,8 +520,8 @@ ComboBox1.Style := csDropDownList;
 La liste est toujours visible (pas de déroulement) et l'utilisateur peut taper.
 
 ```pascal
-ComboBox1.Style := csSimple;
-ComboBox1.Height := 100;  // Définir la hauteur pour voir plusieurs éléments
+ComboBox1.Style := csSimple;  
+ComboBox1.Height := 100;  // Définir la hauteur pour voir plusieurs éléments  
 ```
 
 **Usage :** Rare, préférez TListBox dans ce cas.
@@ -529,19 +529,19 @@ ComboBox1.Height := 100;  // Définir la hauteur pour voir plusieurs éléments
 ### Propriétés Principales
 
 ```pascal
-property Items: TStrings;          // Liste des éléments (comme TListBox)
-property ItemIndex: Integer;       // Index sélectionné (-1 si aucun ou saisie libre)
-property Text: string;             // Texte affiché/saisi
-property Style: TComboBoxStyle;    // Style du ComboBox
-property Sorted: Boolean;          // Tri automatique
-property DropDownCount: Integer;   // Nombre d'éléments visibles dans la liste (défaut: 8)
+property Items: TStrings;          // Liste des éléments (comme TListBox)  
+property ItemIndex: Integer;       // Index sélectionné (-1 si aucun ou saisie libre)  
+property Text: string;             // Texte affiché/saisi  
+property Style: TComboBoxStyle;    // Style du ComboBox  
+property Sorted: Boolean;          // Tri automatique  
+property DropDownCount: Integer;   // Nombre d'éléments visibles dans la liste (défaut: 8)  
 ```
 
 ### Exemple de Base
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Configuration
   ComboBox1.Style := csDropDownList;  // Sélection uniquement
   ComboBox1.Sorted := True;
@@ -557,8 +557,8 @@ begin
   ComboBox1.ItemIndex := 0;
 end;
 
-procedure TForm1.ComboBox1Change(Sender: TObject);
-begin
+procedure TForm1.ComboBox1Change(Sender: TObject);  
+begin  
   ShowMessage('Sélection : ' + ComboBox1.Text);
 end;
 ```
@@ -567,8 +567,8 @@ end;
 
 ```pascal
 // Style = csDropDown (saisie libre autorisée)
-ComboBox1.Style := csDropDown;
-ComboBox1.Text := 'Nouvelle valeur';  // Peut être n'importe quoi
+ComboBox1.Style := csDropDown;  
+ComboBox1.Text := 'Nouvelle valeur';  // Peut être n'importe quoi  
 // ItemIndex = -1 si 'Nouvelle valeur' n'est pas dans Items
 
 // Style = csDropDownList (sélection uniquement)
@@ -615,24 +615,24 @@ else
   ShowMessage('Aucune sélection ou saisie libre');
 
 // Désélectionner (csDropDown uniquement)
-ComboBox1.ItemIndex := -1;
-ComboBox1.Text := '';
+ComboBox1.ItemIndex := -1;  
+ComboBox1.Text := '';  
 ```
 
 ### Événements
 
 ```pascal
-property OnChange: TNotifyEvent;     // Le texte ou la sélection change
-property OnSelect: TNotifyEvent;     // Un élément est sélectionné dans la liste
-property OnDropDown: TNotifyEvent;   // La liste s'ouvre
-property OnCloseUp: TNotifyEvent;    // La liste se ferme
+property OnChange: TNotifyEvent;     // Le texte ou la sélection change  
+property OnSelect: TNotifyEvent;     // Un élément est sélectionné dans la liste  
+property OnDropDown: TNotifyEvent;   // La liste s'ouvre  
+property OnCloseUp: TNotifyEvent;    // La liste se ferme  
 ```
 
 ### Exemple : ComboBox Cascade (Pays → Villes)
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // ComboBox des pays
   ComboBoxPays.Items.Add('France');
   ComboBoxPays.Items.Add('Espagne');
@@ -641,8 +641,8 @@ begin
   ComboBoxPaysChange(nil);  // Initialise les villes
 end;
 
-procedure TForm1.ComboBoxPaysChange(Sender: TObject);
-begin
+procedure TForm1.ComboBoxPaysChange(Sender: TObject);  
+begin  
   ComboBoxVille.Items.Clear;
 
   case ComboBoxPays.ItemIndex of
@@ -676,8 +676,8 @@ end;
 En mode `csDropDown`, le ComboBox peut compléter automatiquement la saisie :
 
 ```pascal
-ComboBox1.Style := csDropDown;
-ComboBox1.AutoComplete := True;  // Active la complétion automatique
+ComboBox1.Style := csDropDown;  
+ComboBox1.AutoComplete := True;  // Active la complétion automatique  
 ```
 
 Quand l'utilisateur tape "Pa", si "Paris" est dans la liste, il sera suggéré.
@@ -754,15 +754,15 @@ end;
 ### Propriétés du TTreeView
 
 ```pascal
-property Items: TTreeNodes;        // Collection de tous les nœuds
-property Selected: TTreeNode;      // Nœud actuellement sélectionné
-property TopItem: TTreeNode;       // Premier nœud visible
-property ShowRoot: Boolean;        // Afficher les lignes de racine
-property ShowButtons: Boolean;     // Afficher les boutons +/-
-property ShowLines: Boolean;       // Afficher les lignes de connexion
-property ReadOnly: Boolean;        // Lecture seule (pas d'édition)
-property MultiSelect: Boolean;     // Sélection multiple
-property SortType: TSortType;      // Tri (stNone, stText, stData)
+property Items: TTreeNodes;        // Collection de tous les nœuds  
+property Selected: TTreeNode;      // Nœud actuellement sélectionné  
+property TopItem: TTreeNode;       // Premier nœud visible  
+property ShowRoot: Boolean;        // Afficher les lignes de racine  
+property ShowButtons: Boolean;     // Afficher les boutons +/-  
+property ShowLines: Boolean;       // Afficher les lignes de connexion  
+property ReadOnly: Boolean;        // Lecture seule (pas d'édition)  
+property MultiSelect: Boolean;     // Sélection multiple  
+property SortType: TSortType;      // Tri (stNone, stText, stData)  
 ```
 
 ### Ajouter des Nœuds
@@ -809,8 +809,8 @@ end;
 ### Exemple : Créer une Arborescence
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-var
+procedure TForm1.FormCreate(Sender: TObject);  
+var  
   NodeDocs, NodeWork, NodePersonal: TTreeNode;
   NodeImages, NodeVideos: TTreeNode;
 begin
@@ -886,12 +886,12 @@ end;
 
 ```pascal
 // Développer un nœud
-Node.Expand(False);  // False = pas récursif (seulement ce nœud)
-Node.Expand(True);   // True = récursif (tous les sous-nœuds)
+Node.Expand(False);  // False = pas récursif (seulement ce nœud)  
+Node.Expand(True);   // True = récursif (tous les sous-nœuds)  
 
 // Contracter un nœud
-Node.Collapse(False);
-Node.Collapse(True);
+Node.Collapse(False);  
+Node.Collapse(True);  
 
 // Basculer (toggle)
 if Node.Expanded then
@@ -943,8 +943,8 @@ TreeView1.Selected := nil;
 ### Rechercher un Nœud
 
 ```pascal
-function TForm1.FindNode(const SearchText: string): TTreeNode;
-var
+function TForm1.FindNode(const SearchText: string): TTreeNode;  
+var  
   i: Integer;
 begin
   Result := nil;
@@ -974,8 +974,8 @@ end;
 ### Parcours Récursif de l'Arbre
 
 ```pascal
-procedure TForm1.ParcoursRecursif(Node: TTreeNode; Niveau: Integer);
-var
+procedure TForm1.ParcoursRecursif(Node: TTreeNode; Niveau: Integer);  
+var  
   i: Integer;
   Indent: string;
 begin
@@ -993,8 +993,8 @@ begin
 end;
 
 // Lancer le parcours depuis les racines
-procedure TForm1.BtnParcoursClick(Sender: TObject);
-var
+procedure TForm1.BtnParcoursClick(Sender: TObject);  
+var  
   i: Integer;
 begin
   Memo1.Clear;
@@ -1034,8 +1034,8 @@ begin
 end;
 
 // Récupérer les données
-procedure TForm1.TreeView1Click(Sender: TObject);
-var
+procedure TForm1.TreeView1Click(Sender: TObject);  
+var  
   Node: TTreeNode;
   Info: TFichierInfo;
 begin
@@ -1048,8 +1048,8 @@ begin
 end;
 
 // ⚠️ IMPORTANT : Libérer les objets
-procedure TForm1.FormDestroy(Sender: TObject);
-var
+procedure TForm1.FormDestroy(Sender: TObject);  
+var  
   i: Integer;
 begin
   for i := 0 to TreeView1.Items.Count - 1 do
@@ -1065,8 +1065,8 @@ end;
 Vous pouvez associer des icônes aux nœuds via un TImageList :
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-var
+procedure TForm1.FormCreate(Sender: TObject);  
+var  
   Node: TTreeNode;
 begin
   // Associer l'ImageList
@@ -1087,8 +1087,8 @@ end;
 TreeView1.SortType := stText;
 
 // Tri personnalisé
-TreeView1.SortType := stData;
-TreeView1.OnCompare := @TreeView1Compare;
+TreeView1.SortType := stData;  
+TreeView1.OnCompare := @TreeView1Compare;  
 
 procedure TForm1.TreeView1Compare(Sender: TObject; Node1, Node2: TTreeNode;
   var Compare: Integer);
@@ -1103,15 +1103,15 @@ end;
 ### Événements Importants
 
 ```pascal
-property OnClick: TNotifyEvent;                    // Clic sur un nœud
-property OnDblClick: TNotifyEvent;                 // Double-clic
-property OnChange: TTVChangedEvent;                // Sélection change
-property OnExpanding: TTVExpandingEvent;           // Avant développement
-property OnExpanded: TTVExpandedEvent;             // Après développement
-property OnCollapsing: TTVCollapsingEvent;         // Avant contraction
-property OnCollapsed: TTVCollapsedEvent;           // Après contraction
-property OnEditing: TTVEditingEvent;               // Début édition texte
-property OnEdited: TTVEditedEvent;                 // Fin édition texte
+property OnClick: TNotifyEvent;                    // Clic sur un nœud  
+property OnDblClick: TNotifyEvent;                 // Double-clic  
+property OnChange: TTVChangedEvent;                // Sélection change  
+property OnExpanding: TTVExpandingEvent;           // Avant développement  
+property OnExpanded: TTVExpandedEvent;             // Après développement  
+property OnCollapsing: TTVCollapsingEvent;         // Avant contraction  
+property OnCollapsed: TTVCollapsedEvent;           // Après contraction  
+property OnEditing: TTVEditingEvent;               // Début édition texte  
+property OnEdited: TTVEditedEvent;                 // Fin édition texte  
 ```
 
 ### Édition des Nœuds
@@ -1186,8 +1186,8 @@ end;
 
 ```pascal
 // ✅ BON : Désactiver le rafraîchissement
-ListBox1.Items.BeginUpdate;
-try
+ListBox1.Items.BeginUpdate;  
+try  
   for i := 1 to 10000 do
     ListBox1.Items.Add('Élément ' + IntToStr(i));
 finally
@@ -1214,12 +1214,12 @@ ShowMessage(ListBox1.Items[ListBox1.ItemIndex]);  // Exception !
 
 ```pascal
 // ✅ BON : Libérer avant de Clear
-for i := 0 to ListBox1.Items.Count - 1 do
-begin
+for i := 0 to ListBox1.Items.Count - 1 do  
+begin  
   if Assigned(ListBox1.Items.Objects[i]) then
     ListBox1.Items.Objects[i].Free;
-end;
-ListBox1.Items.Clear;
+end;  
+ListBox1.Items.Clear;  
 
 // ❌ MAUVAIS : Fuite mémoire
 ListBox1.Items.Clear;  // Les objets ne sont pas libérés !
@@ -1263,14 +1263,14 @@ ShowMessage(TreeView1.Selected.Text);  // Exception si nil !
 ### Exemple 1 : Liste de Courses (TListBox)
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   ListBoxCourses.Items.Clear;
   EditProduit.Clear;
 end;
 
-procedure TForm1.BtnAjouterClick(Sender: TObject);
-begin
+procedure TForm1.BtnAjouterClick(Sender: TObject);  
+begin  
   if EditProduit.Text <> '' then
   begin
     ListBoxCourses.Items.Add(EditProduit.Text);
@@ -1279,14 +1279,14 @@ begin
   end;
 end;
 
-procedure TForm1.BtnSupprimerClick(Sender: TObject);
-begin
+procedure TForm1.BtnSupprimerClick(Sender: TObject);  
+begin  
   if ListBoxCourses.ItemIndex >= 0 then
     ListBoxCourses.Items.Delete(ListBoxCourses.ItemIndex);
 end;
 
-procedure TForm1.BtnViderClick(Sender: TObject);
-begin
+procedure TForm1.BtnViderClick(Sender: TObject);  
+begin  
   if MessageDlg('Vider la liste ?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
     ListBoxCourses.Items.Clear;
 end;
@@ -1295,8 +1295,8 @@ end;
 ### Exemple 2 : Sélection Pays/Ville (TComboBox)
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   ComboBoxPays.Style := csDropDownList;
   ComboBoxVille.Style := csDropDownList;
 
@@ -1311,8 +1311,8 @@ begin
   end;
 end;
 
-procedure TForm1.ComboBoxPaysChange(Sender: TObject);
-begin
+procedure TForm1.ComboBoxPaysChange(Sender: TObject);  
+begin  
   ComboBoxVille.Items.Clear;
 
   case ComboBoxPays.ItemIndex of
@@ -1338,8 +1338,8 @@ begin
     ComboBoxVille.ItemIndex := 0;
 end;
 
-procedure TForm1.BtnValiderClick(Sender: TObject);
-begin
+procedure TForm1.BtnValiderClick(Sender: TObject);  
+begin  
   ShowMessage(Format('Pays : %s, Ville : %s',
     [ComboBoxPays.Text, ComboBoxVille.Text]));
 end;
@@ -1348,8 +1348,8 @@ end;
 ### Exemple 3 : Explorateur de Projet (TTreeView)
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-var
+procedure TForm1.FormCreate(Sender: TObject);  
+var  
   NodeProjet, NodeSrc, NodeBin, NodeDoc: TTreeNode;
 begin
   TreeView1.Items.Clear;
@@ -1377,8 +1377,8 @@ begin
   NodeProjet.Expand(True);
 end;
 
-procedure TForm1.TreeView1DblClick(Sender: TObject);
-var
+procedure TForm1.TreeView1DblClick(Sender: TObject);  
+var  
   Node: TTreeNode;
 begin
   Node := TreeView1.Selected;

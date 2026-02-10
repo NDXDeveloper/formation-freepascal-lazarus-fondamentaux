@@ -59,9 +59,9 @@ TObject
 ### Propriétés Principales
 
 ```pascal
-property Enabled: Boolean;     // Active/désactive le timer
-property Interval: Cardinal;   // Intervalle en millisecondes (ms)
-property OnTimer: TNotifyEvent; // Événement déclenché périodiquement
+property Enabled: Boolean;     // Active/désactive le timer  
+property Interval: Cardinal;   // Intervalle en millisecondes (ms)  
+property OnTimer: TNotifyEvent; // Événement déclenché périodiquement  
 ```
 
 ### La Propriété Interval
@@ -93,15 +93,15 @@ type
     procedure FormCreate(Sender: TObject);
   end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Configuration du timer
   Timer1.Interval := 1000;  // 1 seconde
   Timer1.Enabled := True;   // Activer le timer
 end;
 
-procedure TForm1.Timer1Timer(Sender: TObject);
-begin
+procedure TForm1.Timer1Timer(Sender: TObject);  
+begin  
   // Cet événement est déclenché toutes les 1000 ms (1 seconde)
   LabelHeure.Caption := TimeToStr(Now);
 end;
@@ -158,16 +158,16 @@ type
     FSecondesEcoulees: Integer;
   end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   Timer1.Interval := 1000;  // 1 seconde
   Timer1.Enabled := False;  // Pas actif au départ
   FSecondesEcoulees := 0;
   LabelTemps.Caption := '00:00:00';
 end;
 
-procedure TForm1.Timer1Timer(Sender: TObject);
-var
+procedure TForm1.Timer1Timer(Sender: TObject);  
+var  
   Heures, Minutes, Secondes: Integer;
 begin
   Inc(FSecondesEcoulees);
@@ -181,22 +181,22 @@ begin
   LabelTemps.Caption := Format('%2.2d:%2.2d:%2.2d', [Heures, Minutes, Secondes]);
 end;
 
-procedure TForm1.BtnStartClick(Sender: TObject);
-begin
+procedure TForm1.BtnStartClick(Sender: TObject);  
+begin  
   Timer1.Enabled := True;
   BtnStart.Enabled := False;
   BtnStop.Enabled := True;
 end;
 
-procedure TForm1.BtnStopClick(Sender: TObject);
-begin
+procedure TForm1.BtnStopClick(Sender: TObject);  
+begin  
   Timer1.Enabled := False;
   BtnStart.Enabled := True;
   BtnStop.Enabled := False;
 end;
 
-procedure TForm1.BtnResetClick(Sender: TObject);
-begin
+procedure TForm1.BtnResetClick(Sender: TObject);  
+begin  
   Timer1.Enabled := False;
   FSecondesEcoulees := 0;
   LabelTemps.Caption := '00:00:00';
@@ -218,8 +218,8 @@ type
     FDirection: Integer;  // 1 = droite, -1 = gauche
   end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Configuration du timer
   Timer1.Interval := 20;  // 50 fois par seconde (fluide)
   Timer1.Enabled := True;
@@ -233,8 +233,8 @@ begin
   FDirection := 1;  // Vers la droite
 end;
 
-procedure TForm1.Timer1Timer(Sender: TObject);
-begin
+procedure TForm1.Timer1Timer(Sender: TObject);  
+begin  
   // Déplacer le cercle
   Shape1.Left := Shape1.Left + (5 * FDirection);
 
@@ -257,8 +257,8 @@ type
     procedure Timer1Timer(Sender: TObject);
   end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   Timer1.Interval := 500;  // 0.5 seconde
   Timer1.Enabled := True;
 
@@ -267,8 +267,8 @@ begin
   LabelAvertissement.Font.Style := [fsBold];
 end;
 
-procedure TForm1.Timer1Timer(Sender: TObject);
-begin
+procedure TForm1.Timer1Timer(Sender: TObject);  
+begin  
   // Alterner la visibilité
   LabelAvertissement.Visible := not LabelAvertissement.Visible;
 end;
@@ -286,8 +286,8 @@ type
     procedure Timer1Timer(Sender: TObject);
   end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   ProgressBar1.Min := 0;
   ProgressBar1.Max := 100;
   ProgressBar1.Position := 0;
@@ -296,8 +296,8 @@ begin
   Timer1.Enabled := True;
 end;
 
-procedure TForm1.Timer1Timer(Sender: TObject);
-begin
+procedure TForm1.Timer1Timer(Sender: TObject);  
+begin  
   // Incrémenter
   ProgressBar1.Position := ProgressBar1.Position + 1;
 
@@ -326,21 +326,21 @@ type
     procedure SauvegarderDocument;
   end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Sauvegarder toutes les 5 minutes
   Timer1.Interval := 300000;  // 5 minutes = 300 000 ms
   Timer1.Enabled := True;
 end;
 
-procedure TForm1.Timer1Timer(Sender: TObject);
-begin
+procedure TForm1.Timer1Timer(Sender: TObject);  
+begin  
   SauvegarderDocument;
   StatusBar1.SimpleText := 'Sauvegarde automatique : ' + TimeToStr(Now);
 end;
 
-procedure TForm1.SauvegarderDocument;
-begin
+procedure TForm1.SauvegarderDocument;  
+begin  
   // Sauvegarder le contenu du Memo
   if Memo1.Lines.Count > 0 then
     Memo1.Lines.SaveToFile('autosave.txt');
@@ -358,8 +358,8 @@ Lorsque votre code exécute une **opération longue** (calcul complexe, téléch
 **Exemple de code qui gèle l'interface :**
 
 ```pascal
-procedure TForm1.BtnCalculerClick(Sender: TObject);
-var
+procedure TForm1.BtnCalculerClick(Sender: TObject);  
+var  
   i: Integer;
   Resultat: Double;
 begin
@@ -393,8 +393,8 @@ Quand votre code monopolise le processeur pendant longtemps, **la boucle de mess
 La méthode `Application.ProcessMessages` permet de **traiter temporairement les messages** en attente, donnant l'impression que l'application répond.
 
 ```pascal
-procedure TForm1.BtnCalculerClick(Sender: TObject);
-var
+procedure TForm1.BtnCalculerClick(Sender: TObject);  
+var  
   i: Integer;
   Resultat: Double;
 begin
@@ -448,15 +448,15 @@ type
     FTraitementEnCours: Boolean;
   end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   Timer1.Interval := 10;  // 10 ms
   Timer1.Enabled := False;
   FTraitementEnCours := False;
 end;
 
-procedure TForm1.BtnDemarrerClick(Sender: TObject);
-begin
+procedure TForm1.BtnDemarrerClick(Sender: TObject);  
+begin  
   if not FTraitementEnCours then
   begin
     FIndexCourant := 1;
@@ -469,8 +469,8 @@ begin
   end;
 end;
 
-procedure TForm1.Timer1Timer(Sender: TObject);
-var
+procedure TForm1.Timer1Timer(Sender: TObject);  
+var  
   i: Integer;
 const
   PORTION = 1000;  // Traiter 1000 éléments à chaque tick
@@ -515,8 +515,8 @@ end;
 **Synchrone** = les opérations s'exécutent **l'une après l'autre**, dans l'ordre.
 
 ```pascal
-procedure TForm1.BtnAction1Click(Sender: TObject);
-begin
+procedure TForm1.BtnAction1Click(Sender: TObject);  
+begin  
   ShowMessage('Opération 1');  // S'exécute en premier
   ShowMessage('Opération 2');  // S'exécute ensuite
   ShowMessage('Opération 3');  // S'exécute à la fin
@@ -537,8 +537,8 @@ Temps →
 
 ```pascal
 // Opération lancée, mais on ne l'attend pas
-Timer1.Enabled := True;  // Le timer va travailler en arrière-plan
-ShowMessage('Autre chose');  // S'exécute immédiatement
+Timer1.Enabled := True;  // Le timer va travailler en arrière-plan  
+ShowMessage('Autre chose');  // S'exécute immédiatement  
 ```
 
 **Schéma :**
@@ -585,8 +585,8 @@ type
     procedure Execute; override;
   end;
 
-procedure TMonThread.Execute;
-var
+procedure TMonThread.Execute;  
+var  
   i: Integer;
   Resultat: Double;
 begin
@@ -606,8 +606,8 @@ begin
 end;
 
 // Lancer le thread
-procedure TForm1.BtnDemarrerClick(Sender: TObject);
-var
+procedure TForm1.BtnDemarrerClick(Sender: TObject);  
+var  
   MonThread: TMonThread;
 begin
   MonThread := TMonThread.Create(True);  // Créer suspendu
@@ -645,8 +645,8 @@ end;
 
 ```pascal
 // ✅ BON : Éviter les appels multiples
-procedure TForm1.Timer1Timer(Sender: TObject);
-begin
+procedure TForm1.Timer1Timer(Sender: TObject);  
+begin  
   Timer1.Enabled := False;  // Désactiver pendant le traitement
   try
     // Faire le travail
@@ -657,8 +657,8 @@ begin
 end;
 
 // ❌ MAUVAIS : Risque d'appels multiples si le traitement est lent
-procedure TForm1.Timer1Timer(Sender: TObject);
-begin
+procedure TForm1.Timer1Timer(Sender: TObject);  
+begin  
   TraiterDonnees;  // Si ça prend plus de 1000 ms, le timer va rappeler !
 end;
 ```
@@ -682,8 +682,8 @@ Timer1.Interval := 1;  // 1000 fois par seconde, surcharge le CPU !
 
 ```pascal
 // ✅ BON : Arrêter les timers avant de fermer
-procedure TForm1.FormClose(Sender: TObject; var CloseAction: TCloseAction);
-begin
+procedure TForm1.FormClose(Sender: TObject; var CloseAction: TCloseAction);  
+begin  
   Timer1.Enabled := False;
   Timer2.Enabled := False;
   // ...
@@ -694,8 +694,8 @@ end;
 
 ```pascal
 // ✅ BON : Vérifier que l'objet existe encore
-procedure TForm1.Timer1Timer(Sender: TObject);
-begin
+procedure TForm1.Timer1Timer(Sender: TObject);  
+begin  
   if Assigned(Label1) then
     Label1.Caption := TimeToStr(Now);
 end;
@@ -711,8 +711,8 @@ type
     FTraitementEnCours: Boolean;
   end;
 
-procedure TForm1.Timer1Timer(Sender: TObject);
-begin
+procedure TForm1.Timer1Timer(Sender: TObject);  
+begin  
   if FTraitementEnCours then
     Exit;  // Sortir si déjà en cours
 
@@ -729,8 +729,8 @@ end;
 
 ```pascal
 // ✅ BON : Toujours gérer les exceptions
-procedure TForm1.Timer1Timer(Sender: TObject);
-begin
+procedure TForm1.Timer1Timer(Sender: TObject);  
+begin  
   try
     MettreAJourDonnees;
   except
@@ -769,8 +769,8 @@ type
     procedure TerminerCompteARebours;
   end;
 
-procedure TFormCountdown.FormCreate(Sender: TObject);
-begin
+procedure TFormCountdown.FormCreate(Sender: TObject);  
+begin  
   Timer1.Interval := 1000;  // 1 seconde
   Timer1.Enabled := False;
   FCompteAReboursActif := False;
@@ -786,8 +786,8 @@ begin
   BtnAnnuler.Enabled := False;
 end;
 
-procedure TFormCountdown.BtnDemarrerClick(Sender: TObject);
-begin
+procedure TFormCountdown.BtnDemarrerClick(Sender: TObject);  
+begin  
   // Démarrer le compte à rebours
   FSecondesRestantes := SpinEditMinutes.Value * 60;
   FCompteAReboursActif := True;
@@ -800,8 +800,8 @@ begin
   SpinEditMinutes.Enabled := False;
 end;
 
-procedure TFormCountdown.BtnAnnulerClick(Sender: TObject);
-begin
+procedure TFormCountdown.BtnAnnulerClick(Sender: TObject);  
+begin  
   // Annuler le compte à rebours
   Timer1.Enabled := False;
   FCompteAReboursActif := False;
@@ -813,8 +813,8 @@ begin
   LabelTemps.Font.Color := clBlack;
 end;
 
-procedure TFormCountdown.Timer1Timer(Sender: TObject);
-begin
+procedure TFormCountdown.Timer1Timer(Sender: TObject);  
+begin  
   if not FCompteAReboursActif then Exit;
 
   Dec(FSecondesRestantes);
@@ -832,8 +832,8 @@ begin
     TerminerCompteARebours;
 end;
 
-procedure TFormCountdown.AfficherTemps;
-var
+procedure TFormCountdown.AfficherTemps;  
+var  
   Minutes, Secondes: Integer;
 begin
   Minutes := FSecondesRestantes div 60;
@@ -841,8 +841,8 @@ begin
   LabelTemps.Caption := Format('%2.2d:%2.2d', [Minutes, Secondes]);
 end;
 
-procedure TFormCountdown.TerminerCompteARebours;
-begin
+procedure TFormCountdown.TerminerCompteARebours;  
+begin  
   Timer1.Enabled := False;
   FCompteAReboursActif := False;
 
@@ -893,8 +893,8 @@ type
     procedure Click; override;
   end;
 
-procedure TCercleCliquable.Click;
-var
+procedure TCercleCliquable.Click;  
+var  
   Form: TFormJeu;
 begin
   inherited;
@@ -911,8 +911,8 @@ begin
   Free;
 end;
 
-procedure TFormJeu.FormCreate(Sender: TObject);
-begin
+procedure TFormJeu.FormCreate(Sender: TObject);  
+begin  
   FCercles := TList.Create;
 
   TimerJeu.Interval := 1000;  // 1 seconde
@@ -925,8 +925,8 @@ begin
   FTempsRestant := 30;  // 30 secondes de jeu
 end;
 
-procedure TFormJeu.BtnDemarrerClick(Sender: TObject);
-begin
+procedure TFormJeu.BtnDemarrerClick(Sender: TObject);  
+begin  
   // Démarrer le jeu
   SupprimerTousCercles;
   FScore := 0;
@@ -940,8 +940,8 @@ begin
   BtnDemarrer.Enabled := False;
 end;
 
-procedure TFormJeu.TimerJeuTimer(Sender: TObject);
-begin
+procedure TFormJeu.TimerJeuTimer(Sender: TObject);  
+begin  
   // Décompte du temps
   Dec(FTempsRestant);
   LabelTemps.Caption := 'Temps : ' + IntToStr(FTempsRestant);
@@ -958,14 +958,14 @@ begin
   end;
 end;
 
-procedure TFormJeu.TimerSpawnTimer(Sender: TObject);
-begin
+procedure TFormJeu.TimerSpawnTimer(Sender: TObject);  
+begin  
   // Créer un nouveau cercle
   CreerCercle;
 end;
 
-procedure TFormJeu.CreerCercle;
-var
+procedure TFormJeu.CreerCercle;  
+var  
   Cercle: TCercleCliquable;
   X, Y: Integer;
 begin
@@ -984,8 +984,8 @@ begin
   FCercles.Add(Cercle);
 end;
 
-procedure TFormJeu.SupprimerTousCercles;
-var
+procedure TFormJeu.SupprimerTousCercles;  
+var  
   i: Integer;
 begin
   for i := FCercles.Count - 1 downto 0 do
@@ -995,8 +995,8 @@ begin
   FCercles.Clear;
 end;
 
-procedure TFormJeu.FormDestroy(Sender: TObject);
-begin
+procedure TFormJeu.FormDestroy(Sender: TObject);  
+begin  
   SupprimerTousCercles;
   FCercles.Free;
 end;
@@ -1016,8 +1016,8 @@ type
     FTimeoutMinutes: Integer;
   end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   FTimeoutMinutes := 5;  // 5 minutes d'inactivité
   FDerniereActivite := Now;
 
@@ -1026,18 +1026,18 @@ begin
 end;
 
 // Capturer toute activité
-procedure TForm1.FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
-begin
+procedure TForm1.FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);  
+begin  
   FDerniereActivite := Now;
 end;
 
-procedure TForm1.FormKeyPress(Sender: TObject; var Key: Char);
-begin
+procedure TForm1.FormKeyPress(Sender: TObject; var Key: Char);  
+begin  
   FDerniereActivite := Now;
 end;
 
-procedure TForm1.TimerTimeoutTimer(Sender: TObject);
-var
+procedure TForm1.TimerTimeoutTimer(Sender: TObject);  
+var  
   MinutesInactif: Integer;
 begin
   MinutesInactif := MinutesBetween(Now, FDerniereActivite);  // Nécessite uses DateUtils
@@ -1054,8 +1054,8 @@ end;
 ### 2. Vérification de Connexion Réseau
 
 ```pascal
-procedure TForm1.TimerConnexionTimer(Sender: TObject);
-begin
+procedure TForm1.TimerConnexionTimer(Sender: TObject);  
+begin  
   if VerifierConnexionInternet then
   begin
     ShapeConnexion.Brush.Color := clGreen;
@@ -1068,8 +1068,8 @@ begin
   end;
 end;
 
-function TForm1.VerifierConnexionInternet: Boolean;
-begin
+function TForm1.VerifierConnexionInternet: Boolean;  
+begin  
   // Implémentation simplifiée
   // En réalité, vous feriez un ping ou une requête HTTP
   Result := True;  // Simuler
@@ -1087,22 +1087,22 @@ type
     procedure FadeOut;
   end;
 
-procedure TForm1.FadeIn;
-begin
+procedure TForm1.FadeIn;  
+begin  
   FOpaciteCible := 255;
   AlphaBlendValue := 0;
   AlphaBlend := True;
   TimerFade.Enabled := True;
 end;
 
-procedure TForm1.FadeOut;
-begin
+procedure TForm1.FadeOut;  
+begin  
   FOpaciteCible := 0;
   TimerFade.Enabled := True;
 end;
 
-procedure TForm1.TimerFadeTimer(Sender: TObject);
-const
+procedure TForm1.TimerFadeTimer(Sender: TObject);  
+const  
   VITESSE = 15;  // Pixels d'opacité par tick
 begin
   if AlphaBlendValue < FOpaciteCible then

@@ -65,27 +65,27 @@ TWinControl
 #### Apparence
 
 ```pascal
-property Caption: string;           // Texte affiché (souvent vide)
-property Color: TColor;             // Couleur de fond
-property BevelInner: TPanelBevel;   // Bordure intérieure (bvNone, bvLowered, bvRaised)
-property BevelOuter: TPanelBevel;   // Bordure extérieure
-property BevelWidth: Integer;       // Épaisseur de la bordure
-property BorderStyle: TBorderStyle; // Style de bordure (bsSingle, bsNone)
+property Caption: string;           // Texte affiché (souvent vide)  
+property Color: TColor;             // Couleur de fond  
+property BevelInner: TPanelBevel;   // Bordure intérieure (bvNone, bvLowered, bvRaised)  
+property BevelOuter: TPanelBevel;   // Bordure extérieure  
+property BevelWidth: Integer;       // Épaisseur de la bordure  
+property BorderStyle: TBorderStyle; // Style de bordure (bsSingle, bsNone)  
 ```
 
 #### Layout et Alignement
 
 ```pascal
-property Align: TAlign;             // Alignement automatique
-property AutoSize: Boolean;         // Taille automatique selon le contenu
-property ChildSizing: TControlChildSizing;  // Gestion des espaces entre enfants
+property Align: TAlign;             // Alignement automatique  
+property AutoSize: Boolean;         // Taille automatique selon le contenu  
+property ChildSizing: TControlChildSizing;  // Gestion des espaces entre enfants  
 ```
 
 ### Exemple de Base
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-var
+procedure TForm1.FormCreate(Sender: TObject);  
+var  
   Panel1: TPanel;
   Button1: TButton;
 begin
@@ -133,8 +133,8 @@ bvRaised   : Aspect surélevé
 
 ```pascal
 // Panel plat sans bordure
-Panel1.BevelOuter := bvNone;
-Panel1.BevelInner := bvNone;
+Panel1.BevelOuter := bvNone;  
+Panel1.BevelInner := bvNone;  
 
 // Panel enfoncé (pour zones de saisie)
 Panel1.BevelOuter := bvLowered;
@@ -143,8 +143,8 @@ Panel1.BevelOuter := bvLowered;
 Panel1.BevelOuter := bvRaised;
 
 // Panel avec double bordure
-Panel1.BevelOuter := bvRaised;
-Panel1.BevelInner := bvLowered;
+Panel1.BevelOuter := bvRaised;  
+Panel1.BevelInner := bvLowered;  
 ```
 
 ### La Propriété Align
@@ -170,8 +170,8 @@ type
 ### Exemple avec Align
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-var
+procedure TForm1.FormCreate(Sender: TObject);  
+var  
   PanelTop, PanelBottom, PanelClient: TPanel;
 begin
   // Barre supérieure
@@ -221,11 +221,11 @@ end;
 **Propriétés utiles :**
 
 ```pascal
-Panel1.ChildSizing.LeftRightSpacing := 10;    // Espace horizontal
-Panel1.ChildSizing.TopBottomSpacing := 10;    // Espace vertical
-Panel1.ChildSizing.HorizontalSpacing := 5;    // Entre les colonnes
-Panel1.ChildSizing.VerticalSpacing := 5;      // Entre les lignes
-Panel1.ChildSizing.Layout := cclLeftToRightThenTopToBottom;  // Disposition
+Panel1.ChildSizing.LeftRightSpacing := 10;    // Espace horizontal  
+Panel1.ChildSizing.TopBottomSpacing := 10;    // Espace vertical  
+Panel1.ChildSizing.HorizontalSpacing := 5;    // Entre les colonnes  
+Panel1.ChildSizing.VerticalSpacing := 5;      // Entre les lignes  
+Panel1.ChildSizing.Layout := cclLeftToRightThenTopToBottom;  // Disposition  
 ```
 
 ### Cas d'Usage Typiques de TPanel
@@ -233,17 +233,17 @@ Panel1.ChildSizing.Layout := cclLeftToRightThenTopToBottom;  // Disposition
 #### 1. Barre d'outils
 
 ```pascal
-ToolbarPanel.Align := alTop;
-ToolbarPanel.Height := 40;
-ToolbarPanel.BevelOuter := bvNone;
+ToolbarPanel.Align := alTop;  
+ToolbarPanel.Height := 40;  
+ToolbarPanel.BevelOuter := bvNone;  
 ```
 
 #### 2. Barre d'état
 
 ```pascal
-StatusPanel.Align := alBottom;
-StatusPanel.Height := 25;
-StatusPanel.Caption := 'Prêt';
+StatusPanel.Align := alBottom;  
+StatusPanel.Height := 25;  
+StatusPanel.Caption := 'Prêt';  
 ```
 
 #### 3. Zone de contenu avec défilement
@@ -251,17 +251,17 @@ StatusPanel.Caption := 'Prêt';
 ```pascal
 // Note : AutoScroll est une propriété de TScrollBox, pas de TPanel
 // Pour le défilement, utiliser un TScrollBox à la place de TPanel
-ScrollBox1.Align := alClient;
-ScrollBox1.AutoScroll := True;  // Ajoute des barres de défilement si nécessaire
+ScrollBox1.Align := alClient;  
+ScrollBox1.AutoScroll := True;  // Ajoute des barres de défilement si nécessaire  
 ```
 
 #### 4. Carte d'information
 
 ```pascal
-InfoPanel.Width := 200;
-InfoPanel.Height := 150;
-InfoPanel.BevelOuter := bvRaised;
-InfoPanel.Color := clInfoBk;
+InfoPanel.Width := 200;  
+InfoPanel.Height := 150;  
+InfoPanel.BevelOuter := bvRaised;  
+InfoPanel.Color := clInfoBk;  
 ```
 
 ### Masquer/Afficher Plusieurs Composants
@@ -307,9 +307,9 @@ TWinControl
 ### Propriétés Principales
 
 ```pascal
-property Caption: string;           // Titre du groupe (visible)
-property Color: TColor;             // Couleur de fond
-property Font: TFont;               // Police du titre
+property Caption: string;           // Titre du groupe (visible)  
+property Color: TColor;             // Couleur de fond  
+property Font: TFont;               // Police du titre  
 ```
 
 ### Différences avec TPanel
@@ -326,8 +326,8 @@ property Font: TFont;               // Police du titre
 Les boutons radio dans un même conteneur forment un groupe exclusif (un seul peut être sélectionné).
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-var
+procedure TForm1.FormCreate(Sender: TObject);  
+var  
   GroupBox1: TGroupBox;
   Radio1, Radio2, Radio3: TRadioButton;
 begin
@@ -365,8 +365,8 @@ end;
 Pour avoir plusieurs groupes indépendants, utilisez plusieurs GroupBox :
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-var
+procedure TForm1.FormCreate(Sender: TObject);  
+var  
   GroupBox1, GroupBox2: TGroupBox;
 begin
   // Premier groupe
@@ -491,8 +491,8 @@ TWinControl
 #### Par Code
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-var
+procedure TForm1.FormCreate(Sender: TObject);  
+var  
   PageControl1: TPageControl;
   TabSheet1, TabSheet2, TabSheet3: TTabSheet;
 begin
@@ -547,23 +547,23 @@ end;
 ### Propriétés du TPageControl
 
 ```pascal
-property ActivePage: TTabSheet;      // Onglet actuellement visible
-property ActivePageIndex: Integer;   // Index de l'onglet actif (0, 1, 2...)
-property PageCount: Integer;         // Nombre d'onglets
-property Pages[Index: Integer]: TTabSheet;  // Accès aux onglets par index
-property TabPosition: TTabPosition;  // Position des onglets (tpTop, tpBottom, etc.)
-property MultiLine: Boolean;         // Plusieurs lignes d'onglets si nécessaire
-property TabHeight: Integer;         // Hauteur des onglets
-property TabWidth: Integer;          // Largeur des onglets (0 = automatique)
+property ActivePage: TTabSheet;      // Onglet actuellement visible  
+property ActivePageIndex: Integer;   // Index de l'onglet actif (0, 1, 2...)  
+property PageCount: Integer;         // Nombre d'onglets  
+property Pages[Index: Integer]: TTabSheet;  // Accès aux onglets par index  
+property TabPosition: TTabPosition;  // Position des onglets (tpTop, tpBottom, etc.)  
+property MultiLine: Boolean;         // Plusieurs lignes d'onglets si nécessaire  
+property TabHeight: Integer;         // Hauteur des onglets  
+property TabWidth: Integer;          // Largeur des onglets (0 = automatique)  
 ```
 
 ### Propriétés du TTabSheet
 
 ```pascal
-property Caption: string;            // Texte de l'onglet
-property TabVisible: Boolean;        // Visibilité de l'onglet
-property PageIndex: Integer;         // Position de l'onglet
-property ImageIndex: Integer;        // Index d'image (si ImageList associée)
+property Caption: string;            // Texte de l'onglet  
+property TabVisible: Boolean;        // Visibilité de l'onglet  
+property PageIndex: Integer;         // Position de l'onglet  
+property ImageIndex: Integer;        // Index d'image (si ImageList associée)  
 ```
 
 ### Changer d'Onglet par Code
@@ -587,15 +587,15 @@ if PageControl1.ActivePageIndex > 0 then
 ### Événements
 
 ```pascal
-property OnChange: TNotifyEvent;  // Déclenché quand on change d'onglet
-property OnChanging: TTabChangingEvent;  // Avant le changement (peut être annulé)
+property OnChange: TNotifyEvent;  // Déclenché quand on change d'onglet  
+property OnChanging: TTabChangingEvent;  // Avant le changement (peut être annulé)  
 ```
 
 #### Exemple : Valider avant de changer d'onglet
 
 ```pascal
-procedure TForm1.PageControl1Changing(Sender: TObject; var AllowChange: Boolean);
-begin
+procedure TForm1.PageControl1Changing(Sender: TObject; var AllowChange: Boolean);  
+begin  
   // Empêcher de quitter l'onglet si le nom est vide
   if (PageControl1.ActivePage = TabSheet1) and (Edit1.Text = '') then
   begin
@@ -652,8 +652,8 @@ TabSheet2.TabVisible := True;
 
 ```pascal
 // Bouton Suivant
-procedure TForm1.BtnNextClick(Sender: TObject);
-begin
+procedure TForm1.BtnNextClick(Sender: TObject);  
+begin  
   if PageControl1.ActivePageIndex < PageControl1.PageCount - 1 then
     PageControl1.ActivePageIndex := PageControl1.ActivePageIndex + 1
   else
@@ -685,8 +685,8 @@ Vous pouvez **imbriquer** des conteneurs les uns dans les autres pour créer des
 ### Exemple : Panel dans Panel
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-var
+procedure TForm1.FormCreate(Sender: TObject);  
+var  
   PanelMain, PanelLeft, PanelRight: TPanel;
 begin
   // Panel principal
@@ -816,8 +816,8 @@ Il n'y a pas de limite technique, mais :
 ### Créer/Détruire Dynamiquement
 
 ```pascal
-procedure TForm1.BtnAjouterPanelClick(Sender: TObject);
-var
+procedure TForm1.BtnAjouterPanelClick(Sender: TObject);  
+var  
   NewPanel: TPanel;
 begin
   NewPanel := TPanel.Create(Self);  // Self = Owner (destruction auto)
@@ -831,8 +831,8 @@ end;
 ### Ajouter des Onglets Dynamiquement
 
 ```pascal
-procedure TForm1.BtnAjouterOngletClick(Sender: TObject);
-var
+procedure TForm1.BtnAjouterOngletClick(Sender: TObject);  
+var  
   NewTab: TTabSheet;
 begin
   NewTab := TTabSheet.Create(PageControl1);
@@ -847,8 +847,8 @@ end;
 ### Parcourir les Enfants d'un Conteneur
 
 ```pascal
-procedure TForm1.AfficherEnfants(Conteneur: TWinControl);
-var
+procedure TForm1.AfficherEnfants(Conteneur: TWinControl);  
+var  
   i: Integer;
 begin
   for i := 0 to Conteneur.ControlCount - 1 do
@@ -859,8 +859,8 @@ begin
 end;
 
 // Utilisation
-procedure TForm1.BtnVoirEnfantsClick(Sender: TObject);
-begin
+procedure TForm1.BtnVoirEnfantsClick(Sender: TObject);  
+begin  
   AfficherEnfants(Panel1);
 end;
 ```
@@ -885,9 +885,9 @@ PanelToolbar, PanelStatus, PanelContent
 
 ```pascal
 // Pour une mise en page robuste
-PanelTop.Align := alTop;
-PanelBottom.Align := alBottom;
-PanelClient.Align := alClient;  // Remplit automatiquement
+PanelTop.Align := alTop;  
+PanelBottom.Align := alBottom;  
+PanelClient.Align := alClient;  // Remplit automatiquement  
 ```
 
 L'ordre de création est important avec `Align` :
@@ -939,8 +939,8 @@ Form1 → Panel1 → GroupBox1 → Button1
 Pour les conteneurs qui ne doivent pas remplir tout l'espace :
 
 ```pascal
-Panel1.Anchors := [akLeft, akTop, akRight];  // S'étire horizontalement
-Panel1.Align := alNone;
+Panel1.Anchors := [akLeft, akTop, akRight];  // S'étire horizontalement  
+Panel1.Align := alNone;  
 ```
 
 ---
@@ -950,8 +950,8 @@ Panel1.Align := alNone;
 Voici une structure classique combinant les trois conteneurs :
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-var
+procedure TForm1.FormCreate(Sender: TObject);  
+var  
   PanelTop, PanelBottom, PanelClient: TPanel;
   PageControl1: TPageControl;
   TabGeneral, TabOptions: TTabSheet;

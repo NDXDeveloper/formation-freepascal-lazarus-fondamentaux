@@ -19,26 +19,26 @@ Sans actions, pour implémenter "Copier" partout :
 ```pascal
 // Note : l'utilisation de Clipboard nécessite uses Clipbrd
 // Menu principal
-procedure TForm1.MenuItemCopierClick(Sender: TObject);
-begin
+procedure TForm1.MenuItemCopierClick(Sender: TObject);  
+begin  
   Clipboard.AsText := Memo1.SelText;
 end;
 
 // Bouton barre d'outils
-procedure TForm1.BtnCopierClick(Sender: TObject);
-begin
+procedure TForm1.BtnCopierClick(Sender: TObject);  
+begin  
   Clipboard.AsText := Memo1.SelText;  // Code dupliqué !
 end;
 
 // Menu contextuel
-procedure TForm1.PopupMenuCopierClick(Sender: TObject);
-begin
+procedure TForm1.PopupMenuCopierClick(Sender: TObject);  
+begin  
   Clipboard.AsText := Memo1.SelText;  // Encore dupliqué !
 end;
 
 // Raccourci clavier
-procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-begin
+procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);  
+begin  
   if (ssCtrl in Shift) and (Key = VK_C) then
     Clipboard.AsText := Memo1.SelText;  // Toujours dupliqué !
 end;
@@ -56,8 +56,8 @@ Avec une Action, vous écrivez le code **une seule fois** et le liez à tous les
 
 ```pascal
 // UNE SEULE procédure
-procedure TForm1.ActCopierExecute(Sender: TObject);
-begin
+procedure TForm1.ActCopierExecute(Sender: TObject);  
+begin  
   Clipboard.AsText := Memo1.SelText;
 end;
 
@@ -152,8 +152,8 @@ Formulaire
 Double-cliquez sur l'action dans l'éditeur pour créer l'événement `OnExecute` :
 
 ```pascal
-procedure TForm1.ActCopierExecute(Sender: TObject);
-begin
+procedure TForm1.ActCopierExecute(Sender: TObject);  
+begin  
   if Memo1.SelLength > 0 then
     Clipboard.AsText := Memo1.SelText;
 end;
@@ -165,8 +165,8 @@ end;
 
 ```pascal
 // Dans l'éditeur de menu
-MenuItem1.Caption := 'Copier';
-MenuItem1.Action := ActCopier;  // Lie l'action
+MenuItem1.Caption := 'Copier';  
+MenuItem1.Action := ActCopier;  // Lie l'action  
 
 // Le Caption, ShortCut, Enabled seront gérés automatiquement !
 ```
@@ -182,8 +182,8 @@ Button1.Action := ActCopier;
 #### Lier à un SpeedButton (barre d'outils)
 
 ```pascal
-SpeedButton1.Action := ActCopier;
-SpeedButton1.Flat := True;  // Style plat pour barre d'outils
+SpeedButton1.Action := ActCopier;  
+SpeedButton1.Flat := True;  // Style plat pour barre d'outils  
 ```
 
 ### Exemple Complet : Actions de Base
@@ -213,8 +213,8 @@ type
     procedure ActCollerUpdate(Sender: TObject);
   end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Configuration des actions
   ActCouper.Caption := 'Co&uper';
   ActCouper.ShortCut := TextToShortCut('Ctrl+X');
@@ -239,30 +239,30 @@ begin
   BtnColler.Action := ActColler;
 end;
 
-procedure TForm1.ActCopierExecute(Sender: TObject);
-begin
+procedure TForm1.ActCopierExecute(Sender: TObject);  
+begin  
   Clipboard.AsText := Memo1.SelText;
 end;
 
-procedure TForm1.ActCollerExecute(Sender: TObject);
-begin
+procedure TForm1.ActCollerExecute(Sender: TObject);  
+begin  
   Memo1.SelText := Clipboard.AsText;
 end;
 
-procedure TForm1.ActCouperExecute(Sender: TObject);
-begin
+procedure TForm1.ActCouperExecute(Sender: TObject);  
+begin  
   Clipboard.AsText := Memo1.SelText;
   Memo1.SelText := '';
 end;
 
 // Mise à jour automatique de l'état
-procedure TForm1.ActCopierUpdate(Sender: TObject);
-begin
+procedure TForm1.ActCopierUpdate(Sender: TObject);  
+begin  
   ActCopier.Enabled := Memo1.SelLength > 0;
 end;
 
-procedure TForm1.ActCollerUpdate(Sender: TObject);
-begin
+procedure TForm1.ActCollerUpdate(Sender: TObject);  
+begin  
   ActColler.Enabled := Clipboard.HasFormat(CF_TEXT);
 end;
 ```
@@ -274,25 +274,25 @@ end;
 ### Propriétés Visuelles
 
 ```pascal
-property Caption: string;        // Texte affiché (avec & pour raccourci Alt)
-property Hint: string;           // Infobulle
-property ImageIndex: Integer;    // Index de l'icône (si ImageList)
-property ShortCut: TShortCut;    // Raccourci clavier
+property Caption: string;        // Texte affiché (avec & pour raccourci Alt)  
+property Hint: string;           // Infobulle  
+property ImageIndex: Integer;    // Index de l'icône (si ImageList)  
+property ShortCut: TShortCut;    // Raccourci clavier  
 ```
 
 ### Propriétés d'État
 
 ```pascal
-property Enabled: Boolean;       // Action activée/désactivée
-property Checked: Boolean;       // Action cochée (pour menus)
-property Visible: Boolean;       // Action visible/invisible
+property Enabled: Boolean;       // Action activée/désactivée  
+property Checked: Boolean;       // Action cochée (pour menus)  
+property Visible: Boolean;       // Action visible/invisible  
 ```
 
 ### Propriétés de Catégorie
 
 ```pascal
-property Category: string;       // Catégorie pour organisation
-property GroupIndex: Integer;    // Groupe pour actions mutuellement exclusives
+property Category: string;       // Catégorie pour organisation  
+property GroupIndex: Integer;    // Groupe pour actions mutuellement exclusives  
 ```
 
 ---
@@ -304,8 +304,8 @@ property GroupIndex: Integer;    // Groupe pour actions mutuellement exclusives
 L'événement **principal** déclenché quand l'action est exécutée :
 
 ```pascal
-procedure TForm1.ActNouveauExecute(Sender: TObject);
-begin
+procedure TForm1.ActNouveauExecute(Sender: TObject);  
+begin  
   // Code de la commande "Nouveau"
   Memo1.Clear;
 end;
@@ -316,8 +316,8 @@ end;
 Événement appelé **périodiquement** pour mettre à jour l'état de l'action :
 
 ```pascal
-procedure TForm1.ActSauvegarderUpdate(Sender: TObject);
-begin
+procedure TForm1.ActSauvegarderUpdate(Sender: TObject);  
+begin  
   // Désactiver si rien à sauvegarder
   ActSauvegarder.Enabled := Memo1.Modified;
 end;
@@ -330,8 +330,8 @@ end;
 Événement appelé pour afficher l'infobulle :
 
 ```pascal
-procedure TForm1.ActCopierHint(var HintStr: string; var CanShow: Boolean);
-begin
+procedure TForm1.ActCopierHint(var HintStr: string; var CanShow: Boolean);  
+begin  
   HintStr := 'Copier : ' + IntToStr(Memo1.SelLength) + ' caractères sélectionnés';
   CanShow := True;
 end;
@@ -353,18 +353,18 @@ Dans l'Inspecteur d'Objets, propriété `ShortCut` :
 #### Méthode 2 : Par Code
 
 ```pascal
-ActNouveau.ShortCut := TextToShortCut('Ctrl+N');
-ActOuvrir.ShortCut := TextToShortCut('Ctrl+O');
-ActSauvegarder.ShortCut := TextToShortCut('Ctrl+S');
-ActQuitter.ShortCut := TextToShortCut('Alt+F4');
+ActNouveau.ShortCut := TextToShortCut('Ctrl+N');  
+ActOuvrir.ShortCut := TextToShortCut('Ctrl+O');  
+ActSauvegarder.ShortCut := TextToShortCut('Ctrl+S');  
+ActQuitter.ShortCut := TextToShortCut('Alt+F4');  
 
 // Avec touches de fonction
-ActAide.ShortCut := VK_F1;
-ActRechercher.ShortCut := TextToShortCut('Ctrl+F');
+ActAide.ShortCut := VK_F1;  
+ActRechercher.ShortCut := TextToShortCut('Ctrl+F');  
 
 // Avec Shift
-ActSelectionnerTout.ShortCut := TextToShortCut('Ctrl+A');
-ActRechercherSuivant.ShortCut := TextToShortCut('F3');
+ActSelectionnerTout.ShortCut := TextToShortCut('Ctrl+A');  
+ActRechercherSuivant.ShortCut := TextToShortCut('F3');  
 ```
 
 ### Raccourcis Standards
@@ -396,20 +396,20 @@ ActRechercherSuivant.ShortCut := TextToShortCut('F3');
 L'événement `OnUpdate` est appelé **automatiquement** et permet de synchroniser l'état de l'action avec l'état de l'application :
 
 ```pascal
-procedure TForm1.ActCouperUpdate(Sender: TObject);
-begin
+procedure TForm1.ActCouperUpdate(Sender: TObject);  
+begin  
   // Active uniquement si du texte est sélectionné
   ActCouper.Enabled := Memo1.SelLength > 0;
 end;
 
-procedure TForm1.ActAnnulerUpdate(Sender: TObject);
-begin
+procedure TForm1.ActAnnulerUpdate(Sender: TObject);  
+begin  
   // Active uniquement si on peut annuler
   ActAnnuler.Enabled := Memo1.CanUndo;
 end;
 
-procedure TForm1.ActRefaireUpdate(Sender: TObject);
-begin
+procedure TForm1.ActRefaireUpdate(Sender: TObject);  
+begin  
   // Active uniquement si on peut refaire
   ActRefaire.Enabled := Memo1.CanRedo;
 end;
@@ -420,8 +420,8 @@ end;
 ### Exemple : Mode Lecture Seule
 
 ```pascal
-procedure TForm1.ActModeEditionUpdate(Sender: TObject);
-begin
+procedure TForm1.ActModeEditionUpdate(Sender: TObject);  
+begin  
   ActModeEdition.Checked := not Memo1.ReadOnly;
 
   // Activer/désactiver les actions d'édition
@@ -429,8 +429,8 @@ begin
   ActColler.Enabled := not Memo1.ReadOnly;
 end;
 
-procedure TForm1.ActModeEditionExecute(Sender: TObject);
-begin
+procedure TForm1.ActModeEditionExecute(Sender: TObject);  
+begin  
   // Basculer le mode lecture seule
   Memo1.ReadOnly := not Memo1.ReadOnly;
 end;
@@ -445,8 +445,8 @@ end;
 Pour afficher des icônes sur les menus et boutons :
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Associer l'ImageList à l'ActionList
   ActionList1.Images := ImageList1;
 
@@ -477,8 +477,8 @@ MainMenu1.Images := ImageList1;
 Les actions peuvent être **organisées en catégories** pour faciliter la gestion :
 
 ```pascal
-procedure TForm1.OrganiserActions;
-begin
+procedure TForm1.OrganiserActions;  
+begin  
   // Catégorie "Fichier"
   ActNouveau.Category := 'Fichier';
   ActOuvrir.Category := 'Fichier';
@@ -506,8 +506,8 @@ Dans l'éditeur d'actions, vous pouvez alors **filtrer** par catégorie.
 Pour créer des actions comme des boutons radio (une seule cochée à la fois) :
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Définir le même GroupIndex
   ActAffichageListe.GroupIndex := 1;
   ActAffichageIcone.GroupIndex := 1;
@@ -517,8 +517,8 @@ begin
   ActAffichageListe.Checked := True;
 end;
 
-procedure TForm1.ActAffichageListeExecute(Sender: TObject);
-begin
+procedure TForm1.ActAffichageListeExecute(Sender: TObject);  
+begin  
   // Basculer l'état coché
   ActAffichageListe.Checked := True;
   // Les autres actions du même groupe seront automatiquement décochées
@@ -527,14 +527,14 @@ begin
   ListView1.ViewStyle := vsReport;
 end;
 
-procedure TForm1.ActAffichageIconeExecute(Sender: TObject);
-begin
+procedure TForm1.ActAffichageIconeExecute(Sender: TObject);  
+begin  
   ActAffichageIcone.Checked := True;
   ListView1.ViewStyle := vsIcon;
 end;
 
-procedure TForm1.ActAffichageDetailsExecute(Sender: TObject);
-begin
+procedure TForm1.ActAffichageDetailsExecute(Sender: TObject);  
+begin  
   ActAffichageDetails.Checked := True;
   ListView1.ViewStyle := vsReport;
 end;
@@ -589,8 +589,8 @@ type
     procedure MettreAJourTitre;
   end;
 
-procedure TFormEditeur.FormCreate(Sender: TObject);
-begin
+procedure TFormEditeur.FormCreate(Sender: TObject);  
+begin  
   // Configuration des actions Fichier
   ActNouveau.Caption := '&Nouveau';
   ActNouveau.ShortCut := TextToShortCut('Ctrl+N');
@@ -641,8 +641,8 @@ end;
 
 // --- Actions Fichier ---
 
-procedure TFormEditeur.ActNouveauExecute(Sender: TObject);
-begin
+procedure TFormEditeur.ActNouveauExecute(Sender: TObject);  
+begin  
   if Memo1.Modified then
   begin
     case MessageDlg('Sauvegarder les modifications ?',
@@ -658,8 +658,8 @@ begin
   MettreAJourTitre;
 end;
 
-procedure TFormEditeur.ActOuvrirExecute(Sender: TObject);
-begin
+procedure TFormEditeur.ActOuvrirExecute(Sender: TObject);  
+begin  
   if OpenDialog1.Execute then
   begin
     try
@@ -674,8 +674,8 @@ begin
   end;
 end;
 
-procedure TFormEditeur.ActSauvegarderExecute(Sender: TObject);
-begin
+procedure TFormEditeur.ActSauvegarderExecute(Sender: TObject);  
+begin  
   if FFichierCourant = '' then
   begin
     // Demander le nom du fichier
@@ -696,59 +696,59 @@ begin
   end;
 end;
 
-procedure TFormEditeur.ActQuitterExecute(Sender: TObject);
-begin
+procedure TFormEditeur.ActQuitterExecute(Sender: TObject);  
+begin  
   Close;
 end;
 
 // --- Actions Édition ---
 
-procedure TFormEditeur.ActCouperExecute(Sender: TObject);
-begin
+procedure TFormEditeur.ActCouperExecute(Sender: TObject);  
+begin  
   Memo1.CutToClipboard;
 end;
 
-procedure TFormEditeur.ActCopierExecute(Sender: TObject);
-begin
+procedure TFormEditeur.ActCopierExecute(Sender: TObject);  
+begin  
   Memo1.CopyToClipboard;
 end;
 
-procedure TFormEditeur.ActCollerExecute(Sender: TObject);
-begin
+procedure TFormEditeur.ActCollerExecute(Sender: TObject);  
+begin  
   Memo1.PasteFromClipboard;
 end;
 
-procedure TFormEditeur.ActSelectionnerToutExecute(Sender: TObject);
-begin
+procedure TFormEditeur.ActSelectionnerToutExecute(Sender: TObject);  
+begin  
   Memo1.SelectAll;
 end;
 
 // --- Mise à jour automatique ---
 
-procedure TFormEditeur.ActCouperUpdate(Sender: TObject);
-begin
+procedure TFormEditeur.ActCouperUpdate(Sender: TObject);  
+begin  
   ActCouper.Enabled := Memo1.SelLength > 0;
 end;
 
-procedure TFormEditeur.ActCopierUpdate(Sender: TObject);
-begin
+procedure TFormEditeur.ActCopierUpdate(Sender: TObject);  
+begin  
   ActCopier.Enabled := Memo1.SelLength > 0;
 end;
 
-procedure TFormEditeur.ActCollerUpdate(Sender: TObject);
-begin
+procedure TFormEditeur.ActCollerUpdate(Sender: TObject);  
+begin  
   ActColler.Enabled := Clipboard.HasFormat(CF_TEXT);
 end;
 
-procedure TFormEditeur.ActSauvegarderUpdate(Sender: TObject);
-begin
+procedure TFormEditeur.ActSauvegarderUpdate(Sender: TObject);  
+begin  
   ActSauvegarder.Enabled := Memo1.Modified;
 end;
 
 // --- Utilitaires ---
 
-procedure TFormEditeur.MettreAJourTitre;
-begin
+procedure TFormEditeur.MettreAJourTitre;  
+begin  
   if FFichierCourant = '' then
     Caption := 'Éditeur - Sans titre'
   else
@@ -810,8 +810,8 @@ type
 Créer un menu contextuel est très simple avec les actions :
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-var
+procedure TForm1.FormCreate(Sender: TObject);  
+var  
   PopupMenu: TPopupMenu;
   MenuItem: TMenuItem;
 begin
@@ -907,30 +907,30 @@ end;
 
 ```pascal
 // ✅ BON : Préfixe Act + verbe d'action
-ActNouveau, ActOuvrir, ActSauvegarder, ActQuitter
-ActCopier, ActColler, ActCouper
-ActRechercher, ActRemplacer
+ActNouveau, ActOuvrir, ActSauvegarder, ActQuitter  
+ActCopier, ActColler, ActCouper  
+ActRechercher, ActRemplacer  
 
 // ❌ MAUVAIS : Noms vagues
-Action1, Action2, Action3
-BoutonCopier, MenuCopier  // Ce ne sont pas des actions !
+Action1, Action2, Action3  
+BoutonCopier, MenuCopier  // Ce ne sont pas des actions !  
 ```
 
 ### 2. Catégoriser
 
 ```pascal
 // ✅ BON : Organiser par catégories logiques
-ActNouveau.Category := 'Fichier';
-ActCopier.Category := 'Édition';
-ActZoomPlus.Category := 'Affichage';
+ActNouveau.Category := 'Fichier';  
+ActCopier.Category := 'Édition';  
+ActZoomPlus.Category := 'Affichage';  
 ```
 
 ### 3. Raccourcis Standards
 
 ```pascal
 // ✅ BON : Utiliser les raccourcis conventionnels
-ActCopier.ShortCut := TextToShortCut('Ctrl+C');
-ActSauvegarder.ShortCut := TextToShortCut('Ctrl+S');
+ActCopier.ShortCut := TextToShortCut('Ctrl+C');  
+ActSauvegarder.ShortCut := TextToShortCut('Ctrl+S');  
 
 // ❌ MAUVAIS : Raccourcis non-conventionnels
 ActCopier.ShortCut := TextToShortCut('Ctrl+K');  // Déroutant !
@@ -940,14 +940,14 @@ ActCopier.ShortCut := TextToShortCut('Ctrl+K');  // Déroutant !
 
 ```pascal
 // ✅ BON : Synchroniser l'état automatiquement
-procedure TForm1.ActCopierUpdate(Sender: TObject);
-begin
+procedure TForm1.ActCopierUpdate(Sender: TObject);  
+begin  
   ActCopier.Enabled := Memo1.SelLength > 0;
 end;
 
 // ❌ MAUVAIS : Gérer manuellement partout
-procedure TForm1.Memo1SelectionChange(Sender: TObject);
-begin
+procedure TForm1.Memo1SelectionChange(Sender: TObject);  
+begin  
   ActCopier.Enabled := Memo1.SelLength > 0;
   MenuItemCopier.Enabled := Memo1.SelLength > 0;
   BtnCopier.Enabled := Memo1.SelLength > 0;
@@ -959,8 +959,8 @@ end;
 
 ```pascal
 // ✅ BON : ImageList centralisé
-ActionList1.Images := ImageList1;
-ActNouveau.ImageIndex := 0;
+ActionList1.Images := ImageList1;  
+ActNouveau.ImageIndex := 0;  
 
 // Tous les contrôles liés auront automatiquement l'icône
 ```
@@ -969,8 +969,8 @@ ActNouveau.ImageIndex := 0;
 
 ```pascal
 // ✅ BON : Gestion d'erreur dans l'action
-procedure TForm1.ActOuvrirExecute(Sender: TObject);
-begin
+procedure TForm1.ActOuvrirExecute(Sender: TObject);  
+begin  
   if OpenDialog1.Execute then
   begin
     try
@@ -991,22 +991,22 @@ end;
 
 ```pascal
 // Menu
-procedure TForm1.MenuCopierClick(Sender: TObject);
-begin
+procedure TForm1.MenuCopierClick(Sender: TObject);  
+begin  
   if Memo1.SelLength > 0 then
     Clipboard.AsText := Memo1.SelText;
 end;
 
 // Bouton
-procedure TForm1.BtnCopierClick(Sender: TObject);
-begin
+procedure TForm1.BtnCopierClick(Sender: TObject);  
+begin  
   if Memo1.SelLength > 0 then
     Clipboard.AsText := Memo1.SelText;
 end;
 
 // Mise à jour manuelle
-procedure TForm1.Memo1Change(Sender: TObject);
-begin
+procedure TForm1.Memo1Change(Sender: TObject);  
+begin  
   MenuCopier.Enabled := Memo1.SelLength > 0;
   BtnCopier.Enabled := Memo1.SelLength > 0;
 end;
@@ -1018,20 +1018,20 @@ end;
 
 ```pascal
 // Une seule procédure Execute
-procedure TForm1.ActCopierExecute(Sender: TObject);
-begin
+procedure TForm1.ActCopierExecute(Sender: TObject);  
+begin  
   Clipboard.AsText := Memo1.SelText;
 end;
 
 // Une seule procédure Update
-procedure TForm1.ActCopierUpdate(Sender: TObject);
-begin
+procedure TForm1.ActCopierUpdate(Sender: TObject);  
+begin  
   ActCopier.Enabled := Memo1.SelLength > 0;
 end;
 
 // Liaison
-MenuCopier.Action := ActCopier;
-BtnCopier.Action := ActCopier;
+MenuCopier.Action := ActCopier;  
+BtnCopier.Action := ActCopier;  
 ```
 
 **Total** : 2 procédures, pas de duplication, gestion automatique !

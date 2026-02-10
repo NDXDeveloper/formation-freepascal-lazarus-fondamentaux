@@ -208,8 +208,8 @@ Le système `Owner` est crucial pour la gestion automatique de la mémoire.
 **Exemple :**
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-var
+procedure TForm1.FormCreate(Sender: TObject);  
+var  
   MyButton: TButton;
 begin
   // Form1 est le propriétaire du bouton
@@ -238,11 +238,11 @@ Ce nom est utilisé pour :
 `Tag` est un entier libre que vous pouvez utiliser comme bon vous semble :
 
 ```pascal
-Button1.Tag := 100;
-Button2.Tag := 200;
+Button1.Tag := 100;  
+Button2.Tag := 200;  
 
-procedure TForm1.ButtonClick(Sender: TObject);
-begin
+procedure TForm1.ButtonClick(Sender: TObject);  
+begin  
   case (Sender as TButton).Tag of
     100: ShowMessage('Bouton 1 cliqué');
     200: ShowMessage('Bouton 2 cliqué');
@@ -265,62 +265,62 @@ C'est pratique pour stocker une valeur associée au composant sans créer de var
 #### Position et Taille
 
 ```pascal
-property Left: Integer;     // Position horizontale (pixels)
-property Top: Integer;      // Position verticale (pixels)
-property Width: Integer;    // Largeur (pixels)
-property Height: Integer;   // Hauteur (pixels)
+property Left: Integer;     // Position horizontale (pixels)  
+property Top: Integer;      // Position verticale (pixels)  
+property Width: Integer;    // Largeur (pixels)  
+property Height: Integer;   // Hauteur (pixels)  
 ```
 
 #### Apparence
 
 ```pascal
-property Color: TColor;           // Couleur de fond
-property Font: TFont;             // Police de caractères
-property Cursor: TCursor;         // Curseur de souris
-property Visible: Boolean;        // Visibilité
-property Enabled: Boolean;        // Activation/désactivation
-property ShowHint: Boolean;       // Afficher l'infobulle
-property Hint: string;            // Texte de l'infobulle
+property Color: TColor;           // Couleur de fond  
+property Font: TFont;             // Police de caractères  
+property Cursor: TCursor;         // Curseur de souris  
+property Visible: Boolean;        // Visibilité  
+property Enabled: Boolean;        // Activation/désactivation  
+property ShowHint: Boolean;       // Afficher l'infobulle  
+property Hint: string;            // Texte de l'infobulle  
 ```
 
 #### Ancrage et Alignement
 
 ```pascal
-property Align: TAlign;           // Alignement (alTop, alClient, etc.)
-property Anchors: TAnchors;       // Points d'ancrage
-property BorderSpacing: TControlBorderSpacing;  // Marges
+property Align: TAlign;           // Alignement (alTop, alClient, etc.)  
+property Anchors: TAnchors;       // Points d'ancrage  
+property BorderSpacing: TControlBorderSpacing;  // Marges  
 ```
 
 #### Événements Souris et Clavier
 
 ```pascal
-property OnClick: TNotifyEvent;
-property OnDblClick: TNotifyEvent;
-property OnMouseDown: TMouseEvent;
-property OnMouseMove: TMouseMoveEvent;
-property OnMouseUp: TMouseEvent;
-property OnKeyPress: TKeyPressEvent;
-property OnKeyDown: TKeyEvent;
-property OnKeyUp: TKeyEvent;
+property OnClick: TNotifyEvent;  
+property OnDblClick: TNotifyEvent;  
+property OnMouseDown: TMouseEvent;  
+property OnMouseMove: TMouseMoveEvent;  
+property OnMouseUp: TMouseEvent;  
+property OnKeyPress: TKeyPressEvent;  
+property OnKeyDown: TKeyEvent;  
+property OnKeyUp: TKeyEvent;  
 ```
 
 ### Méthodes Utiles
 
 ```pascal
-procedure Show;                      // Rendre visible
-procedure Hide;                      // Masquer
-procedure SetBounds(ALeft, ATop, AWidth, AHeight: Integer);  // Tout définir en une fois
-procedure BringToFront;              // Mettre au premier plan
-procedure SendToBack;                // Envoyer à l'arrière-plan
-function ClientToScreen(Point: TPoint): TPoint;  // Convertir coordonnées
-function ScreenToClient(Point: TPoint): TPoint;  // Convertir coordonnées
+procedure Show;                      // Rendre visible  
+procedure Hide;                      // Masquer  
+procedure SetBounds(ALeft, ATop, AWidth, AHeight: Integer);  // Tout définir en une fois  
+procedure BringToFront;              // Mettre au premier plan  
+procedure SendToBack;                // Envoyer à l'arrière-plan  
+function ClientToScreen(Point: TPoint): TPoint;  // Convertir coordonnées  
+function ScreenToClient(Point: TPoint): TPoint;  // Convertir coordonnées  
 ```
 
 ### Exemple : Propriétés Communes
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Toutes ces propriétés viennent de TControl
   Button1.Left := 10;
   Button1.Top := 20;
@@ -365,8 +365,8 @@ end;
 Les `TGraphicControl` ont un événement `OnPaint` pour dessiner leur contenu :
 
 ```pascal
-procedure TMyLabel.Paint;
-begin
+procedure TMyLabel.Paint;  
+begin  
   inherited;  // Appel du Paint parent
   Canvas.TextOut(5, 5, 'Mon texte');
 end;
@@ -403,18 +403,18 @@ end;
 ### Propriétés Spécifiques
 
 ```pascal
-property Handle: HWND;           // Identificateur de fenêtre système
-property TabStop: Boolean;       // Peut recevoir le focus par Tab
-property TabOrder: Integer;      // Ordre de tabulation
-property ControlCount: Integer;  // Nombre de contrôles enfants
-property Controls[Index]: TControl;  // Contrôles enfants
+property Handle: HWND;           // Identificateur de fenêtre système  
+property TabStop: Boolean;       // Peut recevoir le focus par Tab  
+property TabOrder: Integer;      // Ordre de tabulation  
+property ControlCount: Integer;  // Nombre de contrôles enfants  
+property Controls[Index]: TControl;  // Contrôles enfants  
 ```
 
 ### Événements Spécifiques
 
 ```pascal
-property OnEnter: TNotifyEvent;   // Reçoit le focus
-property OnExit: TNotifyEvent;    // Perd le focus
+property OnEnter: TNotifyEvent;   // Reçoit le focus  
+property OnExit: TNotifyEvent;    // Perd le focus  
 ```
 
 ### Le Handle : Qu'est-ce que c'est ?
@@ -482,8 +482,8 @@ FlashWindow(Form1.Handle, True);
 ### Exemple : Dessiner sur un Panel
 
 ```pascal
-procedure TForm1.Panel1Paint(Sender: TObject);
-begin
+procedure TForm1.Panel1Paint(Sender: TObject);  
+begin  
   with Panel1.Canvas do
   begin
     Brush.Color := clWhite;
@@ -583,22 +583,22 @@ C'est un pattern courant dans la LCL : les classes `TCustomXxx` sont la base tec
 ### Propriétés Spécifiques aux Formulaires
 
 ```pascal
-property Caption: string;              // Titre de la fenêtre
-property Position: TPosition;          // Position à l'ouverture
-property BorderStyle: TFormBorderStyle;  // Style de bordure
-property BorderIcons: TBorderIcons;    // Icônes (min, max, close)
-property FormStyle: TFormStyle;        // Normal, MDI, etc.
-property WindowState: TWindowState;    // Normal, Minimized, Maximized
+property Caption: string;              // Titre de la fenêtre  
+property Position: TPosition;          // Position à l'ouverture  
+property BorderStyle: TFormBorderStyle;  // Style de bordure  
+property BorderIcons: TBorderIcons;    // Icônes (min, max, close)  
+property FormStyle: TFormStyle;        // Normal, MDI, etc.  
+property WindowState: TWindowState;    // Normal, Minimized, Maximized  
 ```
 
 ### Événements Spécifiques
 
 ```pascal
-property OnCreate: TNotifyEvent;    // Création du formulaire
-property OnShow: TNotifyEvent;      // Avant affichage
-property OnClose: TCloseEvent;      // Fermeture
-property OnCloseQuery: TCloseQueryEvent;  // Peut annuler la fermeture
-property OnDestroy: TNotifyEvent;   // Destruction
+property OnCreate: TNotifyEvent;    // Création du formulaire  
+property OnShow: TNotifyEvent;      // Avant affichage  
+property OnClose: TCloseEvent;      // Fermeture  
+property OnCloseQuery: TCloseQueryEvent;  // Peut annuler la fermeture  
+property OnDestroy: TNotifyEvent;   // Destruction  
 ```
 
 ### Cycle de Vie d'un Formulaire
@@ -688,15 +688,15 @@ TCustomEdit (propriétés protected/private)
 
 ```pascal
 // Dans la LCL
-TCustomButton = class(TButtonControl)
-private
+TCustomButton = class(TButtonControl)  
+private  
   FCustomProperty: Integer;
 protected
   property CustomProperty: Integer read FCustomProperty write FCustomProperty;
 end;
 
-TButton = class(TCustomButton)
-published
+TButton = class(TCustomButton)  
+published  
   // Rend visible dans l'IDE
   property Caption;
   property TabOrder;
@@ -741,14 +741,14 @@ TComponent
 ### Exemple : TTimer
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   Timer1.Interval := 1000;  // 1 seconde
   Timer1.Enabled := True;
 end;
 
-procedure TForm1.Timer1Timer(Sender: TObject);
-begin
+procedure TForm1.Timer1Timer(Sender: TObject);  
+begin  
   Label1.Caption := TimeToStr(Now);  // Affiche l'heure actuelle
 end;
 ```
@@ -777,8 +777,8 @@ if Button1 is TGraphicControl then
 L'opérateur `as` permet de convertir un objet vers un type spécifique avec vérification :
 
 ```pascal
-procedure TForm1.ButtonClick(Sender: TObject);
-var
+procedure TForm1.ButtonClick(Sender: TObject);  
+var  
   Btn: TButton;
 begin
   // Sender est de type TObject
@@ -795,8 +795,8 @@ Si l'objet n'est pas du bon type, une exception est levée.
 Exemple pratique : gérer plusieurs boutons avec le même gestionnaire :
 
 ```pascal
-procedure TForm1.UniversalButtonClick(Sender: TObject);
-begin
+procedure TForm1.UniversalButtonClick(Sender: TObject);  
+begin  
   if Sender is TButton then
     ShowMessage('Bouton : ' + (Sender as TButton).Caption)
   else if Sender is TLabel then
@@ -824,8 +824,8 @@ En POO Pascal, il existe plusieurs niveaux de visibilité :
 Les propriétés déclarées en `published` apparaissent dans **l'Inspecteur d'Objets** de Lazarus :
 
 ```pascal
-TMyButton = class(TButton)
-published
+TMyButton = class(TButton)  
+published  
   property Color;     // Visible dans l'IDE
   property Caption;   // Visible dans l'IDE
   property OnClick;   // Visible dans l'IDE
@@ -852,8 +852,8 @@ Dans la hiérarchie LCL, de nombreuses méthodes sont `virtual` (virtuelles), ce
 procedure Paint; virtual;
 
 // Dans TButton (descendant)
-procedure Paint; override;  // Redéfinition
-begin
+procedure Paint; override;  // Redéfinition  
+begin  
   inherited Paint;  // Appel de la version parent
   // Code spécifique au bouton
 end;
@@ -864,8 +864,8 @@ end;
 Quand vous redéfinissez une méthode, appelez souvent `inherited` pour exécuter le code de la classe parent :
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   inherited;  // Important ! Initialise le formulaire
 
   // Votre code d'initialisation
@@ -920,8 +920,8 @@ published
   property Caption: string read FCaption write SetCaption;
 
 // Implémentation
-procedure TMyComponent.SetCaption(const Value: string);
-begin
+procedure TMyComponent.SetCaption(const Value: string);  
+begin  
   if FCaption <> Value then
   begin
     FCaption := Value;
@@ -941,8 +941,8 @@ Quand vous faites `Button1.Caption := 'OK';`, c'est `SetCaption` qui est appelé
 Grâce à l'héritage, vous pouvez traiter tous les contrôles de manière uniforme :
 
 ```pascal
-procedure TForm1.MasquerTout;
-var
+procedure TForm1.MasquerTout;  
+var  
   i: Integer;
 begin
   // Tous les Controls, quel que soit leur type réel
@@ -956,8 +956,8 @@ end;
 Créez une fonction qui fonctionne pour tous les descendants :
 
 ```pascal
-procedure DefinirCouleur(Ctrl: TControl; Couleur: TColor);
-begin
+procedure DefinirCouleur(Ctrl: TControl; Couleur: TColor);  
+begin  
   Ctrl.Color := Couleur;  // Fonctionne pour TButton, TPanel, TEdit, etc.
 end;
 ```
@@ -973,8 +973,8 @@ type
     constructor Create(AOwner: TComponent); override;
   end;
 
-constructor TMonBoutonSpecial.Create(AOwner: TComponent);
-begin
+constructor TMonBoutonSpecial.Create(AOwner: TComponent);  
+begin  
   inherited Create(AOwner);
   // Configuration par défaut
   Color := clYellow;
