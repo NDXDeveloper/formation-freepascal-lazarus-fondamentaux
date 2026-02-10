@@ -39,8 +39,8 @@ Ces variables sont partagées car :
 À l'inverse, ces variables ne sont PAS partagées :
 
 ```pascal
-procedure TMyThread.Execute;
-var
+procedure TMyThread.Execute;  
+var  
   CompteurLocal: Integer;  // Variable locale : unique à ce thread
 begin
   CompteurLocal := 0;  // Pas de problème, elle est privée au thread
@@ -65,8 +65,8 @@ type
     procedure Execute; override;
   end;
 
-procedure TThreadCompteur.Execute;
-var
+procedure TThreadCompteur.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to 1000 do
@@ -76,8 +76,8 @@ begin
 end;
 
 // Dans le formulaire
-procedure TFormMain.ButtonClick(Sender: TObject);
-var
+procedure TFormMain.ButtonClick(Sender: TObject);  
+var  
   Thread1, Thread2: TThreadCompteur;
 begin
   CompteurGlobal := 0;
@@ -180,12 +180,12 @@ var
   Position: TCoordonnees;
 
 // Thread 1 écrit
-Position.X := 10.5;
-Position.Y := 20.3;
+Position.X := 10.5;  
+Position.Y := 20.3;  
 
 // Thread 2 lit EN MÊME TEMPS
-if Position.X > 10 then  // Lit X = 10.5 ✓
-begin
+if Position.X > 10 then  // Lit X = 10.5 ✓  
+begin  
   // Mais entre temps, Thread 1 a changé les valeurs !
   Distance := Sqrt(Position.X * Position.X + Position.Y * Position.Y);
   // Peut lire X = 10.5 et Y = ancienne valeur !
@@ -264,8 +264,8 @@ finalization
   CS.Free;
 
 // Dans le thread
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   CS.Enter;
   try
     // SECTION CRITIQUE
@@ -297,8 +297,8 @@ type
     procedure Execute; override;
   end;
 
-procedure TThreadCompteur.Execute;
-var
+procedure TThreadCompteur.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to 1000 do
@@ -313,8 +313,8 @@ begin
   end;
 end;
 
-procedure TFormMain.ButtonClick(Sender: TObject);
-var
+procedure TFormMain.ButtonClick(Sender: TObject);  
+var  
   Thread1, Thread2: TThreadCompteur;
 begin
   CompteurGlobal := 0;
@@ -384,22 +384,22 @@ type
     function NombreTaches: Integer;
   end;
 
-constructor TListeTachesPartagee.Create;
-begin
+constructor TListeTachesPartagee.Create;  
+begin  
   inherited Create;
   FListe := TStringList.Create;
   FCS := TCriticalSection.Create;
 end;
 
-destructor TListeTachesPartagee.Destroy;
-begin
+destructor TListeTachesPartagee.Destroy;  
+begin  
   FCS.Free;
   FListe.Free;
   inherited;
 end;
 
-procedure TListeTachesPartagee.AjouterTache(const Tache: string);
-begin
+procedure TListeTachesPartagee.AjouterTache(const Tache: string);  
+begin  
   FCS.Enter;
   try
     FListe.Add(Tache);
@@ -408,8 +408,8 @@ begin
   end;
 end;
 
-function TListeTachesPartagee.ObtenirTache: string;
-begin
+function TListeTachesPartagee.ObtenirTache: string;  
+begin  
   Result := '';
   FCS.Enter;
   try
@@ -423,8 +423,8 @@ begin
   end;
 end;
 
-function TListeTachesPartagee.NombreTaches: Integer;
-begin
+function TListeTachesPartagee.NombreTaches: Integer;  
+begin  
   FCS.Enter;
   try
     Result := FListe.Count;
@@ -452,8 +452,8 @@ type
     procedure Execute; override;
   end;
 
-procedure TThreadProducteur.Execute;
-var
+procedure TThreadProducteur.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to 100 do
@@ -463,8 +463,8 @@ begin
   end;
 end;
 
-procedure TThreadConsommateur.Execute;
-var
+procedure TThreadConsommateur.Execute;  
+var  
   Tache: string;
 begin
   while not Terminated do
@@ -481,8 +481,8 @@ begin
 end;
 
 // Lancement
-procedure TFormMain.ButtonStartClick(Sender: TObject);
-begin
+procedure TFormMain.ButtonStartClick(Sender: TObject);  
+begin  
   ListeTaches := TListeTachesPartagee.Create;
 
   TThreadProducteur.Create(False);
@@ -513,8 +513,8 @@ CS.Leave;  // Jamais atteint si Exit est appelé !
 **Solution** : Utiliser `try-finally` qui garantit que `Leave` est toujours appelé, même avec `Exit` :
 
 ```pascal
-CS.Enter;
-try
+CS.Enter;  
+try  
   if condition then
     Exit;  // ✓ Le finally sera quand même exécuté !
 
@@ -527,8 +527,8 @@ end;
 ### ❌ Erreur 2 : Entrer deux fois sans sortir
 
 ```pascal
-CS.Enter;
-try
+CS.Enter;  
+try  
   CS.Enter;  // ❌ Re-entrer dans la même section !
   try
     DoSomething();
@@ -547,8 +547,8 @@ end;
 ### ❌ Erreur 3 : Section critique trop large
 
 ```pascal
-CS.Enter;
-try
+CS.Enter;  
+try  
   // Opération rapide
   Compteur := Compteur + 1;
 
@@ -567,8 +567,8 @@ end;
 **Solution** : Minimiser le code dans la section critique.
 
 ```pascal
-CS.Enter;
-try
+CS.Enter;  
+try  
   Compteur := Compteur + 1;
 finally
   CS.Leave;
@@ -577,8 +577,8 @@ end;
 // Travail long HORS de la section critique
 Sleep(10000);
 
-CS.Enter;
-try
+CS.Enter;  
+try  
   Total := Total + Compteur;
 finally
   CS.Leave;
@@ -589,8 +589,8 @@ end;
 
 ```pascal
 // Thread 1 : accès protégé
-CS.Enter;
-try
+CS.Enter;  
+try  
   Compteur := Compteur + 1;
 finally
   CS.Leave;
@@ -608,8 +608,8 @@ Compteur := Compteur + 1;  // ❌ ERREUR : pas de protection !
 
 ```pascal
 // Thread 1
-CS1.Enter;
-try
+CS1.Enter;  
+try  
   CS2.Enter;
   try
     DoSomething();
@@ -621,8 +621,8 @@ finally
 end;
 
 // Thread 2
-CS2.Enter;  // Ordre inversé !
-try
+CS2.Enter;  // Ordre inversé !  
+try  
   CS1.Enter;
   try
     DoSomethingElse();
@@ -649,14 +649,14 @@ end;
 
 ```pascal
 // Accès à l'interface graphique
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   FResultat := Calculate();
   Synchronize(@AfficherResultat);  // ✓
 end;
 
-procedure TMyThread.AfficherResultat;
-begin
+procedure TMyThread.AfficherResultat;  
+begin  
   Label1.Caption := IntToStr(FResultat);
 end;
 ```
@@ -667,8 +667,8 @@ end;
 
 ```pascal
 // Accès à des données non-UI
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   CS.Enter;
   try
     CompteurGlobal := CompteurGlobal + 1;  // ✓
@@ -696,8 +696,8 @@ end;
 Oui ! Exemple :
 
 ```pascal
-procedure TMyThread.Execute;
-var
+procedure TMyThread.Execute;  
+var  
   LocalCount: Integer;
 begin
   // Lire le compteur global de façon sécurisée
@@ -732,16 +732,16 @@ var
   DonneesPartagees: TStringList;
 
 // Lecture (plusieurs threads simultanés OK)
-Lock.BeginRead;
-try
+Lock.BeginRead;  
+try  
   Valeur := DonneesPartagees[0];
 finally
   Lock.EndRead;
 end;
 
 // Écriture (exclusif)
-Lock.BeginWrite;
-try
+Lock.BeginWrite;  
+try  
   DonneesPartagees.Add('Nouveau');
 finally
   Lock.EndWrite;
@@ -791,8 +791,8 @@ Chaque ressource a sa propre protection.
 
 ```pascal
 // Mauvais : trop long
-CS.Enter;
-try
+CS.Enter;  
+try  
   Data := GetData();
   ProcessData(Data);  // Peut prendre du temps !
   SaveData(Data);
@@ -801,11 +801,11 @@ finally
 end;
 
 // Bon : rapide
-Data := GetData();
-ProcessedData := ProcessData(Data);  // Hors de la section critique
+Data := GetData();  
+ProcessedData := ProcessData(Data);  // Hors de la section critique  
 
-CS.Enter;
-try
+CS.Enter;  
+try  
   SaveData(ProcessedData);
 finally
   CS.Leave;
@@ -816,8 +816,8 @@ end;
 
 ```pascal
 // TOUJOURS faire ça :
-CS.Enter;
-try
+CS.Enter;  
+try  
   // Code protégé
 finally
   CS.Leave;
@@ -858,22 +858,22 @@ type
     procedure ObtenirStats(out Fichiers: Integer; out Octets: Int64);
   end;
 
-constructor TStatistiques.Create;
-begin
+constructor TStatistiques.Create;  
+begin  
   inherited;
   FFichiersTotal := 0;
   FOctetsTotal := 0;
   FCS := TCriticalSection.Create;
 end;
 
-destructor TStatistiques.Destroy;
-begin
+destructor TStatistiques.Destroy;  
+begin  
   FCS.Free;
   inherited;
 end;
 
-procedure TStatistiques.AjouterFichier(Octets: Int64);
-begin
+procedure TStatistiques.AjouterFichier(Octets: Int64);  
+begin  
   FCS.Enter;
   try
     Inc(FFichiersTotal);
@@ -883,8 +883,8 @@ begin
   end;
 end;
 
-procedure TStatistiques.ObtenirStats(out Fichiers: Integer; out Octets: Int64);
-begin
+procedure TStatistiques.ObtenirStats(out Fichiers: Integer; out Octets: Int64);  
+begin  
   FCS.Enter;
   try
     Fichiers := FFichiersTotal;
@@ -905,15 +905,15 @@ type
     constructor Create(Stats: TStatistiques);
   end;
 
-constructor TThreadDownload.Create(Stats: TStatistiques);
-begin
+constructor TThreadDownload.Create(Stats: TStatistiques);  
+begin  
   inherited Create(True);
   FStats := Stats;
   FreeOnTerminate := True;
 end;
 
-procedure TThreadDownload.Execute;
-var
+procedure TThreadDownload.Execute;  
+var  
   TailleFichier: Int64;
 begin
   // Simuler téléchargement

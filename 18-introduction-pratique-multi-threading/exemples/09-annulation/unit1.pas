@@ -1,4 +1,4 @@
-unit Unit1;
+unit Unit1;  
 
 {$mode objfpc}{$H+}
 
@@ -48,19 +48,19 @@ implementation
 
 { TThreadTraitement }
 
-procedure TThreadTraitement.MettreAJourUI;
-begin
+procedure TThreadTraitement.MettreAJourUI;  
+begin  
   Form1.ProgressBar1.Position := FProgression;
   Form1.LabelStatut.Caption := FStatus;
 end;
 
-procedure TThreadTraitement.AjouterLog;
-begin
+procedure TThreadTraitement.AjouterLog;  
+begin  
   Form1.MemoLog.Lines.Add(FormatDateTime('hh:nn:ss', Now) + ' ' + FLogMessage);
 end;
 
-procedure TThreadTraitement.Execute;
-var
+procedure TThreadTraitement.Execute;  
+var  
   i: Integer;
   NbTotal: Integer;
   FichierOuvert: Boolean;
@@ -140,8 +140,8 @@ end;
 
 { TForm1 }
 
-procedure TForm1.ThreadTermine(Sender: TObject);
-begin
+procedure TForm1.ThreadTermine(Sender: TObject);  
+begin  
   // Appele via OnTerminate quand le thread se termine
   ButtonStart.Enabled := True;
   ButtonAnnuler.Enabled := False;
@@ -161,8 +161,8 @@ begin
   FThread := nil;  // FreeOnTerminate = True, ne pas Free
 end;
 
-procedure TForm1.ButtonStartClick(Sender: TObject);
-begin
+procedure TForm1.ButtonStartClick(Sender: TObject);  
+begin  
   // Reinitialiser
   ButtonStart.Enabled := False;
   ButtonAnnuler.Enabled := True;
@@ -179,8 +179,8 @@ begin
   FThread.Start;
 end;
 
-procedure TForm1.ButtonAnnulerClick(Sender: TObject);
-begin
+procedure TForm1.ButtonAnnulerClick(Sender: TObject);  
+begin  
   if Assigned(FThread) then
   begin
     ButtonAnnuler.Enabled := False;
@@ -190,8 +190,8 @@ begin
   end;
 end;
 
-procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-begin
+procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: Boolean);  
+begin  
   if Assigned(FThread) then
   begin
     // Arreter le thread proprement avant de fermer

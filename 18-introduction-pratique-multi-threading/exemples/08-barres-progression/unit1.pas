@@ -1,4 +1,4 @@
-unit Unit1;
+unit Unit1;  
 
 {$mode objfpc}{$H+}
 
@@ -49,8 +49,8 @@ implementation
 
 { TThreadMultiEtapes }
 
-procedure TThreadMultiEtapes.MettreAJourUI;
-var
+procedure TThreadMultiEtapes.MettreAJourUI;  
+var  
   ProgressionGlobale: Integer;
 begin
   // Progression globale : basee sur l'etape + avancement dans l'etape
@@ -63,13 +63,13 @@ begin
   Form1.LabelDetail.Caption := FDetailEtape;
 end;
 
-procedure TThreadMultiEtapes.AjouterLog;
-begin
+procedure TThreadMultiEtapes.AjouterLog;  
+begin  
   Form1.MemoLog.Lines.Add(FLogMessage);
 end;
 
-procedure TThreadMultiEtapes.Terminer;
-begin
+procedure TThreadMultiEtapes.Terminer;  
+begin  
   Form1.ProgressBarGlobal.Position := 100;
   Form1.ProgressBarEtape.Position := 100;
   Form1.LabelEtape.Caption := 'Traitement termine !';
@@ -78,8 +78,8 @@ begin
   Form1.ButtonStart.Enabled := True;
 end;
 
-function TThreadMultiEtapes.CalculerTempsRestant(ItemsTraites, ItemsTotal: Integer): string;
-var
+function TThreadMultiEtapes.CalculerTempsRestant(ItemsTraites, ItemsTotal: Integer): string;  
+var  
   TempsEcoule, TempsRestant: Double;
   Secondes: Integer;
 begin
@@ -132,8 +132,8 @@ begin
   end;
 end;
 
-procedure TThreadMultiEtapes.Execute;
-begin
+procedure TThreadMultiEtapes.Execute;  
+begin  
   FEtapesTotal := 3;
   FHeureDebut := Now;
 
@@ -156,8 +156,8 @@ end;
 
 { TForm1 }
 
-procedure TForm1.ButtonStartClick(Sender: TObject);
-var
+procedure TForm1.ButtonStartClick(Sender: TObject);  
+var  
   Thread: TThreadMultiEtapes;
 begin
   // Reinitialiser

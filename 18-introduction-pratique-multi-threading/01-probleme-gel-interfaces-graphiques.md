@@ -27,8 +27,8 @@ Imaginez que vous avez créé une application avec un bouton "Télécharger". Lo
 Par défaut, un programme Pascal (comme la plupart des programmes) s'exécute de manière **séquentielle** : une instruction après l'autre, dans l'ordre.
 
 ```pascal
-procedure TForm1.ButtonDownloadClick(Sender: TObject);
-begin
+procedure TForm1.ButtonDownloadClick(Sender: TObject);  
+begin  
   LabelStatus.Caption := 'Téléchargement en cours...';
 
   // Cette opération prend 30 secondes
@@ -71,8 +71,8 @@ Voici des exemples typiques d'opérations qui peuvent causer un gel d'interface 
 ### 1. Téléchargement de fichiers
 
 ```pascal
-procedure TForm1.DownloadButtonClick(Sender: TObject);
-var
+procedure TForm1.DownloadButtonClick(Sender: TObject);  
+var  
   Client: TFPHttpClient;
 begin
   Client := TFPHttpClient.Create(nil);
@@ -92,8 +92,8 @@ end;
 ### 2. Traitement de données volumineuses
 
 ```pascal
-procedure TForm1.ProcessButtonClick(Sender: TObject);
-var
+procedure TForm1.ProcessButtonClick(Sender: TObject);  
+var  
   i: Integer;
   Total: Double;
 begin
@@ -113,8 +113,8 @@ end;
 ### 3. Lecture/Écriture de gros fichiers
 
 ```pascal
-procedure TForm1.SaveButtonClick(Sender: TObject);
-var
+procedure TForm1.SaveButtonClick(Sender: TObject);  
+var  
   F: TextFile;
   i: Integer;
 begin
@@ -135,8 +135,8 @@ end;
 ### 4. Requêtes de base de données longues
 
 ```pascal
-procedure TForm1.ExportButtonClick(Sender: TObject);
-begin
+procedure TForm1.ExportButtonClick(Sender: TObject);  
+begin  
   SQLQuery1.SQL.Text := 'SELECT * FROM huge_table';
   SQLQuery1.Open;  // Peut prendre plusieurs minutes !
 
@@ -178,8 +178,8 @@ Scénario : Une application qui copie 1000 fichiers
 Vous avez peut-être entendu parler d'une solution simple : `Application.ProcessMessages`. Cette méthode force l'application à traiter les événements en attente.
 
 ```pascal
-procedure TForm1.ProcessButtonClick(Sender: TObject);
-var
+procedure TForm1.ProcessButtonClick(Sender: TObject);  
+var  
   i: Integer;
 begin
   for i := 1 to 1000000 do

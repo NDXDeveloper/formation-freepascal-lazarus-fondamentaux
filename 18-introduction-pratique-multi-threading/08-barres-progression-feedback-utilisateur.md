@@ -67,16 +67,16 @@ type
     procedure Execute; override;
   end;
 
-procedure TThreadTraitement.MettreAJourUI;
-begin
+procedure TThreadTraitement.MettreAJourUI;  
+begin  
   // S'exécute dans le thread principal
   FormMain.ProgressBar1.Position := FProgression;
   FormMain.LabelStatus.Caption := FStatus;
   Application.ProcessMessages;  // Rafraîchir immédiatement
 end;
 
-procedure TThreadTraitement.Execute;
-var
+procedure TThreadTraitement.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to 100 do
@@ -105,8 +105,8 @@ end;
 ### Lancement du thread
 
 ```pascal
-procedure TFormMain.ButtonStartClick(Sender: TObject);
-var
+procedure TFormMain.ButtonStartClick(Sender: TObject);  
+var  
   Thread: TThreadTraitement;
 begin
   InitialiserUI;
@@ -116,15 +116,15 @@ begin
   Thread.Start;
 end;
 
-procedure TFormMain.InitialiserUI;
-begin
+procedure TFormMain.InitialiserUI;  
+begin  
   ButtonStart.Enabled := False;
   ProgressBar1.Position := 0;
   LabelStatus.Caption := 'Initialisation...';
 end;
 
-procedure TFormMain.TerminerUI;
-begin
+procedure TFormMain.TerminerUI;  
+begin  
   ButtonStart.Enabled := True;
   LabelStatus.Caption := 'Prêt';
 end;
@@ -147,14 +147,14 @@ type
     procedure Execute; override;
   end;
 
-procedure TThreadTraitementOptimise.MettreAJourUI;
-begin
+procedure TThreadTraitementOptimise.MettreAJourUI;  
+begin  
   FormMain.ProgressBar1.Position := FProgression;
   FormMain.LabelStatus.Caption := FStatus;
 end;
 
-procedure TThreadTraitementOptimise.Execute;
-var
+procedure TThreadTraitementOptimise.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to 1000 do
@@ -200,8 +200,8 @@ type
     procedure Execute; override;
   end;
 
-function TThreadAvecEstimation.CalculerTempsRestant(ItemsTraites, ItemsTotal: Integer): string;
-var
+function TThreadAvecEstimation.CalculerTempsRestant(ItemsTraites, ItemsTotal: Integer): string;  
+var  
   TempsEcoule, TempsTotal, TempsRestant: TDateTime;
   Secondes: Integer;
 begin
@@ -231,8 +231,8 @@ begin
     Result := Format('%d heures restantes', [Secondes div 3600]);
 end;
 
-procedure TThreadAvecEstimation.Execute;
-var
+procedure TThreadAvecEstimation.Execute;  
+var  
   i: Integer;
   ItemsTotal: Integer;
 begin
@@ -292,8 +292,8 @@ type
     procedure Execute; override;
   end;
 
-procedure TThreadComplexe.MettreAJourUI;
-var
+procedure TThreadComplexe.MettreAJourUI;  
+var  
   ProgressionGlobale: Integer;
 begin
   // Progression globale basée sur l'étape
@@ -309,8 +309,8 @@ begin
   FormMain.LabelDetail.Caption := FDetailEtape;
 end;
 
-procedure TThreadComplexe.Execute;
-begin
+procedure TThreadComplexe.Execute;  
+begin  
   FEtapesTotal := 5;
 
   // Étape 1 : Lecture des fichiers
@@ -352,8 +352,8 @@ begin
   Queue(@MettreAJourUI);
 end;
 
-procedure TThreadComplexe.ExecuterEtape1;
-var
+procedure TThreadComplexe.ExecuterEtape1;  
+var  
   i: Integer;
 begin
   for i := 1 to 100 do
@@ -399,14 +399,14 @@ type
     property OnProgress: TProgressEvent read FOnProgress write FOnProgress;
   end;
 
-procedure TThreadAvecEvenements.NotifierProgression;
-begin
+procedure TThreadAvecEvenements.NotifierProgression;  
+begin  
   if Assigned(FOnProgress) then
     FOnProgress(FProgression, FStatus);
 end;
 
-procedure TThreadAvecEvenements.Execute;
-var
+procedure TThreadAvecEvenements.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to 100 do
@@ -427,8 +427,8 @@ begin
 end;
 
 // Utilisation
-procedure TFormMain.ButtonStartClick(Sender: TObject);
-var
+procedure TFormMain.ButtonStartClick(Sender: TObject);  
+var  
   Thread: TThreadAvecEvenements;
 begin
   Thread := TThreadAvecEvenements.Create(True);
@@ -437,8 +437,8 @@ begin
   Thread.Start;
 end;
 
-procedure TFormMain.GererProgression(Progression: Integer; const Status: string);
-begin
+procedure TFormMain.GererProgression(Progression: Integer; const Status: string);  
+begin  
   ProgressBar1.Position := Progression;
   LabelStatus.Caption := Status;
 
@@ -465,8 +465,8 @@ type
     procedure Execute; override;
   end;
 
-procedure TThreadAvecFeedbackVisuel.MettreAJourUI;
-begin
+procedure TThreadAvecFeedbackVisuel.MettreAJourUI;  
+begin  
   FormMain.ProgressBar1.Position := FProgression;
   FormMain.LabelStatus.Caption := FStatus;
 
@@ -495,8 +495,8 @@ begin
   end;
 end;
 
-procedure TThreadAvecFeedbackVisuel.Execute;
-var
+procedure TThreadAvecFeedbackVisuel.Execute;  
+var  
   i: Integer;
 begin
   FStatut := tsEnCours;
@@ -554,13 +554,13 @@ type
     procedure Execute; override;
   end;
 
-procedure TThreadIndetermine.MettreAJourUI;
-begin
+procedure TThreadIndetermine.MettreAJourUI;  
+begin  
   FormMain.LabelStatus.Caption := FStatus;
 end;
 
-procedure TThreadIndetermine.Execute;
-begin
+procedure TThreadIndetermine.Execute;  
+begin  
   // Activer le mode "marquee" (animation continue)
   Queue(procedure
   begin
@@ -601,8 +601,8 @@ end;
 ### ❌ Erreur 1 : Barre qui ne se rafraîchit pas
 
 ```pascal
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   for i := 1 to 100 do
   begin
     TraiterItem(i);
@@ -618,8 +618,8 @@ end;
 ### ❌ Erreur 2 : Mise à jour trop fréquente
 
 ```pascal
-for i := 1 to 10000000 do
-begin
+for i := 1 to 10000000 do  
+begin  
   Synchronize(@UpdateProgress);  // ❌ 10 millions de fois !
 end;
 ```
@@ -657,8 +657,8 @@ Pourcentage := Round((i / Total) * 100);
 **Solution** : Toujours réinitialiser avant de commencer.
 
 ```pascal
-procedure TFormMain.InitialiserUI;
-begin
+procedure TFormMain.InitialiserUI;  
+begin  
   ProgressBar1.Position := 0;
   LabelStatus.Caption := 'Initialisation...';
 end;
@@ -667,8 +667,8 @@ end;
 ### ❌ Erreur 5 : Progression qui dépasse 100%
 
 ```pascal
-for i := 1 to 105 do  // Oups, 105 au lieu de 100
-begin
+for i := 1 to 105 do  // Oups, 105 au lieu de 100  
+begin  
   ProgressBar1.Position := i;  // ❌ Erreur à i=101
 end;
 ```
@@ -676,8 +676,8 @@ end;
 **Solution** : Toujours borner les valeurs.
 
 ```pascal
-FProgression := (i * 100) div Total;
-if FProgression > 100 then
+FProgression := (i * 100) div Total;  
+if FProgression > 100 then  
   FProgression := 100;
 ```
 
@@ -686,8 +686,8 @@ if FProgression > 100 then
 ### ✓ Pratique 1 : Toujours donner un feedback immédiat
 
 ```pascal
-procedure TFormMain.ButtonStartClick(Sender: TObject);
-begin
+procedure TFormMain.ButtonStartClick(Sender: TObject);  
+begin  
   // Feedback IMMÉDIAT
   ButtonStart.Enabled := False;
   LabelStatus.Caption := 'Démarrage...';
@@ -727,16 +727,16 @@ if (i mod 10 = 0) then
 ### ✓ Pratique 4 : Désactiver les contrôles pendant le traitement
 
 ```pascal
-procedure TFormMain.DemarrerTraitement;
-begin
+procedure TFormMain.DemarrerTraitement;  
+begin  
   ButtonStart.Enabled := False;
   ButtonCancel.Enabled := True;  // Mais laisser annuler !
   Edit1.Enabled := False;
   ComboBox1.Enabled := False;
 end;
 
-procedure TFormMain.TerminerTraitement;
-begin
+procedure TFormMain.TerminerTraitement;  
+begin  
   ButtonStart.Enabled := True;
   ButtonCancel.Enabled := False;
   Edit1.Enabled := True;
@@ -747,8 +747,8 @@ end;
 ### ✓ Pratique 5 : Notification sonore ou visuelle à la fin
 
 ```pascal
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   // ... traitement long ...
 
   // Notification de fin
@@ -786,22 +786,22 @@ type
     constructor Create(const ANomFichier: string; ANombreEnregistrements: Integer);
   end;
 
-constructor TThreadExport.Create(const ANomFichier: string; ANombreEnregistrements: Integer);
-begin
+constructor TThreadExport.Create(const ANomFichier: string; ANombreEnregistrements: Integer);  
+begin  
   inherited Create(True);
   FNomFichier := ANomFichier;
   FNombreEnregistrements := ANombreEnregistrements;
   FreeOnTerminate := True;
 end;
 
-procedure TThreadExport.MettreAJourUI;
-begin
+procedure TThreadExport.MettreAJourUI;  
+begin  
   FormMain.ProgressBar1.Position := FProgression;
   FormMain.LabelStatus.Caption := FStatus;
 end;
 
-function TThreadExport.CalculerTempsRestant: string;
-var
+function TThreadExport.CalculerTempsRestant: string;  
+var  
   TempsEcoule, TempsEstime, TempsRestant: Double;
   Secondes: Integer;
 begin
@@ -822,8 +822,8 @@ begin
     Result := Format('%dm %ds', [Secondes div 60, Secondes mod 60]);
 end;
 
-procedure TThreadExport.Execute;
-var
+procedure TThreadExport.Execute;  
+var  
   Fichier: TextFile;
   i: Integer;
   Enregistrement: string;

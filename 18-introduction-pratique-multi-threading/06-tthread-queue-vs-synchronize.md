@@ -82,8 +82,8 @@ La syntaxe est identique à celle de `Synchronize` :
 Queue(@MaMethode);
 
 // Avec une procédure anonyme (FreePascal 3.2+)
-Queue(procedure
-begin
+Queue(procedure  
+begin  
   Label1.Caption := 'Texte';
 end);
 ```
@@ -117,13 +117,13 @@ type
     procedure Execute; override;
   end;
 
-procedure TThreadSync.AfficherCompteur;
-begin
+procedure TThreadSync.AfficherCompteur;  
+begin  
   FormMain.Memo1.Lines.Add('Compteur : ' + IntToStr(FCompteur));
 end;
 
-procedure TThreadSync.Execute;
-var
+procedure TThreadSync.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to 5 do
@@ -164,13 +164,13 @@ type
     procedure Execute; override;
   end;
 
-procedure TThreadQueue.AfficherCompteur;
-begin
+procedure TThreadQueue.AfficherCompteur;  
+begin  
   FormMain.Memo1.Lines.Add('Compteur : ' + IntToStr(FCompteur));
 end;
 
-procedure TThreadQueue.Execute;
-var
+procedure TThreadQueue.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to 5 do
@@ -192,8 +192,8 @@ end;
   -> Traitement 2 continué
 Compteur : 1
   -> Traitement 3 continué
-Compteur : 2
-Compteur : 3
+Compteur : 2  
+Compteur : 3  
   -> Traitement 4 continué
 ...
 ```
@@ -207,8 +207,8 @@ L'ordre **n'est pas garanti** ! Les affichages peuvent se mélanger car le threa
 #### 1. L'ordre d'exécution est critique
 
 ```pascal
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   // Calculer un résultat
   FResultat := CalculComplexe();
 
@@ -225,8 +225,8 @@ end;
 #### 2. Vous devez modifier des variables partagées
 
 ```pascal
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   FDonnee := 'Valeur importante';
   Synchronize(@MettreAJour);
 
@@ -239,8 +239,8 @@ end;
 #### 3. Vous avez besoin d'un feedback immédiat
 
 ```pascal
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   // Demander confirmation à l'utilisateur
   FQuestion := 'Voulez-vous continuer ?';
   Synchronize(@DemanderConfirmation);
@@ -262,8 +262,8 @@ Si votre méthode synchronisée accède à des ressources qui doivent être lib�
 **Mise à jour d'une barre de progression critique :**
 
 ```pascal
-procedure TThreadDownload.Execute;
-var
+procedure TThreadDownload.Execute;  
+var  
   Chunk: TBytes;
 begin
   while not FinDuFichier do
@@ -288,8 +288,8 @@ end;
 #### 1. L'ordre n'est pas important
 
 ```pascal
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   // Faire du logging
   FMessage := 'Étape 1 commencée';
   Queue(@AjouterLog);
@@ -307,8 +307,8 @@ end;
 #### 2. La performance est importante
 
 ```pascal
-procedure TMyThread.Execute;
-var
+procedure TMyThread.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to 10000 do
@@ -330,8 +330,8 @@ Le thread ne ralentit pas, l'interface sera mise à jour "quand elle pourra".
 #### 3. Vous faites des mises à jour fréquentes non critiques
 
 ```pascal
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   while not Terminated do
   begin
     // Lire une valeur de capteur
@@ -350,8 +350,8 @@ Avec `Queue`, le thread peut lire le capteur rapidement sans être ralenti par l
 #### 4. Vous voulez que le thread soit le plus réactif possible
 
 ```pascal
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   while not Terminated do
   begin
     // Vérifier Terminated souvent pour réactivité
@@ -383,13 +383,13 @@ type
     constructor Create;
   end;
 
-procedure TThreadLogger.AddLogLine;
-begin
+procedure TThreadLogger.AddLogLine;  
+begin  
   FormMain.MemoLogs.Lines.Add(FormatDateTime('hh:nn:ss', Now) + ' - ' + FLogMessage);
 end;
 
-procedure TThreadLogger.Execute;
-begin
+procedure TThreadLogger.Execute;  
+begin  
   while not Terminated do
   begin
     // Faire du travail
@@ -417,8 +417,8 @@ Les logs apparaîtront dans le Memo, peut-être pas immédiatement, mais le thre
 Vous pouvez combiner `Synchronize` et `Queue` dans le même thread !
 
 ```pascal
-procedure TThreadSmartUpdate.Execute;
-var
+procedure TThreadSmartUpdate.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to 100 do
@@ -458,8 +458,8 @@ end;
 ### ❌ Piège 1 : Supposer que Queue s'exécute immédiatement
 
 ```pascal
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   FValeur := 100;
   Queue(@Afficher);
 
@@ -473,8 +473,8 @@ end;
 **Solution** : Utiliser des variables différentes ou Synchronize si l'ordre compte.
 
 ```pascal
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   FValeur1 := 100;
   Queue(@Afficher1);
 
@@ -486,8 +486,8 @@ end;
 ### ❌ Piège 2 : Accumuler trop de Queue
 
 ```pascal
-procedure TMyThread.Execute;
-var
+procedure TMyThread.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to 1000000 do
@@ -510,8 +510,8 @@ if i mod 1000 = 0 then
 ### ❌ Piège 3 : Dépendre de l'ordre avec Queue
 
 ```pascal
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   FEtape := 1;
   Queue(@AfficherEtape);
 
@@ -530,8 +530,8 @@ end;
 ### ❌ Piège 4 : Modifier des données après Queue
 
 ```pascal
-procedure TMyThread.Execute;
-var
+procedure TMyThread.Execute;  
+var  
   MaListe: TStringList;
 begin
   MaListe := TStringList.Create;
@@ -605,8 +605,8 @@ Avez-vous besoin d'attendre que l'UI soit mise à jour ?
 ### Exemple 1 : Barre de progression (Queue recommandé)
 
 ```pascal
-procedure TMyThread.Execute;
-var
+procedure TMyThread.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to 100 do
@@ -625,8 +625,8 @@ end;
 ### Exemple 2 : Confirmation utilisateur (Synchronize obligatoire)
 
 ```pascal
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   ProcessFirstPart();
 
   // Demander confirmation
@@ -643,8 +643,8 @@ end;
 ### Exemple 3 : Logging (Queue parfait)
 
 ```pascal
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   FLog := 'Démarrage...';
   Queue(@AddLog);
 
@@ -665,8 +665,8 @@ end;
 ### Exemple 4 : Mise à jour de base de données (Synchronize si nécessaire)
 
 ```pascal
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   FData := CollectData();
 
   // Si on doit attendre que l'UI valide les données
@@ -702,15 +702,15 @@ Synchronize(@ValidateInput);
 
 ```pascal
 // Mauvais
-FValeur := 100;
-Queue(@Afficher);
-FValeur := 200;  // Conflit !
+FValeur := 100;  
+Queue(@Afficher);  
+FValeur := 200;  // Conflit !  
 
 // Bon
-FValeur1 := 100;
-Queue(@Afficher1);
-FValeur2 := 200;
-Queue(@Afficher2);
+FValeur1 := 100;  
+Queue(@Afficher1);  
+FValeur2 := 200;  
+Queue(@Afficher2);  
 ```
 
 ### ✓ Pratique 4 : Limiter la fréquence avec Queue

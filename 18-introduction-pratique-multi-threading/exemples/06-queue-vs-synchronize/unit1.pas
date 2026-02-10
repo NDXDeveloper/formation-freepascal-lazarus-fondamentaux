@@ -1,4 +1,4 @@
-unit Unit1;
+unit Unit1;  
 
 {$mode objfpc}{$H+}
 
@@ -52,18 +52,18 @@ implementation
 
 { TThreadSync }
 
-procedure TThreadSync.AfficherMessage;
-begin
+procedure TThreadSync.AfficherMessage;  
+begin  
   Form1.MemoSync.Lines.Add(FMessage);
 end;
 
-procedure TThreadSync.ReactiverBouton;
-begin
+procedure TThreadSync.ReactiverBouton;  
+begin  
   Form1.ButtonTestSync.Enabled := True;
 end;
 
-procedure TThreadSync.Execute;
-var
+procedure TThreadSync.Execute;  
+var  
   i: Integer;
   Debut: TDateTime;
 begin
@@ -93,18 +93,18 @@ end;
 
 { TThreadQueue }
 
-procedure TThreadQueue.AfficherMessage;
-begin
+procedure TThreadQueue.AfficherMessage;  
+begin  
   Form1.MemoQueue.Lines.Add(FMessage);
 end;
 
-procedure TThreadQueue.ReactiverBouton;
-begin
+procedure TThreadQueue.ReactiverBouton;  
+begin  
   Form1.ButtonTestQueue.Enabled := True;
 end;
 
-procedure TThreadQueue.Execute;
-var
+procedure TThreadQueue.Execute;  
+var  
   i: Integer;
   Debut: TDateTime;
 begin
@@ -134,8 +134,8 @@ end;
 
 { TForm1 }
 
-procedure TForm1.ButtonTestSyncClick(Sender: TObject);
-var
+procedure TForm1.ButtonTestSyncClick(Sender: TObject);  
+var  
   T: TThreadSync;
 begin
   MemoSync.Clear;
@@ -149,8 +149,8 @@ begin
   T.Start;
 end;
 
-procedure TForm1.ButtonTestQueueClick(Sender: TObject);
-var
+procedure TForm1.ButtonTestQueueClick(Sender: TObject);  
+var  
   T: TThreadQueue;
 begin
   MemoQueue.Clear;

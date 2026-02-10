@@ -28,16 +28,16 @@ type
     procedure Execute; override;
   end;
 
-procedure TThreadSansProtection.Execute;
-var
+procedure TThreadSansProtection.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to NB_ITERATIONS do
     CompteurSansProtection := CompteurSansProtection + 1;
 end;
 
-procedure DemoRaceCondition;
-var
+procedure DemoRaceCondition;  
+var  
   Threads: array[1..NB_THREADS] of TThreadSansProtection;
   i: Integer;
 begin
@@ -79,8 +79,8 @@ type
     procedure Execute; override;
   end;
 
-procedure TThreadProtege.Execute;
-var
+procedure TThreadProtege.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to NB_ITERATIONS do
@@ -94,8 +94,8 @@ begin
   end;
 end;
 
-procedure DemoCriticalSection;
-var
+procedure DemoCriticalSection;  
+var  
   Threads: array[1..NB_THREADS] of TThreadProtege;
   i: Integer;
 begin
@@ -140,16 +140,16 @@ type
     procedure Execute; override;
   end;
 
-procedure TThreadAtomique.Execute;
-var
+procedure TThreadAtomique.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to NB_ITERATIONS do
     InterlockedIncrement(CompteurAtomique);
 end;
 
-procedure DemoInterlockedIncrement;
-var
+procedure DemoInterlockedIncrement;  
+var  
   Threads: array[1..NB_THREADS] of TThreadAtomique;
   i: Integer;
 begin
@@ -194,22 +194,22 @@ type
     function Nombre: Integer;
   end;
 
-constructor TListePartagee.Create;
-begin
+constructor TListePartagee.Create;  
+begin  
   inherited;
   FListe := TStringList.Create;
   FCS := TCriticalSection.Create;
 end;
 
-destructor TListePartagee.Destroy;
-begin
+destructor TListePartagee.Destroy;  
+begin  
   FCS.Free;
   FListe.Free;
   inherited;
 end;
 
-procedure TListePartagee.Ajouter(const S: string);
-begin
+procedure TListePartagee.Ajouter(const S: string);  
+begin  
   FCS.Enter;
   try
     FListe.Add(S);
@@ -218,8 +218,8 @@ begin
   end;
 end;
 
-function TListePartagee.Retirer: string;
-begin
+function TListePartagee.Retirer: string;  
+begin  
   Result := '';
   FCS.Enter;
   try
@@ -233,8 +233,8 @@ begin
   end;
 end;
 
-function TListePartagee.Nombre: Integer;
-begin
+function TListePartagee.Nombre: Integer;  
+begin  
   FCS.Enter;
   try
     Result := FListe.Count;
@@ -243,8 +243,8 @@ begin
   end;
 end;
 
-procedure DemoListePartagee;
-var
+procedure DemoListePartagee;  
+var  
   Liste: TListePartagee;
   i: Integer;
 begin
@@ -294,15 +294,15 @@ type
     constructor Create(const ANom: string);
   end;
 
-constructor TThreadProducteur.Create(const ANom: string; ANb: Integer);
-begin
+constructor TThreadProducteur.Create(const ANom: string; ANb: Integer);  
+begin  
   inherited Create(True);
   FNom := ANom;
   FNbTaches := ANb;
 end;
 
-procedure TThreadProducteur.Execute;
-var
+procedure TThreadProducteur.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to FNbTaches do
@@ -313,14 +313,14 @@ begin
   end;
 end;
 
-constructor TThreadConsommateur.Create(const ANom: string);
-begin
+constructor TThreadConsommateur.Create(const ANom: string);  
+begin  
   inherited Create(True);
   FNom := ANom;
 end;
 
-procedure TThreadConsommateur.Execute;
-var
+procedure TThreadConsommateur.Execute;  
+var  
   Tache: string;
 begin
   while not Terminated do
@@ -342,8 +342,8 @@ begin
   end;
 end;
 
-procedure DemoProducteurConsommateur;
-var
+procedure DemoProducteurConsommateur;  
+var  
   Prod1, Prod2: TThreadProducteur;
   Cons1, Cons2: TThreadConsommateur;
 begin

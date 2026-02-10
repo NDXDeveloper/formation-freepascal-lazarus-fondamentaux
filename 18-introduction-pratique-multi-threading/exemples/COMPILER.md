@@ -5,9 +5,9 @@
 Compilation avec `fpc` :
 
 ```bash
-fpc 03-tthread-creation.pas
-fpc 04-cycle-vie-thread.pas
-fpc 07-sections-critiques.pas
+fpc 03-tthread-creation.pas  
+fpc 04-cycle-vie-thread.pas  
+fpc 07-sections-critiques.pas  
 ```
 
 | Fichier | Section | Description |
@@ -21,11 +21,11 @@ fpc 07-sections-critiques.pas
 Construction avec `lazbuild` :
 
 ```bash
-lazbuild 01-gel-interface/GelInterface.lpi
-lazbuild 05-synchronize-demo/SynchronizeDemo.lpi
-lazbuild 06-queue-vs-synchronize/QueueVsSync.lpi
-lazbuild 08-barres-progression/BarresProgression.lpi
-lazbuild 09-annulation/AnnulationDemo.lpi
+lazbuild 01-gel-interface/GelInterface.lpi  
+lazbuild 05-synchronize-demo/SynchronizeDemo.lpi  
+lazbuild 06-queue-vs-synchronize/QueueVsSync.lpi  
+lazbuild 08-barres-progression/BarresProgression.lpi  
+lazbuild 09-annulation/AnnulationDemo.lpi  
 ```
 
 | Sous-dossier | Section | Description |
@@ -55,11 +55,11 @@ Chaque sous-dossier contient 4 fichiers :
 rm -f *.o 03-tthread-creation 04-cycle-vie-thread 07-sections-critiques
 
 # Lazarus
-rm -rf 01-gel-interface/lib 01-gel-interface/GelInterface
-rm -rf 05-synchronize-demo/lib 05-synchronize-demo/SynchronizeDemo
-rm -rf 06-queue-vs-synchronize/lib 06-queue-vs-synchronize/QueueVsSync
-rm -rf 08-barres-progression/lib 08-barres-progression/BarresProgression
-rm -rf 09-annulation/lib 09-annulation/AnnulationDemo
+rm -rf 01-gel-interface/lib 01-gel-interface/GelInterface  
+rm -rf 05-synchronize-demo/lib 05-synchronize-demo/SynchronizeDemo  
+rm -rf 06-queue-vs-synchronize/lib 06-queue-vs-synchronize/QueueVsSync  
+rm -rf 08-barres-progression/lib 08-barres-progression/BarresProgression  
+rm -rf 09-annulation/lib 09-annulation/AnnulationDemo  
 ```
 
 ## Notes techniques

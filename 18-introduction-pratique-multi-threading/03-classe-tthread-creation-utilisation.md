@@ -48,8 +48,8 @@ type
     procedure Execute; override;
   end;
 
-procedure TMonThread.Execute;
-begin
+procedure TMonThread.Execute;  
+begin  
   // Le code qui s'exécute dans le thread
   // C'est ICI que se passe le travail !
 end;
@@ -96,8 +96,8 @@ implementation
 
 { TMonThreadCompteur }
 
-procedure TMonThreadCompteur.Execute;
-var
+procedure TMonThreadCompteur.Execute;  
+var  
   i: Integer;
 begin
   // Boucle de 1 à 10
@@ -113,8 +113,8 @@ end;
 
 { TFormMain }
 
-procedure TFormMain.ButtonStartClick(Sender: TObject);
-var
+procedure TFormMain.ButtonStartClick(Sender: TObject);  
+var  
   MonThread: TMonThreadCompteur;
 begin
   // Créer le thread
@@ -139,8 +139,8 @@ Décomposons ce qui se passe :
 #### 1. Déclaration de la classe thread
 
 ```pascal
-TMonThreadCompteur = class(TThread)
-protected
+TMonThreadCompteur = class(TThread)  
+protected  
   procedure Execute; override;
 end;
 ```
@@ -152,8 +152,8 @@ end;
 #### 2. Implémentation de Execute
 
 ```pascal
-procedure TMonThreadCompteur.Execute;
-var
+procedure TMonThreadCompteur.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to 10 do
@@ -215,8 +215,8 @@ type
     constructor Create(const ANomFichier: string);
   end;
 
-constructor TThreadTelecharger.Create(const ANomFichier: string);
-begin
+constructor TThreadTelecharger.Create(const ANomFichier: string);  
+begin  
   // Appeler le constructeur parent avec CreateSuspended = True
   inherited Create(True);
 
@@ -227,8 +227,8 @@ begin
   FreeOnTerminate := True;
 end;
 
-procedure TThreadTelecharger.Execute;
-var
+procedure TThreadTelecharger.Execute;  
+var  
   i: Integer;
 begin
   // Simulation d'un téléchargement de 100 "blocs"
@@ -252,8 +252,8 @@ end;
 ### Utilisation
 
 ```pascal
-procedure TFormMain.ButtonDownloadClick(Sender: TObject);
-var
+procedure TFormMain.ButtonDownloadClick(Sender: TObject);  
+var  
   Thread: TThreadTelecharger;
 begin
   ButtonDownload.Enabled := False; // Désactiver pendant le téléchargement
@@ -268,8 +268,8 @@ end;
 #### Constructeur personnalisé
 
 ```pascal
-constructor TThreadTelecharger.Create(const ANomFichier: string);
-begin
+constructor TThreadTelecharger.Create(const ANomFichier: string);  
+begin  
   inherited Create(True);  // Toujours appeler le constructeur parent !
   FNomFichier := ANomFichier;
   FreeOnTerminate := True;
@@ -321,8 +321,8 @@ La propriété `Terminated` indique si quelqu'un a demandé au thread de s'arrê
 Vous lancez le thread et ne vous en occupez plus. Il fait son travail et se termine.
 
 ```pascal
-procedure TFormMain.ButtonActionClick(Sender: TObject);
-var
+procedure TFormMain.ButtonActionClick(Sender: TObject);  
+var  
   Thread: TMonThread;
 begin
   Thread := TMonThread.Create(True);
@@ -351,14 +351,14 @@ type
     property Resultat: Double read FResultat;
   end;
 
-procedure TThreadCalcul.Execute;
-begin
+procedure TThreadCalcul.Execute;  
+begin  
   // Calcul complexe qui prend du temps
   FResultat := CalculComplexe();
 end;
 
-procedure TFormMain.ButtonCalculerClick(Sender: TObject);
-var
+procedure TFormMain.ButtonCalculerClick(Sender: TObject);  
+var  
   Thread: TThreadCalcul;
 begin
   Thread := TThreadCalcul.Create(True);
@@ -382,8 +382,8 @@ end;
 ### ❌ Erreur 1 : Oublier inherited Create
 
 ```pascal
-constructor TMonThread.Create;
-begin
+constructor TMonThread.Create;  
+begin  
   // ERREUR : Pas d'appel à inherited !
   FreeOnTerminate := True;
 end;
@@ -396,9 +396,9 @@ end;
 ### ❌ Erreur 2 : Appeler Start deux fois
 
 ```pascal
-Thread := TMonThread.Create(True);
-Thread.Start;
-Thread.Start;  // ERREUR !
+Thread := TMonThread.Create(True);  
+Thread.Start;  
+Thread.Start;  // ERREUR !  
 ```
 
 **Conséquence** : Exception ou comportement erratique.
@@ -408,12 +408,12 @@ Thread.Start;  // ERREUR !
 ### ❌ Erreur 3 : Accéder au thread après FreeOnTerminate
 
 ```pascal
-Thread := TMonThread.Create(True);
-Thread.FreeOnTerminate := True;
-Thread.Start;
+Thread := TMonThread.Create(True);  
+Thread.FreeOnTerminate := True;  
+Thread.Start;  
 
-Sleep(100);
-Thread.Terminate;  // ERREUR : le thread peut déjà être libéré !
+Sleep(100);  
+Thread.Terminate;  // ERREUR : le thread peut déjà être libéré !  
 ```
 
 **Conséquence** : Violation d'accès.
@@ -434,8 +434,8 @@ Thread := TMonThread.Create(False);  // Démarre immédiatement !
 ### ❌ Erreur 5 : Ne pas gérer Terminated
 
 ```pascal
-procedure TMonThread.Execute;
-var
+procedure TMonThread.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to 1000000 do
@@ -467,8 +467,8 @@ type
     constructor Create(AMax: Integer);
   end;
 
-constructor TThreadCompteur.Create(AMax: Integer);
-begin
+constructor TThreadCompteur.Create(AMax: Integer);  
+begin  
   // 1. Toujours appeler le constructeur parent en premier
   inherited Create(True);
 
@@ -479,8 +479,8 @@ begin
   FreeOnTerminate := True;
 end;
 
-procedure TThreadCompteur.Execute;
-var
+procedure TThreadCompteur.Execute;  
+var  
   i: Integer;
 begin
   // Boucle principale du thread

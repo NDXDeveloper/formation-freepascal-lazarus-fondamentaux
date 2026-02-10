@@ -53,8 +53,8 @@ La méthode `Execute` est arrivée à sa fin, ou quelqu'un a appelé `Terminate`
 
 ```pascal
 // Fin naturelle de Execute
-procedure TMonThread.Execute;
-begin
+procedure TMonThread.Execute;  
+begin  
   DoWork;
 end;  // Ici, le thread passe à l'état "Terminé"
 ```
@@ -123,8 +123,8 @@ type
     procedure Execute; override;
   end;
 
-procedure TThreadExample.Execute;
-var
+procedure TThreadExample.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to 5 do
@@ -135,8 +135,8 @@ begin
   end;
 end;
 
-procedure TFormMain.ButtonStartClick(Sender: TObject);
-var
+procedure TFormMain.ButtonStartClick(Sender: TObject);  
+var  
   MyThread: TThreadExample;
 begin
   MyThread := TThreadExample.Create(True);  // Étape 1
@@ -194,8 +194,8 @@ MyThread.Start;
 ### Étape 4 : Exécution
 
 ```pascal
-procedure TThreadExample.Execute;
-var
+procedure TThreadExample.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to 5 do      // <-- Le thread est ICI
@@ -255,8 +255,8 @@ Il existe deux façons principales de gérer la fin de vie d'un thread :
 ### Stratégie 1 : Libération automatique (FreeOnTerminate)
 
 ```pascal
-procedure TFormMain.ButtonStartClick(Sender: TObject);
-var
+procedure TFormMain.ButtonStartClick(Sender: TObject);  
+var  
   MyThread: TThreadExample;
 begin
   MyThread := TThreadExample.Create(True);
@@ -286,8 +286,8 @@ end;
 ### Stratégie 2 : Libération manuelle
 
 ```pascal
-procedure TFormMain.ButtonStartClick(Sender: TObject);
-var
+procedure TFormMain.ButtonStartClick(Sender: TObject);  
+var  
   MyThread: TThreadExample;
 begin
   MyThread := TThreadExample.Create(True);
@@ -326,8 +326,8 @@ end;
 Le thread s'arrête quand `Execute` arrive à sa fin :
 
 ```pascal
-procedure TThreadExample.Execute;
-begin
+procedure TThreadExample.Execute;  
+begin  
   DoSomething;
   DoSomethingElse;
   // Fin naturelle ici
@@ -348,8 +348,8 @@ MyThread.Terminate;
 **Important** : `Terminate` ne tue pas brutalement le thread ! Elle met juste la propriété `Terminated` à `True`. C'est au thread de vérifier cette propriété et de sortir proprement :
 
 ```pascal
-procedure TThreadExample.Execute;
-var
+procedure TThreadExample.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to 1000 do
@@ -375,8 +375,8 @@ type
     FThread: TThreadExample;
   end;
 
-procedure TFormMain.ButtonStartClick(Sender: TObject);
-begin
+procedure TFormMain.ButtonStartClick(Sender: TObject);  
+begin  
   // Créer et démarrer
   FThread := TThreadExample.Create(True);
   FThread.FreeOnTerminate := False;  // On gère manuellement
@@ -386,8 +386,8 @@ begin
   ButtonStop.Enabled := True;
 end;
 
-procedure TFormMain.ButtonStopClick(Sender: TObject);
-begin
+procedure TFormMain.ButtonStopClick(Sender: TObject);  
+begin  
   if Assigned(FThread) then
   begin
     // Demander l'arrêt
@@ -424,8 +424,8 @@ property Terminated: Boolean;
 
 **Usage typique :**
 ```pascal
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   while not Terminated do
   begin
     DoWork;
@@ -467,12 +467,12 @@ property FreeOnTerminate: Boolean;
 ### ❌ Piège 1 : Accéder à un thread après FreeOnTerminate
 
 ```pascal
-MyThread := TThreadExample.Create(True);
-MyThread.FreeOnTerminate := True;
-MyThread.Start;
+MyThread := TThreadExample.Create(True);  
+MyThread.FreeOnTerminate := True;  
+MyThread.Start;  
 
-Sleep(1000);
-MyThread.Terminate;  // DANGER ! Le thread peut être déjà libéré !
+Sleep(1000);  
+MyThread.Terminate;  // DANGER ! Le thread peut être déjà libéré !  
 ```
 
 **Problème** : Si le thread se termine avant votre appel, l'objet n'existe plus et vous accédez à de la mémoire libérée.
@@ -482,8 +482,8 @@ MyThread.Terminate;  // DANGER ! Le thread peut être déjà libéré !
 ### ❌ Piège 2 : Oublier Free avec FreeOnTerminate = False
 
 ```pascal
-procedure TForm.ButtonClick(Sender: TObject);
-var
+procedure TForm.ButtonClick(Sender: TObject);  
+var  
   MyThread: TThreadExample;
 begin
   MyThread := TThreadExample.Create(True);
@@ -500,11 +500,11 @@ end;  // FUITE MÉMOIRE
 ### ❌ Piège 3 : Double libération
 
 ```pascal
-MyThread := TThreadExample.Create(True);
-MyThread.FreeOnTerminate := True;
-MyThread.Start;
-MyThread.WaitFor;
-MyThread.Free;  // ERREUR ! Déjà libéré automatiquement
+MyThread := TThreadExample.Create(True);  
+MyThread.FreeOnTerminate := True;  
+MyThread.Start;  
+MyThread.WaitFor;  
+MyThread.Free;  // ERREUR ! Déjà libéré automatiquement  
 ```
 
 **Problème** : Le thread s'est libéré automatiquement, vous tentez de le libérer une deuxième fois.
@@ -514,9 +514,9 @@ MyThread.Free;  // ERREUR ! Déjà libéré automatiquement
 ### ❌ Piège 4 : WaitFor dans le thread principal d'une GUI
 
 ```pascal
-MyThread := TThreadExample.Create(True);
-MyThread.Start;
-MyThread.WaitFor;  // L'interface gèle !
+MyThread := TThreadExample.Create(True);  
+MyThread.Start;  
+MyThread.WaitFor;  // L'interface gèle !  
 ```
 
 **Problème** : `WaitFor` bloque le thread appelant. Si vous l'appelez dans le thread principal, l'interface gèle.
@@ -534,8 +534,8 @@ Avant de créer votre thread, décidez :
 ### ✓ Pratique 2 : Toujours vérifier Terminated
 
 ```pascal
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   while not Terminated do
   begin
     DoWork;
@@ -548,8 +548,8 @@ end;
 ### ✓ Pratique 3 : Utiliser try-finally dans Execute
 
 ```pascal
-procedure TMyThread.Execute;
-var
+procedure TMyThread.Execute;  
+var  
   Resource: TResource;
 begin
   Resource := TResource.Create;
@@ -573,8 +573,8 @@ type
     destructor Destroy; override;
   end;
 
-destructor TFormMain.Destroy;
-begin
+destructor TFormMain.Destroy;  
+begin  
   if Assigned(FMyThread) then
   begin
     FMyThread.Terminate;
@@ -590,8 +590,8 @@ end;
 Voici un exemple montrant tous les états :
 
 ```pascal
-procedure TFormMain.DemoCompleteClick(Sender: TObject);
-var
+procedure TFormMain.DemoCompleteClick(Sender: TObject);  
+var  
   MyThread: TThreadExample;
 begin
   Memo1.Lines.Add('1. Thread non créé');

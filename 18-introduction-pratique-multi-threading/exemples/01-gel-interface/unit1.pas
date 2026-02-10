@@ -1,4 +1,4 @@
-unit Unit1;
+unit Unit1;  
 
 {$mode objfpc}{$H+}
 
@@ -45,8 +45,8 @@ const
   NB_ITERATIONS = 50000000;  // 50 millions d'iterations
 
 { Fonction de calcul intensive }
-function CalculLong: Double;
-var
+function CalculLong: Double;  
+var  
   i: Integer;
   Total: Double;
 begin
@@ -58,21 +58,21 @@ end;
 
 { TThreadCalcul }
 
-procedure TThreadCalcul.MettreAJourUI;
-begin
+procedure TThreadCalcul.MettreAJourUI;  
+begin  
   Form1.LabelStatut.Caption := FStatut;
 end;
 
-procedure TThreadCalcul.AfficherResultat;
-begin
+procedure TThreadCalcul.AfficherResultat;  
+begin  
   Form1.LabelStatut.Caption := 'Termine !';
   Form1.LabelResultat.Caption := Format('Resultat = %.4f', [FResultat]);
   Form1.ButtonBloquant.Enabled := True;
   Form1.ButtonThread.Enabled := True;
 end;
 
-procedure TThreadCalcul.Execute;
-begin
+procedure TThreadCalcul.Execute;  
+begin  
   FStatut := 'Calcul en thread...';
   Synchronize(@MettreAJourUI);
 
@@ -84,8 +84,8 @@ end;
 
 { TForm1 }
 
-procedure TForm1.ButtonBloquantClick(Sender: TObject);
-var
+procedure TForm1.ButtonBloquantClick(Sender: TObject);  
+var  
   Resultat: Double;
 begin
   ButtonBloquant.Enabled := False;
@@ -103,8 +103,8 @@ begin
   ButtonThread.Enabled := True;
 end;
 
-procedure TForm1.ButtonThreadClick(Sender: TObject);
-var
+procedure TForm1.ButtonThreadClick(Sender: TObject);  
+var  
   T: TThreadCalcul;
 begin
   ButtonBloquant.Enabled := False;
@@ -117,8 +117,8 @@ begin
   T.Start;
 end;
 
-procedure TForm1.LabelReactiviteClick(Sender: TObject);
-begin
+procedure TForm1.LabelReactiviteClick(Sender: TObject);  
+begin  
   Inc(FClicCompteur);
   LabelReactivite.Caption := Format('Interface reactive ! Clic #%d', [FClicCompteur]);
 end;

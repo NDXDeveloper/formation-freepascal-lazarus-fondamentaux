@@ -16,17 +16,17 @@ Dans cette dernière section du chapitre sur le multi-threading, nous allons app
 
 **Sans annulation :**
 ```
-Utilisateur : "Oh non, je me suis trompé de fichier !"
-Application : "Désolé, attendez 5 minutes..."
-Utilisateur : 😤 [Ferme l'application de force]
+Utilisateur : "Oh non, je me suis trompé de fichier !"  
+Application : "Désolé, attendez 5 minutes..."  
+Utilisateur : 😤 [Ferme l'application de force]  
 ```
 
 **Avec annulation :**
 ```
-Utilisateur : "Oh non, je me suis trompé de fichier !"
-Utilisateur : [Clique sur Annuler]
-Application : "Opération annulée"
-Utilisateur : "Parfait, je recommence !" 😊
+Utilisateur : "Oh non, je me suis trompé de fichier !"  
+Utilisateur : [Clique sur Annuler]  
+Application : "Opération annulée"  
+Utilisateur : "Parfait, je recommence !" 😊  
 ```
 
 ### Scénarios d'utilisation
@@ -65,8 +65,8 @@ procedure Terminate;
 ### Le principe de base
 
 ```pascal
-procedure TMyThread.Execute;
-var
+procedure TMyThread.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to 1000 do
@@ -115,14 +115,14 @@ type
     procedure Execute; override;
   end;
 
-procedure TThreadTraitement.MettreAJourUI;
-begin
+procedure TThreadTraitement.MettreAJourUI;  
+begin  
   FormMain.ProgressBar1.Position := FProgression;
   FormMain.LabelStatus.Caption := FStatus;
 end;
 
-procedure TThreadTraitement.Execute;
-var
+procedure TThreadTraitement.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to 100 do
@@ -155,14 +155,14 @@ end;
 ### Gestion des boutons
 
 ```pascal
-procedure TFormMain.FormCreate(Sender: TObject);
-begin
+procedure TFormMain.FormCreate(Sender: TObject);  
+begin  
   FThread := nil;
   ButtonCancel.Enabled := False;
 end;
 
-procedure TFormMain.ButtonStartClick(Sender: TObject);
-begin
+procedure TFormMain.ButtonStartClick(Sender: TObject);  
+begin  
   // Créer et démarrer le thread
   FThread := TThreadTraitement.Create(True);
   FThread.FreeOnTerminate := False;  // On gère nous-mêmes
@@ -175,8 +175,8 @@ begin
   LabelStatus.Caption := 'Démarrage...';
 end;
 
-procedure TFormMain.ButtonCancelClick(Sender: TObject);
-begin
+procedure TFormMain.ButtonCancelClick(Sender: TObject);  
+begin  
   if Assigned(FThread) then
   begin
     // Demander l'arrêt
@@ -204,8 +204,8 @@ end;
 Dans l'exemple précédent, nous avons utilisé `WaitFor` dans le bouton Annuler :
 
 ```pascal
-FThread.Terminate;
-FThread.WaitFor;  // ⚠️ Bloque l'interface !
+FThread.Terminate;  
+FThread.WaitFor;  // ⚠️ Bloque l'interface !  
 ```
 
 **Problème** : `WaitFor` bloque le thread principal. Si le thread de travail met du temps à s'arrêter (par exemple, il est dans une opération qui dure 10 secondes), l'interface gèle pendant l'attente.
@@ -230,8 +230,8 @@ type
     property OnFinished: TNotifyEvent read FOnFinished write FOnFinished;
   end;
 
-procedure TThreadTraitement.Execute;
-begin
+procedure TThreadTraitement.Execute;  
+begin  
   // ... code du thread ...
 
   // À la fin, notifier
@@ -242,8 +242,8 @@ begin
     end);
 end;
 
-procedure TFormMain.ButtonStartClick(Sender: TObject);
-begin
+procedure TFormMain.ButtonStartClick(Sender: TObject);  
+begin  
   FThread := TThreadTraitement.Create(True);
   FThread.FreeOnTerminate := True;
   FThread.OnFinished := @OnThreadTerminate;
@@ -253,8 +253,8 @@ begin
   ButtonCancel.Enabled := True;
 end;
 
-procedure TFormMain.ButtonCancelClick(Sender: TObject);
-begin
+procedure TFormMain.ButtonCancelClick(Sender: TObject);  
+begin  
   if Assigned(FThread) then
   begin
     FThread.Terminate;
@@ -266,8 +266,8 @@ begin
   end;
 end;
 
-procedure TFormMain.OnThreadTerminate(Sender: TObject);
-begin
+procedure TFormMain.OnThreadTerminate(Sender: TObject);  
+begin  
   // Le thread s'est terminé
   FThread := nil;
   ButtonStart.Enabled := True;
@@ -287,8 +287,8 @@ end;
 Si vous devez utiliser `WaitFor`, vous pouvez faire :
 
 ```pascal
-procedure TFormMain.ButtonCancelClick(Sender: TObject);
-var
+procedure TFormMain.ButtonCancelClick(Sender: TObject);  
+var  
   TimeOut: TDateTime;
 begin
   if Assigned(FThread) then
@@ -332,8 +332,8 @@ end;
 Quand votre thread utilise des ressources (fichiers, connexions, etc.), il faut les nettoyer proprement lors de l'annulation :
 
 ```pascal
-procedure TThreadTraitement.Execute;
-var
+procedure TThreadTraitement.Execute;  
+var  
   Fichier: TextFile;
   i: Integer;
   FichierOuvert: Boolean;
@@ -395,8 +395,8 @@ end;
 Pour des opérations critiques, demandez confirmation avant d'annuler :
 
 ```pascal
-procedure TFormMain.ButtonCancelClick(Sender: TObject);
-var
+procedure TFormMain.ButtonCancelClick(Sender: TObject);  
+var  
   Reponse: Integer;
 begin
   if Assigned(FThread) then
@@ -437,8 +437,8 @@ end;
 Le thread vérifie régulièrement `Terminated` et s'arrête proprement :
 
 ```pascal
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   for i := 1 to 1000 do
   begin
     if Terminated then Exit;  // ✓ Sortie propre
@@ -466,8 +466,8 @@ Certaines méthodes dangereuses existent (comme `TerminateThread` sur Windows), 
 ### Trop rare
 
 ```pascal
-for i := 1 to 100 do
-begin
+for i := 1 to 100 do  
+begin  
   TraitementTresLong(i);  // Dure 10 secondes
 
   if Terminated then Exit;  // ❌ Vérifié seulement toutes les 10 secondes !
@@ -479,8 +479,8 @@ end;
 ### Trop fréquent
 
 ```pascal
-for i := 1 to 1000000 do
-begin
+for i := 1 to 1000000 do  
+begin  
   if Terminated then Exit;  // Vérifié 1 million de fois
   TraitementRapide(i);
   if Terminated then Exit;  // Encore !
@@ -494,8 +494,8 @@ end;
 ### Idéal
 
 ```pascal
-for i := 1 to 1000 do
-begin
+for i := 1 to 1000 do  
+begin  
   if Terminated then Exit;  // ✓ Une fois par itération
 
   TraitementPartie1(i);
@@ -514,8 +514,8 @@ end;
 ### ❌ Erreur 1 : Ne jamais vérifier Terminated
 
 ```pascal
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   for i := 1 to 1000 do
   begin
     DoWork(i);  // Pas de vérification !
@@ -543,8 +543,8 @@ DoWork();  // Exécuté même si Terminated !
 ### ❌ Erreur 3 : Ne pas nettoyer les ressources
 
 ```pascal
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   Connexion := ConnecterBDD();
 
   for i := 1 to 1000 do
@@ -562,8 +562,8 @@ end;
 **Solution** : Utiliser `try-finally`.
 
 ```pascal
-Connexion := ConnecterBDD();
-try
+Connexion := ConnecterBDD();  
+try  
   for i := 1 to 1000 do
   begin
     if Terminated then Exit;
@@ -577,8 +577,8 @@ end;
 ### ❌ Erreur 4 : Double-clic sur Annuler
 
 ```pascal
-procedure TFormMain.ButtonCancelClick(Sender: TObject);
-begin
+procedure TFormMain.ButtonCancelClick(Sender: TObject);  
+begin  
   FThread.Terminate;  // Premier clic
   // L'utilisateur reclique...
   FThread.Terminate;  // Deuxième clic : OK, pas de problème
@@ -591,8 +591,8 @@ end;
 **Solution** : Désactiver le bouton immédiatement.
 
 ```pascal
-procedure TFormMain.ButtonCancelClick(Sender: TObject);
-begin
+procedure TFormMain.ButtonCancelClick(Sender: TObject);  
+begin  
   ButtonCancel.Enabled := False;  // ✓ Désactiver immédiatement
   FThread.Terminate;
   FThread.WaitFor;
@@ -603,8 +603,8 @@ end;
 ### ❌ Erreur 5 : Référence à un thread libéré
 
 ```pascal
-FThread.FreeOnTerminate := True;
-FThread.Start;
+FThread.FreeOnTerminate := True;  
+FThread.Start;  
 
 // Plus tard...
 FThread.Terminate;  // ❌ Peut être déjà libéré !
@@ -626,8 +626,8 @@ type
     FThread: TThreadTraitement;
   end;
 
-procedure TFormMain.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-begin
+procedure TFormMain.FormCloseQuery(Sender: TObject; var CanClose: Boolean);  
+begin  
   if Assigned(FThread) and not FThread.Finished then
   begin
     // Demander confirmation
@@ -679,22 +679,22 @@ type
     constructor Create(const AURL, ADest: string);
   end;
 
-constructor TThreadDownload.Create(const AURL, ADest: string);
-begin
+constructor TThreadDownload.Create(const AURL, ADest: string);  
+begin  
   inherited Create(True);
   FURL := AURL;
   FDestination := ADest;
   FreeOnTerminate := False;
 end;
 
-procedure TThreadDownload.MettreAJourUI;
-begin
+procedure TThreadDownload.MettreAJourUI;  
+begin  
   FormMain.ProgressBar1.Position := FProgression;
   FormMain.LabelStatus.Caption := FStatus;
 end;
 
-procedure TThreadDownload.Execute;
-var
+procedure TThreadDownload.Execute;  
+var  
   HttpClient: TFPHttpClient;
   Stream: TFileStream;
   FichierCree: Boolean;
@@ -794,8 +794,8 @@ begin
 end;
 
 // Dans le formulaire
-procedure TFormMain.ButtonDownloadClick(Sender: TObject);
-begin
+procedure TFormMain.ButtonDownloadClick(Sender: TObject);  
+begin  
   FThread := TThreadDownload.Create(
     EditURL.Text,
     EditDestination.Text
@@ -806,8 +806,8 @@ begin
   ButtonCancel.Enabled := True;
 end;
 
-procedure TFormMain.ButtonCancelClick(Sender: TObject);
-begin
+procedure TFormMain.ButtonCancelClick(Sender: TObject);  
+begin  
   if Assigned(FThread) then
   begin
     ButtonCancel.Enabled := False;
@@ -830,22 +830,22 @@ end;
 
 ```pascal
 // Dans chaque boucle
-for i := 1 to Max do
-begin
+for i := 1 to Max do  
+begin  
   if Terminated then Exit;
   DoWork(i);
 end;
 
 // Avant chaque opération longue
-if Terminated then Exit;
-LongOperation();
+if Terminated then Exit;  
+LongOperation();  
 ```
 
 ### ✓ Pratique 2 : Utiliser try-finally
 
 ```pascal
-Resource := CreateResource();
-try
+Resource := CreateResource();  
+try  
   // Travail
   for i := 1 to 100 do
   begin
@@ -860,8 +860,8 @@ end;
 ### ✓ Pratique 3 : Nettoyer les données partielles
 
 ```pascal
-if Terminated then
-begin
+if Terminated then  
+begin  
   DeleteFile(PartialFile);
   RollbackTransaction();
   CleanupTemporaryData();
@@ -871,15 +871,15 @@ end;
 ### ✓ Pratique 4 : Désactiver le bouton Annuler immédiatement
 
 ```pascal
-ButtonCancel.Enabled := False;  // Première chose !
-FThread.Terminate();
+ButtonCancel.Enabled := False;  // Première chose !  
+FThread.Terminate();  
 ```
 
 ### ✓ Pratique 5 : Informer l'utilisateur
 
 ```pascal
-if Terminated then
-begin
+if Terminated then  
+begin  
   FStatus := 'Opération annulée par l''utilisateur';
   Synchronize(@MettreAJourUI);
 end;
@@ -888,8 +888,8 @@ end;
 ### ✓ Pratique 6 : Gérer la fermeture de l'application
 
 ```pascal
-procedure TFormMain.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-begin
+procedure TFormMain.FormCloseQuery(Sender: TObject; var CanClose: Boolean);  
+begin  
   if ThreadEnCours then
   begin
     Thread.Terminate;

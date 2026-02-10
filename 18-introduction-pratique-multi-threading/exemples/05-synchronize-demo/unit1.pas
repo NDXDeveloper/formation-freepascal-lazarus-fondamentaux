@@ -1,4 +1,4 @@
-unit Unit1;
+unit Unit1;  
 
 {$mode objfpc}{$H+}
 
@@ -39,19 +39,19 @@ implementation
 
 { TThreadTraitement }
 
-procedure TThreadTraitement.MettreAJourUI;
-begin
+procedure TThreadTraitement.MettreAJourUI;  
+begin  
   Form1.ProgressBar1.Position := FProgression;
   Form1.LabelStatut.Caption := FStatus;
 end;
 
-procedure TThreadTraitement.AjouterLog;
-begin
+procedure TThreadTraitement.AjouterLog;  
+begin  
   Form1.MemoLog.Lines.Add(FormatDateTime('hh:nn:ss', Now) + ' - ' + FLogMessage);
 end;
 
-procedure TThreadTraitement.TraitementTermine;
-begin
+procedure TThreadTraitement.TraitementTermine;  
+begin  
   Form1.ProgressBar1.Position := 100;
   Form1.LabelStatut.Caption := 'Traitement termine !';
   Form1.ButtonStart.Enabled := True;
@@ -59,8 +59,8 @@ begin
   Form1.MemoLog.Lines.Add('=== Traitement termine avec succes ===');
 end;
 
-procedure TThreadTraitement.Execute;
-var
+procedure TThreadTraitement.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to 100 do
@@ -92,8 +92,8 @@ end;
 
 { TForm1 }
 
-procedure TForm1.ButtonStartClick(Sender: TObject);
-var
+procedure TForm1.ButtonStartClick(Sender: TObject);  
+var  
   Thread: TThreadTraitement;
 begin
   // Reinitialiser l'interface

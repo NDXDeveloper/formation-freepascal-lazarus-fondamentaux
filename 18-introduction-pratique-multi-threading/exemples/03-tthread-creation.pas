@@ -21,8 +21,8 @@ type
     procedure Execute; override;
   end;
 
-procedure TThreadCompteur.Execute;
-var
+procedure TThreadCompteur.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to 5 do
@@ -49,15 +49,15 @@ type
     property Resultat: Double read FResultat;
   end;
 
-constructor TThreadCalcul.Create(AMax: Integer);
-begin
+constructor TThreadCalcul.Create(AMax: Integer);  
+begin  
   inherited Create(True);  // Toujours appeler inherited Create(True)
   FMax := AMax;
   FResultat := 0;
 end;
 
-procedure TThreadCalcul.Execute;
-var
+procedure TThreadCalcul.Execute;  
+var  
   i: Integer;
 begin
   WriteLn('  [Thread calcul] Debut du calcul (somme de 1 a ', FMax, ')');
@@ -85,8 +85,8 @@ type
     procedure Execute; override;
   end;
 
-procedure TThreadTravail.Execute;
-var
+procedure TThreadTravail.Execute;  
+var  
   Compteur: Integer;
 begin
   Compteur := 0;

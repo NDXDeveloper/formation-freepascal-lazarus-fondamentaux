@@ -26,15 +26,15 @@ type
     constructor Create(const ANom: string; ADuree: Integer);
   end;
 
-constructor TThreadExemple.Create(const ANom: string; ADuree: Integer);
-begin
+constructor TThreadExemple.Create(const ANom: string; ADuree: Integer);  
+begin  
   inherited Create(True);  // Cree suspendu
   FNom := ANom;
   FDuree := ADuree;
 end;
 
-procedure TThreadExemple.Execute;
-var
+procedure TThreadExemple.Execute;  
+var  
   i: Integer;
   Ressource: TStringList;
 begin
@@ -61,8 +61,8 @@ begin
 end;
 
 { ========================================================================== }
-procedure DemoEtatsThread;
-var
+procedure DemoEtatsThread;  
+var  
   T: TThreadExemple;
 begin
   WriteLn('--- Suivi des etats ---');
@@ -97,8 +97,8 @@ begin
 end;
 
 { -------------------------------------------------------------------------- }
-procedure DemoStrategieAutoFree;
-var
+procedure DemoStrategieAutoFree;  
+var  
   T: TThreadExemple;
 begin
   WriteLn('--- Strategie 1 : FreeOnTerminate = True (fire-and-forget) ---');
@@ -112,8 +112,8 @@ begin
 end;
 
 { -------------------------------------------------------------------------- }
-procedure DemoStrategieManuelle;
-var
+procedure DemoStrategieManuelle;  
+var  
   T: TThreadExemple;
 begin
   WriteLn('--- Strategie 2 : FreeOnTerminate = False (controle total) ---');

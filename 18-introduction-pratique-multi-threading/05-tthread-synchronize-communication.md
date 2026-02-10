@@ -30,8 +30,8 @@ De même, si deux threads tentent de modifier un `TLabel` en même temps, les r�
 
 ```pascal
 // CODE DANGEREUX - NE PAS FAIRE !
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   Label1.Caption := 'Bonjour du thread !';  // ❌ INTERDIT !
 end;
 ```
@@ -116,15 +116,15 @@ type
     procedure Execute; override;
   end;
 
-procedure TMyThread.AfficherMessage;
-begin
+procedure TMyThread.AfficherMessage;  
+begin  
   // CE CODE S'EXÉCUTE DANS LE THREAD PRINCIPAL
   // On peut accéder aux composants visuels en sécurité !
   Form1.Label1.Caption := FMessage;
 end;
 
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   // Ce code s'exécute dans le thread de travail
 
   // Faire du travail...
@@ -175,15 +175,15 @@ type
     procedure Execute; override;
   end;
 
-procedure TThreadTraitement.MettreAJourUI;
-begin
+procedure TThreadTraitement.MettreAJourUI;  
+begin  
   // S'exécute dans le thread principal - SÉCURISÉ
   FormMain.ProgressBar1.Position := FProgression;
   FormMain.LabelStatus.Caption := FStatus;
 end;
 
-procedure TThreadTraitement.Execute;
-var
+procedure TThreadTraitement.Execute;  
+var  
   i: Integer;
 begin
   // S'exécute dans le thread de travail
@@ -213,8 +213,8 @@ end;
 ### Utilisation
 
 ```pascal
-procedure TFormMain.ButtonStartClick(Sender: TObject);
-var
+procedure TFormMain.ButtonStartClick(Sender: TObject);  
+var  
   Thread: TThreadTraitement;
 begin
   ProgressBar1.Position := 0;
@@ -249,8 +249,8 @@ Comment passer des valeurs à la méthode synchronisée ?
 **❌ Mauvaise approche : paramètres**
 
 ```pascal
-procedure TMyThread.AfficherTexte(const Texte: string);  // ❌ Ne compile pas !
-begin
+procedure TMyThread.AfficherTexte(const Texte: string);  // ❌ Ne compile pas !  
+begin  
   Label1.Caption := Texte;
 end;
 
@@ -273,15 +273,15 @@ type
     procedure Execute; override;
   end;
 
-procedure TMyThread.AfficherDonnees;
-begin
+procedure TMyThread.AfficherDonnees;  
+begin  
   // Utiliser les variables membres
   Label1.Caption := FTexteAfficher;
   Edit1.Text := IntToStr(FValeurAfficher);
 end;
 
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   // Préparer les données
   FTexteAfficher := 'Résultat du calcul';
   FValeurAfficher := 42;
@@ -301,8 +301,8 @@ end;
 À partir de FreePascal 3.2, vous pouvez utiliser des procédures anonymes avec `Synchronize`, ce qui est plus concis :
 
 ```pascal
-procedure TMyThread.Execute;
-var
+procedure TMyThread.Execute;  
+var  
   Resultat: Integer;
 begin
   // Faire des calculs
@@ -331,8 +331,8 @@ end;
 ### ❌ Erreur 1 : Accès direct aux composants sans Synchronize
 
 ```pascal
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   // DANGER ! Accès direct sans Synchronize
   Label1.Caption := 'Bonjour';  // ❌ CRASH probable
 end;
@@ -343,8 +343,8 @@ end;
 ### ❌ Erreur 2 : Synchronize dans le thread principal
 
 ```pascal
-procedure TFormMain.ButtonClick(Sender: TObject);
-begin
+procedure TFormMain.ButtonClick(Sender: TObject);  
+begin  
   // Pas dans un thread, pourtant on synchronise ?
   Synchronize(@MaMethode);  // ❌ Erreur ou comportement bizarre
 end;
@@ -357,8 +357,8 @@ end;
 ### ❌ Erreur 3 : Synchronize trop fréquent
 
 ```pascal
-procedure TMyThread.Execute;
-var
+procedure TMyThread.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to 1000000 do
@@ -374,8 +374,8 @@ end;
 **Solution :** Grouper les mises à jour.
 
 ```pascal
-procedure TMyThread.Execute;
-var
+procedure TMyThread.Execute;  
+var  
   i: Integer;
 begin
   for i := 1 to 1000000 do
@@ -395,14 +395,14 @@ end;
 ### ❌ Erreur 4 : Oublier que Synchronize bloque
 
 ```pascal
-procedure TMyThread.Execute;
-begin
+procedure TMyThread.Execute;  
+begin  
   Synchronize(@MethodeQuiPrendDuTemps);  // Si cette méthode prend 5 secondes...
   // Le thread attend 5 secondes !
 end;
 
-procedure TMyThread.MethodeQuiPrendDuTemps;
-begin
+procedure TMyThread.MethodeQuiPrendDuTemps;  
+begin  
   // Traitement long de 5 secondes
   for i := 1 to 1000000 do
     DoSomething;
@@ -416,8 +416,8 @@ end;
 ### ❌ Erreur 5 : Variables locales dans Execute
 
 ```pascal
-procedure TMyThread.Execute;
-var
+procedure TMyThread.Execute;  
+var  
   Resultat: string;  // Variable locale
 begin
   Resultat := 'Test';
@@ -456,16 +456,16 @@ type
     constructor Create(const AURL, ADest: string);
   end;
 
-constructor TThreadDownload.Create(const AURL, ADest: string);
-begin
+constructor TThreadDownload.Create(const AURL, ADest: string);  
+begin  
   inherited Create(True);
   FURL := AURL;
   FDestination := ADest;
   FreeOnTerminate := True;
 end;
 
-procedure TThreadDownload.UpdateProgress;
-begin
+procedure TThreadDownload.UpdateProgress;  
+begin  
   // S'exécute dans le thread principal
   FormMain.ProgressBar1.Max := 100;
   FormMain.ProgressBar1.Position := FPourcentage;
@@ -475,16 +475,16 @@ begin
   );
 end;
 
-procedure TThreadDownload.DownloadComplete;
-begin
+procedure TThreadDownload.DownloadComplete;  
+begin  
   // S'exécute dans le thread principal
   FormMain.LabelStatus.Caption := 'Téléchargement terminé !';
   FormMain.ButtonDownload.Enabled := True;
   ShowMessage('Fichier téléchargé avec succès !');
 end;
 
-procedure TThreadDownload.Execute;
-var
+procedure TThreadDownload.Execute;  
+var  
   HttpClient: TFPHttpClient;
   Stream: TFileStream;
 begin
@@ -522,8 +522,8 @@ begin
 end;
 
 // Utilisation
-procedure TFormMain.ButtonDownloadClick(Sender: TObject);
-var
+procedure TFormMain.ButtonDownloadClick(Sender: TObject);  
+var  
   Thread: TThreadDownload;
 begin
   ButtonDownload.Enabled := False;
@@ -560,9 +560,9 @@ end;
 ### ✓ Pratique 1 : Nommer clairement les méthodes
 
 ```pascal
-procedure UpdateProgressBar;  // Clair
-procedure MAJ_UI;             // Moins clair
-procedure DoIt;               // Pas clair du tout
+procedure UpdateProgressBar;  // Clair  
+procedure MAJ_UI;             // Moins clair  
+procedure DoIt;               // Pas clair du tout  
 ```
 
 ### ✓ Pratique 2 : Grouper les mises à jour
@@ -570,8 +570,8 @@ procedure DoIt;               // Pas clair du tout
 Au lieu de synchroniser 10 fois pour mettre à jour 10 composants, faites-le en une seule fois :
 
 ```pascal
-procedure TMyThread.UpdateAllUI;
-begin
+procedure TMyThread.UpdateAllUI;  
+begin  
   Label1.Caption := FMessage;
   ProgressBar1.Position := FProgress;
   Edit1.Text := FResult;
