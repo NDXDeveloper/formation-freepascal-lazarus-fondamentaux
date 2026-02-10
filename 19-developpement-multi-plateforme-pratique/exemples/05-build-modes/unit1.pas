@@ -31,8 +31,8 @@ implementation
 
 {$R *.lfm}
 
-procedure TFormBuildModes.FormCreate(Sender: TObject);
-var
+procedure TFormBuildModes.FormCreate(Sender: TObject);  
+var  
   OSName, ArchName, ModeName, WidgetName: string;
 begin
   { Détection du système d'exploitation via macro compilateur }

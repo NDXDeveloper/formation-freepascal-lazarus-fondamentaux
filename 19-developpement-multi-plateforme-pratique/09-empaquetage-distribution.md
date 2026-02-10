@@ -101,48 +101,48 @@ MonApp-v1.0-Windows.zip
 
 ```batch
 @echo off
-echo ========================================
-echo Création Archive Portable Windows
-echo ========================================
-echo.
+echo ========================================  
+echo Création Archive Portable Windows  
+echo ========================================  
+echo.  
 
-set VERSION=1.0.0
-set APPNAME=MonApp
-set BUILDDIR=bin\Release-Windows-64
-set DISTDIR=dist\%APPNAME%-v%VERSION%-Windows-Portable
+set VERSION=1.0.0  
+set APPNAME=MonApp  
+set BUILDDIR=bin\Release-Windows-64  
+set DISTDIR=dist\%APPNAME%-v%VERSION%-Windows-Portable  
 
-REM Nettoyer le répertoire de distribution
-if exist dist rmdir /s /q dist
-mkdir dist
-mkdir "%DISTDIR%"
-mkdir "%DISTDIR%\lib"
+REM Nettoyer le répertoire de distribution  
+if exist dist rmdir /s /q dist  
+mkdir dist  
+mkdir "%DISTDIR%"  
+mkdir "%DISTDIR%\lib"  
 
-REM Copier l'exécutable
-echo Copie de l'exécutable...
-copy "%BUILDDIR%\%APPNAME%.exe" "%DISTDIR%\" >nul
+REM Copier l'exécutable  
+echo Copie de l'exécutable...  
+copy "%BUILDDIR%\%APPNAME%.exe" "%DISTDIR%\" >nul  
 
-REM Copier les bibliothèques
-echo Copie des bibliothèques...
-copy "lib\windows\*.dll" "%DISTDIR%\lib\" >nul
+REM Copier les bibliothèques  
+echo Copie des bibliothèques...  
+copy "lib\windows\*.dll" "%DISTDIR%\lib\" >nul  
 
-REM Copier la documentation
-echo Copie de la documentation...
-copy "README.txt" "%DISTDIR%\" >nul
-copy "LICENSE.txt" "%DISTDIR%\" >nul
-copy "CHANGELOG.txt" "%DISTDIR%\" >nul
+REM Copier la documentation  
+echo Copie de la documentation...  
+copy "README.txt" "%DISTDIR%\" >nul  
+copy "LICENSE.txt" "%DISTDIR%\" >nul  
+copy "CHANGELOG.txt" "%DISTDIR%\" >nul  
 
-REM Créer l'archive
-echo Création de l'archive ZIP...
-cd dist
+REM Créer l'archive  
+echo Création de l'archive ZIP...  
+cd dist  
 7z a -tzip "%APPNAME%-v%VERSION%-Windows-Portable.zip" "%APPNAME%-v%VERSION%-Windows-Portable\*" >nul
 cd ..
 
-echo.
-echo ========================================
-echo Archive créée avec succès !
-echo Fichier : dist\%APPNAME%-v%VERSION%-Windows-Portable.zip
-echo ========================================
-pause
+echo.  
+echo ========================================  
+echo Archive créée avec succès !  
+echo Fichier : dist\%APPNAME%-v%VERSION%-Windows-Portable.zip  
+echo ========================================  
+pause  
 ```
 
 ### Installeur avec Inno Setup
@@ -162,41 +162,41 @@ pause
 
 [Setup]
 ; Informations de base
-AppName=Mon Application
-AppVersion=1.0.0
-AppPublisher=Votre Nom ou Société
-AppPublisherURL=https://votre-site.com
-AppSupportURL=https://votre-site.com/support
-AppUpdatesURL=https://votre-site.com/downloads
+AppName=Mon Application  
+AppVersion=1.0.0  
+AppPublisher=Votre Nom ou Société  
+AppPublisherURL=https://votre-site.com  
+AppSupportURL=https://votre-site.com/support  
+AppUpdatesURL=https://votre-site.com/downloads  
 
 ; Répertoires d'installation
-DefaultDirName={autopf}\MonApp
-DefaultGroupName=Mon Application
-DisableProgramGroupPage=yes
+DefaultDirName={autopf}\MonApp  
+DefaultGroupName=Mon Application  
+DisableProgramGroupPage=yes  
 
 ; Sortie
-OutputDir=dist
-OutputBaseFilename=MonApp-Setup-v1.0.0
+OutputDir=dist  
+OutputBaseFilename=MonApp-Setup-v1.0.0  
 
 ; Compression
-Compression=lzma2
-SolidCompression=yes
+Compression=lzma2  
+SolidCompression=yes  
 
 ; Interface
-WizardStyle=modern
-SetupIconFile=resources\app.ico
+WizardStyle=modern  
+SetupIconFile=resources\app.ico  
 
 ; Privilèges
-PrivilegesRequired=admin
-PrivilegesRequiredOverridesAllowed=dialog
+PrivilegesRequired=admin  
+PrivilegesRequiredOverridesAllowed=dialog  
 
 ; Architecture
-ArchitecturesAllowed=x64
-ArchitecturesInstallIn64BitMode=x64
+ArchitecturesAllowed=x64  
+ArchitecturesInstallIn64BitMode=x64  
 
 [Languages]
-Name: "french"; MessagesFile: "compiler:Languages\French.isl"
-Name: "english"; MessagesFile: "compiler:Default.isl"
+Name: "french"; MessagesFile: "compiler:Languages\French.isl"  
+Name: "english"; MessagesFile: "compiler:Default.isl"  
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"
@@ -209,18 +209,18 @@ Source: "bin\Release-Windows-64\MonApp.exe"; DestDir: "{app}"; Flags: ignorevers
 Source: "lib\windows\*.dll"; DestDir: "{app}\lib"; Flags: ignoreversion recursesubdirs
 
 ; Documentation
-Source: "README.txt"; DestDir: "{app}"; Flags: isreadme
-Source: "LICENSE.txt"; DestDir: "{app}"
-Source: "CHANGELOG.txt"; DestDir: "{app}"
+Source: "README.txt"; DestDir: "{app}"; Flags: isreadme  
+Source: "LICENSE.txt"; DestDir: "{app}"  
+Source: "CHANGELOG.txt"; DestDir: "{app}"  
 
 ; Fichiers de données (optionnel)
 Source: "data\*"; DestDir: "{app}\data"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
 ; Menu Démarrer
-Name: "{group}\Mon Application"; Filename: "{app}\MonApp.exe"
-Name: "{group}\Lire le README"; Filename: "{app}\README.txt"
-Name: "{group}\Désinstaller Mon Application"; Filename: "{uninstallexe}"
+Name: "{group}\Mon Application"; Filename: "{app}\MonApp.exe"  
+Name: "{group}\Lire le README"; Filename: "{app}\README.txt"  
+Name: "{group}\Désinstaller Mon Application"; Filename: "{uninstallexe}"  
 
 ; Bureau (si demandé)
 Name: "{autodesktop}\Mon Application"; Filename: "{app}\MonApp.exe"; Tasks: desktopicon
@@ -231,14 +231,14 @@ Filename: "{app}\MonApp.exe"; Description: "{cm:LaunchProgram,Mon Application}";
 
 [UninstallDelete]
 ; Supprimer les fichiers créés par l'application
-Type: filesandordirs; Name: "{app}\data"
-Type: filesandordirs; Name: "{userappdata}\MonApp"
+Type: filesandordirs; Name: "{app}\data"  
+Type: filesandordirs; Name: "{userappdata}\MonApp"  
 
 [Code]
 // Code Pascal personnalisé pour l'installeur
 
-function InitializeSetup(): Boolean;
-begin
+function InitializeSetup(): Boolean;  
+begin  
   Result := True;
   // Vérifications avant installation
   if not RegKeyExists(HKLM, 'SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full') then
@@ -248,8 +248,8 @@ begin
   end;
 end;
 
-procedure CurStepChanged(CurStep: TSetupStep);
-begin
+procedure CurStepChanged(CurStep: TSetupStep);  
+begin  
   if CurStep = ssPostInstall then
   begin
     // Actions après installation
@@ -278,8 +278,8 @@ SilentInstall=yes
 
 [Registry]
 ; Créer des entrées dans le registre
-Root: HKLM; Subkey: "Software\MonApp"; Flags: uninsdeletekeyifempty
-Root: HKLM; Subkey: "Software\MonApp\Settings"; ValueType: string; ValueName: "InstallPath"; ValueData: "{app}"
+Root: HKLM; Subkey: "Software\MonApp"; Flags: uninsdeletekeyifempty  
+Root: HKLM; Subkey: "Software\MonApp\Settings"; ValueType: string; ValueName: "InstallPath"; ValueData: "{app}"  
 
 [InstallDelete]
 ; Supprimer des fichiers de versions précédentes
@@ -304,11 +304,11 @@ Type: filesandordirs; Name: "{app}\old_data"
 ;--------------------------------
 ; Configuration générale
 
-Name "Mon Application"
-OutFile "dist\MonApp-Setup-v1.0.0.exe"
-InstallDir "$PROGRAMFILES64\MonApp"
-InstallDirRegKey HKLM "Software\MonApp" "InstallPath"
-RequestExecutionLevel admin
+Name "Mon Application"  
+OutFile "dist\MonApp-Setup-v1.0.0.exe"  
+InstallDir "$PROGRAMFILES64\MonApp"  
+InstallDirRegKey HKLM "Software\MonApp" "InstallPath"  
+RequestExecutionLevel admin  
 
 ;--------------------------------
 ; Interface
@@ -400,25 +400,25 @@ SectionEnd
 ```bash
 #!/bin/bash
 
-VERSION="1.0.0"
-APPNAME="monapp"
-BUILDDIR="bin/Release-Linux-64"
-DISTDIR="dist/${APPNAME}-v${VERSION}-Linux-x64"
+VERSION="1.0.0"  
+APPNAME="monapp"  
+BUILDDIR="bin/Release-Linux-64"  
+DISTDIR="dist/${APPNAME}-v${VERSION}-Linux-x64"  
 
-echo "========================================"
-echo "Création Archive Portable Linux"
-echo "========================================"
-echo
+echo "========================================"  
+echo "Création Archive Portable Linux"  
+echo "========================================"  
+echo  
 
 # Nettoyer et créer les répertoires
-rm -rf dist
-mkdir -p "$DISTDIR"
-mkdir -p "$DISTDIR/lib"
+rm -rf dist  
+mkdir -p "$DISTDIR"  
+mkdir -p "$DISTDIR/lib"  
 
 # Copier l'exécutable
-echo "Copie de l'exécutable..."
-cp "$BUILDDIR/$APPNAME" "$DISTDIR/"
-chmod +x "$DISTDIR/$APPNAME"
+echo "Copie de l'exécutable..."  
+cp "$BUILDDIR/$APPNAME" "$DISTDIR/"  
+chmod +x "$DISTDIR/$APPNAME"  
 
 # Copier les bibliothèques (si incluses)
 if [ -d "lib/linux" ]; then
@@ -427,33 +427,33 @@ if [ -d "lib/linux" ]; then
 fi
 
 # Copier la documentation
-echo "Copie de la documentation..."
-cp README.txt "$DISTDIR/"
-cp LICENSE.txt "$DISTDIR/"
-cp CHANGELOG.txt "$DISTDIR/"
+echo "Copie de la documentation..."  
+cp README.txt "$DISTDIR/"  
+cp LICENSE.txt "$DISTDIR/"  
+cp CHANGELOG.txt "$DISTDIR/"  
 
 # Créer un script de lancement
-echo "Création du script de lancement..."
-cat > "$DISTDIR/run.sh" << 'EOF'
+echo "Création du script de lancement..."  
+cat > "$DISTDIR/run.sh" << 'EOF'  
 #!/bin/bash
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-export LD_LIBRARY_PATH="$SCRIPT_DIR/lib:$LD_LIBRARY_PATH"
-cd "$SCRIPT_DIR"
-exec ./monapp "$@"
-EOF
-chmod +x "$DISTDIR/run.sh"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"  
+export LD_LIBRARY_PATH="$SCRIPT_DIR/lib:$LD_LIBRARY_PATH"  
+cd "$SCRIPT_DIR"  
+exec ./monapp "$@"  
+EOF  
+chmod +x "$DISTDIR/run.sh"  
 
 # Créer l'archive
-echo "Création de l'archive TAR.GZ..."
-cd dist
-tar -czf "${APPNAME}-v${VERSION}-Linux-x64.tar.gz" "${APPNAME}-v${VERSION}-Linux-x64"
-cd ..
+echo "Création de l'archive TAR.GZ..."  
+cd dist  
+tar -czf "${APPNAME}-v${VERSION}-Linux-x64.tar.gz" "${APPNAME}-v${VERSION}-Linux-x64"  
+cd ..  
 
-echo
-echo "========================================"
-echo "Archive créée avec succès !"
-echo "Fichier : dist/${APPNAME}-v${VERSION}-Linux-x64.tar.gz"
-echo "========================================"
+echo  
+echo "========================================"  
+echo "Archive créée avec succès !"  
+echo "Fichier : dist/${APPNAME}-v${VERSION}-Linux-x64.tar.gz"  
+echo "========================================"  
 ```
 
 ### Package Debian (.deb)
@@ -488,15 +488,15 @@ monapp_1.0.0-1/
 **Fichier DEBIAN/control :**
 
 ```
-Package: monapp
-Version: 1.0.0-1
-Section: utils
-Priority: optional
-Architecture: amd64
-Depends: libsqlite3-0 (>= 3.30), libgtk2.0-0, libssl1.1
-Maintainer: Votre Nom <email@example.com>
-Homepage: https://votre-site.com
-Description: Mon Application - Description courte
+Package: monapp  
+Version: 1.0.0-1  
+Section: utils  
+Priority: optional  
+Architecture: amd64  
+Depends: libsqlite3-0 (>= 3.30), libgtk2.0-0, libssl1.1  
+Maintainer: Votre Nom <email@example.com>  
+Homepage: https://votre-site.com  
+Description: Mon Application - Description courte  
  Description plus détaillée de votre application.
  Elle peut s'étendre sur plusieurs lignes.
  .
@@ -545,17 +545,17 @@ exit 0
 
 ```ini
 [Desktop Entry]
-Version=1.0
-Type=Application
-Name=Mon Application
-Name[fr]=Mon Application
-Comment=Description de l'application
-Comment[fr]=Description de l'application
-Exec=/usr/bin/monapp %F
-Icon=monapp
-Terminal=false
-Categories=Utility;Office;
-Keywords=gestion;fichiers;
+Version=1.0  
+Type=Application  
+Name=Mon Application  
+Name[fr]=Mon Application  
+Comment=Description de l'application  
+Comment[fr]=Description de l'application  
+Exec=/usr/bin/monapp %F  
+Icon=monapp  
+Terminal=false  
+Categories=Utility;Office;  
+Keywords=gestion;fichiers;  
 ```
 
 **Script de création du package (create-deb.sh) :**
@@ -563,10 +563,10 @@ Keywords=gestion;fichiers;
 ```bash
 #!/bin/bash
 
-VERSION="1.0.0"
-REVISION="1"
-APPNAME="monapp"
-PKGDIR="${APPNAME}_${VERSION}-${REVISION}"
+VERSION="1.0.0"  
+REVISION="1"  
+APPNAME="monapp"  
+PKGDIR="${APPNAME}_${VERSION}-${REVISION}"  
 
 echo "Création du package Debian..."
 
@@ -574,45 +574,45 @@ echo "Création du package Debian..."
 rm -rf "$PKGDIR" *.deb
 
 # Créer la structure
-mkdir -p "$PKGDIR/DEBIAN"
-mkdir -p "$PKGDIR/usr/bin"
-mkdir -p "$PKGDIR/usr/share/applications"
-mkdir -p "$PKGDIR/usr/share/pixmaps"
-mkdir -p "$PKGDIR/usr/share/doc/$APPNAME"
+mkdir -p "$PKGDIR/DEBIAN"  
+mkdir -p "$PKGDIR/usr/bin"  
+mkdir -p "$PKGDIR/usr/share/applications"  
+mkdir -p "$PKGDIR/usr/share/pixmaps"  
+mkdir -p "$PKGDIR/usr/share/doc/$APPNAME"  
 
 # Copier les fichiers
-cp "bin/Release-Linux-64/$APPNAME" "$PKGDIR/usr/bin/"
-chmod 755 "$PKGDIR/usr/bin/$APPNAME"
+cp "bin/Release-Linux-64/$APPNAME" "$PKGDIR/usr/bin/"  
+chmod 755 "$PKGDIR/usr/bin/$APPNAME"  
 
-cp "resources/$APPNAME.desktop" "$PKGDIR/usr/share/applications/"
-cp "resources/$APPNAME.png" "$PKGDIR/usr/share/pixmaps/"
+cp "resources/$APPNAME.desktop" "$PKGDIR/usr/share/applications/"  
+cp "resources/$APPNAME.png" "$PKGDIR/usr/share/pixmaps/"  
 
-cp README.txt "$PKGDIR/usr/share/doc/$APPNAME/README"
-cp LICENSE.txt "$PKGDIR/usr/share/doc/$APPNAME/copyright"
+cp README.txt "$PKGDIR/usr/share/doc/$APPNAME/README"  
+cp LICENSE.txt "$PKGDIR/usr/share/doc/$APPNAME/copyright"  
 
 # Compresser le changelog
 gzip -9 -c CHANGELOG.txt > "$PKGDIR/usr/share/doc/$APPNAME/changelog.gz"
 
 # Créer les fichiers DEBIAN
-cat > "$PKGDIR/DEBIAN/control" << EOF
-Package: $APPNAME
-Version: ${VERSION}-${REVISION}
-Section: utils
-Priority: optional
-Architecture: amd64
-Depends: libsqlite3-0 (>= 3.30), libgtk2.0-0, libssl1.1
-Maintainer: Votre Nom <email@example.com>
-Description: Mon Application
+cat > "$PKGDIR/DEBIAN/control" << EOF  
+Package: $APPNAME  
+Version: ${VERSION}-${REVISION}  
+Section: utils  
+Priority: optional  
+Architecture: amd64  
+Depends: libsqlite3-0 (>= 3.30), libgtk2.0-0, libssl1.1  
+Maintainer: Votre Nom <email@example.com>  
+Description: Mon Application  
  Description détaillée de votre application
 EOF
 
 cat > "$PKGDIR/DEBIAN/postinst" << 'EOF'
 #!/bin/bash
-set -e
-echo "Mon Application installée avec succès !"
-exit 0
-EOF
-chmod 755 "$PKGDIR/DEBIAN/postinst"
+set -e  
+echo "Mon Application installée avec succès !"  
+exit 0  
+EOF  
+chmod 755 "$PKGDIR/DEBIAN/postinst"  
 
 # Construire le package
 dpkg-deb --build "$PKGDIR"
@@ -661,9 +661,9 @@ MonApp.AppDir/
 
 ```bash
 #!/bin/bash
-APPDIR="$(dirname "$(readlink -f "$0")")"
-export LD_LIBRARY_PATH="$APPDIR/usr/lib:$LD_LIBRARY_PATH"
-exec "$APPDIR/usr/bin/monapp" "$@"
+APPDIR="$(dirname "$(readlink -f "$0")")"  
+export LD_LIBRARY_PATH="$APPDIR/usr/lib:$LD_LIBRARY_PATH"  
+exec "$APPDIR/usr/bin/monapp" "$@"  
 ```
 
 **Créer l'AppImage :**
@@ -672,29 +672,29 @@ exec "$APPDIR/usr/bin/monapp" "$@"
 #!/bin/bash
 
 # Télécharger appimagetool
-wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
-chmod +x appimagetool-x86_64.AppImage
+wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage  
+chmod +x appimagetool-x86_64.AppImage  
 
 # Créer la structure
-mkdir -p MonApp.AppDir/usr/bin
-mkdir -p MonApp.AppDir/usr/lib
+mkdir -p MonApp.AppDir/usr/bin  
+mkdir -p MonApp.AppDir/usr/lib  
 
 # Copier les fichiers
-cp bin/Release-Linux-64/monapp MonApp.AppDir/usr/bin/
-cp lib/linux/*.so* MonApp.AppDir/usr/lib/ 2>/dev/null || true
+cp bin/Release-Linux-64/monapp MonApp.AppDir/usr/bin/  
+cp lib/linux/*.so* MonApp.AppDir/usr/lib/ 2>/dev/null || true  
 
 # Copier les métadonnées
-cp resources/monapp.desktop MonApp.AppDir/
-cp resources/monapp.png MonApp.AppDir/
+cp resources/monapp.desktop MonApp.AppDir/  
+cp resources/monapp.png MonApp.AppDir/  
 
 # Créer AppRun
 cat > MonApp.AppDir/AppRun << 'EOF'
 #!/bin/bash
-APPDIR="$(dirname "$(readlink -f "$0")")"
-export LD_LIBRARY_PATH="$APPDIR/usr/lib:$LD_LIBRARY_PATH"
-exec "$APPDIR/usr/bin/monapp" "$@"
-EOF
-chmod +x MonApp.AppDir/AppRun
+APPDIR="$(dirname "$(readlink -f "$0")")"  
+export LD_LIBRARY_PATH="$APPDIR/usr/lib:$LD_LIBRARY_PATH"  
+exec "$APPDIR/usr/bin/monapp" "$@"  
+EOF  
+chmod +x MonApp.AppDir/AppRun  
 
 # Construire l'AppImage
 ./appimagetool-x86_64.AppImage MonApp.AppDir MonApp-x86_64.AppImage
@@ -783,9 +783,9 @@ MonApp.app/
 ```bash
 #!/bin/bash
 
-APPNAME="MonApp"
-VERSION="1.0.0"
-BUNDLE="${APPNAME}.app"
+APPNAME="MonApp"  
+VERSION="1.0.0"  
+BUNDLE="${APPNAME}.app"  
 
 echo "Création du bundle macOS..."
 
@@ -793,20 +793,20 @@ echo "Création du bundle macOS..."
 rm -rf "$BUNDLE"
 
 # Créer la structure
-mkdir -p "$BUNDLE/Contents/MacOS"
-mkdir -p "$BUNDLE/Contents/Resources"
-mkdir -p "$BUNDLE/Contents/Frameworks"
+mkdir -p "$BUNDLE/Contents/MacOS"  
+mkdir -p "$BUNDLE/Contents/Resources"  
+mkdir -p "$BUNDLE/Contents/Frameworks"  
 
 # Copier l'exécutable
-cp "bin/Release-Darwin-64/monapp" "$BUNDLE/Contents/MacOS/"
-chmod +x "$BUNDLE/Contents/MacOS/monapp"
+cp "bin/Release-Darwin-64/monapp" "$BUNDLE/Contents/MacOS/"  
+chmod +x "$BUNDLE/Contents/MacOS/monapp"  
 
 # Copier l'icône
 cp "resources/monapp.icns" "$BUNDLE/Contents/Resources/"
 
 # Copier la documentation
-cp README.txt "$BUNDLE/Contents/Resources/"
-cp LICENSE.txt "$BUNDLE/Contents/Resources/"
+cp README.txt "$BUNDLE/Contents/Resources/"  
+cp LICENSE.txt "$BUNDLE/Contents/Resources/"  
 
 # Copier les bibliothèques
 cp lib/macos/*.dylib "$BUNDLE/Contents/Frameworks/" 2>/dev/null || true
@@ -847,24 +847,24 @@ echo "Bundle créé : $BUNDLE"
 ```bash
 #!/bin/bash
 
-APPNAME="MonApp"
-VERSION="1.0.0"
-DMG_NAME="${APPNAME}-${VERSION}.dmg"
-VOLUME_NAME="${APPNAME} ${VERSION}"
-SOURCE_DIR="dist"
+APPNAME="MonApp"  
+VERSION="1.0.0"  
+DMG_NAME="${APPNAME}-${VERSION}.dmg"  
+VOLUME_NAME="${APPNAME} ${VERSION}"  
+SOURCE_DIR="dist"  
 
 echo "Création de l'image disque DMG..."
 
 # Créer un répertoire temporaire
-mkdir -p "$SOURCE_DIR"
-cp -R "${APPNAME}.app" "$SOURCE_DIR/"
+mkdir -p "$SOURCE_DIR"  
+cp -R "${APPNAME}.app" "$SOURCE_DIR/"  
 
 # Créer un lien vers Applications
 ln -s /Applications "$SOURCE_DIR/Applications"
 
 # Copier un fichier de fond (optionnel)
-mkdir -p "$SOURCE_DIR/.background"
-cp resources/dmg-background.png "$SOURCE_DIR/.background/"
+mkdir -p "$SOURCE_DIR/.background"  
+cp resources/dmg-background.png "$SOURCE_DIR/.background/"  
 
 # Créer le DMG temporaire
 hdiutil create -volname "$VOLUME_NAME" \
@@ -877,8 +877,8 @@ hdiutil create -volname "$VOLUME_NAME" \
 device=$(hdiutil attach -readwrite -noverify temp.dmg | grep "/Volumes/$VOLUME_NAME" | awk '{print $1}')
 
 # Personnaliser l'apparence
-osascript << EOF
-tell application "Finder"
+osascript << EOF  
+tell application "Finder"  
     tell disk "$VOLUME_NAME"
         open
         set current view of container window to icon view
@@ -895,8 +895,8 @@ tell application "Finder"
         update without registering applications
         delay 2
     end tell
-end tell
-EOF
+end tell  
+EOF  
 
 # Démonter
 hdiutil detach "$device"
@@ -905,8 +905,8 @@ hdiutil detach "$device"
 hdiutil convert temp.dmg -format UDZO -o "$DMG_NAME"
 
 # Nettoyer
-rm -f temp.dmg
-rm -rf "$SOURCE_DIR"
+rm -f temp.dmg  
+rm -rf "$SOURCE_DIR"  
 
 echo "DMG créé : $DMG_NAME"
 ```
@@ -932,19 +932,19 @@ echo "DMG créé : $DMG_NAME"
 **Signer avec signtool.exe :**
 
 ```batch
-REM Signer l'exécutable
-signtool sign /f "certificat.pfx" /p "motdepasse" /t "http://timestamp.digicert.com" "MonApp.exe"
+REM Signer l'exécutable  
+signtool sign /f "certificat.pfx" /p "motdepasse" /t "http://timestamp.digicert.com" "MonApp.exe"  
 
-REM Vérifier la signature
-signtool verify /pa "MonApp.exe"
+REM Vérifier la signature  
+signtool verify /pa "MonApp.exe"  
 ```
 
 **Signer l'installeur Inno Setup :**
 
 ```ini
 [Setup]
-SignTool=signtool sign /f "certificat.pfx" /p "motdepasse" /t "http://timestamp.digicert.com" $f
-SignedUninstaller=yes
+SignTool=signtool sign /f "certificat.pfx" /p "motdepasse" /t "http://timestamp.digicert.com" $f  
+SignedUninstaller=yes  
 ```
 
 ### Signature macOS (codesign)
@@ -987,14 +987,14 @@ Get-FileHash MonApp-Setup-1.0.0.exe -Algorithm SHA256 | Format-List
 
 **Fichier CHECKSUMS.txt :**
 ```
-MonApp-1.0.0-Windows.zip
-SHA256: a1b2c3d4e5f6...
+MonApp-1.0.0-Windows.zip  
+SHA256: a1b2c3d4e5f6...  
 
-MonApp-1.0.0-Linux.tar.gz
-SHA256: 1a2b3c4d5e6f...
+MonApp-1.0.0-Linux.tar.gz  
+SHA256: 1a2b3c4d5e6f...  
 
-MonApp-1.0.0.dmg
-SHA256: abc123def456...
+MonApp-1.0.0.dmg  
+SHA256: abc123def456...  
 ```
 
 ---
@@ -1208,8 +1208,8 @@ function CheckForUpdates(out UpdateInfo: TUpdateInfo): Boolean;
 
 implementation
 
-function CompareVersions(const V1, V2: string): Integer;
-var
+function CompareVersions(const V1, V2: string): Integer;  
+var  
   Parts1, Parts2: TStringArray;
   i, N1, N2: Integer;
 begin
@@ -1237,8 +1237,8 @@ begin
   Result := 0;
 end;
 
-function CheckForUpdates(out UpdateInfo: TUpdateInfo): Boolean;
-var
+function CheckForUpdates(out UpdateInfo: TUpdateInfo): Boolean;  
+var  
   HTTP: TFPHTTPClient;
   Response: string;
   JSON: TJSONData;
@@ -1308,8 +1308,8 @@ end.
 uses
   UpdateChecker, Dialogs;
 
-procedure TForm1.ButtonCheckUpdatesClick(Sender: TObject);
-var
+procedure TForm1.ButtonCheckUpdatesClick(Sender: TObject);  
+var  
   UpdateInfo: TUpdateInfo;
   Msg: string;
 begin
@@ -1342,30 +1342,30 @@ end;
 ```bash
 #!/bin/bash
 
-VERSION="1.0.0"
-APPNAME="MonApp"
+VERSION="1.0.0"  
+APPNAME="MonApp"  
 
-echo "=========================================="
-echo "Build complet multi-plateforme"
-echo "Version : $VERSION"
-echo "=========================================="
-echo
+echo "=========================================="  
+echo "Build complet multi-plateforme"  
+echo "Version : $VERSION"  
+echo "=========================================="  
+echo  
 
 # Nettoyer
-echo "[1/6] Nettoyage..."
-rm -rf dist bin lib/*.ppu
+echo "[1/6] Nettoyage..."  
+rm -rf dist bin lib/*.ppu  
 
 # Compiler Windows
-echo "[2/6] Compilation Windows..."
-lazbuild --build-mode=Release-Windows-64 MonProjet.lpi
+echo "[2/6] Compilation Windows..."  
+lazbuild --build-mode=Release-Windows-64 MonProjet.lpi  
 
 # Compiler Linux
-echo "[3/6] Compilation Linux..."
-lazbuild --build-mode=Release-Linux-64 MonProjet.lpi
+echo "[3/6] Compilation Linux..."  
+lazbuild --build-mode=Release-Linux-64 MonProjet.lpi  
 
 # Compiler macOS
-echo "[4/6] Compilation macOS..."
-lazbuild --build-mode=Release-Darwin-64 MonProjet.lpi
+echo "[4/6] Compilation macOS..."  
+lazbuild --build-mode=Release-Darwin-64 MonProjet.lpi  
 
 # Créer les packages
 echo "[5/6] Création des packages..."
@@ -1374,17 +1374,17 @@ echo "[5/6] Création des packages..."
 ./scripts/create-macos-dmg.sh
 
 # Générer les checksums
-echo "[6/6] Génération des checksums..."
-cd dist
-sha256sum * > CHECKSUMS.txt
-cd ..
+echo "[6/6] Génération des checksums..."  
+cd dist  
+sha256sum * > CHECKSUMS.txt  
+cd ..  
 
-echo
-echo "=========================================="
-echo "Build terminé !"
-echo "Packages disponibles dans dist/"
-echo "=========================================="
-ls -lh dist/
+echo  
+echo "=========================================="  
+echo "Build terminé !"  
+echo "Packages disponibles dans dist/"  
+echo "=========================================="  
+ls -lh dist/  
 ```
 
 ---
@@ -1461,12 +1461,12 @@ ls -lh dist/
 ```
 [NomApp]-[Version]-[Plateforme]-[Type].[Extension]
 
-Exemples :
-MonApp-v1.0.0-Windows-Setup.exe
-MonApp-v1.0.0-Windows-Portable.zip
-MonApp-v1.0.0-Linux-x64.tar.gz
-MonApp-v1.0.0-Linux-amd64.deb
-MonApp-v1.0.0-macOS.dmg
+Exemples :  
+MonApp-v1.0.0-Windows-Setup.exe  
+MonApp-v1.0.0-Windows-Portable.zip  
+MonApp-v1.0.0-Linux-x64.tar.gz  
+MonApp-v1.0.0-Linux-amd64.deb  
+MonApp-v1.0.0-macOS.dmg  
 ```
 
 ### ✅ 6. Communication

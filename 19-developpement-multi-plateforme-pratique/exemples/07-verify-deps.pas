@@ -50,8 +50,8 @@ const
     )
   );
 
-function TestDependency(const Dep: TDependency): Boolean;
-var
+function TestDependency(const Dep: TDependency): Boolean;  
+var  
   Handle: TLibHandle;
 begin
   Handle := LoadLibrary(Dep.FileName);

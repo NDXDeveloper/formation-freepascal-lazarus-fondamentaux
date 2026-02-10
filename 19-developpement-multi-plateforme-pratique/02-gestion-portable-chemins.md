@@ -266,8 +266,8 @@ end.
 uses
   SysUtils;
 
-function ConstruireChemin(const Parties: array of string): string;
-var
+function ConstruireChemin(const Parties: array of string): string;  
+var  
   i: Integer;
 begin
   Result := '';
@@ -452,8 +452,8 @@ end.
 uses
   SysUtils;
 
-function EstCheminAbsolu(const Chemin: string): Boolean;
-begin
+function EstCheminAbsolu(const Chemin: string): Boolean;  
+begin  
   {$IFDEF WINDOWS}
   // Sous Windows : commence par lettre de lecteur (C:\) ou UNC (\\)
   Result := (Length(Chemin) >= 3) and
@@ -558,8 +558,8 @@ program ChargementConfig;
 uses
   SysUtils, Classes;
 
-function ObtenirCheminConfig: string;
-var
+function ObtenirCheminConfig: string;  
+var  
   RepApp: string;
 begin
   // Répertoire de l'exécutable
@@ -570,8 +570,8 @@ begin
             'config' + PathDelim + 'settings.ini';
 end;
 
-procedure ChargerConfiguration;
-var
+procedure ChargerConfiguration;  
+var  
   CheminConfig: string;
   Config: TStringList;
 begin
@@ -609,8 +609,8 @@ program SauvegardeUtilisateur;
 uses
   SysUtils, Classes;
 
-function ObtenirRepertoireDonnees: string;
-begin
+function ObtenirRepertoireDonnees: string;  
+begin  
   {$IFDEF WINDOWS}
   // Sous Windows : AppData\Roaming
   Result := GetEnvironmentVariable('APPDATA');
@@ -631,8 +631,8 @@ begin
   Result := IncludeTrailingPathDelimiter(Result);
 end;
 
-procedure SauvegarderDonnees(const Donnees: string);
-var
+procedure SauvegarderDonnees(const Donnees: string);  
+var  
   CheminFichier: string;
   Fichier: TStringList;
 begin
@@ -663,8 +663,8 @@ program ParcoursRepertoire;
 uses
   SysUtils;
 
-procedure ParcoururRepertoire(const Repertoire: string; Niveau: Integer = 0);
-var
+procedure ParcoururRepertoire(const Repertoire: string; Niveau: Integer = 0);  
+var  
   Info: TSearchRec;
   Chemin: string;
   Indentation: string;
@@ -727,12 +727,12 @@ Chemin := GetCurrentDir + PathDelim + 'Data' + PathDelim + 'fichier.txt';
 
 ```pascal
 // RISQUÉ
-Repertoire := 'Data';
-Fichier := Repertoire + 'config.ini';  // Donne : Dataconfig.ini !!!
+Repertoire := 'Data';  
+Fichier := Repertoire + 'config.ini';  // Donne : Dataconfig.ini !!!  
 
 // SÛR
-Repertoire := IncludeTrailingPathDelimiter('Data');
-Fichier := Repertoire + 'config.ini';  // Donne : Data\config.ini
+Repertoire := IncludeTrailingPathDelimiter('Data');  
+Fichier := Repertoire + 'config.ini';  // Donne : Data\config.ini  
 ```
 
 ### ❌ Piège 3 : Mélanger les Séparateurs
@@ -770,8 +770,8 @@ Chemin := 'data' + PathDelim + 'config' + PathDelim + 'app.ini';
 
 ```pascal
 // Préférez les fonctions intégrées à votre propre code
-Chemin := IncludeTrailingPathDelimiter(Rep) + Fichier;
-NomSeul := ExtractFileName(Chemin);
+Chemin := IncludeTrailingPathDelimiter(Rep) + Fichier;  
+NomSeul := ExtractFileName(Chemin);  
 ```
 
 ### ✅ Tester sur les Deux Plateformes
@@ -788,8 +788,8 @@ NomSeul := ExtractFileName(Chemin);
 Chemin := 'C:\MonApp\data.db';
 
 // BON - Relatif au programme
-RepApp := ExtractFilePath(ParamStr(0));
-Chemin := RepApp + 'data.db';
+RepApp := ExtractFilePath(ParamStr(0));  
+Chemin := RepApp + 'data.db';  
 ```
 
 ### ✅ Gérer les Répertoires Manquants

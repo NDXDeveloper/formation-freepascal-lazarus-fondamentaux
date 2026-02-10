@@ -10,8 +10,8 @@ program ParcoursRepertoire;
 uses
   SysUtils;
 
-procedure ParcoururRepertoire(const Repertoire: string; Niveau: Integer = 0);
-var
+procedure ParcoururRepertoire(const Repertoire: string; Niveau: Integer = 0);  
+var  
   Info: TSearchRec;
   Chemin: string;
   Indentation: string;

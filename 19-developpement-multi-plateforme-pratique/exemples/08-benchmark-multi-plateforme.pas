@@ -10,8 +10,8 @@ program BenchmarkMultiPlateforme;
 uses
   SysUtils, DateUtils, Classes;
 
-procedure BenchmarkCalculs;
-var
+procedure BenchmarkCalculs;  
+var  
   Start: TDateTime;
   i, Sum: Integer;
 begin
@@ -26,8 +26,8 @@ begin
   WriteLn('  Resultat : ', Sum);
 end;
 
-procedure BenchmarkFichiers;
-var
+procedure BenchmarkFichiers;  
+var  
   Start: TDateTime;
   F: TextFile;
   i: Integer;
@@ -48,8 +48,8 @@ begin
   DeleteFile(TestFile);
 end;
 
-procedure BenchmarkMemoire;
-var
+procedure BenchmarkMemoire;  
+var  
   Start: TDateTime;
   List: TStringList;
   i: Integer;

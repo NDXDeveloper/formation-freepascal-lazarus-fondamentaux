@@ -346,8 +346,8 @@ program ConfigPortable;
 uses
   SysUtils, IniFiles;
 
-procedure SauvegarderConfig(const Valeur: string);
-var
+procedure SauvegarderConfig(const Valeur: string);  
+var  
   IniFile: TIniFile;
   CheminIni: string;
 begin
@@ -516,8 +516,8 @@ type
     procedure Execute; override;
   end;
 
-procedure TMonThread.Execute;
-begin
+procedure TMonThread.Execute;  
+begin  
   WriteLn('Thread en cours d''exécution...');
   Sleep(1000);
 end;
@@ -589,8 +589,8 @@ begin
   {$ENDIF}
 end;
 
-function ObtenirProcessID: Integer;
-begin
+function ObtenirProcessID: Integer;  
+begin  
   {$IFDEF WINDOWS}
   Result := GetCurrentProcessId;
   {$ELSE}
@@ -632,8 +632,8 @@ unit SystemInfo;
 
 interface
 
-function ObtenirVersionOS: string;
-function ObtenirNomMachine: string;
+function ObtenirVersionOS: string;  
+function ObtenirNomMachine: string;  
 
 implementation
 
@@ -653,8 +653,8 @@ end.
 uses
   SysUtils, Windows;
 
-function ObtenirVersionOS: string;
-var
+function ObtenirVersionOS: string;  
+var  
   Info: TOSVersionInfo;
 begin
   Info.dwOSVersionInfoSize := SizeOf(TOSVersionInfo);
@@ -664,8 +664,8 @@ begin
     Result := 'Windows version inconnue';
 end;
 
-function ObtenirNomMachine: string;
-var
+function ObtenirNomMachine: string;  
+var  
   Buffer: array[0..MAX_COMPUTERNAME_LENGTH] of Char;
   Size: DWORD;
 begin
@@ -682,8 +682,8 @@ end;
 uses
   SysUtils, BaseUnix, Unix;
 
-function ObtenirVersionOS: string;
-var
+function ObtenirVersionOS: string;  
+var  
   Info: UtsName;
 begin
   if FpUname(Info) = 0 then
@@ -692,8 +692,8 @@ begin
     Result := 'Unix version inconnue';
 end;
 
-function ObtenirNomMachine: string;
-var
+function ObtenirNomMachine: string;  
+var  
   Info: UtsName;
 begin
   if FpUname(Info) = 0 then
@@ -943,8 +943,8 @@ Ne supposez jamais qu'une fonctionnalité fonctionne sans l'avoir testée !
 ```pascal
 // MAUVAIS
 {$IFDEF WINDOWS}
-procedure ImportanteFonction;
-begin
+procedure ImportanteFonction;  
+begin  
   // Code Windows
 end;
 {$ENDIF}
@@ -953,8 +953,8 @@ end;
 ImportanteFonction;  // Erreur de compilation sous Linux !
 
 // BON
-procedure ImportanteFonction;
-begin
+procedure ImportanteFonction;  
+begin  
   {$IFDEF WINDOWS}
   // Code Windows
   {$ELSE}

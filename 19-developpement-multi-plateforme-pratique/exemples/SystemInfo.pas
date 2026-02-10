@@ -9,8 +9,8 @@ unit SystemInfo;
 
 interface
 
-function ObtenirVersionOS: string;
-function ObtenirNomMachine: string;
+function ObtenirVersionOS: string;  
+function ObtenirNomMachine: string;  
 
 implementation
 

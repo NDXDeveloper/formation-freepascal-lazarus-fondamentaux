@@ -10,8 +10,8 @@ program FileManager;
 uses
   SysUtils, Classes;
 
-procedure ListFiles(const Directory: string);
-var
+procedure ListFiles(const Directory: string);  
+var  
   SearchRec: TSearchRec;
   Path: string;
 begin

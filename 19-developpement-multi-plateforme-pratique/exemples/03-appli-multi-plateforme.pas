@@ -37,8 +37,8 @@ const
 {$ENDIF}
 
 // Fonction pour obtenir le repertoire de configuration
-function ObtenirDirConfig: string;
-begin
+function ObtenirDirConfig: string;  
+begin  
   {$IFDEF WINDOWS}
   Result := GetEnvironmentVariable('APPDATA') + PathDelim + 'MonApp';
   {$ENDIF}
@@ -57,8 +57,8 @@ begin
 end;
 
 // Fonction de log conditionnelle
-procedure Log(const Message: string);
-begin
+procedure Log(const Message: string);  
+begin  
   {$IFDEF DEBUG}
   WriteLn('[', FormatDateTime('hh:nn:ss', Now), '] ', Message);
   {$ENDIF}

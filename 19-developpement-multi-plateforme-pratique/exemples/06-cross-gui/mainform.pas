@@ -28,8 +28,8 @@ implementation
 
 {$R *.lfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   Caption := 'Application Cross-Compilée';
 
   {$IFDEF WINDOWS}
@@ -41,8 +41,8 @@ begin
   {$ENDIF}
 end;
 
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   ShowMessage('Bonjour depuis ' + {$I %FPCTARGETOS%} + ' !');
 end;
 

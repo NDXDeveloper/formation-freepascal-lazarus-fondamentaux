@@ -47,8 +47,8 @@ begin
   {$ENDIF}
 end;
 
-function ObtenirProcessID: Integer;
-begin
+function ObtenirProcessID: Integer;  
+begin  
   {$IFDEF WINDOWS}
   Result := GetCurrentProcessId;
   {$ELSE}

@@ -12,8 +12,8 @@ uses
   SysUtils;
 
 { Fonction portable pour obtenir le répertoire de configuration }
-function GetConfigDir: string;
-begin
+function GetConfigDir: string;  
+begin  
   {$IFDEF WINDOWS}
   Result := GetEnvironmentVariable('APPDATA') + PathDelim + 'MonApp' + PathDelim;
   {$ENDIF}

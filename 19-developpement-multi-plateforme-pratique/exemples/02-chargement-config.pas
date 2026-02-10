@@ -10,8 +10,8 @@ program ChargementConfig;
 uses
   SysUtils, Classes;
 
-function ObtenirCheminConfig: string;
-var
+function ObtenirCheminConfig: string;  
+var  
   RepApp: string;
 begin
   // Repertoire de l'executable
@@ -22,8 +22,8 @@ begin
             'config' + PathDelim + 'settings.ini';
 end;
 
-procedure ChargerConfiguration;
-var
+procedure ChargerConfiguration;  
+var  
   CheminConfig: string;
   Config: TStringList;
 begin

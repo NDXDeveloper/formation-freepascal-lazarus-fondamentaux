@@ -97,71 +97,71 @@ Aucun exemple compilable (théorie sur l'empaquetage et la distribution).
 cd exemples/
 
 # Section 19.1
-fpc 01-constantes-portables.pas
-fpc 01-repertoires-systeme.pas
-fpc 01-execution-commande.pas
+fpc 01-constantes-portables.pas  
+fpc 01-repertoires-systeme.pas  
+fpc 01-execution-commande.pas  
 
 # Section 19.2
-fpc 02-config-app.pas
-fpc 02-analyse-chemin.pas
-fpc 02-chargement-config.pas
-fpc 02-sauvegarde-utilisateur.pas
-fpc 02-parcours-repertoire.pas
+fpc 02-config-app.pas  
+fpc 02-analyse-chemin.pas  
+fpc 02-chargement-config.pas  
+fpc 02-sauvegarde-utilisateur.pas  
+fpc 02-parcours-repertoire.pas  
 
 # Section 19.3
-fpc 03-detection-os.pas
-fpc 03-detection-architecture.pas
-fpc 03-conditions-avancees.pas
-fpc 03-symboles-personnalises.pas
-fpc 03-undef-example.pas
-fpc 03-appli-multi-plateforme.pas
+fpc 03-detection-os.pas  
+fpc 03-detection-architecture.pas  
+fpc 03-conditions-avancees.pas  
+fpc 03-symboles-personnalises.pas  
+fpc 03-undef-example.pas  
+fpc 03-appli-multi-plateforme.pas  
 
 # Section 19.4
-fpc 04-utilisation-conditionnelle.pas
-fpc 04-nom-ordinateur.pas
-fpc 04-info-systeme.pas
-fpc 04-variables-env.pas
-fpc 04-lecture-registre.pas
-fpc 04-ecriture-registre.pas
-fpc 04-config-portable.pas
-fpc 04-exemple-base-unix.pas
-fpc 04-exemple-unix.pas
-fpc 04-permissions-fichier.pas
-fpc 04-appli-avec-threads.pas
-fpc 04-utilisation-wrapper.pas
-fpc SystemInfo.pas
-fpc 04-liste-disques.pas
+fpc 04-utilisation-conditionnelle.pas  
+fpc 04-nom-ordinateur.pas  
+fpc 04-info-systeme.pas  
+fpc 04-variables-env.pas  
+fpc 04-lecture-registre.pas  
+fpc 04-ecriture-registre.pas  
+fpc 04-config-portable.pas  
+fpc 04-exemple-base-unix.pas  
+fpc 04-exemple-unix.pas  
+fpc 04-permissions-fichier.pas  
+fpc 04-appli-avec-threads.pas  
+fpc 04-utilisation-wrapper.pas  
+fpc SystemInfo.pas  
+fpc 04-liste-disques.pas  
 
 # Section 19.5 (projet Lazarus)
 lazbuild 05-build-modes/BuildModes.lpi
 
 # Section 19.6
-fpc 06-hello-cross.pas
-fpc 06-file-manager.pas
-lazbuild 06-cross-gui/CrossGUI.lpi
+fpc 06-hello-cross.pas  
+fpc 06-file-manager.pas  
+lazbuild 06-cross-gui/CrossGUI.lpi  
 
 # Section 19.7
 fpc 07-verify-deps.pas
 
 # Section 19.8
-fpc 08-test-fonctionnel.pas
-fpc 08-benchmark-multi-plateforme.pas
+fpc 08-test-fonctionnel.pas  
+fpc 08-benchmark-multi-plateforme.pas  
 ```
 
 ## Nettoyage
 
 ```bash
-rm -f *.o *.ppu
-rm -f 01-constantes-portables 01-repertoires-systeme 01-execution-commande
-rm -f 02-config-app 02-analyse-chemin 02-chargement-config 02-sauvegarde-utilisateur 02-parcours-repertoire
-rm -f 03-detection-os 03-detection-architecture 03-conditions-avancees 03-symboles-personnalises 03-undef-example 03-appli-multi-plateforme
-rm -f 04-utilisation-conditionnelle 04-nom-ordinateur 04-info-systeme 04-variables-env 04-lecture-registre 04-ecriture-registre 04-config-portable
-rm -f 04-exemple-base-unix 04-exemple-unix 04-permissions-fichier 04-appli-avec-threads 04-utilisation-wrapper 04-liste-disques
-rm -f 06-hello-cross 06-file-manager
-rm -f 07-verify-deps
-rm -f 08-test-fonctionnel 08-benchmark-multi-plateforme
-rm -rf 05-build-modes/lib 05-build-modes/BuildModes
-rm -rf 06-cross-gui/lib 06-cross-gui/CrossGUI
+rm -f *.o *.ppu  
+rm -f 01-constantes-portables 01-repertoires-systeme 01-execution-commande  
+rm -f 02-config-app 02-analyse-chemin 02-chargement-config 02-sauvegarde-utilisateur 02-parcours-repertoire  
+rm -f 03-detection-os 03-detection-architecture 03-conditions-avancees 03-symboles-personnalises 03-undef-example 03-appli-multi-plateforme  
+rm -f 04-utilisation-conditionnelle 04-nom-ordinateur 04-info-systeme 04-variables-env 04-lecture-registre 04-ecriture-registre 04-config-portable  
+rm -f 04-exemple-base-unix 04-exemple-unix 04-permissions-fichier 04-appli-avec-threads 04-utilisation-wrapper 04-liste-disques  
+rm -f 06-hello-cross 06-file-manager  
+rm -f 07-verify-deps  
+rm -f 08-test-fonctionnel 08-benchmark-multi-plateforme  
+rm -rf 05-build-modes/lib 05-build-modes/BuildModes  
+rm -rf 06-cross-gui/lib 06-cross-gui/CrossGUI  
 ```
 
 ## Corrections apportées au .md

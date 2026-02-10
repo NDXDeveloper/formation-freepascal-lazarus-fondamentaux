@@ -1,8 +1,8 @@
-uses
+uses  
   SysUtils, BaseUnix, Unix;
 
-function ObtenirVersionOS: string;
-var
+function ObtenirVersionOS: string;  
+var  
   Info: UtsName;
 begin
   if FpUname(Info) = 0 then
@@ -11,8 +11,8 @@ begin
     Result := 'Unix version inconnue';
 end;
 
-function ObtenirNomMachine: string;
-var
+function ObtenirNomMachine: string;  
+var  
   Info: UtsName;
 begin
   if FpUname(Info) = 0 then

@@ -175,8 +175,8 @@ interface
 uses
   DynLibs, SysUtils;
 
-function LoadSQLite: Boolean;
-procedure UnloadSQLite;
+function LoadSQLite: Boolean;  
+procedure UnloadSQLite;  
 
 implementation
 
@@ -194,8 +194,8 @@ const
 var
   LibHandle: TLibHandle = 0;
 
-function LoadSQLite: Boolean;
-begin
+function LoadSQLite: Boolean;  
+begin  
   if LibHandle = 0 then
   begin
     LibHandle := LoadLibrary(SQLiteLib);
@@ -205,8 +205,8 @@ begin
   Result := LibHandle <> 0;
 end;
 
-procedure UnloadSQLite;
-begin
+procedure UnloadSQLite;  
+begin  
   if LibHandle <> 0 then
   begin
     UnloadLibrary(LibHandle);
@@ -247,8 +247,8 @@ MonApplication/
 **Code pour chercher dans le sous-dossier lib/ :**
 
 ```pascal
-function GetLibraryPath(const LibName: string): string;
-var
+function GetLibraryPath(const LibName: string): string;  
+var  
   AppDir: string;
 begin
   AppDir := ExtractFilePath(ParamStr(0));
@@ -322,8 +322,8 @@ brew install sqlite openssl
 **Implémentation :**
 
 ```pascal
-function VerifierDependances: Boolean;
-var
+function VerifierDependances: Boolean;  
+var  
   Manquantes: TStringList;
 begin
   Manquantes := TStringList.Create;
@@ -492,8 +492,8 @@ end;
 uses
   SQLite3, SysUtils;
 
-function GetSQLiteVersion: string;
-var
+function GetSQLiteVersion: string;  
+var  
   DB: TSQLite3Connection;
 begin
   DB := TSQLite3Connection.Create(nil);
@@ -505,8 +505,8 @@ begin
   end;
 end;
 
-function VerifierVersionSQLite: Boolean;
-var
+function VerifierVersionSQLite: Boolean;  
+var  
   Version: string;
 begin
   Version := GetSQLiteVersion;
@@ -566,16 +566,16 @@ uses
 type
   TNetworkCapabilities = set of (ncHTTP, ncHTTPS, ncFTP);
 
-function GetNetworkCapabilities: TNetworkCapabilities;
-function DownloadFile(const URL, Destination: string): Boolean;
+function GetNetworkCapabilities: TNetworkCapabilities;  
+function DownloadFile(const URL, Destination: string): Boolean;  
 
 implementation
 
 var
   OpenSSLAvailable: Boolean = False;
 
-function GetNetworkCapabilities: TNetworkCapabilities;
-begin
+function GetNetworkCapabilities: TNetworkCapabilities;  
+begin  
   Result := [ncHTTP];  // HTTP toujours disponible
 
   if OpenSSLAvailable then
@@ -584,8 +584,8 @@ begin
   // Vérifier autres protocoles...
 end;
 
-function DownloadFile(const URL, Destination: string): Boolean;
-var
+function DownloadFile(const URL, Destination: string): Boolean;  
+var  
   IsHTTPS: Boolean;
 begin
   IsHTTPS := Pos('https://', LowerCase(URL)) = 1;
@@ -645,28 +645,28 @@ end.
 
 ```ini
 [Setup]
-AppName=Mon Application
-AppVersion=1.0
-DefaultDirName={pf}\MonApp
-DefaultGroupName=Mon Application
-OutputDir=.
-OutputBaseFilename=MonApp_Setup
+AppName=Mon Application  
+AppVersion=1.0  
+DefaultDirName={pf}\MonApp  
+DefaultGroupName=Mon Application  
+OutputDir=.  
+OutputBaseFilename=MonApp_Setup  
 
 [Files]
 ; Exécutable principal
 Source: "bin\MonApp.exe"; DestDir: "{app}"
 
 ; Bibliothèques nécessaires
-Source: "lib\sqlite3.dll"; DestDir: "{app}\lib"
-Source: "lib\libssl-1_1.dll"; DestDir: "{app}\lib"
-Source: "lib\libcrypto-1_1.dll"; DestDir: "{app}\lib"
+Source: "lib\sqlite3.dll"; DestDir: "{app}\lib"  
+Source: "lib\libssl-1_1.dll"; DestDir: "{app}\lib"  
+Source: "lib\libcrypto-1_1.dll"; DestDir: "{app}\lib"  
 
 ; Documentation
 Source: "README.txt"; DestDir: "{app}"; Flags: isreadme
 
 [Icons]
-Name: "{group}\Mon Application"; Filename: "{app}\MonApp.exe"
-Name: "{group}\Désinstaller"; Filename: "{uninstallexe}"
+Name: "{group}\Mon Application"; Filename: "{app}\MonApp.exe"  
+Name: "{group}\Désinstaller"; Filename: "{uninstallexe}"  
 ```
 
 **Compiler l'installeur :**
@@ -697,14 +697,14 @@ monapp_1.0-1/
 
 **Fichier control :**
 ```
-Package: monapp
-Version: 1.0-1
-Section: utils
-Priority: optional
-Architecture: amd64
-Depends: libsqlite3-0, libssl1.1
-Maintainer: Votre Nom <email@example.com>
-Description: Mon Application
+Package: monapp  
+Version: 1.0-1  
+Section: utils  
+Priority: optional  
+Architecture: amd64  
+Depends: libsqlite3-0, libssl1.1  
+Maintainer: Votre Nom <email@example.com>  
+Description: Mon Application  
  Description détaillée de l'application
 ```
 
@@ -788,8 +788,8 @@ const
     )
   );
 
-function TestDependency(const Dep: TDependency): Boolean;
-var
+function TestDependency(const Dep: TDependency): Boolean;  
+var  
   Handle: TLibHandle;
 begin
   Handle := LoadLibrary(Dep.FileName);
@@ -1087,8 +1087,8 @@ uses
 
 {$R *.res}
 
-function VerifyDependencies: Boolean;
-var
+function VerifyDependencies: Boolean;  
+var  
   Missing: string;
 begin
   Missing := '';
@@ -1132,22 +1132,22 @@ end.
 @echo off
 echo Construction de DataSync...
 
-REM Compiler
-lazbuild --build-mode=Release-Windows-64 DataSync.lpi
+REM Compiler  
+lazbuild --build-mode=Release-Windows-64 DataSync.lpi  
 
-REM Créer structure de distribution
-mkdir dist
-mkdir dist\lib
+REM Créer structure de distribution  
+mkdir dist  
+mkdir dist\lib  
 
-REM Copier exécutable
-copy bin\Release-Windows-64\DataSync.exe dist\
+REM Copier exécutable  
+copy bin\Release-Windows-64\DataSync.exe dist\  
 
-REM Copier dépendances
-copy lib\windows\*.dll dist\lib\
+REM Copier dépendances  
+copy lib\windows\*.dll dist\lib\  
 
-REM Copier documentation
-copy docs\*.txt dist\
-copy docs\*.md dist\
+REM Copier documentation  
+copy docs\*.txt dist\  
+copy docs\*.md dist\  
 
 REM Créer archive
 7z a DataSync-Windows-v1.0.zip dist\*

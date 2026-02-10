@@ -10,8 +10,8 @@ program ConfigPortable;
 uses
   SysUtils, IniFiles;
 
-procedure SauvegarderConfig(const Valeur: string);
-var
+procedure SauvegarderConfig(const Valeur: string);  
+var  
   IniFile: TIniFile;
   CheminIni: string;
 begin

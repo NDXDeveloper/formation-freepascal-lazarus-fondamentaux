@@ -11,8 +11,8 @@ program ExecutionCommande;
 uses
   SysUtils, Process;
 
-procedure ExecuterCommande(Commande: string);
-var
+procedure ExecuterCommande(Commande: string);  
+var  
   Proc: TProcess;
   Sortie: string;
   BytesLus: LongInt;

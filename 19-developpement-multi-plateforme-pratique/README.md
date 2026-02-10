@@ -29,9 +29,9 @@ Le **développement multi-plateforme** consiste à créer une application qui pe
 
 **Approche traditionnelle (mono-plateforme) :**
 ```
-Application Windows → Écrite en C# avec Visual Studio
-Application Linux → Réécrite en C++ avec Qt
-Application macOS → Réécrite en Swift avec Xcode
+Application Windows → Écrite en C# avec Visual Studio  
+Application Linux → Réécrite en C++ avec Qt  
+Application macOS → Réécrite en Swift avec Xcode  
 
 = 3 applications différentes
 = 3 bases de code à maintenir
@@ -42,9 +42,9 @@ Application macOS → Réécrite en Swift avec Xcode
 ```
 UN SEUL code source en Pascal
     ↓
-Compilation pour Windows → Application Windows
-Compilation pour Linux → Application Linux
-Compilation pour macOS → Application macOS
+Compilation pour Windows → Application Windows  
+Compilation pour Linux → Application Linux  
+Compilation pour macOS → Application macOS  
 
 = 1 seule application
 = 1 seule base de code
@@ -68,17 +68,17 @@ Compilation pour macOS → Application macOS
 
 **Développement mono-plateforme :**
 ```
-Application Windows : 6 mois de développement
-Application Linux : 5 mois de développement
-Application macOS : 5 mois de développement
+Application Windows : 6 mois de développement  
+Application Linux : 5 mois de développement  
+Application macOS : 5 mois de développement  
 ───────────────────────────────────────────
 TOTAL : 16 mois
 ```
 
 **Développement multi-plateforme :**
 ```
-Application unique : 8 mois de développement
-Tests et ajustements : 2 mois
+Application unique : 8 mois de développement  
+Tests et ajustements : 2 mois  
 ───────────────────────────────────────────
 TOTAL : 10 mois (gain de 6 mois !)
 ```
@@ -137,14 +137,14 @@ La **LCL** (Lazarus Component Library) est la bibliothèque d'interface graphiqu
 
 ```pascal
 // CE CODE FONCTIONNE IDENTIQUEMENT SUR WINDOWS, LINUX ET MACOS !
-Button1 := TButton.Create(Self);
-Button1.Caption := 'Cliquez-moi';
-Button1.OnClick := @Button1Click;
+Button1 := TButton.Create(Self);  
+Button1.Caption := 'Cliquez-moi';  
+Button1.OnClick := @Button1Click;  
 ```
 
-Sous Windows → Utilise les contrôles natifs Windows
-Sous Linux → Utilise GTK2/GTK3/Qt
-Sous macOS → Utilise Cocoa
+Sous Windows → Utilise les contrôles natifs Windows  
+Sous Linux → Utilise GTK2/GTK3/Qt  
+Sous macOS → Utilise Cocoa  
 
 **Résultat :** Votre application a l'apparence native de chaque système !
 
@@ -168,16 +168,16 @@ Lazarus inclut des outils pour :
 
 **Chemins de fichiers :**
 ```
-Windows : C:\Users\Pierre\Documents\fichier.txt
-Linux :   /home/pierre/Documents/fichier.txt
-macOS :   /Users/pierre/Documents/fichier.txt
+Windows : C:\Users\Pierre\Documents\fichier.txt  
+Linux :   /home/pierre/Documents/fichier.txt  
+macOS :   /Users/pierre/Documents/fichier.txt  
 ```
 
 **Séparateurs :**
 ```
-Windows : Backslash \
-Linux :   Slash /
-macOS :   Slash /
+Windows : Backslash \  
+Linux :   Slash /  
+macOS :   Slash /  
 ```
 
 **Solution FreePascal :**
@@ -478,10 +478,10 @@ Le développement multi-plateforme demande un peu plus de temps au début, mais 
 
 **Courbe d'apprentissage typique :**
 ```
-Semaine 1 : "C'est compliqué, pourquoi tous ces PathDelim ?"
-Semaine 2 : "Ah, je commence à comprendre la logique..."
-Semaine 3 : "OK, ça devient naturel !"
-Semaine 4 : "C'est génial, mon code marche partout !"
+Semaine 1 : "C'est compliqué, pourquoi tous ces PathDelim ?"  
+Semaine 2 : "Ah, je commence à comprendre la logique..."  
+Semaine 3 : "OK, ça devient naturel !"  
+Semaine 4 : "C'est génial, mon code marche partout !"  
 ```
 
 ### 5. La Communauté est Là

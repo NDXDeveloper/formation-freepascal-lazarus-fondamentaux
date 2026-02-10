@@ -73,9 +73,9 @@ MonFichier.txt ≠ monfichier.txt ≠ MONFICHIER.TXT
 
 ```pascal
 // Sous Windows, ces trois lignes ouvrent le MÊME fichier :
-AssignFile(F, 'config.ini');
-AssignFile(F, 'Config.ini');
-AssignFile(F, 'CONFIG.INI');
+AssignFile(F, 'config.ini');  
+AssignFile(F, 'Config.ini');  
+AssignFile(F, 'CONFIG.INI');  
 
 // Sous Linux, ce sont trois fichiers DIFFÉRENTS !
 ```
@@ -146,9 +146,9 @@ end;
 
 **Windows :**
 ```
-C:\Users\NomUtilisateur\
-C:\Users\NomUtilisateur\Documents\
-C:\Users\NomUtilisateur\AppData\Local\
+C:\Users\NomUtilisateur\  
+C:\Users\NomUtilisateur\Documents\  
+C:\Users\NomUtilisateur\AppData\Local\  
 ```
 
 **Linux :**
@@ -258,8 +258,8 @@ end;
 uses
   SysUtils;
 
-function GetConfigDir: string;
-begin
+function GetConfigDir: string;  
+begin  
   {$IFDEF WINDOWS}
   Result := GetEnvironmentVariable('APPDATA') + PathDelim + 'MonApp' + PathDelim;
   {$ENDIF}
@@ -352,8 +352,8 @@ ExecuteProcess('/bin/bash', ['-c', 'ls -la']);
 uses
   Process;
 
-procedure ExecuterCommande(Commande: string);
-var
+procedure ExecuterCommande(Commande: string);  
+var  
   Proc: TProcess;
 begin
   Proc := TProcess.Create(nil);
@@ -395,8 +395,8 @@ uses
 var
   Interrompu: Boolean = False;
 
-procedure GestionnaireInterruption(Signal: Integer); cdecl;
-begin
+procedure GestionnaireInterruption(Signal: Integer); cdecl;  
+begin  
   Interrompu := True;
   WriteLn('Interruption reçue, arrêt en cours...');
 end;

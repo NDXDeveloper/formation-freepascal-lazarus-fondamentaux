@@ -10,8 +10,8 @@ program SauvegardeUtilisateur;
 uses
   SysUtils, Classes;
 
-function ObtenirRepertoireDonnees: string;
-begin
+function ObtenirRepertoireDonnees: string;  
+begin  
   {$IFDEF WINDOWS}
   // Sous Windows : AppData\Roaming
   Result := GetEnvironmentVariable('APPDATA');
@@ -37,8 +37,8 @@ begin
   Result := IncludeTrailingPathDelimiter(Result);
 end;
 
-procedure SauvegarderDonnees(const Donnees: string);
-var
+procedure SauvegarderDonnees(const Donnees: string);  
+var  
   CheminFichier: string;
   Fichier: TStringList;
 begin

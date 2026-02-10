@@ -314,8 +314,8 @@ Les fichiers `.rc` contiennent les ressources Windows (icônes, manifestes, info
 1 24 "manifest.xml"
 
 1 VERSIONINFO
-FILEVERSION 1,0,0,0
-PRODUCTVERSION 1,0,0,0
+FILEVERSION 1,0,0,0  
+PRODUCTVERSION 1,0,0,0  
 {
   BLOCK "StringFileInfo"
   {
@@ -383,20 +383,20 @@ Pour des projets complexes, créez des scripts :
 **build.bat (Windows) :**
 ```batch
 @echo off
-echo Compilation Release Windows 64 bits...
-lazbuild --build-mode=Release-Windows-64 MonProjet.lpi
-echo.
-echo Compilation terminée !
-pause
+echo Compilation Release Windows 64 bits...  
+lazbuild --build-mode=Release-Windows-64 MonProjet.lpi  
+echo.  
+echo Compilation terminée !  
+pause  
 ```
 
 **build.sh (Linux) :**
 ```bash
 #!/bin/bash
-echo "Compilation Release Linux 64 bits..."
-lazbuild --build-mode=Release-Linux-64 MonProjet.lpi
-echo ""
-echo "Compilation terminée !"
+echo "Compilation Release Linux 64 bits..."  
+lazbuild --build-mode=Release-Linux-64 MonProjet.lpi  
+echo ""  
+echo "Compilation terminée !"  
 ```
 
 **Utilisation :**
@@ -441,10 +441,10 @@ lazbuild --build-mode=Debug MonProjet.lpi
 
 **Compiler tous les modes :**
 ```bash
-lazbuild --build-mode=Debug-Windows-64 MonProjet.lpi
-lazbuild --build-mode=Release-Windows-64 MonProjet.lpi
-lazbuild --build-mode=Debug-Linux-64 MonProjet.lpi
-lazbuild --build-mode=Release-Linux-64 MonProjet.lpi
+lazbuild --build-mode=Debug-Windows-64 MonProjet.lpi  
+lazbuild --build-mode=Release-Windows-64 MonProjet.lpi  
+lazbuild --build-mode=Debug-Linux-64 MonProjet.lpi  
+lazbuild --build-mode=Release-Linux-64 MonProjet.lpi  
 ```
 
 **Script de compilation complet :**
@@ -454,43 +454,43 @@ lazbuild --build-mode=Release-Linux-64 MonProjet.lpi
 @echo off
 setlocal
 
-set PROJECT=MonProjet.lpi
-set LAZBUILD=C:\lazarus\lazbuild.exe
+set PROJECT=MonProjet.lpi  
+set LAZBUILD=C:\lazarus\lazbuild.exe  
 
-echo ========================================
-echo Compilation de tous les modes
-echo ========================================
-echo.
+echo ========================================  
+echo Compilation de tous les modes  
+echo ========================================  
+echo.  
 
 echo [1/4] Debug Windows 64...
 %LAZBUILD% --build-mode=Debug-Windows-64 %PROJECT%
 if errorlevel 1 goto error
 
-echo.
-echo [2/4] Release Windows 64...
+echo.  
+echo [2/4] Release Windows 64...  
 %LAZBUILD% --build-mode=Release-Windows-64 %PROJECT%
 if errorlevel 1 goto error
 
-echo.
-echo [3/4] Debug Linux 64...
+echo.  
+echo [3/4] Debug Linux 64...  
 %LAZBUILD% --build-mode=Debug-Linux-64 %PROJECT%
 if errorlevel 1 goto error
 
-echo.
-echo [4/4] Release Linux 64...
+echo.  
+echo [4/4] Release Linux 64...  
 %LAZBUILD% --build-mode=Release-Linux-64 %PROJECT%
 if errorlevel 1 goto error
 
-echo.
-echo ========================================
-echo Compilation réussie !
-echo ========================================
-goto end
+echo.  
+echo ========================================  
+echo Compilation réussie !  
+echo ========================================  
+goto end  
 
 :error
-echo.
-echo ERREUR : La compilation a échoué !
-exit /b 1
+echo.  
+echo ERREUR : La compilation a échoué !  
+exit /b 1  
 
 :end
 pause
@@ -512,9 +512,9 @@ Si vous développez sur Windows ET Linux, vous aurez deux installations de Lazar
 **Fichier .gitignore :**
 ```gitignore
 # Lazarus
-lib/
-bin/
-backup/
+lib/  
+bin/  
+backup/  
 *.compiled
 *.lps
 
@@ -621,16 +621,16 @@ Identique à Windows, mais :
 **build-release.bat :**
 ```batch
 @echo off
-echo Construction des versions de production...
-lazbuild --build-mode=Release-Win64 ECommerce.lpi
-lazbuild --build-mode=Release-Win32 ECommerce.lpi
-echo.
-echo Création des archives...
-cd bin
+echo Construction des versions de production...  
+lazbuild --build-mode=Release-Win64 ECommerce.lpi  
+lazbuild --build-mode=Release-Win32 ECommerce.lpi  
+echo.  
+echo Création des archives...  
+cd bin  
 7z a ECommerce-Win64.zip Release-Win64\*
 7z a ECommerce-Win32.zip Release-Win32\*
-cd ..
-echo Terminé !
+cd ..  
+echo Terminé !  
 ```
 
 ---
@@ -652,8 +652,8 @@ Exemples :
 
 **Utilisez toujours :**
 ```
-Sortie : lib/$(TargetCPU)-$(TargetOS)/$(BuildMode)
-Sortie finale : bin/$(BuildMode)
+Sortie : lib/$(TargetCPU)-$(TargetOS)/$(BuildMode)  
+Sortie finale : bin/$(BuildMode)  
 ```
 
 **Avantages :**
@@ -700,16 +700,16 @@ Ajoutez un fichier `BUILD.md` dans votre projet :
 # Modes de Compilation
 
 ## Dev-Win64
-Mode développement quotidien Windows 64 bits.
-Optimisation minimale, debug complet.
+Mode développement quotidien Windows 64 bits.  
+Optimisation minimale, debug complet.  
 
 ## Release-Win64
-Version production Windows 64 bits.
-Optimisation maximale, sans debug.
+Version production Windows 64 bits.  
+Optimisation maximale, sans debug.  
 
 ## Release-Win32
-Version production Windows 32 bits (legacy).
-Pour compatibilité avec anciens systèmes.
+Version production Windows 32 bits (legacy).  
+Pour compatibilité avec anciens systèmes.  
 ```
 
 ---
@@ -719,8 +719,8 @@ Pour compatibilité avec anciens systèmes.
 ### ❌ Piège 1 : Oublier de Changer de Mode
 
 ```
-Développeur : "Pourquoi mon exe Release est si lent ?"
-Raison : Il a compilé avec le mode Debug !
+Développeur : "Pourquoi mon exe Release est si lent ?"  
+Raison : Il a compilé avec le mode Debug !  
 ```
 
 **Solution :** Vérifiez toujours le mode actif en haut de la fenêtre Lazarus.
@@ -741,13 +741,13 @@ Chemins des unités : $(ProjPath)/src
 ### ❌ Piège 3 : Trop de Modes
 
 ```
-Debug-Win64
-Debug-Win32
-Debug-Linux64
-Debug-Linux32
-Debug-Darwin64
-Release-Win64
-Release-Win32
+Debug-Win64  
+Debug-Win32  
+Debug-Linux64  
+Debug-Linux32  
+Debug-Darwin64  
+Release-Win64  
+Release-Win32  
 ... (30 modes au total)
 ```
 
@@ -758,8 +758,8 @@ Release-Win32
 ### ❌ Piège 4 : Ne Pas Tester en Release
 
 ```
-Développeur : "Ça marche en Debug !"
-En Release : CRASH !
+Développeur : "Ça marche en Debug !"  
+En Release : CRASH !  
 ```
 
 **Raison :** Les optimisations peuvent révéler des bugs (variables non initialisées, etc.).

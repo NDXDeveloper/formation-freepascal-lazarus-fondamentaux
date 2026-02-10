@@ -1,4 +1,4 @@
-object FormBuildModes: TFormBuildModes
+object FormBuildModes: TFormBuildModes  
   Left = 300
   Height = 280
   Top = 200

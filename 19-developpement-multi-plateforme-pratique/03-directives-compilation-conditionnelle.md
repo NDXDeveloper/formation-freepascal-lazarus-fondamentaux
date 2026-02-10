@@ -229,8 +229,8 @@ program GestionChemin;
 uses
   SysUtils;
 
-function ObtenirRepertoireConfig: string;
-begin
+function ObtenirRepertoireConfig: string;  
+begin  
   {$IFDEF WINDOWS}
   // Windows : AppData\Roaming
   Result := GetEnvironmentVariable('APPDATA') + PathDelim + 'MonApp';
@@ -265,8 +265,8 @@ program ExecutionCommande;
 uses
   Process, SysUtils;
 
-procedure ViderEcran;
-var
+procedure ViderEcran;  
+var  
   Proc: TProcess;
 begin
   Proc := TProcess.Create(nil);
@@ -338,8 +338,8 @@ end.
 ```pascal
 program ModeDebug;
 
-procedure Log(const Message: string);
-begin
+procedure Log(const Message: string);  
+begin  
   {$IFDEF DEBUG}
   // En mode debug, afficher tous les messages
   WriteLn('[LOG] ', Message);
@@ -349,8 +349,8 @@ begin
   // Le code n'est même pas compilé !
 end;
 
-procedure FonctionComplexe;
-begin
+procedure FonctionComplexe;  
+begin  
   Log('Début de la fonction');
 
   // ... traitement ...
@@ -520,16 +520,16 @@ end.
 
 **Fichier `windows_specifique.inc` :**
 ```pascal
-procedure FonctionSpecifique;
-begin
+procedure FonctionSpecifique;  
+begin  
   WriteLn('Code spécifique Windows');
 end;
 ```
 
 **Fichier `linux_specifique.inc` :**
 ```pascal
-procedure FonctionSpecifique;
-begin
+procedure FonctionSpecifique;  
+begin  
   WriteLn('Code spécifique Linux');
 end;
 ```
@@ -543,8 +543,8 @@ end;
 **Mauvais :** Code conditionnel partout
 
 ```pascal
-procedure SauvegarderFichier(const Nom: string);
-var
+procedure SauvegarderFichier(const Nom: string);  
+var  
   Chemin: string;
 begin
   {$IFDEF WINDOWS}
@@ -560,8 +560,8 @@ end;
 **Bon :** Isoler les différences dans des fonctions dédiées
 
 ```pascal
-function ObtenirRepertoireDonnees: string;
-begin
+function ObtenirRepertoireDonnees: string;  
+begin  
   {$IFDEF WINDOWS}
   Result := 'C:\Data\';
   {$ELSE}
@@ -569,8 +569,8 @@ begin
   {$ENDIF}
 end;
 
-procedure SauvegarderFichier(const Nom: string);
-var
+procedure SauvegarderFichier(const Nom: string);  
+var  
   Chemin: string;
 begin
   Chemin := ObtenirRepertoireDonnees + Nom;
@@ -687,8 +687,8 @@ Pour les conditions complexes, utilisez `{$IF DEFINED(...)}` :
 ```pascal
 {$DEFINE NOUVELLE_VERSION}
 
-procedure AncienCode;
-begin
+procedure AncienCode;  
+begin  
   {$IFNDEF NOUVELLE_VERSION}
   // Ce code ne sera JAMAIS compilé
   // Difficile de savoir s'il fonctionne encore !
@@ -753,8 +753,8 @@ const
 {$ENDIF}
 
 // Fonction pour obtenir le répertoire de configuration
-function ObtenirDirConfig: string;
-begin
+function ObtenirDirConfig: string;  
+begin  
   {$IFDEF WINDOWS}
   Result := GetEnvironmentVariable('APPDATA') + PathDelim + 'MonApp';
   {$ENDIF}
@@ -773,8 +773,8 @@ begin
 end;
 
 // Fonction de log conditionnelle
-procedure Log(const Message: string);
-begin
+procedure Log(const Message: string);  
+begin  
   {$IFDEF DEBUG}
   WriteLn('[', FormatDateTime('hh:nn:ss', Now), '] ', Message);
   {$ENDIF}

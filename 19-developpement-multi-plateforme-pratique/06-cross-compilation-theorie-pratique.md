@@ -29,14 +29,14 @@ La **cross-compilation** (compilation croisée) consiste à compiler un programm
 
 **Compilation normale :**
 ```
-Windows → Compilateur Windows → Exécutable Windows ✓
-Linux → Compilateur Linux → Exécutable Linux ✓
+Windows → Compilateur Windows → Exécutable Windows ✓  
+Linux → Compilateur Linux → Exécutable Linux ✓  
 ```
 
 **Cross-compilation :**
 ```
-Windows → Cross-compilateur Linux → Exécutable Linux ✓
-Linux → Cross-compilateur Windows → Exécutable Windows ✓
+Windows → Cross-compilateur Linux → Exécutable Linux ✓  
+Linux → Cross-compilateur Windows → Exécutable Windows ✓  
 ```
 
 ### Pourquoi C'est Utile ?
@@ -366,8 +366,8 @@ implementation
 
 {$R *.lfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   Caption := 'Application Cross-Compilée';
 
   {$IFDEF WINDOWS}
@@ -379,8 +379,8 @@ begin
   {$ENDIF}
 end;
 
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   ShowMessage('Bonjour depuis ' + {$I %FPCTARGETOS%} + ' !');
 end;
 
@@ -435,45 +435,45 @@ lazbuild --build-mode=Release-Windows-64 MonProjet.lpi
 @echo off
 setlocal
 
-set PROJECT=MonProjet.lpi
-set LAZBUILD=C:\lazarus\lazbuild.exe
+set PROJECT=MonProjet.lpi  
+set LAZBUILD=C:\lazarus\lazbuild.exe  
 
-echo ========================================
-echo Cross-compilation multi-plateformes
-echo ========================================
-echo.
+echo ========================================  
+echo Cross-compilation multi-plateformes  
+echo ========================================  
+echo.  
 
 echo [1/3] Compilation Windows 64 bits...
 %LAZBUILD% --build-mode=Release-Windows-64 %PROJECT%
 if errorlevel 1 goto error
 
-echo.
-echo [2/3] Cross-compilation vers Linux 64 bits...
+echo.  
+echo [2/3] Cross-compilation vers Linux 64 bits...  
 %LAZBUILD% --build-mode=Release-Linux-64 %PROJECT%
 if errorlevel 1 goto error
 
-echo.
-echo [3/3] Cross-compilation vers macOS...
+echo.  
+echo [3/3] Cross-compilation vers macOS...  
 %LAZBUILD% --build-mode=Release-Darwin-64 %PROJECT%
 if errorlevel 1 goto error
 
-echo.
-echo ========================================
-echo Compilation réussie pour toutes les plateformes !
-echo ========================================
-echo.
-echo Fichiers créés :
-dir /b bin\Release-Windows-64\*.exe
-dir /b bin\Release-Linux-64\
-dir /b bin\Release-Darwin-64\
-echo.
+echo.  
+echo ========================================  
+echo Compilation réussie pour toutes les plateformes !  
+echo ========================================  
+echo.  
+echo Fichiers créés :  
+dir /b bin\Release-Windows-64\*.exe  
+dir /b bin\Release-Linux-64\  
+dir /b bin\Release-Darwin-64\  
+echo.  
 
 goto end
 
 :error
-echo.
-echo ERREUR : La cross-compilation a échoué !
-exit /b 1
+echo.  
+echo ERREUR : La cross-compilation a échoué !  
+exit /b 1  
 
 :end
 pause
@@ -487,8 +487,8 @@ pause
 
 **Message d'erreur :**
 ```
-Error: Cannot find -lc
-Fatal: There were 1 errors compiling module, stopping
+Error: Cannot find -lc  
+Fatal: There were 1 errors compiling module, stopping  
 ```
 
 **Cause :** Les bibliothèques de la plateforme cible sont manquantes.
@@ -631,8 +631,8 @@ implementation
 var
   LibHandle: TLibHandle = 0;
 
-function LoadMyLibrary: Boolean;
-begin
+function LoadMyLibrary: Boolean;  
+begin  
   LibHandle := LoadLibrary(LibraryName);
   Result := LibHandle <> 0;
 
@@ -672,8 +672,8 @@ MonApplication/
 **Code pour chercher dans lib/ :**
 
 ```pascal
-function GetLibraryPath: string;
-var
+function GetLibraryPath: string;  
+var  
   AppDir: string;
 begin
   AppDir := ExtractFilePath(ParamStr(0));
@@ -706,8 +706,8 @@ program FileManager;
 uses
   SysUtils, Classes;
 
-procedure ListFiles(const Directory: string);
-var
+procedure ListFiles(const Directory: string);  
+var  
   SearchRec: TSearchRec;
   Path: string;
 begin
@@ -765,8 +765,8 @@ type
     procedure HandleRequest(Sender: TObject); override;
   end;
 
-procedure TMyHTTPApp.HandleRequest(Sender: TObject);
-begin
+procedure TMyHTTPApp.HandleRequest(Sender: TObject);  
+begin  
   Response.Content := '<html><body>' +
     '<h1>Serveur Multi-Plateforme</h1>' +
     '<p>Plateforme: ' + {$I %FPCTARGETOS%} + '</p>' +
@@ -912,8 +912,8 @@ MonProjet/
 **.gitignore :**
 ```gitignore
 # Fichiers compilés
-bin/
-lib/
+bin/  
+lib/  
 *.exe
 *.dll
 *.so
@@ -949,8 +949,8 @@ lazbuild --build-mode=Release-Linux-64 MonProjet.lpi
 # macOS
 lazbuild --build-mode=Release-Darwin-64 MonProjet.lpi
 
-echo "=== Build completed ==="
-ls -lh bin/*/
+echo "=== Build completed ==="  
+ls -lh bin/*/  
 ```
 
 ---
@@ -982,8 +982,8 @@ ls -lh bin/*/
 ### ❌ Piège 2 : Oublier les Dépendances
 
 ```
-Compilation réussie sous Windows
-Transfert sur Linux
+Compilation réussie sous Windows  
+Transfert sur Linux  
 → "Error loading shared library: libgtk-x11-2.0.so.0"
 ```
 

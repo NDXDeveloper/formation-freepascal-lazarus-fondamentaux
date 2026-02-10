@@ -19,8 +19,8 @@ type
     procedure Execute; override;
   end;
 
-procedure TMonThread.Execute;
-begin
+procedure TMonThread.Execute;  
+begin  
   WriteLn('Thread en cours d''execution...');
   Sleep(1000);
 end;

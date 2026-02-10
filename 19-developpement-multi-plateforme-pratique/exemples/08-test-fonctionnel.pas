@@ -13,8 +13,8 @@ uses
 var
   TestsPasses, TestsEchoues: Integer;
 
-procedure Test(const Nom: string; Condition: Boolean);
-begin
+procedure Test(const Nom: string; Condition: Boolean);  
+begin  
   Write(Nom, '... ');
   if Condition then
   begin
@@ -28,8 +28,8 @@ begin
   end;
 end;
 
-procedure TestsCreationFichier;
-var
+procedure TestsCreationFichier;  
+var  
   F: TextFile;
   TestFile: string;
 begin
@@ -50,8 +50,8 @@ begin
   end;
 end;
 
-procedure TestsRepertoires;
-var
+procedure TestsRepertoires;  
+var  
   TestDir: string;
 begin
   TestDir := GetTempDir + 'test_dir';

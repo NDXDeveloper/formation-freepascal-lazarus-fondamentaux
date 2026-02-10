@@ -35,8 +35,8 @@ Fichier := 'C:\Data\config.ini';  // Erreur : disque C: n'existe pas sous Linux
 **2. Permissions :**
 ```pascal
 // Fonctionne sous Windows, échoue sous Linux
-AssignFile(F, '/etc/myapp/config.ini');
-Rewrite(F);  // Erreur : Permission denied sous Linux
+AssignFile(F, '/etc/myapp/config.ini');  
+Rewrite(F);  // Erreur : Permission denied sous Linux  
 ```
 
 **3. Interface graphique :**
@@ -159,11 +159,11 @@ RUN apt-get update && apt-get install -y \
     libssl1.1
 
 # Copier l'application
-COPY MonApp /app/MonApp
-RUN chmod +x /app/MonApp
+COPY MonApp /app/MonApp  
+RUN chmod +x /app/MonApp  
 
-WORKDIR /app
-CMD ["./MonApp"]
+WORKDIR /app  
+CMD ["./MonApp"]  
 ```
 
 **Utilisation :**
@@ -275,8 +275,8 @@ uses
 var
   TestsPasses, TestsEchoues: Integer;
 
-procedure Test(const Nom: string; Condition: Boolean);
-begin
+procedure Test(const Nom: string; Condition: Boolean);  
+begin  
   Write(Nom, '... ');
   if Condition then
   begin
@@ -290,8 +290,8 @@ begin
   end;
 end;
 
-procedure TestsCreationFichier;
-var
+procedure TestsCreationFichier;  
+var  
   F: TextFile;
   TestFile: string;
 begin
@@ -312,8 +312,8 @@ begin
   end;
 end;
 
-procedure TestsRepertoires;
-var
+procedure TestsRepertoires;  
+var  
   TestDir: string;
 begin
   TestDir := GetTempDir + 'test_dir';
@@ -415,8 +415,8 @@ program BenchmarkMultiPlateforme;
 uses
   SysUtils, DateUtils, Classes;
 
-procedure BenchmarkCalculs;
-var
+procedure BenchmarkCalculs;  
+var  
   Start: TDateTime;
   i, Sum: Integer;
 begin
@@ -431,8 +431,8 @@ begin
   WriteLn('  Résultat : ', Sum);
 end;
 
-procedure BenchmarkFichiers;
-var
+procedure BenchmarkFichiers;  
+var  
   Start: TDateTime;
   F: TextFile;
   i: Integer;
@@ -453,8 +453,8 @@ begin
   DeleteFile(TestFile);
 end;
 
-procedure BenchmarkMemoire;
-var
+procedure BenchmarkMemoire;  
+var  
   Start: TDateTime;
   List: TStringList;
   i: Integer;
@@ -595,12 +595,12 @@ macOS 13 (x86_64)
 #!/bin/bash
 
 # Couleurs pour l'affichage
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-NC='\033[0m' # No Color
+RED='\033[0;31m'  
+GREEN='\033[0;32m'  
+NC='\033[0m' # No Color  
 
-PASSED=0
-FAILED=0
+PASSED=0  
+FAILED=0  
 
 # Fonction de test
 run_test() {
@@ -620,24 +620,24 @@ run_test() {
     fi
 }
 
-echo "=========================================="
-echo "Suite de Tests Multi-Plateformes"
-echo "Plateforme : $(uname -s)"
-echo "=========================================="
-echo
+echo "=========================================="  
+echo "Suite de Tests Multi-Plateformes"  
+echo "Plateforme : $(uname -s)"  
+echo "=========================================="  
+echo  
 
 # Tests de base
-run_test "Application démarre" "./MonApp --version"
-run_test "Fichier config créé" "./MonApp --create-config && test -f config.ini"
-run_test "Import données" "./MonApp --import test-data.csv"
-run_test "Export données" "./MonApp --export output.csv && test -f output.csv"
+run_test "Application démarre" "./MonApp --version"  
+run_test "Fichier config créé" "./MonApp --create-config && test -f config.ini"  
+run_test "Import données" "./MonApp --import test-data.csv"  
+run_test "Export données" "./MonApp --export output.csv && test -f output.csv"  
 
-echo
-echo "=========================================="
-echo "Résultats :"
-echo "  Réussis : $PASSED"
-echo "  Échoués : $FAILED"
-echo "=========================================="
+echo  
+echo "=========================================="  
+echo "Résultats :"  
+echo "  Réussis : $PASSED"  
+echo "  Échoués : $FAILED"  
+echo "=========================================="  
 
 if [ $FAILED -gt 0 ]; then
     exit 1
@@ -650,29 +650,29 @@ fi
 @echo off
 setlocal EnableDelayedExpansion
 
-set PASSED=0
-set FAILED=0
+set PASSED=0  
+set FAILED=0  
 
-echo ==========================================
-echo Suite de Tests Multi-Plateformes
-echo Plateforme : Windows
-echo ==========================================
-echo.
+echo ==========================================  
+echo Suite de Tests Multi-Plateformes  
+echo Plateforme : Windows  
+echo ==========================================  
+echo.  
 
-call :run_test "Application démarre" "MonApp.exe --version"
-call :run_test "Fichier config créé" "MonApp.exe --create-config"
-call :run_test "Import données" "MonApp.exe --import test-data.csv"
-call :run_test "Export données" "MonApp.exe --export output.csv"
+call :run_test "Application démarre" "MonApp.exe --version"  
+call :run_test "Fichier config créé" "MonApp.exe --create-config"  
+call :run_test "Import données" "MonApp.exe --import test-data.csv"  
+call :run_test "Export données" "MonApp.exe --export output.csv"  
 
-echo.
-echo ==========================================
-echo Résultats :
-echo   Réussis : %PASSED%
-echo   Échoués : %FAILED%
-echo ==========================================
+echo.  
+echo ==========================================  
+echo Résultats :  
+echo   Réussis : %PASSED%  
+echo   Échoués : %FAILED%  
+echo ==========================================  
 
-if %FAILED% gtr 0 exit /b 1
-goto :eof
+if %FAILED% gtr 0 exit /b 1  
+goto :eof  
 
 :run_test
 echo | set /p="Test : %~1... "
@@ -717,33 +717,33 @@ type
 
 implementation
 
-procedure TTestCalculatrice.TestAddition;
-begin
+procedure TTestCalculatrice.TestAddition;  
+begin  
   AssertEquals('Addition simple', 5, Additionner(2, 3));
   AssertEquals('Addition négatifs', -5, Additionner(-2, -3));
   AssertEquals('Addition zéro', 42, Additionner(42, 0));
 end;
 
-procedure TTestCalculatrice.TestSoustraction;
-begin
+procedure TTestCalculatrice.TestSoustraction;  
+begin  
   AssertEquals('Soustraction simple', 2, Soustraire(5, 3));
   AssertEquals('Soustraction négatif', -1, Soustraire(3, 4));
 end;
 
-procedure TTestCalculatrice.TestMultiplication;
-begin
+procedure TTestCalculatrice.TestMultiplication;  
+begin  
   AssertEquals('Multiplication simple', 15, Multiplier(3, 5));
   AssertEquals('Multiplication par zéro', 0, Multiplier(42, 0));
 end;
 
-procedure TTestCalculatrice.TestDivision;
-begin
+procedure TTestCalculatrice.TestDivision;  
+begin  
   AssertEquals('Division simple', 5.0, Diviser(15, 3), 0.001);
   AssertEquals('Division décimale', 2.5, Diviser(5, 2), 0.001);
 end;
 
-procedure TTestCalculatrice.TestDivisionParZero;
-begin
+procedure TTestCalculatrice.TestDivisionParZero;  
+begin  
   try
     Diviser(10, 0);
     Fail('Exception attendue pour division par zéro');
@@ -820,8 +820,8 @@ end.
 **Exemple : Boutons de dialogue adaptatifs**
 
 ```pascal
-procedure TForm1.CreerDialogue;
-var
+procedure TForm1.CreerDialogue;  
+var  
   Panel: TButtonPanel;
 begin
   Panel := TButtonPanel.Create(Self);
@@ -838,8 +838,8 @@ end;
 **Exemple : Gestion des permissions**
 
 ```pascal
-function CreerFichierConfig: Boolean;
-var
+function CreerFichierConfig: Boolean;  
+var  
   CheminConfig: string;
   F: TextFile;
 begin

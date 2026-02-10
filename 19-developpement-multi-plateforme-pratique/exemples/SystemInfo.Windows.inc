@@ -1,8 +1,8 @@
-uses
+uses  
   SysUtils, Windows;
 
-function ObtenirVersionOS: string;
-var
+function ObtenirVersionOS: string;  
+var  
   Info: TOSVersionInfo;
 begin
   Info.dwOSVersionInfoSize := SizeOf(TOSVersionInfo);
@@ -12,8 +12,8 @@ begin
     Result := 'Windows version inconnue';
 end;
 
-function ObtenirNomMachine: string;
-var
+function ObtenirNomMachine: string;  
+var  
   Buffer: array[0..MAX_COMPUTERNAME_LENGTH] of Char;
   Size: DWORD;
 begin
