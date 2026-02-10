@@ -3,8 +3,8 @@
   Description : Validation simple de l'age avec condition if-else
   Fichier source : 07-gestion-erreurs-simples.md
   ============================================================================ }
-program ValidationAgeSimple;
-var
+program ValidationAgeSimple;  
+var  
   age: Integer;
 begin
   Write('Entrez votre âge : ');

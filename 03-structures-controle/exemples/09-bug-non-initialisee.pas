@@ -4,8 +4,8 @@
   Fichier source : 09-debogage-pas-a-pas.md
   NOTE : Comportement indefini - la variable somme n'est pas initialisee.
   ============================================================================ }
-program BugNonInitialisee;
-var
+program BugNonInitialisee;  
+var  
   somme, i: Integer;
 begin
   // BUG : somme n'est pas initialisée

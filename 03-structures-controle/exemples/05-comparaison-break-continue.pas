@@ -3,8 +3,8 @@
   Description : Comparaison du comportement de break et continue
   Fichier source : 05-instructions-break-continue.md
   ============================================================================ }
-program ComparaisonBreakContinue;
-var
+program ComparaisonBreakContinue;  
+var  
   i: Integer;
 begin
   WriteLn('=== Avec BREAK ===');

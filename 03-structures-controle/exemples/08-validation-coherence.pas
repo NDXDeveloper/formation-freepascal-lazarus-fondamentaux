@@ -3,8 +3,8 @@
   Description : Validation de coherence - verifier la logique entre plusieurs donnees
   Fichier source : 08-validation-entrees-utilisateur.md
   ============================================================================ }
-program ValidationCoherence;
-var
+program ValidationCoherence;  
+var  
   dateNaissance, dateEmbauche: Integer;
 begin
   WriteLn('Saisie d''informations employé :');

@@ -4,8 +4,8 @@
   Fichier source : 02-instructions-choix-multiple-case-of.md
   ============================================================================ }
 
-program SystemeTarification;
-var
+program SystemeTarification;  
+var  
   age: Integer;
   tarif: Real;
 begin

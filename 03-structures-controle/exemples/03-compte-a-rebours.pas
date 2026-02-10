@@ -4,8 +4,8 @@
   Fichier source : 03-boucles-compteur-for-do.md
   ============================================================================ }
 
-program CompteARebours;
-var
+program CompteARebours;  
+var  
   i: Integer;
 begin
   WriteLn('Compte à rebours pour le lancement :');

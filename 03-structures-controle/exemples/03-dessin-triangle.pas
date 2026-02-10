@@ -4,8 +4,8 @@
   Fichier source : 03-boucles-compteur-for-do.md
   ============================================================================ }
 
-program DessinTriangle;
-var
+program DessinTriangle;  
+var  
   ligne, colonne: Integer;
 begin
   WriteLn('Triangle d''étoiles :');

@@ -4,8 +4,8 @@
   Fichier source : 04-boucles-conditionnelles-while-repeat.md
   ============================================================================ }
 
-program SystemeConnexion;
-const
+program SystemeConnexion;  
+const  
   MAX_TENTATIVES = 3;
   MOT_DE_PASSE_CORRECT = 'pascal2024';
 var

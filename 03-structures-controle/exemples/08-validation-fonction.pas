@@ -5,8 +5,8 @@
   ============================================================================ }
 program ValidationFonction;
 
-function EstNombreEntier(s: String): Boolean;
-var
+function EstNombreEntier(s: String): Boolean;  
+var  
   i: Integer;
 begin
   EstNombreEntier := True;

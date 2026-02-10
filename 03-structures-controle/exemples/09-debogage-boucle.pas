@@ -3,8 +3,8 @@
   Description : Debogage d'une boucle de recherche dans un tableau
   Fichier source : 09-debogage-pas-a-pas.md
   ============================================================================ }
-program DebogageBoucle;
-const
+program DebogageBoucle;  
+const  
   TAILLE = 5;
 var
   tableau: array[1..TAILLE] of Integer;

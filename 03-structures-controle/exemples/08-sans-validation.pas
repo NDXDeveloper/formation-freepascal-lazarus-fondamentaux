@@ -3,8 +3,8 @@
   Description : Exemple sans validation - programme fragile aux entrees invalides
   Fichier source : 08-validation-entrees-utilisateur.md
   ============================================================================ }
-program SansValidation;
-var
+program SansValidation;  
+var  
   age: Integer;
 begin
   Write('Âge : ');

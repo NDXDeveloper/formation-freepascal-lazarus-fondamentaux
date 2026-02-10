@@ -4,8 +4,8 @@
   Fichier source : 04-boucles-conditionnelles-while-repeat.md
   ============================================================================ }
 
-program RepeatToujoursUneFois;
-var
+program RepeatToujoursUneFois;  
+var  
   i: Integer;
 begin
   i := 10;

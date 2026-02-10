@@ -4,8 +4,8 @@
   Fichier source : 03-boucles-compteur-for-do.md
   ============================================================================ }
 
-program AffichageNumeros;
-var
+program AffichageNumeros;  
+var  
   i: Integer;
 begin
   WriteLn('Comptage de 1 à 10 :');

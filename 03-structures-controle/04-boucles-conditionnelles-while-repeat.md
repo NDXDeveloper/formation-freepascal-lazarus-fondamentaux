@@ -40,8 +40,8 @@ while condition do
 Pour plusieurs instructions :
 
 ```pascal
-while condition do
-begin
+while condition do  
+begin  
   instruction1;
   instruction2;
   instruction3;
@@ -51,8 +51,8 @@ end;
 ### Premier exemple simple
 
 ```pascal
-program PremierWhile;
-var
+program PremierWhile;  
+var  
   compteur: Integer;
 begin
   compteur := 1;
@@ -69,12 +69,12 @@ end.
 
 **Résultat :**
 ```
-Compteur = 1
-Compteur = 2
-Compteur = 3
-Compteur = 4
-Compteur = 5
-Fin de la boucle
+Compteur = 1  
+Compteur = 2  
+Compteur = 3  
+Compteur = 4  
+Compteur = 5  
+Fin de la boucle  
 ```
 
 ### Comment fonctionne WHILE
@@ -107,8 +107,8 @@ Fin de la boucle
 Si la condition est fausse dès le début, la boucle ne s'exécute jamais :
 
 ```pascal
-program WhileJamaisExecute;
-var
+program WhileJamaisExecute;  
+var  
   i: Integer;
 begin
   i := 10;
@@ -129,8 +129,8 @@ i vaut toujours 10
 ### Exemple : Validation d'entrée
 
 ```pascal
-program ValidationAgeWhile;
-var
+program ValidationAgeWhile;  
+var  
   age: Integer;
 begin
   age := -1;
@@ -148,8 +148,8 @@ end.
 ### Exemple : Menu avec choix
 
 ```pascal
-program MenuSimple;
-var
+program MenuSimple;  
+var  
   choix: Integer;
 begin
   choix := 0;
@@ -202,8 +202,8 @@ until condition;
 ### Premier exemple simple
 
 ```pascal
-program PremierRepeat;
-var
+program PremierRepeat;  
+var  
   compteur: Integer;
 begin
   compteur := 1;
@@ -217,12 +217,12 @@ end.
 
 **Résultat :**
 ```
-Compteur = 1
-Compteur = 2
-Compteur = 3
-Compteur = 4
-Compteur = 5
-Fin de la boucle
+Compteur = 1  
+Compteur = 2  
+Compteur = 3  
+Compteur = 4  
+Compteur = 5  
+Fin de la boucle  
 ```
 
 ### Comment fonctionne REPEAT-UNTIL
@@ -257,8 +257,8 @@ Fin de la boucle
 Contrairement à `while`, `repeat` exécute toujours ses instructions au moins une fois :
 
 ```pascal
-program RepeatToujoursUneFois;
-var
+program RepeatToujoursUneFois;  
+var  
   i: Integer;
 begin
   i := 10;
@@ -274,16 +274,16 @@ end.
 
 **Résultat :**
 ```
-Ce message s'affiche quand même !
-i = 10
-Fin de la boucle
+Ce message s'affiche quand même !  
+i = 10  
+Fin de la boucle  
 ```
 
 ### Exemple : Validation d'entrée avec REPEAT
 
 ```pascal
-program ValidationRepeatAge;
-var
+program ValidationRepeatAge;  
+var  
   age: Integer;
 begin
   { Pas besoin d'initialiser age a une valeur invalide :
@@ -315,8 +315,8 @@ Notez que ce code est plus court qu'avec `while` car nous n'avons pas besoin d'i
 ### Exemple comparatif
 
 ```pascal
-program ComparaisonWhileRepeat;
-var
+program ComparaisonWhileRepeat;  
+var  
   i: Integer;
 begin
   WriteLn('=== Avec WHILE ===');
@@ -413,8 +413,8 @@ Parfois, on veut une boucle infinie (serveurs, jeux) :
 
 ```pascal
 // Boucle infinie avec condition de sortie
-while True do
-begin
+while True do  
+begin  
   // Traitement
   if conditionDeSortie then
     Break;  // Sort de la boucle
@@ -426,8 +426,8 @@ end;
 ### Jeu de devinette
 
 ```pascal
-program JeuDevinette;
-var
+program JeuDevinette;  
+var  
   nombreSecret, proposition, tentatives: Integer;
 begin
   Randomize;   { Initialise le generateur aleatoire (a appeler une seule fois) }
@@ -455,8 +455,8 @@ end.
 ### Calcul de moyenne avec sentinelle
 
 ```pascal
-program CalculMoyenneSentinelle;
-var
+program CalculMoyenneSentinelle;  
+var  
   nombre: Real;
   somme: Real;
   compteur: Integer;
@@ -492,8 +492,8 @@ end.
 ### Lecture de fichier ligne par ligne
 
 ```pascal
-program LectureFichier;
-var
+program LectureFichier;  
+var  
   fichier: TextFile;
   ligne: String;
   numeroLigne: Integer;
@@ -526,8 +526,8 @@ end.
 ### Système de connexion
 
 ```pascal
-program SystemeConnexion;
-const
+program SystemeConnexion;  
+const  
   MAX_TENTATIVES = 3;
   MOT_DE_PASSE_CORRECT = 'pascal2024';
 var
@@ -568,8 +568,8 @@ end.
 ### Recherche dans une liste
 
 ```pascal
-program RechercheNombre;
-const
+program RechercheNombre;  
+const  
   TAILLE = 10;
 var
   nombres: array[1..TAILLE] of Integer;
@@ -609,8 +609,8 @@ Vous pouvez imbriquer des boucles conditionnelles comme avec `for` :
 ### WHILE imbriqués
 
 ```pascal
-program WhileImbriques;
-var
+program WhileImbriques;  
+var  
   i, j: Integer;
 begin
   i := 1;
@@ -642,8 +642,8 @@ Ligne 3 :
 ### Mélange de types de boucles
 
 ```pascal
-program MelangeBoucles;
-var
+program MelangeBoucles;  
+var  
   continuer: Char;
   i: Integer;
 begin
@@ -703,8 +703,8 @@ until i >= 10;  // S'arrête quand i >= 10
 while (age < 0) or (age > 120) do
 
 // Avec REPEAT : s'arrête quand age est valide
-repeat
-until (age >= 0) and (age <= 120)  // Attention à la logique inversée !
+repeat  
+until (age >= 0) and (age <= 120)  // Attention à la logique inversée !  
 ```
 
 ### 4. Oublier BEGIN-END avec WHILE
@@ -716,8 +716,8 @@ while i < 10 do
   i := i + 1;  // ❌ Ceci est APRÈS la boucle !
 
 // CORRECT
-while i < 10 do
-begin
+while i < 10 do  
+begin  
   WriteLn(i);
   i := i + 1;
 end;
@@ -757,9 +757,9 @@ until valeur > 0;
 while (a > 0) and (b < 10) and ((c = 5) or (d <> 3)) do
 
 // MEILLEUR
-continuer := (a > 0) and (b < 10) and ((c = 5) or (d <> 3));
-while continuer do
-begin
+continuer := (a > 0) and (b < 10) and ((c = 5) or (d <> 3));  
+while continuer do  
+begin  
   // instructions
   continuer := (a > 0) and (b < 10) and ((c = 5) or (d <> 3));
 end;
@@ -789,8 +789,8 @@ end;
 
 ```pascal
 // Recherche du premier nombre premier après n
-while not EstPremier(nombre) do
-begin
+while not EstPremier(nombre) do  
+begin  
   nombre := nombre + 1;
   // Continue jusqu'à trouver un nombre premier
 end;
@@ -800,9 +800,9 @@ end;
 
 ```pascal
 // Toujours initialiser avant WHILE
-i := 0;  // Important !
-while i < 10 do
-begin
+i := 0;  // Important !  
+while i < 10 do  
+begin  
   WriteLn(i);
   i := i + 1;
 end;
@@ -811,8 +811,8 @@ end;
 ## Exemple récapitulatif complet
 
 ```pascal
-program GestionCompteClient;
-var
+program GestionCompteClient;  
+var  
   solde, montant: Real;
   choix: Integer;
   continuer: Boolean;

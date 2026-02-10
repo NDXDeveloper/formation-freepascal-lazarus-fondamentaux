@@ -3,8 +3,8 @@
   Description : Jeu du morpion - structure complete avec grille, saisie et validation
   Fichier source : 06-imbrication-structures.md
   ============================================================================ }
-program MorpionStructure;
-type
+program MorpionStructure;  
+type  
   TGrille = array[1..3, 1..3] of Char;
 var
   grille: TGrille;

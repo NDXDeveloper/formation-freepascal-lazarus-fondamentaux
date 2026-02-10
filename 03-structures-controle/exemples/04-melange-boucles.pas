@@ -4,8 +4,8 @@
   Fichier source : 04-boucles-conditionnelles-while-repeat.md
   ============================================================================ }
 
-program MelangeBoucles;
-var
+program MelangeBoucles;  
+var  
   continuer: Char;
   i: Integer;
 begin

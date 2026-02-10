@@ -3,8 +3,8 @@
   Description : Systeme de notation avec validation et attribution de mention
   Fichier source : 07-gestion-erreurs-simples.md
   ============================================================================ }
-program SystemeNotation;
-var
+program SystemeNotation;  
+var  
   note: Real;
   mention: String;
   valide: Boolean;

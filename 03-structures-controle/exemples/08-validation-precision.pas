@@ -3,8 +3,8 @@
   Description : Validation de precision - note avec maximum 1 decimale
   Fichier source : 08-validation-entrees-utilisateur.md
   ============================================================================ }
-program ValidationPrecision;
-var
+program ValidationPrecision;  
+var  
   note: Real;
   valide: Boolean;
 begin

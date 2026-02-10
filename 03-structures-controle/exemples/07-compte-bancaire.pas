@@ -3,8 +3,8 @@
   Description : Gestion de compte bancaire avec depot, retrait et decouvert
   Fichier source : 07-gestion-erreurs-simples.md
   ============================================================================ }
-program CompteBancaire;
-var
+program CompteBancaire;  
+var  
   solde, montant: Real;
   operation: Char;
   continuer: Boolean;

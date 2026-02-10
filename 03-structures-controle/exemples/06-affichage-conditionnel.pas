@@ -3,8 +3,8 @@
   Description : Boucle FOR dans IF - affichage detaille ou simple selon le choix
   Fichier source : 06-imbrication-structures.md
   ============================================================================ }
-program AffichageConditionnel;
-var
+program AffichageConditionnel;  
+var  
   i, n: Integer;
   afficher: Boolean;
   reponse: String;

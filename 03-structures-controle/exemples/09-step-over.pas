@@ -6,8 +6,8 @@
   ============================================================================ }
 program StepOver;
 
-procedure Afficher(x: Integer);
-begin
+procedure Afficher(x: Integer);  
+begin  
   WriteLn('Valeur : ', x);
 end;
 

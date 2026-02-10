@@ -3,8 +3,8 @@
   Description : Traitement de commandes avec filtrage des annulees via continue
   Fichier source : 05-instructions-break-continue.md
   ============================================================================ }
-program TraitementCommandes;
-type
+program TraitementCommandes;  
+type  
   TCommande = record
     numero: Integer;
     montant: Real;

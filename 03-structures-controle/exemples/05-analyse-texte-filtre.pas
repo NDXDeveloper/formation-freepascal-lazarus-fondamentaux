@@ -3,8 +3,8 @@
   Description : Analyse de texte avec filtrage des non-lettres via continue
   Fichier source : 05-instructions-break-continue.md
   ============================================================================ }
-program AnalyseTexteFiltre;
-var
+program AnalyseTexteFiltre;  
+var  
   texte: String;
   i: Integer;
   caractere: Char;

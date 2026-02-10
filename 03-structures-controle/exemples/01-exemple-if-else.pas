@@ -3,8 +3,8 @@
   Description : Exemple d'instruction if-then-else
   Fichier source : 01-instructions-conditionnelles-if-then-else.md
   ============================================================================ }
-program ExempleIfElse;
-var
+program ExempleIfElse;  
+var  
   age: Integer;
 begin
   Write('Entrez votre âge : ');

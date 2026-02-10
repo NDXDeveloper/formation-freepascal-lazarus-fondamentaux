@@ -34,8 +34,8 @@ for f in *.pas; do fpc "$f"; done
 
 **Exemple d'execution `01-exemple-if-simple` (entree : 25) :**
 ```
-Entrez votre age : Vous etes majeur.
-Programme termine.
+Entrez votre age : Vous etes majeur.  
+Programme termine.  
 ```
 
 **Exemple d'execution `01-exemple-else-if` (entree : 15) :**
@@ -49,9 +49,9 @@ Entrez votre note (0-20) : Tres bien
 
 Entrez votre age : Etes-vous membre ? (true/false) : Solde du compte :
 --- Analyse ---
-Vous etes majeur.
-Vous etes membre.
-Votre compte est crediteur.
+Vous etes majeur.  
+Vous etes membre.  
+Votre compte est crediteur.  
 
 --- Resultat ---
 ACCES AUTORISE
@@ -102,8 +102,8 @@ Choisissez une categorie :
 4. Pizza margherita (10 euros)
 Votre choix :
 =============================
-Prix : 12.00 euros
-Merci pour votre commande !
+Prix : 12.00 euros  
+Merci pour votre commande !  
 =============================
 ```
 
@@ -128,11 +128,11 @@ Merci pour votre commande !
 
 **Sortie attendue `03-premier-for` :**
 ```
-Bonjour !
-Bonjour !
-Bonjour !
-Bonjour !
-Bonjour !
+Bonjour !  
+Bonjour !  
+Bonjour !  
+Bonjour !  
+Bonjour !  
 ```
 
 **Sortie attendue `03-somme-nombres` :**
@@ -200,8 +200,8 @@ Entrez un nombre : La factorielle de 5 est : 120
 
 **Exemple d'execution `03-calendrier-mois` (entree : 1, 31) :**
 ```
-Premier jour du mois (1=Lundi, 7=Dimanche) : Nombre de jours dans le mois :
-Lun Mar Mer Jeu Ven Sam Dim
+Premier jour du mois (1=Lundi, 7=Dimanche) : Nombre de jours dans le mois :  
+Lun Mar Mer Jeu Ven Sam Dim  
 ---------------------------
   1   2   3   4   5   6   7
   8   9  10  11  12  13  14
@@ -219,15 +219,15 @@ Entrez un texte :
 Analyse en cours...
 
 === RESULTATS ===
-Longueur totale : 7 caracteres
-Voyelles : 3
-Consonnes : 4
-Chiffres : 0
-Espaces : 0
-Autres caracteres : 0
+Longueur totale : 7 caracteres  
+Voyelles : 3  
+Consonnes : 4  
+Chiffres : 0  
+Espaces : 0  
+Autres caracteres : 0  
 
-Apercu caractere par caractere :
-Bonjour
+Apercu caractere par caractere :  
+Bonjour  
 ```
 
 ### Section 3.4 : Boucles conditionnelles while et repeat (15 fichiers)
@@ -245,12 +245,12 @@ Bonjour
 
 **Sortie attendue `04-premier-while` :**
 ```
-Compteur = 1
-Compteur = 2
-Compteur = 3
-Compteur = 4
-Compteur = 5
-Fin de la boucle
+Compteur = 1  
+Compteur = 2  
+Compteur = 3  
+Compteur = 4  
+Compteur = 5  
+Fin de la boucle  
 ```
 
 **Sortie attendue `04-comparaison-while-repeat` :**
@@ -259,8 +259,8 @@ Fin de la boucle
 WHILE : Aucune execution car condition fausse au depart
 
 === Avec REPEAT ===
-REPEAT : i = 10
-REPEAT : Execute une fois malgre la condition vraie
+REPEAT : i = 10  
+REPEAT : Execute une fois malgre la condition vraie  
 ```
 
 #### Programmes interactifs (9 fichiers)
@@ -306,8 +306,8 @@ Comptage de 1 a 10, mais arret a 5 :
 2
 3
 4
-Arret a 5
-Apres la boucle
+Arret a 5  
+Apres la boucle  
 ```
 
 **Sortie attendue `05-comparaison-break-continue` :**
@@ -336,11 +336,11 @@ Boucle terminee
 ```
 === TRAITEMENT DES COMMANDES ===
 
-Commande #101 - Montant : 150.50 EUR - TRAITEE
-Commande #102 - ANNULEE (ignoree)
-Commande #103 - Montant : 200.00 EUR - TRAITEE
-Commande #104 - ANNULEE (ignoree)
-Commande #105 - Montant : 300.00 EUR - TRAITEE
+Commande #101 - Montant : 150.50 EUR - TRAITEE  
+Commande #102 - ANNULEE (ignoree)  
+Commande #103 - Montant : 200.00 EUR - TRAITEE  
+Commande #104 - ANNULEE (ignoree)  
+Commande #105 - Montant : 300.00 EUR - TRAITEE  
 
 Total des commandes valides : 650.50 EUR
 ```
@@ -396,13 +396,13 @@ TABLE DE MULTIPLICATION (1 a 10)
 ```
 Les jours de la semaine :
 
-Jour 1 : Lundi (travail)
-Jour 2 : Mardi (travail)
-Jour 3 : Mercredi (travail)
-Jour 4 : Jeudi (travail)
-Jour 5 : Vendredi (travail)
-Jour 6 : Samedi (week-end)
-Jour 7 : Dimanche (week-end)
+Jour 1 : Lundi (travail)  
+Jour 2 : Mardi (travail)  
+Jour 3 : Mercredi (travail)  
+Jour 4 : Jeudi (travail)  
+Jour 5 : Vendredi (travail)  
+Jour 6 : Samedi (week-end)  
+Jour 7 : Dimanche (week-end)  
 ```
 
 #### Programmes interactifs (10 fichiers)
@@ -422,14 +422,14 @@ Jour 7 : Dimanche (week-end)
 
 **Exemple d'execution `06-notes-imbriquees` (entree : 15) :**
 ```
-Entrez la note (0-20) : Note : 15/20
-Mention : Bien
+Entrez la note (0-20) : Note : 15/20  
+Mention : Bien  
 ```
 
 **Exemple d'execution `06-if-imbriques` (entree : 25, true) :**
 ```
-Age : Avez-vous le permis ? (true/false) : Vous etes majeur.
-Vous pouvez conduire.
+Age : Avez-vous le permis ? (true/false) : Vous etes majeur.  
+Vous pouvez conduire.  
 ```
 
 ### Section 3.7 : Gestion d'erreurs simples (18 fichiers)
@@ -541,9 +541,9 @@ Resultat : 25
 
 **Sortie attendue `09-step-into` :**
 ```
-Debut
-Valeur : 10
-Fin
+Debut  
+Valeur : 10  
+Fin  
 ```
 
 **Sortie attendue `09-bug-calcul` :**
@@ -561,8 +561,8 @@ Resultat : 2
 
 **Exemple d'execution `09-calcul-moyenne-bug` (entree : 15, 12, 18) :**
 ```
-Calcul de moyenne de 3 notes
-Note 1 : Note 2 : Note 3 : Moyenne : 15.00
+Calcul de moyenne de 3 notes  
+Note 1 : Note 2 : Note 3 : Moyenne : 15.00  
 ```
 
 **Exemple d'execution `09-bug-condition` (entree : 10) :**
@@ -576,8 +576,8 @@ Age : Vous etes majeur
 Pour supprimer les fichiers compiles :
 
 ```bash
-rm -f *.o *.ppu
-for f in *.pas; do rm -f "${f%.pas}"; done
+rm -f *.o *.ppu  
+for f in *.pas; do rm -f "${f%.pas}"; done  
 ```
 
 ## Resume

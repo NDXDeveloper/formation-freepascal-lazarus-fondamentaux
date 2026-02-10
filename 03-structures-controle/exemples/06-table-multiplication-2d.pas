@@ -3,8 +3,8 @@
   Description : Boucles FOR imbriquees - table de multiplication 2D (1 a 10)
   Fichier source : 06-imbrication-structures.md
   ============================================================================ }
-program TableMultiplication2D;
-var
+program TableMultiplication2D;  
+var  
   ligne, colonne: Integer;
 begin
   WriteLn('TABLE DE MULTIPLICATION (1 à 10)');

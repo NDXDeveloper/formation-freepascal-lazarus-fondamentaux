@@ -3,8 +3,8 @@
   Description : Validation de format - verifier qu'un code postal a 5 chiffres
   Fichier source : 08-validation-entrees-utilisateur.md
   ============================================================================ }
-program ValidationFormat;
-var
+program ValidationFormat;  
+var  
   codePostal: String;
   i: Integer;
   valide: Boolean;

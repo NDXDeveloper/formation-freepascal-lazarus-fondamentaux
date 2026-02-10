@@ -3,8 +3,8 @@
   Description : Validation d'un seul caractere - reponse O/N
   Fichier source : 08-validation-entrees-utilisateur.md
   ============================================================================ }
-program ValidationCaractere;
-var
+program ValidationCaractere;  
+var  
   reponse: Char;
 begin
   repeat

@@ -5,8 +5,8 @@
   ============================================================================ }
 program ValidationAvecBooleen;
 
-function ValiderEmail(email: String): Boolean;
-begin
+function ValiderEmail(email: String): Boolean;  
+begin  
   // Validation simplifiée
   // Pos retourne la position (1-based) ou 0 si non trouvé
   ValiderEmail := (Pos('@', email) > 0) and (Pos('.', email) > 0);

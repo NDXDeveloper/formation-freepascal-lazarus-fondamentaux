@@ -3,8 +3,8 @@
   Description : Boucles FOR imbriquees - dessin d'un triangle d'etoiles
   Fichier source : 06-imbrication-structures.md
   ============================================================================ }
-program MotifEtoiles;
-var
+program MotifEtoiles;  
+var  
   ligne, espace, etoile: Integer;
   hauteur: Integer;
 begin

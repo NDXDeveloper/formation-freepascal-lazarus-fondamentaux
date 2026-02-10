@@ -3,8 +3,8 @@
   Description : Validation avec repeat-until - technique simple pour un pourcentage
   Fichier source : 08-validation-entrees-utilisateur.md
   ============================================================================ }
-program ValidationRepeatPourcentage;
-var
+program ValidationRepeatPourcentage;  
+var  
   pourcentage: Integer;
 begin
   repeat

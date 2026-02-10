@@ -3,8 +3,8 @@
   Description : Exemple de chaîne else-if pour classification de notes
   Fichier source : 01-instructions-conditionnelles-if-then-else.md
   ============================================================================ }
-program ExempleElseIf;
-var
+program ExempleElseIf;  
+var  
   note: Integer;
 begin
   Write('Entrez votre note (0-20) : ');

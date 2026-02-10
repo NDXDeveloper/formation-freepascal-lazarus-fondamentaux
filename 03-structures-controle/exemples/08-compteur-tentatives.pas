@@ -3,8 +3,8 @@
   Description : Compteur de tentatives - code secret avec nombre limite d'essais
   Fichier source : 08-validation-entrees-utilisateur.md
   ============================================================================ }
-program CompteurTentatives;
-var
+program CompteurTentatives;  
+var  
   code: Integer;
   tentative: Integer;
 const

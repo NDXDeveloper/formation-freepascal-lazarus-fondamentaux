@@ -4,8 +4,8 @@
   Fichier source : 03-boucles-compteur-for-do.md
   ============================================================================ }
 
-program BoucleVariable;
-var
+program BoucleVariable;  
+var  
   i, debut, fin: Integer;
 begin
   Write('Nombre de départ : ');

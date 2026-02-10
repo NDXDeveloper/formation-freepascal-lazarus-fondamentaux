@@ -4,8 +4,8 @@
   Fichier source : 04-boucles-conditionnelles-while-repeat.md
   ============================================================================ }
 
-program WhileJamaisExecute;
-var
+program WhileJamaisExecute;  
+var  
   i: Integer;
 begin
   i := 10;

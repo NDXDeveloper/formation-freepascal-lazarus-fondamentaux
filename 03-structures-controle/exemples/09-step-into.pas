@@ -5,8 +5,8 @@
   ============================================================================ }
 program StepInto;
 
-procedure Afficher(x: Integer);
-begin
+procedure Afficher(x: Integer);  
+begin  
   WriteLn('Valeur : ', x);  // F7 vous amène ici
 end;
 

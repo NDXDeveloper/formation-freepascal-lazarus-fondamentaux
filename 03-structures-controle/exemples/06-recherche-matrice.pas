@@ -3,8 +3,8 @@
   Description : BREAK dans boucles imbriquees - recherche d'un element dans une matrice
   Fichier source : 06-imbrication-structures.md
   ============================================================================ }
-program RechercheMatrice;
-const
+program RechercheMatrice;  
+const  
   LIGNES = 5;
   COLONNES = 5;
 var

@@ -3,8 +3,8 @@
   Description : Tri a bulles avec affichage des passes et echanges
   Fichier source : 06-imbrication-structures.md
   ============================================================================ }
-program TriBulles;
-const
+program TriBulles;  
+const  
   TAILLE = 8;
 var
   tableau: array[1..TAILLE] of Integer;

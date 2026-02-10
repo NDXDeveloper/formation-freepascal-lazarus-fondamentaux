@@ -3,8 +3,8 @@
   Description : Validation avec repeat-until pour un nombre positif
   Fichier source : 07-gestion-erreurs-simples.md
   ============================================================================ }
-program ValidationRepeatNombre;
-var
+program ValidationRepeatNombre;  
+var  
   nombre: Integer;
 begin
   WriteLn('Entrez un nombre positif :');

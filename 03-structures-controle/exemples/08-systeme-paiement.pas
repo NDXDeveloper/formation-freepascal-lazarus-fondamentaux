@@ -3,8 +3,8 @@
   Description : Systeme de paiement avec validation du montant et du rendu
   Fichier source : 08-validation-entrees-utilisateur.md
   ============================================================================ }
-program SystemePaiement;
-var
+program SystemePaiement;  
+var  
   montant, montantPaye, rendu: Real;
   valide: Boolean;
 begin

@@ -3,8 +3,8 @@
   Description : Validation de longueur - mot de passe entre 8 et 20 caracteres
   Fichier source : 08-validation-entrees-utilisateur.md
   ============================================================================ }
-program ValidationLongueur;
-var
+program ValidationLongueur;  
+var  
   motDePasse: String;
 const
   LONGUEUR_MIN = 8;

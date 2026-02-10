@@ -4,8 +4,8 @@
   Fichier source : 09-debogage-pas-a-pas.md
   NOTE : Erreur intentionnelle - acces hors limites du tableau.
   ============================================================================ }
-program BugIndice;
-var
+program BugIndice;  
+var  
   tableau: array[1..5] of Integer;
   i: Integer;
 begin

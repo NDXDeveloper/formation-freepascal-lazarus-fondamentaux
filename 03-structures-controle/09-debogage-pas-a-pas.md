@@ -73,8 +73,8 @@ Un point d'arrêt est un **marqueur** que vous placez sur une ligne de code. Qua
 ### Exemple de placement
 
 ```pascal
-program ExempleBreakpoint;
-var
+program ExempleBreakpoint;  
+var  
   a, b, resultat: Integer;
 begin
   a := 10;              // <- Placer un breakpoint ici
@@ -114,8 +114,8 @@ Exécute la ligne actuelle et passe à la suivante, **sans entrer** dans les fon
 ```pascal
 program StepOver;
 
-procedure Afficher(x: Integer);
-begin
+procedure Afficher(x: Integer);  
+begin  
   WriteLn('Valeur : ', x);
 end;
 
@@ -135,8 +135,8 @@ Entre **à l'intérieur** des fonctions et procédures.
 ```pascal
 program StepInto;
 
-procedure Afficher(x: Integer);
-begin
+procedure Afficher(x: Integer);  
+begin  
   WriteLn('Valeur : ', x);  // F7 vous amène ici
 end;
 
@@ -154,8 +154,8 @@ end.
 Sort de la fonction actuelle et revient à l'appelant.
 
 ```pascal
-procedure Calculer;
-begin
+procedure Calculer;  
+begin  
   WriteLn('Calcul...');
   // Si vous êtes ici et faites Shift+F8
   WriteLn('Fin calcul');
@@ -180,8 +180,8 @@ Pendant le débogage, vous pouvez voir les valeurs de toutes vos variables.
 Cette fenêtre affiche automatiquement toutes les variables de la fonction actuelle avec leurs valeurs.
 
 ```pascal
-program InspectionVariables;
-var
+program InspectionVariables;  
+var  
   a, b, somme: Integer;
   moyenne: Real;
 begin
@@ -235,8 +235,8 @@ Vous pouvez changer la valeur d'une variable pour tester différents scénarios 
 ### Programme avec bug
 
 ```pascal
-program CalculMoyenneBug;
-var
+program CalculMoyenneBug;  
+var  
   note1, note2, note3: Integer;
   moyenne: Real;
 begin
@@ -308,8 +308,8 @@ Les boucles peuvent être difficiles à déboguer. Voici comment procéder :
 ### Exemple : Recherche dans un tableau
 
 ```pascal
-program DebogageBoucle;
-const
+program DebogageBoucle;  
+const  
   TAILLE = 5;
 var
   tableau: array[1..TAILLE] of Integer;
@@ -366,13 +366,13 @@ end.
 ```pascal
 program DebogageFonctions;
 
-function Carre(n: Integer): Integer;
-begin
+function Carre(n: Integer): Integer;  
+begin  
   Carre := n * n;  // Point d'arrêt ici
 end;
 
-function SommeCarres(a, b: Integer): Integer;
-var
+function SommeCarres(a, b: Integer): Integer;  
+var  
   carreA, carreB: Integer;
 begin
   carreA := Carre(a);    // F7 pour entrer dans Carre
@@ -415,8 +415,8 @@ Arrêter seulement si une condition est vraie.
 4. Le programme ne s'arrêtera que quand i vaut 500
 
 ```pascal
-for i := 1 to 1000 do
-begin
+for i := 1 to 1000 do  
+begin  
   tableau[i] := i * 2;  // Breakpoint conditionnel : i = 500
 end;
 ```
@@ -494,8 +494,8 @@ WriteLn('DEBUG: Après calcul, resultat=', resultat);
 ### Bug 1 : Variable non initialisée
 
 ```pascal
-program BugNonInitialisee;
-var
+program BugNonInitialisee;  
+var  
   somme, i: Integer;
 begin
   // BUG : somme n'est pas initialisée
@@ -514,8 +514,8 @@ end.
 ### Bug 2 : Indice de tableau incorrect
 
 ```pascal
-program BugIndice;
-var
+program BugIndice;  
+var  
   tableau: array[1..5] of Integer;
   i: Integer;
 begin
@@ -533,8 +533,8 @@ end.
 ### Bug 3 : Condition inversée
 
 ```pascal
-program BugCondition;
-var
+program BugCondition;  
+var  
   age: Integer;
 begin
   Write('Âge : ');
@@ -558,8 +558,8 @@ end.
 ### Bug 4 : Boucle infinie
 
 ```pascal
-program BugBoucleInfinie;
-var
+program BugBoucleInfinie;  
+var  
   i: Integer;
 begin
   i := 1;
@@ -581,8 +581,8 @@ end.
 ### Bug 5 : Erreur de calcul (division entière)
 
 ```pascal
-program BugCalcul;
-var
+program BugCalcul;  
+var  
   a, b, resultat: Integer;
 begin
   a := 5;
@@ -678,9 +678,9 @@ Si possible, utilisez Git pour sauvegarder votre code avant de faire des modific
 
 ```pascal
 // ❌ Code rempli de WriteLn
-WriteLn('DEBUG 1');
-WriteLn('DEBUG a=', a);
-WriteLn('DEBUG entré dans if');
+WriteLn('DEBUG 1');  
+WriteLn('DEBUG a=', a);  
+WriteLn('DEBUG entré dans if');  
 // ... 50 autres WriteLn
 
 // ✓ Utiliser le débogueur

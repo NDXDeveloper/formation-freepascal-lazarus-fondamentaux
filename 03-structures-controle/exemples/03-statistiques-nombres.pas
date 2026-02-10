@@ -4,8 +4,8 @@
   Fichier source : 03-boucles-compteur-for-do.md
   ============================================================================ }
 
-program StatistiquesNombres;
-var
+program StatistiquesNombres;  
+var  
   i, n, nombre: Integer;
   somme, minimum, maximum: Integer;
   moyenne: Real;

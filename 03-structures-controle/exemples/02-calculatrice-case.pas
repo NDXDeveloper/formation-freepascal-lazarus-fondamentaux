@@ -4,8 +4,8 @@
   Fichier source : 02-instructions-choix-multiple-case-of.md
   ============================================================================ }
 
-program CalculatriceCaseOf;
-var
+program CalculatriceCaseOf;  
+var  
   nombre1, nombre2: Real;
   operation: Char;
   resultat: Real;

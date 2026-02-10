@@ -3,8 +3,8 @@
   Description : Break dans des boucles imbriquees (sort de la boucle interne)
   Fichier source : 05-instructions-break-continue.md
   ============================================================================ }
-program BreakImbrique;
-var
+program BreakImbrique;  
+var  
   i, j: Integer;
 begin
   WriteLn('Boucles imbriquées avec break :');

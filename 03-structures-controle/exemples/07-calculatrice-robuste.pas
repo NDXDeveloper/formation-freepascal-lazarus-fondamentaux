@@ -3,8 +3,8 @@
   Description : Calculatrice robuste avec gestion des erreurs de saisie
   Fichier source : 07-gestion-erreurs-simples.md
   ============================================================================ }
-program CalculatriceRobuste;
-var
+program CalculatriceRobuste;  
+var  
   a, b, resultat: Real;
   operation: Char;
   erreur: Boolean;

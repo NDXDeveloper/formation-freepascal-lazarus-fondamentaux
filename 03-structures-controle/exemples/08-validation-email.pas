@@ -3,8 +3,8 @@
   Description : Validation de format email - verifications basiques arobase et point
   Fichier source : 08-validation-entrees-utilisateur.md
   ============================================================================ }
-program ValidationEmail;
-var
+program ValidationEmail;  
+var  
   email: String;
   posArobase, posPoint: Integer;
   valide: Boolean;

@@ -4,8 +4,8 @@
   Fichier source : 04-boucles-conditionnelles-while-repeat.md
   ============================================================================ }
 
-program RechercheNombre;
-const
+program RechercheNombre;  
+const  
   TAILLE = 10;
 var
   nombres: array[1..TAILLE] of Integer;

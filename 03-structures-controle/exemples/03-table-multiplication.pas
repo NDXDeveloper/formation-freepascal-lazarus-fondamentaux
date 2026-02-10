@@ -4,8 +4,8 @@
   Fichier source : 03-boucles-compteur-for-do.md
   ============================================================================ }
 
-program TableMultiplication;
-var
+program TableMultiplication;  
+var  
   i: Integer;
 begin
   WriteLn('Table de multiplication par 7 :');

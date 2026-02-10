@@ -4,8 +4,8 @@
   Fichier source : 03-boucles-compteur-for-do.md
   ============================================================================ }
 
-program ComparaisonToDownto;
-var
+program ComparaisonToDownto;  
+var  
   i: Integer;
 begin
   WriteLn('Avec TO (croissant) :');

@@ -3,8 +3,8 @@
   Description : Validation de date complete avec annee bissextile
   Fichier source : 08-validation-entrees-utilisateur.md
   ============================================================================ }
-program ValidationDate;
-var
+program ValidationDate;  
+var  
   jour, mois, annee: Integer;
   joursMax: Integer;
   valide: Boolean;

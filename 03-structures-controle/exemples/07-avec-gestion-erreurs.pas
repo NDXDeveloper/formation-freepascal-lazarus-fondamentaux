@@ -3,8 +3,8 @@
   Description : Programme avec gestion d'erreurs - verification avant division
   Fichier source : 07-gestion-erreurs-simples.md
   ============================================================================ }
-program AvecGestionErreurs;
-var
+program AvecGestionErreurs;  
+var  
   a, b: Integer;
   resultat: Real;
 begin

@@ -3,8 +3,8 @@
   Description : IF dans boucle FOR - identification des nombres pairs et impairs
   Fichier source : 06-imbrication-structures.md
   ============================================================================ }
-program NombresPairs;
-var
+program NombresPairs;  
+var  
   i: Integer;
 begin
   WriteLn('Nombres de 1 à 20 :');

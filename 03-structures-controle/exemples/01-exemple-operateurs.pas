@@ -3,8 +3,8 @@
   Description : Exemple d'utilisation des opérateurs logiques (and, or) dans les conditions
   Fichier source : 01-instructions-conditionnelles-if-then-else.md
   ============================================================================ }
-program ExempleOperateurs;
-var
+program ExempleOperateurs;  
+var  
   age: Integer;
   etudiant: Boolean;
   revenus: Real;

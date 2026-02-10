@@ -3,8 +3,8 @@
   Description : Exemple d'instructions if imbriquées avec blocs begin..end
   Fichier source : 01-instructions-conditionnelles-if-then-else.md
   ============================================================================ }
-program ExempleImbrique;
-var
+program ExempleImbrique;  
+var  
   age: Integer;
   permis: Boolean;
   reponse: String;

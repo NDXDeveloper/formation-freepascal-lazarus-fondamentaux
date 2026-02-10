@@ -3,8 +3,8 @@
   Description : Programme sans gestion d'erreurs - risque de division par zero
   Fichier source : 07-gestion-erreurs-simples.md
   ============================================================================ }
-program SansGestionErreurs;
-var
+program SansGestionErreurs;  
+var  
   a, b: Integer;
   resultat: Real;
 begin

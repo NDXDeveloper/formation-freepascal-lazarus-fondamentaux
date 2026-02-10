@@ -3,8 +3,8 @@
   Description : Utilisation de break avec une boucle while infinie
   Fichier source : 05-instructions-break-continue.md
   ============================================================================ }
-program BreakAvecWhile;
-var
+program BreakAvecWhile;  
+var  
   nombre, tentatives: Integer;
 begin
   tentatives := 0;

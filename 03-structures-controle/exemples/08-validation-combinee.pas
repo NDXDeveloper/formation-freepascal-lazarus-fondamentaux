@@ -3,8 +3,8 @@
   Description : Validation combinee - code a 6 caracteres avec chiffres et lettres
   Fichier source : 08-validation-entrees-utilisateur.md
   ============================================================================ }
-program ValidationCombinee;
-var
+program ValidationCombinee;  
+var  
   code: String;
   i: Integer;
   nbChiffres, nbLettres: Integer;

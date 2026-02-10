@@ -3,8 +3,8 @@
   Description : Inspection des variables locales pendant le debogage
   Fichier source : 09-debogage-pas-a-pas.md
   ============================================================================ }
-program InspectionVariables;
-var
+program InspectionVariables;  
+var  
   a, b, somme: Integer;
   moyenne: Real;
 begin

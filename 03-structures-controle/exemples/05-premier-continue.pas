@@ -3,8 +3,8 @@
   Description : Premier exemple de continue avec une boucle for
   Fichier source : 05-instructions-break-continue.md
   ============================================================================ }
-program PremierContinue;
-var
+program PremierContinue;  
+var  
   i: Integer;
 begin
   WriteLn('Nombres de 1 à 10, sauf les multiples de 3 :');

@@ -3,8 +3,8 @@
   Description : Racine carree securisee avec verification du nombre negatif
   Fichier source : 07-gestion-erreurs-simples.md
   ============================================================================ }
-program RacineCarreeSecurisee;
-var
+program RacineCarreeSecurisee;  
+var  
   nombre, racine: Real;
 begin
   Write('Entrez un nombre : ');

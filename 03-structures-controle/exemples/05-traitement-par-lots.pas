@@ -3,8 +3,8 @@
   Description : Traitement par lots avec continue pour ignorer les items pairs
   Fichier source : 05-instructions-break-continue.md
   ============================================================================ }
-program TraitementParLots;
-const
+program TraitementParLots;  
+const  
   TAILLE_LOT = 5;
   MAX_ITEMS = 20;
 var

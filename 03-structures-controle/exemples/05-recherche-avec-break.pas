@@ -3,8 +3,8 @@
   Description : Recherche dans un tableau avec arret par break
   Fichier source : 05-instructions-break-continue.md
   ============================================================================ }
-program RechercheAvecBreak;
-const
+program RechercheAvecBreak;  
+const  
   TAILLE = 10;
 var
   nombres: array[1..TAILLE] of Integer;

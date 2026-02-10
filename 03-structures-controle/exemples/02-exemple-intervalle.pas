@@ -4,8 +4,8 @@
   Fichier source : 02-instructions-choix-multiple-case-of.md
   ============================================================================ }
 
-program ExempleIntervalle;
-var
+program ExempleIntervalle;  
+var  
   age: Integer;
 begin
   Write('Entrez votre age : ');

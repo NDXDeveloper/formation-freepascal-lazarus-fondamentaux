@@ -32,8 +32,8 @@ C'est tout ! Un simple mot-clé sans parenthèses ni paramètres.
 ### Premier exemple avec FOR
 
 ```pascal
-program PremierBreak;
-var
+program PremierBreak;  
+var  
   i: Integer;
 begin
   WriteLn('Comptage de 1 à 10, mais arrêt à 5 :');
@@ -59,8 +59,8 @@ Comptage de 1 à 10, mais arrêt à 5 :
 2
 3
 4
-Arrêt à 5
-Après la boucle
+Arrêt à 5  
+Après la boucle  
 ```
 
 Notez que le `WriteLn(i)` après le `break` ne s'est jamais exécuté pour i=5, et que les valeurs 6 à 10 n'ont jamais été traitées.
@@ -88,8 +88,8 @@ Notez que le `WriteLn(i)` après le `break` ne s'est jamais exécuté pour i=5, 
 ### Exemple avec WHILE
 
 ```pascal
-program BreakAvecWhile;
-var
+program BreakAvecWhile;  
+var  
   nombre, tentatives: Integer;
 begin
   tentatives := 0;
@@ -118,8 +118,8 @@ end.
 ### Exemple avec REPEAT
 
 ```pascal
-program BreakAvecRepeat;
-var
+program BreakAvecRepeat;  
+var  
   choix: Integer;
 begin
   WriteLn('=== MENU ===');
@@ -154,8 +154,8 @@ end.
 Un usage très courant : arrêter une recherche dès qu'on trouve ce qu'on cherche.
 
 ```pascal
-program RechercheAvecBreak;
-const
+program RechercheAvecBreak;  
+const  
   TAILLE = 10;
 var
   nombres: array[1..TAILLE] of Integer;
@@ -213,8 +213,8 @@ continue;
 ### Premier exemple avec FOR
 
 ```pascal
-program PremierContinue;
-var
+program PremierContinue;  
+var  
   i: Integer;
 begin
   WriteLn('Nombres de 1 à 10, sauf les multiples de 3 :');
@@ -267,8 +267,8 @@ Les nombres 3, 6 et 9 ont été sautés.
 ### Exemple avec WHILE
 
 ```pascal
-program ContinueAvecWhile;
-var
+program ContinueAvecWhile;  
+var  
   i: Integer;
 begin
   WriteLn('Nombres pairs de 1 à 20 :');
@@ -306,8 +306,8 @@ Nombres pairs de 1 à 20 :
 ### Exemple avec REPEAT
 
 ```pascal
-program ContinueAvecRepeat;
-var
+program ContinueAvecRepeat;  
+var  
   nombre: Integer;
   compteur: Integer;
 begin
@@ -338,8 +338,8 @@ end.
 ### Filtrage de données avec CONTINUE
 
 ```pascal
-program FiltrageNombres;
-var
+program FiltrageNombres;  
+var  
   i, nombre: Integer;
   somme, compteur: Integer;
 begin
@@ -385,8 +385,8 @@ end.
 ### Exemple comparatif
 
 ```pascal
-program ComparaisonBreakContinue;
-var
+program ComparaisonBreakContinue;  
+var  
   i: Integer;
 begin
   WriteLn('=== Avec BREAK ===');
@@ -439,8 +439,8 @@ Avec des boucles imbriquées, `break` et `continue` n'affectent que la boucle **
 ### BREAK dans boucles imbriquées
 
 ```pascal
-program BreakImbrique;
-var
+program BreakImbrique;  
+var  
   i, j: Integer;
 begin
   WriteLn('Boucles imbriquées avec break :');
@@ -463,8 +463,8 @@ end.
 
 **Résultat :**
 ```
-Boucles imbriquées avec break :
-Ligne 1 :
+Boucles imbriquées avec break :  
+Ligne 1 :  
 1 2 3
 Ligne 2 :
 1 2 3
@@ -477,8 +477,8 @@ Le `break` sort de la boucle `j`, mais la boucle `i` continue normalement.
 ### CONTINUE dans boucles imbriquées
 
 ```pascal
-program ContinueImbrique;
-var
+program ContinueImbrique;  
+var  
   i, j: Integer;
 begin
   WriteLn('Boucles imbriquées avec continue :');
@@ -501,8 +501,8 @@ end.
 
 **Résultat :**
 ```
-Boucles imbriquées avec continue :
-Ligne 1 :
+Boucles imbriquées avec continue :  
+Ligne 1 :  
 1 2 4 5
 Ligne 2 :
 1 2 4 5
@@ -515,8 +515,8 @@ Ligne 3 :
 Pour sortir de plusieurs boucles imbriquées, utilisez un drapeau (flag) :
 
 ```pascal
-program SortieDoubleBreak;
-var
+program SortieDoubleBreak;  
+var  
   i, j: Integer;
   // En Pascal, Break ne sort que de la boucle la plus proche.
   // Un drapeau (flag) booléen permet de propager la sortie aux boucles externes.
@@ -550,8 +550,8 @@ end.
 ### Validation de mot de passe avec tentatives
 
 ```pascal
-program ValidationMotDePasse;
-const
+program ValidationMotDePasse;  
+const  
   MAX_TENTATIVES = 3;
   MOT_DE_PASSE = 'secret123';
 var
@@ -591,8 +591,8 @@ end.
 ### Traitement de commandes avec filtrage
 
 ```pascal
-program TraitementCommandes;
-type
+program TraitementCommandes;  
+type  
   TCommande = record
     numero: Integer;
     montant: Real;
@@ -639,8 +639,8 @@ end.
 ### Recherche avec conditions multiples
 
 ```pascal
-program RechercheMulticriteres;
-const
+program RechercheMulticriteres;  
+const  
   TAILLE = 10;
 var
   nombres: array[1..TAILLE] of Integer;
@@ -687,8 +687,8 @@ end.
 ### Menu interactif avancé
 
 ```pascal
-program MenuInteractifAvance;
-var
+program MenuInteractifAvance;  
+var  
   choixPrincipal, sousChoix: Integer;
   continuer: Boolean;
 begin
@@ -771,8 +771,8 @@ end.
 ### Analyse de texte avec filtrage
 
 ```pascal
-program AnalyseTexteFiltre;
-var
+program AnalyseTexteFiltre;  
+var  
   texte: String;
   i: Integer;
   caractere: Char;
@@ -815,8 +815,8 @@ end.
 ### Recherche avec optimisation
 
 ```pascal
-program RechercheOptimisee;
-const
+program RechercheOptimisee;  
+const  
   TAILLE = 100;
 var
   tableau: array[1..TAILLE] of Integer;
@@ -858,8 +858,8 @@ end.
 ### Traitement par lots
 
 ```pascal
-program TraitementParLots;
-const
+program TraitementParLots;  
+const  
   TAILLE_LOT = 5;
   MAX_ITEMS = 20;
 var
@@ -916,15 +916,15 @@ if age >= 18 then
 
 ```pascal
 // BREAK : sort de la boucle
-for i := 1 to 10 do
-begin
+for i := 1 to 10 do  
+begin  
   if i = 5 then
     break;  // Continue après la boucle
 end;
 
 // EXIT : sort de la procédure/fonction/programme entier
-procedure MaProcedure;
-begin
+procedure MaProcedure;  
+begin  
   for i := 1 to 10 do
   begin
     if i = 5 then
@@ -955,8 +955,8 @@ end.
 
 ```pascal
 // Attention avec les boucles imbriquées
-for i := 1 to 10 do
-begin
+for i := 1 to 10 do  
+begin  
   for j := 1 to 10 do
   begin
     if condition then
@@ -988,8 +988,8 @@ end.
 
 ```pascal
 // MOINS BON : utilisation de break pour sortir
-while True do
-begin
+while True do  
+begin  
   ReadLn(valeur);
   if valeur = 0 then
     break;
@@ -997,9 +997,9 @@ begin
 end;
 
 // MEILLEUR : condition explicite
-valeur := -1;
-while valeur <> 0 do
-begin
+valeur := -1;  
+while valeur <> 0 do  
+begin  
   ReadLn(valeur);
   if valeur <> 0 then
     // traitement
@@ -1031,8 +1031,8 @@ end;
 ### 3. Commenter l'usage de BREAK et CONTINUE
 
 ```pascal
-for i := 1 to 100 do
-begin
+for i := 1 to 100 do  
+begin  
   if condition_speciale then
     continue;  // Ignorer les cas spéciaux
 
@@ -1052,9 +1052,9 @@ Si vous utilisez trop de `break` et `continue`, votre code devient difficile à 
 ```pascal
 // WHILE : Continue incrémente automatiquement dans FOR,
 // mais pas dans WHILE !
-i := 0;
-while i < 10 do
-begin
+i := 0;  
+while i < 10 do  
+begin  
   i := i + 1;  // Important !
   if condition then
     continue;  // i a déjà été incrémenté

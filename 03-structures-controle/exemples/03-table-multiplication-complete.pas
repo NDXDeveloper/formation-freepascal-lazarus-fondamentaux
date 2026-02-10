@@ -4,8 +4,8 @@
   Fichier source : 03-boucles-compteur-for-do.md
   ============================================================================ }
 
-program TableMultiplicationComplete;
-var
+program TableMultiplicationComplete;  
+var  
   i, j, resultat: Integer;
 begin
   WriteLn('TABLE DE MULTIPLICATION (1 à 5)');

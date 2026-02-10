@@ -3,8 +3,8 @@
   Description : Acces securise a un tableau avec verification des indices
   Fichier source : 07-gestion-erreurs-simples.md
   ============================================================================ }
-program AccesTableauSecurise;
-const
+program AccesTableauSecurise;  
+const  
   TAILLE = 10;
 var
   tableau: array[1..TAILLE] of Integer;

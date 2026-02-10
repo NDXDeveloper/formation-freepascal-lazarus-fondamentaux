@@ -4,8 +4,8 @@
   Fichier source : 03-boucles-compteur-for-do.md
   ============================================================================ }
 
-program BoucleMultiple;
-var
+program BoucleMultiple;  
+var  
   i: Integer;
 begin
   for i := 1 to 3 do

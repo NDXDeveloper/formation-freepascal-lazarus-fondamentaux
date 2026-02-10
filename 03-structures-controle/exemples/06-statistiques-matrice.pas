@@ -3,8 +3,8 @@
   Description : Calculatrice de statistiques - moyennes par ligne, colonne et generale
   Fichier source : 06-imbrication-structures.md
   ============================================================================ }
-program StatistiquesMatrice;
-const
+program StatistiquesMatrice;  
+const  
   LIGNES = 3;
   COLS = 4;
 var

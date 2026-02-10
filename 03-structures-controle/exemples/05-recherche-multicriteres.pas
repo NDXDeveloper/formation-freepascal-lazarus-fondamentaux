@@ -3,8 +3,8 @@
   Description : Recherche du premier nombre pair et du premier multiple de 5
   Fichier source : 05-instructions-break-continue.md
   ============================================================================ }
-program RechercheMulticriteres;
-const
+program RechercheMulticriteres;  
+const  
   TAILLE = 10;
 var
   nombres: array[1..TAILLE] of Integer;

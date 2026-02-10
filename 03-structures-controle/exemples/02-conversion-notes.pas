@@ -4,8 +4,8 @@
   Fichier source : 02-instructions-choix-multiple-case-of.md
   ============================================================================ }
 
-program ConversionNotes;
-var
+program ConversionNotes;  
+var  
   noteLettre: Char;
 begin
   Write('Entrez votre note (A, B, C, D, F) : ');

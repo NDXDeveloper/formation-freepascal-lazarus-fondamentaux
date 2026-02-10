@@ -3,8 +3,8 @@
   Description : Utilisation de continue avec une boucle repeat-until
   Fichier source : 05-instructions-break-continue.md
   ============================================================================ }
-program ContinueAvecRepeat;
-var
+program ContinueAvecRepeat;  
+var  
   nombre: Integer;
   compteur: Integer;
 begin

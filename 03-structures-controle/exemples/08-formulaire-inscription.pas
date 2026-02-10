@@ -3,8 +3,8 @@
   Description : Formulaire d'inscription complet avec validation de chaque champ
   Fichier source : 08-validation-entrees-utilisateur.md
   ============================================================================ }
-program FormulaireInscription;
-uses
+program FormulaireInscription;  
+uses  
   SysUtils;
 var
   nom, prenom, email, telephone: String;

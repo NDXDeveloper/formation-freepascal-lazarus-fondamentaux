@@ -3,8 +3,8 @@
   Description : CASE dans boucle FOR - affichage des jours de la semaine
   Fichier source : 06-imbrication-structures.md
   ============================================================================ }
-program JoursSemaine;
-var
+program JoursSemaine;  
+var  
   jour: Integer;
 begin
   WriteLn('Les jours de la semaine :');

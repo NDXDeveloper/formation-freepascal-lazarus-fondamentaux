@@ -3,8 +3,8 @@
   Description : Continue dans des boucles imbriquees (saute dans la boucle interne)
   Fichier source : 05-instructions-break-continue.md
   ============================================================================ }
-program ContinueImbrique;
-var
+program ContinueImbrique;  
+var  
   i, j: Integer;
 begin
   WriteLn('Boucles imbriquées avec continue :');

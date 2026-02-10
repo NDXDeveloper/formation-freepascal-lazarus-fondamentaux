@@ -3,8 +3,8 @@
   Description : CASE avec IF imbriques - gestion de notes avec mentions
   Fichier source : 06-imbrication-structures.md
   ============================================================================ }
-program GestionNotes;
-var
+program GestionNotes;  
+var  
   note: Integer;
   mention: String;
 begin

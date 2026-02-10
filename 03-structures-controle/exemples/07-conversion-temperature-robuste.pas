@@ -3,8 +3,8 @@
   Description : Conversion de temperature avec verification du zero absolu
   Fichier source : 07-gestion-erreurs-simples.md
   ============================================================================ }
-program ConversionTemperatureRobuste;
-const
+program ConversionTemperatureRobuste;  
+const  
   ZERO_ABSOLU = -273.15;
 var
   temperature, resultat: Real;

@@ -4,8 +4,8 @@
   Fichier source : 02-instructions-choix-multiple-case-of.md
   ============================================================================ }
 
-program MenuImbriques;
-var
+program MenuImbriques;  
+var  
   categorie, choix: Integer;
 begin
   WriteLn('Categories :');

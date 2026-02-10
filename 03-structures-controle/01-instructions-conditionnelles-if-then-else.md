@@ -24,8 +24,8 @@ Cette structure est la plus simple. Elle signifie : "Si la condition est vraie, 
 ### Exemple concret
 
 ```pascal
-program ExempleIfSimple;
-var
+program ExempleIfSimple;  
+var  
   age: Integer;
 begin
   Write('Entrez votre âge : ');
@@ -43,8 +43,8 @@ Dans cet exemple, le message "Vous êtes majeur." ne s'affiche que si l'âge est
 Si vous voulez exécuter plusieurs instructions quand la condition est vraie, vous devez les regrouper entre `begin` et `end` :
 
 ```pascal
-if age >= 18 then
-begin
+if age >= 18 then  
+begin  
   WriteLn('Vous êtes majeur.');
   WriteLn('Vous pouvez voter.');
   WriteLn('Vous pouvez passer le permis de conduire.');
@@ -69,8 +69,8 @@ Cette structure permet de dire : "Si la condition est vraie, fais ceci, sinon fa
 ### Exemple
 
 ```pascal
-program ExempleIfElse;
-var
+program ExempleIfElse;  
+var  
   age: Integer;
 begin
   Write('Entrez votre âge : ');
@@ -101,13 +101,13 @@ else
 ### Avec plusieurs instructions
 
 ```pascal
-if age >= 18 then
-begin
+if age >= 18 then  
+begin  
   WriteLn('Vous êtes majeur.');
   WriteLn('Vous avez tous les droits civiques.');
-end
-else
-begin
+end  
+else  
+begin  
   WriteLn('Vous êtes mineur.');
   WriteLn('Vous êtes sous la responsabilité de vos parents.');
 end;
@@ -120,8 +120,8 @@ Vous pouvez placer une instruction `if` à l'intérieur d'une autre instruction 
 ### Exemple
 
 ```pascal
-program ExempleImbrique;
-var
+program ExempleImbrique;  
+var  
   age: Integer;
   permis: Boolean;
   reponse: String;
@@ -149,8 +149,8 @@ end.
 Pour tester plusieurs conditions successives, on utilise la structure `else if` :
 
 ```pascal
-program ExempleElseIf;
-var
+program ExempleElseIf;  
+var  
   note: Integer;
 begin
   Write('Entrez votre note (0-20) : ');
@@ -218,8 +218,8 @@ if not (age >= 18) then
 ### Exemple complet avec plusieurs opérateurs
 
 ```pascal
-program ExempleOperateurs;
-var
+program ExempleOperateurs;  
+var  
   age: Integer;
   etudiant: Boolean;
   revenus: Real;
@@ -253,18 +253,18 @@ Indentez toujours votre code pour le rendre lisible :
 
 ```pascal
 // BON
-if condition then
-begin
+if condition then  
+begin  
   instruction1;
   instruction2;
 end;
 
 // MAUVAIS
-if condition then
-begin
-instruction1;
-instruction2;
-end;
+if condition then  
+begin  
+instruction1;  
+instruction2;  
+end;  
 ```
 
 ### 2. Clarté des conditions
@@ -351,8 +351,8 @@ if age >= 18 then
   WriteLn('Accès autorisé');  // Cette ligne s'exécute toujours !
 
 // CORRECT
-if age >= 18 then
-begin
+if age >= 18 then  
+begin  
   WriteLn('Majeur');
   WriteLn('Accès autorisé');
 end;
@@ -361,8 +361,8 @@ end;
 ## Exemple récapitulatif
 
 ```pascal
-program GestionAcces;
-var
+program GestionAcces;  
+var  
   age: Integer;
   membre: Boolean;
   solde: Real;

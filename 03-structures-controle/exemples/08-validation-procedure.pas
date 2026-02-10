@@ -5,8 +5,8 @@
   ============================================================================ }
 program ValidationProcedure;
 
-procedure LireEntierDansIntervalle(message: String; min, max: Integer; var resultat: Integer);
-begin
+procedure LireEntierDansIntervalle(message: String; min, max: Integer; var resultat: Integer);  
+begin  
   repeat
     Write(message, ' (', min, '-', max, ') : ');
     ReadLn(resultat);

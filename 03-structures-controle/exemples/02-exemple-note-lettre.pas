@@ -4,8 +4,8 @@
   Fichier source : 02-instructions-choix-multiple-case-of.md
   ============================================================================ }
 
-program ExempleNoteLettre;
-var
+program ExempleNoteLettre;  
+var  
   note: Integer;
 begin
   Write('Entrez votre note (0-20) : ');

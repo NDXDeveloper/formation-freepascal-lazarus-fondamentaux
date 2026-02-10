@@ -3,8 +3,8 @@
   Description : Configuration de profil utilisateur - pseudo, avatar et notifications
   Fichier source : 08-validation-entrees-utilisateur.md
   ============================================================================ }
-program ConfigurationProfil;
-var
+program ConfigurationProfil;  
+var  
   pseudo: String;
   avatar: Integer;
   notifications: Char;

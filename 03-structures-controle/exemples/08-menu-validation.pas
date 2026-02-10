@@ -3,8 +3,8 @@
   Description : Menu avec validation - choix numerique entre 1 et 4
   Fichier source : 08-validation-entrees-utilisateur.md
   ============================================================================ }
-program MenuValidation;
-var
+program MenuValidation;  
+var  
   choix: Integer;
 begin
   WriteLn('═══ MENU PRINCIPAL ═══');

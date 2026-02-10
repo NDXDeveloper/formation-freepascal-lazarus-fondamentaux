@@ -5,8 +5,8 @@
   ============================================================================ }
 program ValidationAvecCode;
 
-function ValiderMotDePasse(mdp: String): Integer;
-var
+function ValiderMotDePasse(mdp: String): Integer;  
+var  
   i: Integer;
   contientChiffre: Boolean;
 begin

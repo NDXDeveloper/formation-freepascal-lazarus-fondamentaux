@@ -3,8 +3,8 @@
   Description : Recherche optimisee dans un tableau trie avec arret anticipe
   Fichier source : 05-instructions-break-continue.md
   ============================================================================ }
-program RechercheOptimisee;
-const
+program RechercheOptimisee;  
+const  
   TAILLE = 100;
 var
   tableau: array[1..TAILLE] of Integer;

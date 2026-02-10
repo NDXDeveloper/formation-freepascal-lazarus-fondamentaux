@@ -3,8 +3,8 @@
   Description : Recherche dans un tableau avec valeur sentinelle
   Fichier source : 07-gestion-erreurs-simples.md
   ============================================================================ }
-program RechercheAvecSentinelle;
-const
+program RechercheAvecSentinelle;  
+const  
   TAILLE = 10;
   NON_TROUVE = -1;  // Valeur sentinelle
 var

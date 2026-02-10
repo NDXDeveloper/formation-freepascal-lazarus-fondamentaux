@@ -3,8 +3,8 @@
   Description : Utilisation de break avec une boucle repeat-until
   Fichier source : 05-instructions-break-continue.md
   ============================================================================ }
-program BreakAvecRepeat;
-var
+program BreakAvecRepeat;  
+var  
   choix: Integer;
 begin
   WriteLn('=== MENU ===');

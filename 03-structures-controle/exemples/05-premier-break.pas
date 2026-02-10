@@ -3,8 +3,8 @@
   Description : Premier exemple de break avec une boucle for
   Fichier source : 05-instructions-break-continue.md
   ============================================================================ }
-program PremierBreak;
-var
+program PremierBreak;  
+var  
   i: Integer;
 begin
   WriteLn('Comptage de 1 à 10, mais arrêt à 5 :');

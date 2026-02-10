@@ -3,8 +3,8 @@
   Description : IF-ELSE IF imbrique - determination de mention selon la note
   Fichier source : 06-imbrication-structures.md
   ============================================================================ }
-program NotesImbriquees;
-var
+program NotesImbriquees;  
+var  
   note: Integer;
   mention: String;
 begin

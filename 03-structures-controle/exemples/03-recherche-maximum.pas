@@ -4,8 +4,8 @@
   Fichier source : 03-boucles-compteur-for-do.md
   ============================================================================ }
 
-program RechercheMaximum;
-var
+program RechercheMaximum;  
+var  
   i, nombre, maximum: Integer;
 begin
   WriteLn('Entrez 5 nombres :');

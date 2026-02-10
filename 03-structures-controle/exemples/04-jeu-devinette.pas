@@ -4,8 +4,8 @@
   Fichier source : 04-boucles-conditionnelles-while-repeat.md
   ============================================================================ }
 
-program JeuDevinette;
-var
+program JeuDevinette;  
+var  
   nombreSecret, proposition, tentatives: Integer;
 begin
   Randomize;   { Initialise le generateur aleatoire (a appeler une seule fois) }

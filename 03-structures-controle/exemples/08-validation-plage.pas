@@ -3,8 +3,8 @@
   Description : Validation de plage - verifier qu'une valeur est dans un intervalle
   Fichier source : 08-validation-entrees-utilisateur.md
   ============================================================================ }
-program ValidationPlage;
-var
+program ValidationPlage;  
+var  
   note: Integer;
 begin
   WriteLn('Entrez une note (0-20) :');

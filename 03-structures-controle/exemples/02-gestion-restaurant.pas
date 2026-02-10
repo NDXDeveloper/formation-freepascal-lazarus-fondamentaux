@@ -4,8 +4,8 @@
   Fichier source : 02-instructions-choix-multiple-case-of.md
   ============================================================================ }
 
-program GestionRestaurant;
-var
+program GestionRestaurant;  
+var  
   categorie, plat: Integer;
   prix: Real;
 begin

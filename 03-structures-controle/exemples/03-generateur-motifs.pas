@@ -4,8 +4,8 @@
   Fichier source : 03-boucles-compteur-for-do.md
   ============================================================================ }
 
-program GenerateurMotifs;
-var
+program GenerateurMotifs;  
+var  
   ligne, espace, etoile: Integer;
   hauteur: Integer;
 begin

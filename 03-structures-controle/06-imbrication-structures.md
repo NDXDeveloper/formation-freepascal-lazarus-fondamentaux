@@ -51,8 +51,8 @@ Placer une instruction `if` à l'intérieur d'une autre instruction `if`.
 ### Syntaxe de base
 
 ```pascal
-if condition1 then
-begin
+if condition1 then  
+begin  
   // Instructions
 
   if condition2 then
@@ -65,8 +65,8 @@ end;
 ### Premier exemple simple
 
 ```pascal
-program IfImbriques;
-var
+program IfImbriques;  
+var  
   age: Integer;
   permis: Boolean;
   reponse: String;
@@ -94,8 +94,8 @@ end.
 ### Structure IF-ELSE IF imbriquée
 
 ```pascal
-program NotesImbriquees;
-var
+program NotesImbriquees;  
+var  
   note: Integer;
   mention: String;
 begin
@@ -130,8 +130,8 @@ end.
 ### IF à plusieurs niveaux
 
 ```pascal
-program AccesSecurise;
-var
+program AccesSecurise;  
+var  
   age: Integer;
   membre: Boolean;
   cotisationAJour: Boolean;
@@ -190,8 +190,8 @@ Placer une boucle `for` à l'intérieur d'une autre boucle `for`.
 ### Syntaxe de base
 
 ```pascal
-for i := debut1 to fin1 do
-begin
+for i := debut1 to fin1 do  
+begin  
   // Instructions de la boucle externe
 
   for j := debut2 to fin2 do
@@ -207,8 +207,8 @@ end;
 ### Table de multiplication
 
 ```pascal
-program TableMultiplication2D;
-var
+program TableMultiplication2D;  
+var  
   ligne, colonne: Integer;
 begin
   WriteLn('TABLE DE MULTIPLICATION (1 à 10)');
@@ -237,8 +237,8 @@ end.
 ### Dessin de motifs
 
 ```pascal
-program MotifEtoiles;
-var
+program MotifEtoiles;  
+var  
   ligne, espace, etoile: Integer;
   hauteur: Integer;
 begin
@@ -264,8 +264,8 @@ end.
 ### Boucles imbriquées à 3 niveaux
 
 ```pascal
-program Cube3D;
-var
+program Cube3D;  
+var  
   x, y, z: Integer;
 begin
   WriteLn('Génération d''un cube 3D (coordonnées) :');
@@ -294,8 +294,8 @@ end.
 ### WHILE dans WHILE
 
 ```pascal
-program WhileImbrique;
-var
+program WhileImbrique;  
+var  
   i, j: Integer;
 begin
   i := 1;
@@ -320,8 +320,8 @@ end.
 ### REPEAT dans WHILE
 
 ```pascal
-program MenuAvecValidation;
-var
+program MenuAvecValidation;  
+var  
   continuer: Boolean;
   choix: Integer;
   valeur: Integer;
@@ -371,8 +371,8 @@ end.
 ### IF dans boucle FOR
 
 ```pascal
-program NombresPairs;
-var
+program NombresPairs;  
+var  
   i: Integer;
 begin
   WriteLn('Nombres de 1 à 20 :');
@@ -394,8 +394,8 @@ end.
 ### CASE dans boucle FOR
 
 ```pascal
-program JoursSemaine;
-var
+program JoursSemaine;  
+var  
   jour: Integer;
 begin
   WriteLn('Les jours de la semaine :');
@@ -421,8 +421,8 @@ end.
 ### Boucle FOR dans IF
 
 ```pascal
-program AffichageConditionnel;
-var
+program AffichageConditionnel;  
+var  
   i, n: Integer;
   afficher: Boolean;
   reponse: String;
@@ -453,8 +453,8 @@ end.
 ### CASE avec IF imbriqués
 
 ```pascal
-program GestionNotes;
-var
+program GestionNotes;  
+var  
   note: Integer;
   mention: String;
 begin
@@ -518,8 +518,8 @@ end.
 ### BREAK dans boucles imbriquées
 
 ```pascal
-program RechercheMatrice;
-const
+program RechercheMatrice;  
+const  
   LIGNES = 5;
   COLONNES = 5;
 var
@@ -571,8 +571,8 @@ end.
 ### CONTINUE avec imbrication
 
 ```pascal
-program FiltrageDonnees;
-var
+program FiltrageDonnees;  
+var  
   i, j, valeur: Integer;
 begin
   WriteLn('Tableau avec filtrage :');
@@ -603,8 +603,8 @@ end.
 ### Calculatrice de statistiques
 
 ```pascal
-program StatistiquesMatrice;
-const
+program StatistiquesMatrice;  
+const  
   LIGNES = 3;
   COLS = 4;
 var
@@ -675,8 +675,8 @@ end.
 ### Jeu du morpion (structure)
 
 ```pascal
-program MorpionStructure;
-type
+program MorpionStructure;  
+type  
   TGrille = array[1..3, 1..3] of Char;
 var
   grille: TGrille;
@@ -771,8 +771,8 @@ end.
 ### Générateur d'emploi du temps
 
 ```pascal
-program EmploiDuTemps;
-const
+program EmploiDuTemps;  
+const  
   JOURS = 5;  // Lundi à Vendredi
   HEURES = 8;  // 8h à 15h
 type
@@ -832,8 +832,8 @@ end.
 ### Tri à bulles avec affichage
 
 ```pascal
-program TriBulles;
-const
+program TriBulles;  
+const  
   TAILLE = 8;
 var
   tableau: array[1..TAILLE] of Integer;
@@ -911,8 +911,8 @@ Plus vous imbriquez de structures, plus votre code devient difficile à lire et 
 
 ```pascal
 // ❌ Trop complexe !
-if condition1 then
-begin
+if condition1 then  
+begin  
   for i := 1 to n do
   begin
     if condition2 then
@@ -936,13 +936,13 @@ end;
 
 ```pascal
 // ✓ Meilleur : décomposition en procédures
-procedure TraiterElement(valeur: Integer);
-begin
+procedure TraiterElement(valeur: Integer);  
+begin  
   // Logique extraite
 end;
 
-procedure TraiterLigne(ligne: Integer);
-var
+procedure TraiterLigne(ligne: Integer);  
+var  
   j: Integer;
 begin
   for j := 1 to m do
@@ -974,8 +974,8 @@ for i := 1 to 10 do
     Write(' pair');  // Toujours exécuté !
 
 // ✓ CORRECT
-for i := 1 to 10 do
-begin
+for i := 1 to 10 do  
+begin  
   if i mod 2 = 0 then
   begin
     Write(i);
@@ -988,19 +988,19 @@ end;
 
 ```pascal
 // ❌ Difficile à lire
-for i:=1 to 10 do
-begin
-if i>5 then
-begin
-WriteLn(i);
-for j:=1 to i do
-Write(j);
-end;
-end;
+for i:=1 to 10 do  
+begin  
+if i>5 then  
+begin  
+WriteLn(i);  
+for j:=1 to i do  
+Write(j);  
+end;  
+end;  
 
 // ✓ Correct et lisible
-for i := 1 to 10 do
-begin
+for i := 1 to 10 do  
+begin  
   if i > 5 then
   begin
     WriteLn(i);
@@ -1041,8 +1041,8 @@ if (age >= 18) and permis then
 
 ```pascal
 // ⚠️ Break sort seulement de la boucle J
-for i := 1 to 10 do
-begin
+for i := 1 to 10 do  
+begin  
   for j := 1 to 10 do
   begin
     if condition then
@@ -1058,8 +1058,8 @@ end;
 
 ```pascal
 // Indentation de 2 espaces par niveau
-if condition then
-begin
+if condition then  
+begin  
   for i := 1 to n do
   begin
     if autre_condition then
@@ -1073,8 +1073,8 @@ end;
 ### 2. Commentaires pour les structures complexes
 
 ```pascal
-for ligne := 1 to hauteur do
-begin
+for ligne := 1 to hauteur do  
+begin  
   // Affichage des espaces de gauche
   for espace := 1 to (hauteur - ligne) do
     Write(' ');
@@ -1120,8 +1120,8 @@ for i := 1 to 10 do
   WriteLn(i);
 
 // 2. Ajoutez la structure interne
-for i := 1 to 10 do
-begin
+for i := 1 to 10 do  
+begin  
   for j := 1 to 5 do
     Write(j, ' ');
   WriteLn;

@@ -4,8 +4,8 @@
   Fichier source : 04-boucles-conditionnelles-while-repeat.md
   ============================================================================ }
 
-program GestionCompteClient;
-var
+program GestionCompteClient;  
+var  
   solde, montant: Real;
   choix: Integer;
   continuer: Boolean;

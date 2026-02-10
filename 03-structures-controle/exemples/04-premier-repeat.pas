@@ -4,8 +4,8 @@
   Fichier source : 04-boucles-conditionnelles-while-repeat.md
   ============================================================================ }
 
-program PremierRepeat;
-var
+program PremierRepeat;  
+var  
   compteur: Integer;
 begin
   compteur := 1;

@@ -4,8 +4,8 @@
   Fichier source : 04-boucles-conditionnelles-while-repeat.md
   ============================================================================ }
 
-program ValidationAgeWhile;
-var
+program ValidationAgeWhile;  
+var  
   age: Integer;
 begin
   age := -1;

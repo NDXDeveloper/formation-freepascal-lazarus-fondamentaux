@@ -4,8 +4,8 @@
   Fichier source : 04-boucles-conditionnelles-while-repeat.md
   ============================================================================ }
 
-program CalculMoyenneSentinelle;
-var
+program CalculMoyenneSentinelle;  
+var  
   nombre: Real;
   somme: Real;
   compteur: Integer;

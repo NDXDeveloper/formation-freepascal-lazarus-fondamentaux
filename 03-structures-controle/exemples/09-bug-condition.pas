@@ -3,8 +3,8 @@
   Description : Bug - condition inversee (majeur/mineur intervertis)
   Fichier source : 09-debogage-pas-a-pas.md
   ============================================================================ }
-program BugCondition;
-var
+program BugCondition;  
+var  
   age: Integer;
 begin
   Write('Âge : ');

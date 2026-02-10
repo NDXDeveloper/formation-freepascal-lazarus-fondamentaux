@@ -3,8 +3,8 @@
   Description : IF imbriques - verification age et permis de conduire
   Fichier source : 06-imbrication-structures.md
   ============================================================================ }
-program IfImbriques;
-var
+program IfImbriques;  
+var  
   age: Integer;
   permis: Boolean;
   reponse: String;

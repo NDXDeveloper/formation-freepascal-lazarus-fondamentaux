@@ -4,8 +4,8 @@
   Fichier source : 02-instructions-choix-multiple-case-of.md
   ============================================================================ }
 
-program ExempleAvecElse;
-var
+program ExempleAvecElse;  
+var  
   jour: Integer;
 begin
   Write('Entrez un numero de jour (1-7) : ');

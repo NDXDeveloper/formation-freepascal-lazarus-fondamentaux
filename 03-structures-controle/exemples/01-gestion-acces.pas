@@ -3,8 +3,8 @@
   Description : Exercice pratique - système de gestion d'accès avec conditions imbriquées
   Fichier source : 01-instructions-conditionnelles-if-then-else.md
   ============================================================================ }
-program GestionAcces;
-var
+program GestionAcces;  
+var  
   age: Integer;
   membre: Boolean;
   solde: Real;

@@ -3,8 +3,8 @@
   Description : Filtrage de donnees avec continue pour ignorer les negatifs
   Fichier source : 05-instructions-break-continue.md
   ============================================================================ }
-program FiltrageNombres;
-var
+program FiltrageNombres;  
+var  
   i, nombre: Integer;
   somme, compteur: Integer;
 begin

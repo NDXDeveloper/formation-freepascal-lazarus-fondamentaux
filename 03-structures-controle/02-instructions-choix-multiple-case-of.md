@@ -72,8 +72,8 @@ end;
 ### Premier exemple complet
 
 ```pascal
-program ExempleNoteLettre;
-var
+program ExempleNoteLettre;  
+var  
   note: Integer;
 begin
   Write('Entrez votre note (0-20) : ');
@@ -181,8 +181,8 @@ end;
 ### Exemple pratique
 
 ```pascal
-program ExempleIntervalle;
-var
+program ExempleIntervalle;  
+var  
   age: Integer;
 begin
   Write('Entrez votre age : ');
@@ -232,8 +232,8 @@ end;
 ### Exemple
 
 ```pascal
-program ExempleAvecElse;
-var
+program ExempleAvecElse;  
+var  
   jour: Integer;
 begin
   Write('Entrez un numero de jour (1-7) : ');
@@ -275,8 +275,8 @@ end;
 ### Exemple
 
 ```pascal
-program MenuApplication;
-var
+program MenuApplication;  
+var  
   choix: Integer;
 begin
   WriteLn('=== MENU PRINCIPAL ===');
@@ -315,8 +315,8 @@ end.
 Vous pouvez placer un `case-of` à l'intérieur d'un autre `case-of` :
 
 ```pascal
-program MenuImbriques;
-var
+program MenuImbriques;  
+var  
   categorie, choix: Integer;
 begin
   WriteLn('Categories :');
@@ -366,8 +366,8 @@ end.
 ### Calculatrice simple
 
 ```pascal
-program CalculatriceCaseOf;
-var
+program CalculatriceCaseOf;  
+var  
   nombre1, nombre2: Real;
   operation: Char;
   resultat: Real;
@@ -415,8 +415,8 @@ end.
 ### Conversion de notes
 
 ```pascal
-program ConversionNotes;
-var
+program ConversionNotes;  
+var  
   noteLettre: Char;
 begin
   Write('Entrez votre note (A, B, C, D, F) : ');
@@ -437,8 +437,8 @@ end.
 ### Système de tarification
 
 ```pascal
-program SystemeTarification;
-var
+program SystemeTarification;  
+var  
   age: Integer;
   tarif: Real;
 begin
@@ -626,8 +626,8 @@ end;
 case choix of
 1: WriteLn('Option 1');
 2: begin
-WriteLn('Option 2');
-end;
+WriteLn('Option 2');  
+end;  
 3: WriteLn('Option 3');
 end;
 ```
@@ -660,8 +660,8 @@ end;
 ## Exemple récapitulatif complet
 
 ```pascal
-program GestionRestaurant;
-var
+program GestionRestaurant;  
+var  
   categorie, plat: Integer;
   prix: Real;
 begin

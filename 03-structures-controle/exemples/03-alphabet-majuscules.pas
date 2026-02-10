@@ -4,8 +4,8 @@
   Fichier source : 03-boucles-compteur-for-do.md
   ============================================================================ }
 
-program AlphabetMajuscules;
-var
+program AlphabetMajuscules;  
+var  
   lettre: Char;
 begin
   WriteLn('L''alphabet en majuscules :');

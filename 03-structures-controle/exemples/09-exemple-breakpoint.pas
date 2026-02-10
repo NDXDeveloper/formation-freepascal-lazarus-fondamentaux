@@ -3,8 +3,8 @@
   Description : Placement d'un point d'arret (breakpoint) sur une ligne
   Fichier source : 09-debogage-pas-a-pas.md
   ============================================================================ }
-program ExempleBreakpoint;
-var
+program ExempleBreakpoint;  
+var  
   a, b, resultat: Integer;
 begin
   a := 10;              // <- Placer un breakpoint ici

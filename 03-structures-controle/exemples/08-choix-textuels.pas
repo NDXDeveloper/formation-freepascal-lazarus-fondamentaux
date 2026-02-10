@@ -3,8 +3,8 @@
   Description : Choix parmi des options textuelles avec conversion en minuscules
   Fichier source : 08-validation-entrees-utilisateur.md
   ============================================================================ }
-program ChoixTextuels;
-uses
+program ChoixTextuels;  
+uses  
   SysUtils;
 var
   couleur: String;

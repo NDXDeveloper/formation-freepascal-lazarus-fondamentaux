@@ -3,8 +3,8 @@
   Description : Validation de l'age avec boucle while jusqu'a saisie valide
   Fichier source : 07-gestion-erreurs-simples.md
   ============================================================================ }
-program ValidationAvecBoucle;
-var
+program ValidationAvecBoucle;  
+var  
   age: Integer;
   valide: Boolean;
 begin

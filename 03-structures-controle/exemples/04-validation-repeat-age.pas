@@ -4,8 +4,8 @@
   Fichier source : 04-boucles-conditionnelles-while-repeat.md
   ============================================================================ }
 
-program ValidationRepeatAge;
-var
+program ValidationRepeatAge;  
+var  
   age: Integer;
 begin
   { Pas besoin d'initialiser age a une valeur invalide :

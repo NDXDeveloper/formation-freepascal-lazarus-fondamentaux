@@ -15,8 +15,8 @@ La validation des entrées utilisateur est l'une des compétences les plus impor
 ### Sans validation
 
 ```pascal
-program SansValidation;
-var
+program SansValidation;  
+var  
   age: Integer;
 begin
   Write('Âge : ');
@@ -33,8 +33,8 @@ end.
 ### Avec validation
 
 ```pascal
-program AvecValidation;
-var
+program AvecValidation;  
+var  
   age: Integer;
 begin
   repeat
@@ -60,8 +60,8 @@ end.
 Vérifier qu'une valeur est dans un intervalle acceptable.
 
 ```pascal
-program ValidationPlage;
-var
+program ValidationPlage;  
+var  
   note: Integer;
 begin
   WriteLn('Entrez une note (0-20) :');
@@ -83,8 +83,8 @@ end.
 Vérifier que la donnée est du bon type (nombre, lettre, etc.).
 
 ```pascal
-program ValidationType;
-var
+program ValidationType;  
+var  
   choix: Char;
 begin
   WriteLn('Choisissez une option (A/B/C) :');
@@ -107,8 +107,8 @@ end.
 Vérifier que les données respectent un format spécifique.
 
 ```pascal
-program ValidationFormat;
-var
+program ValidationFormat;  
+var  
   codePostal: String;
   i: Integer;
   valide: Boolean;
@@ -150,8 +150,8 @@ end.
 Vérifier que les données sont logiques entre elles.
 
 ```pascal
-program ValidationCoherence;
-var
+program ValidationCoherence;  
+var  
   dateNaissance, dateEmbauche: Integer;
 begin
   WriteLn('Saisie d''informations employé :');
@@ -201,8 +201,8 @@ until EstValide(valeur);
 **Exemple :**
 
 ```pascal
-program ValidationRepeatPourcentage;
-var
+program ValidationRepeatPourcentage;  
+var  
   pourcentage: Integer;
 begin
   repeat
@@ -222,8 +222,8 @@ end.
 Plus flexible, permet de compter les tentatives.
 
 ```pascal
-program ValidationWhile;
-var
+program ValidationWhile;  
+var  
   valeur: Integer;
   valide: Boolean;
   tentatives: Integer;
@@ -260,8 +260,8 @@ Rendre le code réutilisable et plus clair.
 ```pascal
 program ValidationFonction;
 
-function EstNombreEntier(s: String): Boolean;
-var
+function EstNombreEntier(s: String): Boolean;  
+var  
   i: Integer;
 begin
   EstNombreEntier := True;
@@ -304,8 +304,8 @@ Encapsuler toute la logique de validation.
 ```pascal
 program ValidationProcedure;
 
-procedure LireEntierDansIntervalle(message: String; min, max: Integer; var resultat: Integer);
-begin
+procedure LireEntierDansIntervalle(message: String; min, max: Integer; var resultat: Integer);  
+begin  
   repeat
     Write(message, ' (', min, '-', max, ') : ');
     ReadLn(resultat);
@@ -331,8 +331,8 @@ end.
 ### Nombres entiers dans un intervalle
 
 ```pascal
-program ValidationEntierIntervalle;
-var
+program ValidationEntierIntervalle;  
+var  
   jour: Integer;
 begin
   repeat
@@ -353,8 +353,8 @@ end.
 ### Nombres décimaux positifs
 
 ```pascal
-program ValidationDecimalPositif;
-var
+program ValidationDecimalPositif;  
+var  
   prix: Real;
 begin
   repeat
@@ -374,8 +374,8 @@ end.
 ### Nombres avec précision
 
 ```pascal
-program ValidationPrecision;
-var
+program ValidationPrecision;  
+var  
   note: Real;
   valide: Boolean;
 begin
@@ -407,8 +407,8 @@ end.
 ### Validation d'un seul caractère
 
 ```pascal
-program ValidationCaractere;
-var
+program ValidationCaractere;  
+var  
   reponse: Char;
 begin
   repeat
@@ -430,8 +430,8 @@ end.
 ### Validation de chaîne non vide
 
 ```pascal
-program ValidationNonVide;
-uses
+program ValidationNonVide;  
+uses  
   SysUtils;
 var
   nom: String;
@@ -454,8 +454,8 @@ end.
 ### Validation de longueur
 
 ```pascal
-program ValidationLongueur;
-var
+program ValidationLongueur;  
+var  
   motDePasse: String;
 const
   LONGUEUR_MIN = 8;
@@ -479,8 +479,8 @@ end.
 ### Validation de format de chaîne
 
 ```pascal
-program ValidationEmail;
-var
+program ValidationEmail;  
+var  
   email: String;
   posArobase, posPoint: Integer;
   valide: Boolean;
@@ -530,8 +530,8 @@ end.
 ### Menu avec validation
 
 ```pascal
-program MenuValidation;
-var
+program MenuValidation;  
+var  
   choix: Integer;
 begin
   WriteLn('═══ MENU PRINCIPAL ═══');
@@ -556,8 +556,8 @@ end.
 ### Choix parmi des options textuelles
 
 ```pascal
-program ChoixTextuels;
-uses
+program ChoixTextuels;  
+uses  
   SysUtils;
 var
   couleur: String;
@@ -585,8 +585,8 @@ end.
 ### Plusieurs critères simultanés
 
 ```pascal
-program ValidationCombinee;
-var
+program ValidationCombinee;  
+var  
   code: String;
   i: Integer;
   nbChiffres, nbLettres: Integer;
@@ -650,8 +650,8 @@ end.
 ### Validation de date
 
 ```pascal
-program ValidationDate;
-var
+program ValidationDate;  
+var  
   jour, mois, annee: Integer;
   joursMax: Integer;
   valide: Boolean;
@@ -714,8 +714,8 @@ end.
 ### Formulaire d'inscription
 
 ```pascal
-program FormulaireInscription;
-uses
+program FormulaireInscription;  
+uses  
   SysUtils;
 var
   nom, prenom, email, telephone: String;
@@ -815,8 +815,8 @@ end.
 ### Système de paiement
 
 ```pascal
-program SystemePaiement;
-var
+program SystemePaiement;  
+var  
   montant, montantPaye, rendu: Real;
   valide: Boolean;
 begin
@@ -877,8 +877,8 @@ end.
 ### Configuration de profil utilisateur
 
 ```pascal
-program ConfigurationProfil;
-var
+program ConfigurationProfil;  
+var  
   pseudo: String;
   avatar: Integer;
   notifications: Char;
@@ -995,8 +995,8 @@ until (valeur >= 1) and (valeur <= 100);
 ### Compteur de tentatives
 
 ```pascal
-program CompteurTentatives;
-var
+program CompteurTentatives;  
+var  
   code: Integer;
   tentative: Integer;
 const
@@ -1048,8 +1048,8 @@ if nom = '' then
   WriteLn('Vide');
 
 // ✓ Suppression des espaces
-nom := Trim(nom);
-if nom = '' then
+nom := Trim(nom);  
+if nom = '' then  
   WriteLn('Vide');
 ```
 
@@ -1057,8 +1057,8 @@ if nom = '' then
 
 ```pascal
 // ❌ Utilise avant de valider
-resultat := a / b;
-if b = 0 then
+resultat := a / b;  
+if b = 0 then  
   WriteLn('Erreur');
 
 // ✓ Valide avant d'utiliser
@@ -1117,8 +1117,8 @@ end;
 ### 2. Extraire en fonctions
 
 ```pascal
-function EstEmailValide(email: String): Boolean;
-begin
+function EstEmailValide(email: String): Boolean;  
+begin  
   // Logique de validation
   EstEmailValide := (Pos('@', email) > 0);
 end;
@@ -1127,24 +1127,24 @@ end;
 ### 3. Messages clairs et constructifs
 
 ```pascal
-WriteLn('❌ Mot de passe invalide');
-WriteLn('   • Minimum 8 caractères');
-WriteLn('   • Au moins 1 chiffre');
-WriteLn('   • Au moins 1 lettre');
+WriteLn('❌ Mot de passe invalide');  
+WriteLn('   • Minimum 8 caractères');  
+WriteLn('   • Au moins 1 chiffre');  
+WriteLn('   • Au moins 1 lettre');  
 ```
 
 ### 4. Donner des exemples
 
 ```pascal
-WriteLn('Format : JJ/MM/AAAA');
-WriteLn('Exemple : 25/12/2024');
+WriteLn('Format : JJ/MM/AAAA');  
+WriteLn('Exemple : 25/12/2024');  
 ```
 
 ### 5. Confirmer les saisies valides
 
 ```pascal
-WriteLn('✓ Email accepté : ', email);
-WriteLn('✓ Téléphone accepté : ', telephone);
+WriteLn('✓ Email accepté : ', email);  
+WriteLn('✓ Téléphone accepté : ', telephone);  
 ```
 
 ## Résumé

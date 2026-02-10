@@ -3,8 +3,8 @@
   Description : Validation d'un entier dans un intervalle avec message detaille
   Fichier source : 08-validation-entrees-utilisateur.md
   ============================================================================ }
-program ValidationEntierIntervalle;
-var
+program ValidationEntierIntervalle;  
+var  
   jour: Integer;
 begin
   repeat

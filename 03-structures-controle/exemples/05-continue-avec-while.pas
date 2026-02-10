@@ -3,8 +3,8 @@
   Description : Utilisation de continue avec une boucle while
   Fichier source : 05-instructions-break-continue.md
   ============================================================================ }
-program ContinueAvecWhile;
-var
+program ContinueAvecWhile;  
+var  
   i: Integer;
 begin
   WriteLn('Nombres pairs de 1 à 20 :');

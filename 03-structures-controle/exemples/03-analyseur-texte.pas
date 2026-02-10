@@ -4,8 +4,8 @@
   Fichier source : 03-boucles-compteur-for-do.md
   ============================================================================ }
 
-program AnalyseurTexte;
-var
+program AnalyseurTexte;  
+var  
   texte: String;
   i: Integer;
   caractere: Char;

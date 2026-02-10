@@ -4,8 +4,8 @@
   Fichier source : 03-boucles-compteur-for-do.md
   ============================================================================ }
 
-program CalendrierMois;
-var
+program CalendrierMois;  
+var  
   jour, premierJour, joursDansMois: Integer;
   espace: Integer;
 begin

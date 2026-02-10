@@ -3,8 +3,8 @@
   Description : Validation d'un nombre decimal positif avec plafond
   Fichier source : 08-validation-entrees-utilisateur.md
   ============================================================================ }
-program ValidationDecimalPositif;
-var
+program ValidationDecimalPositif;  
+var  
   prix: Real;
 begin
   repeat

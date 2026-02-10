@@ -24,8 +24,8 @@ Une structure de contrôle est une **instruction spéciale** qui modifie l'ordre
 ### Programme sans structure de contrôle
 
 ```pascal
-program ProgrammeSimple;
-begin
+program ProgrammeSimple;  
+begin  
   WriteLn('Ligne 1');
   WriteLn('Ligne 2');
   WriteLn('Ligne 3');
@@ -44,8 +44,8 @@ Toujours le même déroulement, aucune adaptation.
 ### Programme avec structures de contrôle
 
 ```pascal
-program ProgrammeIntelligent;
-var
+program ProgrammeIntelligent;  
+var  
   age: Integer;
   i: Integer;
 begin
@@ -133,8 +133,8 @@ Elles permettent de **modifier** le comportement des boucles.
 
 **Exemple :**
 ```pascal
-for i := 1 to 100 do
-begin
+for i := 1 to 100 do  
+begin  
   if i = 50 then
     break;  // Arrête la boucle à 50
   WriteLn(i);
@@ -158,8 +158,8 @@ else
 Au lieu d'écrire 100 fois la même instruction, vous écrivez une boucle :
 ```pascal
 // Sans boucle : 100 lignes
-WriteLn('Bonjour 1');
-WriteLn('Bonjour 2');
+WriteLn('Bonjour 1');  
+WriteLn('Bonjour 2');  
 // ... 98 lignes de plus
 
 // Avec boucle : 2 lignes
@@ -181,8 +181,8 @@ until nombre > 0;
 
 Elles permettent de parcourir et analyser des collections de données :
 ```pascal
-for i := 1 to tailleTableau do
-begin
+for i := 1 to tailleTableau do  
+begin  
   if tableau[i] > maximum then
     maximum := tableau[i];
 end;
@@ -297,18 +297,18 @@ Pour garder votre code lisible, **indentez** toujours les instructions à l'int�
 
 ```pascal
 // BON
-if condition then
-begin
+if condition then  
+begin  
   instruction1;
   instruction2;
 end;
 
 // MAUVAIS
-if condition then
-begin
-instruction1;
-instruction2;
-end;
+if condition then  
+begin  
+instruction1;  
+instruction2;  
+end;  
 ```
 
 ### BEGIN-END
@@ -316,8 +316,8 @@ end;
 Pour regrouper plusieurs instructions dans une structure, utilisez `begin` et `end` :
 
 ```pascal
-if age >= 18 then
-begin                    // Début du bloc
+if age >= 18 then  
+begin                    // Début du bloc  
   WriteLn('Majeur');
   WriteLn('Autorisé');
 end;                     // Fin du bloc
@@ -361,22 +361,22 @@ until (note >= 0) and (note <= 20);
 
 **Jeu de devinette :**
 ```pascal
-nombreSecret := Random(100) + 1;
-repeat
+nombreSecret := Random(100) + 1;  
+repeat  
   Write('Devinez : ');
   ReadLn(essai);
   if essai < nombreSecret then
     WriteLn('Plus grand !')
   else if essai > nombreSecret then
     WriteLn('Plus petit !');
-until essai = nombreSecret;
-WriteLn('Gagné !');
+until essai = nombreSecret;  
+WriteLn('Gagné !');  
 ```
 
 **Affichage de motifs :**
 ```pascal
-for ligne := 1 to 5 do
-begin
+for ligne := 1 to 5 do  
+begin  
   for colonne := 1 to ligne do
     Write('*');
   WriteLn;

@@ -3,8 +3,8 @@
   Description : Menu interactif avance avec sous-menus et navigation
   Fichier source : 05-instructions-break-continue.md
   ============================================================================ }
-program MenuInteractifAvance;
-var
+program MenuInteractifAvance;  
+var  
   choixPrincipal, sousChoix: Integer;
   continuer: Boolean;
 begin

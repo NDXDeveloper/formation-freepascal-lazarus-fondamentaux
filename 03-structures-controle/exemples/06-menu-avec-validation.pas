@@ -3,8 +3,8 @@
   Description : REPEAT dans WHILE - menu interactif avec validation de saisie
   Fichier source : 06-imbrication-structures.md
   ============================================================================ }
-program MenuAvecValidation;
-var
+program MenuAvecValidation;  
+var  
   continuer: Boolean;
   choix: Integer;
   valeur: Integer;

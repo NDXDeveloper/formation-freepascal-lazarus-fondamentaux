@@ -3,8 +3,8 @@
   Description : Validation de mot de passe avec nombre limite de tentatives
   Fichier source : 05-instructions-break-continue.md
   ============================================================================ }
-program ValidationMotDePasse;
-const
+program ValidationMotDePasse;  
+const  
   MAX_TENTATIVES = 3;
   MOT_DE_PASSE = 'secret123';
 var

@@ -4,8 +4,8 @@
   Fichier source : 03-boucles-compteur-for-do.md
   ============================================================================ }
 
-program FactorielleFor;
-var
+program FactorielleFor;  
+var  
   n, i: Integer;
   resultat: Int64;
 begin

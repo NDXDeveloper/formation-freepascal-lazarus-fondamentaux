@@ -3,8 +3,8 @@
   Description : Validation multiple d'une note avec plusieurs criteres
   Fichier source : 07-gestion-erreurs-simples.md
   ============================================================================ }
-program ValidationMultiple;
-var
+program ValidationMultiple;  
+var  
   note: Real;
   erreur: String;
 begin

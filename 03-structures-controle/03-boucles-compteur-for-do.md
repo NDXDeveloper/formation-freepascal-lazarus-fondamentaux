@@ -30,8 +30,8 @@ Cette boucle dit : "Pour la variable allant de valeur_debut jusqu'à valeur_fin 
 ### Premier exemple simple
 
 ```pascal
-program PremierFor;
-var
+program PremierFor;  
+var  
   i: Integer;
 begin
   for i := 1 to 5 do
@@ -41,11 +41,11 @@ end.
 
 **Résultat :**
 ```
-Bonjour !
-Bonjour !
-Bonjour !
-Bonjour !
-Bonjour !
+Bonjour !  
+Bonjour !  
+Bonjour !  
+Bonjour !  
+Bonjour !  
 ```
 
 Le programme affiche "Bonjour !" 5 fois.
@@ -55,8 +55,8 @@ Le programme affiche "Bonjour !" 5 fois.
 La variable de boucle (ici `i`) contient la valeur actuelle du compteur :
 
 ```pascal
-program AffichageNumeros;
-var
+program AffichageNumeros;  
+var  
   i: Integer;
 begin
   WriteLn('Comptage de 1 à 10 :');
@@ -83,8 +83,8 @@ Comptage de 1 à 10 :
 ### Exemple avec calculs
 
 ```pascal
-program TableMultiplication;
-var
+program TableMultiplication;  
+var  
   i: Integer;
 begin
   WriteLn('Table de multiplication par 7 :');
@@ -112,8 +112,8 @@ Pour exécuter plusieurs instructions à chaque itération, utilisez `begin-end`
 ### Syntaxe avec BEGIN-END
 
 ```pascal
-for variable := debut to fin do
-begin
+for variable := debut to fin do  
+begin  
   instruction1;
   instruction2;
   instruction3;
@@ -123,8 +123,8 @@ end;
 ### Exemple
 
 ```pascal
-program BoucleMultiple;
-var
+program BoucleMultiple;  
+var  
   i: Integer;
 begin
   for i := 1 to 3 do
@@ -140,16 +140,16 @@ end.
 **Résultat :**
 ```
 --- Itération numéro 1 ---
-Le double de 1 est 2
-Le triple de 1 est 3
+Le double de 1 est 2  
+Le triple de 1 est 3  
 
 --- Itération numéro 2 ---
-Le double de 2 est 4
-Le triple de 2 est 6
+Le double de 2 est 4  
+Le triple de 2 est 6  
 
 --- Itération numéro 3 ---
-Le double de 3 est 6
-Le triple de 3 est 9
+Le double de 3 est 6  
+Le triple de 3 est 9  
 ```
 
 ## La boucle FOR-DOWNTO-DO (décroissante)
@@ -166,8 +166,8 @@ for variable := valeur_debut downto valeur_fin do
 ### Exemple de compte à rebours
 
 ```pascal
-program CompteARebours;
-var
+program CompteARebours;  
+var  
   i: Integer;
 begin
   WriteLn('Compte à rebours pour le lancement :');
@@ -196,8 +196,8 @@ DÉCOLLAGE !
 ### Comparaison TO vs DOWNTO
 
 ```pascal
-program ComparaisonToDownto;
-var
+program ComparaisonToDownto;  
+var  
   i: Integer;
 begin
   WriteLn('Avec TO (croissant) :');
@@ -246,8 +246,8 @@ end.
 ### Exemple avec Char
 
 ```pascal
-program AlphabetMajuscules;
-var
+program AlphabetMajuscules;  
+var  
   lettre: Char;
 begin
   WriteLn('L''alphabet en majuscules :');
@@ -260,15 +260,15 @@ end.
 
 **Résultat :**
 ```
-L'alphabet en majuscules :
-A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+L'alphabet en majuscules :  
+A B C D E F G H I J K L M N O P Q R S T U V W X Y Z  
 ```
 
 ### Exemple avec Char en minuscules
 
 ```pascal
-program Voyelles;
-var
+program Voyelles;  
+var  
   lettre: Char;
 begin
   WriteLn('Voyelles en minuscules :');
@@ -284,8 +284,8 @@ Vous pouvez placer une boucle `for` à l'intérieur d'une autre boucle `for`. C'
 ### Syntaxe
 
 ```pascal
-for i := debut1 to fin1 do
-begin
+for i := debut1 to fin1 do  
+begin  
   for j := debut2 to fin2 do
   begin
     // Instructions utilisant i et j
@@ -296,8 +296,8 @@ end;
 ### Exemple : Tableau de multiplication
 
 ```pascal
-program TableMultiplicationComplete;
-var
+program TableMultiplicationComplete;  
+var  
   i, j, resultat: Integer;
 begin
   WriteLn('TABLE DE MULTIPLICATION (1 à 5)');
@@ -328,8 +328,8 @@ TABLE DE MULTIPLICATION (1 à 5)
 ### Exemple : Dessin de motifs
 
 ```pascal
-program DessinTriangle;
-var
+program DessinTriangle;  
+var  
   ligne, colonne: Integer;
 begin
   WriteLn('Triangle d''étoiles :');
@@ -361,8 +361,8 @@ Les boucles sont très utiles pour effectuer des calculs répétitifs.
 ### Exemple : Somme de nombres
 
 ```pascal
-program SommeNombres;
-var
+program SommeNombres;  
+var  
   i, somme: Integer;
 begin
   somme := 0;
@@ -375,8 +375,8 @@ end.
 ### Exemple : Calcul de factorielle
 
 ```pascal
-program FactorielleFor;
-var
+program FactorielleFor;  
+var  
   n, i: Integer;
   resultat: Int64;
 begin
@@ -392,8 +392,8 @@ end.
 ### Exemple : Recherche du maximum
 
 ```pascal
-program RechercheMaximum;
-var
+program RechercheMaximum;  
+var  
   i, nombre, maximum: Integer;
 begin
   WriteLn('Entrez 5 nombres :');
@@ -418,8 +418,8 @@ Les limites de la boucle peuvent être des variables ou des expressions :
 ### Exemple avec variables
 
 ```pascal
-program BoucleVariable;
-var
+program BoucleVariable;  
+var  
   i, debut, fin: Integer;
 begin
   Write('Nombre de départ : ');
@@ -436,8 +436,8 @@ end.
 ### Exemple avec expressions
 
 ```pascal
-program BoucleExpression;
-var
+program BoucleExpression;  
+var  
   i, n: Integer;
 begin
   Write('Entrez un nombre : ');
@@ -459,8 +459,8 @@ for i := 1 to 10 do
   WriteLn(i);
 
 // ERREUR ! Ne modifiez jamais i dans la boucle
-for i := 1 to 10 do
-begin
+for i := 1 to 10 do  
+begin  
   WriteLn(i);
   i := i + 1;  // NE FAITES JAMAIS CECI !
 end;
@@ -485,8 +485,8 @@ for i := 10 downto 1 do
 **Attention :** Après une boucle `for`, la valeur de la variable de boucle est **indéfinie** selon la spécification du langage. Ne vous fiez pas à sa valeur :
 
 ```pascal
-program ValeurApresFor;
-var
+program ValeurApresFor;  
+var  
   i: Integer;
 begin
   for i := 1 to 5 do
@@ -501,8 +501,8 @@ end.
 ### Générateur de motifs
 
 ```pascal
-program GenerateurMotifs;
-var
+program GenerateurMotifs;  
+var  
   ligne, espace, etoile: Integer;
   hauteur: Integer;
 begin
@@ -541,8 +541,8 @@ end.
 ### Validation d'entrée avec tentatives limitées
 
 ```pascal
-program ValidationAvecTentatives;
-var
+program ValidationAvecTentatives;  
+var  
   i, nombre: Integer;
   correct: Boolean;
 const
@@ -578,8 +578,8 @@ end.
 ### Statistiques sur une série de nombres
 
 ```pascal
-program StatistiquesNombres;
-var
+program StatistiquesNombres;  
+var  
   i, n, nombre: Integer;
   somme, minimum, maximum: Integer;
   moyenne: Real;
@@ -616,8 +616,8 @@ end.
 ### Affichage de calendrier
 
 ```pascal
-program CalendrierMois;
-var
+program CalendrierMois;  
+var  
   jour, premierJour, joursDansMois: Integer;
   espace: Integer;
 begin
@@ -647,8 +647,8 @@ end.
 
 ```pascal
 // ERREUR ! Ne modifiez jamais la variable de boucle
-for i := 1 to 10 do
-begin
+for i := 1 to 10 do  
+begin  
   WriteLn(i);
   i := i + 5;  // ❌ INTERDIT !
 end;
@@ -679,8 +679,8 @@ for i := 1 to 5 do
   WriteLn('Suite');  // ❌ Ceci ne s'exécute qu'une fois, après la boucle !
 
 // CORRECT
-for i := 1 to 5 do
-begin
+for i := 1 to 5 do  
+begin  
   WriteLn('Ligne ', i);
   WriteLn('Suite');
 end;
@@ -730,9 +730,9 @@ end;
 for i := 1 to n do
 
 // MEILLEUR
-for numeroEleve := 1 to nombreEleves do
-for ligne := 1 to hauteur do
-for tentative := 1 to maxTentatives do
+for numeroEleve := 1 to nombreEleves do  
+for ligne := 1 to hauteur do  
+for tentative := 1 to maxTentatives do  
 ```
 
 Cependant, `i`, `j`, `k` sont acceptables pour de courtes boucles simples.
@@ -756,8 +756,8 @@ Si votre boucle fait plus de 20 lignes, envisagez d'extraire le code dans une pr
 ### 4. Commentaires pour les boucles imbriquées
 
 ```pascal
-for ligne := 1 to hauteur do
-begin
+for ligne := 1 to hauteur do  
+begin  
   // Affichage des espaces
   for espace := 1 to (hauteur - ligne) do
     Write(' ');
@@ -773,8 +773,8 @@ end;
 ## Exemple récapitulatif complet
 
 ```pascal
-program AnalyseurTexte;
-var
+program AnalyseurTexte;  
+var  
   texte: String;
   i: Integer;
   caractere: Char;

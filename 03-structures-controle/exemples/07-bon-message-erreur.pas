@@ -3,8 +3,8 @@
   Description : Structure d'un bon message d'erreur avec contexte et conseil
   Fichier source : 07-gestion-erreurs-simples.md
   ============================================================================ }
-program BonMessageErreur;
-var
+program BonMessageErreur;  
+var  
   temperature: Real;
 begin
   Write('Température en Celsius : ');

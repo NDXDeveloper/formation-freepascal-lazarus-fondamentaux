@@ -4,8 +4,8 @@
   Fichier source : 04-boucles-conditionnelles-while-repeat.md
   ============================================================================ }
 
-program WhileImbriques;
-var
+program WhileImbriques;  
+var  
   i, j: Integer;
 begin
   i := 1;

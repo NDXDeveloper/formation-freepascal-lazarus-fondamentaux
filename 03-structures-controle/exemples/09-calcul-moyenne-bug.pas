@@ -4,8 +4,8 @@
                 moyenne de 3 notes
   Fichier source : 09-debogage-pas-a-pas.md
   ============================================================================ }
-program CalculMoyenneBug;
-var
+program CalculMoyenneBug;  
+var  
   note1, note2, note3: Integer;
   moyenne: Real;
 begin

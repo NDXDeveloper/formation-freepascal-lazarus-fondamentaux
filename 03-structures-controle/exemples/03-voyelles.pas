@@ -4,8 +4,8 @@
   Fichier source : 03-boucles-compteur-for-do.md
   ============================================================================ }
 
-program Voyelles;
-var
+program Voyelles;  
+var  
   lettre: Char;
 begin
   WriteLn('Voyelles en minuscules :');

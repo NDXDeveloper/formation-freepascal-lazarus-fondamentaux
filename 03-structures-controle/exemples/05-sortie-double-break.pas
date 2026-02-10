@@ -3,8 +3,8 @@
   Description : Sortie de plusieurs boucles imbriquees avec un drapeau
   Fichier source : 05-instructions-break-continue.md
   ============================================================================ }
-program SortieDoubleBreak;
-var
+program SortieDoubleBreak;  
+var  
   i, j: Integer;
   // En Pascal, Break ne sort que de la boucle la plus proche.
   // Un drapeau (flag) booléen permet de propager la sortie aux boucles externes.

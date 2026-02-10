@@ -18,8 +18,8 @@ La gestion des erreurs consiste à **anticiper les problèmes** et à y réagir 
 ### Programme sans gestion d'erreurs
 
 ```pascal
-program SansGestionErreurs;
-var
+program SansGestionErreurs;  
+var  
   a, b: Integer;
   resultat: Real;
 begin
@@ -41,8 +41,8 @@ end.
 ### Programme avec gestion d'erreurs
 
 ```pascal
-program AvecGestionErreurs;
-var
+program AvecGestionErreurs;  
+var  
   a, b: Integer;
   resultat: Real;
 begin
@@ -90,8 +90,8 @@ Fichier introuvable, mémoire insuffisante, etc.
 ### Validation simple
 
 ```pascal
-program ValidationAgeSimple;
-var
+program ValidationAgeSimple;  
+var  
   age: Integer;
 begin
   Write('Entrez votre âge : ');
@@ -110,8 +110,8 @@ end.
 ### Validation avec boucle
 
 ```pascal
-program ValidationAvecBoucle;
-var
+program ValidationAvecBoucle;  
+var  
   age: Integer;
   valide: Boolean;
 begin
@@ -140,8 +140,8 @@ end.
 ### Validation avec REPEAT-UNTIL
 
 ```pascal
-program ValidationRepeatNombre;
-var
+program ValidationRepeatNombre;  
+var  
   nombre: Integer;
 begin
   WriteLn('Entrez un nombre positif :');
@@ -161,8 +161,8 @@ end.
 ### Validation multiple
 
 ```pascal
-program ValidationMultiple;
-var
+program ValidationMultiple;  
+var  
   note: Real;
   erreur: String;
 begin
@@ -195,8 +195,8 @@ end.
 ### Division sécurisée
 
 ```pascal
-program DivisionSecurisee;
-var
+program DivisionSecurisee;  
+var  
   a, b: Real;
   resultat: Real;
 begin
@@ -223,8 +223,8 @@ end.
 ### Racine carrée sécurisée
 
 ```pascal
-program RacineCarreeSecurisee;
-var
+program RacineCarreeSecurisee;  
+var  
   nombre, racine: Real;
 begin
   Write('Entrez un nombre : ');
@@ -246,8 +246,8 @@ end.
 ### Accès tableau sécurisé
 
 ```pascal
-program AccesTableauSecurise;
-const
+program AccesTableauSecurise;  
+const  
   TAILLE = 10;
 var
   tableau: array[1..TAILLE] of Integer;
@@ -293,19 +293,19 @@ WriteLn('Vous avez fait une erreur');
 WriteLn('ERREUR : Le nombre doit être entre 1 et 100');
 
 // ✓ Constructif avec solution
-WriteLn('ERREUR : Division par zéro impossible.');
-WriteLn('Conseil : Utilisez un diviseur différent de zéro.');
+WriteLn('ERREUR : Division par zéro impossible.');  
+WriteLn('Conseil : Utilisez un diviseur différent de zéro.');  
 
 // ✓ Contexte et indication
-WriteLn('ERREUR : Âge invalide (', age, ')');
-WriteLn('L''âge doit être un nombre positif entre 0 et 150.');
+WriteLn('ERREUR : Âge invalide (', age, ')');  
+WriteLn('L''âge doit être un nombre positif entre 0 et 150.');  
 ```
 
 ### Structure d'un bon message d'erreur
 
 ```pascal
-program BonMessageErreur;
-var
+program BonMessageErreur;  
+var  
   temperature: Real;
 begin
   Write('Température en Celsius : ');
@@ -335,8 +335,8 @@ end.
 ```pascal
 program ValidationAvecBooleen;
 
-function ValiderEmail(email: String): Boolean;
-begin
+function ValiderEmail(email: String): Boolean;  
+begin  
   // Validation simplifiée
   // Pos retourne la position (1-based) ou 0 si non trouvé
   ValiderEmail := (Pos('@', email) > 0) and (Pos('.', email) > 0);
@@ -363,8 +363,8 @@ end.
 ```pascal
 program ValidationAvecCode;
 
-function ValiderMotDePasse(mdp: String): Integer;
-var
+function ValiderMotDePasse(mdp: String): Integer;  
+var  
   i: Integer;
   contientChiffre: Boolean;
 begin
@@ -407,8 +407,8 @@ end.
 ### Valeurs sentinelles
 
 ```pascal
-program RechercheAvecSentinelle;
-const
+program RechercheAvecSentinelle;  
+const  
   TAILLE = 10;
   NON_TROUVE = -1;  // Valeur sentinelle
 var
@@ -477,13 +477,13 @@ until diviseur <> 0;
 
 ```pascal
 // Utiliser une valeur de secours
-if diviseur = 0 then
-begin
+if diviseur = 0 then  
+begin  
   WriteLn('ATTENTION : Division par zéro détectée');
   WriteLn('Utilisation de la valeur par défaut (1)');
   diviseur := 1;
-end;
-resultat := dividende / diviseur;
+end;  
+resultat := dividende / diviseur;  
 ```
 
 ## Exemples pratiques
@@ -491,8 +491,8 @@ resultat := dividende / diviseur;
 ### Calculatrice robuste
 
 ```pascal
-program CalculatriceRobuste;
-var
+program CalculatriceRobuste;  
+var  
   a, b, resultat: Real;
   operation: Char;
   erreur: Boolean;
@@ -547,8 +547,8 @@ end.
 ### Système de notation
 
 ```pascal
-program SystemeNotation;
-var
+program SystemeNotation;  
+var  
   note: Real;
   mention: String;
   valide: Boolean;
@@ -594,8 +594,8 @@ end.
 ### Gestion de stock
 
 ```pascal
-program GestionStock;
-const
+program GestionStock;  
+const  
   STOCK_INITIAL = 100;
   STOCK_MIN = 10;
 var
@@ -683,8 +683,8 @@ end.
 ### Conversion de température
 
 ```pascal
-program ConversionTemperatureRobuste;
-const
+program ConversionTemperatureRobuste;  
+const  
   ZERO_ABSOLU = -273.15;
 var
   temperature, resultat: Real;
@@ -764,8 +764,8 @@ end.
 ### Gestion de compte bancaire
 
 ```pascal
-program CompteBancaire;
-var
+program CompteBancaire;  
+var  
   solde, montant: Real;
   operation: Char;
   continuer: Boolean;
@@ -895,8 +895,8 @@ Avant de considérer votre programme comme terminé, vérifiez :
 
 ```pascal
 // ❌ Pas de validation
-ReadLn(age);
-resultat := 100 / age;  // Et si age = 0 ?
+ReadLn(age);  
+resultat := 100 / age;  // Et si age = 0 ?  
 
 // ✓ Avec validation
 repeat
@@ -913,8 +913,8 @@ until age > 0;
 WriteLn('Erreur');
 
 // ✓ Précis et utile
-WriteLn('ERREUR : La note doit être entre 0 et 20');
-WriteLn('Vous avez entré : ', note:0:1);
+WriteLn('ERREUR : La note doit être entre 0 et 20');  
+WriteLn('Vous avez entré : ', note:0:1);  
 ```
 
 ### 3. Oublier les cas limites
@@ -936,16 +936,16 @@ else
 
 ```pascal
 // ❌ Assume que le fichier existe
-Assign(f, 'data.txt');
-Reset(f);
+Assign(f, 'data.txt');  
+Reset(f);  
 
 // ✓ Vérifie l'existence (simplifié)
-if FileExists('data.txt') then
-begin
+if FileExists('data.txt') then  
+begin  
   Assign(f, 'data.txt');
   Reset(f);
-end
-else
+end  
+else  
   WriteLn('ERREUR : Fichier introuvable');
 ```
 
@@ -981,9 +981,9 @@ until (age >= 0) and (age <= 150);
 
 ```pascal
 // Dites ce qui ne va pas ET comment corriger
-WriteLn('❌ Note invalide : ', note:0:1);
-WriteLn('✓ La note doit être entre 0 et 20');
-WriteLn('⚙️  Conseil : Utilisez des décimales (ex: 15.5)');
+WriteLn('❌ Note invalide : ', note:0:1);  
+WriteLn('✓ La note doit être entre 0 et 20');  
+WriteLn('⚙️  Conseil : Utilisez des décimales (ex: 15.5)');  
 ```
 
 ### 3. Utiliser des constantes
@@ -1001,8 +1001,8 @@ end;
 ### 4. Fonction de validation
 
 ```pascal
-function EstAgeValide(age: Integer): Boolean;
-begin
+function EstAgeValide(age: Integer): Boolean;  
+begin  
   EstAgeValide := (age >= 0) and (age <= 150);
 end;
 
@@ -1017,8 +1017,8 @@ if not EstAgeValide(age) then
 // Cette procédure peut échouer si :
 // - diviseur = 0 (division par zéro)
 // - résultat trop grand (dépassement)
-procedure Diviser(a, b: Real);
-begin
+procedure Diviser(a, b: Real);  
+begin  
   if b = 0 then
     WriteLn('ERREUR : Division par zéro')
   else

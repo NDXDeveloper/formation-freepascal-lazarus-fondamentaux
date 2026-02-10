@@ -3,8 +3,8 @@
   Description : Boucles imbriquees a 3 niveaux - generation de coordonnees 3D
   Fichier source : 06-imbrication-structures.md
   ============================================================================ }
-program Cube3D;
-var
+program Cube3D;  
+var  
   x, y, z: Integer;
 begin
   WriteLn('Génération d''un cube 3D (coordonnées) :');

@@ -4,8 +4,8 @@
   Fichier source : 04-boucles-conditionnelles-while-repeat.md
   ============================================================================ }
 
-program MenuSimple;
-var
+program MenuSimple;  
+var  
   choix: Integer;
 begin
   choix := 0;

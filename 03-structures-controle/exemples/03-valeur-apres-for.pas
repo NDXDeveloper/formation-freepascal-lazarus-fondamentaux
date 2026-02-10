@@ -4,8 +4,8 @@
   Fichier source : 03-boucles-compteur-for-do.md
   ============================================================================ }
 
-program ValeurApresFor;
-var
+program ValeurApresFor;  
+var  
   i: Integer;
 begin
   for i := 1 to 5 do

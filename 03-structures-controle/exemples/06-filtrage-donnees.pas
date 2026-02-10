@@ -3,8 +3,8 @@
   Description : CONTINUE avec imbrication - filtrage des multiples de 5
   Fichier source : 06-imbrication-structures.md
   ============================================================================ }
-program FiltrageDonnees;
-var
+program FiltrageDonnees;  
+var  
   i, j, valeur: Integer;
 begin
   WriteLn('Tableau avec filtrage :');

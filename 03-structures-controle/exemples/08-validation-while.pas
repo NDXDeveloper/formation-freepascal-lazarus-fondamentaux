@@ -3,8 +3,8 @@
   Description : Validation avec while et drapeau - compteur de tentatives
   Fichier source : 08-validation-entrees-utilisateur.md
   ============================================================================ }
-program ValidationWhile;
-var
+program ValidationWhile;  
+var  
   valeur: Integer;
   valide: Boolean;
   tentatives: Integer;

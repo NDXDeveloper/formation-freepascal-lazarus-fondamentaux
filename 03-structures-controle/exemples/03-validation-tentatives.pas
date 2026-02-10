@@ -4,8 +4,8 @@
   Fichier source : 03-boucles-compteur-for-do.md
   ============================================================================ }
 
-program ValidationAvecTentatives;
-var
+program ValidationAvecTentatives;  
+var  
   i, nombre: Integer;
   correct: Boolean;
 const

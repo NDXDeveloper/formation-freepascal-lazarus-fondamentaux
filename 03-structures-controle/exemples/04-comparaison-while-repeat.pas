@@ -4,8 +4,8 @@
   Fichier source : 04-boucles-conditionnelles-while-repeat.md
   ============================================================================ }
 
-program ComparaisonWhileRepeat;
-var
+program ComparaisonWhileRepeat;  
+var  
   i: Integer;
 begin
   WriteLn('=== Avec WHILE ===');

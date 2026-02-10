@@ -5,13 +5,13 @@
   ============================================================================ }
 program DebogageFonctions;
 
-function Carre(n: Integer): Integer;
-begin
+function Carre(n: Integer): Integer;  
+begin  
   Carre := n * n;  // Point d'arrêt ici
 end;
 
-function SommeCarres(a, b: Integer): Integer;
-var
+function SommeCarres(a, b: Integer): Integer;  
+var  
   carreA, carreB: Integer;
 begin
   carreA := Carre(a);    // F7 pour entrer dans Carre

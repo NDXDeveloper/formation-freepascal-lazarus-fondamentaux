@@ -3,8 +3,8 @@
   Description : IF a plusieurs niveaux - controle d'acces securise en cascade
   Fichier source : 06-imbrication-structures.md
   ============================================================================ }
-program AccesSecurise;
-var
+program AccesSecurise;  
+var  
   age: Integer;
   membre: Boolean;
   cotisationAJour: Boolean;

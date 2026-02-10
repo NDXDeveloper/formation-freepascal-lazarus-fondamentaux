@@ -3,8 +3,8 @@
   Description : Gestion de stock avec ajout, retrait et alertes
   Fichier source : 07-gestion-erreurs-simples.md
   ============================================================================ }
-program GestionStock;
-const
+program GestionStock;  
+const  
   STOCK_INITIAL = 100;
   STOCK_MIN = 10;
 var

@@ -3,8 +3,8 @@
   Description : Exemple avec validation - programme robuste avec boucle repeat
   Fichier source : 08-validation-entrees-utilisateur.md
   ============================================================================ }
-program AvecValidation;
-var
+program AvecValidation;  
+var  
   age: Integer;
 begin
   repeat

@@ -3,8 +3,8 @@
   Description : Division securisee avec verification du diviseur
   Fichier source : 07-gestion-erreurs-simples.md
   ============================================================================ }
-program DivisionSecurisee;
-var
+program DivisionSecurisee;  
+var  
   a, b: Real;
   resultat: Real;
 begin

@@ -3,8 +3,8 @@
   Description : WHILE dans WHILE - affichage de groupes de nombres
   Fichier source : 06-imbrication-structures.md
   ============================================================================ }
-program WhileImbrique;
-var
+program WhileImbrique;  
+var  
   i, j: Integer;
 begin
   i := 1;

@@ -4,8 +4,8 @@
   Fichier source : 09-debogage-pas-a-pas.md
   NOTE : Boucle infinie intentionnelle - ne peut pas etre teste tel quel.
   ============================================================================ }
-program BugBoucleInfinie;
-var
+program BugBoucleInfinie;  
+var  
   i: Integer;
 begin
   i := 1;

@@ -4,8 +4,8 @@
   Fichier source : 03-boucles-compteur-for-do.md
   ============================================================================ }
 
-program BoucleExpression;
-var
+program BoucleExpression;  
+var  
   i, n: Integer;
 begin
   Write('Entrez un nombre : ');

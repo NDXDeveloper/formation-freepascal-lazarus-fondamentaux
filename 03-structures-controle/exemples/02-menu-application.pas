@@ -4,8 +4,8 @@
   Fichier source : 02-instructions-choix-multiple-case-of.md
   ============================================================================ }
 
-program MenuApplication;
-var
+program MenuApplication;  
+var  
   choix: Integer;
 begin
   WriteLn('=== MENU PRINCIPAL ===');

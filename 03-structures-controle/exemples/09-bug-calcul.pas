@@ -4,8 +4,8 @@
                 de /)
   Fichier source : 09-debogage-pas-a-pas.md
   ============================================================================ }
-program BugCalcul;
-var
+program BugCalcul;  
+var  
   a, b, resultat: Integer;
 begin
   a := 5;

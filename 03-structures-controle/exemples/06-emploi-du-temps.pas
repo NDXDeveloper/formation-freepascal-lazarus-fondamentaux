@@ -3,8 +3,8 @@
   Description : Generateur d'emploi du temps - affichage par jour et heure
   Fichier source : 06-imbrication-structures.md
   ============================================================================ }
-program EmploiDuTemps;
-const
+program EmploiDuTemps;  
+const  
   JOURS = 5;  // Lundi à Vendredi
   HEURES = 8;  // 8h à 15h
 type

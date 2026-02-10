@@ -3,8 +3,8 @@
   Description : Validation de type - verifier que la donnee est du bon type
   Fichier source : 08-validation-entrees-utilisateur.md
   ============================================================================ }
-program ValidationType;
-var
+program ValidationType;  
+var  
   choix: Char;
 begin
   WriteLn('Choisissez une option (A/B/C) :');

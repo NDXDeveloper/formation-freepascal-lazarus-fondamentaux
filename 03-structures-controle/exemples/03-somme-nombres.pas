@@ -4,8 +4,8 @@
   Fichier source : 03-boucles-compteur-for-do.md
   ============================================================================ }
 
-program SommeNombres;
-var
+program SommeNombres;  
+var  
   i, somme: Integer;
 begin
   somme := 0;
