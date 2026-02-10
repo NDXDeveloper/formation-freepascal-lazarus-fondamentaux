@@ -4,8 +4,8 @@
   Fichier source : 03-clauses-uses-dependances.md
   ============================================================================ }
 {$mode objfpc}{$H+}
-unit UniteMaths;
-interface
+unit UniteMaths;  
+interface  
   function Carre(x: Integer): Integer;
 implementation
   function Carre(x: Integer): Integer;

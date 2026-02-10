@@ -51,21 +51,21 @@ unit UniteCompteurInit;
 
 interface
 
-function ObtenirCompteur: Integer;
-procedure Incrementer;
+function ObtenirCompteur: Integer;  
+procedure Incrementer;  
 
 implementation
 
 var
   Compteur: Integer;
 
-function ObtenirCompteur: Integer;
-begin
+function ObtenirCompteur: Integer;  
+begin  
   Result := Compteur;
 end;
 
-procedure Incrementer;
-begin
+procedure Incrementer;  
+begin  
   Inc(Compteur);
 end;
 
@@ -104,11 +104,11 @@ end.
 
 **Sortie du programme :**
 ```
-UniteCompteur : Compteur initialisé à 0
-Début du programme principal
-Compteur actuel : 3
-Fin du programme principal
-UniteCompteur : Valeur finale du compteur = 3
+UniteCompteur : Compteur initialisé à 0  
+Début du programme principal  
+Compteur actuel : 3  
+Fin du programme principal  
+UniteCompteur : Valeur finale du compteur = 3  
 ```
 
 Remarquez l'ordre d'exécution !
@@ -254,8 +254,8 @@ procedure AjouterLog(message: String);
 
 implementation
 
-procedure AjouterLog(message: String);
-begin
+procedure AjouterLog(message: String);  
+begin  
   if Assigned(LogGlobal) then
     LogGlobal.Add(message);
 end;
@@ -293,8 +293,8 @@ function EstConnecte: Boolean;
 
 implementation
 
-function EstConnecte: Boolean;
-begin
+function EstConnecte: Boolean;  
+begin  
   Result := Assigned(Connexion) and Connexion.Connected;
 end;
 
@@ -515,16 +515,16 @@ interface
 var
   EstInitialise: Boolean;
 
-procedure InitialiserUnite;
-procedure NettoyerUnite;
+procedure InitialiserUnite;  
+procedure NettoyerUnite;  
 
 implementation
 
 var
   Ressource: TObject;
 
-procedure InitialiserUnite;
-begin
+procedure InitialiserUnite;  
+begin  
   if not EstInitialise then
   begin
     Ressource := TObject.Create;
@@ -532,8 +532,8 @@ begin
   end;
 end;
 
-procedure NettoyerUnite;
-begin
+procedure NettoyerUnite;  
+begin  
   if Assigned(Ressource) then
     Ressource.Free;
 end;

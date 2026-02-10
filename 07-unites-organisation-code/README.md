@@ -61,8 +61,8 @@ Programme de Gestion de Bibliothèque
 Quand vous construisez une petite cabane, vous pouvez tout faire dans un seul espace. C'est simple, direct, et ça fonctionne pour les petits projets.
 
 ```pascal
-program MaCabane;
-begin
+program MaCabane;  
+begin  
   // Tout le code ici
   // 50-100 lignes maximum
 end.
@@ -73,8 +73,8 @@ end.
 Quand vous construisez une maison, vous avez besoin de différentes pièces : cuisine, salon, chambres, salle de bain. Chaque pièce a sa fonction.
 
 ```pascal
-program MaMaison;
-uses
+program MaMaison;  
+uses  
   UniteCuisine,  // Fonctions pour cuisiner
   UniteSalon,    // Fonctions pour le salon
   UniteChambres; // Fonctions pour les chambres
@@ -183,20 +183,20 @@ Imaginez que vous avez créé une excellente fonction pour valider des adresses 
 
 ```pascal
 // Dans UniteValidation.pas
-function EstEmailValide(email: String): Boolean;
-begin
+function EstEmailValide(email: String): Boolean;  
+begin  
   // Code de validation
 end;
 
 // Dans Projet1.pas
-uses UniteValidation;
-begin
+uses UniteValidation;  
+begin  
   if EstEmailValide('user@example.com') then ...
 end;
 
 // Dans Projet2.pas
-uses UniteValidation;
-begin
+uses UniteValidation;  
+begin  
   if EstEmailValide('autre@domain.fr') then ...
 end;
 ```

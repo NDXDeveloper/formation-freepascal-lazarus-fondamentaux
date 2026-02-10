@@ -3,8 +3,8 @@
   Description : Unite B avec procedure Afficher (conflit de noms)
   Fichier source : 03-clauses-uses-dependances.md
   ============================================================================ }
-unit UniteB;
-interface
+unit UniteB;  
+interface  
   procedure Afficher;
 implementation
   procedure Afficher;

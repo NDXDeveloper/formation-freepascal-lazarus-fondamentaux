@@ -9,21 +9,21 @@ unit UniteCompteurInit;
 
 interface
 
-function ObtenirCompteur: Integer;
-procedure Incrementer;
+function ObtenirCompteur: Integer;  
+procedure Incrementer;  
 
 implementation
 
 var
   Compteur: Integer;
 
-function ObtenirCompteur: Integer;
-begin
+function ObtenirCompteur: Integer;  
+begin  
   Result := Compteur;
 end;
 
-procedure Incrementer;
-begin
+procedure Incrementer;  
+begin  
   Inc(Compteur);
 end;
 

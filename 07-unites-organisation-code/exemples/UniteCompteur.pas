@@ -8,27 +8,27 @@ unit UniteCompteur;
 
 interface
 
-procedure Incrementer;
-procedure Reinitialiser;
-function ObtenirValeur: Integer;
+procedure Incrementer;  
+procedure Reinitialiser;  
+function ObtenirValeur: Integer;  
 
 implementation
 
 var
   compteur: Integer = 0;  // Variable PRIVÉE - dans implementation
 
-procedure Incrementer;
-begin
+procedure Incrementer;  
+begin  
   compteur := compteur + 1;
 end;
 
-procedure Reinitialiser;
-begin
+procedure Reinitialiser;  
+begin  
   compteur := 0;
 end;
 
-function ObtenirValeur: Integer;
-begin
+function ObtenirValeur: Integer;  
+begin  
   Result := compteur;
 end;
 

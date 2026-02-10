@@ -95,16 +95,16 @@ implementation
 uses
   SysUtils, DateUtils;  // Utilisées seulement dans le code interne
 
-procedure TGestionnaireEleves.AjouterEleve(nom: String);
-var
+procedure TGestionnaireEleves.AjouterEleve(nom: String);  
+var  
   date: TDateTime;
 begin
   date := Now;  // Now vient de SysUtils
   // ...
 end;
 
-function TGestionnaireEleves.ObtenirListe: TStringList;
-begin
+function TGestionnaireEleves.ObtenirListe: TStringList;  
+begin  
   Result := TStringList.Create;
 end;
 
@@ -138,8 +138,8 @@ uses
 ### Exemple de conflit
 
 ```pascal
-unit UniteA;
-interface
+unit UniteA;  
+interface  
   procedure Afficher;
 implementation
   procedure Afficher;
@@ -150,8 +150,8 @@ end.
 ```
 
 ```pascal
-unit UniteB;
-interface
+unit UniteB;  
+interface  
   procedure Afficher;
 implementation
   procedure Afficher;
@@ -195,8 +195,8 @@ Le compilateur résout automatiquement toute la chaîne de dépendances et compi
 
 ```pascal
 // UniteMaths.pas
-unit UniteMaths;
-interface
+unit UniteMaths;  
+interface  
   function Carre(x: Integer): Integer;
 implementation
   function Carre(x: Integer): Integer;
@@ -208,19 +208,19 @@ end.
 
 ```pascal
 // UniteCalculs.pas
-unit UniteCalculs;
-interface
-uses
+unit UniteCalculs;  
+interface  
+uses  
   UniteMaths;  // Dépendance
 
 function SommesCarres(a, b: Integer): Integer;
 
-implementation
-function SommesCarres(a, b: Integer): Integer;
-begin
+implementation  
+function SommesCarres(a, b: Integer): Integer;  
+begin  
   Result := Carre(a) + Carre(b);  // Utilise Carre de UniteMaths
-end;
-end.
+end;  
+end.  
 ```
 
 ```pascal
@@ -248,13 +248,13 @@ Une **dépendance circulaire** se produit quand deux unités s'utilisent mutuell
 
 ```pascal
 // UniteA.pas
-unit UniteA;
-interface
-uses
+unit UniteA;  
+interface  
+uses  
   UniteB;  // A a besoin de B
 
-procedure ProcA;
-implementation
+procedure ProcA;  
+implementation  
   procedure ProcA;
   begin
     ProcB;
@@ -264,13 +264,13 @@ end.
 
 ```pascal
 // UniteB.pas
-unit UniteB;
-interface
-uses
+unit UniteB;  
+interface  
+uses  
   UniteA;  // B a besoin de A - ERREUR CIRCULAIRE !
 
-procedure ProcB;
-implementation
+procedure ProcB;  
+implementation  
   procedure ProcB;
   begin
     ProcA;
@@ -284,34 +284,34 @@ end.
 
 ```pascal
 // UniteA.pas
-unit UniteA;
-interface
-procedure ProcA;
-implementation
-uses
+unit UniteA;  
+interface  
+procedure ProcA;  
+implementation  
+uses  
   UniteB;  // Déplacé dans implementation
 
-procedure ProcA;
-begin
+procedure ProcA;  
+begin  
   ProcB;
-end;
-end.
+end;  
+end.  
 ```
 
 ```pascal
 // UniteB.pas
-unit UniteB;
-interface
-procedure ProcB;
-implementation
-uses
+unit UniteB;  
+interface  
+procedure ProcB;  
+implementation  
+uses  
   UniteA;  // Déplacé dans implementation
 
-procedure ProcB;
-begin
+procedure ProcB;  
+begin  
   ProcA;
-end;
-end.
+end;  
+end.  
 ```
 
 Maintenant ça compile ! Les deux unités peuvent s'utiliser mutuellement via leur section `implementation`.

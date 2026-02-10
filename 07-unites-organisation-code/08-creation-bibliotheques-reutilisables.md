@@ -46,8 +46,8 @@ unit UniteCommandes;
 
 interface
 
-procedure EnregistrerCommandeRestaurant(numeroTable: Integer; plats: String);
-function CalculerTotalRestaurant(numeroTable: Integer): Real;
+procedure EnregistrerCommandeRestaurant(numeroTable: Integer; plats: String);  
+function CalculerTotalRestaurant(numeroTable: Integer): Real;  
 
 implementation
 
@@ -74,9 +74,9 @@ type
     DateCreation: TDateTime;
   end;
 
-procedure AjouterCommande(var commande: TCommande);
-function CalculerTotal(const commande: TCommande): Real;
-function RechercherCommande(ID: Integer): TCommande;
+procedure AjouterCommande(var commande: TCommande);  
+function CalculerTotal(const commande: TCommande): Real;  
+function RechercherCommande(ID: Integer): TCommande;  
 
 implementation
 
@@ -107,16 +107,16 @@ Prenez votre code spécifique et rendez-le générique.
 
 **Avant (spécifique) :**
 ```pascal
-function ValiderEmailUtilisateur: Boolean;
-begin
+function ValiderEmailUtilisateur: Boolean;  
+begin  
   Result := Pos('@', EmailUtilisateur) > 0;
 end;
 ```
 
 **Après (générique) :**
 ```pascal
-function EstEmailValide(email: String): Boolean;
-begin
+function EstEmailValide(email: String): Boolean;  
+begin  
   Result := (Pos('@', email) > 0) and (Pos('.', email) > 0);
 end;
 ```
@@ -126,10 +126,10 @@ end;
 Regroupez les fonctions par thème dans des unités séparées.
 
 ```
-UniteValidation.pas    → Fonctions de validation
-UniteConversion.pas    → Fonctions de conversion
-UniteFormatage.pas     → Fonctions de formatage
-UniteFichiers.pas      → Gestion de fichiers
+UniteValidation.pas    → Fonctions de validation  
+UniteConversion.pas    → Fonctions de conversion  
+UniteFormatage.pas     → Fonctions de formatage  
+UniteFichiers.pas      → Gestion de fichiers  
 ```
 
 ### 4. Définir une interface claire
@@ -224,8 +224,8 @@ function EstNonVide(const texte: String): Boolean;
 
 implementation
 
-function EstEmailValide(const email: String): Boolean;
-var
+function EstEmailValide(const email: String): Boolean;  
+var  
   posArobase, posPoint: Integer;
 begin
   Result := False;
@@ -251,8 +251,8 @@ begin
   Result := True;
 end;
 
-function EstTelephoneValide(const telephone: String): Boolean;
-var
+function EstTelephoneValide(const telephone: String): Boolean;  
+var  
   numeros: String;
   i: Integer;
 begin
@@ -271,8 +271,8 @@ begin
     Result := True;
 end;
 
-function EstCodePostalValide(const codePostal: String): Boolean;
-var
+function EstCodePostalValide(const codePostal: String): Boolean;  
+var  
   i: Integer;
 begin
   Result := False;
@@ -291,13 +291,13 @@ begin
   Result := True;
 end;
 
-function EstDateDansIntervalle(date, dateMin, dateMax: TDateTime): Boolean;
-begin
+function EstDateDansIntervalle(date, dateMin, dateMax: TDateTime): Boolean;  
+begin  
   Result := (date >= dateMin) and (date <= dateMax);
 end;
 
-function EstNonVide(const texte: String): Boolean;
-begin
+function EstNonVide(const texte: String): Boolean;  
+begin  
   Result := Length(Trim(texte)) > 0;
 end;
 
@@ -367,9 +367,9 @@ end;
 
 **Utilisation :**
 ```pascal
-WriteLn(FormaterNombre(1234.567));              // '1234.57'
-WriteLn(FormaterNombre(1234.567, 3));           // '1234.567'
-WriteLn(FormaterNombre(1234.567, 2, True));     // '1 234.57'
+WriteLn(FormaterNombre(1234.567));              // '1234.57'  
+WriteLn(FormaterNombre(1234.567, 3));           // '1234.567'  
+WriteLn(FormaterNombre(1234.567, 2, True));     // '1 234.57'  
 ```
 
 ### Utiliser des types personnalisés
@@ -410,8 +410,8 @@ begin
 end;
 
 // Fonction de filtre personnalisée
-function CommenceParA(const valeur: String): Boolean;
-begin
+function CommenceParA(const valeur: String): Boolean;  
+begin  
   Result := (Length(valeur) > 0) and (UpCase(valeur[1]) = 'A');
 end;
 
@@ -430,8 +430,8 @@ end;
 ### Approche 1 : Valeurs de retour
 
 ```pascal
-function ChargerFichier(nomFichier: String; var contenu: String): Boolean;
-begin
+function ChargerFichier(nomFichier: String; var contenu: String): Boolean;  
+begin  
   Result := False;
 
   if not FileExists(nomFichier) then
@@ -464,8 +464,8 @@ end;
 type
   EValidationError = class(Exception);
 
-function ValiderEmail(email: String): String;
-begin
+function ValiderEmail(email: String): String;  
+begin  
   if not EstEmailValide(email) then
     raise EValidationError.Create('Email invalide : ' + email);
 
@@ -490,8 +490,8 @@ const
   ERR_ACCES_REFUSE = 2;
   ERR_FORMAT_INVALIDE = 3;
 
-function ChargerConfiguration(nomFichier: String; var config: TConfig): Integer;
-begin
+function ChargerConfiguration(nomFichier: String; var config: TConfig): Integer;  
+begin  
   if not FileExists(nomFichier) then
     Exit(ERR_FICHIER_INTROUVABLE);
 

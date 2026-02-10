@@ -46,8 +46,8 @@ end.
 // UniteCalculs.pas - Dépend de UniteBase
 unit UniteCalculs;
 
-interface
-uses
+interface  
+uses  
   UniteBase;  // Dépendance
 
 function CalculComplexe(x, y: Integer): Integer;
@@ -172,15 +172,15 @@ Le compilateur ne recompile que ce qui est nécessaire.
 
 ```bash
 # Première compilation : tout est compilé
-fpc MonProgramme.pas
-Compiling MonProgramme.pas
-Compiling UniteCalculs.pas
-Compiling UniteBase.pas
-Linking MonProgramme
+fpc MonProgramme.pas  
+Compiling MonProgramme.pas  
+Compiling UniteCalculs.pas  
+Compiling UniteBase.pas  
+Linking MonProgramme  
 
 # Deuxième compilation sans modifications : presque instantané !
-fpc MonProgramme.pas
-Linking MonProgramme
+fpc MonProgramme.pas  
+Linking MonProgramme  
 ```
 
 ### Compilation complète (clean build)
@@ -197,8 +197,8 @@ Cela supprime tous les fichiers .ppu et recompile tout depuis zéro. Utile quand
 Si deux unités dépendent l'une de l'autre dans leur section `interface`, le compilateur **ne peut pas** déterminer l'ordre :
 
 ```
-UniteA (interface) → dépend de UniteB
-UniteB (interface) → dépend de UniteA
+UniteA (interface) → dépend de UniteB  
+UniteB (interface) → dépend de UniteA  
 ```
 
 **Erreur de compilation :**
@@ -213,15 +213,15 @@ Error: Circular unit reference between UniteA and UniteB
 Pendant la compilation, vous verrez :
 
 ```
-Free Pascal Compiler version 3.2.2
-Target: x86_64-linux
-Compiling MonProgramme.pas
-Compiling UniteGraphique.pas
-Compiling UniteDessin.pas
-Compiling UniteMaths.pas
-Assembling UniteDessin
-Assembling UniteGraphique
-Linking MonProgramme
+Free Pascal Compiler version 3.2.2  
+Target: x86_64-linux  
+Compiling MonProgramme.pas  
+Compiling UniteGraphique.pas  
+Compiling UniteDessin.pas  
+Compiling UniteMaths.pas  
+Assembling UniteDessin  
+Assembling UniteGraphique  
+Linking MonProgramme  
 50 lines compiled, 0.2 sec
 ```
 
@@ -268,10 +268,10 @@ Ne vous préoccupez pas de l'ordre manuellement. Concentrez-vous sur la logique 
 
 ### 2. Organisez vos unités logiquement
 ```
-UniteBase        → Fonctions générales
-UniteOutils      → Utilise UniteBase
-UniteMetier      → Utilise UniteOutils
-UniteInterface   → Utilise UniteMetier
+UniteBase        → Fonctions générales  
+UniteOutils      → Utilise UniteBase  
+UniteMetier      → Utilise UniteOutils  
+UniteInterface   → Utilise UniteMetier  
 ```
 
 Une hiérarchie claire facilite la maintenance et la compilation.

@@ -204,8 +204,8 @@ Inc(i);
 Pour les fonctions longues, divisez-les en sections logiques.
 
 ```pascal
-function TraiterFichier(nomFichier: String): Boolean;
-var
+function TraiterFichier(nomFichier: String): Boolean;  
+var  
   fichier: TextFile;
   ligne: String;
 begin
@@ -248,20 +248,20 @@ Utilisez des marqueurs standards pour signaler ce qui reste à faire.
 
 ```pascal
 // TODO: Ajouter la validation des entrées
-function CalculerRemise(prix: Real): Real;
-begin
+function CalculerRemise(prix: Real): Real;  
+begin  
   Result := prix * 0.10;
 end;
 
 // FIXME: Cette fonction plante avec des nombres négatifs
-function CalculerRacine(x: Real): Real;
-begin
+function CalculerRacine(x: Real): Real;  
+begin  
   Result := Sqrt(x);
 end;
 
 // HACK: Solution temporaire, à remplacer par un algorithme optimal
-function RechercheLineaire(valeur: Integer): Boolean;
-begin
+function RechercheLineaire(valeur: Integer): Boolean;  
+begin  
   // Code...
 end;
 
@@ -322,8 +322,8 @@ function CalculerTotal(prix: Real; quantite: Integer): Real;
 implementation
 
 // Pas besoin de redocumenter ici, sauf détails d'implémentation
-function CalculerTotal(prix: Real; quantite: Integer): Real;
-begin
+function CalculerTotal(prix: Real; quantite: Integer): Real;  
+begin  
   Result := prix * quantite;
 end;
 ```
@@ -557,14 +557,14 @@ function RechercherEleve(const liste: array of TEleve; const nom: String): Integ
 
 implementation
 
-function AjouterEleve(var liste: array of TEleve; const eleve: TEleve): Boolean;
-begin
+function AjouterEleve(var liste: array of TEleve; const eleve: TEleve): Boolean;  
+begin  
   // Implémentation...
   Result := True;
 end;
 
-function CalculerMoyenneGenerale(const liste: array of TEleve): Real;
-var
+function CalculerMoyenneGenerale(const liste: array of TEleve): Real;  
+var  
   i: Integer;
   somme: Real;
 begin
@@ -584,8 +584,8 @@ begin
   Result := somme / Length(liste);
 end;
 
-function RechercherEleve(const liste: array of TEleve; const nom: String): Integer;
-var
+function RechercherEleve(const liste: array of TEleve; const nom: String): Integer;  
+var  
   i: Integer;
   nomRecherche: String;
 begin

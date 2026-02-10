@@ -17,11 +17,11 @@ Les unités associées sont compilées automatiquement par fpc grâce à la clau
 ## Nettoyage
 
 ```bash
-rm -f *.o *.ppu
-rm -f 01-utilisation-unites 02-test-cercles 03-test-dependances 03-test-ordre-uses
-rm -f 05-client-banque 05-test-compteur 06-test-compteur-init 06-test-ordre-init
-rm -f 07-classes-stringlist 07-math-fonctions 07-strutils-chaines 07-sysutils-chaines
-rm -f 07-sysutils-exceptions 07-variants 08-test-validation
+rm -f *.o *.ppu  
+rm -f 01-utilisation-unites 02-test-cercles 03-test-dependances 03-test-ordre-uses  
+rm -f 05-client-banque 05-test-compteur 06-test-compteur-init 06-test-ordre-init  
+rm -f 07-classes-stringlist 07-math-fonctions 07-strutils-chaines 07-sysutils-chaines  
+rm -f 07-sysutils-exceptions 07-variants 08-test-validation  
 ```
 
 ## Liste des fichiers (27 fichiers)

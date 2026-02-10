@@ -96,8 +96,8 @@ Imaginons que vous créez plusieurs programmes qui ont besoin de calculer des mo
 
 **Sans unité** : Vous copiez-collez cette fonction dans chaque programme
 ```pascal
-function CalculerMoyenne(a, b, c: Real): Real;
-begin
+function CalculerMoyenne(a, b, c: Real): Real;  
+begin  
   Result := (a + b + c) / 3;
 end;
 ```

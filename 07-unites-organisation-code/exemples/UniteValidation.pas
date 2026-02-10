@@ -26,16 +26,16 @@ interface
 uses
   SysUtils, StrUtils;
 
-function EstEmailValide(const email: String): Boolean;
-function EstTelephoneValide(const telephone: String): Boolean;
-function EstCodePostalValide(const codePostal: String): Boolean;
-function EstDateDansIntervalle(date, dateMin, dateMax: TDateTime): Boolean;
-function EstNonVide(const texte: String): Boolean;
+function EstEmailValide(const email: String): Boolean;  
+function EstTelephoneValide(const telephone: String): Boolean;  
+function EstCodePostalValide(const codePostal: String): Boolean;  
+function EstDateDansIntervalle(date, dateMin, dateMax: TDateTime): Boolean;  
+function EstNonVide(const texte: String): Boolean;  
 
 implementation
 
-function EstEmailValide(const email: String): Boolean;
-var
+function EstEmailValide(const email: String): Boolean;  
+var  
   posArobase, posPoint: Integer;
 begin
   Result := False;
@@ -61,8 +61,8 @@ begin
   Result := True;
 end;
 
-function EstTelephoneValide(const telephone: String): Boolean;
-var
+function EstTelephoneValide(const telephone: String): Boolean;  
+var  
   numeros: String;
   i: Integer;
 begin
@@ -81,8 +81,8 @@ begin
     Result := True;
 end;
 
-function EstCodePostalValide(const codePostal: String): Boolean;
-var
+function EstCodePostalValide(const codePostal: String): Boolean;  
+var  
   i: Integer;
 begin
   Result := False;
@@ -101,13 +101,13 @@ begin
   Result := True;
 end;
 
-function EstDateDansIntervalle(date, dateMin, dateMax: TDateTime): Boolean;
-begin
+function EstDateDansIntervalle(date, dateMin, dateMax: TDateTime): Boolean;  
+begin  
   Result := (date >= dateMin) and (date <= dateMax);
 end;
 
-function EstNonVide(const texte: String): Boolean;
-begin
+function EstNonVide(const texte: String): Boolean;  
+begin  
   Result := Length(Trim(texte)) > 0;
 end;
 

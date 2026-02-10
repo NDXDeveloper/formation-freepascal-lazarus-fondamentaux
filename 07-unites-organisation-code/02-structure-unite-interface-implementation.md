@@ -50,8 +50,8 @@ var
   // Variables publiques (à éviter généralement)
 
 // Déclarations des fonctions et procédures publiques
-function Additionner(a, b: Integer): Integer;
-function Multiplier(a, b: Integer): Integer;
+function Additionner(a, b: Integer): Integer;  
+function Multiplier(a, b: Integer): Integer;  
 ```
 
 **Règle importante :** Tout ce qui est dans la section `interface` est **visible et utilisable** par les programmes qui utilisent cette unité.
@@ -64,19 +64,19 @@ La section `implementation` est comme **l'arrière-boutique** : c'est là que le
 implementation
 
 // Le CODE RÉEL des fonctions déclarées dans interface
-function Additionner(a, b: Integer): Integer;
-begin
+function Additionner(a, b: Integer): Integer;  
+begin  
   Result := a + b;
 end;
 
-function Multiplier(a, b: Integer): Integer;
-begin
+function Multiplier(a, b: Integer): Integer;  
+begin  
   Result := a * b;
 end;
 
 // On peut aussi avoir des fonctions privées (non déclarées dans interface)
-function FonctionPrivee: String;
-begin
+function FonctionPrivee: String;  
+begin  
   Result := 'Invisible de l''extérieur';
 end;
 
@@ -97,31 +97,31 @@ const
   PI_APPROX = 3.14159;
 
 // Déclarations publiques
-function CalculerPerimetre(rayon: Real): Real;
-function CalculerSurface(rayon: Real): Real;
-function EstRayonValide(rayon: Real): Boolean;
+function CalculerPerimetre(rayon: Real): Real;  
+function CalculerSurface(rayon: Real): Real;  
+function EstRayonValide(rayon: Real): Boolean;  
 
 implementation
 
 // Implémentation des fonctions publiques
-function CalculerPerimetre(rayon: Real): Real;
-begin
+function CalculerPerimetre(rayon: Real): Real;  
+begin  
   Result := 2 * Pi * rayon;
 end;
 
-function CalculerSurface(rayon: Real): Real;
-begin
+function CalculerSurface(rayon: Real): Real;  
+begin  
   Result := Pi * rayon * rayon;
 end;
 
-function EstRayonValide(rayon: Real): Boolean;
-begin
+function EstRayonValide(rayon: Real): Boolean;  
+begin  
   Result := rayon > 0;
 end;
 
 // Fonction privée (non déclarée dans interface)
-function MessageErreur: String;
-begin
+function MessageErreur: String;  
+begin  
   Result := 'Le rayon doit être positif !';
 end;
 
@@ -226,8 +226,8 @@ var
   VariableGlobale: Integer;  // À éviter généralement
 
 // Déclarations de fonctions et procédures
-procedure MaProcedure(parametre: String);
-function MaFonction(x: Integer): Integer;
+procedure MaProcedure(parametre: String);  
+function MaFonction(x: Integer): Integer;  
 
 implementation
 
@@ -235,19 +235,19 @@ uses
   Math;  // Unités nécessaires uniquement pour l'implementation
 
 // Implémentation des fonctions publiques
-procedure MaProcedure(parametre: String);
-begin
+procedure MaProcedure(parametre: String);  
+begin  
   WriteLn(parametre);
 end;
 
-function MaFonction(x: Integer): Integer;
-begin
+function MaFonction(x: Integer): Integer;  
+begin  
   Result := x * 2;
 end;
 
 // Fonctions privées
-function FonctionInterne: Boolean;
-begin
+function FonctionInterne: Boolean;  
+begin  
   Result := True;
 end;
 

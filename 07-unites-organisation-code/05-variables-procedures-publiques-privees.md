@@ -29,19 +29,19 @@ unit UniteMaths;
 interface
 
 // Fonctions PUBLIQUES - déclarées dans interface
-function Addition(a, b: Integer): Integer;
-function Soustraction(a, b: Integer): Integer;
+function Addition(a, b: Integer): Integer;  
+function Soustraction(a, b: Integer): Integer;  
 
 implementation
 
 // Implémentation des fonctions publiques
-function Addition(a, b: Integer): Integer;
-begin
+function Addition(a, b: Integer): Integer;  
+begin  
   Result := a + b;
 end;
 
-function Soustraction(a, b: Integer): Integer;
-begin
+function Soustraction(a, b: Integer): Integer;  
+begin  
   Result := a - b;
 end;
 
@@ -78,8 +78,8 @@ function CalculerMoyenne(notes: array of Integer): Real;
 implementation
 
 // Fonction PRIVÉE - pas déclarée dans interface
-function SommeTableau(notes: array of Integer): Integer;
-var
+function SommeTableau(notes: array of Integer): Integer;  
+var  
   i, somme: Integer;
 begin
   somme := 0;
@@ -89,8 +89,8 @@ begin
 end;
 
 // Implémentation de la fonction publique
-function CalculerMoyenne(notes: array of Integer): Real;
-var
+function CalculerMoyenne(notes: array of Integer): Real;  
+var  
   somme: Integer;
 begin
   somme := SommeTableau(notes);  // ✅ Accessible ici (même unité)
@@ -147,8 +147,8 @@ procedure AfficherVersion;
 
 implementation
 
-procedure AfficherVersion;
-begin
+procedure AfficherVersion;  
+begin  
   WriteLn(NomApplication, ' v', VersionMajeure, '.', VersionMineure);
 end;
 
@@ -197,27 +197,27 @@ unit UniteCompteur;
 
 interface
 
-procedure Incrementer;
-procedure Reinitialiser;
-function ObtenirValeur: Integer;
+procedure Incrementer;  
+procedure Reinitialiser;  
+function ObtenirValeur: Integer;  
 
 implementation
 
 var
   compteur: Integer = 0;  // Variable PRIVÉE - dans implementation
 
-procedure Incrementer;
-begin
+procedure Incrementer;  
+begin  
   compteur := compteur + 1;  // ✅ Accessible ici
 end;
 
-procedure Reinitialiser;
-begin
+procedure Reinitialiser;  
+begin  
   compteur := 0;
 end;
 
-function ObtenirValeur: Integer;
-begin
+function ObtenirValeur: Integer;  
+begin  
   Result := compteur;
 end;
 
@@ -256,8 +256,8 @@ interface
 var
   Solde: Real;  // ❌ Variable publique
 
-implementation
-end.
+implementation  
+end.  
 ```
 
 ```pascal
@@ -280,33 +280,33 @@ unit CompteEnBanque;
 interface
 
 // Fonctions publiques pour interagir avec le compte
-procedure Deposer(montant: Real);
-procedure Retirer(montant: Real);
-function ObtenirSolde: Real;
+procedure Deposer(montant: Real);  
+procedure Retirer(montant: Real);  
+function ObtenirSolde: Real;  
 
 implementation
 
 var
   Solde: Real = 0;  // ✅ Variable privée
 
-procedure Deposer(montant: Real);
-begin
+procedure Deposer(montant: Real);  
+begin  
   if montant > 0 then
     Solde := Solde + montant
   else
     WriteLn('Erreur : montant invalide');
 end;
 
-procedure Retirer(montant: Real);
-begin
+procedure Retirer(montant: Real);  
+begin  
   if (montant > 0) and (montant <= Solde) then
     Solde := Solde - montant
   else
     WriteLn('Erreur : retrait impossible');
 end;
 
-function ObtenirSolde: Real;
-begin
+function ObtenirSolde: Real;  
+begin  
   Result := Solde;
 end;
 
@@ -340,14 +340,14 @@ end.
 
 ```pascal
 // ❌ À éviter
-interface
-var
+interface  
+var  
   Compteur: Integer;
 
 // ✅ Préférable
-interface
-function ObtenirCompteur: Integer;
-procedure DefinirCompteur(valeur: Integer);
+interface  
+function ObtenirCompteur: Integer;  
+procedure DefinirCompteur(valeur: Integer);  
 ```
 
 ### 2. Garder les détails d'implémentation privés
@@ -357,8 +357,8 @@ unit GestionFichier;
 
 interface
 
-procedure SauvegarderDonnees(donnees: String);
-function ChargerDonnees: String;
+procedure SauvegarderDonnees(donnees: String);  
+function ChargerDonnees: String;  
 
 implementation
 
@@ -366,20 +366,20 @@ var
   CheminFichier: String = 'data.txt';  // ✅ Privé - détail d'implémentation
 
 // Fonction privée utilitaire
-function VerifierExistenceFichier: Boolean;
-begin
+function VerifierExistenceFichier: Boolean;  
+begin  
   // Code de vérification
   Result := True;
 end;
 
-procedure SauvegarderDonnees(donnees: String);
-begin
+procedure SauvegarderDonnees(donnees: String);  
+begin  
   if VerifierExistenceFichier then
     // Sauvegarde
 end;
 
-function ChargerDonnees: String;
-begin
+function ChargerDonnees: String;  
+begin  
   if VerifierExistenceFichier then
     // Chargement
 end;
@@ -419,27 +419,27 @@ uses
   SysUtils;  // Pour Trim et UpperCase
 
 // Fonctions privées pour découper la logique
-function ValiderDonnees(donnees: String): Boolean;
-begin
+function ValiderDonnees(donnees: String): Boolean;  
+begin  
   // Validation
   Result := Length(donnees) > 0;
 end;
 
-function NettoyerDonnees(donnees: String): String;
-begin
+function NettoyerDonnees(donnees: String): String;  
+begin  
   // Nettoyage
   Result := Trim(donnees);
 end;
 
-function TransformerDonnees(donnees: String): String;
-begin
+function TransformerDonnees(donnees: String): String;  
+begin  
   // Transformation
   Result := UpperCase(donnees);
 end;
 
 // Fonction publique qui orchestre
-procedure TraiterDonnees(donnees: String);
-var
+procedure TraiterDonnees(donnees: String);  
+var  
   donneesNettoyees, donneesFinales: String;
 begin
   if not ValiderDonnees(donnees) then

@@ -8,33 +8,33 @@ unit CompteEnBanque;
 
 interface
 
-procedure Deposer(montant: Real);
-procedure Retirer(montant: Real);
-function ObtenirSolde: Real;
+procedure Deposer(montant: Real);  
+procedure Retirer(montant: Real);  
+function ObtenirSolde: Real;  
 
 implementation
 
 var
   Solde: Real = 0;  // Variable PRIVÉE
 
-procedure Deposer(montant: Real);
-begin
+procedure Deposer(montant: Real);  
+begin  
   if montant > 0 then
     Solde := Solde + montant
   else
     WriteLn('Erreur : montant invalide');
 end;
 
-procedure Retirer(montant: Real);
-begin
+procedure Retirer(montant: Real);  
+begin  
   if (montant > 0) and (montant <= Solde) then
     Solde := Solde - montant
   else
     WriteLn('Erreur : retrait impossible');
 end;
 
-function ObtenirSolde: Real;
-begin
+function ObtenirSolde: Real;  
+begin  
   Result := Solde;
 end;
 
