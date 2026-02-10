@@ -3,8 +3,8 @@
   Description : Acces aux champs d'un enregistrement (affectation, lecture, modification)
   Fichier source : 04-enregistrements-records.md
   ============================================================================ }
-program ExempleRecord;
-type
+program ExempleRecord;  
+type  
   TPersonne = record
     nom: String;
     prenom: String;

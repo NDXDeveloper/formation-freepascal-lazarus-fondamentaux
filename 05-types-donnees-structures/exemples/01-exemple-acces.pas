@@ -3,8 +3,8 @@
   Description : Acces aux elements d'un tableau (affectation, lecture, modification)
   Fichier source : 01-tableaux-statiques-unidimensionnels.md
   ============================================================================ }
-program ExempleAcces;
-var
+program ExempleAcces;  
+var  
   notes: array[1..5] of Integer;
 begin
   // Affectation de valeurs

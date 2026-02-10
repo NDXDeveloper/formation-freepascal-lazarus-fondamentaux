@@ -3,8 +3,8 @@
   Description : Ajout d'element avec Include et operateur +
   Fichier source : 08-types-ensemble-set.md
   ============================================================================ }
-program AjouterElement;
-type
+program AjouterElement;  
+type  
   TJour = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
   TJours = set of TJour;
 

@@ -4,13 +4,13 @@
   Fichier source : 08-types-ensemble-set.md
   ============================================================================ }
 {$mode objfpc}{$H+}
-program ValidationMotDePasse;
-type
+program ValidationMotDePasse;  
+type  
   TTypeCaractere = (Minuscule, Majuscule, Chiffre, Special);
   TTypesCaracteres = set of TTypeCaractere;
 
-function AnalyserMotDePasse(mdp: String): TTypesCaracteres;
-var
+function AnalyserMotDePasse(mdp: String): TTypesCaracteres;  
+var  
   i: Integer;
   c: Char;
 begin
@@ -31,8 +31,8 @@ begin
   end;
 end;
 
-function MotDePasseValide(mdp: String): Boolean;
-var
+function MotDePasseValide(mdp: String): Boolean;  
+var  
   types: TTypesCaracteres;
 begin
   // Un mot de passe valide doit contenir au moins 3 types

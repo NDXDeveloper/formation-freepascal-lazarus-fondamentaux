@@ -3,8 +3,8 @@
   Description : Parcours d'un tableau 2D avec boucles imbriquees
   Fichier source : 02-tableaux-multidimensionnels.md
   ============================================================================ }
-program ParcoursTableau2D;
-var
+program ParcoursTableau2D;  
+var  
   grille: array[1..3, 1..4] of Integer;
   ligne, colonne: Integer;
 begin

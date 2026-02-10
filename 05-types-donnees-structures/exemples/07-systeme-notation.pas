@@ -3,12 +3,12 @@
   Description : Systeme de notation avec mention basee sur un type enumere
   Fichier source : 07-types-enumeres.md
   ============================================================================ }
-program SystemeNotation;
-type
+program SystemeNotation;  
+type  
   TMention = (Insuffisant, Passable, AssezBien, Bien, TresBien, Excellent);
 
-function ObtenirMention(note: Real): TMention;
-begin
+function ObtenirMention(note: Real): TMention;  
+begin  
   if note < 10 then
     ObtenirMention := Insuffisant
   else if note < 12 then
@@ -23,8 +23,8 @@ begin
     ObtenirMention := Excellent;
 end;
 
-procedure AfficherMention(m: TMention);
-begin
+procedure AfficherMention(m: TMention);  
+begin  
   Write('Mention : ');
   case m of
     Insuffisant: WriteLn('Insuffisant');

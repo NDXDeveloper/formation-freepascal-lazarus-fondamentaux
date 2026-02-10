@@ -3,8 +3,8 @@
   Description : Affectation et comparaison de base avec un type enumere
   Fichier source : 07-types-enumeres.md
   ============================================================================ }
-program ExempleEnum;
-type
+program ExempleEnum;  
+type  
   TJourSemaine = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
 
 var

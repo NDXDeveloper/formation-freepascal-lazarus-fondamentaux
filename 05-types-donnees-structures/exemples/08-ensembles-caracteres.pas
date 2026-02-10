@@ -3,8 +3,8 @@
   Description : Ensembles de caracteres pour la validation de texte
   Fichier source : 08-types-ensemble-set.md
   ============================================================================ }
-program EnsemblesCaracteres;
-type
+program EnsemblesCaracteres;  
+type  
   TCaracteres = set of Char;
 
 var

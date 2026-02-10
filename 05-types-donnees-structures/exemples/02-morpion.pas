@@ -3,8 +3,8 @@
   Description : Jeu du Morpion - affichage d'une grille 3x3
   Fichier source : 02-tableaux-multidimensionnels.md
   ============================================================================ }
-program Morpion;
-var
+program Morpion;  
+var  
   grille: array[1..3, 1..3] of Char;
   ligne, colonne: Integer;
 begin

@@ -3,8 +3,8 @@
   Description : Fonction Length() pour connaitre la longueur d'une chaine
   Fichier source : 03-chaines-caracteres-string.md
   ============================================================================ }
-program LongueurChaine;
-var
+program LongueurChaine;  
+var  
   texte: String;
   taille: Integer;
 begin

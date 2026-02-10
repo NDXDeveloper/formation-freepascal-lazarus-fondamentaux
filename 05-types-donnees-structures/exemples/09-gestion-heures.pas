@@ -4,8 +4,8 @@
   Fichier source : 09-types-intervalle.md
   ============================================================================ }
 {$mode objfpc}{$H+}
-program GestionHeures;
-type
+program GestionHeures;  
+type  
   THeure = 0..23;
   TMinute = 0..59;
   TSeconde = 0..59;
@@ -16,8 +16,8 @@ type
     seconde: TSeconde;
   end;
 
-procedure AfficherHoraire(h: THoraire);
-begin
+procedure AfficherHoraire(h: THoraire);  
+begin  
   // Afficher avec zéros de remplissage
   if h.heure < 10 then Write('0');
   Write(h.heure);
@@ -29,8 +29,8 @@ begin
   WriteLn(h.seconde);
 end;
 
-function AjouterSecondes(h: THoraire; sec: Integer): THoraire;
-var
+function AjouterSecondes(h: THoraire; sec: Integer): THoraire;  
+var  
   totalSecondes: Integer;
 begin
   // Convertir en secondes totales

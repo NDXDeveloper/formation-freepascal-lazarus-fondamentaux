@@ -3,8 +3,8 @@
   Description : Systeme de commandes complet avec types personnalises combines
   Fichier source : 10-definition-types-personnalises.md
   ============================================================================ }
-program SystemeCommandes;
-type
+program SystemeCommandes;  
+type  
   // Énumérés
   TCategorieProduit = (Electronique, Vetement, Alimentaire, Livre);
   TEtatCommande = (EnAttente, Validee, EnPreparation, Expediee, Livree);
@@ -60,8 +60,8 @@ type
     dateCommande: String;
   end;
 
-function CalculerTotalLigne(ligne: TLigneCommande): Real;
-var
+function CalculerTotalLigne(ligne: TLigneCommande): Real;  
+var  
   total, montantRemise: Real;
 begin
   total := ligne.produit.prixUnitaire.montant * ligne.quantite;
@@ -69,8 +69,8 @@ begin
   CalculerTotalLigne := total - montantRemise;
 end;
 
-function CalculerTotalCommande(commande: TCommande): Real;
-var
+function CalculerTotalCommande(commande: TCommande): Real;  
+var  
   i: Integer;
   total: Real;
 begin
@@ -80,8 +80,8 @@ begin
   CalculerTotalCommande := total;
 end;
 
-procedure AfficherCommande(commande: TCommande);
-var
+procedure AfficherCommande(commande: TCommande);  
+var  
   i: Integer;
 begin
   WriteLn('=== COMMANDE N° ', commande.numero, ' ===');

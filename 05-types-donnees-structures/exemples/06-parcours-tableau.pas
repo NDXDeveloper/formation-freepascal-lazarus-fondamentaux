@@ -3,8 +3,8 @@
   Description : Parcours et affichage d'un tableau d'enregistrements
   Fichier source : 06-tableaux-enregistrements.md
   ============================================================================ }
-program ParcoursTableau;
-type
+program ParcoursTableau;  
+type  
   TEleve = record
     nom: String;
     prenom: String;

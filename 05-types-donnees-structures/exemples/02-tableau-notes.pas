@@ -3,8 +3,8 @@
   Description : Tableau de notes 2D (4 eleves, 3 matieres) avec saisie et affichage
   Fichier source : 02-tableaux-multidimensionnels.md
   ============================================================================ }
-program TableauNotes;
-var
+program TableauNotes;  
+var  
   notes: array[1..4, 1..3] of Real;  // 4 élèves, 3 matières
   eleve, matiere: Integer;
   nomsMatieres: array[1..3] of String;

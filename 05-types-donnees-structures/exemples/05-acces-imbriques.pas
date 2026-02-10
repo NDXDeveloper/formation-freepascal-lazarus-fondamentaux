@@ -3,8 +3,8 @@
   Description : Acces aux champs d'un enregistrement imbrique (personne avec adresse)
   Fichier source : 05-enregistrements-imbriques.md
   ============================================================================ }
-program AccesImbriques;
-type
+program AccesImbriques;  
+type  
   TAdresse = record
     rue: String;
     ville: String;

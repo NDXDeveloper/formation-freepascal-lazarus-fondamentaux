@@ -3,8 +3,8 @@
   Description : Instruction WITH pour simplifier l'acces aux champs
   Fichier source : 04-enregistrements-records.md
   ============================================================================ }
-program ExempleWith;
-type
+program ExempleWith;  
+type  
   TProduit = record
     code: String;
     designation: String;

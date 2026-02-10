@@ -3,8 +3,8 @@
   Description : Calcul de la moyenne par colonne (matiere) d'un tableau 2D
   Fichier source : 02-tableaux-multidimensionnels.md
   ============================================================================ }
-program MoyenneColonnes;
-var
+program MoyenneColonnes;  
+var  
   notes: array[1..5, 1..3] of Real;  // 5 élèves, 3 matières
   eleve, matiere: Integer;
   somme, moyenne: Real;

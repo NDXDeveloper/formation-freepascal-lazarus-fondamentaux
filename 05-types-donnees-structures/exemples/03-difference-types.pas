@@ -3,8 +3,8 @@
   Description : Differences entre String et ShortString
   Fichier source : 03-chaines-caracteres-string.md
   ============================================================================ }
-program DifferenceTypes;
-var
+program DifferenceTypes;  
+var  
   court: ShortString;
   long: String;
 begin

@@ -3,8 +3,8 @@
   Description : Fonction Pred() pour obtenir la valeur precedente
   Fichier source : 07-types-enumeres.md
   ============================================================================ }
-program FonctionPred;
-type
+program FonctionPred;  
+type  
   TJourSemaine = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
 
 var

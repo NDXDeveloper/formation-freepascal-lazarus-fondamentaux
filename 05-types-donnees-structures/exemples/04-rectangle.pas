@@ -3,25 +3,25 @@
   Description : Calcul de surface et perimetre d'un rectangle
   Fichier source : 04-enregistrements-records.md
   ============================================================================ }
-program Rectangle;
-type
+program Rectangle;  
+type  
   TRectangle = record
     largeur: Real;
     hauteur: Real;
   end;
 
-function Surface(r: TRectangle): Real;
-begin
+function Surface(r: TRectangle): Real;  
+begin  
   Surface := r.largeur * r.hauteur;
 end;
 
-function Perimetre(r: TRectangle): Real;
-begin
+function Perimetre(r: TRectangle): Real;  
+begin  
   Perimetre := 2 * (r.largeur + r.hauteur);
 end;
 
-function EstCarre(r: TRectangle): Boolean;
-begin
+function EstCarre(r: TRectangle): Boolean;  
+begin  
   EstCarre := r.largeur = r.hauteur;
 end;
 

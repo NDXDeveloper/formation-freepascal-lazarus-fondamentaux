@@ -3,9 +3,9 @@
   Description : Remplacer toutes les occurrences d'un mot dans une chaine
   Fichier source : 03-chaines-caracteres-string.md
   ============================================================================ }
-program RemplacerMot;
-uses SysUtils;
-var
+program RemplacerMot;  
+uses SysUtils;  
+var  
   texte, ancien, nouveau: String;
   position: Integer;
 begin

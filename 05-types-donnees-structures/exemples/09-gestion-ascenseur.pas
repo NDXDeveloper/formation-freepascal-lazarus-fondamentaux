@@ -3,8 +3,8 @@
   Description : Gestion d'un ascenseur avec type intervalle pour les etages
   Fichier source : 09-types-intervalle.md
   ============================================================================ }
-program GestionAscenseur;
-type
+program GestionAscenseur;  
+type  
   TEtage = -2..50;  // Du sous-sol -2 au 50e étage
 
 var
@@ -12,8 +12,8 @@ var
   etageDestination: TEtage;
   i: TEtage;
 
-procedure DeplacerVers(destination: TEtage);
-begin
+procedure DeplacerVers(destination: TEtage);  
+begin  
   WriteLn('Déplacement de l''étage ', etageActuel, ' vers l''étage ', destination);
 
   if destination > etageActuel then

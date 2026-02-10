@@ -3,8 +3,8 @@
   Description : Acces aux champs d'un tableau d'enregistrements
   Fichier source : 06-tableaux-enregistrements.md
   ============================================================================ }
-program AccesTableauRecord;
-type
+program AccesTableauRecord;  
+type  
   TEleve = record
     nom: String;
     prenom: String;

@@ -3,8 +3,8 @@
   Description : Tableau 3D - remplissage et affichage par couche
   Fichier source : 02-tableaux-multidimensionnels.md
   ============================================================================ }
-program Exemple3D;
-var
+program Exemple3D;  
+var  
   cube: array[1..2, 1..2, 1..2] of Integer;
   x, y, z, compteur: Integer;
 begin

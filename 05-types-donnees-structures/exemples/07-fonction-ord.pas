@@ -3,8 +3,8 @@
   Description : Fonction Ord() pour obtenir la position ordinale
   Fichier source : 07-types-enumeres.md
   ============================================================================ }
-program FonctionOrd;
-type
+program FonctionOrd;  
+type  
   TJourSemaine = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
 
 var

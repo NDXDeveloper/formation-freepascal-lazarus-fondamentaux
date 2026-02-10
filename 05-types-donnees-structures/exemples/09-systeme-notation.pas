@@ -3,24 +3,24 @@
   Description : Systeme de notation avec conversion entre echelles
   Fichier source : 09-types-intervalle.md
   ============================================================================ }
-program SystemeNotation;
-type
+program SystemeNotation;  
+type  
   TNoteSur20 = 0..20;
   TNoteSur100 = 0..100;
   TPourcentage = 0..100;
 
-function ConvertirNote20Vers100(note: TNoteSur20): TNoteSur100;
-begin
+function ConvertirNote20Vers100(note: TNoteSur20): TNoteSur100;  
+begin  
   ConvertirNote20Vers100 := note * 5;
 end;
 
-function ConvertirNote100Vers20(note: TNoteSur100): TNoteSur20;
-begin
+function ConvertirNote100Vers20(note: TNoteSur100): TNoteSur20;  
+begin  
   ConvertirNote100Vers20 := note div 5;
 end;
 
-function CalculerPourcentage(note, total: Integer): TPourcentage;
-begin
+function CalculerPourcentage(note, total: Integer): TPourcentage;  
+begin  
   if total > 0 then
     CalculerPourcentage := Round((note * 100) / total)
   else

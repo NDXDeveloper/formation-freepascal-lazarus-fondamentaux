@@ -3,8 +3,8 @@
   Description : Catalogue de produits avec affichage, recherche et valeur du stock
   Fichier source : 06-tableaux-enregistrements.md
   ============================================================================ }
-program CatalogueProduits;
-type
+program CatalogueProduits;  
+type  
   TProduit = record
     code: String;
     designation: String;

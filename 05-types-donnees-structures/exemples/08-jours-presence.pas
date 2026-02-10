@@ -3,8 +3,8 @@
   Description : Jours de presence avec operations ensemblistes
   Fichier source : 08-types-ensemble-set.md
   ============================================================================ }
-program JoursPresence;
-type
+program JoursPresence;  
+type  
   TJour = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
   TJours = set of TJour;
 
@@ -14,8 +14,8 @@ var
   joursPresents: TJours;
   jour: TJour;
 
-function NomJour(j: TJour): String;
-begin
+function NomJour(j: TJour): String;  
+begin  
   case j of
     Lundi: NomJour := 'Lundi';
     Mardi: NomJour := 'Mardi';

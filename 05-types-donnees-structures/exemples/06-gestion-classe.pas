@@ -3,8 +3,8 @@
   Description : Gestion complete d'une classe (saisie, affichage, moyenne)
   Fichier source : 06-tableaux-enregistrements.md
   ============================================================================ }
-program GestionClasse;
-type
+program GestionClasse;  
+type  
   TEleve = record
     nom: String;
     prenom: String;

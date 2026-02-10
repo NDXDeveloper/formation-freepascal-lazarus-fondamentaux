@@ -3,8 +3,8 @@
   Description : Exemple complet de gestion de statistiques sur des notes
   Fichier source : 01-tableaux-statiques-unidimensionnels.md
   ============================================================================ }
-program StatistiquesNotes;
-var
+program StatistiquesNotes;  
+var  
   notes: array[1..10] of Integer;
   i, somme, nbSuperieur: Integer;
   moyenne: Real;

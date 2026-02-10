@@ -5,14 +5,14 @@
   ============================================================================ }
 {$mode objfpc}{$H+}
 {$R+}  // Active la vérification des intervalles à l'exécution
-program IntervalleCaracteres;
-type
+program IntervalleCaracteres;  
+type  
   TChiffre = '0'..'9';
   TLettreMajuscule = 'A'..'Z';
   TLettreMinuscule = 'a'..'z';
 
-function EstChiffre(c: Char): Boolean;
-var
+function EstChiffre(c: Char): Boolean;  
+var  
   chiffre: TChiffre;
 begin
   try
@@ -23,8 +23,8 @@ begin
   end;
 end;
 
-function EstLettre(c: Char): Boolean;
-begin
+function EstLettre(c: Char): Boolean;  
+begin  
   EstLettre := ((c >= 'A') and (c <= 'Z')) or
                ((c >= 'a') and (c <= 'z'));
 end;

@@ -3,9 +3,9 @@
   Description : Comparaison insensible a la casse avec CompareText()
   Fichier source : 03-chaines-caracteres-string.md
   ============================================================================ }
-program ComparaisonInsensible;
-uses SysUtils;
-var
+program ComparaisonInsensible;  
+uses SysUtils;  
+var  
   mot1, mot2: String;
 begin
   mot1 := 'Pascal';

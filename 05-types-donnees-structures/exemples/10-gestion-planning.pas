@@ -3,8 +3,8 @@
   Description : Gestion de planning hebdomadaire avec types combines
   Fichier source : 10-definition-types-personnalises.md
   ============================================================================ }
-program GestionPlanning;
-type
+program GestionPlanning;  
+type  
   // Énumérés
   TJour = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
   TTypeTache = (Reunion, Cours, Projet, Personnel);
@@ -45,8 +45,8 @@ var
   jour: TJour;
   i: Integer;
 
-procedure InitialiserPlanning(var p: TPlanningHebdo);
-var
+procedure InitialiserPlanning(var p: TPlanningHebdo);  
+var  
   j: TJour;
 begin
   for j := Lundi to Dimanche do
@@ -56,8 +56,8 @@ begin
   end;
 end;
 
-procedure AjouterTache(var journee: TJournee; t: TTache);
-begin
+procedure AjouterTache(var journee: TJournee; t: TTache);  
+begin  
   if journee.nbTaches < 10 then
   begin
     journee.nbTaches := journee.nbTaches + 1;
@@ -65,8 +65,8 @@ begin
   end;
 end;
 
-procedure AfficherTache(t: TTache);
-begin
+procedure AfficherTache(t: TTache);  
+begin  
   WriteLn('  ', t.heureDebut.heure:2, ':', t.heureDebut.minute:2,
           ' - ', t.heureFin.heure:2, ':', t.heureFin.minute:2,
           ' : ', t.titre);

@@ -3,8 +3,8 @@
   Description : Recherche d'une valeur dans un tableau 2D
   Fichier source : 02-tableaux-multidimensionnels.md
   ============================================================================ }
-program RechercheValeur;
-var
+program RechercheValeur;  
+var  
   grille: array[1..4, 1..5] of Integer;
   ligne, colonne, valeur: Integer;
   trouve: Boolean;

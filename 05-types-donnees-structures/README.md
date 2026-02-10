@@ -60,15 +60,15 @@ Les types structurés permettent de traiter facilement de grandes quantités de 
 
 ```pascal
 // Au lieu de répéter le code 30 fois :
-Write('Note élève 1 : ');
-ReadLn(note1);
-Write('Note élève 2 : ');
-ReadLn(note2);
+Write('Note élève 1 : ');  
+ReadLn(note1);  
+Write('Note élève 2 : ');  
+ReadLn(note2);  
 // ... 28 autres fois
 
 // Vous pouvez utiliser une boucle :
-for i := 1 to 30 do
-begin
+for i := 1 to 30 do  
+begin  
   Write('Note élève ', i, ' : ');
   ReadLn(notes[i]);
 end;

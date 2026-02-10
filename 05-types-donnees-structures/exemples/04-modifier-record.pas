@@ -3,16 +3,16 @@
   Description : Modifier un enregistrement par reference (var) dans une procedure
   Fichier source : 04-enregistrements-records.md
   ============================================================================ }
-program ModifierRecord;
-type
+program ModifierRecord;  
+type  
   TPersonne = record
     nom: String;
     prenom: String;
     age: Integer;
   end;
 
-procedure Vieillir(var p: TPersonne; annees: Integer);
-begin
+procedure Vieillir(var p: TPersonne; annees: Integer);  
+begin  
   p.age := p.age + annees;
 end;
 

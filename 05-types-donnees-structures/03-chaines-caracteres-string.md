@@ -84,8 +84,8 @@ var
 ### Initialisation dans le code
 
 ```pascal
-program InitChaines;
-var
+program InitChaines;  
+var  
   nom, prenom, complet: String;
 begin
   nom := 'Dupont';
@@ -103,8 +103,8 @@ end.
 L'opérateur `+` permet de coller plusieurs chaînes ensemble :
 
 ```pascal
-program Concatenation;
-var
+program Concatenation;  
+var  
   prenom, nom, phrase: String;
 begin
   prenom := 'Marie';
@@ -125,8 +125,8 @@ end.
 La fonction `Length()` retourne le nombre de caractères :
 
 ```pascal
-program LongueurChaine;
-var
+program LongueurChaine;  
+var  
   texte: String;
   taille: Integer;
 begin
@@ -146,8 +146,8 @@ end.
 Comme un tableau, on peut accéder à chaque caractère individuellement :
 
 ```pascal
-program AccesCaractere;
-var
+program AccesCaractere;  
+var  
   mot: String;
   i: Integer;
 begin
@@ -170,8 +170,8 @@ end.
 ### 4. Modification d'un caractère
 
 ```pascal
-program ModificationCaractere;
-var
+program ModificationCaractere;  
+var  
   mot: String;
 begin
   mot := 'Pascal';
@@ -191,8 +191,8 @@ Copy(chaine, position, longueur)
 ```
 
 ```pascal
-program ExempleCopy;
-var
+program ExempleCopy;  
+var  
   texte, extrait: String;
 begin
   texte := 'Bonjour tout le monde';
@@ -218,8 +218,8 @@ Pos(sous_chaine, chaine)  // Retourne la position (0 si non trouvé)
 ```
 
 ```pascal
-program ExemplePos;
-var
+program ExemplePos;  
+var  
   texte: String;
   position: Integer;
 begin
@@ -246,8 +246,8 @@ Delete(chaine, position, nombre)
 ```
 
 ```pascal
-program ExempleDelete;
-var
+program ExempleDelete;  
+var  
   texte: String;
 begin
   texte := 'Bonjour tout le monde';
@@ -266,8 +266,8 @@ Insert(sous_chaine, chaine, position)
 ```
 
 ```pascal
-program ExempleInsert;
-var
+program ExempleInsert;  
+var  
   texte: String;
 begin
   texte := 'Bonjour monde';
@@ -282,9 +282,9 @@ end.
 ### UpperCase() et LowerCase() - Changer la casse
 
 ```pascal
-program ExempleCasse;
-uses SysUtils;
-var
+program ExempleCasse;  
+uses SysUtils;  
+var  
   texte: String;
 begin
   texte := 'Pascal';
@@ -300,9 +300,9 @@ end.
 ### Trim() - Supprimer les espaces
 
 ```pascal
-program ExempleTrim;
-uses SysUtils;
-var
+program ExempleTrim;  
+uses SysUtils;  
+var  
   texte: String;
 begin
   texte := '   Bonjour   ';
@@ -317,8 +317,8 @@ end.
 ### Opérateurs de comparaison
 
 ```pascal
-program ComparaisonChaines;
-var
+program ComparaisonChaines;  
+var  
   nom1, nom2: String;
 begin
   nom1 := 'Alice';
@@ -345,9 +345,9 @@ end.
 ### Comparaison insensible à la casse
 
 ```pascal
-program ComparaisonInsensible;
-uses SysUtils;
-var
+program ComparaisonInsensible;  
+uses SysUtils;  
+var  
   mot1, mot2: String;
 begin
   mot1 := 'Pascal';
@@ -370,9 +370,9 @@ end.
 ### Nombre vers String
 
 ```pascal
-program NombreVersString;
-uses SysUtils;
-var
+program NombreVersString;  
+uses SysUtils;  
+var  
   nombre: Integer;
   texte: String;
 begin
@@ -395,9 +395,9 @@ end.
 ### String vers nombre
 
 ```pascal
-program StringVersNombre;
-uses SysUtils;
-var
+program StringVersNombre;  
+uses SysUtils;  
+var  
   texte: String;
   nombre: Integer;
   valeur: Real;
@@ -426,8 +426,8 @@ end.
 ### Exemple 1 : Inverser une chaîne
 
 ```pascal
-program InverserChaine;
-var
+program InverserChaine;  
+var  
   texte, inverse: String;
   i: Integer;
 begin
@@ -445,8 +445,8 @@ end.
 ### Exemple 2 : Compter les voyelles
 
 ```pascal
-program CompterVoyelles;
-var
+program CompterVoyelles;  
+var  
   texte: String;
   i, compte: Integer;
   c: Char;
@@ -470,8 +470,8 @@ end.
 ### Exemple 3 : Vérifier si c'est un palindrome
 
 ```pascal
-program Palindrome;
-var
+program Palindrome;  
+var  
   texte: String;
   i, j: Integer;
   estPalindrome: Boolean;
@@ -502,8 +502,8 @@ end.
 ### Exemple 4 : Extraire le prénom et nom
 
 ```pascal
-program ExtraireNoms;
-var
+program ExtraireNoms;  
+var  
   nomComplet, prenom, nom: String;
   posEspace: Integer;
 begin
@@ -532,9 +532,9 @@ end.
 ### Exemple 5 : Remplacer un mot
 
 ```pascal
-program RemplacerMot;
-uses SysUtils;
-var
+program RemplacerMot;  
+uses SysUtils;  
+var  
   texte, ancien, nouveau: String;
   position: Integer;
 begin
@@ -563,8 +563,8 @@ end.
 Pour créer des chaînes sur plusieurs lignes :
 
 ```pascal
-program ChainesMultiligne;
-var
+program ChainesMultiligne;  
+var  
   message: String;
 begin
   // Méthode 1 : Concaténation
@@ -587,8 +587,8 @@ end.
 ## Caractères spéciaux
 
 ```pascal
-program CaracteresSpeciaux;
-begin
+program CaracteresSpeciaux;  
+begin  
   WriteLn('Guillemet simple : ''');      // Pour afficher '
   WriteLn('Tabulation :'#9'texte');      // #9 = tabulation
   WriteLn('Sonnerie'#7);                 // #7 = bip sonore
@@ -601,8 +601,8 @@ end.
 ### Limitations de ShortString
 
 ```pascal
-program DifferenceTypes;
-var
+program DifferenceTypes;  
+var  
   court: ShortString;
   long: String;
 begin
@@ -630,8 +630,8 @@ end.
 ### 1. Oubli des guillemets simples
 
 ```pascal
-texte := "Bonjour";  // ✗ ERREUR : utiliser des guillemets simples
-texte := 'Bonjour';  // ✓ CORRECT
+texte := "Bonjour";  // ✗ ERREUR : utiliser des guillemets simples  
+texte := 'Bonjour';  // ✓ CORRECT  
 ```
 
 ### 2. Indices hors limites

@@ -3,8 +3,8 @@
   Description : Utilisation de CASE-OF avec un type enumere
   Fichier source : 07-types-enumeres.md
   ============================================================================ }
-program CaseEnum;
-type
+program CaseEnum;  
+type  
   TJourSemaine = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
 
 var

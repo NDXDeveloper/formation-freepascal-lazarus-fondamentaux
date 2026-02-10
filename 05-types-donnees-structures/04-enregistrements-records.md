@@ -127,8 +127,8 @@ nomVariable.nomChamp
 ### Exemple complet
 
 ```pascal
-program ExempleRecord;
-type
+program ExempleRecord;  
+type  
   TPersonne = record
     nom: String;
     prenom: String;
@@ -156,17 +156,17 @@ end.
 
 **Sortie :**
 ```
-Nom : Dupont
-Prénom : Jean
-Age : 25 ans
-Nouvel âge : 26 ans
+Nom : Dupont  
+Prénom : Jean  
+Age : 25 ans  
+Nouvel âge : 26 ans  
 ```
 
 ## Saisie et affichage d'un enregistrement
 
 ```pascal
-program SaisiePersonne;
-type
+program SaisiePersonne;  
+type  
   TPersonne = record
     nom: String;
     prenom: String;
@@ -200,16 +200,16 @@ L'instruction `with` permet d'éviter de répéter le nom de la variable pour ac
 ### Sans WITH (répétitif)
 
 ```pascal
-personne.nom := 'Dupont';
-personne.prenom := 'Jean';
-personne.age := 25;
+personne.nom := 'Dupont';  
+personne.prenom := 'Jean';  
+personne.age := 25;  
 ```
 
 ### Avec WITH (plus concis)
 
 ```pascal
-with personne do
-begin
+with personne do  
+begin  
   nom := 'Dupont';
   prenom := 'Jean';
   age := 25;
@@ -219,8 +219,8 @@ end;
 ### Exemple complet
 
 ```pascal
-program ExempleWith;
-type
+program ExempleWith;  
+type  
   TProduit = record
     code: String;
     designation: String;
@@ -253,8 +253,8 @@ end.
 On peut copier facilement un enregistrement complet :
 
 ```pascal
-program CopieRecord;
-type
+program CopieRecord;  
+type  
   TPoint = record
     x: Real;
     y: Real;
@@ -286,16 +286,16 @@ end.
 ### Passer un enregistrement à une procédure
 
 ```pascal
-program RecordProcedure;
-type
+program RecordProcedure;  
+type  
   TPersonne = record
     nom: String;
     prenom: String;
     age: Integer;
   end;
 
-procedure AfficherPersonne(p: TPersonne);
-begin
+procedure AfficherPersonne(p: TPersonne);  
+begin  
   WriteLn('--- Fiche ---');
   WriteLn('Nom : ', p.nom);
   WriteLn('Prénom : ', p.prenom);
@@ -319,16 +319,16 @@ end.
 Pour modifier l'enregistrement, il faut le passer **par référence** avec `var` :
 
 ```pascal
-program ModifierRecord;
-type
+program ModifierRecord;  
+type  
   TPersonne = record
     nom: String;
     prenom: String;
     age: Integer;
   end;
 
-procedure Vieillir(var p: TPersonne; annees: Integer);
-begin
+procedure Vieillir(var p: TPersonne; annees: Integer);  
+begin  
   p.age := p.age + annees;
 end;
 
@@ -348,15 +348,15 @@ end.
 ### Fonction retournant un enregistrement
 
 ```pascal
-program FonctionRecord;
-type
+program FonctionRecord;  
+type  
   TPoint = record
     x: Real;
     y: Real;
   end;
 
-function CreerPoint(valX, valY: Real): TPoint;
-var
+function CreerPoint(valX, valY: Real): TPoint;  
+var  
   p: TPoint;
 begin
   p.x := valX;
@@ -364,8 +364,8 @@ begin
   CreerPoint := p;  // Retourner l'enregistrement
 end;
 
-function Distance(p1, p2: TPoint): Real;
-begin
+function Distance(p1, p2: TPoint): Real;  
+begin  
   Distance := Sqrt(Sqr(p2.x - p1.x) + Sqr(p2.y - p1.y));
 end;
 
@@ -394,8 +394,8 @@ if personne1 = personne2 then
 Il faut comparer champ par champ :
 
 ```pascal
-function PersonnesEgales(p1, p2: TPersonne): Boolean;
-begin
+function PersonnesEgales(p1, p2: TPersonne): Boolean;  
+begin  
   PersonnesEgales := (p1.nom = p2.nom) and
                      (p1.prenom = p2.prenom) and
                      (p1.age = p2.age);
@@ -407,23 +407,23 @@ end;
 ### Exemple 1 : Gestion d'une date
 
 ```pascal
-program GestionDate;
-type
+program GestionDate;  
+type  
   TDate = record
     jour: Integer;
     mois: Integer;
     annee: Integer;
   end;
 
-function DateValide(d: TDate): Boolean;
-begin
+function DateValide(d: TDate): Boolean;  
+begin  
   DateValide := (d.jour >= 1) and (d.jour <= 31) and
                 (d.mois >= 1) and (d.mois <= 12) and
                 (d.annee > 0);
 end;
 
-procedure AfficherDate(d: TDate);
-begin
+procedure AfficherDate(d: TDate);  
+begin  
   WriteLn(d.jour, '/', d.mois, '/', d.annee);
 end;
 
@@ -447,8 +447,8 @@ end.
 ### Exemple 2 : Carnet d'adresses simple
 
 ```pascal
-program CarnetAdresses;
-type
+program CarnetAdresses;  
+type  
   TContact = record
     nom: String;
     prenom: String;
@@ -456,8 +456,8 @@ type
     email: String;
   end;
 
-procedure SaisirContact(var c: TContact);
-begin
+procedure SaisirContact(var c: TContact);  
+begin  
   WriteLn('=== Nouveau contact ===');
   Write('Nom : ');
   ReadLn(c.nom);
@@ -469,8 +469,8 @@ begin
   ReadLn(c.email);
 end;
 
-procedure AfficherContact(c: TContact);
-begin
+procedure AfficherContact(c: TContact);  
+begin  
   WriteLn('--- Contact ---');
   WriteLn('Nom complet : ', c.prenom, ' ', c.nom);
   WriteLn('Téléphone : ', c.telephone);
@@ -490,25 +490,25 @@ end.
 ### Exemple 3 : Calcul de rectangle
 
 ```pascal
-program Rectangle;
-type
+program Rectangle;  
+type  
   TRectangle = record
     largeur: Real;
     hauteur: Real;
   end;
 
-function Surface(r: TRectangle): Real;
-begin
+function Surface(r: TRectangle): Real;  
+begin  
   Surface := r.largeur * r.hauteur;
 end;
 
-function Perimetre(r: TRectangle): Real;
-begin
+function Perimetre(r: TRectangle): Real;  
+begin  
   Perimetre := 2 * (r.largeur + r.hauteur);
 end;
 
-function EstCarre(r: TRectangle): Boolean;
-begin
+function EstCarre(r: TRectangle): Boolean;  
+begin  
   EstCarre := r.largeur = r.hauteur;
 end;
 
@@ -533,8 +533,8 @@ end.
 ### Exemple 4 : Gestion de stock
 
 ```pascal
-program GestionStock;
-type
+program GestionStock;  
+type  
   TArticle = record
     code: String;
     designation: String;
@@ -542,14 +542,14 @@ type
     quantiteStock: Integer;
   end;
 
-procedure AjouterStock(var art: TArticle; quantite: Integer);
-begin
+procedure AjouterStock(var art: TArticle; quantite: Integer);  
+begin  
   art.quantiteStock := art.quantiteStock + quantite;
   WriteLn('Stock ajouté. Nouveau stock : ', art.quantiteStock);
 end;
 
-function RetirerStock(var art: TArticle; quantite: Integer): Boolean;
-begin
+function RetirerStock(var art: TArticle; quantite: Integer): Boolean;  
+begin  
   if art.quantiteStock >= quantite then
   begin
     art.quantiteStock := art.quantiteStock - quantite;
@@ -562,8 +562,8 @@ begin
   end;
 end;
 
-function ValeurStock(art: TArticle): Real;
-begin
+function ValeurStock(art: TArticle): Real;  
+begin  
   ValeurStock := art.prixUnitaire * art.quantiteStock;
 end;
 
@@ -610,8 +610,8 @@ end.
 ### Procédure d'initialisation
 
 ```pascal
-procedure InitialiserPersonne(var p: TPersonne);
-begin
+procedure InitialiserPersonne(var p: TPersonne);  
+begin  
   p.nom := '';
   p.prenom := '';
   p.age := 0;

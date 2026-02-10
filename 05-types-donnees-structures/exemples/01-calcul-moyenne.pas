@@ -3,8 +3,8 @@
   Description : Calcul de la moyenne des notes d'un tableau
   Fichier source : 01-tableaux-statiques-unidimensionnels.md
   ============================================================================ }
-program CalculMoyenne;
-var
+program CalculMoyenne;  
+var  
   notes: array[1..5] of Integer;
   i, somme: Integer;
   moyenne: Real;

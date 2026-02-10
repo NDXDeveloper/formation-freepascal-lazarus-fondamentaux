@@ -3,8 +3,8 @@
   Description : Fonction Copy() pour extraire une portion de chaine
   Fichier source : 03-chaines-caracteres-string.md
   ============================================================================ }
-program ExempleCopy;
-var
+program ExempleCopy;  
+var  
   texte, extrait: String;
 begin
   texte := 'Bonjour tout le monde';

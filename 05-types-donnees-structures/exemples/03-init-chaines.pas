@@ -3,8 +3,8 @@
   Description : Initialisation de chaines et concatenation
   Fichier source : 03-chaines-caracteres-string.md
   ============================================================================ }
-program InitChaines;
-var
+program InitChaines;  
+var  
   nom, prenom, complet: String;
 begin
   nom := 'Dupont';

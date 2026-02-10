@@ -3,16 +3,16 @@
   Description : Gestion des permissions avec ensembles
   Fichier source : 08-types-ensemble-set.md
   ============================================================================ }
-program GestionPermissions;
-type
+program GestionPermissions;  
+type  
   TPermission = (Lecture, Ecriture, Execution, Suppression);
   TPermissions = set of TPermission;
 
 var
   admin, utilisateur, invite: TPermissions;
 
-procedure AfficherPermissions(perms: TPermissions; nom: String);
-begin
+procedure AfficherPermissions(perms: TPermissions; nom: String);  
+begin  
   WriteLn('Permissions de ', nom, ' :');
   if Lecture in perms then WriteLn('  - Lecture');
   if Ecriture in perms then WriteLn('  - Écriture');
@@ -22,8 +22,8 @@ begin
   WriteLn;
 end;
 
-function PeutModifier(perms: TPermissions): Boolean;
-begin
+function PeutModifier(perms: TPermissions): Boolean;  
+begin  
   // Peut modifier si a lecture ET écriture
   PeutModifier := [Lecture, Ecriture] <= perms;
 end;

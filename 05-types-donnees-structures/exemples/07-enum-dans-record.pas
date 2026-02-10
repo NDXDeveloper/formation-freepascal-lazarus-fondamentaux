@@ -3,8 +3,8 @@
   Description : Type enumere dans un enregistrement (commande avec etat)
   Fichier source : 07-types-enumeres.md
   ============================================================================ }
-program EnumDansRecord;
-type
+program EnumDansRecord;  
+type  
   TEtatCommande = (EnAttente, EnPreparation, Expediee, Livree, Annulee);
 
   TCommande = record

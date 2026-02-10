@@ -3,8 +3,8 @@
   Description : Entreprise avec employe et adresse imbriques
   Fichier source : 05-enregistrements-imbriques.md
   ============================================================================ }
-program ExempleEntreprise;
-type
+program ExempleEntreprise;  
+type  
   TDate = record
     jour: Integer;
     mois: Integer;
@@ -31,13 +31,13 @@ type
     directeur: TEmploye;
   end;
 
-function AncienneteAnnees(emp: TEmploye; dateActuelle: TDate): Integer;
-begin
+function AncienneteAnnees(emp: TEmploye; dateActuelle: TDate): Integer;  
+begin  
   AncienneteAnnees := dateActuelle.annee - emp.dateEmbauche.annee;
 end;
 
-procedure AfficherEntreprise(ent: TEntreprise);
-begin
+procedure AfficherEntreprise(ent: TEntreprise);  
+begin  
   WriteLn('===== ENTREPRISE =====');
   WriteLn('Nom : ', ent.nom);
   WriteLn('SIRET : ', ent.siret);

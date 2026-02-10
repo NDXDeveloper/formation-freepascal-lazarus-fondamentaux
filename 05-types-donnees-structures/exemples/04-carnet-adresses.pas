@@ -3,8 +3,8 @@
   Description : Carnet d'adresses simple avec saisie et affichage d'un contact
   Fichier source : 04-enregistrements-records.md
   ============================================================================ }
-program CarnetAdresses;
-type
+program CarnetAdresses;  
+type  
   TContact = record
     nom: String;
     prenom: String;
@@ -12,8 +12,8 @@ type
     email: String;
   end;
 
-procedure SaisirContact(var c: TContact);
-begin
+procedure SaisirContact(var c: TContact);  
+begin  
   WriteLn('=== Nouveau contact ===');
   Write('Nom : ');
   ReadLn(c.nom);
@@ -25,8 +25,8 @@ begin
   ReadLn(c.email);
 end;
 
-procedure AfficherContact(c: TContact);
-begin
+procedure AfficherContact(c: TContact);  
+begin  
   WriteLn('--- Contact ---');
   WriteLn('Nom complet : ', c.prenom, ' ', c.nom);
   WriteLn('Téléphone : ', c.telephone);

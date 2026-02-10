@@ -3,8 +3,8 @@
   Description : Gestion de stock d'articles avec ajout et retrait
   Fichier source : 04-enregistrements-records.md
   ============================================================================ }
-program GestionStock;
-type
+program GestionStock;  
+type  
   TArticle = record
     code: String;
     designation: String;
@@ -12,14 +12,14 @@ type
     quantiteStock: Integer;
   end;
 
-procedure AjouterStock(var art: TArticle; quantite: Integer);
-begin
+procedure AjouterStock(var art: TArticle; quantite: Integer);  
+begin  
   art.quantiteStock := art.quantiteStock + quantite;
   WriteLn('Stock ajouté. Nouveau stock : ', art.quantiteStock);
 end;
 
-function RetirerStock(var art: TArticle; quantite: Integer): Boolean;
-begin
+function RetirerStock(var art: TArticle; quantite: Integer): Boolean;  
+begin  
   if art.quantiteStock >= quantite then
   begin
     art.quantiteStock := art.quantiteStock - quantite;
@@ -32,8 +32,8 @@ begin
   end;
 end;
 
-function ValeurStock(art: TArticle): Real;
-begin
+function ValeurStock(art: TArticle): Real;  
+begin  
   ValeurStock := art.prixUnitaire * art.quantiteStock;
 end;
 

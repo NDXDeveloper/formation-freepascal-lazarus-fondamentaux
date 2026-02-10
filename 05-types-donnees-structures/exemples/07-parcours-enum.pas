@@ -3,8 +3,8 @@
   Description : Parcourir toutes les valeurs d'un type enumere avec une boucle
   Fichier source : 07-types-enumeres.md
   ============================================================================ }
-program ParcoursEnum;
-type
+program ParcoursEnum;  
+type  
   TJourSemaine = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
 
 var

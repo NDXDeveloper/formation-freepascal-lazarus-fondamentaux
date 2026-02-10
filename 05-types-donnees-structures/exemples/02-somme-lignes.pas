@@ -3,8 +3,8 @@
   Description : Calcul de la somme par ligne d'un tableau 2D
   Fichier source : 02-tableaux-multidimensionnels.md
   ============================================================================ }
-program SommeLignes;
-var
+program SommeLignes;  
+var  
   tableau: array[1..3, 1..4] of Integer;
   ligne, colonne, somme: Integer;
 begin

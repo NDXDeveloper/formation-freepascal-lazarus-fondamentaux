@@ -3,8 +3,8 @@
   Description : Operateurs de comparaison de chaines (egalite, ordre, difference)
   Fichier source : 03-chaines-caracteres-string.md
   ============================================================================ }
-program ComparaisonChaines;
-var
+program ComparaisonChaines;  
+var  
   nom1, nom2: String;
 begin
   nom1 := 'Alice';

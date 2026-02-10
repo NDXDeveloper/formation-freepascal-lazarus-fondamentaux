@@ -57,8 +57,8 @@ var
 Pour accéder à un élément du tableau, on utilise son **indice** entre crochets :
 
 ```pascal
-program ExempleAcces;
-var
+program ExempleAcces;  
+var  
   notes: array[1..5] of Integer;
 begin
   // Affectation de valeurs
@@ -80,9 +80,9 @@ end.
 
 **Sortie :**
 ```
-La première note est : 15
-La troisième note est : 18
-La nouvelle deuxième note : 15
+La première note est : 15  
+La troisième note est : 18  
+La nouvelle deuxième note : 15  
 ```
 
 ## Parcourir un tableau avec une boucle
@@ -90,8 +90,8 @@ La nouvelle deuxième note : 15
 La puissance des tableaux se révèle quand on les combine avec des boucles :
 
 ```pascal
-program ParcoursTableau;
-var
+program ParcoursTableau;  
+var  
   notes: array[1..5] of Integer;
   i: Integer;
 begin
@@ -117,8 +117,8 @@ end.
 ### Exemple : Calcul de la moyenne
 
 ```pascal
-program CalculMoyenne;
-var
+program CalculMoyenne;  
+var  
   notes: array[1..5] of Integer;
   i, somme: Integer;
   moyenne: Real;
@@ -147,8 +147,8 @@ end.
 ### Exemple : Recherche du maximum
 
 ```pascal
-program RechercheMax;
-var
+program RechercheMax;  
+var  
   temperatures: array[1..7] of Real;
   i: Integer;
   max: Real;
@@ -193,8 +193,8 @@ end.
 Pascal ne permet pas d'initialiser directement un tableau lors de sa déclaration (sauf avec des constantes), vous devez donc le faire élément par élément :
 
 ```pascal
-program InitTableau;
-var
+program InitTableau;  
+var  
   voyelles: array[1..5] of Char;
 begin
   voyelles[1] := 'a';
@@ -220,8 +220,8 @@ const
 Pour connaître les limites d'un tableau, Pascal offre les fonctions `Low()` et `High()` :
 
 ```pascal
-program TailleTableau;
-var
+program TailleTableau;  
+var  
   notes: array[1..5] of Integer;
   i: Integer;
 begin
@@ -282,8 +282,8 @@ Cela peut être utile dans certains cas (par exemple, pour des coordonnées), ma
 ## Exemple complet : Gestion de statistiques
 
 ```pascal
-program StatistiquesNotes;
-var
+program StatistiquesNotes;  
+var  
   notes: array[1..10] of Integer;
   i, somme, nbSuperieur: Integer;
   moyenne: Real;

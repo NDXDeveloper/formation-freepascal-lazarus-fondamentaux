@@ -3,8 +3,8 @@
   Description : Comptage de voyelles et consonnes avec ensemble de caracteres
   Fichier source : 08-types-ensemble-set.md
   ============================================================================ }
-program VoyellesConsonnes;
-type
+program VoyellesConsonnes;  
+type  
   TLettres = set of 'A'..'Z';
 
 var

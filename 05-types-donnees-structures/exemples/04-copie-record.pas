@@ -3,8 +3,8 @@
   Description : Copie d'enregistrements et independance des copies
   Fichier source : 04-enregistrements-records.md
   ============================================================================ }
-program CopieRecord;
-type
+program CopieRecord;  
+type  
   TPoint = record
     x: Real;
     y: Real;

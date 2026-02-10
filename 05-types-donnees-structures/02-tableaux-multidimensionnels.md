@@ -39,9 +39,9 @@ Un tableau `array[1..3, 1..4]` ressemble à ceci :
 
 ```
        Colonne 1  Colonne 2  Colonne 3  Colonne 4
-Ligne 1    [1,1]      [1,2]      [1,3]      [1,4]
-Ligne 2    [2,1]      [2,2]      [2,3]      [2,4]
-Ligne 3    [3,1]      [3,2]      [3,3]      [3,4]
+Ligne 1    [1,1]      [1,2]      [1,3]      [1,4]  
+Ligne 2    [2,1]      [2,2]      [2,3]      [2,4]  
+Ligne 3    [3,1]      [3,2]      [3,3]      [3,4]  
 ```
 
 ## Accès aux éléments d'un tableau 2D
@@ -49,8 +49,8 @@ Ligne 3    [3,1]      [3,2]      [3,3]      [3,4]
 Pour accéder à un élément, on utilise **deux indices** : `[ligne, colonne]`
 
 ```pascal
-program ExempleAcces2D;
-var
+program ExempleAcces2D;  
+var  
   grille: array[1..3, 1..4] of Integer;
 begin
   // Affectation
@@ -70,9 +70,9 @@ end.
 
 **Sortie :**
 ```
-Valeur en [1,1] : 10
-Valeur en [2,3] : 30
-Nouvelle valeur en [1,1] : 20
+Valeur en [1,1] : 10  
+Valeur en [2,3] : 30  
+Nouvelle valeur en [1,1] : 20  
 ```
 
 ## Parcourir un tableau 2D avec des boucles imbriquées
@@ -80,8 +80,8 @@ Nouvelle valeur en [1,1] : 20
 Pour parcourir toutes les cases d'un tableau 2D, il faut **deux boucles imbriquées** :
 
 ```pascal
-program ParcoursTableau2D;
-var
+program ParcoursTableau2D;  
+var  
   grille: array[1..3, 1..4] of Integer;
   ligne, colonne: Integer;
 begin
@@ -118,8 +118,8 @@ Contenu de la grille :
 ## Exemple pratique : Tableau de notes
 
 ```pascal
-program TableauNotes;
-var
+program TableauNotes;  
+var  
   notes: array[1..4, 1..3] of Real;  // 4 élèves, 3 matières
   eleve, matiere: Integer;
   nomsMatieres: array[1..3] of String;
@@ -166,8 +166,8 @@ end.
 ### Exemple 1 : Somme par ligne
 
 ```pascal
-program SommeLignes;
-var
+program SommeLignes;  
+var  
   tableau: array[1..3, 1..4] of Integer;
   ligne, colonne, somme: Integer;
 begin
@@ -190,8 +190,8 @@ end.
 ### Exemple 2 : Moyenne par colonne
 
 ```pascal
-program MoyenneColonnes;
-var
+program MoyenneColonnes;  
+var  
   notes: array[1..5, 1..3] of Real;  // 5 élèves, 3 matières
   eleve, matiere: Integer;
   somme, moyenne: Real;
@@ -214,8 +214,8 @@ end.
 ### Exemple 3 : Recherche dans un tableau 2D
 
 ```pascal
-program RechercheValeur;
-var
+program RechercheValeur;  
+var  
   grille: array[1..4, 1..5] of Integer;
   ligne, colonne, valeur: Integer;
   trouve: Boolean;
@@ -266,8 +266,8 @@ end.
 ### Méthode 2 : Matrice identité
 
 ```pascal
-program MatriceIdentite;
-var
+program MatriceIdentite;  
+var  
   matrice: array[1..3, 1..3] of Integer;
   i, j: Integer;
 begin
@@ -315,8 +315,8 @@ var
 ### Accès et parcours
 
 ```pascal
-program Exemple3D;
-var
+program Exemple3D;  
+var  
   cube: array[1..2, 1..2, 1..2] of Integer;
   x, y, z, compteur: Integer;
 begin
@@ -350,8 +350,8 @@ end.
 Ces fonctions fonctionnent aussi avec les tableaux multidimensionnels :
 
 ```pascal
-program LowHighMultiDim;
-var
+program LowHighMultiDim;  
+var  
   tableau: array[1..3, 5..8] of Integer;
   i, j: Integer;
 begin
@@ -370,8 +370,8 @@ end.
 ## Exemple complet : Jeu du Morpion
 
 ```pascal
-program Morpion;
-var
+program Morpion;  
+var  
   grille: array[1..3, 1..3] of Char;
   ligne, colonne: Integer;
 begin
@@ -461,8 +461,8 @@ end.
 
 ```pascal
 // Pour afficher ligne par ligne, la boucle externe doit être sur les lignes
-for ligne := 1 to 3 do
-begin
+for ligne := 1 to 3 do  
+begin  
   for colonne := 1 to 4 do
     Write(tableau[ligne, colonne]);
   WriteLn;  // Nouvelle ligne après chaque ligne

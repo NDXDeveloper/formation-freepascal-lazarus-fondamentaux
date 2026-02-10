@@ -3,8 +3,8 @@
   Description : Concatenation de chaines avec l'operateur +
   Fichier source : 03-chaines-caracteres-string.md
   ============================================================================ }
-program Concatenation;
-var
+program Concatenation;  
+var  
   prenom, nom, phrase: String;
 begin
   prenom := 'Marie';

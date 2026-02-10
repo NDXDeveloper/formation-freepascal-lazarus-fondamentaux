@@ -15,8 +15,8 @@ Imaginez que vous construisez une maison avec des LEGO. Les briques de base sont
 ### Sans types personnalisés (code désordonné)
 
 ```pascal
-program SansTypes;
-var
+program SansTypes;  
+var  
   nom1, prenom1: String;
   age1: Integer;
 
@@ -33,8 +33,8 @@ end.
 ### Avec types personnalisés (code organisé)
 
 ```pascal
-program AvecTypes;
-type
+program AvecTypes;  
+type  
   TPersonne = record
     nom: String;
     prenom: String;
@@ -247,8 +247,8 @@ type
 La vraie puissance vient de la **combinaison** des différents types :
 
 ```pascal
-program TypesCombines;
-type
+program TypesCombines;  
+type  
   // Types de base
   TJour = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
   TNote = 0..20;
@@ -318,8 +318,8 @@ type
 ### Exemple 1 : Système de gestion de bibliothèque
 
 ```pascal
-program Bibliotheque;
-type
+program Bibliotheque;  
+type  
   // Types de base
   TCategorie = (Roman, SF, Policier, Histoire, Science);
   TEtat = (Disponible, Emprunte, Perdu, EnReparation);
@@ -360,8 +360,8 @@ var
   emprunts: TListeEmprunts;
   nbLivres, nbEmprunts: Integer;
 
-procedure AfficherLivre(livre: TLivre);
-begin
+procedure AfficherLivre(livre: TLivre);  
+begin  
   WriteLn('Titre : ', livre.titre);
   WriteLn('Auteur : ', livre.auteur);
   WriteLn('ISBN : ', livre.isbn);
@@ -391,8 +391,8 @@ end.
 ### Exemple 2 : Gestion de planning
 
 ```pascal
-program GestionPlanning;
-type
+program GestionPlanning;  
+type  
   // Énumérés
   TJour = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
   TTypeTache = (Reunion, Cours, Projet, Personnel);
@@ -433,8 +433,8 @@ var
   jour: TJour;
   i: Integer;
 
-procedure InitialiserPlanning(var p: TPlanningHebdo);
-var
+procedure InitialiserPlanning(var p: TPlanningHebdo);  
+var  
   j: TJour;
 begin
   for j := Lundi to Dimanche do
@@ -444,8 +444,8 @@ begin
   end;
 end;
 
-procedure AjouterTache(var journee: TJournee; t: TTache);
-begin
+procedure AjouterTache(var journee: TJournee; t: TTache);  
+begin  
   if journee.nbTaches < 10 then
   begin
     journee.nbTaches := journee.nbTaches + 1;
@@ -453,8 +453,8 @@ begin
   end;
 end;
 
-procedure AfficherTache(t: TTache);
-begin
+procedure AfficherTache(t: TTache);  
+begin  
   WriteLn('  ', t.heureDebut.heure:2, ':', t.heureDebut.minute:2,
           ' - ', t.heureFin.heure:2, ':', t.heureFin.minute:2,
           ' : ', t.titre);
@@ -505,8 +505,8 @@ end.
 ### Exemple 3 : Système de commandes
 
 ```pascal
-program SystemeCommandes;
-type
+program SystemeCommandes;  
+type  
   // Énumérés
   TCategorieProduit = (Electronique, Vetement, Alimentaire, Livre);
   TEtatCommande = (EnAttente, Validee, EnPreparation, Expediee, Livree);
@@ -562,8 +562,8 @@ type
     dateCommande: String;
   end;
 
-function CalculerTotalLigne(ligne: TLigneCommande): Real;
-var
+function CalculerTotalLigne(ligne: TLigneCommande): Real;  
+var  
   total, montantRemise: Real;
 begin
   total := ligne.produit.prixUnitaire.montant * ligne.quantite;
@@ -571,8 +571,8 @@ begin
   CalculerTotalLigne := total - montantRemise;
 end;
 
-function CalculerTotalCommande(commande: TCommande): Real;
-var
+function CalculerTotalCommande(commande: TCommande): Real;  
+var  
   i: Integer;
   total: Real;
 begin
@@ -582,8 +582,8 @@ begin
   CalculerTotalCommande := total;
 end;
 
-procedure AfficherCommande(commande: TCommande);
-var
+procedure AfficherCommande(commande: TCommande);  
+var  
   i: Integer;
 begin
   WriteLn('=== COMMANDE N° ', commande.numero, ' ===');
@@ -665,8 +665,8 @@ end.
 ### Fichier unique (petit projet)
 
 ```pascal
-program PetitProjet;
-type
+program PetitProjet;  
+type  
   // Tous les types ici
   TType1 = ...;
   TType2 = ...;
@@ -703,8 +703,8 @@ implementation
 end.
 
 // Fichier programme principal
-program ProjetPrincipal;
-uses TypesCommuns;
+program ProjetPrincipal;  
+uses TypesCommuns;  
 
 var
   personne: TPersonne;  // Type défini dans l'unité
@@ -765,9 +765,9 @@ type
     nom: String;
   end;
 
-procedure Traiter(p: TPersonne);
-begin
-end;
+procedure Traiter(p: TPersonne);  
+begin  
+end;  
 ```
 
 ### 2. Noms significatifs

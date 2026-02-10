@@ -3,8 +3,8 @@
   Description : Comparaison de valeurs enumerees (egalite, difference, ordre)
   Fichier source : 07-types-enumeres.md
   ============================================================================ }
-program ComparaisonEnum;
-type
+program ComparaisonEnum;  
+type  
   TJourSemaine = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
 
 var

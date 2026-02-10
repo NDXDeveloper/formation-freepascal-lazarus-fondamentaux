@@ -3,16 +3,16 @@
   Description : Passer un enregistrement a une procedure
   Fichier source : 04-enregistrements-records.md
   ============================================================================ }
-program RecordProcedure;
-type
+program RecordProcedure;  
+type  
   TPersonne = record
     nom: String;
     prenom: String;
     age: Integer;
   end;
 
-procedure AfficherPersonne(p: TPersonne);
-begin
+procedure AfficherPersonne(p: TPersonne);  
+begin  
   WriteLn('--- Fiche ---');
   WriteLn('Nom : ', p.nom);
   WriteLn('Prénom : ', p.prenom);

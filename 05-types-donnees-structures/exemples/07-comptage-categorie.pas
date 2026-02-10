@@ -3,8 +3,8 @@
   Description : Comptage par categorie avec tableau indexe par type enumere
   Fichier source : 07-types-enumeres.md
   ============================================================================ }
-program ComptageCategorie;
-type
+program ComptageCategorie;  
+type  
   TCouleur = (Rouge, Vert, Bleu, Jaune);
 
 var

@@ -3,8 +3,8 @@
   Description : Extraire le prenom et le nom d'une chaine
   Fichier source : 03-chaines-caracteres-string.md
   ============================================================================ }
-program ExtraireNoms;
-var
+program ExtraireNoms;  
+var  
   nomComplet, prenom, nom: String;
   posEspace: Integer;
 begin

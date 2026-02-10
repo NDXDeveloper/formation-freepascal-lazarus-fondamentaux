@@ -3,8 +3,8 @@
   Description : Utilisation de Low() et High() pour connaitre les limites d'un tableau
   Fichier source : 01-tableaux-statiques-unidimensionnels.md
   ============================================================================ }
-program TailleTableau;
-var
+program TailleTableau;  
+var  
   notes: array[1..5] of Integer;
   i: Integer;
 begin

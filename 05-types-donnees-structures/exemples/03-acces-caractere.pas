@@ -3,8 +3,8 @@
   Description : Acces aux caracteres individuels d'une chaine
   Fichier source : 03-chaines-caracteres-string.md
   ============================================================================ }
-program AccesCaractere;
-var
+program AccesCaractere;  
+var  
   mot: String;
   i: Integer;
 begin

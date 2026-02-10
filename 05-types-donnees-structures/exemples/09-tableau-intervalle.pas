@@ -3,8 +3,8 @@
   Description : Tableau indexe par un type intervalle (temperatures par jour)
   Fichier source : 09-types-intervalle.md
   ============================================================================ }
-program TableauIntervalle;
-type
+program TableauIntervalle;  
+type  
   TJourMois = 1..31;
   TMois = 1..12;
 

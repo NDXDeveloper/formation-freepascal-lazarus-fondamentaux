@@ -3,8 +3,8 @@
   Description : Code PIN a 4 chiffres avec type intervalle TChiffre 0..9
   Fichier source : 09-types-intervalle.md
   ============================================================================ }
-program CodePIN;
-type
+program CodePIN;  
+type  
   TChiffre = 0..9;
   TCodePIN = array[1..4] of TChiffre;
 
@@ -14,8 +14,8 @@ var
   i: Integer;
   correct: Boolean;
 
-procedure SaisirCode(var c: TCodePIN);
-var
+procedure SaisirCode(var c: TCodePIN);  
+var  
   i: Integer;
 begin
   WriteLn('Entrez un code à 4 chiffres :');
@@ -26,8 +26,8 @@ begin
   end;
 end;
 
-function CodesIdentiques(c1, c2: TCodePIN): Boolean;
-var
+function CodesIdentiques(c1, c2: TCodePIN): Boolean;  
+var  
   i: Integer;
 begin
   CodesIdentiques := True;

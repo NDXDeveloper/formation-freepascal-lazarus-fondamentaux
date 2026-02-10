@@ -3,8 +3,8 @@
   Description : Compter les voyelles dans une phrase
   Fichier source : 03-chaines-caracteres-string.md
   ============================================================================ }
-program CompterVoyelles;
-var
+program CompterVoyelles;  
+var  
   texte: String;
   i, compte: Integer;
   c: Char;

@@ -3,8 +3,8 @@
   Description : Ensemble vide et ensemble complet
   Fichier source : 08-types-ensemble-set.md
   ============================================================================ }
-program EnsembleVideComplet;
-type
+program EnsembleVideComplet;  
+type  
   TChiffres = set of 0..9;
 
 var

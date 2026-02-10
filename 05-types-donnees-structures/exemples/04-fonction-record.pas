@@ -3,15 +3,15 @@
   Description : Fonction retournant un enregistrement et calcul de distance
   Fichier source : 04-enregistrements-records.md
   ============================================================================ }
-program FonctionRecord;
-type
+program FonctionRecord;  
+type  
   TPoint = record
     x: Real;
     y: Real;
   end;
 
-function CreerPoint(valX, valY: Real): TPoint;
-var
+function CreerPoint(valX, valY: Real): TPoint;  
+var  
   p: TPoint;
 begin
   p.x := valX;
@@ -19,8 +19,8 @@ begin
   CreerPoint := p;  // Retourner l'enregistrement
 end;
 
-function Distance(p1, p2: TPoint): Real;
-begin
+function Distance(p1, p2: TPoint): Real;  
+begin  
   Distance := Sqrt(Sqr(p2.x - p1.x) + Sqr(p2.y - p1.y));
 end;
 

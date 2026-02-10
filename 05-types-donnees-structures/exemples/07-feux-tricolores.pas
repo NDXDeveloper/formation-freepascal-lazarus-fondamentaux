@@ -3,15 +3,15 @@
   Description : Gestion de feux tricolores avec cycle automatique
   Fichier source : 07-types-enumeres.md
   ============================================================================ }
-program FeuxTricolores;
-type
+program FeuxTricolores;  
+type  
   TFeu = (Rouge, Orange, Vert);
 
 var
   etatFeu: TFeu;
 
-procedure AfficherFeu(feu: TFeu);
-begin
+procedure AfficherFeu(feu: TFeu);  
+begin  
   Write('Feu ');
   case feu of
     Rouge:  WriteLn('ROUGE - STOP');
@@ -20,8 +20,8 @@ begin
   end;
 end;
 
-function FeuSuivant(feu: TFeu): TFeu;
-begin
+function FeuSuivant(feu: TFeu): TFeu;  
+begin  
   case feu of
     Rouge:  FeuSuivant := Vert;
     Vert:   FeuSuivant := Orange;

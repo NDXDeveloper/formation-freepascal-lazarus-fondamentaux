@@ -3,8 +3,8 @@
   Description : Fonction Pos() pour chercher dans une chaine
   Fichier source : 03-chaines-caracteres-string.md
   ============================================================================ }
-program ExemplePos;
-var
+program ExemplePos;  
+var  
   texte: String;
   position: Integer;
 begin

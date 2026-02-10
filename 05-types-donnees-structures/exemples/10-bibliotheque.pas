@@ -3,8 +3,8 @@
   Description : Systeme de gestion de bibliotheque avec types combines
   Fichier source : 10-definition-types-personnalises.md
   ============================================================================ }
-program Bibliotheque;
-type
+program Bibliotheque;  
+type  
   // Types de base
   TCategorie = (Roman, SF, Policier, Histoire, Science);
   TEtat = (Disponible, Emprunte, Perdu, EnReparation);
@@ -45,8 +45,8 @@ var
   emprunts: TListeEmprunts;
   nbLivres, nbEmprunts: Integer;
 
-procedure AfficherLivre(livre: TLivre);
-begin
+procedure AfficherLivre(livre: TLivre);  
+begin  
   WriteLn('Titre : ', livre.titre);
   WriteLn('Auteur : ', livre.auteur);
   WriteLn('ISBN : ', livre.isbn);

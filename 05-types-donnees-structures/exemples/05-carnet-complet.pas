@@ -3,8 +3,8 @@
   Description : Carnet d'adresses complet avec telephones et adresse imbriques
   Fichier source : 05-enregistrements-imbriques.md
   ============================================================================ }
-program CarnetComplet;
-type
+program CarnetComplet;  
+type  
   TTelephone = record
     fixe: String;
     mobile: String;
@@ -25,8 +25,8 @@ type
     adresse: TAdresse;
   end;
 
-procedure SaisirContact(var c: TContact);
-begin
+procedure SaisirContact(var c: TContact);  
+begin  
   WriteLn('=== Nouveau contact ===');
   Write('Nom : ');
   ReadLn(c.nom);
@@ -52,8 +52,8 @@ begin
   ReadLn(c.adresse.pays);
 end;
 
-procedure AfficherContact(c: TContact);
-begin
+procedure AfficherContact(c: TContact);  
+begin  
   WriteLn('========================');
   WriteLn('Contact : ', c.prenom, ' ', c.nom);
   WriteLn('Email : ', c.email);

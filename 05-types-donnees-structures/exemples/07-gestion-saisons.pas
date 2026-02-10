@@ -3,14 +3,14 @@
   Description : Gestion des saisons avec types enumeres TMois et TSaison
   Fichier source : 07-types-enumeres.md
   ============================================================================ }
-program GestionSaisons;
-type
+program GestionSaisons;  
+type  
   TSaison = (Printemps, Ete, Automne, Hiver);
   TMois = (Janvier, Fevrier, Mars, Avril, Mai, Juin,
            Juillet, Aout, Septembre, Octobre, Novembre, Decembre);
 
-function ObtenirSaison(mois: TMois): TSaison;
-begin
+function ObtenirSaison(mois: TMois): TSaison;  
+begin  
   case mois of
     Mars, Avril, Mai:
       ObtenirSaison := Printemps;
@@ -23,8 +23,8 @@ begin
   end;
 end;
 
-procedure DecrireSaison(s: TSaison);
-begin
+procedure DecrireSaison(s: TSaison);  
+begin  
   case s of
     Printemps:
       WriteLn('C''est le printemps : les fleurs éclosent');

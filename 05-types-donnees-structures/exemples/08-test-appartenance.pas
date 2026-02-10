@@ -3,8 +3,8 @@
   Description : Test d'appartenance avec l'operateur IN
   Fichier source : 08-types-ensemble-set.md
   ============================================================================ }
-program TestAppartenance;
-type
+program TestAppartenance;  
+type  
   TJour = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
   TJours = set of TJour;
 

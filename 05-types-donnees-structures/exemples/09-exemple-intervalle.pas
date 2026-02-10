@@ -3,8 +3,8 @@
   Description : Declaration et utilisation de types intervalle (age, note)
   Fichier source : 09-types-intervalle.md
   ============================================================================ }
-program ExempleIntervalle;
-type
+program ExempleIntervalle;  
+type  
   TAge = 0..120;
   TNote = 0..20;
 

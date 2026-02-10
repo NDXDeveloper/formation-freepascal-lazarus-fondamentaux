@@ -3,9 +3,9 @@
   Description : Conversion de chaines vers nombres (StrToInt, Val, StrToFloat)
   Fichier source : 03-chaines-caracteres-string.md
   ============================================================================ }
-program StringVersNombre;
-uses SysUtils;
-var
+program StringVersNombre;  
+uses SysUtils;  
+var  
   texte: String;
   nombre: Integer;
   valeur: Real;

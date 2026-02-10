@@ -100,8 +100,8 @@ var
 ### Affectation de valeurs
 
 ```pascal
-program ExempleEnum;
-type
+program ExempleEnum;  
+type  
   TJourSemaine = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
 
 var
@@ -135,8 +135,8 @@ type
 On peut comparer les valeurs avec les opérateurs habituels :
 
 ```pascal
-program ComparaisonEnum;
-type
+program ComparaisonEnum;  
+type  
   TJourSemaine = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
 
 var
@@ -169,8 +169,8 @@ end.
 Retourne la position numérique de la valeur (commence à 0) :
 
 ```pascal
-program FonctionOrd;
-type
+program FonctionOrd;  
+type  
   TJourSemaine = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
 
 var
@@ -192,8 +192,8 @@ end.
 Retourne la valeur suivante :
 
 ```pascal
-program FonctionSucc;
-type
+program FonctionSucc;  
+type  
   TJourSemaine = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
 
 var
@@ -216,8 +216,8 @@ end.
 Retourne la valeur précédente :
 
 ```pascal
-program FonctionPred;
-type
+program FonctionPred;  
+type  
   TJourSemaine = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
 
 var
@@ -240,8 +240,8 @@ end.
 Incrémenter ou décrémenter une valeur énumérée :
 
 ```pascal
-program IncDecEnum;
-type
+program IncDecEnum;  
+type  
   TJourSemaine = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
 
 var
@@ -261,8 +261,8 @@ end.
 ### Avec une boucle for
 
 ```pascal
-program ParcoursEnum;
-type
+program ParcoursEnum;  
+type  
   TJourSemaine = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
 
 var
@@ -290,8 +290,8 @@ end.
 Les types énumérés sont parfaits avec l'instruction `case-of` :
 
 ```pascal
-program CaseEnum;
-type
+program CaseEnum;  
+type  
   TJourSemaine = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
 
 var
@@ -315,15 +315,15 @@ end.
 ### Exemple avec action selon l'état
 
 ```pascal
-program GestionEtat;
-type
+program GestionEtat;  
+type  
   TEtatCommande = (EnAttente, EnPreparation, Expediee, Livree, Annulee);
 
 var
   etat: TEtatCommande;
 
-procedure TraiterCommande(e: TEtatCommande);
-begin
+procedure TraiterCommande(e: TEtatCommande);  
+begin  
   case e of
     EnAttente:
       WriteLn('Commande en attente de validation');
@@ -352,8 +352,8 @@ end.
 On peut utiliser un type énuméré comme indice de tableau :
 
 ```pascal
-program TableauEnum;
-type
+program TableauEnum;  
+type  
   TJourSemaine = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
 
 var
@@ -388,8 +388,8 @@ end.
 ### Exemple : Comptage par catégorie
 
 ```pascal
-program ComptageCategorie;
-type
+program ComptageCategorie;  
+type  
   TCouleur = (Rouge, Vert, Bleu, Jaune);
 
 var
@@ -420,15 +420,15 @@ end.
 ### Exemple 1 : Gestion de feux tricolores
 
 ```pascal
-program FeuxTricolores;
-type
+program FeuxTricolores;  
+type  
   TFeu = (Rouge, Orange, Vert);
 
 var
   etatFeu: TFeu;
 
-procedure AfficherFeu(feu: TFeu);
-begin
+procedure AfficherFeu(feu: TFeu);  
+begin  
   Write('Feu ');
   case feu of
     Rouge:  WriteLn('ROUGE - STOP');
@@ -437,8 +437,8 @@ begin
   end;
 end;
 
-function FeuSuivant(feu: TFeu): TFeu;
-begin
+function FeuSuivant(feu: TFeu): TFeu;  
+begin  
   case feu of
     Rouge:  FeuSuivant := Vert;
     Vert:   FeuSuivant := Orange;
@@ -467,12 +467,12 @@ end.
 ### Exemple 2 : Système de notation
 
 ```pascal
-program SystemeNotation;
-type
+program SystemeNotation;  
+type  
   TMention = (Insuffisant, Passable, AssezBien, Bien, TresBien, Excellent);
 
-function ObtenirMention(note: Real): TMention;
-begin
+function ObtenirMention(note: Real): TMention;  
+begin  
   if note < 10 then
     ObtenirMention := Insuffisant
   else if note < 12 then
@@ -487,8 +487,8 @@ begin
     ObtenirMention := Excellent;
 end;
 
-procedure AfficherMention(m: TMention);
-begin
+procedure AfficherMention(m: TMention);  
+begin  
   Write('Mention : ');
   case m of
     Insuffisant: WriteLn('Insuffisant');
@@ -515,14 +515,14 @@ end.
 ### Exemple 3 : Gestion des saisons
 
 ```pascal
-program GestionSaisons;
-type
+program GestionSaisons;  
+type  
   TSaison = (Printemps, Ete, Automne, Hiver);
   TMois = (Janvier, Fevrier, Mars, Avril, Mai, Juin,
            Juillet, Aout, Septembre, Octobre, Novembre, Decembre);
 
-function ObtenirSaison(mois: TMois): TSaison;
-begin
+function ObtenirSaison(mois: TMois): TSaison;  
+begin  
   case mois of
     Mars, Avril, Mai:
       ObtenirSaison := Printemps;
@@ -535,8 +535,8 @@ begin
   end;
 end;
 
-procedure DecrireSaison(s: TSaison);
-begin
+procedure DecrireSaison(s: TSaison);  
+begin  
   case s of
     Printemps:
       WriteLn('C''est le printemps : les fleurs éclosent');
@@ -564,16 +564,16 @@ end.
 ### Exemple 4 : Menu de navigation
 
 ```pascal
-program MenuNavigation;
-type
+program MenuNavigation;  
+type  
   TMenuPrincipal = (Nouveau, Ouvrir, Enregistrer, Quitter);
 
 var
   choix: TMenuPrincipal;
   saisie: Integer;
 
-procedure AfficherMenu;
-begin
+procedure AfficherMenu;  
+begin  
   WriteLn;
   WriteLn('=== MENU PRINCIPAL ===');
   WriteLn('1. Nouveau');
@@ -583,8 +583,8 @@ begin
   Write('Votre choix : ');
 end;
 
-procedure ExecuterAction(action: TMenuPrincipal);
-begin
+procedure ExecuterAction(action: TMenuPrincipal);  
+begin  
   case action of
     Nouveau:
       WriteLn('Création d''un nouveau fichier...');
@@ -624,12 +624,12 @@ end.
 Pascal ne convertit pas automatiquement les types énumérés en chaînes. Il faut créer des fonctions :
 
 ```pascal
-program ConversionEnum;
-type
+program ConversionEnum;  
+type  
   TJourSemaine = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
 
-function JourEnString(jour: TJourSemaine): String;
-begin
+function JourEnString(jour: TJourSemaine): String;  
+begin  
   case jour of
     Lundi:    JourEnString := 'Lundi';
     Mardi:    JourEnString := 'Mardi';
@@ -655,8 +655,8 @@ end.
 ## Types énumérés dans les enregistrements
 
 ```pascal
-program EnumDansRecord;
-type
+program EnumDansRecord;  
+type  
   TEtatCommande = (EnAttente, EnPreparation, Expediee, Livree, Annulee);
 
   TCommande = record

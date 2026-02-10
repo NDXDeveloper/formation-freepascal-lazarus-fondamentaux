@@ -3,8 +3,8 @@
   Description : Verifier si un mot est un palindrome
   Fichier source : 03-chaines-caracteres-string.md
   ============================================================================ }
-program Palindrome;
-var
+program Palindrome;  
+var  
   texte: String;
   i, j: Integer;
   estPalindrome: Boolean;

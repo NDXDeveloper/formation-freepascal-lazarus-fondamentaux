@@ -3,9 +3,9 @@
   Description : Conversion de nombres vers chaines (IntToStr, Str, FloatToStr)
   Fichier source : 03-chaines-caracteres-string.md
   ============================================================================ }
-program NombreVersString;
-uses SysUtils;
-var
+program NombreVersString;  
+uses SysUtils;  
+var  
   nombre: Integer;
   texte: String;
 begin

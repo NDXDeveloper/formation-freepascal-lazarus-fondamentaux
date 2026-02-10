@@ -3,8 +3,8 @@
   Description : Procedure Insert() pour inserer du texte dans une chaine
   Fichier source : 03-chaines-caracteres-string.md
   ============================================================================ }
-program ExempleInsert;
-var
+program ExempleInsert;  
+var  
   texte: String;
 begin
   texte := 'Bonjour monde';

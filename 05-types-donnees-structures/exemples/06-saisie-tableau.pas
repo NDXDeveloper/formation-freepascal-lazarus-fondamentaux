@@ -3,8 +3,8 @@
   Description : Saisie et affichage d'un tableau d'enregistrements
   Fichier source : 06-tableaux-enregistrements.md
   ============================================================================ }
-program SaisieTableau;
-type
+program SaisieTableau;  
+type  
   TEleve = record
     nom: String;
     prenom: String;

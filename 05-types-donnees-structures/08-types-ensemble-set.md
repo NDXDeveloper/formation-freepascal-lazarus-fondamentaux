@@ -115,8 +115,8 @@ var
 ### Initialisation avec des valeurs
 
 ```pascal
-program InitEnsemble;
-type
+program InitEnsemble;  
+type  
   TJour = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
   TJours = set of TJour;
 
@@ -147,8 +147,8 @@ Les valeurs d'un ensemble sont toujours entre **crochets** `[ ]`.
 L'opérateur `in` vérifie si un élément appartient à un ensemble :
 
 ```pascal
-program TestAppartenance;
-type
+program TestAppartenance;  
+type  
   TJour = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
   TJours = set of TJour;
 
@@ -173,9 +173,9 @@ end.
 
 **Sortie :**
 ```
-Lundi est un jour ouvré
-Samedi n'est pas un jour ouvré
-Mercredi est un jour ouvré
+Lundi est un jour ouvré  
+Samedi n'est pas un jour ouvré  
+Mercredi est un jour ouvré  
 ```
 
 ## Opérations sur les ensembles
@@ -185,8 +185,8 @@ Mercredi est un jour ouvré
 Combine deux ensembles (tous les éléments des deux) :
 
 ```pascal
-program Union;
-type
+program Union;  
+type  
   TJour = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
   TJours = set of TJour;
 
@@ -210,8 +210,8 @@ end.
 Éléments communs aux deux ensembles :
 
 ```pascal
-program Intersection;
-type
+program Intersection;  
+type  
   TJour = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
   TJours = set of TJour;
 
@@ -238,8 +238,8 @@ end.
 Éléments du premier ensemble qui ne sont pas dans le second :
 
 ```pascal
-program Difference;
-type
+program Difference;  
+type  
   TJour = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
   TJours = set of TJour;
 
@@ -264,8 +264,8 @@ end.
 ### Comparaison d'ensembles
 
 ```pascal
-program ComparaisonEnsembles;
-type
+program ComparaisonEnsembles;  
+type  
   TChiffres = set of 0..9;
 
 var
@@ -300,8 +300,8 @@ end.
 ### Include - Ajouter un élément
 
 ```pascal
-program AjouterElement;
-type
+program AjouterElement;  
+type  
   TJour = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
   TJours = set of TJour;
 
@@ -325,8 +325,8 @@ end.
 ### Exclude - Retirer un élément
 
 ```pascal
-program RetirerElement;
-type
+program RetirerElement;  
+type  
   TJour = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
   TJours = set of TJour;
 
@@ -352,8 +352,8 @@ end.
 ### Exemple 1 : Jours de présence
 
 ```pascal
-program JoursPresence;
-type
+program JoursPresence;  
+type  
   TJour = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
   TJours = set of TJour;
 
@@ -363,8 +363,8 @@ var
   joursPresents: TJours;
   jour: TJour;
 
-function NomJour(j: TJour): String;
-begin
+function NomJour(j: TJour): String;  
+begin  
   case j of
     Lundi: NomJour := 'Lundi';
     Mardi: NomJour := 'Mardi';
@@ -408,13 +408,13 @@ Jours de présence cette semaine :
 
 ```pascal
 {$mode objfpc}{$H+}
-program ValidationMotDePasse;
-type
+program ValidationMotDePasse;  
+type  
   TTypeCaractere = (Minuscule, Majuscule, Chiffre, Special);
   TTypesCaracteres = set of TTypeCaractere;
 
-function AnalyserMotDePasse(mdp: String): TTypesCaracteres;
-var
+function AnalyserMotDePasse(mdp: String): TTypesCaracteres;  
+var  
   i: Integer;
   c: Char;
 begin
@@ -435,8 +435,8 @@ begin
   end;
 end;
 
-function MotDePasseValide(mdp: String): Boolean;
-var
+function MotDePasseValide(mdp: String): Boolean;  
+var  
   types: TTypesCaracteres;
 begin
   // Un mot de passe valide doit contenir au moins 3 types
@@ -476,16 +476,16 @@ end.
 ### Exemple 3 : Gestion des permissions
 
 ```pascal
-program GestionPermissions;
-type
+program GestionPermissions;  
+type  
   TPermission = (Lecture, Ecriture, Execution, Suppression);
   TPermissions = set of TPermission;
 
 var
   admin, utilisateur, invite: TPermissions;
 
-procedure AfficherPermissions(perms: TPermissions; nom: String);
-begin
+procedure AfficherPermissions(perms: TPermissions; nom: String);  
+begin  
   WriteLn('Permissions de ', nom, ' :');
   if Lecture in perms then WriteLn('  - Lecture');
   if Ecriture in perms then WriteLn('  - Écriture');
@@ -495,8 +495,8 @@ begin
   WriteLn;
 end;
 
-function PeutModifier(perms: TPermissions): Boolean;
-begin
+function PeutModifier(perms: TPermissions): Boolean;  
+begin  
   // Peut modifier si a lecture ET écriture
   PeutModifier := [Lecture, Ecriture] <= perms;
 end;
@@ -526,8 +526,8 @@ end.
 ### Exemple 4 : Voyelles et consonnes
 
 ```pascal
-program VoyellesConsonnes;
-type
+program VoyellesConsonnes;  
+type  
   TLettres = set of 'A'..'Z';
 
 var
@@ -568,8 +568,8 @@ end.
 ### Exemple 5 : Planification hebdomadaire
 
 ```pascal
-program PlanningHebdo;
-type
+program PlanningHebdo;  
+type  
   TJour = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
   TJours = set of TJour;
 
@@ -584,8 +584,8 @@ var
   tousLesJours: TJours;
   jour: TJour;
 
-function NomJour(j: TJour): String;
-begin
+function NomJour(j: TJour): String;  
+begin  
   case j of
     Lundi: NomJour := 'Lundi';
     Mardi: NomJour := 'Mardi';
@@ -640,8 +640,8 @@ end.
 Les ensembles de caractères sont très utiles pour la validation :
 
 ```pascal
-program EnsemblesCaracteres;
-type
+program EnsemblesCaracteres;  
+type  
   TCaracteres = set of Char;
 
 var
@@ -678,8 +678,8 @@ end.
 ## Ensemble vide et ensemble complet
 
 ```pascal
-program EnsembleVideComplet;
-type
+program EnsembleVideComplet;  
+type  
   TChiffres = set of 0..9;
 
 var
@@ -757,8 +757,8 @@ end.
 ### 2. Confondre IN et =
 
 ```pascal
-if Lundi = jours then  // ✗ ERREUR : compare un jour à un ensemble
-if Lundi in jours then  // ✓ CORRECT : teste l'appartenance
+if Lundi = jours then  // ✗ ERREUR : compare un jour à un ensemble  
+if Lundi in jours then  // ✓ CORRECT : teste l'appartenance  
 ```
 
 ### 3. Tenter de parcourir directement

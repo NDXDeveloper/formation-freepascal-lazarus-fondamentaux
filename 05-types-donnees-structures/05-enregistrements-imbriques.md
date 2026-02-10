@@ -142,8 +142,8 @@ variable.champ1.champ2
 ### Exemple simple
 
 ```pascal
-program AccesImbriques;
-type
+program AccesImbriques;  
+type  
   TAdresse = record
     rue: String;
     ville: String;
@@ -260,8 +260,8 @@ end.
 ### Afficher un enregistrement imbriqué
 
 ```pascal
-program AffichageImbrique;
-type
+program AffichageImbrique;  
+type  
   TDate = record
     jour: Integer;
     mois: Integer;
@@ -281,19 +281,19 @@ type
     dateNaissance: TDate;
   end;
 
-procedure AfficherDate(d: TDate);
-begin
+procedure AfficherDate(d: TDate);  
+begin  
   WriteLn(d.jour, '/', d.mois, '/', d.annee);
 end;
 
-procedure AfficherAdresse(a: TAdresse);
-begin
+procedure AfficherAdresse(a: TAdresse);  
+begin  
   WriteLn(a.rue);
   WriteLn(a.codePostal, ' ', a.ville);
 end;
 
-procedure AfficherPersonne(p: TPersonne);
-begin
+procedure AfficherPersonne(p: TPersonne);  
+begin  
   WriteLn('=== Fiche Personne ===');
   WriteLn('Nom : ', p.prenom, ' ', p.nom);
   Write('Né(e) le : ');
@@ -323,13 +323,13 @@ end.
 ### Modifier un sous-enregistrement
 
 ```pascal
-procedure ModifierAdresse(var p: TPersonne; nouvelleVille: String);
-begin
+procedure ModifierAdresse(var p: TPersonne; nouvelleVille: String);  
+begin  
   p.adresse.ville := nouvelleVille;
 end;
 
-procedure Demenager(var p: TPersonne; a: TAdresse);
-begin
+procedure Demenager(var p: TPersonne; a: TAdresse);  
+begin  
   p.adresse := a;  // Remplace toute l'adresse
 end;
 ```
@@ -337,15 +337,15 @@ end;
 ### Fonctions de comparaison
 
 ```pascal
-function DatesEgales(d1, d2: TDate): Boolean;
-begin
+function DatesEgales(d1, d2: TDate): Boolean;  
+begin  
   DatesEgales := (d1.jour = d2.jour) and
                  (d1.mois = d2.mois) and
                  (d1.annee = d2.annee);
 end;
 
-function AdressesEgales(a1, a2: TAdresse): Boolean;
-begin
+function AdressesEgales(a1, a2: TAdresse): Boolean;  
+begin  
   AdressesEgales := (a1.rue = a2.rue) and
                     (a1.ville = a2.ville) and
                     (a1.codePostal = a2.codePostal);
@@ -357,8 +357,8 @@ end;
 ### Exemple 1 : Gestion de points géométriques
 
 ```pascal
-program Geometrie;
-type
+program Geometrie;  
+type  
   TPoint = record
     x: Real;
     y: Real;
@@ -374,18 +374,18 @@ type
     coinBasDroite: TPoint;
   end;
 
-function Distance(p1, p2: TPoint): Real;
-begin
+function Distance(p1, p2: TPoint): Real;  
+begin  
   Distance := Sqrt(Sqr(p2.x - p1.x) + Sqr(p2.y - p1.y));
 end;
 
-function LongueurLigne(ligne: TLigne): Real;
-begin
+function LongueurLigne(ligne: TLigne): Real;  
+begin  
   LongueurLigne := Distance(ligne.depart, ligne.arrivee);
 end;
 
-function SurfaceRectangle(rect: TRectangle): Real;
-var
+function SurfaceRectangle(rect: TRectangle): Real;  
+var  
   largeur, hauteur: Real;
 begin
   largeur := Abs(rect.coinBasDroite.x - rect.coinHautGauche.x);
@@ -418,8 +418,8 @@ end.
 ### Exemple 2 : Carnet d'adresses complet
 
 ```pascal
-program CarnetComplet;
-type
+program CarnetComplet;  
+type  
   TTelephone = record
     fixe: String;
     mobile: String;
@@ -440,8 +440,8 @@ type
     adresse: TAdresse;
   end;
 
-procedure SaisirContact(var c: TContact);
-begin
+procedure SaisirContact(var c: TContact);  
+begin  
   WriteLn('=== Nouveau contact ===');
   Write('Nom : ');
   ReadLn(c.nom);
@@ -467,8 +467,8 @@ begin
   ReadLn(c.adresse.pays);
 end;
 
-procedure AfficherContact(c: TContact);
-begin
+procedure AfficherContact(c: TContact);  
+begin  
   WriteLn('========================');
   WriteLn('Contact : ', c.prenom, ' ', c.nom);
   WriteLn('Email : ', c.email);
@@ -494,8 +494,8 @@ end.
 ### Exemple 3 : Commande avec articles
 
 ```pascal
-program GestionCommande;
-type
+program GestionCommande;  
+type  
   TDate = record
     jour: Integer;
     mois: Integer;
@@ -521,13 +521,13 @@ type
     article: TArticle;
   end;
 
-function MontantTotal(cmd: TCommande): Real;
-begin
+function MontantTotal(cmd: TCommande): Real;  
+begin  
   MontantTotal := cmd.article.prixUnitaire * cmd.article.quantite;
 end;
 
-procedure AfficherCommande(cmd: TCommande);
-begin
+procedure AfficherCommande(cmd: TCommande);  
+begin  
   WriteLn('===== COMMANDE N° ', cmd.numero, ' =====');
   WriteLn('Date : ', cmd.dateCommande.jour, '/',
           cmd.dateCommande.mois, '/', cmd.dateCommande.annee);
@@ -577,8 +577,8 @@ end.
 ### Exemple 4 : Entreprise avec employés
 
 ```pascal
-program ExempleEntreprise;
-type
+program ExempleEntreprise;  
+type  
   TDate = record
     jour: Integer;
     mois: Integer;
@@ -605,13 +605,13 @@ type
     directeur: TEmploye;
   end;
 
-function AncienneteAnnees(emp: TEmploye; dateActuelle: TDate): Integer;
-begin
+function AncienneteAnnees(emp: TEmploye; dateActuelle: TDate): Integer;  
+begin  
   AncienneteAnnees := dateActuelle.annee - emp.dateEmbauche.annee;
 end;
 
-procedure AfficherEntreprise(ent: TEntreprise);
-begin
+procedure AfficherEntreprise(ent: TEntreprise);  
+begin  
   WriteLn('===== ENTREPRISE =====');
   WriteLn('Nom : ', ent.nom);
   WriteLn('SIRET : ', ent.siret);

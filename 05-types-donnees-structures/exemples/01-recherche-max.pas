@@ -3,8 +3,8 @@
   Description : Recherche de la temperature maximale dans un tableau
   Fichier source : 01-tableaux-statiques-unidimensionnels.md
   ============================================================================ }
-program RechercheMax;
-var
+program RechercheMax;  
+var  
   temperatures: array[1..7] of Real;
   i: Integer;
   max: Real;

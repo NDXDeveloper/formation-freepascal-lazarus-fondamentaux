@@ -3,8 +3,8 @@
   Description : Commande avec client et article imbriques
   Fichier source : 05-enregistrements-imbriques.md
   ============================================================================ }
-program GestionCommande;
-type
+program GestionCommande;  
+type  
   TDate = record
     jour: Integer;
     mois: Integer;
@@ -30,13 +30,13 @@ type
     article: TArticle;
   end;
 
-function MontantTotal(cmd: TCommande): Real;
-begin
+function MontantTotal(cmd: TCommande): Real;  
+begin  
   MontantTotal := cmd.article.prixUnitaire * cmd.article.quantite;
 end;
 
-procedure AfficherCommande(cmd: TCommande);
-begin
+procedure AfficherCommande(cmd: TCommande);  
+begin  
   WriteLn('===== COMMANDE N° ', cmd.numero, ' =====');
   WriteLn('Date : ', cmd.dateCommande.jour, '/',
           cmd.dateCommande.mois, '/', cmd.dateCommande.annee);

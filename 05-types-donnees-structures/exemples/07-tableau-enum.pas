@@ -3,8 +3,8 @@
   Description : Tableau indexe par un type enumere (temperatures par jour)
   Fichier source : 07-types-enumeres.md
   ============================================================================ }
-program TableauEnum;
-type
+program TableauEnum;  
+type  
   TJourSemaine = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
 
 var

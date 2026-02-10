@@ -3,23 +3,23 @@
   Description : Gestion d'une date avec validation et affichage
   Fichier source : 04-enregistrements-records.md
   ============================================================================ }
-program GestionDate;
-type
+program GestionDate;  
+type  
   TDate = record
     jour: Integer;
     mois: Integer;
     annee: Integer;
   end;
 
-function DateValide(d: TDate): Boolean;
-begin
+function DateValide(d: TDate): Boolean;  
+begin  
   DateValide := (d.jour >= 1) and (d.jour <= 31) and
                 (d.mois >= 1) and (d.mois <= 12) and
                 (d.annee > 0);
 end;
 
-procedure AfficherDate(d: TDate);
-begin
+procedure AfficherDate(d: TDate);  
+begin  
   WriteLn(d.jour, '/', d.mois, '/', d.annee);
 end;
 

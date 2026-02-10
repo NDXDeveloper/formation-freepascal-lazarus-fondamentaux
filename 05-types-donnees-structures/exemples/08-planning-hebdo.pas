@@ -3,8 +3,8 @@
   Description : Planification hebdomadaire avec ensembles dans des records
   Fichier source : 08-types-ensemble-set.md
   ============================================================================ }
-program PlanningHebdo;
-type
+program PlanningHebdo;  
+type  
   TJour = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
   TJours = set of TJour;
 
@@ -19,8 +19,8 @@ var
   tousLesJours: TJours;
   jour: TJour;
 
-function NomJour(j: TJour): String;
-begin
+function NomJour(j: TJour): String;  
+begin  
   case j of
     Lundi: NomJour := 'Lundi';
     Mardi: NomJour := 'Mardi';

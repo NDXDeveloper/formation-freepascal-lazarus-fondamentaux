@@ -3,8 +3,8 @@
   Description : Creation de chaines sur plusieurs lignes
   Fichier source : 03-chaines-caracteres-string.md
   ============================================================================ }
-program ChainesMultiligne;
-var
+program ChainesMultiligne;  
+var  
   message: String;
 begin
   // Méthode 1 : Concaténation

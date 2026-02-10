@@ -3,16 +3,16 @@
   Description : Menu de navigation avec type enumere pour les actions
   Fichier source : 07-types-enumeres.md
   ============================================================================ }
-program MenuNavigation;
-type
+program MenuNavigation;  
+type  
   TMenuPrincipal = (Nouveau, Ouvrir, Enregistrer, Quitter);
 
 var
   choix: TMenuPrincipal;
   saisie: Integer;
 
-procedure AfficherMenu;
-begin
+procedure AfficherMenu;  
+begin  
   WriteLn;
   WriteLn('=== MENU PRINCIPAL ===');
   WriteLn('1. Nouveau');
@@ -22,8 +22,8 @@ begin
   Write('Votre choix : ');
 end;
 
-procedure ExecuterAction(action: TMenuPrincipal);
-begin
+procedure ExecuterAction(action: TMenuPrincipal);  
+begin  
   case action of
     Nouveau:
       WriteLn('Création d''un nouveau fichier...');

@@ -3,8 +3,8 @@
   Description : Suppression d'element avec Exclude et operateur -
   Fichier source : 08-types-ensemble-set.md
   ============================================================================ }
-program RetirerElement;
-type
+program RetirerElement;  
+type  
   TJour = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
   TJours = set of TJour;
 

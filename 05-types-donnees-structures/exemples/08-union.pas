@@ -3,8 +3,8 @@
   Description : Operation d'union (+) sur les ensembles
   Fichier source : 08-types-ensemble-set.md
   ============================================================================ }
-program Union;
-type
+program Union;  
+type  
   TJour = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
   TJours = set of TJour;
 

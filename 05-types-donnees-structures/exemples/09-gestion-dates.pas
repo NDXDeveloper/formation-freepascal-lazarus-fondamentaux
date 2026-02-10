@@ -3,8 +3,8 @@
   Description : Gestion de dates avec types intervalle pour jour, mois, annee
   Fichier source : 09-types-intervalle.md
   ============================================================================ }
-program GestionDates;
-type
+program GestionDates;  
+type  
   TJour = 1..31;
   TMois = 1..12;
   TAnnee = 1900..2100;
@@ -15,8 +15,8 @@ type
     annee: TAnnee;
   end;
 
-function DateValide(d: TDate): Boolean;
-const
+function DateValide(d: TDate): Boolean;  
+const  
   JoursParMois: array[1..12] of Integer =
     (31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
 var
@@ -32,8 +32,8 @@ begin
   DateValide := d.jour <= joursMax;
 end;
 
-procedure AfficherDate(d: TDate);
-const
+procedure AfficherDate(d: TDate);  
+const  
   NomsMois: array[1..12] of String =
     ('Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
      'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre');

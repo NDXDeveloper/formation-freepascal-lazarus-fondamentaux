@@ -3,8 +3,8 @@
   Description : Operation de difference (-) sur les ensembles
   Fichier source : 08-types-ensemble-set.md
   ============================================================================ }
-program Difference;
-type
+program Difference;  
+type  
   TJour = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
   TJours = set of TJour;
 

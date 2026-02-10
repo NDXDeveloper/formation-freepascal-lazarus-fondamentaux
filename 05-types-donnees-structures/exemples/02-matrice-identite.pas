@@ -3,8 +3,8 @@
   Description : Creation et affichage d'une matrice identite 3x3
   Fichier source : 02-tableaux-multidimensionnels.md
   ============================================================================ }
-program MatriceIdentite;
-var
+program MatriceIdentite;  
+var  
   matrice: array[1..3, 1..3] of Integer;
   i, j: Integer;
 begin

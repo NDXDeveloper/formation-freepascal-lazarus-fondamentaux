@@ -3,8 +3,8 @@
   Description : Utilisation de Low() et High() avec tableaux multidimensionnels
   Fichier source : 02-tableaux-multidimensionnels.md
   ============================================================================ }
-program LowHighMultiDim;
-var
+program LowHighMultiDim;  
+var  
   tableau: array[1..3, 5..8] of Integer;
   i, j: Integer;
 begin

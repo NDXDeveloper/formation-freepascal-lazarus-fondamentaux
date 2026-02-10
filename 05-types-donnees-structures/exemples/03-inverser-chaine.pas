@@ -3,8 +3,8 @@
   Description : Inverser une chaine de caracteres
   Fichier source : 03-chaines-caracteres-string.md
   ============================================================================ }
-program InverserChaine;
-var
+program InverserChaine;  
+var  
   texte, inverse: String;
   i: Integer;
 begin

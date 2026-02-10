@@ -3,8 +3,8 @@
   Description : Procedure Delete() pour supprimer des caracteres
   Fichier source : 03-chaines-caracteres-string.md
   ============================================================================ }
-program ExempleDelete;
-var
+program ExempleDelete;  
+var  
   texte: String;
 begin
   texte := 'Bonjour tout le monde';

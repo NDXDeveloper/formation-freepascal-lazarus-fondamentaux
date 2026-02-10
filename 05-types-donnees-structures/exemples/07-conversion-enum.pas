@@ -3,12 +3,12 @@
   Description : Conversion entre type enumere et String
   Fichier source : 07-types-enumeres.md
   ============================================================================ }
-program ConversionEnum;
-type
+program ConversionEnum;  
+type  
   TJourSemaine = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
 
-function JourEnString(jour: TJourSemaine): String;
-begin
+function JourEnString(jour: TJourSemaine): String;  
+begin  
   case jour of
     Lundi:    JourEnString := 'Lundi';
     Mardi:    JourEnString := 'Mardi';

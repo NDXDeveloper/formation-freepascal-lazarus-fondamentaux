@@ -3,8 +3,8 @@
   Description : Carnet d'adresses avec menu (ajouter, lister, rechercher)
   Fichier source : 06-tableaux-enregistrements.md
   ============================================================================ }
-program CarnetAdresses;
-type
+program CarnetAdresses;  
+type  
   TContact = record
     nom: String;
     prenom: String;
@@ -19,8 +19,8 @@ var
   choix, i: Integer;
   nomRecherche: String;
 
-procedure AfficherMenu;
-begin
+procedure AfficherMenu;  
+begin  
   WriteLn;
   WriteLn('=== CARNET D''ADRESSES ===');
   WriteLn('1. Ajouter un contact');
@@ -30,8 +30,8 @@ begin
   Write('Votre choix : ');
 end;
 
-procedure AjouterContact;
-begin
+procedure AjouterContact;  
+begin  
   if nbContacts < 50 then
   begin
     nbContacts := nbContacts + 1;
@@ -50,8 +50,8 @@ begin
     WriteLn('Carnet plein !');
 end;
 
-procedure ListerContacts;
-var
+procedure ListerContacts;  
+var  
   i: Integer;
 begin
   if nbContacts = 0 then
@@ -69,8 +69,8 @@ begin
   end;
 end;
 
-procedure RechercherContact;
-var
+procedure RechercherContact;  
+var  
   i: Integer;
   trouve: Boolean;
 begin

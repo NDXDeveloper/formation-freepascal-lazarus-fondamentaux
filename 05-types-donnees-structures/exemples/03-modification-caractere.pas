@@ -3,8 +3,8 @@
   Description : Modification d'un caractere dans une chaine
   Fichier source : 03-chaines-caracteres-string.md
   ============================================================================ }
-program ModificationCaractere;
-var
+program ModificationCaractere;  
+var  
   mot: String;
 begin
   mot := 'Pascal';

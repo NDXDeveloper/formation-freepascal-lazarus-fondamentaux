@@ -103,8 +103,8 @@ type
 ### Déclaration de variables
 
 ```pascal
-program ExempleIntervalle;
-type
+program ExempleIntervalle;  
+type  
   TAge = 0..120;
   TNote = 0..20;
 
@@ -130,8 +130,8 @@ end.
 Les types intervalles sont très utiles comme indices de tableaux :
 
 ```pascal
-program TableauIntervalle;
-type
+program TableauIntervalle;  
+type  
   TJourMois = 1..31;
   TMois = 1..12;
 
@@ -160,8 +160,8 @@ type
   TNote = 0..20;
   TMention = (Insuffisant, Passable, AssezBien, Bien, TresBien);
 
-function CalculerMention(note: TNote): TMention;
-begin
+function CalculerMention(note: TNote): TMention;  
+begin  
   if note < 10 then
     CalculerMention := Insuffisant
   else if note < 12 then
@@ -190,8 +190,8 @@ end.
 C'est une utilisation très puissante des intervalles :
 
 ```pascal
-program IntervalleEnumere;
-type
+program IntervalleEnumere;  
+type  
   TJour = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
   TJourOuvre = Lundi..Vendredi;
   TWeekend = Samedi..Dimanche;
@@ -219,14 +219,14 @@ Très utiles pour valider les entrées :
 ```pascal
 {$mode objfpc}{$H+}
 {$R+}  // Active la vérification des intervalles à l'exécution
-program IntervalleCaracteres;
-type
+program IntervalleCaracteres;  
+type  
   TChiffre = '0'..'9';
   TLettreMajuscule = 'A'..'Z';
   TLettreMinuscule = 'a'..'z';
 
-function EstChiffre(c: Char): Boolean;
-var
+function EstChiffre(c: Char): Boolean;  
+var  
   chiffre: TChiffre;
 begin
   try
@@ -237,8 +237,8 @@ begin
   end;
 end;
 
-function EstLettre(c: Char): Boolean;
-begin
+function EstLettre(c: Char): Boolean;  
+begin  
   EstLettre := ((c >= 'A') and (c <= 'Z')) or
                ((c >= 'a') and (c <= 'z'));
 end;
@@ -263,8 +263,8 @@ end.
 ### Exemple 1 : Gestion de dates
 
 ```pascal
-program GestionDates;
-type
+program GestionDates;  
+type  
   TJour = 1..31;
   TMois = 1..12;
   TAnnee = 1900..2100;
@@ -275,8 +275,8 @@ type
     annee: TAnnee;
   end;
 
-function DateValide(d: TDate): Boolean;
-const
+function DateValide(d: TDate): Boolean;  
+const  
   JoursParMois: array[1..12] of Integer =
     (31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
 var
@@ -292,8 +292,8 @@ begin
   DateValide := d.jour <= joursMax;
 end;
 
-procedure AfficherDate(d: TDate);
-const
+procedure AfficherDate(d: TDate);  
+const  
   NomsMois: array[1..12] of String =
     ('Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
      'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
@@ -325,24 +325,24 @@ end.
 ### Exemple 2 : Système de notation
 
 ```pascal
-program SystemeNotation;
-type
+program SystemeNotation;  
+type  
   TNoteSur20 = 0..20;
   TNoteSur100 = 0..100;
   TPourcentage = 0..100;
 
-function ConvertirNote20Vers100(note: TNoteSur20): TNoteSur100;
-begin
+function ConvertirNote20Vers100(note: TNoteSur20): TNoteSur100;  
+begin  
   ConvertirNote20Vers100 := note * 5;
 end;
 
-function ConvertirNote100Vers20(note: TNoteSur100): TNoteSur20;
-begin
+function ConvertirNote100Vers20(note: TNoteSur100): TNoteSur20;  
+begin  
   ConvertirNote100Vers20 := note div 5;
 end;
 
-function CalculerPourcentage(note, total: Integer): TPourcentage;
-begin
+function CalculerPourcentage(note, total: Integer): TPourcentage;  
+begin  
   if total > 0 then
     CalculerPourcentage := Round((note * 100) / total)
   else
@@ -369,8 +369,8 @@ end.
 
 ```pascal
 {$mode objfpc}{$H+}
-program GestionHeures;
-type
+program GestionHeures;  
+type  
   THeure = 0..23;
   TMinute = 0..59;
   TSeconde = 0..59;
@@ -381,8 +381,8 @@ type
     seconde: TSeconde;
   end;
 
-procedure AfficherHoraire(h: THoraire);
-begin
+procedure AfficherHoraire(h: THoraire);  
+begin  
   // Afficher avec zéros de remplissage
   if h.heure < 10 then Write('0');
   Write(h.heure);
@@ -394,8 +394,8 @@ begin
   WriteLn(h.seconde);
 end;
 
-function AjouterSecondes(h: THoraire; sec: Integer): THoraire;
-var
+function AjouterSecondes(h: THoraire; sec: Integer): THoraire;  
+var  
   totalSecondes: Integer;
 begin
   // Convertir en secondes totales
@@ -437,8 +437,8 @@ end.
 ### Exemple 4 : Gestion d'un ascenseur
 
 ```pascal
-program GestionAscenseur;
-type
+program GestionAscenseur;  
+type  
   TEtage = -2..50;  // Du sous-sol -2 au 50e étage
 
 var
@@ -446,8 +446,8 @@ var
   etageDestination: TEtage;
   i: TEtage;
 
-procedure DeplacerVers(destination: TEtage);
-begin
+procedure DeplacerVers(destination: TEtage);  
+begin  
   WriteLn('Déplacement de l''étage ', etageActuel, ' vers l''étage ', destination);
 
   if destination > etageActuel then
@@ -491,8 +491,8 @@ end.
 ### Exemple 5 : Code PIN
 
 ```pascal
-program CodePIN;
-type
+program CodePIN;  
+type  
   TChiffre = 0..9;
   TCodePIN = array[1..4] of TChiffre;
 
@@ -502,8 +502,8 @@ var
   i: Integer;
   correct: Boolean;
 
-procedure SaisirCode(var c: TCodePIN);
-var
+procedure SaisirCode(var c: TCodePIN);  
+var  
   i: Integer;
 begin
   WriteLn('Entrez un code à 4 chiffres :');
@@ -514,8 +514,8 @@ begin
   end;
 end;
 
-function CodesIdentiques(c1, c2: TCodePIN): Boolean;
-var
+function CodesIdentiques(c1, c2: TCodePIN): Boolean;  
+var  
   i: Integer;
 begin
   CodesIdentiques := True;
@@ -553,8 +553,8 @@ Par défaut, FreePascal peut désactiver la vérification des bornes pour des ra
 ```pascal
 {$R+}  // Active la vérification des intervalles (Range checking)
 
-program VerificationBornes;
-type
+program VerificationBornes;  
+type  
   TNote = 0..20;
 
 var
@@ -572,8 +572,8 @@ end.
 ### Conversion explicite
 
 ```pascal
-program ConversionTypes;
-type
+program ConversionTypes;  
+type  
   TPetitNombre = 1..10;
   TGrandNombre = 1..100;
 

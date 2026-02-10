@@ -3,8 +3,8 @@
   Description : Operation d'intersection (*) sur les ensembles
   Fichier source : 08-types-ensemble-set.md
   ============================================================================ }
-program Intersection;
-type
+program Intersection;  
+type  
   TJour = (Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi, Dimanche);
   TJours = set of TJour;
 

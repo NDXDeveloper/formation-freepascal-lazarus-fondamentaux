@@ -3,8 +3,8 @@
   Description : Saisie et affichage d'un enregistrement TPersonne
   Fichier source : 04-enregistrements-records.md
   ============================================================================ }
-program SaisiePersonne;
-type
+program SaisiePersonne;  
+type  
   TPersonne = record
     nom: String;
     prenom: String;

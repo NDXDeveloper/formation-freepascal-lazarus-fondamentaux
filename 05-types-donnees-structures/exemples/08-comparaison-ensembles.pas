@@ -3,8 +3,8 @@
   Description : Comparaison d'ensembles (egalite, inclusion)
   Fichier source : 08-types-ensemble-set.md
   ============================================================================ }
-program ComparaisonEnsembles;
-type
+program ComparaisonEnsembles;  
+type  
   TChiffres = set of 0..9;
 
 var

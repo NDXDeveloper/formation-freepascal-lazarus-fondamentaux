@@ -3,8 +3,8 @@
   Description : Acces aux elements d'un tableau 2D (affectation, lecture, modification)
   Fichier source : 02-tableaux-multidimensionnels.md
   ============================================================================ }
-program ExempleAcces2D;
-var
+program ExempleAcces2D;  
+var  
   grille: array[1..3, 1..4] of Integer;
 begin
   // Affectation

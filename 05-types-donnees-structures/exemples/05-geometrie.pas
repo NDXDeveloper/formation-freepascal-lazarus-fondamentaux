@@ -3,8 +3,8 @@
   Description : Gestion de points geometriques, lignes et rectangles imbriques
   Fichier source : 05-enregistrements-imbriques.md
   ============================================================================ }
-program Geometrie;
-type
+program Geometrie;  
+type  
   TPoint = record
     x: Real;
     y: Real;
@@ -20,18 +20,18 @@ type
     coinBasDroite: TPoint;
   end;
 
-function Distance(p1, p2: TPoint): Real;
-begin
+function Distance(p1, p2: TPoint): Real;  
+begin  
   Distance := Sqrt(Sqr(p2.x - p1.x) + Sqr(p2.y - p1.y));
 end;
 
-function LongueurLigne(ligne: TLigne): Real;
-begin
+function LongueurLigne(ligne: TLigne): Real;  
+begin  
   LongueurLigne := Distance(ligne.depart, ligne.arrivee);
 end;
 
-function SurfaceRectangle(rect: TRectangle): Real;
-var
+function SurfaceRectangle(rect: TRectangle): Real;  
+var  
   largeur, hauteur: Real;
 begin
   largeur := Abs(rect.coinBasDroite.x - rect.coinHautGauche.x);

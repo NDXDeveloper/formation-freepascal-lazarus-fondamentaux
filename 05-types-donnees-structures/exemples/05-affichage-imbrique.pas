@@ -3,8 +3,8 @@
   Description : Affichage d'un enregistrement imbrique avec procedures dediees
   Fichier source : 05-enregistrements-imbriques.md
   ============================================================================ }
-program AffichageImbrique;
-type
+program AffichageImbrique;  
+type  
   TDate = record
     jour: Integer;
     mois: Integer;
@@ -24,19 +24,19 @@ type
     dateNaissance: TDate;
   end;
 
-procedure AfficherDate(d: TDate);
-begin
+procedure AfficherDate(d: TDate);  
+begin  
   WriteLn(d.jour, '/', d.mois, '/', d.annee);
 end;
 
-procedure AfficherAdresse(a: TAdresse);
-begin
+procedure AfficherAdresse(a: TAdresse);  
+begin  
   WriteLn(a.rue);
   WriteLn(a.codePostal, ' ', a.ville);
 end;
 
-procedure AfficherPersonne(p: TPersonne);
-begin
+procedure AfficherPersonne(p: TPersonne);  
+begin  
   WriteLn('=== Fiche Personne ===');
   WriteLn('Nom : ', p.prenom, ' ', p.nom);
   Write('Né(e) le : ');

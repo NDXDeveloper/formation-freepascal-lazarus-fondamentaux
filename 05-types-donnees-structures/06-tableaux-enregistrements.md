@@ -117,8 +117,8 @@ tableau[indice].champ
 ### Exemple simple
 
 ```pascal
-program AccesTableauRecord;
-type
+program AccesTableauRecord;  
+type  
   TEleve = record
     nom: String;
     prenom: String;
@@ -149,8 +149,8 @@ end.
 
 **Sortie :**
 ```
-Premier élève : Marie Dupont
-Sa note : 15.5
+Premier élève : Marie Dupont  
+Sa note : 15.5  
 ```
 
 ## Parcours d'un tableau d'enregistrements
@@ -158,8 +158,8 @@ Sa note : 15.5
 ### Affichage de tous les éléments
 
 ```pascal
-program ParcoursTableau;
-type
+program ParcoursTableau;  
+type  
   TEleve = record
     nom: String;
     prenom: String;
@@ -206,8 +206,8 @@ Liste des élèves :
 ### Saisie de tous les éléments
 
 ```pascal
-program SaisieTableau;
-type
+program SaisieTableau;  
+type  
   TEleve = record
     nom: String;
     prenom: String;
@@ -245,8 +245,8 @@ end.
 ### Calcul de la moyenne
 
 ```pascal
-program CalculMoyenne;
-type
+program CalculMoyenne;  
+type  
   TEleve = record
     nom: String;
     prenom: String;
@@ -274,8 +274,8 @@ end.
 ### Recherche d'un élément
 
 ```pascal
-program RechercheEleve;
-type
+program RechercheEleve;  
+type  
   TEleve = record
     nom: String;
     prenom: String;
@@ -313,8 +313,8 @@ end.
 ### Recherche du meilleur élève
 
 ```pascal
-program MeilleurEleve;
-type
+program MeilleurEleve;  
+type  
   TEleve = record
     nom: String;
     prenom: String;
@@ -344,8 +344,8 @@ end.
 ### Comptage selon critère
 
 ```pascal
-program CompterAdmis;
-type
+program CompterAdmis;  
+type  
   TEleve = record
     nom: String;
     prenom: String;
@@ -375,8 +375,8 @@ end.
 ### Tri par sélection (par nom)
 
 ```pascal
-program TriSelection;
-type
+program TriSelection;  
+type  
   TEleve = record
     nom: String;
     prenom: String;
@@ -418,8 +418,8 @@ end.
 ### Tri par notes (décroissant)
 
 ```pascal
-program TriParNotes;
-type
+program TriParNotes;  
+type  
   TEleve = record
     nom: String;
     prenom: String;
@@ -468,13 +468,13 @@ type
   end;
   TTableauEleves = array[1..30] of TEleve;
 
-procedure AfficherEleve(e: TEleve);
-begin
+procedure AfficherEleve(e: TEleve);  
+begin  
   WriteLn(e.prenom, ' ', e.nom, ' - Note : ', e.note:0:1);
 end;
 
-procedure AfficherClasse(eleves: TTableauEleves; nbEleves: Integer);
-var
+procedure AfficherClasse(eleves: TTableauEleves; nbEleves: Integer);  
+var  
   i: Integer;
 begin
   WriteLn('=== Liste de la classe ===');
@@ -490,8 +490,8 @@ end;
 ### Procédure de saisie
 
 ```pascal
-procedure SaisirEleve(var e: TEleve);
-begin
+procedure SaisirEleve(var e: TEleve);  
+begin  
   Write('Nom : ');
   ReadLn(e.nom);
   Write('Prénom : ');
@@ -500,8 +500,8 @@ begin
   ReadLn(e.note);
 end;
 
-procedure SaisirClasse(var eleves: TTableauEleves; var nbEleves: Integer);
-var
+procedure SaisirClasse(var eleves: TTableauEleves; var nbEleves: Integer);  
+var  
   i: Integer;
 begin
   Write('Nombre d''élèves : ');
@@ -538,8 +538,8 @@ end;
 ### Fonction de calcul
 
 ```pascal
-function CalculerMoyenne(eleves: TTableauEleves; nbEleves: Integer): Real;
-var
+function CalculerMoyenne(eleves: TTableauEleves; nbEleves: Integer): Real;  
+var  
   i: Integer;
   somme: Real;
 begin
@@ -549,8 +549,8 @@ begin
   CalculerMoyenne := somme / nbEleves;
 end;
 
-function CompterAdmis(eleves: TTableauEleves; nbEleves: Integer): Integer;
-var
+function CompterAdmis(eleves: TTableauEleves; nbEleves: Integer): Integer;  
+var  
   i, compte: Integer;
 begin
   compte := 0;
@@ -566,8 +566,8 @@ end;
 ### Exemple 1 : Gestion de classe
 
 ```pascal
-program GestionClasse;
-type
+program GestionClasse;  
+type  
   TEleve = record
     nom: String;
     prenom: String;
@@ -620,8 +620,8 @@ end.
 ### Exemple 2 : Catalogue de produits
 
 ```pascal
-program CatalogueProduits;
-type
+program CatalogueProduits;  
+type  
   TProduit = record
     code: String;
     designation: String;
@@ -702,8 +702,8 @@ end.
 ### Exemple 3 : Carnet d'adresses
 
 ```pascal
-program CarnetAdresses;
-type
+program CarnetAdresses;  
+type  
   TContact = record
     nom: String;
     prenom: String;
@@ -718,8 +718,8 @@ var
   choix, i: Integer;
   nomRecherche: String;
 
-procedure AfficherMenu;
-begin
+procedure AfficherMenu;  
+begin  
   WriteLn;
   WriteLn('=== CARNET D''ADRESSES ===');
   WriteLn('1. Ajouter un contact');
@@ -729,8 +729,8 @@ begin
   Write('Votre choix : ');
 end;
 
-procedure AjouterContact;
-begin
+procedure AjouterContact;  
+begin  
   if nbContacts < 50 then
   begin
     nbContacts := nbContacts + 1;
@@ -749,8 +749,8 @@ begin
     WriteLn('Carnet plein !');
 end;
 
-procedure ListerContacts;
-var
+procedure ListerContacts;  
+var  
   i: Integer;
 begin
   if nbContacts = 0 then
@@ -768,8 +768,8 @@ begin
   end;
 end;
 
-procedure RechercherContact;
-var
+procedure RechercherContact;  
+var  
   i: Integer;
   trouve: Boolean;
 begin
@@ -895,8 +895,8 @@ end.
 ### 2. Inverser tableau et champ
 
 ```pascal
-eleves.nom[1] := 'Dupont';  // ✗ ERREUR : ordre incorrect
-eleves[1].nom := 'Dupont';  // ✓ CORRECT
+eleves.nom[1] := 'Dupont';  // ✗ ERREUR : ordre incorrect  
+eleves[1].nom := 'Dupont';  // ✓ CORRECT  
 ```
 
 ### 3. Déborder du tableau
