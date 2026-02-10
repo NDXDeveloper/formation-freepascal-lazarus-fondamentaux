@@ -29,11 +29,11 @@ JSON a été créé par Douglas Crockford au début des années 2000 comme sous-
 ```
 JSON                    XML                     CSV
 ────────────────────────────────────────────────────────
-Léger                   Verbeux                 Très léger
-Facile à parser         Plus complexe           Simple
-Structures complexes    Structures complexes    Tableaux simples seulement
-Pas de schéma strict    Schéma possible (XSD)   Pas de schéma
-Moderne                 Plus ancien             Le plus ancien
+Léger                   Verbeux                 Très léger  
+Facile à parser         Plus complexe           Simple  
+Structures complexes    Structures complexes    Tableaux simples seulement  
+Pas de schéma strict    Schéma possible (XSD)   Pas de schéma  
+Moderne                 Plus ancien             Le plus ancien  
 ```
 
 ## Les Types de Données JSON
@@ -89,15 +89,15 @@ Entiers ou décimaux, **sans guillemets** :
 Seulement deux valeurs possibles : `true` ou `false` (en minuscules) :
 
 ```json
-true
-false
+true  
+false  
 ```
 
 **Erreurs courantes :**
 ```json
 ❌ INCORRECT        ✅ CORRECT
-True               true
-TRUE               true
+True               true  
+TRUE               true  
 "true"             true
 1                  true (mais c'est un nombre, pas un booléen)
 ```
@@ -114,8 +114,8 @@ null
 
 ```json
 ❌ INCORRECT        ✅ CORRECT
-NULL               null
-Null               null
+NULL               null  
+Null               null  
 "null"             null (c'est une chaîne, pas null)
 ```
 

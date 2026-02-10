@@ -10,8 +10,8 @@ program JsonPlaceholderExample;
 uses
   fphttpclient, opensslsockets, SysUtils;
 
-procedure ListUsers;
-var
+procedure ListUsers;  
+var  
   Client: TFPHttpClient;
   Response: String;
 begin

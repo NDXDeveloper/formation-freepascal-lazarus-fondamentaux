@@ -43,8 +43,8 @@ type
 
 implementation
 
-constructor THTTPManager.Create;
-begin
+constructor THTTPManager.Create;  
+begin  
   inherited Create;
   FClient := TFPHttpClient.Create(nil);
   FClient.AddHeader('User-Agent', 'FreePascal-App/1.0');
@@ -55,14 +55,14 @@ begin
   FLogErrors := True;     // Logger par défaut
 end;
 
-destructor THTTPManager.Destroy;
-begin
+destructor THTTPManager.Destroy;  
+begin  
   FClient.Free;
   inherited Destroy;
 end;
 
-procedure THTTPManager.LogError(const Message: String);
-var
+procedure THTTPManager.LogError(const Message: String);  
+var  
   F: TextFile;
 begin
   if not FLogErrors then
@@ -82,16 +82,16 @@ begin
   end;
 end;
 
-function THTTPManager.ShouldRetry(StatusCode: Integer): Boolean;
-begin
+function THTTPManager.ShouldRetry(StatusCode: Integer): Boolean;  
+begin  
   Result := False;
   case StatusCode of  // case et non 'in' : les sets FPC ne supportent pas les valeurs > 255
     0, 500, 502, 503, 504: Result := True;
   end;
 end;
 
-function THTTPManager.Get(const URL: String): THTTPResult;
-var
+function THTTPManager.Get(const URL: String): THTTPResult;  
+var  
   Attempt: Integer;
   WaitTime: Integer;
 begin
@@ -140,8 +140,8 @@ begin
     Result.ErrorMessage := Format('Échec après %d tentatives', [FMaxRetries]);
 end;
 
-function THTTPManager.Post(const URL: String; const JsonData: String): THTTPResult;
-begin
+function THTTPManager.Post(const URL: String; const JsonData: String): THTTPResult;  
+begin  
   Result.Success := False;
   Result.StatusCode := 0;
   Result.Data := '';

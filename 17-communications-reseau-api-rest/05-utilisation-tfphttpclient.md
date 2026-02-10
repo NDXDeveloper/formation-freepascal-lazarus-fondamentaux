@@ -177,8 +177,8 @@ end.
 ### Gestion Complète des Erreurs
 
 ```pascal
-function FetchData(const URL: String): String;
-var
+function FetchData(const URL: String): String;  
+var  
   Client: TFPHttpClient;
 begin
   Result := '';
@@ -348,8 +348,8 @@ end;
 ### Fonction POST Réutilisable
 
 ```pascal
-function PostJSON(const URL, JsonData: String): String;
-var
+function PostJSON(const URL, JsonData: String): String;  
+var  
   Client: TFPHttpClient;
 begin
   Result := '';
@@ -398,8 +398,8 @@ end;
 PUT permet de mettre à jour une ressource existante.
 
 ```pascal
-function PutJSON(const URL, JsonData: String): String;
-var
+function PutJSON(const URL, JsonData: String): String;  
+var  
   Client: TFPHttpClient;
   Response: String;
 begin
@@ -449,8 +449,8 @@ end;
 DELETE permet de supprimer une ressource.
 
 ```pascal
-function DeleteResource(const URL: String): Boolean;
-var
+function DeleteResource(const URL: String): Boolean;  
+var  
   Client: TFPHttpClient;
 begin
   Result := False;
@@ -573,8 +573,8 @@ end;
 ```pascal
 uses Classes;
 
-procedure DownloadFile(const URL, DestinationFile: String);
-var
+procedure DownloadFile(const URL, DestinationFile: String);  
+var  
   Client: TFPHttpClient;
   FileStream: TFileStream;
 begin
@@ -611,8 +611,8 @@ type
     procedure DoDataReceived(Sender: TObject; const ContentLength, CurrentPos: Int64); override;
   end;
 
-procedure TMyHttpClient.DoDataReceived(Sender: TObject; const ContentLength, CurrentPos: Int64);
-var
+procedure TMyHttpClient.DoDataReceived(Sender: TObject; const ContentLength, CurrentPos: Int64);  
+var  
   Percent: Integer;
 begin
   if ContentLength > 0 then
@@ -670,22 +670,22 @@ type
     function DeleteUser(UserID: Integer): Boolean;
   end;
 
-constructor TApiClient.Create;
-begin
+constructor TApiClient.Create;  
+begin  
   inherited Create;
   FClient := TFPHttpClient.Create(nil);
   FClient.AddHeader('Content-Type', 'application/json');
   FClient.AddHeader('Accept', 'application/json');
 end;
 
-destructor TApiClient.Destroy;
-begin
+destructor TApiClient.Destroy;  
+begin  
   FClient.Free;
   inherited Destroy;
 end;
 
-function TApiClient.GetUsers: String;
-begin
+function TApiClient.GetUsers: String;  
+begin  
   try
     Result := FClient.Get(API_BASE_URL + '/users');
   except
@@ -697,8 +697,8 @@ begin
   end;
 end;
 
-function TApiClient.GetUser(UserID: Integer): String;
-begin
+function TApiClient.GetUser(UserID: Integer): String;  
+begin  
   try
     Result := FClient.Get(API_BASE_URL + '/users/' + IntToStr(UserID));
   except
@@ -710,8 +710,8 @@ begin
   end;
 end;
 
-function TApiClient.CreateUser(const JsonData: String): String;
-begin
+function TApiClient.CreateUser(const JsonData: String): String;  
+begin  
   try
     FClient.RequestBody := TRawByteStringStream.Create(JsonData);  // Corps JSON de la requête
     try
@@ -729,8 +729,8 @@ begin
   end;
 end;
 
-function TApiClient.UpdateUser(UserID: Integer; const JsonData: String): String;
-begin
+function TApiClient.UpdateUser(UserID: Integer; const JsonData: String): String;  
+begin  
   try
     FClient.RequestBody := TRawByteStringStream.Create(JsonData);
     try
@@ -747,8 +747,8 @@ begin
   end;
 end;
 
-function TApiClient.DeleteUser(UserID: Integer): Boolean;
-begin
+function TApiClient.DeleteUser(UserID: Integer): Boolean;  
+begin  
   try
     FClient.Delete(API_BASE_URL + '/users/' + IntToStr(UserID));
     Result := (FClient.ResponseStatusCode = 200) or
@@ -898,8 +898,8 @@ Response := Client.Get(URL);  // Crash si erreur réseau !
 
 ```pascal
 ✅ CORRECT
-Response := Client.Get(URL);
-if Client.ResponseStatusCode = 200 then
+Response := Client.Get(URL);  
+if Client.ResponseStatusCode = 200 then  
   // Traiter les données
 else
   WriteLn('Erreur : ', Client.ResponseStatusCode);
@@ -914,21 +914,21 @@ Response := Client.Get(URL);
 Au lieu de répéter le code, créez des fonctions :
 
 ```pascal
-function HttpGet(const URL: String; out StatusCode: Integer): String;
-function HttpPost(const URL, JsonData: String; out StatusCode: Integer): String;
+function HttpGet(const URL: String; out StatusCode: Integer): String;  
+function HttpPost(const URL, JsonData: String; out StatusCode: Integer): String;  
 ```
 
 ### 5. Logger les Requêtes (pour le débogage)
 
 ```pascal
-procedure LogRequest(const Method, URL: String);
-begin
+procedure LogRequest(const Method, URL: String);  
+begin  
   WriteLn('[', FormatDateTime('hh:nn:ss', Now), '] ', Method, ' ', URL);
 end;
 
 // Utilisation
-LogRequest('GET', 'https://api.example.com/users');
-Response := Client.Get('https://api.example.com/users');
+LogRequest('GET', 'https://api.example.com/users');  
+Response := Client.Get('https://api.example.com/users');  
 ```
 
 ## Résumé des Points Clés

@@ -10,8 +10,8 @@ program ParseUsers;
 uses
   fphttpclient, opensslsockets, fpjson, jsonparser, SysUtils;
 
-procedure ListUsers;
-var
+procedure ListUsers;  
+var  
   Client: TFPHttpClient;
   Response: String;
   JsonData: TJSONData;

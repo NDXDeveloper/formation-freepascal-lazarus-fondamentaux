@@ -99,11 +99,11 @@ GET /api/users HTTP/1.1
 Les en-têtes fournissent des informations supplémentaires sur la requête :
 
 ```
-Host: api.example.com
-User-Agent: MyFreePascalApp/1.0
-Accept: application/json
-Content-Type: application/json
-Authorization: Bearer token123
+Host: api.example.com  
+User-Agent: MyFreePascalApp/1.0  
+Accept: application/json  
+Content-Type: application/json  
+Authorization: Bearer token123  
 ```
 
 **En-têtes courants :**
@@ -139,10 +139,10 @@ HTTP/1.1 200 OK
 
 ### 2. Les en-têtes de réponse
 ```
-Content-Type: application/json
-Content-Length: 1234
-Date: Mon, 15 Oct 2025 10:30:00 GMT
-Server: Apache/2.4.41
+Content-Type: application/json  
+Content-Length: 1234  
+Date: Mon, 15 Oct 2025 10:30:00 GMT  
+Server: Apache/2.4.41  
 ```
 
 ### 3. Le corps de la réponse
@@ -219,8 +219,8 @@ Le serveur stocke les informations de session, le client envoie juste un identif
 ### HTTP/1.0 (ancien)
 Une nouvelle connexion TCP pour chaque requête/réponse :
 ```
-Connexion → Requête → Réponse → Fermeture
-Connexion → Requête → Réponse → Fermeture
+Connexion → Requête → Réponse → Fermeture  
+Connexion → Requête → Réponse → Fermeture  
 ```
 
 ### HTTP/1.1 (moderne)

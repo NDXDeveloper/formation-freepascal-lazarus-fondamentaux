@@ -416,8 +416,8 @@ program HandleParsingErrors;
 uses
   fpjson, jsonparser, SysUtils;
 
-procedure TryParseJSON(const JsonString: String);
-var
+procedure TryParseJSON(const JsonString: String);  
+var  
   JsonData: TJSONData;
 begin
   try
@@ -504,8 +504,8 @@ uses
 const
   API_KEY = 'VOTRE_CLE_API';
 
-procedure GetWeather(const City: String);
-var
+procedure GetWeather(const City: String);  
+var  
   Client: TFPHttpClient;
   Response: String;
   JsonData: TJSONData;
@@ -587,8 +587,8 @@ program ParseUsers;
 uses
   fphttpclient, opensslsockets, fpjson, jsonparser, SysUtils;
 
-procedure ListUsers;
-var
+procedure ListUsers;  
+var  
   Client: TFPHttpClient;
   Response: String;
   JsonData: TJSONData;
@@ -655,8 +655,8 @@ end.
 ### Exemple 3 : REST Countries
 
 ```pascal
-procedure GetCountryInfo(const CountryName: String);
-var
+procedure GetCountryInfo(const CountryName: String);  
+var  
   Client: TFPHttpClient;
   Response: String;
   JsonData: TJSONData;
@@ -910,8 +910,8 @@ type
 
 implementation
 
-class function TJSONHelper.ParseString(const JsonString: String): TJSONData;
-begin
+class function TJSONHelper.ParseString(const JsonString: String): TJSONData;  
+begin  
   try
     Result := GetJSON(JsonString);
   except
@@ -919,56 +919,56 @@ begin
   end;
 end;
 
-class function TJSONHelper.GetString(JsonObj: TJSONObject; const Key: String; const Default: String): String;
-begin
+class function TJSONHelper.GetString(JsonObj: TJSONObject; const Key: String; const Default: String): String;  
+begin  
   if HasKey(JsonObj, Key) then
     Result := JsonObj.Get(Key, Default)
   else
     Result := Default;
 end;
 
-class function TJSONHelper.GetInteger(JsonObj: TJSONObject; const Key: String; const Default: Integer): Integer;
-begin
+class function TJSONHelper.GetInteger(JsonObj: TJSONObject; const Key: String; const Default: Integer): Integer;  
+begin  
   if HasKey(JsonObj, Key) then
     Result := JsonObj.Get(Key, Default)
   else
     Result := Default;
 end;
 
-class function TJSONHelper.GetFloat(JsonObj: TJSONObject; const Key: String; const Default: Double): Double;
-begin
+class function TJSONHelper.GetFloat(JsonObj: TJSONObject; const Key: String; const Default: Double): Double;  
+begin  
   if HasKey(JsonObj, Key) then
     Result := JsonObj.Get(Key, Default)
   else
     Result := Default;
 end;
 
-class function TJSONHelper.GetBoolean(JsonObj: TJSONObject; const Key: String; const Default: Boolean): Boolean;
-begin
+class function TJSONHelper.GetBoolean(JsonObj: TJSONObject; const Key: String; const Default: Boolean): Boolean;  
+begin  
   if HasKey(JsonObj, Key) then
     Result := JsonObj.Get(Key, Default)
   else
     Result := Default;
 end;
 
-class function TJSONHelper.GetObject(JsonObj: TJSONObject; const Key: String): TJSONObject;
-begin
+class function TJSONHelper.GetObject(JsonObj: TJSONObject; const Key: String): TJSONObject;  
+begin  
   if HasKey(JsonObj, Key) then
     Result := JsonObj.GetPath(Key) as TJSONObject
   else
     Result := nil;
 end;
 
-class function TJSONHelper.GetArray(JsonObj: TJSONObject; const Key: String): TJSONArray;
-begin
+class function TJSONHelper.GetArray(JsonObj: TJSONObject; const Key: String): TJSONArray;  
+begin  
   if HasKey(JsonObj, Key) then
     Result := JsonObj.GetPath(Key) as TJSONArray
   else
     Result := nil;
 end;
 
-class function TJSONHelper.HasKey(JsonObj: TJSONObject; const Key: String): Boolean;
-begin
+class function TJSONHelper.HasKey(JsonObj: TJSONObject; const Key: String): Boolean;  
+begin  
   Result := JsonObj.IndexOfName(Key) >= 0;
 end;
 
@@ -1063,8 +1063,8 @@ end;
 
 ```pascal
 ✅ CORRECT
-if JsonData.JSONType = jtObject then
-begin
+if JsonData.JSONType = jtObject then  
+begin  
   JsonObj := TJSONObject(JsonData);
   // Utilisation sûre
 end;
@@ -1091,8 +1091,8 @@ Email := JsonObj.Get('email', '');  // OK avec valeur par défaut
 
 ```pascal
 ✅ CORRECT
-Age := JsonObj.Get('age', 0);          // 0 si absent
-Name := JsonObj.Get('nom', 'Inconnu'); // 'Inconnu' si absent
+Age := JsonObj.Get('age', 0);          // 0 si absent  
+Name := JsonObj.Get('nom', 'Inconnu'); // 'Inconnu' si absent  
 ```
 
 ## Dépannage des Problèmes Courants
@@ -1128,8 +1128,8 @@ else
 **Solution :**
 ```pascal
 // Vérifier avant d'accéder
-EmailField := JsonObj.Find('email');
-if Assigned(EmailField) and (EmailField.JSONType <> jtNull) then
+EmailField := JsonObj.Find('email');  
+if Assigned(EmailField) and (EmailField.JSONType <> jtNull) then  
   Email := EmailField.AsString;
 ```
 
@@ -1140,8 +1140,8 @@ if Assigned(EmailField) and (EmailField.JSONType <> jtNull) then
 **Solution :**
 ```pascal
 // Toujours utiliser try-finally
-JsonData := GetJSON(JsonString);
-try
+JsonData := GetJSON(JsonString);  
+try  
   // Utilisation
 finally
   JsonData.Free;  // Ne jamais oublier !

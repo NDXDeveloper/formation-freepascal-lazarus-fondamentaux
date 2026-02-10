@@ -41,35 +41,35 @@ type
 
 implementation
 
-constructor TAuthManager.Create;
-begin
+constructor TAuthManager.Create;  
+begin  
   inherited Create;
   FAuthType := atNone;
   FAPIKeyHeader := 'X-API-Key';
 end;
 
-procedure TAuthManager.SetBasicAuth(const Username, Password: String);
-begin
+procedure TAuthManager.SetBasicAuth(const Username, Password: String);  
+begin  
   FAuthType := atBasic;
   FUsername := Username;
   FPassword := Password;
 end;
 
-procedure TAuthManager.SetAPIKeyAuth(const APIKey: String; const HeaderName: String);
-begin
+procedure TAuthManager.SetAPIKeyAuth(const APIKey: String; const HeaderName: String);  
+begin  
   FAuthType := atAPIKey;
   FAPIKey := APIKey;
   FAPIKeyHeader := HeaderName;
 end;
 
-procedure TAuthManager.SetBearerAuth(const Token: String);
-begin
+procedure TAuthManager.SetBearerAuth(const Token: String);  
+begin  
   FAuthType := atBearer;
   FBearerToken := Token;
 end;
 
-procedure TAuthManager.ClearAuth;
-begin
+procedure TAuthManager.ClearAuth;  
+begin  
   FAuthType := atNone;
   FUsername := '';
   FPassword := '';
@@ -77,8 +77,8 @@ begin
   FBearerToken := '';
 end;
 
-procedure TAuthManager.ApplyAuth(Client: TFPHttpClient);
-var
+procedure TAuthManager.ApplyAuth(Client: TFPHttpClient);  
+var  
   Credentials: String;
 begin
   case FAuthType of

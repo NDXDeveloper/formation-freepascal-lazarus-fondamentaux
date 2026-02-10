@@ -28,22 +28,22 @@ type
     function DeleteUser(UserID: Integer): Boolean;
   end;
 
-constructor TApiClient.Create;
-begin
+constructor TApiClient.Create;  
+begin  
   inherited Create;
   FClient := TFPHttpClient.Create(nil);
   FClient.AddHeader('Content-Type', 'application/json');
   FClient.AddHeader('Accept', 'application/json');
 end;
 
-destructor TApiClient.Destroy;
-begin
+destructor TApiClient.Destroy;  
+begin  
   FClient.Free;
   inherited Destroy;
 end;
 
-function TApiClient.GetUsers: String;
-begin
+function TApiClient.GetUsers: String;  
+begin  
   try
     Result := FClient.Get(API_BASE_URL + '/users');
   except
@@ -55,8 +55,8 @@ begin
   end;
 end;
 
-function TApiClient.GetUser(UserID: Integer): String;
-begin
+function TApiClient.GetUser(UserID: Integer): String;  
+begin  
   try
     Result := FClient.Get(API_BASE_URL + '/users/' + IntToStr(UserID));
   except
@@ -68,8 +68,8 @@ begin
   end;
 end;
 
-function TApiClient.CreateUser(const JsonData: String): String;
-begin
+function TApiClient.CreateUser(const JsonData: String): String;  
+begin  
   try
     FClient.RequestBody := TRawByteStringStream.Create(JsonData);  // Corps JSON de la requête
     try
@@ -87,8 +87,8 @@ begin
   end;
 end;
 
-function TApiClient.UpdateUser(UserID: Integer; const JsonData: String): String;
-begin
+function TApiClient.UpdateUser(UserID: Integer; const JsonData: String): String;  
+begin  
   try
     FClient.RequestBody := TRawByteStringStream.Create(JsonData);
     try
@@ -105,8 +105,8 @@ begin
   end;
 end;
 
-function TApiClient.DeleteUser(UserID: Integer): Boolean;
-begin
+function TApiClient.DeleteUser(UserID: Integer): Boolean;  
+begin  
   try
     FClient.Delete(API_BASE_URL + '/users/' + IntToStr(UserID));
     Result := (FClient.ResponseStatusCode = 200) or

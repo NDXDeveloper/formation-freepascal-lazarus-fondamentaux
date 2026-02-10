@@ -10,8 +10,8 @@ program HandleParsingErrors;
 uses
   fpjson, jsonparser, SysUtils;
 
-procedure TryParseJSON(const JsonString: String);
-var
+procedure TryParseJSON(const JsonString: String);  
+var  
   JsonData: TJSONData;
 begin
   try

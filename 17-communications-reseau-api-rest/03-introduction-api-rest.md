@@ -91,9 +91,9 @@ Chaque requête doit contenir **toutes** les informations nécessaires. Le serve
 Les réponses doivent indiquer si elles peuvent être mises en cache ou non.
 
 ```
-HTTP/1.1 200 OK
-Cache-Control: max-age=3600
-ETag: "abc123"
+HTTP/1.1 200 OK  
+Cache-Control: max-age=3600  
+ETag: "abc123"  
 
 → Le client peut réutiliser cette réponse pendant 1 heure
 ```
@@ -160,11 +160,11 @@ Sous-ressource → /api/users/42/orders   (commandes de l'utilisateur #42)
 
 ```
 ❌ MAUVAIS                        ✅ BON
-GET  /api/getUsers               GET    /api/users
-POST /api/createUser             POST   /api/users
-POST /api/updateUser/42          PUT    /api/users/42
-POST /api/deleteUser/42          DELETE /api/users/42
-GET  /api/getUserOrders/42       GET    /api/users/42/orders
+GET  /api/getUsers               GET    /api/users  
+POST /api/createUser             POST   /api/users  
+POST /api/updateUser/42          PUT    /api/users/42  
+POST /api/deleteUser/42          DELETE /api/users/42  
+GET  /api/getUserOrders/42       GET    /api/users/42/orders  
 ```
 
 #### Règle 4 : Utiliser des noms, pas des verbes
@@ -230,10 +230,10 @@ Voici comment les opérations CRUD se traduisent en API REST :
 Pour gérer les commandes d'un utilisateur :
 
 ```
-GET    /api/users/42/orders           → Lister toutes les commandes de l'utilisateur 42
-GET    /api/users/42/orders/5         → Obtenir la commande #5 de l'utilisateur 42
-POST   /api/users/42/orders           → Créer une commande pour l'utilisateur 42
-DELETE /api/users/42/orders/5         → Supprimer la commande #5 de l'utilisateur 42
+GET    /api/users/42/orders           → Lister toutes les commandes de l'utilisateur 42  
+GET    /api/users/42/orders/5         → Obtenir la commande #5 de l'utilisateur 42  
+POST   /api/users/42/orders           → Créer une commande pour l'utilisateur 42  
+DELETE /api/users/42/orders/5         → Supprimer la commande #5 de l'utilisateur 42  
 ```
 
 ## Formats de Données : JSON
@@ -357,9 +357,9 @@ Les API évoluent. Il faut pouvoir modifier l'API sans casser les clients exista
 ### Méthode 1 : Versioning dans l'URL (recommandé)
 
 ```
-https://api.example.com/v1/users
-https://api.example.com/v2/users
-https://api.example.com/v3/users
+https://api.example.com/v1/users  
+https://api.example.com/v2/users  
+https://api.example.com/v3/users  
 ```
 
 **Avantages :** Simple, clair, visible immédiatement
@@ -367,15 +367,15 @@ https://api.example.com/v3/users
 ### Méthode 2 : Versioning dans les headers
 
 ```
-GET /api/users
-Accept: application/vnd.example.v2+json
+GET /api/users  
+Accept: application/vnd.example.v2+json  
 ```
 
 ### Méthode 3 : Sous-domaine
 
 ```
-https://v1.api.example.com/users
-https://v2.api.example.com/users
+https://v1.api.example.com/users  
+https://v2.api.example.com/users  
 ```
 
 **Bonne pratique :** Maintenir au moins 2 versions en parallèle, annoncer les dépréciations à l'avance.
@@ -389,8 +389,8 @@ https://v2.api.example.com/users
 Clé secrète passée dans les headers ou l'URL :
 
 ```
-GET /api/users
-X-API-Key: abc123def456ghi789
+GET /api/users  
+X-API-Key: abc123def456ghi789  
 ```
 
 **Usage :** API publiques avec limitation de débit
@@ -400,8 +400,8 @@ X-API-Key: abc123def456ghi789
 Token d'authentification dans le header `Authorization` :
 
 ```
-GET /api/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+GET /api/users  
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...  
 ```
 
 **Usage :** Authentification utilisateur, le plus courant aujourd'hui
@@ -435,15 +435,15 @@ Standard pour autoriser des applications tierces (connexion avec Google, Faceboo
 Les API limitent souvent le nombre de requêtes pour éviter les abus :
 
 ```
-X-RateLimit-Limit: 1000        → Limite maximale
-X-RateLimit-Remaining: 573     → Requêtes restantes
-X-RateLimit-Reset: 1634567890  → Timestamp de réinitialisation
+X-RateLimit-Limit: 1000        → Limite maximale  
+X-RateLimit-Remaining: 573     → Requêtes restantes  
+X-RateLimit-Reset: 1634567890  → Timestamp de réinitialisation  
 ```
 
 Si vous dépassez la limite :
 ```
-HTTP/1.1 429 Too Many Requests
-Retry-After: 3600
+HTTP/1.1 429 Too Many Requests  
+Retry-After: 3600  
 
 {
   "error": "Rate limit exceeded. Try again in 1 hour."

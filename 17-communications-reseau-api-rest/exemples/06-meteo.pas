@@ -14,8 +14,8 @@ const
   API_KEY = 'VOTRE_CLE_API_ICI';  // Remplacer par votre vraie clé
   BASE_URL = 'https://api.openweathermap.org/data/2.5';
 
-procedure GetCurrentWeather(const City: String);
-var
+procedure GetCurrentWeather(const City: String);  
+var  
   Client: TFPHttpClient;
   Response: String;
   URL: String;

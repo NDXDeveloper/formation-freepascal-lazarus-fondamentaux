@@ -36,8 +36,8 @@ type
 
 implementation
 
-constructor TAPIHelper.Create(const BaseURL: String; const APIKey: String = '');
-begin
+constructor TAPIHelper.Create(const BaseURL: String; const APIKey: String = '');  
+begin  
   inherited Create;
   FBaseURL := BaseURL;
   FAPIKey := APIKey;
@@ -50,14 +50,14 @@ begin
     FClient.AddHeader('X-API-Key', APIKey);
 end;
 
-destructor TAPIHelper.Destroy;
-begin
+destructor TAPIHelper.Destroy;  
+begin  
   FClient.Free;
   inherited Destroy;
 end;
 
-function TAPIHelper.Get(const Endpoint: String): String;
-var
+function TAPIHelper.Get(const Endpoint: String): String;  
+var  
   URL: String;
 begin
   Result := '';
@@ -70,8 +70,8 @@ begin
   end;
 end;
 
-function TAPIHelper.Post(const Endpoint: String; const JsonData: String): String;
-var
+function TAPIHelper.Post(const Endpoint: String; const JsonData: String): String;  
+var  
   URL: String;
 begin
   Result := '';
@@ -90,8 +90,8 @@ begin
   end;
 end;
 
-function TAPIHelper.Put(const Endpoint: String; const JsonData: String): String;
-var
+function TAPIHelper.Put(const Endpoint: String; const JsonData: String): String;  
+var  
   URL: String;
 begin
   Result := '';
@@ -110,8 +110,8 @@ begin
   end;
 end;
 
-function TAPIHelper.Delete(const Endpoint: String): Boolean;
-var
+function TAPIHelper.Delete(const Endpoint: String): Boolean;  
+var  
   URL: String;
 begin
   Result := False;
@@ -126,23 +126,23 @@ begin
   end;
 end;
 
-function TAPIHelper.GetStatusCode: Integer;
-begin
+function TAPIHelper.GetStatusCode: Integer;  
+begin  
   Result := FClient.ResponseStatusCode;
 end;
 
-function TAPIHelper.GetHeader(const HeaderName: String): String;
-begin
+function TAPIHelper.GetHeader(const HeaderName: String): String;  
+begin  
   Result := FClient.GetHeader(FClient.ResponseHeaders, HeaderName);
 end;
 
-procedure TAPIHelper.AddHeader(const Name, Value: String);
-begin
+procedure TAPIHelper.AddHeader(const Name, Value: String);  
+begin  
   FClient.AddHeader(Name, Value);
 end;
 
-procedure TAPIHelper.SetTimeout(Milliseconds: Integer);
-begin
+procedure TAPIHelper.SetTimeout(Milliseconds: Integer);  
+begin  
   FClient.ConnectTimeout := Milliseconds;
 end;
 

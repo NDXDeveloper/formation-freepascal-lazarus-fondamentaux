@@ -186,12 +186,12 @@ Avant de commencer ce chapitre, assurez-vous d'avoir :
 Les unités suivantes seront utilisées dans ce chapitre (toutes incluses avec FreePascal) :
 
 ```pascal
-fphttpclient    // Client HTTP
-opensslsockets  // Support HTTPS (SSL/TLS)
-fpjson          // Parsing JSON
-jsonparser      // Analyse JSON
-Classes         // TStringStream, etc.
-SysUtils        // Fonctions utilitaires
+fphttpclient    // Client HTTP  
+opensslsockets  // Support HTTPS (SSL/TLS)  
+fpjson          // Parsing JSON  
+jsonparser      // Analyse JSON  
+Classes         // TStringStream, etc.  
+SysUtils        // Fonctions utilitaires  
 ```
 
 ### Outils Recommandés (Optionnels)

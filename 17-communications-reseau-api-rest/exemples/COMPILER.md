@@ -9,31 +9,31 @@
 
 ### Unités (compiler en premier)
 ```bash
-fpc JSONHelper.pas
-fpc APIHelper.pas
-fpc HTTPManager.pas
-fpc AuthManager.pas
+fpc JSONHelper.pas  
+fpc APIHelper.pas  
+fpc HTTPManager.pas  
+fpc AuthManager.pas  
 ```
 
 ### Programmes
 ```bash
-fpc 05-get-simple.pas
-fpc 05-get-gestion-erreurs.pas
-fpc 05-client-api-rest.pas
-fpc 06-jsonplaceholder.pas
-fpc 06-meteo.pas
-fpc 06-utilisation-apihelper.pas
-fpc 07-parsing-simple.pas
-fpc 07-extraction-objet.pas
-fpc 07-parsing-tableau.pas
-fpc 07-json-imbrique.pas
-fpc 07-erreurs-parsing.pas
-fpc 07-creation-json.pas
-fpc 07-utilisation-jsonhelper.pas
-fpc 07-parse-utilisateurs.pas
-fpc 08-utilisation-httpmanager.pas
-fpc 09-auth-basique.pas
-fpc 09-utilisation-authmanager.pas
+fpc 05-get-simple.pas  
+fpc 05-get-gestion-erreurs.pas  
+fpc 05-client-api-rest.pas  
+fpc 06-jsonplaceholder.pas  
+fpc 06-meteo.pas  
+fpc 06-utilisation-apihelper.pas  
+fpc 07-parsing-simple.pas  
+fpc 07-extraction-objet.pas  
+fpc 07-parsing-tableau.pas  
+fpc 07-json-imbrique.pas  
+fpc 07-erreurs-parsing.pas  
+fpc 07-creation-json.pas  
+fpc 07-utilisation-jsonhelper.pas  
+fpc 07-parse-utilisateurs.pas  
+fpc 08-utilisation-httpmanager.pas  
+fpc 09-auth-basique.pas  
+fpc 09-utilisation-authmanager.pas  
 ```
 
 ## Compilation de tous les exemples
@@ -51,15 +51,15 @@ for f in 0*.pas; do echo "=== $f ===" && fpc "$f"; done
 ## Nettoyage
 
 ```bash
-rm -f *.o *.ppu
-rm -f 05-get-simple 05-get-gestion-erreurs 05-client-api-rest
-rm -f 06-jsonplaceholder 06-meteo 06-utilisation-apihelper
-rm -f 07-parsing-simple 07-extraction-objet 07-parsing-tableau
-rm -f 07-json-imbrique 07-erreurs-parsing 07-creation-json
-rm -f 07-utilisation-jsonhelper 07-parse-utilisateurs
-rm -f 08-utilisation-httpmanager
-rm -f 09-auth-basique 09-utilisation-authmanager
-rm -f network_errors.log
+rm -f *.o *.ppu  
+rm -f 05-get-simple 05-get-gestion-erreurs 05-client-api-rest  
+rm -f 06-jsonplaceholder 06-meteo 06-utilisation-apihelper  
+rm -f 07-parsing-simple 07-extraction-objet 07-parsing-tableau  
+rm -f 07-json-imbrique 07-erreurs-parsing 07-creation-json  
+rm -f 07-utilisation-jsonhelper 07-parse-utilisateurs  
+rm -f 08-utilisation-httpmanager  
+rm -f 09-auth-basique 09-utilisation-authmanager  
+rm -f network_errors.log  
 ```
 
 ## Liste des exemples (21 fichiers)

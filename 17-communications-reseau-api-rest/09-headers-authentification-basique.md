@@ -21,10 +21,10 @@ Les headers donnent des instructions sur **comment traiter** le message, sans fa
 Un header est une paire `Nom: Valeur` :
 
 ```
-User-Agent: Mozilla/5.0
-Content-Type: application/json
-Authorization: Bearer abc123token
-Accept-Language: fr-FR,fr
+User-Agent: Mozilla/5.0  
+Content-Type: application/json  
+Authorization: Bearer abc123token  
+Accept-Language: fr-FR,fr  
 ```
 
 **Format :** `Nom-Du-Header: valeur`
@@ -33,20 +33,20 @@ Accept-Language: fr-FR,fr
 
 **Headers de requête** (envoyés par le client) :
 ```
-GET /api/users HTTP/1.1
-Host: api.example.com
-User-Agent: FreePascal-App/1.0
-Accept: application/json
-Authorization: Bearer token123
+GET /api/users HTTP/1.1  
+Host: api.example.com  
+User-Agent: FreePascal-App/1.0  
+Accept: application/json  
+Authorization: Bearer token123  
 ```
 
 **Headers de réponse** (renvoyés par le serveur) :
 ```
-HTTP/1.1 200 OK
-Content-Type: application/json
-Content-Length: 1234
-Date: Wed, 15 Oct 2025 10:30:00 GMT
-X-RateLimit-Remaining: 450
+HTTP/1.1 200 OK  
+Content-Type: application/json  
+Content-Length: 1234  
+Date: Wed, 15 Oct 2025 10:30:00 GMT  
+X-RateLimit-Remaining: 450  
 ```
 
 ## Headers Courants de Requête
@@ -71,10 +71,10 @@ Client.AddHeader('User-Agent', 'MonAppFreePascal/1.0');
 
 **Exemples réels :**
 ```
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-User-Agent: curl/7.68.0
-User-Agent: PostmanRuntime/7.26.8
-User-Agent: FreePascal-App/2.0 (Windows; FreePascal 3.2.2)
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)  
+User-Agent: curl/7.68.0  
+User-Agent: PostmanRuntime/7.26.8  
+User-Agent: FreePascal-App/2.0 (Windows; FreePascal 3.2.2)  
 ```
 
 **Pourquoi c'est important :**
@@ -92,11 +92,11 @@ Client.AddHeader('Accept', 'application/json');
 
 **Valeurs courantes :**
 ```
-Accept: application/json          → Je veux du JSON
-Accept: text/html                 → Je veux du HTML
-Accept: application/xml           → Je veux du XML
-Accept: image/png                 → Je veux une image PNG
-Accept: */*                       → J'accepte tout
+Accept: application/json          → Je veux du JSON  
+Accept: text/html                 → Je veux du HTML  
+Accept: application/xml           → Je veux du XML  
+Accept: image/png                 → Je veux une image PNG  
+Accept: */*                       → J'accepte tout  
 ```
 
 **Format de qualité :**
@@ -115,11 +115,11 @@ Client.AddHeader('Content-Type', 'application/json');
 
 **Valeurs courantes :**
 ```
-Content-Type: application/json                      → JSON
-Content-Type: application/x-www-form-urlencoded     → Formulaire
-Content-Type: multipart/form-data                   → Upload de fichier
-Content-Type: text/plain                            → Texte brut
-Content-Type: application/xml                       → XML
+Content-Type: application/json                      → JSON  
+Content-Type: application/x-www-form-urlencoded     → Formulaire  
+Content-Type: multipart/form-data                   → Upload de fichier  
+Content-Type: text/plain                            → Texte brut  
+Content-Type: application/xml                       → XML  
 ```
 
 ### 5. Accept-Language
@@ -132,9 +132,9 @@ Client.AddHeader('Accept-Language', 'fr-FR,fr;q=0.9,en;q=0.8');
 
 **Exemples :**
 ```
-Accept-Language: fr-FR           → Français (France) uniquement
-Accept-Language: en-US,en        → Anglais américain, puis anglais
-Accept-Language: fr,en;q=0.5     → Français prioritaire, anglais secondaire
+Accept-Language: fr-FR           → Français (France) uniquement  
+Accept-Language: en-US,en        → Anglais américain, puis anglais  
+Accept-Language: fr,en;q=0.5     → Français prioritaire, anglais secondaire  
 ```
 
 ### 6. Accept-Encoding
@@ -165,9 +165,9 @@ Client.AddHeader('Cache-Control', 'no-cache');
 
 **Valeurs courantes :**
 ```
-Cache-Control: no-cache          → Ne pas utiliser le cache
-Cache-Control: no-store          → Ne pas stocker en cache
-Cache-Control: max-age=3600      → Cache valide 1 heure
+Cache-Control: no-cache          → Ne pas utiliser le cache  
+Cache-Control: no-store          → Ne pas stocker en cache  
+Cache-Control: max-age=3600      → Cache valide 1 heure  
 ```
 
 ## Headers Courants de Réponse
@@ -177,8 +177,8 @@ Cache-Control: max-age=3600      → Cache valide 1 heure
 Indique le type de contenu renvoyé par le serveur.
 
 ```pascal
-ContentType := Client.GetHeader(Client.ResponseHeaders, 'Content-Type');
-WriteLn('Type de contenu : ', ContentType);
+ContentType := Client.GetHeader(Client.ResponseHeaders, 'Content-Type');  
+WriteLn('Type de contenu : ', ContentType);  
 ```
 
 ### 2. Content-Length
@@ -186,8 +186,8 @@ WriteLn('Type de contenu : ', ContentType);
 Indique la taille du corps de la réponse en octets.
 
 ```pascal
-ContentLength := Client.GetHeader(Client.ResponseHeaders, 'Content-Length');
-WriteLn('Taille : ', ContentLength, ' octets');
+ContentLength := Client.GetHeader(Client.ResponseHeaders, 'Content-Length');  
+WriteLn('Taille : ', ContentLength, ' octets');  
 ```
 
 ### 3. Date
@@ -203,9 +203,9 @@ Date: Wed, 15 Oct 2025 10:30:00 GMT
 Identifie le logiciel serveur.
 
 ```
-Server: nginx/1.18.0
-Server: Apache/2.4.41 (Ubuntu)
-Server: cloudflare
+Server: nginx/1.18.0  
+Server: Apache/2.4.41 (Ubuntu)  
+Server: cloudflare  
 ```
 
 ### 5. Set-Cookie
@@ -229,9 +229,9 @@ Location: https://api.example.com/v2/users
 Informent sur les limites de requêtes.
 
 ```
-X-RateLimit-Limit: 1000
-X-RateLimit-Remaining: 573
-X-RateLimit-Reset: 1697368200
+X-RateLimit-Limit: 1000  
+X-RateLimit-Remaining: 573  
+X-RateLimit-Reset: 1697368200  
 ```
 
 ## Manipuler les Headers avec TFPHttpClient
@@ -319,8 +319,8 @@ end;
 ### Vérifier la Présence d'un Header
 
 ```pascal
-function HasHeader(Client: TFPHttpClient; const HeaderName: String): Boolean;
-var
+function HasHeader(Client: TFPHttpClient; const HeaderName: String): Boolean;  
+var  
   HeaderValue: String;
 begin
   HeaderValue := Client.GetHeader(Client.ResponseHeaders, HeaderName);
@@ -415,8 +415,8 @@ end.
 ### Fonction Réutilisable
 
 ```pascal
-function CreateBasicAuthHeader(const Username, Password: String): String;
-var
+function CreateBasicAuthHeader(const Username, Password: String): String;  
+var  
   Credentials: String;
 begin
   Credentials := Username + ':' + Password;
@@ -498,11 +498,11 @@ end;
 
 **Noms de headers courants pour les API keys :**
 ```
-X-API-Key
-X-Api-Key
-api-key
-apikey
-Authorization: ApiKey <key>
+X-API-Key  
+X-Api-Key  
+api-key  
+apikey  
+Authorization: ApiKey <key>  
 ```
 
 ### API Key dans l'URL (Query Parameter)
@@ -534,8 +534,8 @@ const API_KEY = 'ma_cle_secrete';  // En dur dans le code
 
 ✅ MIEUX
 // Lire depuis un fichier de configuration
-function LoadAPIKey: String;
-var
+function LoadAPIKey: String;  
+var  
   ConfigFile: TextFile;
 begin
   AssignFile(ConfigFile, 'config.txt');
@@ -615,8 +615,8 @@ end.
 Voici un exemple simplifié d'obtention de token :
 
 ```pascal
-function GetAccessToken(const Username, Password: String): String;
-var
+function GetAccessToken(const Username, Password: String): String;  
+var  
   Client: TFPHttpClient;
   JsonData, Response: String;
   JsonResponse: TJSONData;
@@ -685,14 +685,14 @@ type
 var
   CurrentToken: TTokenInfo;
 
-function IsTokenValid: Boolean;
-begin
+function IsTokenValid: Boolean;  
+begin  
   Result := (CurrentToken.AccessToken <> '') and
             (Now < CurrentToken.ExpiresAt);
 end;
 
-function GetValidToken: String;
-begin
+function GetValidToken: String;  
+begin  
   if not IsTokenValid then
   begin
     WriteLn('Token expiré, renouvellement...');
@@ -751,35 +751,35 @@ type
 
 implementation
 
-constructor TAuthManager.Create;
-begin
+constructor TAuthManager.Create;  
+begin  
   inherited Create;
   FAuthType := atNone;
   FAPIKeyHeader := 'X-API-Key';
 end;
 
-procedure TAuthManager.SetBasicAuth(const Username, Password: String);
-begin
+procedure TAuthManager.SetBasicAuth(const Username, Password: String);  
+begin  
   FAuthType := atBasic;
   FUsername := Username;
   FPassword := Password;
 end;
 
-procedure TAuthManager.SetAPIKeyAuth(const APIKey: String; const HeaderName: String);
-begin
+procedure TAuthManager.SetAPIKeyAuth(const APIKey: String; const HeaderName: String);  
+begin  
   FAuthType := atAPIKey;
   FAPIKey := APIKey;
   FAPIKeyHeader := HeaderName;
 end;
 
-procedure TAuthManager.SetBearerAuth(const Token: String);
-begin
+procedure TAuthManager.SetBearerAuth(const Token: String);  
+begin  
   FAuthType := atBearer;
   FBearerToken := Token;
 end;
 
-procedure TAuthManager.ClearAuth;
-begin
+procedure TAuthManager.ClearAuth;  
+begin  
   FAuthType := atNone;
   FUsername := '';
   FPassword := '';
@@ -787,8 +787,8 @@ begin
   FBearerToken := '';
 end;
 
-procedure TAuthManager.ApplyAuth(Client: TFPHttpClient);
-var
+procedure TAuthManager.ApplyAuth(Client: TFPHttpClient);  
+var  
   Credentials: String;
 begin
   case FAuthType of
@@ -884,26 +884,26 @@ Client.AddHeader('X-API-Version', '2.0');
 Client.AddHeader('X-Request-ID', GenerateGUID);
 
 // Préférences
-Client.AddHeader('X-Timezone', 'Europe/Paris');
-Client.AddHeader('X-Currency', 'EUR');
+Client.AddHeader('X-Timezone', 'Europe/Paris');  
+Client.AddHeader('X-Currency', 'EUR');  
 
 // Tracking
-Client.AddHeader('X-Client-ID', 'myapp-12345');
-Client.AddHeader('X-Session-ID', 'sess-abc123');
+Client.AddHeader('X-Client-ID', 'myapp-12345');  
+Client.AddHeader('X-Session-ID', 'sess-abc123');  
 ```
 
 ### GitHub API - Headers Spéciaux
 
 ```pascal
-Client.AddHeader('User-Agent', 'MyApp');  // OBLIGATOIRE pour GitHub
-Client.AddHeader('Accept', 'application/vnd.github.v3+json');  // Version de l'API
+Client.AddHeader('User-Agent', 'MyApp');  // OBLIGATOIRE pour GitHub  
+Client.AddHeader('Accept', 'application/vnd.github.v3+json');  // Version de l'API  
 ```
 
 ### Stripe API
 
 ```pascal
-Client.AddHeader('Authorization', 'Bearer ' + API_KEY);
-Client.AddHeader('Stripe-Version', '2020-08-27');  // Version de l'API
+Client.AddHeader('Authorization', 'Bearer ' + API_KEY);  
+Client.AddHeader('Stripe-Version', '2020-08-27');  // Version de l'API  
 ```
 
 ## Bonnes Pratiques
@@ -958,12 +958,12 @@ Client.AddHeader('User-Agent', 'Mozilla/5.0');
 
 ```pascal
 ✅ STANDARD
-Authorization: Bearer token
-X-API-Key: key
+Authorization: Bearer token  
+X-API-Key: key  
 
 ❌ NON STANDARD (éviter)
-Auth: Bearer token
-ApiKey: key
+Auth: Bearer token  
+ApiKey: key  
 ```
 
 ### 6. Logger Sans Exposer les Secrets
@@ -987,12 +987,12 @@ httpbin.org fournit des endpoints pour tester différents types d'authentificati
 Response := Client.Get('https://httpbin.org/basic-auth/user/pass');
 
 // Test Bearer
-Client.AddHeader('Authorization', 'Bearer mytoken');
-Response := Client.Get('https://httpbin.org/bearer');
+Client.AddHeader('Authorization', 'Bearer mytoken');  
+Response := Client.Get('https://httpbin.org/bearer');  
 
 // Afficher les headers reçus
-Response := Client.Get('https://httpbin.org/headers');
-WriteLn(Response);  // Montre tous les headers envoyés
+Response := Client.Get('https://httpbin.org/headers');  
+WriteLn(Response);  // Montre tous les headers envoyés  
 ```
 
 ## Résumé des Points Clés

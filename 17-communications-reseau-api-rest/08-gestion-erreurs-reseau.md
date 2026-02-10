@@ -156,8 +156,8 @@ program ErrorHandlingBasic;
 uses
   fphttpclient, opensslsockets, SysUtils;
 
-function GetDataSafely(const URL: String): String;
-var
+function GetDataSafely(const URL: String): String;  
+var  
   Client: TFPHttpClient;
 begin
   Result := '';
@@ -223,8 +223,8 @@ type
     Data: String;
   end;
 
-function ExecuteRequest(const URL: String): TRequestResult;
-var
+function ExecuteRequest(const URL: String): TRequestResult;  
+var  
   Client: TFPHttpClient;
 begin
   // Initialiser le résultat
@@ -282,8 +282,8 @@ end;
 ### Fonction Helper pour les Codes de Statut
 
 ```pascal
-function GetStatusDescription(StatusCode: Integer): String;
-begin
+function GetStatusDescription(StatusCode: Integer): String;  
+begin  
   case StatusCode of
     // 2xx - Succès
     200: Result := 'OK - Requête réussie';
@@ -324,8 +324,8 @@ WriteLn(GetStatusDescription(404));
 ### Gérer les Erreurs par Catégorie
 
 ```pascal
-procedure HandleHTTPError(StatusCode: Integer; const URL: String);
-begin
+procedure HandleHTTPError(StatusCode: Integer; const URL: String);  
+begin  
   case StatusCode div 100 of
     2: WriteLn('Succès !');
 
@@ -361,8 +361,8 @@ Parfois, une erreur temporaire peut être résolue en réessayant la requête.
 ### Réessai Simple
 
 ```pascal
-function GetWithRetry(const URL: String; MaxAttempts: Integer): String;
-var
+function GetWithRetry(const URL: String; MaxAttempts: Integer): String;  
+var  
   Client: TFPHttpClient;
   Attempt: Integer;
   Success: Boolean;
@@ -428,8 +428,8 @@ end;
 Pour éviter de surcharger le serveur, on augmente progressivement le délai d'attente.
 
 ```pascal
-function GetWithExponentialBackoff(const URL: String; MaxAttempts: Integer): String;
-var
+function GetWithExponentialBackoff(const URL: String; MaxAttempts: Integer): String;  
+var  
   Client: TFPHttpClient;
   Attempt: Integer;
   WaitTime: Integer;
@@ -495,8 +495,8 @@ end;
 ### Fonction Intelligente de Réessai
 
 ```pascal
-function ShouldRetry(StatusCode: Integer): Boolean;
-begin
+function ShouldRetry(StatusCode: Integer): Boolean;  
+begin  
   Result := False;
 
   // Réessayer pour les erreurs serveur temporaires
@@ -509,8 +509,8 @@ begin
   end;
 end;
 
-function SmartGetWithRetry(const URL: String; MaxAttempts: Integer): String;
-var
+function SmartGetWithRetry(const URL: String; MaxAttempts: Integer): String;  
+var  
   Client: TFPHttpClient;
   Attempt: Integer;
   StatusCode: Integer;
@@ -551,8 +551,8 @@ end;
 ### Validation avant Parsing
 
 ```pascal
-function ParseJSONSafely(const JsonString: String): TJSONData;
-begin
+function ParseJSONSafely(const JsonString: String): TJSONData;  
+begin  
   Result := nil;
 
   // Vérifier que la chaîne n'est pas vide
@@ -579,8 +579,8 @@ end;
 ### Extraction Sécurisée des Données
 
 ```pascal
-function SafeGetString(JsonObj: TJSONObject; const Key: String; const Default: String): String;
-begin
+function SafeGetString(JsonObj: TJSONObject; const Key: String; const Default: String): String;  
+begin  
   try
     if Assigned(JsonObj) and (JsonObj.IndexOfName(Key) >= 0) then
     begin
@@ -624,8 +624,8 @@ Le logging (journalisation) permet de garder une trace des erreurs pour facilite
 ### Logger Simple
 
 ```pascal
-procedure LogError(const Message: String);
-var
+procedure LogError(const Message: String);  
+var  
   F: TextFile;
   FileName: String;
 begin
@@ -664,8 +664,8 @@ end;
 type
   TLogLevel = (llDebug, llInfo, llWarning, llError);
 
-procedure Log(Level: TLogLevel; const Message: String);
-var
+procedure Log(Level: TLogLevel; const Message: String);  
+var  
   F: TextFile;
   LevelStr: String;
 begin
@@ -692,8 +692,8 @@ begin
 end;
 
 // Utilisation
-Log(llInfo, 'Démarrage de l''application');
-Log(llDebug, 'Connexion à l''API : ' + URL);
+Log(llInfo, 'Démarrage de l''application');  
+Log(llDebug, 'Connexion à l''API : ' + URL);  
 
 try
   Response := Client.Get(URL);
@@ -724,8 +724,8 @@ Dans une application graphique, il est important d'informer l'utilisateur des pr
 ### Fonction pour Messages Conviviaux
 
 ```pascal
-function GetUserFriendlyError(const TechnicalError: String; StatusCode: Integer): String;
-begin
+function GetUserFriendlyError(const TechnicalError: String; StatusCode: Integer): String;  
+begin  
   if StatusCode = 0 then
   begin
     // Erreur réseau
@@ -770,8 +770,8 @@ end;
 ### Détecter la Connexion Internet
 
 ```pascal
-function IsInternetAvailable: Boolean;
-var
+function IsInternetAvailable: Boolean;  
+var  
   Client: TFPHttpClient;
 begin
   Result := False;
@@ -810,8 +810,8 @@ type
 var
   Cache: TCachedData;
 
-function GetDataWithCache(const URL: String; CacheMinutes: Integer): String;
-var
+function GetDataWithCache(const URL: String; CacheMinutes: Integer): String;  
+var  
   MinutesSinceCache: Double;
 begin
   // Vérifier si le cache est valide
@@ -898,8 +898,8 @@ type
 
 implementation
 
-constructor THTTPManager.Create;
-begin
+constructor THTTPManager.Create;  
+begin  
   inherited Create;
   FClient := TFPHttpClient.Create(nil);
   FClient.AddHeader('User-Agent', 'FreePascal-App/1.0');
@@ -910,14 +910,14 @@ begin
   FLogErrors := True;     // Logger par défaut
 end;
 
-destructor THTTPManager.Destroy;
-begin
+destructor THTTPManager.Destroy;  
+begin  
   FClient.Free;
   inherited Destroy;
 end;
 
-procedure THTTPManager.LogError(const Message: String);
-var
+procedure THTTPManager.LogError(const Message: String);  
+var  
   F: TextFile;
 begin
   if not FLogErrors then
@@ -937,16 +937,16 @@ begin
   end;
 end;
 
-function THTTPManager.ShouldRetry(StatusCode: Integer): Boolean;
-begin
+function THTTPManager.ShouldRetry(StatusCode: Integer): Boolean;  
+begin  
   Result := False;
   case StatusCode of  // case et non 'in' : les sets FPC ne supportent pas les valeurs > 255
     0, 500, 502, 503, 504: Result := True;
   end;
 end;
 
-function THTTPManager.Get(const URL: String): THTTPResult;
-var
+function THTTPManager.Get(const URL: String): THTTPResult;  
+var  
   Attempt: Integer;
   WaitTime: Integer;
 begin
@@ -995,8 +995,8 @@ begin
     Result.ErrorMessage := Format('Échec après %d tentatives', [FMaxRetries]);
 end;
 
-function THTTPManager.Post(const URL: String; const JsonData: String): THTTPResult;
-begin
+function THTTPManager.Post(const URL: String; const JsonData: String): THTTPResult;  
+begin  
   Result.Success := False;
   Result.StatusCode := 0;
   Result.Data := '';

@@ -45,14 +45,14 @@ Une **API publique** est une interface de programmation accessible à tout déve
 ### Catégories Populaires
 
 ```
-Météo              OpenWeatherMap, WeatherAPI
-Géolocalisation    OpenStreetMap, ipapi.co
-Finance            Alpha Vantage, CoinGecko
-Actualités         NewsAPI, Guardian API
-Réseaux sociaux    Twitter API, Reddit API
-Données publiques  Data.gouv.fr, Open Data
-Divertissement     TMDB (films), Spotify, PokeAPI
-Outils             QR Code Generator, PDF APIs
+Météo              OpenWeatherMap, WeatherAPI  
+Géolocalisation    OpenStreetMap, ipapi.co  
+Finance            Alpha Vantage, CoinGecko  
+Actualités         NewsAPI, Guardian API  
+Réseaux sociaux    Twitter API, Reddit API  
+Données publiques  Data.gouv.fr, Open Data  
+Divertissement     TMDB (films), Spotify, PokeAPI  
+Outils             QR Code Generator, PDF APIs  
 ```
 
 ## Lire la Documentation d'une API
@@ -68,15 +68,15 @@ https://api.example.com/v1
 
 **2. Points de Terminaison (Endpoints)**
 ```
-GET  /users           → Liste des utilisateurs
-GET  /users/{id}      → Un utilisateur spécifique
-POST /users           → Créer un utilisateur
+GET  /users           → Liste des utilisateurs  
+GET  /users/{id}      → Un utilisateur spécifique  
+POST /users           → Créer un utilisateur  
 ```
 
 **3. Authentification**
 ```
-X-API-Key: votre_cle_secrete
-Authorization: Bearer token
+X-API-Key: votre_cle_secrete  
+Authorization: Bearer token  
 ```
 
 **4. Paramètres de Requête**
@@ -138,8 +138,8 @@ program JsonPlaceholderExample;
 uses
   fphttpclient, opensslsockets, SysUtils;
 
-procedure ListUsers;
-var
+procedure ListUsers;  
+var  
   Client: TFPHttpClient;
   Response: String;
 begin
@@ -175,8 +175,8 @@ end.
 ### Obtenir un Utilisateur Spécifique
 
 ```pascal
-procedure GetUser(UserID: Integer);
-var
+procedure GetUser(UserID: Integer);  
+var  
   Client: TFPHttpClient;
   Response: String;
   URL: String;
@@ -218,8 +218,8 @@ end;
 ### Créer un Nouvel Article
 
 ```pascal
-procedure CreatePost(const Title, Body: String; UserID: Integer);
-var
+procedure CreatePost(const Title, Body: String; UserID: Integer);  
+var  
   Client: TFPHttpClient;
   JsonData, Response: String;
 begin
@@ -298,8 +298,8 @@ const
   API_KEY = 'VOTRE_CLE_API_ICI';  // Remplacer par votre vraie clé
   BASE_URL = 'https://api.openweathermap.org/data/2.5';
 
-procedure GetCurrentWeather(const City: String);
-var
+procedure GetCurrentWeather(const City: String);  
+var  
   Client: TFPHttpClient;
   Response: String;
   URL: String;
@@ -351,10 +351,10 @@ end.
 ### Paramètres Utiles
 
 ```
-q         → Nom de la ville (ex: Paris, London)
-units     → metric (Celsius), imperial (Fahrenheit), standard (Kelvin)
-lang      → Langue (fr, en, es, de, etc.)
-appid     → Votre clé API (obligatoire)
+q         → Nom de la ville (ex: Paris, London)  
+units     → metric (Celsius), imperial (Fahrenheit), standard (Kelvin)  
+lang      → Langue (fr, en, es, de, etc.)  
+appid     → Votre clé API (obligatoire)  
 ```
 
 ### Exemple de Réponse JSON
@@ -409,8 +409,8 @@ API gratuite fournissant des informations détaillées sur tous les pays du mond
 ### Exemple : Informations sur un Pays
 
 ```pascal
-procedure GetCountryInfo(const CountryName: String);
-var
+procedure GetCountryInfo(const CountryName: String);  
+var  
   Client: TFPHttpClient;
   Response: String;
   URL: String;
@@ -453,8 +453,8 @@ end;
 ### Pays d'une Région
 
 ```pascal
-procedure GetCountriesByRegion(const Region: String);
-var
+procedure GetCountriesByRegion(const Region: String);  
+var  
   Client: TFPHttpClient;
   Response: String;
   URL: String;
@@ -501,8 +501,8 @@ L'API GitHub permet d'accéder aux informations publiques des dépôts et utilis
 ### Exemple : Informations sur un Dépôt
 
 ```pascal
-procedure GetRepoInfo(const Owner, RepoName: String);
-var
+procedure GetRepoInfo(const Owner, RepoName: String);  
+var  
   Client: TFPHttpClient;
   Response: String;
   URL: String;
@@ -554,24 +554,24 @@ end;
 
 ```pascal
 // Exemple avec OpenWeatherMap
-URL := Format('https://api.example.com/data?apikey=%s', [API_KEY]);
-Response := Client.Get(URL);
+URL := Format('https://api.example.com/data?apikey=%s', [API_KEY]);  
+Response := Client.Get(URL);  
 ```
 
 ### API Key dans les Headers
 
 ```pascal
 // Exemple classique
-Client.AddHeader('X-API-Key', API_KEY);
-Response := Client.Get('https://api.example.com/data');
+Client.AddHeader('X-API-Key', API_KEY);  
+Response := Client.Get('https://api.example.com/data');  
 ```
 
 ### Bearer Token (OAuth, JWT)
 
 ```pascal
 // Authentification par token (ex: GitHub)
-Client.AddHeader('Authorization', 'Bearer ' + TOKEN);
-Response := Client.Get('https://api.example.com/data');
+Client.AddHeader('Authorization', 'Bearer ' + TOKEN);  
+Response := Client.Get('https://api.example.com/data');  
 ```
 
 ### Basic Authentication
@@ -596,8 +596,8 @@ La plupart des API ont des **limites de taux** pour éviter les abus.
 ### Vérifier les Limites
 
 ```pascal
-procedure CheckRateLimits(Client: TFPHttpClient);
-var
+procedure CheckRateLimits(Client: TFPHttpClient);  
+var  
   Limit, Remaining, Reset: String;
 begin
   // Lire les headers de limitation
@@ -615,8 +615,8 @@ end;
 ### Gérer l'Erreur 429 (Too Many Requests)
 
 ```pascal
-procedure GetDataWithRetry(const URL: String);
-var
+procedure GetDataWithRetry(const URL: String);  
+var  
   Client: TFPHttpClient;
   Response: String;
   RetryAfter: String;
@@ -687,8 +687,8 @@ type
 
 implementation
 
-constructor TAPIHelper.Create(const BaseURL: String; const APIKey: String = '');
-begin
+constructor TAPIHelper.Create(const BaseURL: String; const APIKey: String = '');  
+begin  
   inherited Create;
   FBaseURL := BaseURL;
   FAPIKey := APIKey;
@@ -701,14 +701,14 @@ begin
     FClient.AddHeader('X-API-Key', APIKey);
 end;
 
-destructor TAPIHelper.Destroy;
-begin
+destructor TAPIHelper.Destroy;  
+begin  
   FClient.Free;
   inherited Destroy;
 end;
 
-function TAPIHelper.Get(const Endpoint: String): String;
-var
+function TAPIHelper.Get(const Endpoint: String): String;  
+var  
   URL: String;
 begin
   Result := '';
@@ -721,8 +721,8 @@ begin
   end;
 end;
 
-function TAPIHelper.Post(const Endpoint: String; const JsonData: String): String;
-var
+function TAPIHelper.Post(const Endpoint: String; const JsonData: String): String;  
+var  
   URL: String;
 begin
   Result := '';
@@ -741,8 +741,8 @@ begin
   end;
 end;
 
-function TAPIHelper.Put(const Endpoint: String; const JsonData: String): String;
-var
+function TAPIHelper.Put(const Endpoint: String; const JsonData: String): String;  
+var  
   URL: String;
 begin
   Result := '';
@@ -761,8 +761,8 @@ begin
   end;
 end;
 
-function TAPIHelper.Delete(const Endpoint: String): Boolean;
-var
+function TAPIHelper.Delete(const Endpoint: String): Boolean;  
+var  
   URL: String;
 begin
   Result := False;
@@ -777,23 +777,23 @@ begin
   end;
 end;
 
-function TAPIHelper.GetStatusCode: Integer;
-begin
+function TAPIHelper.GetStatusCode: Integer;  
+begin  
   Result := FClient.ResponseStatusCode;
 end;
 
-function TAPIHelper.GetHeader(const HeaderName: String): String;
-begin
+function TAPIHelper.GetHeader(const HeaderName: String): String;  
+begin  
   Result := FClient.GetHeader(FClient.ResponseHeaders, HeaderName);
 end;
 
-procedure TAPIHelper.AddHeader(const Name, Value: String);
-begin
+procedure TAPIHelper.AddHeader(const Name, Value: String);  
+begin  
   FClient.AddHeader(Name, Value);
 end;
 
-procedure TAPIHelper.SetTimeout(Milliseconds: Integer);
-begin
+procedure TAPIHelper.SetTimeout(Milliseconds: Integer);  
+begin  
   FClient.ConnectTimeout := Milliseconds;
 end;
 
@@ -870,8 +870,8 @@ const API_KEY = 'abc123';  // En dur dans le code
 
 ✅ MIEUX
 // Lire depuis un fichier de configuration
-function LoadAPIKey: String;
-var
+function LoadAPIKey: String;  
+var  
   F: TextFile;
 begin
   AssignFile(F, 'config.txt');
@@ -902,8 +902,8 @@ end;
 ### 4. Logger les Requêtes (pour le débogage)
 
 ```pascal
-procedure LogRequest(const Method, URL: String; StatusCode: Integer);
-begin
+procedure LogRequest(const Method, URL: String; StatusCode: Integer);  
+begin  
   WriteLn(Format('[%s] %s %s -> %d',
          [FormatDateTime('hh:nn:ss', Now), Method, URL, StatusCode]));
 end;
@@ -993,29 +993,29 @@ Client.ConnectTimeout := 10000;  // 10 secondes
 ### Pour Débuter (Sans Clé)
 
 ```
-JSONPlaceholder      → Test d'API REST
-httpbin.org          → Tester requêtes HTTP
-Random User          → Générer des utilisateurs fictifs
-REST Countries       → Infos sur les pays
-PokeAPI              → Données Pokémon
+JSONPlaceholder      → Test d'API REST  
+httpbin.org          → Tester requêtes HTTP  
+Random User          → Générer des utilisateurs fictifs  
+REST Countries       → Infos sur les pays  
+PokeAPI              → Données Pokémon  
 ```
 
 ### Avec Clé Gratuite
 
 ```
-OpenWeatherMap       → Météo
-NewsAPI              → Actualités
-ExchangeRate-API     → Taux de change
-IPGeolocation        → Géolocalisation par IP
-TheMovieDB (TMDB)    → Informations sur les films
+OpenWeatherMap       → Météo  
+NewsAPI              → Actualités  
+ExchangeRate-API     → Taux de change  
+IPGeolocation        → Géolocalisation par IP  
+TheMovieDB (TMDB)    → Informations sur les films  
 ```
 
 ### Données Publiques
 
 ```
-Data.gouv.fr         → Données publiques françaises
-NASA API             → Données spatiales
-Open Library         → Base de données de livres
+Data.gouv.fr         → Données publiques françaises  
+NASA API             → Données spatiales  
+Open Library         → Base de données de livres  
 ```
 
 ## Ressources et Documentation

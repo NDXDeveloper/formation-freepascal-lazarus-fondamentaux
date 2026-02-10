@@ -21,10 +21,10 @@ Les méthodes HTTP correspondent à ces opérations :
 ```
 CRUD          Méthode HTTP      Action
 ────────────────────────────────────────────
-Create   →    POST              Créer une nouvelle ressource
-Read     →    GET               Lire/Consulter une ressource
-Update   →    PUT               Modifier une ressource existante
-Delete   →    DELETE            Supprimer une ressource
+Create   →    POST              Créer une nouvelle ressource  
+Read     →    GET               Lire/Consulter une ressource  
+Update   →    PUT               Modifier une ressource existante  
+Delete   →    DELETE            Supprimer une ressource  
 ```
 
 ## La Méthode GET - Lire des Données
@@ -47,9 +47,9 @@ Comme consulter un livre à la bibliothèque : vous le lisez, mais vous ne le mo
 ### Structure d'une requête GET
 
 ```
-GET /api/users/42 HTTP/1.1
-Host: api.example.com
-Accept: application/json
+GET /api/users/42 HTTP/1.1  
+Host: api.example.com  
+Accept: application/json  
 ```
 
 Pas de corps (body) dans une requête GET. Les paramètres sont dans l'URL :
@@ -81,8 +81,8 @@ Signification : "Recherche 'freepascal' en français"
 ### Réponse typique
 
 ```
-HTTP/1.1 200 OK
-Content-Type: application/json
+HTTP/1.1 200 OK  
+Content-Type: application/json  
 
 {
   "id": 42,
@@ -130,10 +130,10 @@ Comme remplir un formulaire d'inscription et le soumettre : vous créez un nouve
 ### Structure d'une requête POST
 
 ```
-POST /api/users HTTP/1.1
-Host: api.example.com
-Content-Type: application/json
-Content-Length: 98
+POST /api/users HTTP/1.1  
+Host: api.example.com  
+Content-Type: application/json  
+Content-Length: 98  
 
 {
   "nom": "Martin",
@@ -146,29 +146,29 @@ Content-Length: 98
 
 **Créer un nouvel utilisateur :**
 ```
-POST /api/users
-Body: { "nom": "Martin", "prenom": "Sophie", ... }
+POST /api/users  
+Body: { "nom": "Martin", "prenom": "Sophie", ... }  
 ```
 
 **Soumettre un formulaire de contact :**
 ```
-POST /api/contact
-Body: { "email": "...", "message": "..." }
+POST /api/contact  
+Body: { "email": "...", "message": "..." }  
 ```
 
 **Uploader un fichier :**
 ```
-POST /api/upload
-Content-Type: multipart/form-data
-Body: [données du fichier]
+POST /api/upload  
+Content-Type: multipart/form-data  
+Body: [données du fichier]  
 ```
 
 ### Réponse typique
 
 ```
-HTTP/1.1 201 Created
-Location: /api/users/123
-Content-Type: application/json
+HTTP/1.1 201 Created  
+Location: /api/users/123  
+Content-Type: application/json  
 
 {
   "id": 123,
@@ -218,9 +218,9 @@ Comme réécrire entièrement une page d'un cahier : vous remplacez tout le cont
 ### Structure d'une requête PUT
 
 ```
-PUT /api/users/123 HTTP/1.1
-Host: api.example.com
-Content-Type: application/json
+PUT /api/users/123 HTTP/1.1  
+Host: api.example.com  
+Content-Type: application/json  
 
 {
   "id": 123,
@@ -237,21 +237,21 @@ Content-Type: application/json
 
 **Modifier un utilisateur :**
 ```
-PUT /api/users/123
-Body: { version complète avec modifications }
+PUT /api/users/123  
+Body: { version complète avec modifications }  
 ```
 
 **Remplacer une configuration :**
 ```
-PUT /api/settings
-Body: { configuration complète }
+PUT /api/settings  
+Body: { configuration complète }  
 ```
 
 ### Réponse typique
 
 ```
-HTTP/1.1 200 OK
-Content-Type: application/json
+HTTP/1.1 200 OK  
+Content-Type: application/json  
 
 {
   "id": 123,
@@ -322,9 +322,9 @@ Comme déchirer une page d'un cahier : la page n'existe plus.
 ### Structure d'une requête DELETE
 
 ```
-DELETE /api/users/123 HTTP/1.1
-Host: api.example.com
-Authorization: Bearer token123
+DELETE /api/users/123 HTTP/1.1  
+Host: api.example.com  
+Authorization: Bearer token123  
 ```
 
 Pas de corps dans la plupart des cas.
@@ -355,8 +355,8 @@ HTTP/1.1 204 No Content
 
 **Option 2 : Confirmation avec détails**
 ```
-HTTP/1.1 200 OK
-Content-Type: application/json
+HTTP/1.1 200 OK  
+Content-Type: application/json  
 
 {
   "message": "Utilisateur supprimé avec succès",
@@ -484,16 +484,16 @@ GET /api/books/123
 GET /api/books?author=Hugo&available=true
 
 # Ajouter un nouveau livre
-POST /api/books
-Body: { "title": "Les Misérables", "author": "Victor Hugo", ... }
+POST /api/books  
+Body: { "title": "Les Misérables", "author": "Victor Hugo", ... }  
 
 # Modifier complètement un livre
-PUT /api/books/123
-Body: { version complète du livre avec modifications }
+PUT /api/books/123  
+Body: { version complète du livre avec modifications }  
 
 # Modifier seulement la disponibilité
-PATCH /api/books/123
-Body: { "available": false }
+PATCH /api/books/123  
+Body: { "available": false }  
 
 # Supprimer un livre
 DELETE /api/books/123
