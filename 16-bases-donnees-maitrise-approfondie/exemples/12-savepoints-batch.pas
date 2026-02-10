@@ -17,8 +17,8 @@ var
   Query, QueryExec: TSQLQuery;
   DBPath: string;
 
-procedure AfficherContacts;
-begin
+procedure AfficherContacts;  
+begin  
   Query.SQL.Text := 'SELECT * FROM Contacts ORDER BY id';
   Query.Open;
 
@@ -39,8 +39,8 @@ begin
   Query.Close;
 end;
 
-procedure InitialiserBase;
-begin
+procedure InitialiserBase;  
+begin  
   WriteLn('--- Initialisation ---');
   Conn.ExecuteDirect(
     'CREATE TABLE IF NOT EXISTS Contacts (' +
@@ -52,8 +52,8 @@ begin
   WriteLn('Table Contacts creee (email UNIQUE)');
 end;
 
-procedure DemoSavepoint;
-begin
+procedure DemoSavepoint;  
+begin  
   WriteLn;
   WriteLn('--- SAVEPOINT de base ---');
 
@@ -108,8 +108,8 @@ begin
   AfficherContacts;
 end;
 
-procedure DemoImportTolerant;
-type
+procedure DemoImportTolerant;  
+type  
   TLigneCSV = record
     Nom: string;
     Email: string;
@@ -177,8 +177,8 @@ begin
   AfficherContacts;
 end;
 
-procedure DemoBatchParBlocs;
-const
+procedure DemoBatchParBlocs;  
+const  
   NB_TOTAL = 5000;
   TAILLE_BLOC = 500;
 var
@@ -254,8 +254,8 @@ begin
   Trans.Commit;
 end;
 
-procedure DemoRetryAvecBackoff;
-var
+procedure DemoRetryAvecBackoff;  
+var  
   Tentatives, MaxTentatives: Integer;
   Delai: Integer;
   Success: Boolean;

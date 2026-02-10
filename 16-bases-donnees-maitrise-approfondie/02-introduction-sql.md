@@ -170,9 +170,9 @@ Avant de plonger dans les commandes, voici quelques règles importantes :
 ### Syntaxe de base
 
 ```sql
-SELECT colonnes
-FROM table
-WHERE condition;
+SELECT colonnes  
+FROM table  
+WHERE condition;  
 ```
 
 ### Exemple 1 : Tout sélectionner
@@ -199,9 +199,9 @@ SELECT nom, email FROM Clients;
 ### Exemple 3 : Filtrer avec WHERE
 
 ```sql
-SELECT nom, email
-FROM Clients
-WHERE ville = 'Paris';
+SELECT nom, email  
+FROM Clients  
+WHERE ville = 'Paris';  
 ```
 
 **Résultat :** Affiche le nom et l'email uniquement des clients habitant Paris.
@@ -218,24 +218,24 @@ SELECT * FROM Produits WHERE prix <> 19.99;
 SELECT * FROM Produits WHERE prix != 19.99;
 
 -- Supérieur, inférieur
-SELECT * FROM Produits WHERE prix > 50;
-SELECT * FROM Produits WHERE prix <= 100;
+SELECT * FROM Produits WHERE prix > 50;  
+SELECT * FROM Produits WHERE prix <= 100;  
 ```
 
 ### Exemple 5 : Opérateurs logiques
 
 ```sql
 -- ET (AND)
-SELECT * FROM Produits
-WHERE prix > 10 AND prix < 50;
+SELECT * FROM Produits  
+WHERE prix > 10 AND prix < 50;  
 
 -- OU (OR)
-SELECT * FROM Clients
-WHERE ville = 'Paris' OR ville = 'Lyon';
+SELECT * FROM Clients  
+WHERE ville = 'Paris' OR ville = 'Lyon';  
 
 -- NON (NOT)
-SELECT * FROM Produits
-WHERE NOT categorie = 'Électronique';
+SELECT * FROM Produits  
+WHERE NOT categorie = 'Électronique';  
 ```
 
 ### Exemple 6 : Recherche de motif avec LIKE
@@ -275,9 +275,9 @@ SELECT * FROM Clients ORDER BY ville, nom;
 SELECT * FROM Clients LIMIT 10;
 
 -- Les 5 produits les plus chers
-SELECT * FROM Produits
-ORDER BY prix DESC
-LIMIT 5;
+SELECT * FROM Produits  
+ORDER BY prix DESC  
+LIMIT 5;  
 ```
 
 ### Exemple 9 : Fonctions d'agrégation
@@ -300,14 +300,14 @@ SELECT SUM(montant) FROM Commandes;
 
 ```sql
 -- Nombre de clients par ville
-SELECT ville, COUNT(*)
-FROM Clients
-GROUP BY ville;
+SELECT ville, COUNT(*)  
+FROM Clients  
+GROUP BY ville;  
 
 -- Montant total des commandes par client
-SELECT id_client, SUM(montant)
-FROM Commandes
-GROUP BY id_client;
+SELECT id_client, SUM(montant)  
+FROM Commandes  
+GROUP BY id_client;  
 ```
 
 ## INSERT : Ajouter des données
@@ -317,30 +317,30 @@ GROUP BY id_client;
 ### Syntaxe de base
 
 ```sql
-INSERT INTO table (colonne1, colonne2, ...)
-VALUES (valeur1, valeur2, ...);
+INSERT INTO table (colonne1, colonne2, ...)  
+VALUES (valeur1, valeur2, ...);  
 ```
 
 ### Exemple 1 : Insérer un enregistrement complet
 
 ```sql
-INSERT INTO Clients (id, nom, prenom, email, ville)
-VALUES (1, 'Dupont', 'Pierre', 'pierre.dupont@email.fr', 'Paris');
+INSERT INTO Clients (id, nom, prenom, email, ville)  
+VALUES (1, 'Dupont', 'Pierre', 'pierre.dupont@email.fr', 'Paris');  
 ```
 
 ### Exemple 2 : Insérer sans spécifier toutes les colonnes
 
 ```sql
 -- Les colonnes non mentionnées seront NULL ou auront leur valeur par défaut
-INSERT INTO Clients (nom, prenom, email)
-VALUES ('Martin', 'Marie', 'marie.martin@email.fr');
+INSERT INTO Clients (nom, prenom, email)  
+VALUES ('Martin', 'Marie', 'marie.martin@email.fr');  
 ```
 
 ### Exemple 3 : Insérer plusieurs enregistrements
 
 ```sql
-INSERT INTO Clients (nom, prenom, email)
-VALUES
+INSERT INTO Clients (nom, prenom, email)  
+VALUES  
     ('Durand', 'Jacques', 'j.durand@email.fr'),
     ('Bernard', 'Sophie', 's.bernard@email.fr'),
     ('Petit', 'Luc', 'l.petit@email.fr');
@@ -350,8 +350,8 @@ VALUES
 
 ```sql
 -- Copier des données d'une table à une autre
-INSERT INTO Clients_Archive
-SELECT * FROM Clients WHERE date_creation < '2020-01-01';
+INSERT INTO Clients_Archive  
+SELECT * FROM Clients WHERE date_creation < '2020-01-01';  
 ```
 
 ## UPDATE : Modifier des données
@@ -361,9 +361,9 @@ SELECT * FROM Clients WHERE date_creation < '2020-01-01';
 ### Syntaxe de base
 
 ```sql
-UPDATE table
-SET colonne1 = valeur1, colonne2 = valeur2
-WHERE condition;
+UPDATE table  
+SET colonne1 = valeur1, colonne2 = valeur2  
+WHERE condition;  
 ```
 
 **⚠️ ATTENTION :** Si vous oubliez le `WHERE`, **TOUS** les enregistrements seront modifiés !
@@ -371,34 +371,34 @@ WHERE condition;
 ### Exemple 1 : Modifier un enregistrement
 
 ```sql
-UPDATE Clients
-SET email = 'nouveau.email@email.fr'
-WHERE id = 1;
+UPDATE Clients  
+SET email = 'nouveau.email@email.fr'  
+WHERE id = 1;  
 ```
 
 ### Exemple 2 : Modifier plusieurs colonnes
 
 ```sql
-UPDATE Produits
-SET prix = 29.99, stock = 150
-WHERE id = 42;
+UPDATE Produits  
+SET prix = 29.99, stock = 150  
+WHERE id = 42;  
 ```
 
 ### Exemple 3 : Modifier plusieurs enregistrements
 
 ```sql
 -- Augmenter tous les prix de 10%
-UPDATE Produits
-SET prix = prix * 1.10
-WHERE categorie = 'Électronique';
+UPDATE Produits  
+SET prix = prix * 1.10  
+WHERE categorie = 'Électronique';  
 ```
 
 ### Exemple 4 : Modifier avec des conditions complexes
 
 ```sql
-UPDATE Clients
-SET statut = 'VIP'
-WHERE total_achats > 1000 AND nb_commandes > 10;
+UPDATE Clients  
+SET statut = 'VIP'  
+WHERE total_achats > 1000 AND nb_commandes > 10;  
 ```
 
 ## DELETE : Supprimer des données
@@ -408,8 +408,8 @@ WHERE total_achats > 1000 AND nb_commandes > 10;
 ### Syntaxe de base
 
 ```sql
-DELETE FROM table
-WHERE condition;
+DELETE FROM table  
+WHERE condition;  
 ```
 
 **⚠️ DANGER :** Si vous oubliez le `WHERE`, **TOUS** les enregistrements seront supprimés !
@@ -417,22 +417,22 @@ WHERE condition;
 ### Exemple 1 : Supprimer un enregistrement
 
 ```sql
-DELETE FROM Clients
-WHERE id = 1;
+DELETE FROM Clients  
+WHERE id = 1;  
 ```
 
 ### Exemple 2 : Supprimer plusieurs enregistrements
 
 ```sql
-DELETE FROM Commandes
-WHERE statut = 'Annulée';
+DELETE FROM Commandes  
+WHERE statut = 'Annulée';  
 ```
 
 ### Exemple 3 : Supprimer avec des conditions
 
 ```sql
-DELETE FROM Produits
-WHERE stock = 0 AND date_creation < '2020-01-01';
+DELETE FROM Produits  
+WHERE stock = 0 AND date_creation < '2020-01-01';  
 ```
 
 ### Exemple 4 : Tout supprimer (avec prudence !)
@@ -563,15 +563,15 @@ DROP TABLE IF EXISTS Clients;
 ### Ajouter une colonne
 
 ```sql
-ALTER TABLE Clients
-ADD COLUMN telephone TEXT;
+ALTER TABLE Clients  
+ADD COLUMN telephone TEXT;  
 ```
 
 ### Supprimer une colonne
 
 ```sql
-ALTER TABLE Clients
-DROP COLUMN telephone;
+ALTER TABLE Clients  
+DROP COLUMN telephone;  
 ```
 
 *Note : Certaines bases de données (comme SQLite) ont des limitations sur les modifications de structure.*
@@ -585,9 +585,9 @@ Les **jointures** (JOIN) permettent de combiner des données de plusieurs tables
 Retourne uniquement les lignes qui ont une correspondance dans les deux tables.
 
 ```sql
-SELECT Clients.nom, Commandes.montant
-FROM Clients
-INNER JOIN Commandes ON Clients.id = Commandes.id_client;
+SELECT Clients.nom, Commandes.montant  
+FROM Clients  
+INNER JOIN Commandes ON Clients.id = Commandes.id_client;  
 ```
 
 **Résultat :** Liste des clients qui ont passé au moins une commande, avec le montant.
@@ -597,9 +597,9 @@ INNER JOIN Commandes ON Clients.id = Commandes.id_client;
 Retourne toutes les lignes de la table de gauche, avec les correspondances de droite si elles existent.
 
 ```sql
-SELECT Clients.nom, Commandes.montant
-FROM Clients
-LEFT JOIN Commandes ON Clients.id = Commandes.id_client;
+SELECT Clients.nom, Commandes.montant  
+FROM Clients  
+LEFT JOIN Commandes ON Clients.id = Commandes.id_client;  
 ```
 
 **Résultat :** Tous les clients, même ceux sans commande (montant sera NULL).
@@ -613,10 +613,10 @@ SELECT
     Produits.nom AS produit,
     Commandes.quantite,
     Commandes.montant
-FROM Commandes
-INNER JOIN Clients ON Commandes.id_client = Clients.id
-INNER JOIN Produits ON Commandes.id_produit = Produits.id
-ORDER BY Commandes.date DESC;
+FROM Commandes  
+INNER JOIN Clients ON Commandes.id_client = Clients.id  
+INNER JOIN Produits ON Commandes.id_produit = Produits.id  
+ORDER BY Commandes.date DESC;  
 ```
 
 ## Bonnes pratiques SQL
@@ -648,22 +648,22 @@ SELECT
     c.nom AS nom_client,
     p.nom AS nom_produit,
     co.montant
-FROM Commandes co
-INNER JOIN Clients c ON co.id_client = c.id
-INNER JOIN Produits p ON co.id_produit = p.id;
+FROM Commandes co  
+INNER JOIN Clients c ON co.id_client = c.id  
+INNER JOIN Produits p ON co.id_produit = p.id;  
 ```
 
 ### 4. Commenter vos requêtes complexes
 
 ```sql
 -- Récupère les 10 meilleurs clients de l'année
-SELECT c.nom, SUM(co.montant) AS total
-FROM Clients c
-INNER JOIN Commandes co ON c.id = co.id_client
-WHERE co.date >= '2025-01-01'
-GROUP BY c.id, c.nom
-ORDER BY total DESC
-LIMIT 10;
+SELECT c.nom, SUM(co.montant) AS total  
+FROM Clients c  
+INNER JOIN Commandes co ON c.id = co.id_client  
+WHERE co.date >= '2025-01-01'  
+GROUP BY c.id, c.nom  
+ORDER BY total DESC  
+LIMIT 10;  
 ```
 
 ### 5. Tester sur un petit échantillon d'abord

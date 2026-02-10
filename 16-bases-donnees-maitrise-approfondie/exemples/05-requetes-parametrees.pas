@@ -17,8 +17,8 @@ var
   Query: TSQLQuery;
   DBPath: string;
 
-procedure InitialiserBase;
-begin
+procedure InitialiserBase;  
+begin  
   WriteLn('--- Initialisation de la base ---');
   Conn.ExecuteDirect(
     'CREATE TABLE IF NOT EXISTS Contacts (' +
@@ -32,8 +32,8 @@ begin
   WriteLn('Table Contacts creee');
 end;
 
-procedure InsererAvecParametres;
-var
+procedure InsererAvecParametres;  
+var  
   i: Integer;
 const
   Noms: array[0..4] of string = ('Dupont', 'Martin', 'Bernard', 'Dubois', 'Thomas');
@@ -62,8 +62,8 @@ begin
   WriteLn('5 contacts inseres');
 end;
 
-procedure SelectTous;
-begin
+procedure SelectTous;  
+begin  
   WriteLn;
   WriteLn('--- SELECT * (iteration avec EOF/Next) ---');
 
@@ -90,8 +90,8 @@ begin
   Query.Close;
 end;
 
-procedure SelectAvecFiltre;
-begin
+procedure SelectAvecFiltre;  
+begin  
   WriteLn;
   WriteLn('--- SELECT avec parametre (age > 30) ---');
 
@@ -114,8 +114,8 @@ begin
   Query.Close;
 end;
 
-procedure RechercheAvecLike;
-begin
+procedure RechercheAvecLike;  
+begin  
   WriteLn;
   WriteLn('--- SELECT avec LIKE parametre (recherche "Dup") ---');
 
@@ -137,8 +137,8 @@ begin
   Query.Close;
 end;
 
-procedure UpdateAvecParametres;
-begin
+procedure UpdateAvecParametres;  
+begin  
   WriteLn;
   WriteLn('--- UPDATE avec parametres ---');
 
@@ -159,8 +159,8 @@ begin
   Query.Close;
 end;
 
-procedure DeleteAvecParametres;
-begin
+procedure DeleteAvecParametres;  
+begin  
   WriteLn;
   WriteLn('--- DELETE avec parametres ---');
 
@@ -184,8 +184,8 @@ begin
   Query.Close;
 end;
 
-procedure DemoAntiInjection;
-begin
+procedure DemoAntiInjection;  
+begin  
   WriteLn;
   WriteLn('--- Protection contre l''injection SQL ---');
 
@@ -200,8 +200,8 @@ begin
   Query.Close;
 end;
 
-procedure DemoAccesParIndex;
-begin
+procedure DemoAccesParIndex;  
+begin  
   WriteLn;
   WriteLn('--- Acces aux champs par index ---');
 
@@ -225,8 +225,8 @@ begin
   Query.Close;
 end;
 
-procedure DemoValeurNull;
-begin
+procedure DemoValeurNull;  
+begin  
   WriteLn;
   WriteLn('--- Gestion des valeurs NULL ---');
 

@@ -44,9 +44,9 @@ Une base de données SQLite est stockée dans **un seul fichier** avec l'extensi
 
 **Exemple :**
 ```
-mes_contacts.db        (3 Ko)
-ma_bibliotheque.db     (145 Ko)
-mon_application.db     (2,5 Mo)
+mes_contacts.db        (3 Ko)  
+ma_bibliotheque.db     (145 Ko)  
+mon_application.db     (2,5 Mo)  
 ```
 
 Vous pouvez :
@@ -189,8 +189,8 @@ Si vous voulez manipuler vos bases de données en dehors de votre programme, vou
 sqlite3.exe ma_base.db
 
 # Exécuter du SQL
-sqlite> SELECT * FROM Clients;
-sqlite> .exit
+sqlite> SELECT * FROM Clients;  
+sqlite> .exit  
 ```
 
 ### Sur Ubuntu/Linux
@@ -200,8 +200,8 @@ sqlite> .exit
 Comme sur Windows, Lazarus inclut le support SQLite. Vous devrez juste installer la bibliothèque SQLite3 :
 
 ```bash
-sudo apt update
-sudo apt install libsqlite3-dev
+sudo apt update  
+sudo apt install libsqlite3-dev  
 ```
 
 C'est tout ! Vos programmes Lazarus pourront maintenant utiliser SQLite.
@@ -226,10 +226,10 @@ sudo apt install sqlite3
 sqlite3 ma_base.db
 
 # Exécuter du SQL
-sqlite> CREATE TABLE test (id INTEGER, nom TEXT);
-sqlite> INSERT INTO test VALUES (1, 'Bonjour');
-sqlite> SELECT * FROM test;
-sqlite> .exit
+sqlite> CREATE TABLE test (id INTEGER, nom TEXT);  
+sqlite> INSERT INTO test VALUES (1, 'Bonjour');  
+sqlite> SELECT * FROM test;  
+sqlite> .exit  
 ```
 
 ## Créer votre première base de données SQLite
@@ -240,21 +240,21 @@ C'est la méthode la plus simple pour comprendre le concept.
 
 **Sur Windows :**
 ```bash
-cd C:\MesProjets
-sqlite3.exe ma_premiere_base.db
+cd C:\MesProjets  
+sqlite3.exe ma_premiere_base.db  
 ```
 
 **Sur Linux :**
 ```bash
-cd ~/MesProjets
-sqlite3 ma_premiere_base.db
+cd ~/MesProjets  
+sqlite3 ma_premiere_base.db  
 ```
 
 Vous entrez dans le shell SQLite :
 ```
-SQLite version 3.x.x
-Enter ".help" for usage hints.
-sqlite>
+SQLite version 3.x.x  
+Enter ".help" for usage hints.  
+sqlite>  
 ```
 
 **Créons notre première table :**
@@ -272,14 +272,14 @@ CREATE TABLE Contacts (
 **Ajoutons des données :**
 
 ```sql
-INSERT INTO Contacts (nom, prenom, email)
-VALUES ('Dupont', 'Pierre', 'pierre.dupont@email.fr');
+INSERT INTO Contacts (nom, prenom, email)  
+VALUES ('Dupont', 'Pierre', 'pierre.dupont@email.fr');  
 
-INSERT INTO Contacts (nom, prenom, email)
-VALUES ('Martin', 'Marie', 'marie.martin@email.fr');
+INSERT INTO Contacts (nom, prenom, email)  
+VALUES ('Martin', 'Marie', 'marie.martin@email.fr');  
 
-INSERT INTO Contacts (nom, prenom, email)
-VALUES ('Durand', 'Jacques', 'j.durand@email.fr');
+INSERT INTO Contacts (nom, prenom, email)  
+VALUES ('Durand', 'Jacques', 'j.durand@email.fr');  
 ```
 
 **Vérifions :**
@@ -499,9 +499,9 @@ SELECT strftime('%s', 'now'); -- 1729001400
 SELECT strftime('%d/%m/%Y', 'now'); -- 15/10/2025
 
 -- Calculs de dates
-SELECT date('now', '+7 days');      -- Dans 7 jours
-SELECT date('now', '-1 month');     -- Il y a 1 mois
-SELECT date('now', 'start of year'); -- 1er janvier
+SELECT date('now', '+7 days');      -- Dans 7 jours  
+SELECT date('now', '-1 month');     -- Il y a 1 mois  
+SELECT date('now', 'start of year'); -- 1er janvier  
 ```
 
 ## Contraintes et intégrité dans SQLite
@@ -592,9 +592,9 @@ Par défaut, SQLite enveloppe chaque commande dans une transaction automatique.
 BEGIN TRANSACTION;
 
 -- Vos commandes SQL
-INSERT INTO Comptes (id, solde) VALUES (1, 1000);
-UPDATE Comptes SET solde = solde - 100 WHERE id = 1;
-INSERT INTO Historique (id_compte, montant) VALUES (1, -100);
+INSERT INTO Comptes (id, solde) VALUES (1, 1000);  
+UPDATE Comptes SET solde = solde - 100 WHERE id = 1;  
+INSERT INTO Historique (id_compte, montant) VALUES (1, -100);  
 
 -- Valider
 COMMIT;
@@ -613,8 +613,8 @@ COMMIT;
 BEGIN TRANSACTION;
 
 -- Si une erreur se produit, toute la transaction est annulée
-UPDATE Comptes SET solde = solde - 500 WHERE id = 1;
-UPDATE Comptes SET solde = solde + 500 WHERE id = 2;
+UPDATE Comptes SET solde = solde - 500 WHERE id = 1;  
+UPDATE Comptes SET solde = solde + 500 WHERE id = 2;  
 
 COMMIT; -- Les deux comptes sont modifiés, ou aucun
 ```
@@ -770,24 +770,24 @@ SELECT
     G.nom AS genre,
     L.annee,
     L.lu
-FROM Livres L
-INNER JOIN Auteurs A ON L.id_auteur = A.id
-LEFT JOIN Genres G ON L.id_genre = G.id
-ORDER BY L.titre;
+FROM Livres L  
+INNER JOIN Auteurs A ON L.id_auteur = A.id  
+LEFT JOIN Genres G ON L.id_genre = G.id  
+ORDER BY L.titre;  
 
 -- Livres non lus
-SELECT titre, annee
-FROM Livres
-WHERE lu = 0;
+SELECT titre, annee  
+FROM Livres  
+WHERE lu = 0;  
 
 -- Nombre de livres par auteur
 SELECT
     A.nom,
     COUNT(*) AS nb_livres
-FROM Auteurs A
-INNER JOIN Livres L ON A.id = L.id_auteur
-GROUP BY A.id, A.nom
-ORDER BY nb_livres DESC;
+FROM Auteurs A  
+INNER JOIN Livres L ON A.id = L.id_auteur  
+GROUP BY A.id, A.nom  
+ORDER BY nb_livres DESC;  
 
 -- Marquer un livre comme lu
 UPDATE Livres SET lu = 1 WHERE id = 1;

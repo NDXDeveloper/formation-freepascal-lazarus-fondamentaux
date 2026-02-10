@@ -34,8 +34,8 @@ Votre dataset (`TSQLQuery`) maintient toujours un **enregistrement courant**, ce
 
 ```pascal
 // L'enregistrement courant est celui accessible par :
-SQLQuery1.FieldByName('nom').AsString  // Nom de l'enregistrement courant
-SQLQuery1.FieldByName('id').AsInteger  // ID de l'enregistrement courant
+SQLQuery1.FieldByName('nom').AsString  // Nom de l'enregistrement courant  
+SQLQuery1.FieldByName('id').AsInteger  // ID de l'enregistrement courant  
 ```
 
 ### Visualiser dans le DBGrid
@@ -61,8 +61,8 @@ SQLQuery1.First;
 
 **Exemple :**
 ```pascal
-procedure TForm1.ButtonPremierClick(Sender: TObject);
-begin
+procedure TForm1.ButtonPremierClick(Sender: TObject);  
+begin  
   if SQLQuery1.Active then
     SQLQuery1.First;
 end;
@@ -81,8 +81,8 @@ SQLQuery1.Last;
 
 **Exemple :**
 ```pascal
-procedure TForm1.ButtonDernierClick(Sender: TObject);
-begin
+procedure TForm1.ButtonDernierClick(Sender: TObject);  
+begin  
   if SQLQuery1.Active then
     SQLQuery1.Last;
 end;
@@ -101,8 +101,8 @@ SQLQuery1.Next;
 
 **Exemple avec vérification :**
 ```pascal
-procedure TForm1.ButtonSuivantClick(Sender: TObject);
-begin
+procedure TForm1.ButtonSuivantClick(Sender: TObject);  
+begin  
   if SQLQuery1.Active and not SQLQuery1.EOF then
     SQLQuery1.Next
   else
@@ -123,8 +123,8 @@ SQLQuery1.Prior;
 
 **Exemple avec vérification :**
 ```pascal
-procedure TForm1.ButtonPrecedentClick(Sender: TObject);
-begin
+procedure TForm1.ButtonPrecedentClick(Sender: TObject);  
+begin  
   if SQLQuery1.Active and not SQLQuery1.BOF then
     SQLQuery1.Prior
   else
@@ -174,9 +174,9 @@ if SQLQuery1.EOF then
 
 **Exemple de parcours classique :**
 ```pascal
-SQLQuery1.First;
-while not SQLQuery1.EOF do
-begin
+SQLQuery1.First;  
+while not SQLQuery1.EOF do  
+begin  
   // Traiter l'enregistrement courant
   Memo1.Lines.Add(SQLQuery1.FieldByName('nom').AsString);
 
@@ -229,9 +229,9 @@ else
 **Note importante :**
 Pour obtenir le compte exact avec certaines bases de données, vous devez parfois forcer le chargement complet :
 ```pascal
-SQLQuery1.Last;   // Force le chargement complet
-SQLQuery1.First;  // Retour au début
-ShowMessage(IntToStr(SQLQuery1.RecordCount));
+SQLQuery1.Last;   // Force le chargement complet  
+SQLQuery1.First;  // Retour au début  
+ShowMessage(IntToStr(SQLQuery1.RecordCount));  
 ```
 
 ## Navigation avec TDBNavigator
@@ -273,11 +273,11 @@ DBNavigator1.VisibleButtons :=
 
 **Avec des hints (infobulles) personnalisés :**
 ```pascal
-DBNavigator1.Hints.Clear;
-DBNavigator1.Hints.Add('Premier enregistrement');
-DBNavigator1.Hints.Add('Enregistrement précédent');
-DBNavigator1.Hints.Add('Enregistrement suivant');
-DBNavigator1.Hints.Add('Dernier enregistrement');
+DBNavigator1.Hints.Clear;  
+DBNavigator1.Hints.Add('Premier enregistrement');  
+DBNavigator1.Hints.Add('Enregistrement précédent');  
+DBNavigator1.Hints.Add('Enregistrement suivant');  
+DBNavigator1.Hints.Add('Dernier enregistrement');  
 // ... et ainsi de suite pour chaque bouton
 DBNavigator1.ShowHint := True;
 ```
@@ -299,8 +299,8 @@ SQLQuery1.MoveBy(-3);
 const
   LIGNES_PAR_PAGE = 10;
 
-procedure TForm1.ButtonPageSuivanteClick(Sender: TObject);
-begin
+procedure TForm1.ButtonPageSuivanteClick(Sender: TObject);  
+begin  
   SQLQuery1.MoveBy(LIGNES_PAR_PAGE);
 
   // Si on dépasse la fin, revenir au dernier
@@ -308,8 +308,8 @@ begin
     SQLQuery1.Last;
 end;
 
-procedure TForm1.ButtonPagePrecedenteClick(Sender: TObject);
-begin
+procedure TForm1.ButtonPagePrecedenteClick(Sender: TObject);  
+begin  
   SQLQuery1.MoveBy(-LIGNES_PAR_PAGE);
 
   // Si on dépasse le début, revenir au premier
@@ -341,8 +341,8 @@ function Locate(const KeyFields: string;
 
 **Exemple 1 : Recherche par ID**
 ```pascal
-procedure TForm1.ButtonChercherIDClick(Sender: TObject);
-var
+procedure TForm1.ButtonChercherIDClick(Sender: TObject);  
+var  
   ClientID: Integer;
 begin
   ClientID := StrToInt(EditID.Text);
@@ -356,8 +356,8 @@ end;
 
 **Exemple 2 : Recherche par nom (insensible à la casse)**
 ```pascal
-procedure TForm1.ButtonChercherNomClick(Sender: TObject);
-var
+procedure TForm1.ButtonChercherNomClick(Sender: TObject);  
+var  
   Nom: string;
 begin
   Nom := EditNom.Text;
@@ -445,8 +445,8 @@ end;
 
 **Parcourir sans perdre la position :**
 ```pascal
-procedure TForm1.ButtonCalculerTotalClick(Sender: TObject);
-var
+procedure TForm1.ButtonCalculerTotalClick(Sender: TObject);  
+var  
   Signet: TBookmark;
   Total: Double;
 begin
@@ -495,8 +495,8 @@ Lors de navigations intensives, les mises à jour visuelles peuvent ralentir. Ut
 ### DisableControls et EnableControls
 
 ```pascal
-procedure TForm1.ButtonTraiterTousClick(Sender: TObject);
-begin
+procedure TForm1.ButtonTraiterTousClick(Sender: TObject);  
+begin  
   SQLQuery1.DisableControls;  // Geler l'affichage
   try
     SQLQuery1.First;
@@ -520,8 +520,8 @@ end;
 
 **Exemple concret : export vers CSV**
 ```pascal
-procedure TForm1.ButtonExporterCSVClick(Sender: TObject);
-var
+procedure TForm1.ButtonExporterCSVClick(Sender: TObject);  
+var  
   Fichier: TextFile;
   Ligne: string;
 begin
@@ -565,8 +565,8 @@ end;
 ### Dans un Label
 
 ```pascal
-procedure TForm1.SQLQuery1AfterScroll(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1AfterScroll(DataSet: TDataSet);  
+begin  
   if SQLQuery1.RecordCount > 0 then
     LabelPosition.Caption :=
       Format('Enregistrement %d / %d',
@@ -581,8 +581,8 @@ end;
 ### Dans une barre de progression
 
 ```pascal
-procedure TForm1.SQLQuery1AfterScroll(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1AfterScroll(DataSet: TDataSet);  
+begin  
   if SQLQuery1.RecordCount > 0 then
   begin
     ProgressBar1.Max := SQLQuery1.RecordCount;
@@ -595,22 +595,22 @@ end;
 
 ```pascal
 // Configuration initiale
-procedure TForm1.SQLQuery1AfterOpen(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1AfterOpen(DataSet: TDataSet);  
+begin  
   TrackBar1.Min := 1;
   TrackBar1.Max := SQLQuery1.RecordCount;
   TrackBar1.Position := 1;
 end;
 
 // Synchroniser la position
-procedure TForm1.SQLQuery1AfterScroll(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1AfterScroll(DataSet: TDataSet);  
+begin  
   TrackBar1.Position := SQLQuery1.RecNo;
 end;
 
 // Naviguer avec le TrackBar
-procedure TForm1.TrackBar1Change(Sender: TObject);
-var
+procedure TForm1.TrackBar1Change(Sender: TObject);  
+var  
   Deplacement: Integer;
 begin
   Deplacement := TrackBar1.Position - SQLQuery1.RecNo;
@@ -662,8 +662,8 @@ Avec des milliers ou millions d'enregistrements, charger tout en mémoire est in
 
 ```pascal
 // Charger seulement les 100 premiers
-SQLQuery1.SQL.Text := 'SELECT * FROM Clients ORDER BY nom LIMIT 100';
-SQLQuery1.Open;
+SQLQuery1.SQL.Text := 'SELECT * FROM Clients ORDER BY nom LIMIT 100';  
+SQLQuery1.Open;  
 ```
 
 ### Solution 2 : Pagination SQL
@@ -675,8 +675,8 @@ const
 var
   PageActuelle: Integer = 0;
 
-procedure TForm1.ChargerPage(NumPage: Integer);
-begin
+procedure TForm1.ChargerPage(NumPage: Integer);  
+begin  
   SQLQuery1.Close;
   SQLQuery1.SQL.Text :=
     'SELECT * FROM Clients ' +
@@ -692,13 +692,13 @@ begin
   LabelPage.Caption := Format('Page %d', [PageActuelle + 1]);
 end;
 
-procedure TForm1.ButtonPageSuivanteClick(Sender: TObject);
-begin
+procedure TForm1.ButtonPageSuivanteClick(Sender: TObject);  
+begin  
   ChargerPage(PageActuelle + 1);
 end;
 
-procedure TForm1.ButtonPagePrecedenteClick(Sender: TObject);
-begin
+procedure TForm1.ButtonPagePrecedenteClick(Sender: TObject);  
+begin  
   if PageActuelle > 0 then
     ChargerPage(PageActuelle - 1);
 end;
@@ -715,8 +715,8 @@ Certains datasets supportent le chargement progressif (lazy loading), où les do
 Déclenché **après** chaque déplacement du curseur.
 
 ```pascal
-procedure TForm1.SQLQuery1AfterScroll(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1AfterScroll(DataSet: TDataSet);  
+begin  
   // Mise à jour de l'interface après navigation
   LabelPosition.Caption :=
     Format('Enregistrement %d / %d',
@@ -733,8 +733,8 @@ end;
 Déclenché **avant** le déplacement (rare).
 
 ```pascal
-procedure TForm1.SQLQuery1BeforeScroll(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1BeforeScroll(DataSet: TDataSet);  
+begin  
   // Sauvegarder quelque chose avant de changer
 end;
 ```
@@ -744,8 +744,8 @@ end;
 ### Pattern 1 : Parcours complet avec traitement
 
 ```pascal
-procedure TForm1.TraiterTousLesEnregistrements;
-begin
+procedure TForm1.TraiterTousLesEnregistrements;  
+begin  
   if not SQLQuery1.Active then Exit;
 
   SQLQuery1.DisableControls;
@@ -767,8 +767,8 @@ end;
 ### Pattern 2 : Navigation sécurisée avec vérifications
 
 ```pascal
-procedure TForm1.NaviguerVers(Direction: string);
-begin
+procedure TForm1.NaviguerVers(Direction: string);  
+begin  
   if not SQLQuery1.Active then
   begin
     ShowMessage('Aucune donnée chargée');
@@ -848,8 +848,8 @@ if not SQLQuery1.BOF then
 ### 3. Utiliser DisableControls pour les traitements de masse
 
 ```pascal
-SQLQuery1.DisableControls;
-try
+SQLQuery1.DisableControls;  
+try  
   // Traitement
 finally
   SQLQuery1.EnableControls;
@@ -859,8 +859,8 @@ end;
 ### 4. Libérer les signets
 
 ```pascal
-Signet := SQLQuery1.GetBookmark;
-try
+Signet := SQLQuery1.GetBookmark;  
+try  
   // Utilisation
 finally
   SQLQuery1.FreeBookmark(Signet);  // IMPORTANT
@@ -870,8 +870,8 @@ end;
 ### 5. Utiliser AfterScroll pour synchroniser l'interface
 
 ```pascal
-procedure TForm1.SQLQuery1AfterScroll(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1AfterScroll(DataSet: TDataSet);  
+begin  
   // Mettre à jour tous les indicateurs de position
   MettreAJourInterface;
 end;
@@ -880,8 +880,8 @@ end;
 ### 6. Gérer les datasets vides
 
 ```pascal
-if SQLQuery1.IsEmpty then
-begin
+if SQLQuery1.IsEmpty then  
+begin  
   ShowMessage('Aucune donnée');
   Exit;
 end;
@@ -891,9 +891,9 @@ end;
 
 ```pascal
 // MAL - Modifier en naviguant peut causer des problèmes
-SQLQuery1.First;
-while not SQLQuery1.EOF do
-begin
+SQLQuery1.First;  
+while not SQLQuery1.EOF do  
+begin  
   SQLQuery1.Edit;  // Attention !
   SQLQuery1.FieldByName('statut').AsString := 'Traité';
   SQLQuery1.Post;
@@ -901,10 +901,10 @@ begin
 end;
 
 // BIEN - Utiliser une requête UPDATE
-SQLQuery2.SQL.Text := 'UPDATE Clients SET statut = ''Traité''';
-SQLQuery2.ExecSQL;
-SQLTransaction1.Commit;
-SQLQuery1.Refresh;
+SQLQuery2.SQL.Text := 'UPDATE Clients SET statut = ''Traité''';  
+SQLQuery2.ExecSQL;  
+SQLTransaction1.Commit;  
+SQLQuery1.Refresh;  
 ```
 
 ## Résumé

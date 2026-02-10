@@ -81,15 +81,15 @@ Du moins isolé au plus isolé :
 
 Transaction A :
 ```sql
-BEGIN;
-UPDATE comptes SET solde = solde - 100 WHERE id = 1;
+BEGIN;  
+UPDATE comptes SET solde = solde - 100 WHERE id = 1;  
 -- Pas encore de COMMIT
 ```
 
 Transaction B :
 ```sql
-BEGIN;
-SELECT solde FROM comptes WHERE id = 1;
+BEGIN;  
+SELECT solde FROM comptes WHERE id = 1;  
 -- Voit la modification de A (solde - 100) alors qu'elle n'est pas validée !
 ```
 
@@ -107,15 +107,15 @@ Si A fait ROLLBACK, B a lu une valeur **qui n'existe plus**.
 
 Transaction A :
 ```sql
-BEGIN;
-SELECT solde FROM comptes WHERE id = 1;  -- Résultat : 1000€
+BEGIN;  
+SELECT solde FROM comptes WHERE id = 1;  -- Résultat : 1000€  
 
 -- Pendant ce temps, Transaction B :
 -- UPDATE comptes SET solde = 500 WHERE id = 1;
 -- COMMIT;
 
-SELECT solde FROM comptes WHERE id = 1;  -- Résultat : 500€ (différent !)
-COMMIT;
+SELECT solde FROM comptes WHERE id = 1;  -- Résultat : 500€ (différent !)  
+COMMIT;  
 ```
 
 La même requête dans la même transaction donne des résultats différents.
@@ -132,13 +132,13 @@ La même requête dans la même transaction donne des résultats différents.
 
 Transaction A :
 ```sql
-BEGIN;
-SELECT COUNT(*) FROM clients WHERE ville = 'Paris';  -- Résultat : 10
+BEGIN;  
+SELECT COUNT(*) FROM clients WHERE ville = 'Paris';  -- Résultat : 10  
 
 -- Transaction B insère un nouveau client à Paris et fait COMMIT
 
-SELECT COUNT(*) FROM clients WHERE ville = 'Paris';  -- Résultat : 11 (!)
-COMMIT;
+SELECT COUNT(*) FROM clients WHERE ville = 'Paris';  -- Résultat : 11 (!)  
+COMMIT;  
 ```
 
 De nouvelles lignes peuvent apparaître (fantômes).
@@ -188,8 +188,8 @@ SET SESSION CHARACTERISTICS AS TRANSACTION ISOLATION LEVEL SERIALIZABLE;
 
 ```sql
 -- Pour la transaction courante
-SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
-BEGIN;
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED;  
+BEGIN;  
 -- Vos opérations
 COMMIT;
 
@@ -200,8 +200,8 @@ SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ;
 #### Depuis Lazarus
 
 ```pascal
-procedure TForm1.TransactionAvecIsolation;
-begin
+procedure TForm1.TransactionAvecIsolation;  
+begin  
   try
     // PostgreSQL
     SQLQuery1.SQL.Text :=
@@ -252,20 +252,20 @@ Imaginez deux personnes qui veulent passer une porte en même temps :
 
 **Transaction A :**
 ```sql
-BEGIN;
-UPDATE comptes SET solde = solde - 100 WHERE id = 1;  -- Verrouille ligne 1
+BEGIN;  
+UPDATE comptes SET solde = solde - 100 WHERE id = 1;  -- Verrouille ligne 1  
 -- Attend pour accéder à la ligne 2...
-UPDATE comptes SET solde = solde + 100 WHERE id = 2;  -- ⏳ BLOQUÉ
-COMMIT;
+UPDATE comptes SET solde = solde + 100 WHERE id = 2;  -- ⏳ BLOQUÉ  
+COMMIT;  
 ```
 
 **Transaction B (simultanée) :**
 ```sql
-BEGIN;
-UPDATE comptes SET solde = solde - 50 WHERE id = 2;   -- Verrouille ligne 2
+BEGIN;  
+UPDATE comptes SET solde = solde - 50 WHERE id = 2;   -- Verrouille ligne 2  
 -- Attend pour accéder à la ligne 1...
-UPDATE comptes SET solde = solde + 50 WHERE id = 1;   -- ⏳ BLOQUÉ
-COMMIT;
+UPDATE comptes SET solde = solde + 50 WHERE id = 1;   -- ⏳ BLOQUÉ  
+COMMIT;  
 ```
 
 **Résultat :** Deadlock ! 💀
@@ -280,8 +280,8 @@ COMMIT;
 
 **Message d'erreur typique :**
 ```
-ERROR: deadlock detected
-DETAIL: Process 1234 waits for ShareLock on transaction 5678...
+ERROR: deadlock detected  
+DETAIL: Process 1234 waits for ShareLock on transaction 5678...  
 ```
 
 ### Comment éviter les deadlocks ?
@@ -291,24 +291,24 @@ DETAIL: Process 1234 waits for ShareLock on transaction 5678...
 **MAL :**
 ```pascal
 // Transaction A
-UPDATE table1 ...
-UPDATE table2 ...
+UPDATE table1 ...  
+UPDATE table2 ...  
 
 // Transaction B (ordre inversé)
-UPDATE table2 ...
-UPDATE table1 ...
+UPDATE table2 ...  
+UPDATE table1 ...  
 // Risque de deadlock !
 ```
 
 **BIEN :**
 ```pascal
 // Transaction A
-UPDATE table1 ...
-UPDATE table2 ...
+UPDATE table1 ...  
+UPDATE table2 ...  
 
 // Transaction B (même ordre)
-UPDATE table1 ...
-UPDATE table2 ...
+UPDATE table1 ...  
+UPDATE table2 ...  
 // Pas de deadlock
 ```
 
@@ -316,18 +316,18 @@ UPDATE table2 ...
 
 ```pascal
 // MAL : transaction trop longue
-BEGIN;
-UPDATE comptes ...
-Sleep(5000);  // Attente = mauvais !
-CalculComplexe();  // Calcul long = mauvais !
-UPDATE autre_table ...
-COMMIT;
+BEGIN;  
+UPDATE comptes ...  
+Sleep(5000);  // Attente = mauvais !  
+CalculComplexe();  // Calcul long = mauvais !  
+UPDATE autre_table ...  
+COMMIT;  
 
 // BIEN : transaction courte
-BEGIN;
-UPDATE comptes ...
-UPDATE autre_table ...
-COMMIT;
+BEGIN;  
+UPDATE comptes ...  
+UPDATE autre_table ...  
+COMMIT;  
 // Puis faire les calculs longs
 CalculComplexe();
 ```
@@ -339,16 +339,16 @@ BEGIN;
 -- Verrouiller toutes les lignes nécessaires dès le début
 SELECT * FROM comptes WHERE id IN (1, 2) FOR UPDATE;
 -- Maintenant, on peut les modifier sans risque
-UPDATE comptes SET solde = solde - 100 WHERE id = 1;
-UPDATE comptes SET solde = solde + 100 WHERE id = 2;
-COMMIT;
+UPDATE comptes SET solde = solde - 100 WHERE id = 1;  
+UPDATE comptes SET solde = solde + 100 WHERE id = 2;  
+COMMIT;  
 ```
 
 #### 4. Gérer l'erreur et réessayer
 
 ```pascal
-procedure TForm1.OperationAvecRetry;
-var
+procedure TForm1.OperationAvecRetry;  
+var  
   Tentatives: Integer;
   Success: Boolean;
 begin
@@ -436,8 +436,8 @@ COMMIT;
 ### Exemple pratique : Importation de données
 
 ```pascal
-procedure TForm1.ImporterDonnees(Fichier: string);
-var
+procedure TForm1.ImporterDonnees(Fichier: string);  
+var  
   Ligne: string;
   NumLigne: Integer;
 begin
@@ -548,8 +548,8 @@ COMMIT;
 **Exemple : Réservation de place**
 
 ```pascal
-function TForm1.ReserverPlace(NumPlace: Integer): Boolean;
-begin
+function TForm1.ReserverPlace(NumPlace: Integer): Boolean;  
+begin  
   Result := False;
 
   try
@@ -597,8 +597,8 @@ end;
 Verrou de lecture partagé, empêche les modifications mais permet d'autres lectures.
 
 ```sql
-BEGIN;
-SELECT * FROM clients WHERE id = 1 FOR SHARE;
+BEGIN;  
+SELECT * FROM clients WHERE id = 1 FOR SHARE;  
 -- D'autres peuvent lire, mais pas modifier
 COMMIT;
 ```
@@ -608,8 +608,8 @@ COMMIT;
 Verrouiller une **table entière** (à utiliser avec précaution).
 
 ```sql
-BEGIN;
-LOCK TABLE clients IN EXCLUSIVE MODE;
+BEGIN;  
+LOCK TABLE clients IN EXCLUSIVE MODE;  
 -- Personne d'autre ne peut accéder à la table
 -- Faire les opérations
 COMMIT;
@@ -630,8 +630,8 @@ COMMIT;
 ### Exemple de transaction trop longue (MAL)
 
 ```pascal
-procedure TForm1.TraitementLong_MAUVAIS;
-var
+procedure TForm1.TraitementLong_MAUVAIS;  
+var  
   i: Integer;
 begin
   SQLTransaction1.StartTransaction;
@@ -659,8 +659,8 @@ end;
 ### Solution 1 : Transactions par lots
 
 ```pascal
-procedure TForm1.TraitementLong_BIEN;
-const
+procedure TForm1.TraitementLong_BIEN;  
+const  
   TAILLE_LOT = 100;
 var
   i: Integer;
@@ -694,8 +694,8 @@ end;
 ### Solution 2 : Séparer calcul et base de données
 
 ```pascal
-procedure TForm1.TraitementLong_OPTIMAL;
-var
+procedure TForm1.TraitementLong_OPTIMAL;  
+var  
   i: Integer;
   Messages: TStringList;
 begin
@@ -773,14 +773,14 @@ SET autocommit = 1;
 
 ```pascal
 // Autocommit simulé (déconseillé)
-SQLQuery1.ExecSQL;
-SQLTransaction1.Commit;  // Commit immédiat après chaque opération
+SQLQuery1.ExecSQL;  
+SQLTransaction1.Commit;  // Commit immédiat après chaque opération  
 
 // Mode normal (recommandé)
-SQLQuery1.ExecSQL;
-SQLQuery2.ExecSQL;
-SQLQuery3.ExecSQL;
-SQLTransaction1.Commit;  // Un seul commit pour tout
+SQLQuery1.ExecSQL;  
+SQLQuery2.ExecSQL;  
+SQLQuery3.ExecSQL;  
+SQLTransaction1.Commit;  // Un seul commit pour tout  
 ```
 
 ## Différences entre PostgreSQL et MySQL/MariaDB
@@ -833,8 +833,8 @@ BEGIN TRANSACTION ISOLATION LEVEL SERIALIZABLE;
 ### 2. Toujours gérer les deadlocks
 
 ```pascal
-function TForm1.ExecuterAvecRetry(MaxRetries: Integer): Boolean;
-var
+function TForm1.ExecuterAvecRetry(MaxRetries: Integer): Boolean;  
+var  
   Retry: Integer;
 begin
   Result := False;
@@ -864,8 +864,8 @@ begin
   end;
 end;
 
-function TForm1.IsDeadlock(E: Exception): Boolean;
-begin
+function TForm1.IsDeadlock(E: Exception): Boolean;  
+begin  
   Result := (Pos('deadlock', LowerCase(E.Message)) > 0) or
             (Pos('lock wait timeout', LowerCase(E.Message)) > 0);
 end;
@@ -877,11 +877,11 @@ end;
 // Réservation de ressource
 SQLQuery1.SQL.Text :=
   'SELECT * FROM ressources WHERE id = :id FOR UPDATE';
-SQLQuery1.ParamByName('id').AsInteger := IDRessource;
-SQLQuery1.Open;
+SQLQuery1.ParamByName('id').AsInteger := IDRessource;  
+SQLQuery1.Open;  
 
-if SQLQuery1.FieldByName('disponible').AsBoolean then
-begin
+if SQLQuery1.FieldByName('disponible').AsBoolean then  
+begin  
   // Modification sûre
   SQLQuery2.SQL.Text :=
     'UPDATE ressources SET disponible = FALSE WHERE id = :id';
@@ -893,8 +893,8 @@ end;
 ### 4. Logger les transactions problématiques
 
 ```pascal
-procedure TForm1.LogTransaction(Debut: TDateTime; Erreur: string);
-var
+procedure TForm1.LogTransaction(Debut: TDateTime; Erreur: string);  
+var  
   Duree: Integer;
 begin
   Duree := MilliSecondsBetween(Now, Debut);
@@ -933,9 +933,9 @@ SELECT
   now() - pg_stat_activity.query_start AS duration,
   query,
   state
-FROM pg_stat_activity
-WHERE state != 'idle'
-ORDER BY duration DESC;
+FROM pg_stat_activity  
+WHERE state != 'idle'  
+ORDER BY duration DESC;  
 ```
 
 **MySQL/MariaDB :**

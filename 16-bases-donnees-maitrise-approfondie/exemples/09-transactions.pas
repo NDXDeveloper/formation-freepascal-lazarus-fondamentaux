@@ -17,8 +17,8 @@ var
   Query: TSQLQuery;
   DBPath: string;
 
-procedure AfficherComptes;
-begin
+procedure AfficherComptes;  
+begin  
   Query.SQL.Text := 'SELECT * FROM Comptes ORDER BY id';
   Query.Open;
 
@@ -38,16 +38,16 @@ begin
   Query.Close;
 end;
 
-function SommeComptes: Double;
-begin
+function SommeComptes: Double;  
+begin  
   Query.SQL.Text := 'SELECT SUM(solde) AS total FROM Comptes';
   Query.Open;
   Result := Query.FieldByName('total').AsFloat;
   Query.Close;
 end;
 
-procedure InitialiserBase;
-begin
+procedure InitialiserBase;  
+begin  
   WriteLn('--- Initialisation ---');
   Conn.ExecuteDirect(
     'CREATE TABLE IF NOT EXISTS Comptes (' +
@@ -79,8 +79,8 @@ begin
   WriteLn(Format('  Total des soldes : %.2f EUR', [SommeComptes]));
 end;
 
-procedure DemoTransfertReussi;
-var
+procedure DemoTransfertReussi;  
+var  
   TotalAvant, TotalApres: Double;
 begin
   WriteLn;
@@ -122,8 +122,8 @@ begin
     'OK', 'ERREUR')]));
 end;
 
-procedure DemoRollback;
-var
+procedure DemoRollback;  
+var  
   TotalAvant, TotalApres: Double;
 begin
   WriteLn;
@@ -166,8 +166,8 @@ begin
     'OK', 'ERREUR')]));
 end;
 
-procedure DemoTransactionActive;
-begin
+procedure DemoTransactionActive;  
+begin  
   WriteLn;
   WriteLn('--- Propriete Active ---');
 
@@ -185,8 +185,8 @@ begin
   WriteLn('  Active apres Commit   : ', Trans.Active);
 end;
 
-procedure DemoPerformanceBatch;
-const
+procedure DemoPerformanceBatch;  
+const  
   NB_INSERTS = 5000;
 var
   Debut: TDateTime;
@@ -263,8 +263,8 @@ begin
   Trans.Commit;
 end;
 
-procedure DemoBatchParLots;
-const
+procedure DemoBatchParLots;  
+const  
   NB_TOTAL = 10000;
   TAILLE_LOT = 1000;
 var

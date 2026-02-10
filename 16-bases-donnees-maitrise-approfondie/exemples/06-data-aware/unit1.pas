@@ -52,8 +52,8 @@ implementation
 
 {$R *.lfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   try
     InitialiserBase;
     InsererDonnees;
@@ -73,8 +73,8 @@ begin
   end;
 end;
 
-procedure TForm1.InitialiserBase;
-var
+procedure TForm1.InitialiserBase;  
+var  
   DBPath: string;
 begin
   { Base de donnees dans le dossier de l'executable }
@@ -106,8 +106,8 @@ begin
   SQLTransaction1.Commit;
 end;
 
-procedure TForm1.InsererDonnees;
-var
+procedure TForm1.InsererDonnees;  
+var  
   QueryCheck: TSQLQuery;
 begin
   { Verifier si la table est vide }
@@ -145,8 +145,8 @@ begin
   end;
 end;
 
-procedure TForm1.SQLQuery1BeforePost(DataSet: TDataSet);
-var
+procedure TForm1.SQLQuery1BeforePost(DataSet: TDataSet);  
+var  
   Nom, Email: string;
 begin
   { Validation du nom }
@@ -179,8 +179,8 @@ begin
   DataSet.FieldByName('prenom').AsString := Trim(DataSet.FieldByName('prenom').AsString);
 end;
 
-procedure TForm1.SQLQuery1AfterPost(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1AfterPost(DataSet: TDataSet);  
+begin  
   try
     { ApplyUpdates envoie le SQL (INSERT/UPDATE) a la base,
       CommitRetaining valide sans fermer le dataset }
@@ -197,8 +197,8 @@ begin
   end;
 end;
 
-procedure TForm1.SQLQuery1AfterDelete(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1AfterDelete(DataSet: TDataSet);  
+begin  
   try
     SQLQuery1.ApplyUpdates;
     SQLTransaction1.CommitRetaining;
@@ -213,15 +213,15 @@ begin
   end;
 end;
 
-procedure TForm1.SQLQuery1NewRecord(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1NewRecord(DataSet: TDataSet);  
+begin  
   { Valeurs par defaut pour un nouveau contact }
   DataSet.FieldByName('notes').AsString := '';
   LabelStatut.Caption := 'Nouveau contact...';
 end;
 
-procedure TForm1.FormClose(Sender: TObject; var CloseAction: TCloseAction);
-begin
+procedure TForm1.FormClose(Sender: TObject; var CloseAction: TCloseAction);  
+begin  
   if SQLite3Connection1.Connected then
   begin
     try

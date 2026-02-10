@@ -17,8 +17,8 @@ var
   Query: TSQLQuery;
   DBPath: string;
 
-procedure InitialiserBase;
-var
+procedure InitialiserBase;  
+var  
   i: Integer;
 const
   Noms: array[0..9] of string = (
@@ -58,8 +58,8 @@ begin
   WriteLn('10 clients inseres');
 end;
 
-procedure DemoNavigationBase;
-begin
+procedure DemoNavigationBase;  
+begin  
   WriteLn;
   WriteLn('--- Navigation de base (First/Last/Next/Prior) ---');
 
@@ -104,8 +104,8 @@ begin
   Query.Close;
 end;
 
-procedure DemoMoveBy;
-begin
+procedure DemoMoveBy;  
+begin  
   WriteLn;
   WriteLn('--- MoveBy ---');
 
@@ -238,8 +238,8 @@ begin
   Query.Close;
 end;
 
-procedure DemoBookmarks;
-var
+procedure DemoBookmarks;  
+var  
   Signet: TBookmark;
 begin
   WriteLn;
@@ -283,8 +283,8 @@ begin
   Query.Close;
 end;
 
-procedure DemoParcoursComplet;
-var
+procedure DemoParcoursComplet;  
+var  
   Total: Double;
   Count: Integer;
 begin
@@ -318,8 +318,8 @@ begin
   Query.Close;
 end;
 
-procedure DemoExportCSV;
-var
+procedure DemoExportCSV;  
+var  
   CSVPath: string;
   F: TextFile;
   Ligne: string;

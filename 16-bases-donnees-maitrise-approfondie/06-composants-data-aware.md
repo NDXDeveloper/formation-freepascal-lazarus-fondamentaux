@@ -107,14 +107,14 @@ DBEdit1.DataField := 'nom';
 **Exemple :**
 ```pascal
 // Configuration au design ou en code
-DBEditNom.DataSource := DataSource1;
-DBEditNom.DataField := 'nom';
+DBEditNom.DataSource := DataSource1;  
+DBEditNom.DataField := 'nom';  
 
-DBEditPrenom.DataSource := DataSource1;
-DBEditPrenom.DataField := 'prenom';
+DBEditPrenom.DataSource := DataSource1;  
+DBEditPrenom.DataField := 'prenom';  
 
-DBEditEmail.DataSource := DataSource1;
-DBEditEmail.DataField := 'email';
+DBEditEmail.DataSource := DataSource1;  
+DBEditEmail.DataField := 'email';  
 ```
 
 Une fois configurés, ces champs afficheront **automatiquement** les données de l'enregistrement courant !
@@ -130,8 +130,8 @@ Une fois configurés, ces champs afficheront **automatiquement** les données de
 Exactement comme `TDBEdit`, mais non modifiable. Utile pour afficher des IDs, des dates calculées, etc.
 
 ```pascal
-DBLabelID.DataSource := DataSource1;
-DBLabelID.DataField := 'id';
+DBLabelID.DataSource := DataSource1;  
+DBLabelID.DataField := 'id';  
 ```
 
 ### 3. TDBMemo : Zone de texte multi-lignes
@@ -143,8 +143,8 @@ DBLabelID.DataField := 'id';
 - `DataField`
 
 ```pascal
-DBMemo1.DataSource := DataSource1;
-DBMemo1.DataField := 'description';
+DBMemo1.DataSource := DataSource1;  
+DBMemo1.DataField := 'description';  
 ```
 
 Parfait pour les champs TEXT de grande taille dans SQLite.
@@ -160,10 +160,10 @@ Parfait pour les champs TEXT de grande taille dans SQLite.
 - `ValueUnchecked` : valeur quand décoché (défaut : `0`)
 
 ```pascal
-DBCheckBox1.DataSource := DataSource1;
-DBCheckBox1.DataField := 'actif';
-DBCheckBox1.ValueChecked := '1';
-DBCheckBox1.ValueUnchecked := '0';
+DBCheckBox1.DataSource := DataSource1;  
+DBCheckBox1.DataField := 'actif';  
+DBCheckBox1.ValueChecked := '1';  
+DBCheckBox1.ValueUnchecked := '0';  
 ```
 
 ### 5. TDBComboBox : Liste déroulante
@@ -176,12 +176,12 @@ DBCheckBox1.ValueUnchecked := '0';
 - `Items` : liste des valeurs possibles
 
 ```pascal
-DBComboBox1.DataSource := DataSource1;
-DBComboBox1.DataField := 'statut';
-DBComboBox1.Items.Clear;
-DBComboBox1.Items.Add('Actif');
-DBComboBox1.Items.Add('Inactif');
-DBComboBox1.Items.Add('En attente');
+DBComboBox1.DataSource := DataSource1;  
+DBComboBox1.DataField := 'statut';  
+DBComboBox1.Items.Clear;  
+DBComboBox1.Items.Add('Actif');  
+DBComboBox1.Items.Add('Inactif');  
+DBComboBox1.Items.Add('En attente');  
 ```
 
 ### 6. TDBImage : Affichage d'image
@@ -193,8 +193,8 @@ DBComboBox1.Items.Add('En attente');
 - `DataField`
 
 ```pascal
-DBImage1.DataSource := DataSource1;
-DBImage1.DataField := 'photo';
+DBImage1.DataSource := DataSource1;  
+DBImage1.DataField := 'photo';  
 ```
 
 ### 7. TDBGrid : Grille de données
@@ -222,8 +222,8 @@ DBGrid1.DataSource := DataSource1;
 
 **Configuration recommandée :**
 ```pascal
-DBGrid1.DataSource := DataSource1;
-DBGrid1.Options := [dgTitles, dgIndicator, dgColumnResize,
+DBGrid1.DataSource := DataSource1;  
+DBGrid1.Options := [dgTitles, dgIndicator, dgColumnResize,  
                     dgColLines, dgRowLines, dgRowSelect,
                     dgAlwaysShowSelection, dgConfirmDelete];
 ```
@@ -287,15 +287,15 @@ Sur votre formulaire, ajoutez :
 **Configuration :**
 ```pascal
 // Connexion
-SQLite3Connection1.DatabaseName := 'contacts.db';
-SQLite3Connection1.Transaction := SQLTransaction1;
+SQLite3Connection1.DatabaseName := 'contacts.db';  
+SQLite3Connection1.Transaction := SQLTransaction1;  
 
 // Transaction
 SQLTransaction1.Database := SQLite3Connection1;
 
 // Requête
-SQLQuery1.Database := SQLite3Connection1;
-SQLQuery1.SQL.Text := 'SELECT * FROM Contacts ORDER BY nom';
+SQLQuery1.Database := SQLite3Connection1;  
+SQLQuery1.SQL.Text := 'SELECT * FROM Contacts ORDER BY nom';  
 
 // DataSource (IMPORTANT !)
 DataSource1.DataSet := SQLQuery1;
@@ -340,33 +340,33 @@ DBNavigator1.DataSource := DataSource1;
 
 **DBEditID :**
 ```pascal
-DBEditID.DataSource := DataSource1;
-DBEditID.DataField := 'id';
-DBEditID.ReadOnly := True;  // L'ID ne se modifie pas
+DBEditID.DataSource := DataSource1;  
+DBEditID.DataField := 'id';  
+DBEditID.ReadOnly := True;  // L'ID ne se modifie pas  
 ```
 
 **DBEditNom :**
 ```pascal
-DBEditNom.DataSource := DataSource1;
-DBEditNom.DataField := 'nom';
+DBEditNom.DataSource := DataSource1;  
+DBEditNom.DataField := 'nom';  
 ```
 
 **DBEditPrenom :**
 ```pascal
-DBEditPrenom.DataSource := DataSource1;
-DBEditPrenom.DataField := 'prenom';
+DBEditPrenom.DataSource := DataSource1;  
+DBEditPrenom.DataField := 'prenom';  
 ```
 
 **DBEditEmail :**
 ```pascal
-DBEditEmail.DataSource := DataSource1;
-DBEditEmail.DataField := 'email';
+DBEditEmail.DataSource := DataSource1;  
+DBEditEmail.DataField := 'email';  
 ```
 
 **DBGrid1 :**
 ```pascal
-DBGrid1.DataSource := DataSource1;
-DBGrid1.Options := [dgTitles, dgIndicator, dgColumnResize,
+DBGrid1.DataSource := DataSource1;  
+DBGrid1.Options := [dgTitles, dgIndicator, dgColumnResize,  
                     dgColLines, dgRowLines, dgRowSelect,
                     dgAlwaysShowSelection];
 ```
@@ -374,8 +374,8 @@ DBGrid1.Options := [dgTitles, dgIndicator, dgColumnResize,
 ### Étape 4 : Code d'initialisation
 
 ```pascal
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   try
     // Configurer la connexion
     SQLite3Connection1.DatabaseName := 'contacts.db';
@@ -473,8 +473,8 @@ end;
 ### Valider manuellement avec Post
 
 ```pascal
-procedure TForm1.ButtonEnregistrerClick(Sender: TObject);
-begin
+procedure TForm1.ButtonEnregistrerClick(Sender: TObject);  
+begin  
   if SQLQuery1.State in [dsEdit, dsInsert] then
   begin
     try
@@ -495,8 +495,8 @@ end;
 ### Annuler manuellement avec Cancel
 
 ```pascal
-procedure TForm1.ButtonAnnulerClick(Sender: TObject);
-begin
+procedure TForm1.ButtonAnnulerClick(Sender: TObject);  
+begin  
   if SQLQuery1.State in [dsEdit, dsInsert] then
   begin
     SQLQuery1.Cancel;  // Annuler les modifications
@@ -518,8 +518,8 @@ Le bouton ➕ du `DBNavigator` :
 ### Manuellement en code
 
 ```pascal
-procedure TForm1.ButtonNouveauClick(Sender: TObject);
-begin
+procedure TForm1.ButtonNouveauClick(Sender: TObject);  
+begin  
   SQLQuery1.Insert;  // Passer en mode insertion
   // Les champs data-aware sont maintenant prêts à recevoir des données
 end;
@@ -528,8 +528,8 @@ end;
 ### Avec valeurs par défaut
 
 ```pascal
-procedure TForm1.ButtonNouveauClientClick(Sender: TObject);
-begin
+procedure TForm1.ButtonNouveauClientClick(Sender: TObject);  
+begin  
   SQLQuery1.Insert;
 
   // Définir des valeurs par défaut
@@ -551,8 +551,8 @@ Le bouton 🗑 :
 ### Manuellement en code
 
 ```pascal
-procedure TForm1.ButtonSupprimerClick(Sender: TObject);
-begin
+procedure TForm1.ButtonSupprimerClick(Sender: TObject);  
+begin  
   if MessageDlg('Confirmer la suppression ?',
                 mtConfirmation, [mbYes, mbNo], 0) = mrYes then
   begin
@@ -579,8 +579,8 @@ Le bouton 🔄 rafraîchit automatiquement.
 ### Manuellement
 
 ```pascal
-procedure TForm1.ButtonRafraichirClick(Sender: TObject);
-begin
+procedure TForm1.ButtonRafraichirClick(Sender: TObject);  
+begin  
   SQLQuery1.Refresh;  // Recharge depuis la base
 end;
 ```
@@ -591,9 +591,9 @@ Si vous modifiez les données avec une autre requête SQL, rafraîchissez :
 
 ```pascal
 // Modification avec une autre requête
-SQLQuery2.SQL.Text := 'UPDATE Clients SET statut = ''VIP'' WHERE id = 5';
-SQLQuery2.ExecSQL;
-SQLTransaction1.Commit;
+SQLQuery2.SQL.Text := 'UPDATE Clients SET statut = ''VIP'' WHERE id = 5';  
+SQLQuery2.ExecSQL;  
+SQLTransaction1.Commit;  
 
 // Rafraîchir l'affichage
 SQLQuery1.Refresh;
@@ -607,8 +607,8 @@ Les composants data-aware déclenchent des événements que vous pouvez intercep
 
 **BeforePost** : Avant de valider les modifications
 ```pascal
-procedure TForm1.SQLQuery1BeforePost(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1BeforePost(DataSet: TDataSet);  
+begin  
   // Valider les données avant enregistrement
   if Trim(DataSet.FieldByName('nom').AsString) = '' then
   begin
@@ -624,8 +624,8 @@ end;
 
 **AfterPost** : Après validation réussie
 ```pascal
-procedure TForm1.SQLQuery1AfterPost(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1AfterPost(DataSet: TDataSet);  
+begin  
   SQLTransaction1.Commit;  // Enregistrer dans la base
   ShowMessage('Enregistrement réussi');
 end;
@@ -633,8 +633,8 @@ end;
 
 **BeforeDelete** : Avant suppression
 ```pascal
-procedure TForm1.SQLQuery1BeforeDelete(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1BeforeDelete(DataSet: TDataSet);  
+begin  
   if DataSet.FieldByName('statut').AsString = 'VIP' then
   begin
     if MessageDlg('Ce client est VIP. Confirmer ?',
@@ -646,16 +646,16 @@ end;
 
 **AfterDelete** : Après suppression
 ```pascal
-procedure TForm1.SQLQuery1AfterDelete(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1AfterDelete(DataSet: TDataSet);  
+begin  
   SQLTransaction1.Commit;
 end;
 ```
 
 **OnNewRecord** : Nouvel enregistrement créé
 ```pascal
-procedure TForm1.SQLQuery1NewRecord(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1NewRecord(DataSet: TDataSet);  
+begin  
   // Valeurs par défaut pour un nouveau client
   DataSet.FieldByName('statut').AsString := 'Nouveau';
   DataSet.FieldByName('date_creation').AsDateTime := Now;
@@ -667,16 +667,16 @@ end;
 
 **OnCellClick** : Cellule cliquée
 ```pascal
-procedure TForm1.DBGrid1CellClick(Column: TColumn);
-begin
+procedure TForm1.DBGrid1CellClick(Column: TColumn);  
+begin  
   ShowMessage('Colonne cliquée : ' + Column.Title.Caption);
 end;
 ```
 
 **OnDblClick** : Double-clic sur la grille
 ```pascal
-procedure TForm1.DBGrid1DblClick(Sender: TObject);
-begin
+procedure TForm1.DBGrid1DblClick(Sender: TObject);  
+begin  
   // Ouvrir un formulaire de détails
   FormDetails.ChargerClient(SQLQuery1.FieldByName('id').AsInteger);
   FormDetails.ShowModal;
@@ -711,8 +711,8 @@ end;
 Ajoutez une colonne qui n'existe pas dans la base :
 
 ```pascal
-procedure TForm1.SQLQuery1CalcFields(DataSet: TDataSet);
-var
+procedure TForm1.SQLQuery1CalcFields(DataSet: TDataSet);  
+var  
   NomComplet: TStringField;
 begin
   // Créer un champ calculé "nom_complet"
@@ -737,19 +737,19 @@ end;
 ### Avec une clause WHERE dans le SQL
 
 ```pascal
-SQLQuery1.Close;
-SQLQuery1.SQL.Text :=
+SQLQuery1.Close;  
+SQLQuery1.SQL.Text :=  
   'SELECT * FROM Clients WHERE ville = :ville ORDER BY nom';
-SQLQuery1.ParamByName('ville').AsString := 'Paris';
-SQLQuery1.Open;
+SQLQuery1.ParamByName('ville').AsString := 'Paris';  
+SQLQuery1.Open;  
 ```
 
 ### Avec un filtre sur le dataset
 
 ```pascal
 // Activer le filtrage
-SQLQuery1.Filtered := True;
-SQLQuery1.Filter := 'ville = ''Paris''';
+SQLQuery1.Filtered := True;  
+SQLQuery1.Filter := 'ville = ''Paris''';  
 
 // Désactiver
 SQLQuery1.Filtered := False;
@@ -758,8 +758,8 @@ SQLQuery1.Filtered := False;
 ### Exemple avec une zone de recherche
 
 ```pascal
-procedure TForm1.EditRechercheChange(Sender: TObject);
-var
+procedure TForm1.EditRechercheChange(Sender: TObject);  
+var  
   Texte: string;
 begin
   Texte := Trim(EditRecherche.Text);
@@ -783,16 +783,16 @@ end;
 ### Dans le SQL
 
 ```pascal
-SQLQuery1.Close;
-SQLQuery1.SQL.Text := 'SELECT * FROM Clients ORDER BY nom ASC';
-SQLQuery1.Open;
+SQLQuery1.Close;  
+SQLQuery1.SQL.Text := 'SELECT * FROM Clients ORDER BY nom ASC';  
+SQLQuery1.Open;  
 ```
 
 ### En cliquant sur les colonnes du DBGrid
 
 ```pascal
-procedure TForm1.DBGrid1TitleClick(Column: TColumn);
-begin
+procedure TForm1.DBGrid1TitleClick(Column: TColumn);  
+begin  
   SQLQuery1.Close;
   SQLQuery1.SQL.Text :=
     'SELECT * FROM Clients ORDER BY ' + Column.FieldName;
@@ -806,8 +806,8 @@ end;
 var
   FTriCroissant: Boolean = True;
 
-procedure TForm1.DBGrid1TitleClick(Column: TColumn);
-var
+procedure TForm1.DBGrid1TitleClick(Column: TColumn);  
+var  
   Ordre: string;
 begin
   // Inverser le sens
@@ -836,15 +836,15 @@ Ne connectez jamais directement les composants à `TSQLQuery`. Passez toujours p
 // DBEdit1.DataSet := SQLQuery1;  // N'existe pas !
 
 // BIEN
-DataSource1.DataSet := SQLQuery1;
-DBEdit1.DataSource := DataSource1;
+DataSource1.DataSet := SQLQuery1;  
+DBEdit1.DataSource := DataSource1;  
 ```
 
 ### 2. Gérer les transactions dans les événements
 
 ```pascal
-procedure TForm1.SQLQuery1AfterPost(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1AfterPost(DataSet: TDataSet);  
+begin  
   try
     SQLTransaction1.Commit;
   except
@@ -860,8 +860,8 @@ end;
 ### 3. Valider les données dans BeforePost
 
 ```pascal
-procedure TForm1.SQLQuery1BeforePost(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1BeforePost(DataSet: TDataSet);  
+begin  
   // Vérifier les champs obligatoires
   if Trim(DataSet.FieldByName('email').AsString) = '' then
   begin
@@ -889,17 +889,17 @@ DBNavigator1.VisibleButtons :=
 ### 5. Protéger les champs sensibles
 
 ```pascal
-DBEditID.ReadOnly := True;  // L'ID ne se modifie jamais
-DBEditDateCreation.ReadOnly := True;  // Date de création fixe
+DBEditID.ReadOnly := True;  // L'ID ne se modifie jamais  
+DBEditDateCreation.ReadOnly := True;  // Date de création fixe  
 ```
 
 ### 6. Rafraîchir après modifications externes
 
 ```pascal
 // Après une modification hors data-aware
-SQLQuery2.ExecSQL;
-SQLTransaction1.Commit;
-SQLQuery1.Refresh;  // Important !
+SQLQuery2.ExecSQL;  
+SQLTransaction1.Commit;  
+SQLQuery1.Refresh;  // Important !  
 ```
 
 ## Limitations et pièges
@@ -919,9 +919,9 @@ Les modifications automatiques (INSERT/UPDATE/DELETE via data-aware) ne fonction
 SELECT * FROM Clients;
 
 -- Peut poser problème
-SELECT C.*, V.nom AS ville_nom
-FROM Clients C
-LEFT JOIN Villes V ON C.id_ville = V.id;
+SELECT C.*, V.nom AS ville_nom  
+FROM Clients C  
+LEFT JOIN Villes V ON C.id_ville = V.id;  
 ```
 
 Pour les requêtes complexes, désactivez les modifications :

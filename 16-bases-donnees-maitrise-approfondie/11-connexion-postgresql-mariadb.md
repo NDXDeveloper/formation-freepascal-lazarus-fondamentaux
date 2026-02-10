@@ -382,8 +382,8 @@ implementation
 
 {$R *.lfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Configuration de la connexion
   PQConnection1.HostName := 'localhost';
   PQConnection1.DatabaseName := 'ma_base_test';
@@ -409,8 +409,8 @@ begin
   end;
 end;
 
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   try
     // Créer une table de test
     SQLQuery1.SQL.Text :=
@@ -522,8 +522,8 @@ mysql -u root -p
 
 Entrez le mot de passe. Vous devriez voir :
 ```
-Welcome to the MariaDB monitor.
-MariaDB [(none)]>
+Welcome to the MariaDB monitor.  
+MariaDB [(none)]>  
 ```
 
 Tapez `exit` pour quitter.
@@ -535,8 +535,8 @@ Tapez `exit` pour quitter.
 #### Étape 1 : Installer MariaDB
 
 ```bash
-sudo apt update
-sudo apt install mariadb-server mariadb-client
+sudo apt update  
+sudo apt install mariadb-server mariadb-client  
 ```
 
 #### Étape 2 : Sécuriser l'installation
@@ -557,8 +557,8 @@ Répondez aux questions :
 #### Étape 3 : Démarrer MariaDB
 
 ```bash
-sudo systemctl start mariadb
-sudo systemctl enable mariadb
+sudo systemctl start mariadb  
+sudo systemctl enable mariadb  
 ```
 
 #### Étape 4 : Vérifier
@@ -576,8 +576,8 @@ Entrez le mot de passe `admin123`.
 ### Créer une base de données
 
 ```sql
-CREATE DATABASE ma_base_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-SHOW DATABASES;
+CREATE DATABASE ma_base_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;  
+SHOW DATABASES;  
 ```
 
 ### Créer un utilisateur
@@ -662,8 +662,8 @@ implementation
 
 {$R *.lfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Configuration
   MySQL80Connection1.HostName := 'localhost';
   MySQL80Connection1.DatabaseName := 'ma_base_test';
@@ -688,8 +688,8 @@ begin
   end;
 end;
 
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   try
     // Créer une table
     SQLQuery1.SQL.Text :=
@@ -771,23 +771,23 @@ id INT AUTO_INCREMENT PRIMARY KEY
 ### SQLite
 
 ```sql
-SELECT date('now');
-SELECT datetime('now');
+SELECT date('now');  
+SELECT datetime('now');  
 ```
 
 ### PostgreSQL
 
 ```sql
-SELECT CURRENT_DATE;
-SELECT CURRENT_TIMESTAMP;
-SELECT NOW();
+SELECT CURRENT_DATE;  
+SELECT CURRENT_TIMESTAMP;  
+SELECT NOW();  
 ```
 
 ### MariaDB
 
 ```sql
-SELECT CURDATE();
-SELECT NOW();
+SELECT CURDATE();  
+SELECT NOW();  
 ```
 
 ## Limite de résultats
@@ -902,15 +902,15 @@ MySQL80Connection1.Password := GetEnvironmentVariable('DB_PASSWORD');
 SQLQuery1.SQL.Text := 'SELECT * FROM users WHERE name = ''' + Edit1.Text + '''';
 
 // BIEN
-SQLQuery1.SQL.Text := 'SELECT * FROM users WHERE name = :name';
-SQLQuery1.ParamByName('name').AsString := Edit1.Text;
+SQLQuery1.SQL.Text := 'SELECT * FROM users WHERE name = :name';  
+SQLQuery1.ParamByName('name').AsString := Edit1.Text;  
 ```
 
 ### 4. Gérer les erreurs de connexion
 
 ```pascal
-procedure TForm1.SeConnecter;
-var
+procedure TForm1.SeConnecter;  
+var  
   Tentatives: Integer;
 begin
   Tentatives := 0;
@@ -941,8 +941,8 @@ end;
 ### 5. Fermer proprement les connexions
 
 ```pascal
-procedure TForm1.FormClose(Sender: TObject; var CloseAction: TCloseAction);
-begin
+procedure TForm1.FormClose(Sender: TObject; var CloseAction: TCloseAction);  
+begin  
   if PQConnection1.Connected then
   begin
     try

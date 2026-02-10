@@ -135,8 +135,8 @@ Placez `sqlite3.dll` dans `C:\Windows\System32\` (moins recommandé car affecte 
 Installez la bibliothèque de développement :
 
 ```bash
-sudo apt update
-sudo apt install libsqlite3-dev
+sudo apt update  
+sudo apt install libsqlite3-dev  
 ```
 
 C'est tout ! La bibliothèque sera automatiquement trouvée par votre application.
@@ -213,8 +213,8 @@ Ajoutez un bouton `Button1` sur votre formulaire avec le caption "Se connecter".
 Dans l'événement `OnClick` du bouton :
 
 ```pascal
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   try
     // Définir le chemin de la base de données
     SQLite3Connection1.DatabaseName := 'ma_base.db';
@@ -241,8 +241,8 @@ end;
 Dans l'événement `OnClose` du formulaire :
 
 ```pascal
-procedure TForm1.FormClose(Sender: TObject; var CloseAction: TCloseAction);
-begin
+procedure TForm1.FormClose(Sender: TObject; var CloseAction: TCloseAction);  
+begin  
   // Fermer la connexion si elle est ouverte
   if SQLite3Connection1.Connected then
   begin
@@ -435,8 +435,8 @@ SQLTransaction1.Rollback;
 Démarre explicitement une transaction.
 
 ```pascal
-SQLTransaction1.StartTransaction;
-try
+SQLTransaction1.StartTransaction;  
+try  
   // Vos modifications
   SQLTransaction1.Commit;
 except
@@ -555,8 +555,8 @@ SQLite3Connection1.Params.Add('busy_timeout=5000');
 ### Exemple de gestion d'erreurs robuste
 
 ```pascal
-procedure TForm1.ConnecterBase;
-var
+procedure TForm1.ConnecterBase;  
+var  
   CheminBase: string;
 begin
   try
@@ -630,14 +630,14 @@ implementation
 
 {$R *.lfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Initialiser au démarrage
   InitialiserConnexion;
 end;
 
-procedure TForm1.InitialiserConnexion;
-var
+procedure TForm1.InitialiserConnexion;  
+var  
   CheminBase: string;
 begin
   try
@@ -671,8 +671,8 @@ begin
   end;
 end;
 
-procedure TForm1.FermerConnexion;
-begin
+procedure TForm1.FermerConnexion;  
+begin  
   if SQLite3Connection1.Connected then
   begin
     try
@@ -685,16 +685,16 @@ begin
   end;
 end;
 
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   if SQLite3Connection1.Connected then
     ShowMessage('Connexion active !')
   else
     ShowMessage('Connexion fermée');
 end;
 
-procedure TForm1.FormClose(Sender: TObject; var CloseAction: TCloseAction);
-begin
+procedure TForm1.FormClose(Sender: TObject; var CloseAction: TCloseAction);  
+begin  
   FermerConnexion;
 end;
 

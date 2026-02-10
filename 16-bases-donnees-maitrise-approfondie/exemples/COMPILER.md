@@ -42,21 +42,21 @@
 ### Programmes console
 
 ```bash
-cd exemples/
-fpc 04-connexion-sqlite.pas
-fpc 05-requetes-parametrees.pas
-fpc 07-navigation-donnees.pas
-fpc 08-crud-operations.pas
-fpc 09-transactions.pas
-fpc 12-savepoints-batch.pas
-fpc 13-resilience-erreurs.pas
+cd exemples/  
+fpc 04-connexion-sqlite.pas  
+fpc 05-requetes-parametrees.pas  
+fpc 07-navigation-donnees.pas  
+fpc 08-crud-operations.pas  
+fpc 09-transactions.pas  
+fpc 12-savepoints-batch.pas  
+fpc 13-resilience-erreurs.pas  
 ```
 
 ### Projet Lazarus
 
 ```bash
-cd exemples/06-data-aware
-lazbuild DataAwareDemo.lpi
+cd exemples/06-data-aware  
+lazbuild DataAwareDemo.lpi  
 ```
 
 ## Execution
@@ -76,12 +76,12 @@ Chaque programme console cree une base SQLite temporaire dans `/tmp/`, affiche s
 ## Nettoyage
 
 ```bash
-cd exemples/
-rm -f *.o *.ppu
-rm -f 04-connexion-sqlite 05-requetes-parametrees 07-navigation-donnees
-rm -f 08-crud-operations 09-transactions 12-savepoints-batch 13-resilience-erreurs
-rm -rf 06-data-aware/lib 06-data-aware/*.res 06-data-aware/*.o 06-data-aware/*.ppu
-find 06-data-aware -maxdepth 1 -type f -executable -delete
+cd exemples/  
+rm -f *.o *.ppu  
+rm -f 04-connexion-sqlite 05-requetes-parametrees 07-navigation-donnees  
+rm -f 08-crud-operations 09-transactions 12-savepoints-batch 13-resilience-erreurs  
+rm -rf 06-data-aware/lib 06-data-aware/*.res 06-data-aware/*.o 06-data-aware/*.ppu  
+find 06-data-aware -maxdepth 1 -type f -executable -delete  
 ```
 
 ## Notes techniques

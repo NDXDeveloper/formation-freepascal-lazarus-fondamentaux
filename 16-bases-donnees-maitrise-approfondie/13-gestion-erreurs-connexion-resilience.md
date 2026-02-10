@@ -44,10 +44,10 @@ C'est cette deuxième approche que nous allons apprendre !
 
 **Message typique :**
 ```
-Could not connect to server
-Connection refused
-Access denied for user
-Unknown database
+Could not connect to server  
+Connection refused  
+Access denied for user  
+Unknown database  
 ```
 
 ### Erreurs pendant l'exécution
@@ -61,10 +61,10 @@ Unknown database
 
 **Message typique :**
 ```
-Lost connection to MySQL server during query
-Server has gone away
-Lock wait timeout exceeded
-Too many connections
+Lost connection to MySQL server during query  
+Server has gone away  
+Lock wait timeout exceeded  
+Too many connections  
 ```
 
 ### Erreurs de transaction
@@ -76,9 +76,9 @@ Too many connections
 
 **Message typique :**
 ```
-Deadlock detected
-Duplicate entry
-Foreign key constraint fails
+Deadlock detected  
+Duplicate entry  
+Foreign key constraint fails  
 ```
 
 ## Détecter et identifier les erreurs
@@ -102,8 +102,8 @@ Exception (base)
 uses
   sqldb, pqconnection;  // ou mysql80conn
 
-procedure TForm1.ExecuterRequete;
-begin
+procedure TForm1.ExecuterRequete;  
+begin  
   try
     SQLQuery1.SQL.Text := 'SELECT * FROM clients';
     SQLQuery1.Open;
@@ -132,8 +132,8 @@ end;
 ### Analyser le message d'erreur
 
 ```pascal
-function TForm1.AnalyserErreur(const MessageErreur: string): string;
-begin
+function TForm1.AnalyserErreur(const MessageErreur: string): string;  
+begin  
   Result := 'Erreur inconnue';
 
   // Problème de connexion
@@ -174,8 +174,8 @@ end;
 ### Reconnexion simple
 
 ```pascal
-function TForm1.SeConnecter: Boolean;
-begin
+function TForm1.SeConnecter: Boolean;  
+begin  
   Result := False;
 
   try
@@ -197,8 +197,8 @@ end;
 ### Reconnexion avec plusieurs tentatives
 
 ```pascal
-function TForm1.SeConnecterAvecRetry(MaxTentatives: Integer): Boolean;
-var
+function TForm1.SeConnecterAvecRetry(MaxTentatives: Integer): Boolean;  
+var  
   Tentative: Integer;
   Delai: Integer;
 begin
@@ -319,8 +319,8 @@ else
 ### Fonction de test active
 
 ```pascal
-function TForm1.TesterConnexion: Boolean;
-begin
+function TForm1.TesterConnexion: Boolean;  
+begin  
   Result := False;
 
   if not PQConnection1.Connected then
@@ -342,8 +342,8 @@ end;
 
 **PostgreSQL :**
 ```pascal
-function TForm1.PingPostgreSQL: Boolean;
-begin
+function TForm1.PingPostgreSQL: Boolean;  
+begin  
   Result := False;
 
   try
@@ -361,8 +361,8 @@ end;
 
 **MySQL/MariaDB :**
 ```pascal
-function TForm1.PingMySQL: Boolean;
-begin
+function TForm1.PingMySQL: Boolean;  
+begin  
   Result := False;
 
   try
@@ -384,8 +384,8 @@ end;
 
 **PostgreSQL :**
 ```pascal
-procedure TForm1.ConfigurerTimeoutsPostgreSQL;
-begin
+procedure TForm1.ConfigurerTimeoutsPostgreSQL;  
+begin  
   PQConnection1.Params.Clear;
 
   // Timeout de connexion (en secondes)
@@ -409,8 +409,8 @@ end;
 
 **MySQL/MariaDB :**
 ```pascal
-procedure TForm1.ConfigurerTimeoutsMySQL;
-begin
+procedure TForm1.ConfigurerTimeoutsMySQL;  
+begin  
   MySQL80Connection1.Params.Clear;
 
   // Timeout de connexion
@@ -437,8 +437,8 @@ end;
 ### Gérer les timeouts dans le code
 
 ```pascal
-procedure TForm1.ExecuterAvecTimeout(const SQL: string; TimeoutSec: Integer);
-var
+procedure TForm1.ExecuterAvecTimeout(const SQL: string; TimeoutSec: Integer);  
+var  
   Thread: TThread;
   Termine: Boolean;
   ErreurMsg: string;
@@ -501,8 +501,8 @@ end;
 ### Détecter une déconnexion
 
 ```pascal
-function TForm1.EstDeconnecte(E: Exception): Boolean;
-var
+function TForm1.EstDeconnecte(E: Exception): Boolean;  
+var  
   Msg: string;
 begin
   Msg := LowerCase(E.Message);
@@ -600,8 +600,8 @@ type
     procedure LibererConnexion(Conn: TPQConnection);
   end;
 
-constructor TConnectionPool.Create(MaxConnections: Integer);
-var
+constructor TConnectionPool.Create(MaxConnections: Integer);  
+var  
   i: Integer;
   Conn: TPQConnection;
 begin
@@ -627,8 +627,8 @@ begin
   end;
 end;
 
-destructor TConnectionPool.Destroy;
-var
+destructor TConnectionPool.Destroy;  
+var  
   i: Integer;
 begin
   for i := 0 to FConnections.Count - 1 do
@@ -638,8 +638,8 @@ begin
   inherited;
 end;
 
-function TConnectionPool.ObtenirConnexion: TPQConnection;
-begin
+function TConnectionPool.ObtenirConnexion: TPQConnection;  
+begin  
   if FConnections.Count > 0 then
   begin
     Result := TPQConnection(FConnections[0]);
@@ -649,8 +649,8 @@ begin
     Result := nil;
 end;
 
-procedure TConnectionPool.LibererConnexion(Conn: TPQConnection);
-begin
+procedure TConnectionPool.LibererConnexion(Conn: TPQConnection);  
+begin  
   if Assigned(Conn) then
     FConnections.Add(Conn);
 end;
@@ -691,8 +691,8 @@ end;
 ### Afficher l'état de la connexion
 
 ```pascal
-procedure TForm1.MettreAJourStatut;
-begin
+procedure TForm1.MettreAJourStatut;  
+begin  
   if PQConnection1.Connected then
   begin
     ShapeStatut.Brush.Color := clLime;
@@ -711,8 +711,8 @@ end;
 ### Barre de progression pendant reconnexion
 
 ```pascal
-procedure TForm1.ReconnecterAvecProgress;
-var
+procedure TForm1.ReconnecterAvecProgress;  
+var  
   Tentative: Integer;
   MaxTentatives: Integer;
 begin
@@ -759,8 +759,8 @@ type
     procedure SynchroniserOperations;
   end;
 
-procedure TForm1.BasculerModeHorsLigne;
-begin
+procedure TForm1.BasculerModeHorsLigne;  
+begin  
   FModeHorsLigne := True;
   FOperationsEnAttente := TStringList.Create;
 
@@ -773,8 +773,8 @@ begin
   ButtonSupprimer.Enabled := False;
 end;
 
-procedure TForm1.SynchroniserOperations;
-var
+procedure TForm1.SynchroniserOperations;  
+var  
   i: Integer;
 begin
   if not PQConnection1.Connected then
@@ -815,8 +815,8 @@ end;
 ### Système de log simple
 
 ```pascal
-procedure TForm1.LogMessage(const Message: string; Niveau: string = 'INFO');
-var
+procedure TForm1.LogMessage(const Message: string; Niveau: string = 'INFO');  
+var  
   F: TextFile;
   Timestamp: string;
 begin
@@ -840,8 +840,8 @@ begin
   end;
 end;
 
-procedure TForm1.LogErreur(const Message: string; E: Exception);
-begin
+procedure TForm1.LogErreur(const Message: string; E: Exception);  
+begin  
   LogMessage(Format('%s - %s: %s',
     [Message, E.ClassName, E.Message]), 'ERROR');
 end;
@@ -850,8 +850,8 @@ end;
 ### Monitoring des requêtes lentes
 
 ```pascal
-procedure TForm1.ExecuterAvecMonitoring(const SQL: string; SeuilMs: Integer = 1000);
-var
+procedure TForm1.ExecuterAvecMonitoring(const SQL: string; SeuilMs: Integer = 1000);  
+var  
   Debut: TDateTime;
   Duree: Integer;
 begin
@@ -957,8 +957,8 @@ implementation
 
 {$R *.lfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Configuration
   PQConnection1.HostName := 'localhost';
   PQConnection1.DatabaseName := 'ma_base_test';
@@ -975,8 +975,8 @@ begin
   Timer1.Enabled := True;
 end;
 
-function TForm1.SeConnecterAvecRetry(MaxTentatives: Integer): Boolean;
-var
+function TForm1.SeConnecterAvecRetry(MaxTentatives: Integer): Boolean;  
+var  
   Tentative: Integer;
   Delai: Integer;
 begin
@@ -1017,8 +1017,8 @@ begin
   MettreAJourStatut;
 end;
 
-function TForm1.EstDeconnecte(E: Exception): Boolean;
-var
+function TForm1.EstDeconnecte(E: Exception): Boolean;  
+var  
   Msg: string;
 begin
   Msg := LowerCase(E.Message);
@@ -1027,8 +1027,8 @@ begin
             (Pos('lost connection', Msg) > 0);
 end;
 
-function TForm1.ExecuterAvecResilience(const SQL: string): Boolean;
-var
+function TForm1.ExecuterAvecResilience(const SQL: string): Boolean;  
+var  
   Tentative: Integer;
 begin
   Result := False;
@@ -1076,14 +1076,14 @@ begin
   end;
 end;
 
-procedure TForm1.LogMessage(const Msg: string);
-begin
+procedure TForm1.LogMessage(const Msg: string);  
+begin  
   Memo1.Lines.Add(Format('[%s] %s',
     [FormatDateTime('hh:nn:ss', Now), Msg]));
 end;
 
-procedure TForm1.MettreAJourStatut;
-begin
+procedure TForm1.MettreAJourStatut;  
+begin  
   if PQConnection1.Connected then
   begin
     ShapeStatut.Brush.Color := clLime;
@@ -1098,24 +1098,24 @@ begin
   end;
 end;
 
-procedure TForm1.ButtonConnecterClick(Sender: TObject);
-begin
+procedure TForm1.ButtonConnecterClick(Sender: TObject);  
+begin  
   if SeConnecterAvecRetry(5) then
     ShowMessage('Connexion établie')
   else
     ShowMessage('Échec de connexion');
 end;
 
-procedure TForm1.ButtonExecuterClick(Sender: TObject);
-begin
+procedure TForm1.ButtonExecuterClick(Sender: TObject);  
+begin  
   if ExecuterAvecResilience('INSERT INTO test (nom) VALUES (''Test'')') then
     ShowMessage('Opération réussie')
   else
     ShowMessage('Opération échouée');
 end;
 
-procedure TForm1.Timer1Timer(Sender: TObject);
-begin
+procedure TForm1.Timer1Timer(Sender: TObject);  
+begin  
   // Vérifier périodiquement la connexion
   if PQConnection1.Connected then
   begin

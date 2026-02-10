@@ -61,8 +61,8 @@ TSQLQuery gère deux types d'opérations SQL différents :
 Retournent des données que vous pouvez parcourir.
 
 ```sql
-SELECT * FROM Clients;
-SELECT nom, prenom FROM Clients WHERE ville = 'Paris';
+SELECT * FROM Clients;  
+SELECT nom, prenom FROM Clients WHERE ville = 'Paris';  
 ```
 
 **Méthode à utiliser :** `Open`
@@ -72,9 +72,9 @@ SELECT nom, prenom FROM Clients WHERE ville = 'Paris';
 Modifient les données mais ne retournent pas de résultats.
 
 ```sql
-INSERT INTO Clients (nom, prenom) VALUES ('Dupont', 'Pierre');
-UPDATE Clients SET email = 'nouveau@email.fr' WHERE id = 1;
-DELETE FROM Clients WHERE id = 5;
+INSERT INTO Clients (nom, prenom) VALUES ('Dupont', 'Pierre');  
+UPDATE Clients SET email = 'nouveau@email.fr' WHERE id = 1;  
+DELETE FROM Clients WHERE id = 5;  
 ```
 
 **Méthode à utiliser :** `ExecSQL`
@@ -86,8 +86,8 @@ DELETE FROM Clients WHERE id = 5;
 Ajoutez un `TMemo` (Memo1) et un `TButton` (Button1) sur votre formulaire.
 
 ```pascal
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   // Effacer le mémo
   Memo1.Clear;
 
@@ -131,10 +131,10 @@ SQLQuery1.SQL.Text := 'SELECT * FROM Clients';
 `SQL` est une propriété `TStringList`. Vous pouvez aussi faire :
 
 ```pascal
-SQLQuery1.SQL.Clear;
-SQLQuery1.SQL.Add('SELECT nom, prenom, email');
-SQLQuery1.SQL.Add('FROM Clients');
-SQLQuery1.SQL.Add('WHERE ville = ''Paris''');
+SQLQuery1.SQL.Clear;  
+SQLQuery1.SQL.Add('SELECT nom, prenom, email');  
+SQLQuery1.SQL.Add('FROM Clients');  
+SQLQuery1.SQL.Add('WHERE ville = ''Paris''');  
 // Note : '' = apostrophe échappée en Pascal
 ```
 
@@ -152,8 +152,8 @@ Cette méthode :
 #### 3. Parcourir les résultats
 
 ```pascal
-while not SQLQuery1.EOF do
-begin
+while not SQLQuery1.EOF do  
+begin  
   // Lire les données
   // ...
 
@@ -169,16 +169,16 @@ Plusieurs méthodes :
 
 **Par nom (recommandé) :**
 ```pascal
-SQLQuery1.FieldByName('nom').AsString
-SQLQuery1.FieldByName('age').AsInteger
-SQLQuery1.FieldByName('prix').AsFloat
-SQLQuery1.FieldByName('actif').AsBoolean
+SQLQuery1.FieldByName('nom').AsString  
+SQLQuery1.FieldByName('age').AsInteger  
+SQLQuery1.FieldByName('prix').AsFloat  
+SQLQuery1.FieldByName('actif').AsBoolean  
 ```
 
 **Par index (plus rapide mais moins lisible) :**
 ```pascal
-SQLQuery1.Fields[0].AsString  // Premier champ
-SQLQuery1.Fields[1].AsString  // Deuxième champ
+SQLQuery1.Fields[0].AsString  // Premier champ  
+SQLQuery1.Fields[1].AsString  // Deuxième champ  
 ```
 
 **Conversion automatique :**
@@ -247,8 +247,8 @@ ShowMessage('Total : ' + IntToStr(SQLQuery1.RecordCount) + ' enregistrements');
 ### Exemple de navigation
 
 ```pascal
-procedure TForm1.Button2Click(Sender: TObject);
-begin
+procedure TForm1.Button2Click(Sender: TObject);  
+begin  
   SQLQuery1.SQL.Text := 'SELECT * FROM Clients';
   SQLQuery1.Open;
 
@@ -274,8 +274,8 @@ Pour les requêtes qui **modifient** les données, utilisez `ExecSQL` au lieu de
 ### INSERT : Ajouter des données
 
 ```pascal
-procedure TForm1.AjouterClient;
-begin
+procedure TForm1.AjouterClient;  
+begin  
   try
     SQLQuery1.SQL.Text :=
       'INSERT INTO Clients (nom, prenom, email) ' +
@@ -305,8 +305,8 @@ end;
 ### UPDATE : Modifier des données
 
 ```pascal
-procedure TForm1.ModifierClient;
-begin
+procedure TForm1.ModifierClient;  
+begin  
   try
     SQLQuery1.SQL.Text :=
       'UPDATE Clients ' +
@@ -330,8 +330,8 @@ end;
 ### DELETE : Supprimer des données
 
 ```pascal
-procedure TForm1.SupprimerClient;
-begin
+procedure TForm1.SupprimerClient;  
+begin  
   if MessageDlg('Confirmer la suppression ?',
                 mtConfirmation, [mbYes, mbNo], 0) = mrYes then
   begin
@@ -378,9 +378,9 @@ Les **paramètres** sont des espaces réservés (placeholders) dans votre SQL, m
 
 ```pascal
 // BONNE pratique (sécurisée)
-SQLQuery1.SQL.Text := 'SELECT * FROM Clients WHERE nom = :nom';
-SQLQuery1.ParamByName('nom').AsString := Edit1.Text;
-SQLQuery1.Open;
+SQLQuery1.SQL.Text := 'SELECT * FROM Clients WHERE nom = :nom';  
+SQLQuery1.ParamByName('nom').AsString := Edit1.Text;  
+SQLQuery1.Open;  
 ```
 
 ### Syntaxe des paramètres
@@ -392,8 +392,8 @@ SQLQuery1.SQL.Text :=
   'WHERE nom = :nom AND ville = :ville';
 
 // Affecter les valeurs
-SQLQuery1.ParamByName('nom').AsString := 'Dupont';
-SQLQuery1.ParamByName('ville').AsString := 'Paris';
+SQLQuery1.ParamByName('nom').AsString := 'Dupont';  
+SQLQuery1.ParamByName('ville').AsString := 'Paris';  
 
 // Exécuter
 SQLQuery1.Open;
@@ -424,8 +424,8 @@ SQLQuery1.ParamByName('telephone').Clear;  // Valeur NULL
 ### Exemple complet avec recherche
 
 ```pascal
-procedure TForm1.ButtonRechercherClick(Sender: TObject);
-var
+procedure TForm1.ButtonRechercherClick(Sender: TObject);  
+var  
   NomRecherche: string;
 begin
   NomRecherche := EditNom.Text;
@@ -465,8 +465,8 @@ end;
 ### Exemple INSERT avec paramètres
 
 ```pascal
-procedure TForm1.ButtonAjouterClick(Sender: TObject);
-begin
+procedure TForm1.ButtonAjouterClick(Sender: TObject);  
+begin  
   try
     SQLQuery1.SQL.Text :=
       'INSERT INTO Clients (nom, prenom, email, telephone) ' +
@@ -508,8 +508,8 @@ end;
 ### Exemple UPDATE avec paramètres
 
 ```pascal
-procedure TForm1.ButtonModifierClick(Sender: TObject);
-var
+procedure TForm1.ButtonModifierClick(Sender: TObject);  
+var  
   ClientID: Integer;
 begin
   // Supposons que vous avez l'ID du client à modifier
@@ -562,10 +562,10 @@ Contient la requête SQL.
 SQLQuery1.SQL.Text := 'SELECT * FROM Clients';
 
 // Méthode 2 : ligne par ligne (plus lisible)
-SQLQuery1.SQL.Clear;
-SQLQuery1.SQL.Add('SELECT nom, prenom, email');
-SQLQuery1.SQL.Add('FROM Clients');
-SQLQuery1.SQL.Add('WHERE ville = :ville');
+SQLQuery1.SQL.Clear;  
+SQLQuery1.SQL.Add('SELECT nom, prenom, email');  
+SQLQuery1.SQL.Add('FROM Clients');  
+SQLQuery1.SQL.Add('WHERE ville = :ville');  
 ```
 
 ### Database et Transaction
@@ -573,8 +573,8 @@ SQLQuery1.SQL.Add('WHERE ville = :ville');
 Lient la requête à la connexion et à la transaction.
 
 ```pascal
-SQLQuery1.Database := SQLite3Connection1;
-SQLQuery1.Transaction := SQLTransaction1;
+SQLQuery1.Database := SQLite3Connection1;  
+SQLQuery1.Transaction := SQLTransaction1;  
 ```
 
 ### FieldCount
@@ -702,15 +702,15 @@ SQLQuery1.Close;
 
 **Pour les INSERT/UPDATE/DELETE :** Toujours faire Commit
 ```pascal
-SQLQuery1.ExecSQL;
-SQLTransaction1.Commit;  // IMPORTANT !
+SQLQuery1.ExecSQL;  
+SQLTransaction1.Commit;  // IMPORTANT !  
 ```
 
 ### Exemple de transaction complète
 
 ```pascal
-procedure TForm1.TransfererArgent;
-begin
+procedure TForm1.TransfererArgent;  
+begin  
   // Commencer une transaction explicite
   SQLTransaction1.StartTransaction;
 
@@ -749,8 +749,8 @@ end;
 ### 1. Toujours fermer les requêtes
 
 ```pascal
-SQLQuery1.Open;
-try
+SQLQuery1.Open;  
+try  
   // Utiliser les données
 finally
   SQLQuery1.Close;  // Fermer même si erreur
@@ -765,16 +765,16 @@ SQLQuery1.SQL.Text :=
   'SELECT * FROM Clients WHERE nom = ''' + Edit1.Text + '''';
 
 // BIEN
-SQLQuery1.SQL.Text := 'SELECT * FROM Clients WHERE nom = :nom';
-SQLQuery1.ParamByName('nom').AsString := Edit1.Text;
+SQLQuery1.SQL.Text := 'SELECT * FROM Clients WHERE nom = :nom';  
+SQLQuery1.ParamByName('nom').AsString := Edit1.Text;  
 ```
 
 ### 3. Vérifier si le dataset est vide
 
 ```pascal
-SQLQuery1.Open;
-if SQLQuery1.IsEmpty then
-begin
+SQLQuery1.Open;  
+if SQLQuery1.IsEmpty then  
+begin  
   ShowMessage('Aucun résultat');
   SQLQuery1.Close;
   Exit;
@@ -801,15 +801,15 @@ end;
 
 ```pascal
 // Vérifier que les champs ne sont pas vides
-if (Trim(EditNom.Text) = '') or (Trim(EditEmail.Text) = '') then
-begin
+if (Trim(EditNom.Text) = '') or (Trim(EditEmail.Text) = '') then  
+begin  
   ShowMessage('Veuillez remplir tous les champs obligatoires');
   Exit;
 end;
 
 // Vérifier le format email (simple)
-if Pos('@', EditEmail.Text) = 0 then
-begin
+if Pos('@', EditEmail.Text) = 0 then  
+begin  
   ShowMessage('Email invalide');
   Exit;
 end;
@@ -821,15 +821,15 @@ Si vous utilisez souvent la même requête, gardez-la préparée :
 
 ```pascal
 // Au démarrage (FormCreate)
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   // Préparer la requête
   SQLQuery1.SQL.Text := 'SELECT * FROM Clients WHERE id = :id';
 end;
 
 // Lors de l'utilisation
-procedure TForm1.ChargerClient(ClientID: Integer);
-begin
+procedure TForm1.ChargerClient(ClientID: Integer);  
+begin  
   SQLQuery1.ParamByName('id').AsInteger := ClientID;
   SQLQuery1.Open;
   // Utiliser les données
@@ -881,13 +881,13 @@ implementation
 
 {$R *.lfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
+procedure TForm1.FormCreate(Sender: TObject);  
+begin  
   InitialiserBase;
 end;
 
-procedure TForm1.InitialiserBase;
-begin
+procedure TForm1.InitialiserBase;  
+begin  
   try
     // Configurer la connexion
     SQLite3Connection1.DatabaseName := 'contacts.db';
@@ -921,8 +921,8 @@ begin
   end;
 end;
 
-procedure TForm1.ButtonAjouterClick(Sender: TObject);
-begin
+procedure TForm1.ButtonAjouterClick(Sender: TObject);  
+begin  
   // Valider les entrées
   if Trim(EditNom.Text) = '' then
   begin
@@ -962,8 +962,8 @@ begin
   end;
 end;
 
-procedure TForm1.ButtonListerClick(Sender: TObject);
-begin
+procedure TForm1.ButtonListerClick(Sender: TObject);  
+begin  
   Memo1.Clear;
 
   try

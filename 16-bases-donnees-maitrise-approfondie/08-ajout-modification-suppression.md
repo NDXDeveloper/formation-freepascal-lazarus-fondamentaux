@@ -102,8 +102,8 @@ SQLQuery1.Insert;
 
 **Exemple :**
 ```pascal
-procedure TForm1.ButtonNouveauClick(Sender: TObject);
-begin
+procedure TForm1.ButtonNouveauClick(Sender: TObject);  
+begin  
   SQLQuery1.Insert;
   // Les TDBEdit sont maintenant vides et prêts à être remplis
   DBEditNom.SetFocus;  // Mettre le focus sur le premier champ
@@ -141,11 +141,11 @@ SQLQuery1.Insert;
 
 **Méthode 2 : Vous définissez les valeurs en code**
 ```pascal
-SQLQuery1.Insert;
-SQLQuery1.FieldByName('nom').AsString := 'Dupont';
-SQLQuery1.FieldByName('prenom').AsString := 'Pierre';
-SQLQuery1.FieldByName('email').AsString := 'pierre@email.fr';
-SQLQuery1.Post;  // Valider immédiatement
+SQLQuery1.Insert;  
+SQLQuery1.FieldByName('nom').AsString := 'Dupont';  
+SQLQuery1.FieldByName('prenom').AsString := 'Pierre';  
+SQLQuery1.FieldByName('email').AsString := 'pierre@email.fr';  
+SQLQuery1.Post;  // Valider immédiatement  
 ```
 
 ### Post : Valider l'ajout
@@ -162,8 +162,8 @@ SQLQuery1.Post;
 
 **Exemple complet :**
 ```pascal
-procedure TForm1.ButtonEnregistrerClick(Sender: TObject);
-begin
+procedure TForm1.ButtonEnregistrerClick(Sender: TObject);  
+begin  
   if SQLQuery1.State in [dsInsert, dsEdit] then
   begin
     try
@@ -195,8 +195,8 @@ SQLQuery1.Cancel;
 
 **Exemple :**
 ```pascal
-procedure TForm1.ButtonAnnulerClick(Sender: TObject);
-begin
+procedure TForm1.ButtonAnnulerClick(Sender: TObject);  
+begin  
   if SQLQuery1.State in [dsInsert, dsEdit] then
   begin
     if MessageDlg('Annuler les modifications ?',
@@ -212,8 +212,8 @@ end;
 ### Exemple complet : Formulaire d'ajout
 
 ```pascal
-procedure TForm1.ButtonNouveauClientClick(Sender: TObject);
-begin
+procedure TForm1.ButtonNouveauClientClick(Sender: TObject);  
+begin  
   try
     // Passer en mode insertion
     SQLQuery1.Insert;
@@ -235,8 +235,8 @@ begin
   end;
 end;
 
-procedure TForm1.ButtonValiderClick(Sender: TObject);
-begin
+procedure TForm1.ButtonValiderClick(Sender: TObject);  
+begin  
   if SQLQuery1.State in [dsInsert, dsEdit] then
   begin
     try
@@ -276,8 +276,8 @@ SQLQuery1.Edit;
 
 **Exemple :**
 ```pascal
-procedure TForm1.ButtonModifierClick(Sender: TObject);
-begin
+procedure TForm1.ButtonModifierClick(Sender: TObject);  
+begin  
   if SQLQuery1.IsEmpty then
   begin
     ShowMessage('Aucun enregistrement à modifier');
@@ -312,8 +312,8 @@ Quand l'utilisateur **clique dans un TDBEdit** et commence à taper, le dataset 
 Identique à l'ajout :
 
 ```pascal
-SQLQuery1.Post;
-SQLTransaction1.Commit;
+SQLQuery1.Post;  
+SQLTransaction1.Commit;  
 ```
 
 ### Cancel : Annuler la modification
@@ -329,8 +329,8 @@ SQLQuery1.Cancel;
 ### Exemple complet : Modification avec validation
 
 ```pascal
-procedure TForm1.ButtonModifierClientClick(Sender: TObject);
-begin
+procedure TForm1.ButtonModifierClientClick(Sender: TObject);  
+begin  
   if SQLQuery1.IsEmpty then
   begin
     ShowMessage('Sélectionnez un client à modifier');
@@ -348,8 +348,8 @@ begin
   DBEditNom.SetFocus;
 end;
 
-procedure TForm1.ButtonValiderModificationClick(Sender: TObject);
-begin
+procedure TForm1.ButtonValiderModificationClick(Sender: TObject);  
+begin  
   if SQLQuery1.State = dsEdit then
   begin
     try
@@ -398,8 +398,8 @@ SQLQuery1.Delete;
 **TOUJOURS** demander confirmation avant de supprimer :
 
 ```pascal
-procedure TForm1.ButtonSupprimerClick(Sender: TObject);
-var
+procedure TForm1.ButtonSupprimerClick(Sender: TObject);  
+var  
   NomClient: string;
 begin
   if SQLQuery1.IsEmpty then
@@ -433,8 +433,8 @@ end;
 ### Supprimer plusieurs enregistrements
 
 ```pascal
-procedure TForm1.ButtonSupprimerInactifsClick(Sender: TObject);
-var
+procedure TForm1.ButtonSupprimerInactifsClick(Sender: TObject);  
+var  
   Compteur: Integer;
 begin
   if MessageDlg('Supprimer tous les clients inactifs ?',
@@ -481,8 +481,8 @@ end;
 Pour supprimer beaucoup d'enregistrements, utilisez une requête SQL directe :
 
 ```pascal
-procedure TForm1.SupprimerInactifsSQL;
-var
+procedure TForm1.SupprimerInactifsSQL;  
+var  
   NbSupprimes: Integer;
 begin
   try
@@ -522,8 +522,8 @@ end;
 L'événement `BeforePost` est le meilleur endroit pour valider vos données :
 
 ```pascal
-procedure TForm1.SQLQuery1BeforePost(DataSet: TDataSet);
-var
+procedure TForm1.SQLQuery1BeforePost(DataSet: TDataSet);  
+var  
   Nom, Email: string;
 begin
   // Récupérer les valeurs
@@ -563,8 +563,8 @@ begin
   end;
 end;
 
-function TForm1.VerifierEmailExiste(const Email: string; IDActuel: Integer): Boolean;
-begin
+function TForm1.VerifierEmailExiste(const Email: string; IDActuel: Integer): Boolean;  
+begin  
   Result := False;
 
   if Email = '' then Exit;
@@ -592,8 +592,8 @@ end;
 L'événement `OnNewRecord` permet de définir des valeurs par défaut lors d'un ajout :
 
 ```pascal
-procedure TForm1.SQLQuery1NewRecord(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1NewRecord(DataSet: TDataSet);  
+begin  
   // Valeurs par défaut pour un nouveau client
   DataSet.FieldByName('date_creation').AsDateTime := Now;
   DataSet.FieldByName('statut').AsString := 'Nouveau';
@@ -604,8 +604,8 @@ begin
   DataSet.FieldByName('code').AsString := GenererCodeClient;
 end;
 
-function TForm1.GenererCodeClient: string;
-var
+function TForm1.GenererCodeClient: string;  
+var  
   Annee: string;
   Numero: Integer;
 begin
@@ -635,8 +635,8 @@ end;
 Vous pouvez aussi normaliser les données avant l'enregistrement :
 
 ```pascal
-procedure TForm1.SQLQuery1BeforePost(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1BeforePost(DataSet: TDataSet);  
+begin  
   // Mettre en majuscules
   DataSet.FieldByName('nom').AsString :=
     UpperCase(Trim(DataSet.FieldByName('nom').AsString));
@@ -650,8 +650,8 @@ begin
     FormaterTelephone(DataSet.FieldByName('telephone').AsString);
 end;
 
-function TForm1.NettoyerEspaces(const Texte: string): string;
-var
+function TForm1.NettoyerEspaces(const Texte: string): string;  
+var  
   i: Integer;
 begin
   Result := Trim(Texte);
@@ -661,8 +661,8 @@ begin
     Result := StringReplace(Result, '  ', ' ', [rfReplaceAll]);
 end;
 
-function TForm1.FormaterTelephone(const Tel: string): string;
-var
+function TForm1.FormaterTelephone(const Tel: string): string;  
+var  
   i: Integer;
 begin
   // Retirer tous les caractères non numériques
@@ -684,14 +684,14 @@ end;
 ### BeforeInsert et AfterInsert
 
 ```pascal
-procedure TForm1.SQLQuery1BeforeInsert(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1BeforeInsert(DataSet: TDataSet);  
+begin  
   // Avant de passer en mode insertion
   ShowMessage('Préparation de l''ajout...');
 end;
 
-procedure TForm1.SQLQuery1AfterInsert(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1AfterInsert(DataSet: TDataSet);  
+begin  
   // Après être passé en mode insertion
   LabelMode.Caption := 'Mode : AJOUT';
   LabelMode.Font.Color := clGreen;
@@ -701,8 +701,8 @@ end;
 ### BeforeEdit et AfterEdit
 
 ```pascal
-procedure TForm1.SQLQuery1BeforeEdit(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1BeforeEdit(DataSet: TDataSet);  
+begin  
   // Avant de passer en mode édition
   // Vérifier les permissions
   if not UtilisateurPeutModifier then
@@ -712,8 +712,8 @@ begin
   end;
 end;
 
-procedure TForm1.SQLQuery1AfterEdit(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1AfterEdit(DataSet: TDataSet);  
+begin  
   // Après être passé en mode édition
   LabelMode.Caption := 'Mode : MODIFICATION';
   LabelMode.Font.Color := clBlue;
@@ -723,14 +723,14 @@ end;
 ### BeforePost et AfterPost
 
 ```pascal
-procedure TForm1.SQLQuery1BeforePost(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1BeforePost(DataSet: TDataSet);  
+begin  
   // Validation des données (voir exemples précédents)
   // C'est ici qu'on vérifie que tout est correct
 end;
 
-procedure TForm1.SQLQuery1AfterPost(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1AfterPost(DataSet: TDataSet);  
+begin  
   // Après validation réussie
   try
     SQLTransaction1.Commit;  // Enregistrer dans la base
@@ -750,8 +750,8 @@ end;
 ### BeforeDelete et AfterDelete
 
 ```pascal
-procedure TForm1.SQLQuery1BeforeDelete(DataSet: TDataSet);
-var
+procedure TForm1.SQLQuery1BeforeDelete(DataSet: TDataSet);  
+var  
   NbCommandes: Integer;
 begin
   // Vérifier les dépendances avant suppression
@@ -777,8 +777,8 @@ begin
   end;
 end;
 
-procedure TForm1.SQLQuery1AfterDelete(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1AfterDelete(DataSet: TDataSet);  
+begin  
   // Après suppression réussie
   try
     SQLTransaction1.Commit;
@@ -796,14 +796,14 @@ end;
 ### BeforeCancel et AfterCancel
 
 ```pascal
-procedure TForm1.SQLQuery1BeforeCancel(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1BeforeCancel(DataSet: TDataSet);  
+begin  
   // Avant d'annuler
   // Dernier avertissement ?
 end;
 
-procedure TForm1.SQLQuery1AfterCancel(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1AfterCancel(DataSet: TDataSet);  
+begin  
   // Après annulation
   ShowMessage('Modifications annulées');
   LabelMode.Caption := 'Mode : NAVIGATION';
@@ -818,12 +818,12 @@ end;
 
 ```pascal
 // Erreur si le champ est vide
-SQLQuery1.FieldByName('nom').AsString := '';
-SQLQuery1.Post;  // → Erreur : nom is not null
+SQLQuery1.FieldByName('nom').AsString := '';  
+SQLQuery1.Post;  // → Erreur : nom is not null  
 
 // Solution : validation dans BeforePost
-if Trim(DataSet.FieldByName('nom').AsString) = '' then
-begin
+if Trim(DataSet.FieldByName('nom').AsString) = '' then  
+begin  
   ShowMessage('Le nom est obligatoire');
   Abort;
 end;
@@ -833,12 +833,12 @@ end;
 
 ```pascal
 // Erreur si l'email existe déjà
-SQLQuery1.FieldByName('email').AsString := 'existant@email.fr';
-SQLQuery1.Post;  // → Erreur : UNIQUE constraint failed
+SQLQuery1.FieldByName('email').AsString := 'existant@email.fr';  
+SQLQuery1.Post;  // → Erreur : UNIQUE constraint failed  
 
 // Solution : vérifier avant d'enregistrer
-if EmailExiste(Email) then
-begin
+if EmailExiste(Email) then  
+begin  
   ShowMessage('Cet email est déjà utilisé');
   Abort;
 end;
@@ -848,8 +848,8 @@ end;
 
 ```pascal
 // Erreur si l'ID référencé n'existe pas
-SQLQuery1.FieldByName('id_ville').AsInteger := 999;
-SQLQuery1.Post;  // → Erreur : FOREIGN KEY constraint failed
+SQLQuery1.FieldByName('id_ville').AsInteger := 999;  
+SQLQuery1.Post;  // → Erreur : FOREIGN KEY constraint failed  
 
 // Solution : vérifier ou utiliser un TDBLookupComboBox
 ```
@@ -857,8 +857,8 @@ SQLQuery1.Post;  // → Erreur : FOREIGN KEY constraint failed
 ### Try-Except robuste
 
 ```pascal
-procedure TForm1.EnregistrerModifications;
-begin
+procedure TForm1.EnregistrerModifications;  
+begin  
   if not (SQLQuery1.State in [dsEdit, dsInsert]) then Exit;
 
   try
@@ -900,13 +900,13 @@ end;
 ### Activer/désactiver les boutons selon le mode
 
 ```pascal
-procedure TForm1.SQLQuery1AfterScroll(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1AfterScroll(DataSet: TDataSet);  
+begin  
   MettreAJourBoutons;
 end;
 
-procedure TForm1.MettreAJourBoutons;
-var
+procedure TForm1.MettreAJourBoutons;  
+var  
   EnEdition: Boolean;
   ADesEnregistrements: Boolean;
 begin
@@ -933,8 +933,8 @@ end;
 ### Indicateur visuel du mode
 
 ```pascal
-procedure TForm1.ActualiserIndicateurMode;
-begin
+procedure TForm1.ActualiserIndicateurMode;  
+begin  
   case SQLQuery1.State of
     dsBrowse:
     begin
@@ -963,8 +963,8 @@ end;
 ### 1. Toujours valider dans BeforePost
 
 ```pascal
-procedure TForm1.SQLQuery1BeforePost(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1BeforePost(DataSet: TDataSet);  
+begin  
   // Validation obligatoire ici
   if not DonneesValides(DataSet) then
     Abort;
@@ -974,8 +974,8 @@ end;
 ### 2. Toujours faire Commit après Post
 
 ```pascal
-procedure TForm1.SQLQuery1AfterPost(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1AfterPost(DataSet: TDataSet);  
+begin  
   try
     SQLTransaction1.Commit;
   except
@@ -1018,8 +1018,8 @@ if SQLQuery1.State in [dsEdit, dsInsert] then
 ### 6. Utiliser OnNewRecord pour les valeurs par défaut
 
 ```pascal
-procedure TForm1.SQLQuery1NewRecord(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1NewRecord(DataSet: TDataSet);  
+begin  
   DataSet.FieldByName('date_creation').AsDateTime := Now;
   DataSet.FieldByName('actif').AsInteger := 1;
 end;
@@ -1028,8 +1028,8 @@ end;
 ### 7. Normaliser les données
 
 ```pascal
-procedure TForm1.SQLQuery1BeforePost(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1BeforePost(DataSet: TDataSet);  
+begin  
   // Nettoyage automatique
   DataSet.FieldByName('nom').AsString :=
     UpperCase(Trim(DataSet.FieldByName('nom').AsString));
@@ -1039,8 +1039,8 @@ end;
 ### 8. Désactiver les contrôles pendant les traitements de masse
 
 ```pascal
-SQLQuery1.DisableControls;
-try
+SQLQuery1.DisableControls;  
+try  
   // Modifications multiples
 finally
   SQLQuery1.EnableControls;

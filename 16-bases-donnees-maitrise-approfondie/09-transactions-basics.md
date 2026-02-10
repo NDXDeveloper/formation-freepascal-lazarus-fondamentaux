@@ -150,8 +150,8 @@ Contrôlez explicitement vos transactions pour grouper les opérations :
 ```sql
 BEGIN TRANSACTION;
 
-UPDATE Comptes SET solde = solde - 100 WHERE id = 1;
-UPDATE Comptes SET solde = solde + 100 WHERE id = 2;
+UPDATE Comptes SET solde = solde - 100 WHERE id = 1;  
+UPDATE Comptes SET solde = solde + 100 WHERE id = 2;  
 
 COMMIT;
 ```
@@ -187,8 +187,8 @@ SELECT solde FROM Comptes WHERE id = 1;
 -- Supposons que le résultat est 150€
 
 -- Si le solde est suffisant (≥ 100€)
-UPDATE Comptes SET solde = solde - 100 WHERE id = 1;
-UPDATE Comptes SET solde = solde + 100 WHERE id = 2;
+UPDATE Comptes SET solde = solde - 100 WHERE id = 1;  
+UPDATE Comptes SET solde = solde + 100 WHERE id = 2;  
 
 -- Tout va bien
 COMMIT;
@@ -225,10 +225,10 @@ SQLQuery1.Transaction := SQLTransaction1;
 // Automatiquement, TSQLTransaction fait :
 // BEGIN TRANSACTION
 
-SQLQuery1.SQL.Text := 'UPDATE Clients SET nom = :nom WHERE id = :id';
-SQLQuery1.ParamByName('nom').AsString := 'Nouveau Nom';
-SQLQuery1.ParamByName('id').AsInteger := 1;
-SQLQuery1.ExecSQL;
+SQLQuery1.SQL.Text := 'UPDATE Clients SET nom = :nom WHERE id = :id';  
+SQLQuery1.ParamByName('nom').AsString := 'Nouveau Nom';  
+SQLQuery1.ParamByName('id').AsInteger := 1;  
+SQLQuery1.ExecSQL;  
 
 // La transaction est en cours, mais pas encore validée !
 ```
@@ -246,8 +246,8 @@ SQLTransaction1.Commit;
 
 **Exemple complet :**
 ```pascal
-procedure TForm1.ModifierClient;
-begin
+procedure TForm1.ModifierClient;  
+begin  
   try
     SQLQuery1.SQL.Text := 'UPDATE Clients SET nom = :nom WHERE id = :id';
     SQLQuery1.ParamByName('nom').AsString := 'Nouveau Nom';
@@ -279,8 +279,8 @@ SQLTransaction1.Rollback;
 
 **Exemple :**
 ```pascal
-procedure TForm1.OperationRisquee;
-begin
+procedure TForm1.OperationRisquee;  
+begin  
   try
     // Plusieurs opérations
     SQLQuery1.SQL.Text := 'DELETE FROM Commandes WHERE id = :id';
@@ -308,8 +308,8 @@ end;
 Normalement, vous n'avez pas besoin d'appeler `StartTransaction` car c'est automatique. Mais vous pouvez le faire :
 
 ```pascal
-SQLTransaction1.StartTransaction;
-try
+SQLTransaction1.StartTransaction;  
+try  
   // Vos opérations
   SQLQuery1.ExecSQL;
 
@@ -438,8 +438,8 @@ end;
 **Exemple : Créer une commande avec ses lignes**
 
 ```pascal
-procedure TForm1.CreerCommande(IDClient: Integer; Articles: TListeArticles);
-var
+procedure TForm1.CreerCommande(IDClient: Integer; Articles: TListeArticles);  
+var  
   IDCommande: Integer;
   i: Integer;
 begin
@@ -503,8 +503,8 @@ end;
 **Exemple : Supprimer un client et toutes ses données**
 
 ```pascal
-procedure TForm1.SupprimerClientComplet(IDClient: Integer);
-var
+procedure TForm1.SupprimerClientComplet(IDClient: Integer);  
+var  
   NomClient: string;
 begin
   // Récupérer le nom pour confirmation
@@ -676,8 +676,8 @@ Sans transaction explicite, SQLite crée une transaction pour **chaque** command
 
 ```pascal
 // LENT : 1000 transactions (une par INSERT)
-for i := 1 to 1000 do
-begin
+for i := 1 to 1000 do  
+begin  
   SQLQuery1.SQL.Text := 'INSERT INTO Logs (message) VALUES (:msg)';
   SQLQuery1.ParamByName('msg').AsString := 'Message ' + IntToStr(i);
   SQLQuery1.ExecSQL;
@@ -689,8 +689,8 @@ Avec une seule transaction :
 
 ```pascal
 // RAPIDE : 1 seule transaction
-SQLTransaction1.StartTransaction;
-try
+SQLTransaction1.StartTransaction;  
+try  
   for i := 1 to 1000 do
   begin
     SQLQuery1.SQL.Text := 'INSERT INTO Logs (message) VALUES (:msg)';
@@ -752,8 +752,8 @@ end;
 Voici le pattern à utiliser systématiquement :
 
 ```pascal
-procedure TForm1.OperationAvecTransaction;
-begin
+procedure TForm1.OperationAvecTransaction;  
+begin  
   try
     // Vos opérations SQL
     SQLQuery1.ExecSQL;
@@ -784,8 +784,8 @@ end;
 ### Vérifier l'état de la transaction
 
 ```pascal
-procedure TForm1.OperationSecurisee;
-begin
+procedure TForm1.OperationSecurisee;  
+begin  
   try
     // Vos opérations
     SQLQuery1.ExecSQL;
@@ -855,8 +855,8 @@ TraitementLong();
 
 ```pascal
 // MAL : pas de gestion d'erreur
-SQLQuery1.ExecSQL;
-SQLTransaction1.Commit;
+SQLQuery1.ExecSQL;  
+SQLTransaction1.Commit;  
 
 // BIEN : gestion d'erreur
 try
@@ -873,8 +873,8 @@ end;
 Avec les composants data-aware :
 
 ```pascal
-procedure TForm1.SQLQuery1AfterPost(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1AfterPost(DataSet: TDataSet);  
+begin  
   try
     SQLTransaction1.Commit;
   except
@@ -883,8 +883,8 @@ begin
   end;
 end;
 
-procedure TForm1.SQLQuery1AfterDelete(DataSet: TDataSet);
-begin
+procedure TForm1.SQLQuery1AfterDelete(DataSet: TDataSet);  
+begin  
   try
     SQLTransaction1.Commit;
   except
@@ -898,18 +898,18 @@ end;
 
 ```pascal
 // MAL : Commit dans une boucle de lecture
-SQLQuery1.Open;
-while not SQLQuery1.EOF do
-begin
+SQLQuery1.Open;  
+while not SQLQuery1.EOF do  
+begin  
   // Traitement
   SQLTransaction1.Commit;  // ← Inutile et lent
   SQLQuery1.Next;
 end;
 
 // BIEN : Pas de Commit pour la lecture
-SQLQuery1.Open;
-while not SQLQuery1.EOF do
-begin
+SQLQuery1.Open;  
+while not SQLQuery1.EOF do  
+begin  
   // Traitement de lecture uniquement
   SQLQuery1.Next;
 end;
@@ -918,8 +918,8 @@ end;
 ### 6. Documenter les transactions complexes
 
 ```pascal
-procedure TForm1.TransactionComplexe;
-begin
+procedure TForm1.TransactionComplexe;  
+begin  
   try
     // Transaction groupée :
     // 1. Création facture
@@ -942,8 +942,8 @@ end;
 ### 7. Tester le comportement en cas d'erreur
 
 ```pascal
-procedure TForm1.TesterRollback;
-begin
+procedure TForm1.TesterRollback;  
+begin  
   try
     SQLQuery1.SQL.Text := 'INSERT INTO Clients (nom) VALUES (''Test'')';
     SQLQuery1.ExecSQL;

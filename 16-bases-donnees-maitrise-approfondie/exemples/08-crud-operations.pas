@@ -18,8 +18,8 @@ var
   Query, QueryAux: TSQLQuery;
   DBPath: string;
 
-procedure AfficherTous;
-begin
+procedure AfficherTous;  
+begin  
   QueryAux.SQL.Text := 'SELECT * FROM Produits ORDER BY id';
   QueryAux.Open;
 
@@ -50,8 +50,8 @@ begin
   QueryAux.Close;
 end;
 
-procedure InitialiserBase;
-begin
+procedure InitialiserBase;  
+begin  
   WriteLn('--- Initialisation ---');
   Conn.ExecuteDirect(
     'CREATE TABLE IF NOT EXISTS Produits (' +
@@ -65,8 +65,8 @@ begin
   WriteLn('Table Produits creee');
 end;
 
-procedure DemoInsert;
-begin
+procedure DemoInsert;  
+begin  
   WriteLn;
   WriteLn('--- INSERT (via SQL parametree) ---');
 
@@ -124,8 +124,8 @@ begin
   AfficherTous;
 end;
 
-procedure DemoEdit;
-begin
+procedure DemoEdit;  
+begin  
   WriteLn;
   WriteLn('--- UPDATE (modification via SQL) ---');
 
@@ -159,8 +159,8 @@ begin
   QueryAux.Close;
 end;
 
-procedure DemoCancel;
-begin
+procedure DemoCancel;  
+begin  
   WriteLn;
   WriteLn('--- Principe du CANCEL (annulation) ---');
 
@@ -184,8 +184,8 @@ begin
   QueryAux.Close;
 end;
 
-procedure DemoDelete;
-begin
+procedure DemoDelete;  
+begin  
   WriteLn;
   WriteLn('--- DELETE (suppression via SQL) ---');
 
@@ -210,8 +210,8 @@ begin
   QueryAux.Close;
 end;
 
-procedure DemoDeleteSQL;
-begin
+procedure DemoDeleteSQL;  
+begin  
   WriteLn;
   WriteLn('--- DELETE via SQL (RowsAffected) ---');
 
@@ -250,8 +250,8 @@ begin
   QueryAux.Close;
 end;
 
-procedure DemoContrainteUnique;
-begin
+procedure DemoContrainteUnique;  
+begin  
   WriteLn;
   WriteLn('--- Gestion contrainte NOT NULL ---');
 
@@ -287,8 +287,8 @@ begin
   end;
 end;
 
-procedure DemoEtatsDataset;
-begin
+procedure DemoEtatsDataset;  
+begin  
   WriteLn;
   WriteLn('--- Etats du dataset ---');
 

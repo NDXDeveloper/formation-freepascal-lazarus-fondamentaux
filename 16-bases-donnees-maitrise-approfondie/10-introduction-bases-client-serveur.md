@@ -93,11 +93,11 @@ Les clients et le serveur communiquent via le **réseau** (même si tout est sur
 
 **Connexion typique :**
 ```
-Hôte     : serveur-bdd.entreprise.com (ou 192.168.1.100, ou localhost)
-Port     : 5432
-Base     : ma_base
-Utilisateur : mon_utilisateur
-Mot de passe : mon_mot_de_passe
+Hôte     : serveur-bdd.entreprise.com (ou 192.168.1.100, ou localhost)  
+Port     : 5432  
+Base     : ma_base  
+Utilisateur : mon_utilisateur  
+Mot de passe : mon_mot_de_passe  
 ```
 
 ## Différences fondamentales : Embarqué vs Client/Serveur
@@ -156,19 +156,19 @@ Imaginons 10 employés qui utilisent simultanément une application de gestion d
 
 **Avec SQLite :**
 ```
-Employé 1 : Modifier le stock article 42   → Attend...
-Employé 2 : Ajouter une commande          → Attend...
-Employé 3 : Consulter les stocks          → OK (lecture)
-Employé 4 : Modifier le stock article 15   → Attend...
+Employé 1 : Modifier le stock article 42   → Attend...  
+Employé 2 : Ajouter une commande          → Attend...  
+Employé 3 : Consulter les stocks          → OK (lecture)  
+Employé 4 : Modifier le stock article 15   → Attend...  
 ```
 → Un seul peut écrire à la fois = **goulot d'étranglement**
 
 **Avec PostgreSQL/MySQL :**
 ```
-Employé 1 : Modifier le stock article 42   → OK
-Employé 2 : Ajouter une commande          → OK
-Employé 3 : Consulter les stocks          → OK
-Employé 4 : Modifier le stock article 15   → OK
+Employé 1 : Modifier le stock article 42   → OK  
+Employé 2 : Ajouter une commande          → OK  
+Employé 3 : Consulter les stocks          → OK  
+Employé 4 : Modifier le stock article 15   → OK  
 ```
 → Tous travaillent en parallèle (sur des données différentes) = **pas de blocage**
 

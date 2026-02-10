@@ -20,8 +20,8 @@ var
 
 { --- Logging structure --- }
 
-procedure LogMessage(const Msg: string; const Niveau: string = 'INFO');
-var
+procedure LogMessage(const Msg: string; const Niveau: string = 'INFO');  
+var  
   F: TextFile;
   Ligne: string;
 begin
@@ -43,15 +43,15 @@ begin
   end;
 end;
 
-procedure LogErreur(const Contexte: string; E: Exception);
-begin
+procedure LogErreur(const Contexte: string; E: Exception);  
+begin  
   LogMessage(Format('%s - %s: %s', [Contexte, E.ClassName, E.Message]), 'ERROR');
 end;
 
 { --- Classification des erreurs --- }
 
-function ClassifierErreur(const MessageErreur: string): string;
-var
+function ClassifierErreur(const MessageErreur: string): string;  
+var  
   Msg: string;
 begin
   Msg := LowerCase(MessageErreur);
@@ -81,8 +81,8 @@ begin
     Result := 'INCONNUE';
 end;
 
-function EstErreurTemporaire(const MessageErreur: string): Boolean;
-var
+function EstErreurTemporaire(const MessageErreur: string): Boolean;  
+var  
   Msg: string;
 begin
   Msg := LowerCase(MessageErreur);
@@ -93,8 +93,8 @@ end;
 
 { --- Test de connexion --- }
 
-function TesterConnexion: Boolean;
-begin
+function TesterConnexion: Boolean;  
+begin  
   Result := False;
 
   if not Conn.Connected then
@@ -164,8 +164,8 @@ end;
 
 { --- Execution avec monitoring --- }
 
-procedure ExecuterAvecMonitoring(const SQL: string; SeuilMs: Integer = 100);
-var
+procedure ExecuterAvecMonitoring(const SQL: string; SeuilMs: Integer = 100);  
+var  
   Debut: TDateTime;
   Duree: Int64;
 begin
@@ -247,8 +247,8 @@ end;
 
 { --- Procedures de demo --- }
 
-procedure DemoClassification;
-begin
+procedure DemoClassification;  
+begin  
   WriteLn;
   WriteLn('--- Classification des erreurs ---');
 
@@ -313,8 +313,8 @@ begin
   Trans.Commit;
 end;
 
-procedure DemoTestConnexion;
-begin
+procedure DemoTestConnexion;  
+begin  
   WriteLn;
   WriteLn('--- Test de connexion (ping) ---');
 
@@ -328,8 +328,8 @@ begin
   Query.Close;
 end;
 
-procedure DemoMonitoring;
-var
+procedure DemoMonitoring;  
+var  
   i: Integer;
 begin
   WriteLn;
@@ -361,8 +361,8 @@ begin
   Trans.Commit;
 end;
 
-procedure DemoRetry;
-begin
+procedure DemoRetry;  
+begin  
   WriteLn;
   WriteLn('--- Execution avec retry ---');
 
@@ -391,8 +391,8 @@ begin
   Trans.Commit;
 end;
 
-procedure DemoReconnexion;
-begin
+procedure DemoReconnexion;  
+begin  
   WriteLn;
   WriteLn('--- Reconnexion avec backoff ---');
 
@@ -418,8 +418,8 @@ begin
   end;
 end;
 
-procedure DemoLogging;
-var
+procedure DemoLogging;  
+var  
   F: TextFile;
   Ligne: string;
   Count: Integer;
@@ -453,8 +453,8 @@ begin
   end;
 end;
 
-procedure DemoStatistiques;
-var
+procedure DemoStatistiques;  
+var  
   NbRequetes, NbErreurs, NbRetries: Integer;
   i: Integer;
 begin
