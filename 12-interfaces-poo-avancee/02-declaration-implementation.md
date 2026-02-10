@@ -156,15 +156,15 @@ type
 ```pascal
 implementation
 
-procedure TGestionnaireFichierTexte.Ouvrir(const NomFichier: string);
-begin
+procedure TGestionnaireFichierTexte.Ouvrir(const NomFichier: string);  
+begin  
   AssignFile(FFichier, NomFichier);
   Reset(FFichier);
   FOuvert := True;
 end;
 
-procedure TGestionnaireFichierTexte.Fermer;
-begin
+procedure TGestionnaireFichierTexte.Fermer;  
+begin  
   if FOuvert then
   begin
     CloseFile(FFichier);
@@ -172,27 +172,27 @@ begin
   end;
 end;
 
-procedure TGestionnaireFichierTexte.Ecrire(const Donnees: string);
-begin
+procedure TGestionnaireFichierTexte.Ecrire(const Donnees: string);  
+begin  
   if FOuvert then
     WriteLn(FFichier, Donnees);
 end;
 
-function TGestionnaireFichierTexte.Lire: string;
-begin
+function TGestionnaireFichierTexte.Lire: string;  
+begin  
   if FOuvert then
     ReadLn(FFichier, Result)
   else
     Result := '';
 end;
 
-function TGestionnaireFichierTexte.EstOuvert: Boolean;
-begin
+function TGestionnaireFichierTexte.EstOuvert: Boolean;  
+begin  
   Result := FOuvert;
 end;
 
-function TGestionnaireFichierTexte.ObtenirTaille: Int64;
-begin
+function TGestionnaireFichierTexte.ObtenirTaille: Int64;  
+begin  
   // Implémentation simplifiée
   Result := 0;
 end;
@@ -256,13 +256,13 @@ type
 
 implementation
 
-function TFichierComplet.Lire: string;
-begin
+function TFichierComplet.Lire: string;  
+begin  
   Result := FContenu;
 end;
 
-procedure TFichierComplet.Ecrire(const Texte: string);
-begin
+procedure TFichierComplet.Ecrire(const Texte: string);  
+begin  
   FContenu := Texte;
 end;
 ```
@@ -317,39 +317,39 @@ implementation
 
 { TNotificateurEmail }
 
-constructor TNotificateurEmail.Create(const AdresseEmail: string);
-begin
+constructor TNotificateurEmail.Create(const AdresseEmail: string);  
+begin  
   inherited Create;
   FAdresseEmail := AdresseEmail;
 end;
 
-procedure TNotificateurEmail.EnvoyerMessage(const Message: string);
-begin
+procedure TNotificateurEmail.EnvoyerMessage(const Message: string);  
+begin  
   WriteLn('📧 Envoi email à ', FAdresseEmail);
   WriteLn('   Message: ', Message);
 end;
 
-function TNotificateurEmail.ObtenirNomService: string;
-begin
+function TNotificateurEmail.ObtenirNomService: string;  
+begin  
   Result := 'Service Email';
 end;
 
 { TNotificateurSMS }
 
-constructor TNotificateurSMS.Create(const NumeroTel: string);
-begin
+constructor TNotificateurSMS.Create(const NumeroTel: string);  
+begin  
   inherited Create;
   FNumeroTelephone := NumeroTel;
 end;
 
-procedure TNotificateurSMS.EnvoyerMessage(const Message: string);
-begin
+procedure TNotificateurSMS.EnvoyerMessage(const Message: string);  
+begin  
   WriteLn('📱 Envoi SMS au ', FNumeroTelephone);
   WriteLn('   Message: ', Message);
 end;
 
-function TNotificateurSMS.ObtenirNomService: string;
-begin
+function TNotificateurSMS.ObtenirNomService: string;  
+begin  
   Result := 'Service SMS';
 end;
 
@@ -367,8 +367,8 @@ uses
   UNotifications;
 
 // Accepte tout objet implémentant INotificateur (polymorphisme via interface)
-procedure EnvoyerAlerte(Notif: INotificateur; const Alerte: string);
-begin
+procedure EnvoyerAlerte(Notif: INotificateur; const Alerte: string);  
+begin  
   WriteLn('=== ', Notif.ObtenirNomService, ' ===');
   Notif.EnvoyerMessage(Alerte);
   WriteLn('');
@@ -409,9 +409,9 @@ end.
 
 ✅ **Bon :** Interfaces spécialisées
 ```pascal
-ILecteur = interface      // Responsabilité: lire
-IEcrivain = interface     // Responsabilité: écrire
-IVerifiable = interface   // Responsabilité: vérifier
+ILecteur = interface      // Responsabilité: lire  
+IEcrivain = interface     // Responsabilité: écrire  
+IVerifiable = interface   // Responsabilité: vérifier  
 ```
 
 ❌ **Mauvais :** Interface fourre-tout
@@ -552,13 +552,13 @@ type
 
 implementation
 
-procedure TNomClasse.MethodeSansRetour(Param: Type);
-begin
+procedure TNomClasse.MethodeSansRetour(Param: Type);  
+begin  
   // Code ici
 end;
 
-function TNomClasse.MethodeAvecRetour(Param: Type): TypeRetour;
-begin
+function TNomClasse.MethodeAvecRetour(Param: Type): TypeRetour;  
+begin  
   // Code ici
   Result := ...;
 end;

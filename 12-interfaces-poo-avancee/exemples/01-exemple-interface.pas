@@ -28,30 +28,30 @@ type
   end;
 
 // Implémentation de TOiseau
-procedure TOiseau.Voler;
-begin
+procedure TOiseau.Voler;  
+begin  
   WriteLn('L''oiseau bat des ailes et s''envole gracieusement');
 end;
 
-procedure TOiseau.Atterrir;
-begin
+procedure TOiseau.Atterrir;  
+begin  
   WriteLn('L''oiseau se pose sur une branche');
 end;
 
 // Implémentation de TAvion
-procedure TAvion.Voler;
-begin
+procedure TAvion.Voler;  
+begin  
   WriteLn('L''avion décolle avec ses réacteurs');
 end;
 
-procedure TAvion.Atterrir;
-begin
+procedure TAvion.Atterrir;  
+begin  
   WriteLn('L''avion se pose sur la piste');
 end;
 
 // Procédure qui utilise n'importe quel objet volant
-procedure FaireVoler(UnVolant: IVolant);
-begin
+procedure FaireVoler(UnVolant: IVolant);  
+begin  
   WriteLn('--- Démarrage du vol ---');
   UnVolant.Voler;
   UnVolant.Atterrir;

@@ -23,8 +23,8 @@ type
     procedure AfficherCompteur;
   end;
 
-constructor TMessagerie.Create(const Nom: string);
-begin
+constructor TMessagerie.Create(const Nom: string);  
+begin  
   inherited Create;
   FNom := Nom;
   WriteLn('╔════════════════════════════════════════╗');
@@ -33,8 +33,8 @@ begin
   WriteLn('╚════════════════════════════════════════╝');
 end;
 
-destructor TMessagerie.Destroy;
-begin
+destructor TMessagerie.Destroy;  
+begin  
   WriteLn('╔════════════════════════════════════════╗');
   WriteLn('║ ❌ Destruction de "', FNom, '"');
   WriteLn('║ Le compteur a atteint 0');
@@ -42,13 +42,13 @@ begin
   inherited;
 end;
 
-procedure TMessagerie.Dire(const Texte: string);
-begin
+procedure TMessagerie.Dire(const Texte: string);  
+begin  
   WriteLn('💬 ', FNom, ' dit: "', Texte, '"');
 end;
 
-procedure TMessagerie.AfficherCompteur;
-begin
+procedure TMessagerie.AfficherCompteur;  
+begin  
   WriteLn('📊 Compteur actuel de "', FNom, '": ', RefCount);
 end;
 

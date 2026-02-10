@@ -11,8 +11,8 @@ uses
   UNotifications;
 
 // Accepte tout objet implémentant INotificateur (polymorphisme via interface)
-procedure EnvoyerAlerte(Notif: INotificateur; const Alerte: string);
-begin
+procedure EnvoyerAlerte(Notif: INotificateur; const Alerte: string);  
+begin  
   WriteLn('=== ', Notif.ObtenirNomService, ' ===');
   Notif.EnvoyerMessage(Alerte);
   WriteLn('');

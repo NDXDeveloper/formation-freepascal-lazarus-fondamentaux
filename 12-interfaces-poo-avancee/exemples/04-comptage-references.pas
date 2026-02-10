@@ -22,21 +22,21 @@ type
     procedure Afficher;
   end;
 
-constructor TTest.Create(const Nom: string);
-begin
+constructor TTest.Create(const Nom: string);  
+begin  
   inherited Create;
   FNom := Nom;
   WriteLn('✅ Objet "', FNom, '" créé - Compteur: ', RefCount);
 end;
 
-destructor TTest.Destroy;
-begin
+destructor TTest.Destroy;  
+begin  
   WriteLn('❌ Objet "', FNom, '" détruit');
   inherited;
 end;
 
-procedure TTest.Afficher;
-begin
+procedure TTest.Afficher;  
+begin  
   WriteLn('👋 Je suis "', FNom, '" - Compteur: ', RefCount);
 end;
 

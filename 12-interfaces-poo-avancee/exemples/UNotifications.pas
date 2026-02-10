@@ -44,39 +44,39 @@ implementation
 
 { TNotificateurEmail }
 
-constructor TNotificateurEmail.Create(const AdresseEmail: string);
-begin
+constructor TNotificateurEmail.Create(const AdresseEmail: string);  
+begin  
   inherited Create;
   FAdresseEmail := AdresseEmail;
 end;
 
-procedure TNotificateurEmail.EnvoyerMessage(const Message: string);
-begin
+procedure TNotificateurEmail.EnvoyerMessage(const Message: string);  
+begin  
   WriteLn('📧 Envoi email à ', FAdresseEmail);
   WriteLn('   Message: ', Message);
 end;
 
-function TNotificateurEmail.ObtenirNomService: string;
-begin
+function TNotificateurEmail.ObtenirNomService: string;  
+begin  
   Result := 'Service Email';
 end;
 
 { TNotificateurSMS }
 
-constructor TNotificateurSMS.Create(const NumeroTel: string);
-begin
+constructor TNotificateurSMS.Create(const NumeroTel: string);  
+begin  
   inherited Create;
   FNumeroTelephone := NumeroTel;
 end;
 
-procedure TNotificateurSMS.EnvoyerMessage(const Message: string);
-begin
+procedure TNotificateurSMS.EnvoyerMessage(const Message: string);  
+begin  
   WriteLn('📱 Envoi SMS au ', FNumeroTelephone);
   WriteLn('   Message: ', Message);
 end;
 
-function TNotificateurSMS.ObtenirNomService: string;
-begin
+function TNotificateurSMS.ObtenirNomService: string;  
+begin  
   Result := 'Service SMS';
 end;
 

@@ -61,8 +61,8 @@ type
     property Solde: Currency read FSolde write SetSolde;
   end;
 
-procedure TCompte.SetSolde(Valeur: Currency);
-begin
+procedure TCompte.SetSolde(Valeur: Currency);  
+begin  
   // ✅ Validation avant modification
   if Valeur < 0 then
   begin
@@ -150,8 +150,8 @@ type
     property DateNaissance: TDateTime read FDateNaissance;
   end;
 
-constructor TPersonne.Create(DateNaissance: TDateTime);
-begin
+constructor TPersonne.Create(DateNaissance: TDateTime);  
+begin  
   FDateNaissance := DateNaissance;
 end;
 
@@ -188,15 +188,15 @@ type
     function VerifierMotDePasse(const Tentative: string): Boolean;
   end;
 
-procedure TAuthentification.SetMotDePasse(const Value: string);
-begin
+procedure TAuthentification.SetMotDePasse(const Value: string);  
+begin  
   // Hachage du mot de passe (simplifié ici)
   FMotDePasseHache := 'HASH_' + Value;
   WriteLn('🔒 Mot de passe défini (haché)');
 end;
 
-function TAuthentification.VerifierMotDePasse(const Tentative: string): Boolean;
-begin
+function TAuthentification.VerifierMotDePasse(const Tentative: string): Boolean;  
+begin  
   Result := FMotDePasseHache = 'HASH_' + Tentative;
 end;
 
@@ -236,8 +236,8 @@ type
     property Prix: Currency read FPrix write SetPrix; // Avec validation
   end;
 
-procedure TProduit.SetPrix(Value: Currency);
-begin
+procedure TProduit.SetPrix(Value: Currency);  
+begin  
   if Value <= 0 then
   begin
     WriteLn('❌ Le prix doit être positif');
@@ -287,8 +287,8 @@ type
     property Aire: Integer read GetAire;
   end;
 
-function TRectangle.GetAire: Integer;
-begin
+function TRectangle.GetAire: Integer;  
+begin  
   Result := FLargeur * FHauteur;
   WriteLn('📐 Calcul de l''aire : ', FLargeur, ' × ', FHauteur, ' = ', Result);
 end;
@@ -333,8 +333,8 @@ type
     property Intensite: Integer read FIntensite write SetIntensite;
   end;
 
-procedure TLumiere.SetAllumee(Value: Boolean);
-begin
+procedure TLumiere.SetAllumee(Value: Boolean);  
+begin  
   FAllumee := Value;
 
   if Value then
@@ -349,8 +349,8 @@ begin
   end;
 end;
 
-procedure TLumiere.SetIntensite(Value: Integer);
-begin
+procedure TLumiere.SetIntensite(Value: Integer);  
+begin  
   if not FAllumee then
   begin
     WriteLn('⚠️  Impossible de régler l''intensité : lumière éteinte');
@@ -413,8 +413,8 @@ type
     property Email: string read FEmail write SetEmail;
   end;
 
-procedure TUtilisateur.SetAge(Value: Integer);
-begin
+procedure TUtilisateur.SetAge(Value: Integer);  
+begin  
   if (Value < 0) or (Value > 150) then
   begin
     WriteLn('❌ Âge invalide : ', Value);
@@ -425,8 +425,8 @@ begin
   WriteLn('✅ Âge défini : ', Value, ' ans');
 end;
 
-procedure TUtilisateur.SetEmail(const Value: string);
-begin
+procedure TUtilisateur.SetEmail(const Value: string);  
+begin  
   // Validation simple (juste vérifier la présence d'un @)
   if Pos('@', Value) = 0 then
   begin
@@ -485,14 +485,14 @@ type
     property NomComplet: string read GetNomComplet write SetNomComplet;
   end;
 
-function TPersonne.GetNomComplet: string;
-begin
+function TPersonne.GetNomComplet: string;  
+begin  
   // Calcul à partir des autres attributs
   Result := FPrenom + ' ' + FNom;
 end;
 
-procedure TPersonne.SetNomComplet(const Value: string);
-var
+procedure TPersonne.SetNomComplet(const Value: string);  
+var  
   Position: Integer;
 begin
   // Séparer le nom complet en prénom et nom
@@ -541,8 +541,8 @@ Nom complet : Marie Curie
 ✅ Nom complet défini : Albert Einstein
    Prénom : Albert
    Nom : Einstein
-Prénom : Albert
-Nom : Einstein
+Prénom : Albert  
+Nom : Einstein  
 ```
 
 ---
@@ -573,24 +573,24 @@ type
     property Kelvin: Double read GetKelvin write SetKelvin;
   end;
 
-function TThermometre.GetFahrenheit: Double;
-begin
+function TThermometre.GetFahrenheit: Double;  
+begin  
   Result := (FCelsius * 9 / 5) + 32;
 end;
 
-procedure TThermometre.SetFahrenheit(Value: Double);
-begin
+procedure TThermometre.SetFahrenheit(Value: Double);  
+begin  
   FCelsius := (Value - 32) * 5 / 9;
   WriteLn('🌡️  Température définie : ', Value:0:1, '°F = ', FCelsius:0:1, '°C');
 end;
 
-function TThermometre.GetKelvin: Double;
-begin
+function TThermometre.GetKelvin: Double;  
+begin  
   Result := FCelsius + 273.15;
 end;
 
-procedure TThermometre.SetKelvin(Value: Double);
-begin
+procedure TThermometre.SetKelvin(Value: Double);  
+begin  
   FCelsius := Value - 273.15;
   WriteLn('🌡️  Température définie : ', Value:0:1, 'K = ', FCelsius:0:1, '°C');
 end;
@@ -627,8 +627,8 @@ end.
 Celsius : 20.0°C
 
 🌡️  Température définie : 300.0K = 26.9°C
-Celsius : 26.9°C
-Fahrenheit : 80.4°F
+Celsius : 26.9°C  
+Fahrenheit : 80.4°F  
 ```
 
 ---
@@ -670,24 +670,24 @@ type
   end;
 
 // Implémentation
-function TConfiguration.GetNom: string;
-begin
+function TConfiguration.GetNom: string;  
+begin  
   Result := FNom;
 end;
 
-procedure TConfiguration.SetNom(const Value: string);
-begin
+procedure TConfiguration.SetNom(const Value: string);  
+begin  
   FNom := Value;
   WriteLn('✅ Nom configuré : ', Value);
 end;
 
-function TConfiguration.GetActif: Boolean;
-begin
+function TConfiguration.GetActif: Boolean;  
+begin  
   Result := FActif;
 end;
 
-procedure TConfiguration.SetActif(Value: Boolean);
-begin
+procedure TConfiguration.SetActif(Value: Boolean);  
+begin  
   FActif := Value;
   if Value then
     WriteLn('✅ Configuration activée')
@@ -771,8 +771,8 @@ type
 **✅ Toujours valider les données :**
 
 ```pascal
-procedure TCompte.SetSolde(Value: Currency);
-begin
+procedure TCompte.SetSolde(Value: Currency);  
+begin  
   if Value < 0 then
     raise Exception.Create('Le solde ne peut pas être négatif');
   FSolde := Value;
@@ -817,8 +817,8 @@ type
     property Aire: Integer read FAire;
   end;
 
-procedure TRectangle.SetLargeur(Value: Integer);
-begin
+procedure TRectangle.SetLargeur(Value: Integer);  
+begin  
   FLargeur := Value;
   FAire := FLargeur * FHauteur;  // ⚠️ Recalcul nécessaire
 end;
@@ -833,8 +833,8 @@ end;
 **Les setters sont parfaits pour le logging :**
 
 ```pascal
-procedure TUtilisateur.SetConnecte(Value: Boolean);
-begin
+procedure TUtilisateur.SetConnecte(Value: Boolean);  
+begin  
   FConnecte := Value;
 
   // ✅ Logging automatique
@@ -901,42 +901,42 @@ type
     property Disponible: Boolean read GetDisponible;
   end;
 
-constructor TArticle.Create(ID: Integer; const Titre: string);
-begin
+constructor TArticle.Create(ID: Integer; const Titre: string);  
+begin  
   FID := ID;
   FTitre := Titre;
   FTauxTVA := 0.20;  // 20% par défaut
   FStock := 0;
 end;
 
-procedure TArticle.SetPrixHT(Value: Currency);
-begin
+procedure TArticle.SetPrixHT(Value: Currency);  
+begin  
   if Value < 0 then
     raise Exception.Create('Le prix ne peut pas être négatif');
   FPrixHT := Value;
 end;
 
-procedure TArticle.SetTauxTVA(Value: Double);
-begin
+procedure TArticle.SetTauxTVA(Value: Double);  
+begin  
   if (Value < 0) or (Value > 1) then
     raise Exception.Create('Le taux de TVA doit être entre 0 et 1');
   FTauxTVA := Value;
 end;
 
-procedure TArticle.SetStock(Value: Integer);
-begin
+procedure TArticle.SetStock(Value: Integer);  
+begin  
   if Value < 0 then
     raise Exception.Create('Le stock ne peut pas être négatif');
   FStock := Value;
 end;
 
-function TArticle.GetPrixTTC: Currency;
-begin
+function TArticle.GetPrixTTC: Currency;  
+begin  
   Result := FPrixHT * (1 + FTauxTVA);
 end;
 
-function TArticle.GetDisponible: Boolean;
-begin
+function TArticle.GetDisponible: Boolean;  
+begin  
   Result := FStock > 0;
 end;
 
@@ -995,10 +995,10 @@ end.
 
 ### Convention de nommage
 ```
-FAttribut       → Attribut privé
-GetAttribut     → Getter
-SetAttribut     → Setter
-Attribut        → Property publique
+FAttribut       → Attribut privé  
+GetAttribut     → Getter  
+SetAttribut     → Setter  
+Attribut        → Property publique  
 ```
 
 ---

@@ -8,11 +8,11 @@
 L'unité `UNotifications.pas` doit être compilée **avant** le programme `02-test-notifications.pas`.
 
 ```bash
-fpc UNotifications.pas
-fpc 01-exemple-interface.pas
-fpc 02-test-notifications.pas
-fpc 04-comptage-references.pas
-fpc 05-cycle-de-vie.pas
+fpc UNotifications.pas  
+fpc 01-exemple-interface.pas  
+fpc 02-test-notifications.pas  
+fpc 04-comptage-references.pas  
+fpc 05-cycle-de-vie.pas  
 ```
 
 ## Compilation de tous les exemples
@@ -24,8 +24,8 @@ fpc UNotifications.pas && for f in [0-9]*.pas; do echo "=== $f ===" && fpc "$f";
 ## Nettoyage
 
 ```bash
-rm -f *.o *.ppu
-rm -f 01-exemple-interface 02-test-notifications 04-comptage-references 05-cycle-de-vie
+rm -f *.o *.ppu  
+rm -f 01-exemple-interface 02-test-notifications 04-comptage-references 05-cycle-de-vie  
 ```
 
 ## Liste des exemples (5 fichiers)

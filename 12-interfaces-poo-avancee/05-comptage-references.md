@@ -83,8 +83,8 @@ type
     procedure AfficherCompteur;
   end;
 
-constructor TMessagerie.Create(const Nom: string);
-begin
+constructor TMessagerie.Create(const Nom: string);  
+begin  
   inherited Create;
   FNom := Nom;
   WriteLn('╔════════════════════════════════════════╗');
@@ -93,8 +93,8 @@ begin
   WriteLn('╚════════════════════════════════════════╝');
 end;
 
-destructor TMessagerie.Destroy;
-begin
+destructor TMessagerie.Destroy;  
+begin  
   WriteLn('╔════════════════════════════════════════╗');
   WriteLn('║ ❌ Destruction de "', FNom, '"');
   WriteLn('║ Le compteur a atteint 0');
@@ -102,13 +102,13 @@ begin
   inherited;
 end;
 
-procedure TMessagerie.Dire(const Texte: string);
-begin
+procedure TMessagerie.Dire(const Texte: string);  
+begin  
   WriteLn('💬 ', FNom, ' dit: "', Texte, '"');
 end;
 
-procedure TMessagerie.AfficherCompteur;
-begin
+procedure TMessagerie.AfficherCompteur;  
+begin  
   WriteLn('📊 Compteur actuel de "', FNom, '": ', RefCount);
 end;
 
@@ -235,28 +235,28 @@ type
     function Calculer: Integer;
   end;
 
-constructor TCalculateur.Create(Valeur: Integer);
-begin
+constructor TCalculateur.Create(Valeur: Integer);  
+begin  
   inherited Create;
   FValeur := Valeur;
   WriteLn('✅ Calculateur créé avec valeur ', FValeur, ' (Compteur: ', RefCount, ')');
 end;
 
-destructor TCalculateur.Destroy;
-begin
+destructor TCalculateur.Destroy;  
+begin  
   WriteLn('❌ Calculateur détruit');
   inherited;
 end;
 
-function TCalculateur.Calculer: Integer;
-begin
+function TCalculateur.Calculer: Integer;  
+begin  
   Result := FValeur * 2;
   WriteLn('🔢 Calcul effectué (Compteur: ', RefCount, ')');
 end;
 
 // Fonction qui reçoit une interface
-procedure UtiliserCalculateur(Calc: ICalculateur);
-begin
+procedure UtiliserCalculateur(Calc: ICalculateur);  
+begin  
   WriteLn('📥 Entrée dans UtiliserCalculateur (Compteur: ', TCalculateur(Calc).RefCount, ')');
   WriteLn('   Résultat: ', Calc.Calculer);
   WriteLn('📤 Sortie de UtiliserCalculateur (Compteur: ', TCalculateur(Calc).RefCount, ')');
@@ -325,26 +325,26 @@ type
     procedure Rouler;
   end;
 
-constructor TVoiture.Create;
-begin
+constructor TVoiture.Create;  
+begin  
   inherited Create;
   WriteLn('🚗 Voiture créée (Compteur: ', RefCount, ')');
 end;
 
-destructor TVoiture.Destroy;
-begin
+destructor TVoiture.Destroy;  
+begin  
   WriteLn('🔧 Voiture détruite');
   inherited;
 end;
 
-procedure TVoiture.Rouler;
-begin
+procedure TVoiture.Rouler;  
+begin  
   WriteLn('🛣️  La voiture roule (Compteur: ', RefCount, ')');
 end;
 
 // Fonction qui crée et retourne une interface
-function CreerVehicule: IVehicule;
-begin
+function CreerVehicule: IVehicule;  
+begin  
   WriteLn('🏭 Fabrication d''un véhicule...');
   Result := TVoiture.Create;
   WriteLn('   Dans CreerVehicule (Compteur: ', TVoiture(Result).RefCount, ')');
@@ -416,26 +416,26 @@ type
     procedure Travailler;
   end;
 
-constructor TEmploye.Create(const Nom: string);
-begin
+constructor TEmploye.Create(const Nom: string);  
+begin  
   inherited Create;
   FNom := Nom;
   WriteLn('✅ ', FNom, ' embauché(e) (Compteur: ', RefCount, ')');
 end;
 
-destructor TEmploye.Destroy;
-begin
+destructor TEmploye.Destroy;  
+begin  
   WriteLn('❌ ', FNom, ' a quitté l''entreprise');
   inherited;
 end;
 
-function TEmploye.ObtenirNom: string;
-begin
+function TEmploye.ObtenirNom: string;  
+begin  
   Result := FNom;
 end;
 
-procedure TEmploye.Travailler;
-begin
+procedure TEmploye.Travailler;  
+begin  
   WriteLn('💼 ', FNom, ' travaille (Compteur: ', RefCount, ')');
 end;
 
@@ -583,8 +583,8 @@ type
     procedure DefinirParent(Parent: IPersonne);
   end;
 
-procedure TPersonne.DefinirParent(Parent: IPersonne);
-begin
+procedure TPersonne.DefinirParent(Parent: IPersonne);  
+begin  
   FParent := Parent;
 end;
 
@@ -627,28 +627,28 @@ type
 ### Opérations qui incrémentent (+1)
 
 ```pascal
-Ref2 := Ref1;                    // Assignation
-MaFonction(Ref1);                // Passage en paramètre
-Ref1 := MaFonction();            // Récupération depuis fonction
-Liste.Add(Ref1);                 // Ajout à une collection
+Ref2 := Ref1;                    // Assignation  
+MaFonction(Ref1);                // Passage en paramètre  
+Ref1 := MaFonction();            // Récupération depuis fonction  
+Liste.Add(Ref1);                 // Ajout à une collection  
 ```
 
 ### Opérations qui décrémentent (-1)
 
 ```pascal
-Ref1 := nil;                     // Mise à nil explicite
-Ref1 := AutreObjet;              // Réassignation
-end;                             // Fin de portée (sortie de begin..end)
-Liste.Delete(0);                 // Retrait d'une collection
-Liste.Clear;                     // Vidage d'une collection
+Ref1 := nil;                     // Mise à nil explicite  
+Ref1 := AutreObjet;              // Réassignation  
+end;                             // Fin de portée (sortie de begin..end)  
+Liste.Delete(0);                 // Retrait d'une collection  
+Liste.Clear;                     // Vidage d'une collection  
 ```
 
 ### Opérations neutres (compteur inchangé)
 
 ```pascal
-Ref1.UneMethode();               // Appel de méthode
-if Ref1 <> nil then              // Test de validité
-Supports(Ref1, IAutreInterface)  // Test d'interface
+Ref1.UneMethode();               // Appel de méthode  
+if Ref1 <> nil then              // Test de validité  
+Supports(Ref1, IAutreInterface)  // Test d'interface  
 ```
 
 ---
@@ -674,26 +674,26 @@ type
     procedure Action;
   end;
 
-constructor TDebug.Create(ID: Integer);
-begin
+constructor TDebug.Create(ID: Integer);  
+begin  
   inherited Create;
   FID := ID;
   LogCompteur('Création');
 end;
 
-destructor TDebug.Destroy;
-begin
+destructor TDebug.Destroy;  
+begin  
   WriteLn('[Objet ', FID, '] ❌ DESTRUCTION');
   inherited;
 end;
 
-procedure TDebug.LogCompteur(const Contexte: string);
-begin
+procedure TDebug.LogCompteur(const Contexte: string);  
+begin  
   WriteLn('[Objet ', FID, '] ', Contexte, ' - Compteur: ', RefCount);
 end;
 
-procedure TDebug.Action;
-begin
+procedure TDebug.Action;  
+begin  
   LogCompteur('Action');
 end;
 
@@ -741,8 +741,8 @@ begin
 end;
 
 // 2. Retournez des interfaces depuis les fonctions
-function CreerLogger: ILogger;
-begin
+function CreerLogger: ILogger;  
+begin  
   Result := TFileLogger.Create;
 end;
 
@@ -771,8 +771,8 @@ begin
 end;
 
 // 2. N'appelez pas _AddRef/_Release manuellement
-Intf._AddRef;    // ❌ Ne jamais faire !
-Intf._Release;   // ❌ Ne jamais faire !
+Intf._AddRef;    // ❌ Ne jamais faire !  
+Intf._Release;   // ❌ Ne jamais faire !  
 
 // 3. Ne créez pas de cycles de références
 // ❌ Parent → Enfant → Parent

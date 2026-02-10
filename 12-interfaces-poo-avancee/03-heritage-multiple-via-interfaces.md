@@ -155,8 +155,8 @@ type
 ```pascal
 implementation
 
-constructor TCanard.Create;
-begin
+constructor TCanard.Create;  
+begin  
   inherited Create;
   FVitesseNage := 0;
   FAltitude := 0;
@@ -165,40 +165,40 @@ end;
 
 // ─── Implémentation de INageur ───
 
-procedure TCanard.Nager;
-begin
+procedure TCanard.Nager;  
+begin  
   FVitesseNage := 5;
   WriteLn('🦆 Le canard nage avec ses pattes palmées');
 end;
 
-function TCanard.ObtenirVitesseNage: Integer;
-begin
+function TCanard.ObtenirVitesseNage: Integer;  
+begin  
   Result := FVitesseNage;
 end;
 
 // ─── Implémentation de IVolant ───
 
-procedure TCanard.Voler;
-begin
+procedure TCanard.Voler;  
+begin  
   FAltitude := 100;
   WriteLn('🦆 Le canard s''envole en battant des ailes');
 end;
 
-function TCanard.ObtenirAltitude: Integer;
-begin
+function TCanard.ObtenirAltitude: Integer;  
+begin  
   Result := FAltitude;
 end;
 
 // ─── Implémentation de IMarcheur ───
 
-procedure TCanard.Marcher;
-begin
+procedure TCanard.Marcher;  
+begin  
   FVitesseMarche := 2;
   WriteLn('🦆 Le canard se dandine sur la terre');
 end;
 
-function TCanard.ObtenirVitesseMarche: Integer;
-begin
+function TCanard.ObtenirVitesseMarche: Integer;  
+begin  
   Result := FVitesseMarche;
 end;
 ```
@@ -309,8 +309,8 @@ type
 
 implementation
 
-constructor TSmartphone.Create;
-begin
+constructor TSmartphone.Create;  
+begin  
   inherited Create;
   FEnAppel := False;
   FNombrePhotos := 0;
@@ -319,14 +319,14 @@ end;
 
 // ─── ITelephone ───
 
-procedure TSmartphone.AppelerNumero(const Numero: string);
-begin
+procedure TSmartphone.AppelerNumero(const Numero: string);  
+begin  
   WriteLn('📱 Appel en cours vers ', Numero);
   FEnAppel := True;
 end;
 
-procedure TSmartphone.RaccrocherAppel;
-begin
+procedure TSmartphone.RaccrocherAppel;  
+begin  
   if FEnAppel then
   begin
     WriteLn('📱 Appel terminé');
@@ -336,27 +336,27 @@ end;
 
 // ─── IAppareilPhoto ───
 
-procedure TSmartphone.PrendrePhoto;
-begin
+procedure TSmartphone.PrendrePhoto;  
+begin  
   Inc(FNombrePhotos);
   WriteLn('📸 Photo prise ! Total: ', FNombrePhotos);
 end;
 
-function TSmartphone.ObtenirNombrePhotos: Integer;
-begin
+function TSmartphone.ObtenirNombrePhotos: Integer;  
+begin  
   Result := FNombrePhotos;
 end;
 
 // ─── INavigateurWeb ───
 
-procedure TSmartphone.OuvrirSiteWeb(const URL: string);
-begin
+procedure TSmartphone.OuvrirSiteWeb(const URL: string);  
+begin  
   WriteLn('🌐 Ouverture de ', URL);
   FNavigateurOuvert := True;
 end;
 
-procedure TSmartphone.FermerNavigateur;
-begin
+procedure TSmartphone.FermerNavigateur;  
+begin  
   if FNavigateurOuvert then
   begin
     WriteLn('🌐 Navigateur fermé');
@@ -368,16 +368,16 @@ end;
 ### Utilisation polyvalente
 
 ```pascal
-procedure UtiliserTelephone(Tel: ITelephone);
-begin
+procedure UtiliserTelephone(Tel: ITelephone);  
+begin  
   WriteLn('=== Mode Téléphone ===');
   Tel.AppelerNumero('+33 6 12 34 56 78');
   Tel.RaccrocherAppel;
   WriteLn('');
 end;
 
-procedure UtiliserAppareilPhoto(Appareil: IAppareilPhoto);
-begin
+procedure UtiliserAppareilPhoto(Appareil: IAppareilPhoto);  
+begin  
   WriteLn('=== Mode Photo ===');
   Appareil.PrendrePhoto;
   Appareil.PrendrePhoto;
@@ -385,8 +385,8 @@ begin
   WriteLn('');
 end;
 
-procedure UtiliserNavigateur(Nav: INavigateurWeb);
-begin
+procedure UtiliserNavigateur(Nav: INavigateurWeb);  
+begin  
   WriteLn('=== Mode Navigation ===');
   Nav.OuvrirSiteWeb('https://www.exemple.com');
   Nav.FermerNavigateur;
@@ -440,10 +440,10 @@ Chaque interface représente une responsabilité claire et distincte.
 
 ```pascal
 // Responsabilités bien séparées
-ILecteur      // Responsable de la lecture
-IEcrivain     // Responsable de l'écriture
-ICompresseur  // Responsable de la compression
-IChiffreur    // Responsable du chiffrement
+ILecteur      // Responsable de la lecture  
+IEcrivain     // Responsable de l'écriture  
+ICompresseur  // Responsable de la compression  
+IChiffreur    // Responsable du chiffrement  
 ```
 
 ### 4. Réutilisabilité du code
@@ -624,32 +624,32 @@ type
 
 implementation
 
-constructor TTerminalUniversel.Create;
-begin
+constructor TTerminalUniversel.Create;  
+begin  
   inherited Create;
   FTotalEncaisse := 0;
 end;
 
-procedure TTerminalUniversel.PayerParCarte(Montant: Currency; const NumeroCarte: string);
-begin
+procedure TTerminalUniversel.PayerParCarte(Montant: Currency; const NumeroCarte: string);  
+begin  
   WriteLn('💳 Paiement carte: ', Montant:0:2, ' € sur carte ', NumeroCarte);
   FTotalEncaisse := FTotalEncaisse + Montant;
 end;
 
-procedure TTerminalUniversel.PayerParMobile(Montant: Currency; const NumeroTel: string);
-begin
+procedure TTerminalUniversel.PayerParMobile(Montant: Currency; const NumeroTel: string);  
+begin  
   WriteLn('📱 Paiement mobile: ', Montant:0:2, ' € via ', NumeroTel);
   FTotalEncaisse := FTotalEncaisse + Montant;
 end;
 
-procedure TTerminalUniversel.PayerParCrypto(Montant: Currency; const AdresseWallet: string);
-begin
+procedure TTerminalUniversel.PayerParCrypto(Montant: Currency; const AdresseWallet: string);  
+begin  
   WriteLn('₿ Paiement crypto: ', Montant:0:2, ' € vers ', AdresseWallet);
   FTotalEncaisse := FTotalEncaisse + Montant;
 end;
 
-function TTerminalUniversel.ObtenirTotal: Currency;
-begin
+function TTerminalUniversel.ObtenirTotal: Currency;  
+begin  
   Result := FTotalEncaisse;
 end;
 

@@ -49,14 +49,14 @@ type
     property Age: Integer read FAge;
   end;
 
-constructor TAnimal.Create(const Nom: string; Age: Integer);
-begin
+constructor TAnimal.Create(const Nom: string; Age: Integer);  
+begin  
   FNom := Nom;
   FAge := Age;
 end;
 
-procedure TAnimal.SePresenter;
-begin
+procedure TAnimal.SePresenter;  
+begin  
   WriteLn('Je m''appelle ', FNom, ' et j''ai ', FAge, ' ans');
 end;
 ```
@@ -144,19 +144,19 @@ type
     procedure Demarrer; virtual; abstract;
   end;
 
-constructor TVehicule.Create;
-begin
+constructor TVehicule.Create;  
+begin  
   FVitesse := 0;
 end;
 
-procedure TVehicule.Accelerer;
-begin
+procedure TVehicule.Accelerer;  
+begin  
   Inc(FVitesse, 10);
   WriteLn('Vitesse: ', FVitesse, ' km/h');
 end;
 
-procedure TVehicule.Freiner;
-begin
+procedure TVehicule.Freiner;  
+begin  
   if FVitesse > 0 then
     Dec(FVitesse, 10);
   WriteLn('Vitesse: ', FVitesse, ' km/h');
@@ -310,28 +310,28 @@ type
     property NomFichier: string read FNomFichier;
   end;
 
-constructor TDocument.Create(const NomFichier: string);
-begin
+constructor TDocument.Create(const NomFichier: string);  
+begin  
   FNomFichier := NomFichier;
   FDateCreation := Now;
   FModifie := False;
 end;
 
-procedure TDocument.Sauvegarder;
-begin
+procedure TDocument.Sauvegarder;  
+begin  
   WriteLn('💾 Sauvegarde de ', FNomFichier);
   FModifie := False;
 end;
 
-procedure TDocument.Fermer;
-begin
+procedure TDocument.Fermer;  
+begin  
   if FModifie then
     WriteLn('⚠️  Document non sauvegardé !');
   WriteLn('❌ Fermeture de ', FNomFichier);
 end;
 
-function TDocument.EstModifie: Boolean;
-begin
+function TDocument.EstModifie: Boolean;  
+begin  
   Result := FModifie;
 end;
 
@@ -349,23 +349,23 @@ type
     procedure Afficher; override;
   end;
 
-procedure TDocumentTexte.Ouvrir;
-begin
+procedure TDocumentTexte.Ouvrir;  
+begin  
   WriteLn('📄 Ouverture du document texte: ', NomFichier);
 end;
 
-procedure TDocumentTexte.Afficher;
-begin
+procedure TDocumentTexte.Afficher;  
+begin  
   WriteLn('📖 Affichage du texte...');
 end;
 
-procedure TDocumentImage.Ouvrir;
-begin
+procedure TDocumentImage.Ouvrir;  
+begin  
   WriteLn('🖼️  Ouverture de l''image: ', NomFichier);
 end;
 
-procedure TDocumentImage.Afficher;
-begin
+procedure TDocumentImage.Afficher;  
+begin  
   WriteLn('🎨 Affichage de l''image...');
 end;
 ```
@@ -439,39 +439,39 @@ type
   end;
 
 // Implémentations
-procedure TEmail.Envoyer(const Destinataire, Message: string);
-begin
+procedure TEmail.Envoyer(const Destinataire, Message: string);  
+begin  
   WriteLn('📧 Email envoyé à ', Destinataire, ': ', Message);
 end;
 
-procedure TEmail.Archiver;
-begin
+procedure TEmail.Archiver;  
+begin  
   FDateArchivage := Now;
   WriteLn('📦 Email archivé');
 end;
 
-function TEmail.ObtenirDateArchivage: TDateTime;
-begin
+function TEmail.ObtenirDateArchivage: TDateTime;  
+begin  
   Result := FDateArchivage;
 end;
 
-procedure TSMS.Envoyer(const Destinataire, Message: string);
-begin
+procedure TSMS.Envoyer(const Destinataire, Message: string);  
+begin  
   WriteLn('📱 SMS envoyé à ', Destinataire, ': ', Message);
 end;
 
-procedure TMessageSecurise.Envoyer(const Destinataire, Message: string);
-begin
+procedure TMessageSecurise.Envoyer(const Destinataire, Message: string);  
+begin  
   WriteLn('🔐 Message sécurisé envoyé à ', Destinataire);
 end;
 
-procedure TMessageSecurise.Chiffrer(const Cle: string);
-begin
+procedure TMessageSecurise.Chiffrer(const Cle: string);  
+begin  
   WriteLn('🔒 Message chiffré avec la clé');
 end;
 
-procedure TMessageSecurise.Dechiffrer(const Cle: string);
-begin
+procedure TMessageSecurise.Dechiffrer(const Cle: string);  
+begin  
   WriteLn('🔓 Message déchiffré');
 end;
 ```
@@ -479,13 +479,13 @@ end;
 **Utilisation polymorphe :**
 
 ```pascal
-procedure TraiterEnvoyable(Msg: IEnvoyable);
-begin
+procedure TraiterEnvoyable(Msg: IEnvoyable);  
+begin  
   Msg.Envoyer('utilisateur@exemple.com', 'Bonjour !');
 end;
 
-procedure ArchiverSiPossible(Obj: IInterface);
-var
+procedure ArchiverSiPossible(Obj: IInterface);  
+var  
   Archivable: IArchivable;
 begin
   if Supports(Obj, IArchivable, Archivable) then
@@ -572,33 +572,33 @@ type
     // Pas de vol ni de nage
   end;
 
-constructor TAnimal.Create(const Nom: string);
-begin
+constructor TAnimal.Create(const Nom: string);  
+begin  
   FNom := Nom;
 end;
 
-procedure TAnimal.SePresenter;
-begin
+procedure TAnimal.SePresenter;  
+begin  
   WriteLn('Je suis ', FNom);
 end;
 
-procedure TCanard.Manger;
-begin
+procedure TCanard.Manger;  
+begin  
   WriteLn('🦆 Le canard mange du pain');
 end;
 
-procedure TCanard.Voler;
-begin
+procedure TCanard.Voler;  
+begin  
   WriteLn('🦆 Le canard vole');
 end;
 
-procedure TCanard.Nager;
-begin
+procedure TCanard.Nager;  
+begin  
   WriteLn('🦆 Le canard nage');
 end;
 
-procedure TChien.Manger;
-begin
+procedure TChien.Manger;  
+begin  
   WriteLn('🐕 Le chien mange des croquettes');
 end;
 ```

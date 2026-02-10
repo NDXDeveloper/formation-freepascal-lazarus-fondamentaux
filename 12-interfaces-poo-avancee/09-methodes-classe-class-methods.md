@@ -49,13 +49,13 @@ type
 
 implementation
 
-procedure TMaClasse.MethodeNormale;
-begin
+procedure TMaClasse.MethodeNormale;  
+begin  
   WriteLn('Méthode d''instance : nécessite un objet');
 end;
 
-class procedure TMaClasse.MethodeDeClasse;
-begin
+class procedure TMaClasse.MethodeDeClasse;  
+begin  
   WriteLn('Méthode de classe : pas besoin d''objet');
 end;
 ```
@@ -78,8 +78,8 @@ end.
 
 **Résultat :**
 ```
-Méthode de classe : pas besoin d'objet
-Méthode d'instance : nécessite un objet
+Méthode de classe : pas besoin d'objet  
+Méthode d'instance : nécessite un objet  
 ```
 
 ---
@@ -108,33 +108,33 @@ type
 
 // Note : FTotal est automatiquement initialisé à 0 (valeur par défaut)
 
-constructor TCompteur.Create;
-begin
+constructor TCompteur.Create;  
+begin  
   FValeur := 0;
   Inc(FTotal);  // Chaque instance créée augmente le total
 end;
 
-procedure TCompteur.Incrementer;
-begin
+procedure TCompteur.Incrementer;  
+begin  
   Inc(FValeur);  // ✅ Peut accéder à FValeur (attribut d'instance)
   WriteLn('Valeur de cette instance : ', FValeur);
 end;
 
-function TCompteur.ObtenirValeur: Integer;
-begin
+function TCompteur.ObtenirValeur: Integer;  
+begin  
   Result := FValeur;
 end;
 
-class procedure TCompteur.ReinitialiserTotal;
-begin
+class procedure TCompteur.ReinitialiserTotal;  
+begin  
   FTotal := 0;  // ✅ Peut accéder à FTotal (attribut de classe)
   WriteLn('Total réinitialisé');
 
   // Inc(FValeur);  ❌ ERREUR : pas d'accès aux attributs d'instance
 end;
 
-class function TCompteur.ObtenirTotal: Integer;
-begin
+class function TCompteur.ObtenirTotal: Integer;  
+begin  
   Result := FTotal;
 end;
 ```
@@ -200,34 +200,34 @@ type
     procedure Afficher;
   end;
 
-constructor TUtilisateur.Create(const Nom, Email, Role: string);
-begin
+constructor TUtilisateur.Create(const Nom, Email, Role: string);  
+begin  
   FNom := Nom;
   FEmail := Email;
   FRole := Role;
 end;
 
-class function TUtilisateur.CreerAdmin(const Nom, Email: string): TUtilisateur;
-begin
+class function TUtilisateur.CreerAdmin(const Nom, Email: string): TUtilisateur;  
+begin  
   WriteLn('🔧 Création d''un administrateur');
   Result := TUtilisateur.Create(Nom, Email, 'Administrateur');
 end;
 
-class function TUtilisateur.CreerInvite(const Nom: string): TUtilisateur;
-begin
+class function TUtilisateur.CreerInvite(const Nom: string): TUtilisateur;  
+begin  
   WriteLn('🔧 Création d''un invité');
   Result := TUtilisateur.Create(Nom, 'invite@exemple.com', 'Invité');
 end;
 
-class function TUtilisateur.CreerDepuisJSON(const JSON: string): TUtilisateur;
-begin
+class function TUtilisateur.CreerDepuisJSON(const JSON: string): TUtilisateur;  
+begin  
   WriteLn('🔧 Création depuis JSON : ', JSON);
   // En réalité, on parserait le JSON ici
   Result := TUtilisateur.Create('Utilisateur', 'user@exemple.com', 'Utilisateur');
 end;
 
-procedure TUtilisateur.Afficher;
-begin
+procedure TUtilisateur.Afficher;  
+begin  
   WriteLn('👤 ', FNom, ' (', FRole, ') - ', FEmail);
 end;
 ```
@@ -288,24 +288,24 @@ type
     class function EstPair(N: Integer): Boolean;
   end;
 
-class function TMathUtils.Max(A, B: Integer): Integer;
-begin
+class function TMathUtils.Max(A, B: Integer): Integer;  
+begin  
   if A > B then
     Result := A
   else
     Result := B;
 end;
 
-class function TMathUtils.Min(A, B: Integer): Integer;
-begin
+class function TMathUtils.Min(A, B: Integer): Integer;  
+begin  
   if A < B then
     Result := A
   else
     Result := B;
 end;
 
-class function TMathUtils.Clamp(Value, Min, Max: Integer): Integer;
-begin
+class function TMathUtils.Clamp(Value, Min, Max: Integer): Integer;  
+begin  
   Result := Value;
   if Result < Min then
     Result := Min
@@ -313,8 +313,8 @@ begin
     Result := Max;
 end;
 
-class function TMathUtils.EstPair(N: Integer): Boolean;
-begin
+class function TMathUtils.EstPair(N: Integer): Boolean;  
+begin  
   Result := (N mod 2) = 0;
 end;
 ```
@@ -334,11 +334,11 @@ end.
 
 **Résultat :**
 ```
-Max(10, 20) = 20
-Min(10, 20) = 10
-Clamp(150, 0, 100) = 100
-EstPair(7) = FALSE
-EstPair(8) = TRUE
+Max(10, 20) = 20  
+Min(10, 20) = 10  
+Clamp(150, 0, 100) = 100  
+EstPair(7) = FALSE  
+EstPair(8) = TRUE  
 ```
 
 ---
@@ -370,16 +370,16 @@ type
 
 // Note : FInstance est automatiquement initialisé à nil (valeur par défaut)
 
-constructor TConfiguration.CreatePrivate;
-begin
+constructor TConfiguration.CreatePrivate;  
+begin  
   inherited Create;
   FNomApplication := 'MonApp';
   FVersion := '1.0.0';
   WriteLn('⚙️  Configuration créée');
 end;
 
-class function TConfiguration.Instance: TConfiguration;
-begin
+class function TConfiguration.Instance: TConfiguration;  
+begin  
   if FInstance = nil then
   begin
     WriteLn('🔧 Création de l''instance unique');
@@ -391,8 +391,8 @@ begin
   Result := FInstance;
 end;
 
-class procedure TConfiguration.LibererInstance;
-begin
+class procedure TConfiguration.LibererInstance;  
+begin  
   if FInstance <> nil then
   begin
     WriteLn('🗑️  Libération de l''instance');
@@ -473,8 +473,8 @@ type
 
 // Note : FNombreConnexions et FNombreActif sont automatiquement initialisés à 0
 
-constructor TConnexion.Create(const Utilisateur: string);
-begin
+constructor TConnexion.Create(const Utilisateur: string);  
+begin  
   inherited Create;
   Inc(FNombreConnexions);
   FID := FNombreConnexions;
@@ -483,25 +483,25 @@ begin
   WriteLn('✅ Connexion #', FID, ' créée pour ', FUtilisateur);
 end;
 
-destructor TConnexion.Destroy;
-begin
+destructor TConnexion.Destroy;  
+begin  
   Dec(FNombreActif);
   WriteLn('❌ Connexion #', FID, ' fermée (', FUtilisateur, ')');
   inherited;
 end;
 
-class function TConnexion.ObtenirNombreTotal: Integer;
-begin
+class function TConnexion.ObtenirNombreTotal: Integer;  
+begin  
   Result := FNombreConnexions;
 end;
 
-class function TConnexion.ObtenirNombreActif: Integer;
-begin
+class function TConnexion.ObtenirNombreActif: Integer;  
+begin  
   Result := FNombreActif;
 end;
 
-class procedure TConnexion.AfficherStatistiques;
-begin
+class procedure TConnexion.AfficherStatistiques;  
+begin  
   WriteLn('📊 Statistiques :');
   WriteLn('   Total de connexions créées : ', FNombreConnexions);
   WriteLn('   Connexions actives : ', FNombreActif);
@@ -584,13 +584,13 @@ type
     class function NomEspece: string;  // ⚠️ Cache la méthode parente
   end;
 
-class function TAnimal.NomEspece: string;
-begin
+class function TAnimal.NomEspece: string;  
+begin  
   Result := 'Animal';
 end;
 
-class function TChien.NomEspece: string;
-begin
+class function TChien.NomEspece: string;  
+begin  
   Result := 'Chien';
 end;
 ```
@@ -609,13 +609,13 @@ type
     class function NomEspece: string; override;  // ✅ Override
   end;
 
-class function TAnimal.NomEspece: string;
-begin
+class function TAnimal.NomEspece: string;  
+begin  
   Result := 'Animal';
 end;
 
-class function TChien.NomEspece: string;
-begin
+class function TChien.NomEspece: string;  
+begin  
   Result := 'Chien';
 end;
 ```
@@ -651,8 +651,8 @@ type
     class procedure MethodeDeClasse;
   end;
 
-class procedure TExemple.MethodeDeClasse;
-begin
+class procedure TExemple.MethodeDeClasse;  
+begin  
   // ❌ ERREUR : Pas d'accès aux attributs d'instance
   // WriteLn(FNom);
 
@@ -668,8 +668,8 @@ end;
 ### ✅ Ce qu'on PEUT faire
 
 ```pascal
-class procedure TExemple.MethodeDeClasse;
-var
+class procedure TExemple.MethodeDeClasse;  
+var  
   Instance: TExemple;
   X: Integer;
 begin
@@ -745,8 +745,8 @@ type
 
 // Note : FConnexionDefaut (nil) et FNombreConnexions (0) sont initialisés par défaut
 
-constructor TConnexionBD.Create(const Serveur, Utilisateur: string);
-begin
+constructor TConnexionBD.Create(const Serveur, Utilisateur: string);  
+begin  
   inherited Create;
   FServeur := Serveur;
   FUtilisateur := Utilisateur;
@@ -755,8 +755,8 @@ begin
   WriteLn('🔧 Connexion créée vers ', FServeur);
 end;
 
-destructor TConnexionBD.Destroy;
-begin
+destructor TConnexionBD.Destroy;  
+begin  
   if FConnecte then
     Deconnecter;
   Dec(FNombreConnexions);
@@ -764,8 +764,8 @@ begin
   inherited;
 end;
 
-procedure TConnexionBD.Connecter;
-begin
+procedure TConnexionBD.Connecter;  
+begin  
   if not FConnecte then
   begin
     FConnecte := True;
@@ -773,8 +773,8 @@ begin
   end;
 end;
 
-procedure TConnexionBD.Deconnecter;
-begin
+procedure TConnexionBD.Deconnecter;  
+begin  
   if FConnecte then
   begin
     FConnecte := False;
@@ -782,20 +782,20 @@ begin
   end;
 end;
 
-class function TConnexionBD.CreerConnexionLocale: TConnexionBD;
-begin
+class function TConnexionBD.CreerConnexionLocale: TConnexionBD;  
+begin  
   WriteLn('📍 Création d''une connexion locale');
   Result := TConnexionBD.Create('localhost', 'root');
 end;
 
-class function TConnexionBD.CreerConnexionDistante(const Serveur: string): TConnexionBD;
-begin
+class function TConnexionBD.CreerConnexionDistante(const Serveur: string): TConnexionBD;  
+begin  
   WriteLn('🌐 Création d''une connexion distante');
   Result := TConnexionBD.Create(Serveur, 'admin');
 end;
 
-class function TConnexionBD.ConnexionDefaut: TConnexionBD;
-begin
+class function TConnexionBD.ConnexionDefaut: TConnexionBD;  
+begin  
   if FConnexionDefaut = nil then
   begin
     WriteLn('🏭 Création de la connexion par défaut');
@@ -804,8 +804,8 @@ begin
   Result := FConnexionDefaut;
 end;
 
-class procedure TConnexionBD.LibererConnexionDefaut;
-begin
+class procedure TConnexionBD.LibererConnexionDefaut;  
+begin  
   if FConnexionDefaut <> nil then
   begin
     FConnexionDefaut.Free;
@@ -813,8 +813,8 @@ begin
   end;
 end;
 
-class function TConnexionBD.NombreConnexions: Integer;
-begin
+class function TConnexionBD.NombreConnexions: Integer;  
+begin  
   Result := FNombreConnexions;
 end;
 ```
@@ -855,9 +855,9 @@ end.
 
 ### Syntaxe
 ```pascal
-class procedure NomMethode;
-class function NomMethode: Type;
-class procedure NomMethode; virtual;  // Peut être virtuelle
+class procedure NomMethode;  
+class function NomMethode: Type;  
+class procedure NomMethode; virtual;  // Peut être virtuelle  
 ```
 
 ### Restrictions

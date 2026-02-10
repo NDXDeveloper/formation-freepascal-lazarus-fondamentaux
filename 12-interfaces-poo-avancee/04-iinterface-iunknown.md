@@ -207,10 +207,10 @@ Si vous héritez de `TInterfacedObject`, vous obtenez **gratuitement** :
 Chaque objet qui implémente `IInterface` possède un **compteur interne** :
 
 ```
-Compteur = 0  →  Objet n'existe pas encore
-Compteur = 1  →  1 variable utilise l'objet
-Compteur = 2  →  2 variables utilisent l'objet
-Compteur = 3  →  3 variables utilisent l'objet
+Compteur = 0  →  Objet n'existe pas encore  
+Compteur = 1  →  1 variable utilise l'objet  
+Compteur = 2  →  2 variables utilisent l'objet  
+Compteur = 3  →  3 variables utilisent l'objet  
 ...
 Compteur = 0  →  Plus personne n'utilise l'objet → DESTRUCTION AUTOMATIQUE
 ```
@@ -237,21 +237,21 @@ type
     procedure Afficher;
   end;
 
-constructor TTest.Create(const Nom: string);
-begin
+constructor TTest.Create(const Nom: string);  
+begin  
   inherited Create;
   FNom := Nom;
   WriteLn('✅ Objet "', FNom, '" créé - Compteur: ', RefCount);
 end;
 
-destructor TTest.Destroy;
-begin
+destructor TTest.Destroy;  
+begin  
   WriteLn('❌ Objet "', FNom, '" détruit');
   inherited;
 end;
 
-procedure TTest.Afficher;
-begin
+procedure TTest.Afficher;  
+begin  
   WriteLn('👋 Je suis "', FNom, '" - Compteur: ', RefCount);
 end;
 

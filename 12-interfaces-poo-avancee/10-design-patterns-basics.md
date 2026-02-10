@@ -96,8 +96,8 @@ type
 // Note : FInstance est automatiquement initialisé à nil (valeur par défaut)
 
 // Constructeur privé
-constructor TConfiguration.CreatePrivate;
-begin
+constructor TConfiguration.CreatePrivate;  
+begin  
   inherited Create;
   // Valeurs par défaut
   FLangue := 'Français';
@@ -107,8 +107,8 @@ begin
 end;
 
 // Méthode pour obtenir l'instance unique
-class function TConfiguration.Instance: TConfiguration;
-begin
+class function TConfiguration.Instance: TConfiguration;  
+begin  
   // Si l'instance n'existe pas, la créer
   if FInstance = nil then
   begin
@@ -122,8 +122,8 @@ begin
 end;
 
 // Méthode pour libérer l'instance
-class procedure TConfiguration.LibererInstance;
-begin
+class procedure TConfiguration.LibererInstance;  
+begin  
   if FInstance <> nil then
   begin
     WriteLn('🗑️  Libération du Singleton');
@@ -193,9 +193,9 @@ Config2 - Langue : Français, Thème : Sombre
 Config3 - Langue : Anglais
 
 ▶ Vérification
-Config1 = Config2 ? TRUE
-Config2 = Config3 ? TRUE
-Config1.Langue (après modification par Config3) : Anglais
+Config1 = Config2 ? TRUE  
+Config2 = Config3 ? TRUE  
+Config1.Langue (après modification par Config3) : Anglais  
 
 🗑️  Libération du Singleton
 ```
@@ -244,8 +244,8 @@ type
 
 // Note : FInstance est automatiquement initialisé à nil
 
-constructor TLogger.CreatePrivate;
-begin
+constructor TLogger.CreatePrivate;  
+begin  
   inherited Create;
   AssignFile(FFichier, 'application.log');
   try
@@ -258,8 +258,8 @@ begin
   end;
 end;
 
-destructor TLogger.Destroy;
-begin
+destructor TLogger.Destroy;  
+begin  
   if FFichierOuvert then
   begin
     CloseFile(FFichier);
@@ -268,15 +268,15 @@ begin
   inherited;
 end;
 
-class function TLogger.Instance: TLogger;
-begin
+class function TLogger.Instance: TLogger;  
+begin  
   if FInstance = nil then
     FInstance := TLogger.CreatePrivate;
   Result := FInstance;
 end;
 
-class procedure TLogger.LibererInstance;
-begin
+class procedure TLogger.LibererInstance;  
+begin  
   if FInstance <> nil then
   begin
     FInstance.Free;
@@ -284,8 +284,8 @@ begin
   end;
 end;
 
-procedure TLogger.Log(Niveau: TNiveauLog; const Message: string);
-const
+procedure TLogger.Log(Niveau: TNiveauLog; const Message: string);  
+const  
   NiveauTexte: array[TNiveauLog] of string = ('DEBUG', 'INFO', 'WARNING', 'ERROR');
 var
   Ligne: string;
@@ -297,23 +297,23 @@ begin
     WriteLn(FFichier, Ligne);
 end;
 
-procedure TLogger.Debug(const Message: string);
-begin
+procedure TLogger.Debug(const Message: string);  
+begin  
   Log(nlDebug, Message);
 end;
 
-procedure TLogger.Info(const Message: string);
-begin
+procedure TLogger.Info(const Message: string);  
+begin  
   Log(nlInfo, Message);
 end;
 
-procedure TLogger.Warning(const Message: string);
-begin
+procedure TLogger.Warning(const Message: string);  
+begin  
   Log(nlWarning, Message);
 end;
 
-procedure TLogger.Error(const Message: string);
-begin
+procedure TLogger.Error(const Message: string);  
+begin  
   Log(nlError, Message);
 end;
 ```
@@ -415,69 +415,69 @@ type
   end;
 
 // Implémentations
-procedure TVoiture.Demarrer;
-begin
+procedure TVoiture.Demarrer;  
+begin  
   WriteLn('🚗 Voiture : Démarrage du moteur');
 end;
 
-procedure TVoiture.Avancer;
-begin
+procedure TVoiture.Avancer;  
+begin  
   WriteLn('🚗 Voiture : Vroum ! La voiture roule');
 end;
 
-procedure TVoiture.Arreter;
-begin
+procedure TVoiture.Arreter;  
+begin  
   WriteLn('🚗 Voiture : Arrêt en douceur');
 end;
 
-function TVoiture.ObtenirType: string;
-begin
+function TVoiture.ObtenirType: string;  
+begin  
   Result := 'Voiture';
 end;
 
-procedure TMoto.Demarrer;
-begin
+procedure TMoto.Demarrer;  
+begin  
   WriteLn('🏍️  Moto : Kick ! Le moteur démarre');
 end;
 
-procedure TMoto.Avancer;
-begin
+procedure TMoto.Avancer;  
+begin  
   WriteLn('🏍️  Moto : Vrouuum ! La moto file');
 end;
 
-procedure TMoto.Arreter;
-begin
+procedure TMoto.Arreter;  
+begin  
   WriteLn('🏍️  Moto : Freinage');
 end;
 
-function TMoto.ObtenirType: string;
-begin
+function TMoto.ObtenirType: string;  
+begin  
   Result := 'Moto';
 end;
 
-procedure TVelo.Demarrer;
-begin
+procedure TVelo.Demarrer;  
+begin  
   WriteLn('🚴 Vélo : On enfourche le vélo');
 end;
 
-procedure TVelo.Avancer;
-begin
+procedure TVelo.Avancer;  
+begin  
   WriteLn('🚴 Vélo : Pédalage en cours');
 end;
 
-procedure TVelo.Arreter;
-begin
+procedure TVelo.Arreter;  
+begin  
   WriteLn('🚴 Vélo : On pose le pied');
 end;
 
-function TVelo.ObtenirType: string;
-begin
+function TVelo.ObtenirType: string;  
+begin  
   Result := 'Vélo';
 end;
 
 // ✅ Implémentation de la Factory
-class function TTransportFactory.CreerTransport(const TypeTransport: string): ITransport;
-begin
+class function TTransportFactory.CreerTransport(const TypeTransport: string): ITransport;  
+begin  
   WriteLn('🏭 Factory : Création d''un transport de type "', TypeTransport, '"');
 
   // Logique de création centralisée
@@ -498,8 +498,8 @@ end;
 ### Utilisation du Factory
 
 ```pascal
-procedure UtiliserTransport(Transport: ITransport);
-begin
+procedure UtiliserTransport(Transport: ITransport);  
+begin  
   WriteLn('═══════════════════════════════');
   WriteLn('Utilisation du transport : ', Transport.ObtenirType);
   Transport.Demarrer;
@@ -632,39 +632,39 @@ type
   end;
 
 // Implémentations des documents
-procedure TDocumentTexte.Ouvrir;
-begin
+procedure TDocumentTexte.Ouvrir;  
+begin  
   WriteLn('📄 Ouverture d''un document texte');
 end;
 
-procedure TDocumentTexte.Afficher;
-begin
+procedure TDocumentTexte.Afficher;  
+begin  
   WriteLn('📖 Affichage du contenu texte');
 end;
 
-procedure TDocumentTexte.Fermer;
-begin
+procedure TDocumentTexte.Fermer;  
+begin  
   WriteLn('📄 Fermeture du document texte');
 end;
 
-procedure TDocumentPDF.Ouvrir;
-begin
+procedure TDocumentPDF.Ouvrir;  
+begin  
   WriteLn('📕 Ouverture d''un document PDF');
 end;
 
-procedure TDocumentPDF.Afficher;
-begin
+procedure TDocumentPDF.Afficher;  
+begin  
   WriteLn('📚 Affichage du PDF avec mise en page');
 end;
 
-procedure TDocumentPDF.Fermer;
-begin
+procedure TDocumentPDF.Fermer;  
+begin  
   WriteLn('📕 Fermeture du document PDF');
 end;
 
 // Implémentation du créateur abstrait
-procedure TEditeur.OuvrirEtAfficher;
-var
+procedure TEditeur.OuvrirEtAfficher;  
+var  
   Doc: IDocument;
 begin
   WriteLn('═══════════════════════════════');
@@ -677,14 +677,14 @@ begin
 end;
 
 // Créateurs concrets
-function TEditeurTexte.CreerDocument: IDocument;
-begin
+function TEditeurTexte.CreerDocument: IDocument;  
+begin  
   WriteLn('🏭 Création d''un document texte');
   Result := TDocumentTexte.Create;
 end;
 
-function TEditeurPDF.CreerDocument: IDocument;
-begin
+function TEditeurPDF.CreerDocument: IDocument;  
+begin  
   WriteLn('🏭 Création d''un document PDF');
   Result := TDocumentPDF.Create;
 end;
@@ -808,103 +808,103 @@ type
   end;
 
 // Implémentations des utilisateurs
-constructor TUtilisateurInvite.Create(const Nom: string);
-begin
+constructor TUtilisateurInvite.Create(const Nom: string);  
+begin  
   inherited Create;
   FNom := Nom;
 end;
 
-function TUtilisateurInvite.ObtenirNom: string;
-begin
+function TUtilisateurInvite.ObtenirNom: string;  
+begin  
   Result := FNom;
 end;
 
-function TUtilisateurInvite.ObtenirNiveau: TNiveauUtilisateur;
-begin
+function TUtilisateurInvite.ObtenirNiveau: TNiveauUtilisateur;  
+begin  
   Result := nuInvite;
 end;
 
-procedure TUtilisateurInvite.SeConnecter;
-begin
+procedure TUtilisateurInvite.SeConnecter;  
+begin  
   WriteLn('👤 Invité "', FNom, '" connecté (accès limité)');
 end;
 
-procedure TUtilisateurInvite.SeDeconnecter;
-begin
+procedure TUtilisateurInvite.SeDeconnecter;  
+begin  
   WriteLn('👋 Invité "', FNom, '" déconnecté');
 end;
 
-constructor TUtilisateurStandard.Create(const Nom: string);
-begin
+constructor TUtilisateurStandard.Create(const Nom: string);  
+begin  
   inherited Create;
   FNom := Nom;
 end;
 
-function TUtilisateurStandard.ObtenirNom: string;
-begin
+function TUtilisateurStandard.ObtenirNom: string;  
+begin  
   Result := FNom;
 end;
 
-function TUtilisateurStandard.ObtenirNiveau: TNiveauUtilisateur;
-begin
+function TUtilisateurStandard.ObtenirNiveau: TNiveauUtilisateur;  
+begin  
   Result := nuUtilisateur;
 end;
 
-procedure TUtilisateurStandard.SeConnecter;
-begin
+procedure TUtilisateurStandard.SeConnecter;  
+begin  
   WriteLn('👤 Utilisateur "', FNom, '" connecté (accès standard)');
 end;
 
-procedure TUtilisateurStandard.SeDeconnecter;
-begin
+procedure TUtilisateurStandard.SeDeconnecter;  
+begin  
   WriteLn('👋 Utilisateur "', FNom, '" déconnecté');
 end;
 
-constructor TUtilisateurAdmin.Create(const Nom: string);
-begin
+constructor TUtilisateurAdmin.Create(const Nom: string);  
+begin  
   inherited Create;
   FNom := Nom;
 end;
 
-function TUtilisateurAdmin.ObtenirNom: string;
-begin
+function TUtilisateurAdmin.ObtenirNom: string;  
+begin  
   Result := FNom;
 end;
 
-function TUtilisateurAdmin.ObtenirNiveau: TNiveauUtilisateur;
-begin
+function TUtilisateurAdmin.ObtenirNiveau: TNiveauUtilisateur;  
+begin  
   Result := nuAdmin;
 end;
 
-procedure TUtilisateurAdmin.SeConnecter;
-begin
+procedure TUtilisateurAdmin.SeConnecter;  
+begin  
   WriteLn('👑 Administrateur "', FNom, '" connecté (accès total)');
 end;
 
-procedure TUtilisateurAdmin.SeDeconnecter;
-begin
+procedure TUtilisateurAdmin.SeDeconnecter;  
+begin  
   WriteLn('👋 Administrateur "', FNom, '" déconnecté');
 end;
 
 // Implémentation du Singleton
 // Note : FInstance est automatiquement initialisé à nil
 
-constructor TGestionnaireSession.CreatePrivate;
-begin
+constructor TGestionnaireSession.CreatePrivate;  
+begin  
   inherited Create;
   FUtilisateurCourant := nil;
   WriteLn('🔧 Gestionnaire de session initialisé');
 end;
 
-class function TGestionnaireSession.Instance: TGestionnaireSession;
-begin
+class function TGestionnaireSession.Instance: TGestionnaireSession;  
+begin  
   if FInstance = nil then
     FInstance := TGestionnaireSession.CreatePrivate;
   Result := FInstance;
 end;
 
-class procedure TGestionnaireSession.LibererInstance;
-begin
+class procedure TGestionnaireSession.LibererInstance;  
+begin  
   if FInstance <> nil then
   begin
     FInstance.Free;
@@ -912,8 +912,8 @@ begin
   end;
 end;
 
-procedure TGestionnaireSession.ConnecterUtilisateur(Utilisateur: IUtilisateur);
-begin
+procedure TGestionnaireSession.ConnecterUtilisateur(Utilisateur: IUtilisateur);  
+begin  
   if FUtilisateurCourant <> nil then
     FUtilisateurCourant.SeDeconnecter;
 
@@ -921,8 +921,8 @@ begin
   FUtilisateurCourant.SeConnecter;
 end;
 
-procedure TGestionnaireSession.DeconnecterUtilisateur;
-begin
+procedure TGestionnaireSession.DeconnecterUtilisateur;  
+begin  
   if FUtilisateurCourant <> nil then
   begin
     FUtilisateurCourant.SeDeconnecter;
@@ -932,19 +932,19 @@ begin
     WriteLn('⚠️  Aucun utilisateur connecté');
 end;
 
-function TGestionnaireSession.ObtenirUtilisateurCourant: IUtilisateur;
-begin
+function TGestionnaireSession.ObtenirUtilisateurCourant: IUtilisateur;  
+begin  
   Result := FUtilisateurCourant;
 end;
 
-function TGestionnaireSession.EstConnecte: Boolean;
-begin
+function TGestionnaireSession.EstConnecte: Boolean;  
+begin  
   Result := FUtilisateurCourant <> nil;
 end;
 
 // Implémentation du Factory
-class function TUtilisateurFactory.CreerUtilisateur(Niveau: TNiveauUtilisateur; const Nom: string): IUtilisateur;
-begin
+class function TUtilisateurFactory.CreerUtilisateur(Niveau: TNiveauUtilisateur; const Nom: string): IUtilisateur;  
+begin  
   WriteLn('🏭 Création d''un utilisateur : ', Nom);
 
   case Niveau of
@@ -1075,8 +1075,8 @@ end.
 
 **Singleton :**
 ```pascal
-class function Instance: TClasse;
-begin
+class function Instance: TClasse;  
+begin  
   if FInstance = nil then
     FInstance := TClasse.CreatePrivate;
   Result := FInstance;
@@ -1085,8 +1085,8 @@ end;
 
 **Factory :**
 ```pascal
-class function Creer(Type: string): IInterface;
-begin
+class function Creer(Type: string): IInterface;  
+begin  
   case Type of
     'A': Result := TClasseA.Create;
     'B': Result := TClasseB.Create;

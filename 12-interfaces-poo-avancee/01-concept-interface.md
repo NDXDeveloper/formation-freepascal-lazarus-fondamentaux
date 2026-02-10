@@ -87,20 +87,20 @@ type
 
 implementation
 
-procedure TChien.Marcher;
-begin
+procedure TChien.Marcher;  
+begin  
   FVitesse := 5;
   WriteLn('Le chien court à 4 pattes');
 end;
 
-procedure TChien.Arreter;
-begin
+procedure TChien.Arreter;  
+begin  
   FVitesse := 0;
   WriteLn('Le chien s''arrête');
 end;
 
-function TChien.ObtenirVitesse: Integer;
-begin
+function TChien.ObtenirVitesse: Integer;  
+begin  
   Result := FVitesse;
 end;
 ```
@@ -139,30 +139,30 @@ type
   end;
 
 // Implémentation de TOiseau
-procedure TOiseau.Voler;
-begin
+procedure TOiseau.Voler;  
+begin  
   WriteLn('L''oiseau bat des ailes et s''envole gracieusement');
 end;
 
-procedure TOiseau.Atterrir;
-begin
+procedure TOiseau.Atterrir;  
+begin  
   WriteLn('L''oiseau se pose sur une branche');
 end;
 
 // Implémentation de TAvion
-procedure TAvion.Voler;
-begin
+procedure TAvion.Voler;  
+begin  
   WriteLn('L''avion décolle avec ses réacteurs');
 end;
 
-procedure TAvion.Atterrir;
-begin
+procedure TAvion.Atterrir;  
+begin  
   WriteLn('L''avion se pose sur la piste');
 end;
 
 // Procédure qui utilise n'importe quel objet volant
-procedure FaireVoler(UnVolant: IVolant);
-begin
+procedure FaireVoler(UnVolant: IVolant);  
+begin  
   WriteLn('--- Démarrage du vol ---');
   UnVolant.Voler;
   UnVolant.Atterrir;
@@ -187,12 +187,12 @@ end.
 **Résultat :**
 ```
 --- Démarrage du vol ---
-L'oiseau bat des ailes et s'envole gracieusement
-L'oiseau se pose sur une branche
+L'oiseau bat des ailes et s'envole gracieusement  
+L'oiseau se pose sur une branche  
 
 --- Démarrage du vol ---
-L'avion décolle avec ses réacteurs
-L'avion se pose sur la piste
+L'avion décolle avec ses réacteurs  
+L'avion se pose sur la piste  
 ```
 
 ---

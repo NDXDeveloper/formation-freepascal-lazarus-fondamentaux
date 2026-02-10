@@ -82,51 +82,51 @@ type
   end;
 
 // Implémentation du Moteur
-constructor TMoteur.Create(Puissance: Integer);
-begin
+constructor TMoteur.Create(Puissance: Integer);  
+begin  
   FPuissance := Puissance;
   FDemarre := False;
 end;
 
-procedure TMoteur.Demarrer;
-begin
+procedure TMoteur.Demarrer;  
+begin  
   FDemarre := True;
   WriteLn('🔧 Moteur démarré (', FPuissance, ' ch)');
 end;
 
-procedure TMoteur.Arreter;
-begin
+procedure TMoteur.Arreter;  
+begin  
   FDemarre := False;
   WriteLn('🔧 Moteur arrêté');
 end;
 
-function TMoteur.EstDemarre: Boolean;
-begin
+function TMoteur.EstDemarre: Boolean;  
+begin  
   Result := FDemarre;
 end;
 
 // Implémentation des Roues
-constructor TRoues.Create(Nombre: Integer);
-begin
+constructor TRoues.Create(Nombre: Integer);  
+begin  
   FNombre := Nombre;
 end;
 
-procedure TRoues.Tourner;
-begin
+procedure TRoues.Tourner;  
+begin  
   WriteLn('🛞 Les ', FNombre, ' roues tournent');
 end;
 
 // Implémentation de la Voiture
-constructor TVoiture.Create;
-begin
+constructor TVoiture.Create;  
+begin  
   // Création des composants
   FMoteur := TMoteur.Create(150);
   FRoues := TRoues.Create(4);
   WriteLn('🚗 Voiture assemblée');
 end;
 
-destructor TVoiture.Destroy;
-begin
+destructor TVoiture.Destroy;  
+begin  
   // Important : libérer les composants
   FMoteur.Free;
   FRoues.Free;
@@ -134,14 +134,14 @@ begin
   inherited;
 end;
 
-procedure TVoiture.Demarrer;
-begin
+procedure TVoiture.Demarrer;  
+begin  
   WriteLn('▶ Démarrage de la voiture...');
   FMoteur.Demarrer;
 end;
 
-procedure TVoiture.Rouler;
-begin
+procedure TVoiture.Rouler;  
+begin  
   if FMoteur.EstDemarre then
   begin
     WriteLn('▶ La voiture roule...');
@@ -151,8 +151,8 @@ begin
     WriteLn('⚠️  Impossible de rouler : moteur arrêté');
 end;
 
-procedure TVoiture.Arreter;
-begin
+procedure TVoiture.Arreter;  
+begin  
   WriteLn('▶ Arrêt de la voiture...');
   FMoteur.Arreter;
 end;
@@ -223,26 +223,26 @@ type
     function DemanderRapport(const Sujet: string): string;
   end;
 
-function TAssistant.RedigerRapport(const Sujet: string): string;
-begin
+function TAssistant.RedigerRapport(const Sujet: string): string;  
+begin  
   WriteLn('📝 Assistant : Je rédige le rapport sur "', Sujet, '"');
   Result := 'Rapport complet sur ' + Sujet;
 end;
 
-constructor TPatron.Create;
-begin
+constructor TPatron.Create;  
+begin  
   FAssistant := TAssistant.Create;
   WriteLn('👔 Patron créé avec son assistant');
 end;
 
-destructor TPatron.Destroy;
-begin
+destructor TPatron.Destroy;  
+begin  
   FAssistant.Free;
   inherited;
 end;
 
-function TPatron.DemanderRapport(const Sujet: string): string;
-begin
+function TPatron.DemanderRapport(const Sujet: string): string;  
+begin  
   WriteLn('👔 Patron : Je demande un rapport à mon assistant');
   Result := FAssistant.RedigerRapport(Sujet);  // ← DÉLÉGATION
   WriteLn('👔 Patron : Merci, je transmets le rapport');
@@ -346,23 +346,23 @@ type
     procedure Nager;
   end;
 
-procedure TModuleMarcheuse.Marcher;
-begin
+procedure TModuleMarcheuse.Marcher;  
+begin  
   WriteLn('🚶 Module de marche activé');
 end;
 
-procedure TModuleVol.Voler;
-begin
+procedure TModuleVol.Voler;  
+begin  
   WriteLn('🚁 Module de vol activé');
 end;
 
-procedure TModuleNage.Nager;
-begin
+procedure TModuleNage.Nager;  
+begin  
   WriteLn('🏊 Module de nage activé');
 end;
 
-constructor TRobot.Create(AvecMarche, AvecVol, AvecNage: Boolean);
-begin
+constructor TRobot.Create(AvecMarche, AvecVol, AvecNage: Boolean);  
+begin  
   // ✅ On crée seulement les modules nécessaires
   if AvecMarche then
     FMarcheuse := TModuleMarcheuse.Create;
@@ -372,32 +372,32 @@ begin
     FNage := TModuleNage.Create;
 end;
 
-destructor TRobot.Destroy;
-begin
+destructor TRobot.Destroy;  
+begin  
   if Assigned(FMarcheuse) then FMarcheuse.Free;
   if Assigned(FVol) then FVol.Free;
   if Assigned(FNage) then FNage.Free;
   inherited;
 end;
 
-procedure TRobot.Marcher;
-begin
+procedure TRobot.Marcher;  
+begin  
   if Assigned(FMarcheuse) then
     FMarcheuse.Marcher  // ← DÉLÉGATION
   else
     WriteLn('❌ Ce robot ne peut pas marcher');
 end;
 
-procedure TRobot.Voler;
-begin
+procedure TRobot.Voler;  
+begin  
   if Assigned(FVol) then
     FVol.Voler  // ← DÉLÉGATION
   else
     WriteLn('❌ Ce robot ne peut pas voler');
 end;
 
-procedure TRobot.Nager;
-begin
+procedure TRobot.Nager;  
+begin  
   if Assigned(FNage) then
     FNage.Nager  // ← DÉLÉGATION
   else
@@ -475,8 +475,8 @@ end.
 
 ```pascal
 // On peut changer les composants à l'exécution
-procedure ChangerMoteur(Voiture: TVoiture; NouveauMoteur: TMoteur);
-begin
+procedure ChangerMoteur(Voiture: TVoiture; NouveauMoteur: TMoteur);  
+begin  
   Voiture.Moteur.Free;
   Voiture.Moteur := NouveauMoteur;
 end;
@@ -510,8 +510,8 @@ Avec l'héritage, changer la classe parent peut casser tous les descendants. Ave
 
 ```pascal
 // On peut tester chaque composant séparément
-procedure TesterMoteur;
-var
+procedure TesterMoteur;  
+var  
   Moteur: TMoteur;
 begin
   Moteur := TMoteur.Create(100);
@@ -572,33 +572,33 @@ type
   end;
 
 // Implémentation de l'écrivain
-constructor TEcrivainFichier.Create(const NomFichier: string);
-begin
+constructor TEcrivainFichier.Create(const NomFichier: string);  
+begin  
   inherited Create;
   FNomFichier := NomFichier;
 end;
 
-procedure TEcrivainFichier.Ecrire(const Texte: string);
-begin
+procedure TEcrivainFichier.Ecrire(const Texte: string);  
+begin  
   WriteLn('💾 Écriture dans ', FNomFichier, ': ', Texte);
   // En vrai, on écrirait dans un fichier
 end;
 
 // Implémentation du formateur
-function TFormateur.FormaterMessage(const Message: string): string;
-begin
+function TFormateur.FormaterMessage(const Message: string): string;  
+begin  
   Result := '[' + DateTimeToStr(Now) + '] ' + Message;
 end;
 
 // Implémentation du Logger
-constructor TLogger.Create(Ecrivain: IEcrivainFichier; Formateur: IFormateur);
-begin
+constructor TLogger.Create(Ecrivain: IEcrivainFichier; Formateur: IFormateur);  
+begin  
   FEcrivain := Ecrivain;
   FFormateur := Formateur;
 end;
 
-procedure TLogger.Log(const Message: string);
-var
+procedure TLogger.Log(const Message: string);  
+var  
   MessageFormate: string;
 begin
   // Délégation au formateur
@@ -659,8 +659,8 @@ type
     destructor Destroy; override;
   end;
 
-constructor TService.Create;
-begin
+constructor TService.Create;  
+begin  
   // ❌ Dépendance forte : TService crée son logger
   FLogger := TLogger.Create('service.log');
 end;
@@ -678,8 +678,8 @@ type
     constructor Create(Logger: ILogger);
   end;
 
-constructor TService.Create(Logger: ILogger);
-begin
+constructor TService.Create(Logger: ILogger);  
+begin  
   FLogger := Logger;  // Pas de création, juste stockage
 end;
 ```
@@ -726,31 +726,31 @@ type
   end;
 
 // Implémentations
-procedure TEnvoyeurEmail.Envoyer(const Destinataire, Message: string);
-begin
+procedure TEnvoyeurEmail.Envoyer(const Destinataire, Message: string);  
+begin  
   WriteLn('📧 Email envoyé à ', Destinataire);
   WriteLn('   Contenu: ', Message);
 end;
 
-procedure TEnvoyeurSMS.Envoyer(const Destinataire, Message: string);
-begin
+procedure TEnvoyeurSMS.Envoyer(const Destinataire, Message: string);  
+begin  
   WriteLn('📱 SMS envoyé à ', Destinataire);
   WriteLn('   Contenu: ', Message);
 end;
 
-constructor TGestionnaireNotifications.Create;
-begin
+constructor TGestionnaireNotifications.Create;  
+begin  
   SetLength(FEnvoyeurs, 0);
 end;
 
-procedure TGestionnaireNotifications.AjouterEnvoyeur(Envoyeur: IEnvoyeur);
-begin
+procedure TGestionnaireNotifications.AjouterEnvoyeur(Envoyeur: IEnvoyeur);  
+begin  
   SetLength(FEnvoyeurs, Length(FEnvoyeurs) + 1);
   FEnvoyeurs[High(FEnvoyeurs)] := Envoyeur;
 end;
 
-procedure TGestionnaireNotifications.EnvoyerNotification(const Destinataire, Message: string);
-var
+procedure TGestionnaireNotifications.EnvoyerNotification(const Destinataire, Message: string);  
+var  
   Envoyeur: IEnvoyeur;
 begin
   WriteLn('📬 Envoi de notification à ', Destinataire);
@@ -887,43 +887,43 @@ type
     property Email: string read FEmail write FEmail;
   end;
 
-constructor TEntite.Create(ID: Integer; const Nom: string);
-begin
+constructor TEntite.Create(ID: Integer; const Nom: string);  
+begin  
   FID := ID;
   FNom := Nom;
 end;
 
-procedure TGestionnairePersistence.SauvegarderDansFichier(Entite: TEntite);
-begin
+procedure TGestionnairePersistence.SauvegarderDansFichier(Entite: TEntite);  
+begin  
   WriteLn('💾 Sauvegarde de ', Entite.Nom, ' dans la base');
 end;
 
-procedure TGestionnairePersistence.ChargerDepuisFichier(Entite: TEntite);
-begin
+procedure TGestionnairePersistence.ChargerDepuisFichier(Entite: TEntite);  
+begin  
   WriteLn('📂 Chargement de ', Entite.Nom, ' depuis la base');
 end;
 
-constructor TUtilisateur.Create(ID: Integer; const Nom, Email: string);
-begin
+constructor TUtilisateur.Create(ID: Integer; const Nom, Email: string);  
+begin  
   inherited Create(ID, Nom);
   FEmail := Email;
   FGestionnairePersistence := TGestionnairePersistence.Create;
 end;
 
-destructor TUtilisateur.Destroy;
-begin
+destructor TUtilisateur.Destroy;  
+begin  
   FGestionnairePersistence.Free;
   inherited;
 end;
 
-procedure TUtilisateur.Sauvegarder;
-begin
+procedure TUtilisateur.Sauvegarder;  
+begin  
   // Délégation au gestionnaire de persistence
   FGestionnairePersistence.SauvegarderDansFichier(Self);
 end;
 
-procedure TUtilisateur.Charger;
-begin
+procedure TUtilisateur.Charger;  
+begin  
   // Délégation au gestionnaire de persistence
   FGestionnairePersistence.ChargerDepuisFichier(Self);
 end;
