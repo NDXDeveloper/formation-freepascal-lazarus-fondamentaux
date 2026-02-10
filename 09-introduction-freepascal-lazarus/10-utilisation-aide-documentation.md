@@ -442,8 +442,8 @@ Utilisez les balises code du forum :
 
 ```
 [code]
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   ShowMessage('Test');
 end;
 [/code]
@@ -571,8 +571,8 @@ Exemple :
 ```
 TButton - A push button component
 
-TButton is a standard push button that can be clicked by the user
-to trigger an action in your application.
+TButton is a standard push button that can be clicked by the user  
+to trigger an action in your application.  
 ```
 
 #### 2. Déclaration
@@ -591,9 +591,9 @@ type
 
 Exemple :
 ```
-Caption: String - The text displayed on the button
-Enabled: Boolean - Whether the button can be clicked
-Width: Integer - Width of the button in pixels
+Caption: String - The text displayed on the button  
+Enabled: Boolean - Whether the button can be clicked  
+Width: Integer - Width of the button in pixels  
 ```
 
 #### 4. Méthodes
@@ -620,8 +620,8 @@ OnClick: TNotifyEvent - Occurs when the button is clicked
 
 Exemple :
 ```pascal
-Button1.Caption := 'Click Me';
-Button1.OnClick := @Button1Click;
+Button1.Caption := 'Click Me';  
+Button1.OnClick := @Button1Click;  
 ```
 
 #### 7. See Also (Voir aussi)
@@ -686,8 +686,8 @@ procedure ReadFile(out Content: String);
 
 **overload** : Plusieurs versions de la fonction existent
 ```pascal
-function IntToStr(Value: Integer): String; overload;
-function IntToStr(Value: Int64): String; overload;
+function IntToStr(Value: Integer): String; overload;  
+function IntToStr(Value: Int64): String; overload;  
 ```
 
 ## Stratégies de recherche d'information

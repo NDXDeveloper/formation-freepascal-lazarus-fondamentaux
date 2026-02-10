@@ -42,10 +42,10 @@ Si vous ne connaissez pas votre version exacte :
 
 **Exemple de résultat :**
 ```
-Distributor ID: Ubuntu
-Description:    Ubuntu 22.04.3 LTS
-Release:        22.04
-Codename:       jammy
+Distributor ID: Ubuntu  
+Description:    Ubuntu 22.04.3 LTS  
+Release:        22.04  
+Codename:       jammy  
 ```
 
 ## Comprendre le Terminal (pour les débutants)
@@ -220,8 +220,8 @@ lazarus-ide --version
 
 **Exemple de sortie :**
 ```
-Lazarus 3.0 r[version]
-FPC 3.2.2
+Lazarus 3.0 r[version]  
+FPC 3.2.2  
 ```
 
 **🎉 Félicitations ! Vous avez installé Lazarus avec la méthode recommandée !**
@@ -262,9 +262,9 @@ cd ~/Téléchargements
 Puis installez dans l'ordre :
 
 ```bash
-sudo dpkg -i fpc-laz_*.deb
-sudo dpkg -i fpc-src_*.deb
-sudo dpkg -i lazarus-project_*.deb
+sudo dpkg -i fpc-laz_*.deb  
+sudo dpkg -i fpc-src_*.deb  
+sudo dpkg -i lazarus-project_*.deb  
 ```
 
 **Note :** Le `*` remplace automatiquement les numéros de version.
@@ -378,9 +378,9 @@ Vous devriez voir :
 
 **Exemple :**
 ```
-Lazarus 3.0
-FPC 3.2.2
-Target: x86_64-linux-gtk2
+Lazarus 3.0  
+FPC 3.2.2  
+Target: x86_64-linux-gtk2  
 ```
 
 ### Test 2 : Compiler un programme console
@@ -391,8 +391,8 @@ Target: x86_64-linux-gtk2
 ```pascal
 program Project1;
 
-begin
-end.
+begin  
+end.  
 ```
 
 3. Modifiez-le :
@@ -501,8 +501,8 @@ Linux offre plusieurs types d'interfaces graphiques. Lazarus peut utiliser :
 lazarus
 
 # Ou trouvez où Lazarus est installé :
-which lazarus
-which lazarus-ide
+which lazarus  
+which lazarus-ide  
 
 # Si rien ne fonctionne, réinstallez :
 sudo apt install --reinstall lazarus
@@ -636,13 +636,13 @@ Collez ce contenu :
 
 ```ini
 [Desktop Entry]
-Name=Lazarus IDE
-Comment=Environnement de développement FreePascal
-Exec=/usr/bin/lazarus-ide
-Icon=/usr/share/pixmaps/lazarus.png
-Terminal=false
-Type=Application
-Categories=Development;IDE;
+Name=Lazarus IDE  
+Comment=Environnement de développement FreePascal  
+Exec=/usr/bin/lazarus-ide  
+Icon=/usr/share/pixmaps/lazarus.png  
+Terminal=false  
+Type=Application  
+Categories=Development;IDE;  
 ```
 
 Sauvegardez : **Ctrl+O**, **Entrée**, **Ctrl+X**
@@ -656,8 +656,8 @@ Maintenant Lazarus apparaît dans votre menu Applications !
 Les mises à jour sont automatiques avec votre système :
 
 ```bash
-sudo apt update
-sudo apt upgrade
+sudo apt update  
+sudo apt upgrade  
 ```
 
 Lazarus se mettra à jour en même temps que vos autres logiciels.

@@ -414,8 +414,8 @@ end.
 
 **I/O checking** (-Ci) : Vérifier les erreurs d'entrée/sortie
 ```pascal
-Assign(F, 'fichier.txt');
-Reset(F);  // Erreur détectée si le fichier n'existe pas
+Assign(F, 'fichier.txt');  
+Reset(F);  // Erreur détectée si le fichier n'existe pas  
 ```
 
 **Recommandations :**
@@ -487,9 +487,9 @@ Pendant la compilation, Lazarus affiche des messages dans une fenêtre en bas de
 #### 1. Messages informatifs (blancs)
 
 ```
-Compiling unit1.pas
-Compiling MonAppli.lpr
-Linking MonAppli.exe
+Compiling unit1.pas  
+Compiling MonAppli.lpr  
+Linking MonAppli.exe  
 ```
 
 ✅ **Tout va bien !** C'est juste le compilateur qui vous informe de ce qu'il fait.
@@ -497,16 +497,16 @@ Linking MonAppli.exe
 #### 2. Hints (conseils - gris/bleu clair)
 
 ```
-Hint: Parameter "Sender" not used
-Hint: Local variable "i" does not seem to be initialized
+Hint: Parameter "Sender" not used  
+Hint: Local variable "i" does not seem to be initialized  
 ```
 
 💡 **Suggestions d'amélioration.** Pas d'erreur, mais le compilateur suggère d'améliorer le code.
 
 **Exemple :**
 ```pascal
-procedure TForm1.Button1Click(Sender: TObject);
-var
+procedure TForm1.Button1Click(Sender: TObject);  
+var  
   i: Integer;  // Hint : variable déclarée mais jamais utilisée
 begin
   ShowMessage('Test');
@@ -518,16 +518,16 @@ end;
 #### 3. Warnings (avertissements - orange/jaune)
 
 ```
-Warning: Variable "x" might not have been initialized
-Warning: Function result does not seem to be set
+Warning: Variable "x" might not have been initialized  
+Warning: Function result does not seem to be set  
 ```
 
 ⚠️ **Attention !** Pas d'erreur bloquante, mais risque de bug.
 
 **Exemple :**
 ```pascal
-function Calculer: Integer;
-var
+function Calculer: Integer;  
+var  
   x: Integer;
 begin
   if Random > 0.5 then
@@ -540,9 +540,9 @@ end;
 #### 4. Errors (erreurs - rouge)
 
 ```
-Error: Identifier not found "WritLn"
-Error: Illegal expression
-Error: ";" expected but "." found
+Error: Identifier not found "WritLn"  
+Error: Illegal expression  
+Error: ";" expected but "." found  
 ```
 
 ❌ **Erreur bloquante.** Le programme ne compile pas.
@@ -560,8 +560,8 @@ end.
 #### 5. Fatal Errors (erreurs fatales - rouge foncé)
 
 ```
-Fatal: Can't find unit system
-Fatal: Compilation aborted
+Fatal: Can't find unit system  
+Fatal: Compilation aborted  
 ```
 
 💀 **Erreur critique.** Le compilateur ne peut pas continuer.
@@ -866,16 +866,16 @@ end;
 var
   GlobalVar: Integer;
 
-procedure Test;
-begin
+procedure Test;  
+begin  
   GlobalVar := GlobalVar + 1;  // Accès à une variable globale (plus lent)
 end;
 ```
 
 **Plus efficace :**
 ```pascal
-procedure Test;
-var
+procedure Test;  
+var  
   LocalVar: Integer;  // Variable locale (plus rapide)
 begin
   LocalVar := LocalVar + 1;
@@ -892,8 +892,8 @@ for i := 1 to 1000 do
 
 **Plus efficace :**
 ```pascal
-Constante := PI / 180;  // Calculé une seule fois
-for i := 1 to 1000 do
+Constante := PI / 180;  // Calculé une seule fois  
+for i := 1 to 1000 do  
   x := y * Constante;
 ```
 

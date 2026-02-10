@@ -837,8 +837,8 @@ C:\Users\VotreNom\AppData\Local\lazarus\
 
 **Windows :**
 ```
-Copier C:\Users\VotreNom\AppData\Local\lazarus
-Vers   C:\Backup\lazarus-config-2025-01-15
+Copier C:\Users\VotreNom\AppData\Local\lazarus  
+Vers   C:\Backup\lazarus-config-2025-01-15  
 ```
 
 **Linux :**

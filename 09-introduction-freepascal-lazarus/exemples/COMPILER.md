@@ -92,15 +92,15 @@ Aucun exemple compilable (section descriptive).
 ### 06-appli-graphique (MonAppli)
 
 ```bash
-cd 06-appli-graphique
-lazbuild MonAppli.lpi
+cd 06-appli-graphique  
+lazbuild MonAppli.lpi  
 ```
 
 ### 06-appli-compteur (AppliCompteur)
 
 ```bash
-cd 06-appli-compteur
-lazbuild AppliCompteur.lpi
+cd 06-appli-compteur  
+lazbuild AppliCompteur.lpi  
 ```
 
 ## Notes

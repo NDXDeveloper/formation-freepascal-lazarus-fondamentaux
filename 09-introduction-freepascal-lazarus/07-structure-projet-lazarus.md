@@ -267,8 +267,8 @@ implementation
 
 {$R *.lfm}  // Charge le formulaire visuel
 
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   ShowMessage('Bouton cliqué !');
 end;
 
@@ -316,25 +316,25 @@ uses
   SysUtils;
 
 // Fonctions publiques (utilisables depuis d'autres unités)
-function Additionner(a, b: Integer): Integer;
-function Multiplier(a, b: Integer): Integer;
-function Diviser(a, b: Real): Real;
+function Additionner(a, b: Integer): Integer;  
+function Multiplier(a, b: Integer): Integer;  
+function Diviser(a, b: Real): Real;  
 
 implementation
 
 // Code des fonctions
-function Additionner(a, b: Integer): Integer;
-begin
+function Additionner(a, b: Integer): Integer;  
+begin  
   Result := a + b;
 end;
 
-function Multiplier(a, b: Integer): Integer;
-begin
+function Multiplier(a, b: Integer): Integer;  
+begin  
   Result := a * b;
 end;
 
-function Diviser(a, b: Real): Real;
-begin
+function Diviser(a, b: Real): Real;  
+begin  
   if b = 0 then
     raise Exception.Create('Division par zéro !')
   else
@@ -358,8 +358,8 @@ uses
 
 implementation
 
-procedure TForm1.Button1Click(Sender: TObject);
-var
+procedure TForm1.Button1Click(Sender: TObject);  
+var  
   Resultat: Integer;
 begin
   Resultat := Additionner(5, 3);  // Utilise la fonction de UnitCalculs
@@ -762,11 +762,11 @@ uses unit1;  // Erreur : dépendance circulaire !
 
 ```pascal
 // unit1.pas
-interface
-uses Classes;
+interface  
+uses Classes;  
 
-implementation
-uses unit2;  // OK : dans implementation seulement
+implementation  
+uses unit2;  // OK : dans implementation seulement  
 ```
 
 ## Organisation d'un projet multi-formulaires
@@ -1068,8 +1068,8 @@ MonGrosProjet/
 
 **Fichiers à suivre :**
 ```bash
-git add *.lpi *.lpr *.pas *.lfm *.res README.md
-git commit -m "Version initiale"
+git add *.lpi *.lpr *.pas *.lfm *.res README.md  
+git commit -m "Version initiale"  
 ```
 
 **Fichiers à ignorer :** Voir le .gitignore plus haut.

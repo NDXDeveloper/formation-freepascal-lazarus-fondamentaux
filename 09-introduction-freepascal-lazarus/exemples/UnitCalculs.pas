@@ -13,25 +13,25 @@ uses
   SysUtils;
 
 // Fonctions publiques (utilisables depuis d'autres unités)
-function Additionner(a, b: Integer): Integer;
-function Multiplier(a, b: Integer): Integer;
-function Diviser(a, b: Real): Real;
+function Additionner(a, b: Integer): Integer;  
+function Multiplier(a, b: Integer): Integer;  
+function Diviser(a, b: Real): Real;  
 
 implementation
 
 // Code des fonctions
-function Additionner(a, b: Integer): Integer;
-begin
+function Additionner(a, b: Integer): Integer;  
+begin  
   Result := a + b;
 end;
 
-function Multiplier(a, b: Integer): Integer;
-begin
+function Multiplier(a, b: Integer): Integer;  
+begin  
   Result := a * b;
 end;
 
-function Diviser(a, b: Real): Real;
-begin
+function Diviser(a, b: Real): Real;  
+begin  
   if b = 0 then
     raise Exception.Create('Division par zéro !')
   else

@@ -1,4 +1,4 @@
-unit Unit1;
+unit Unit1;  
 
 {$mode objfpc}{$H+}
 
@@ -27,8 +27,8 @@ implementation
 
 {$R *.lfm}  // Charge le fichier .lfm (description visuelle du formulaire)
 
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   Compteur := Compteur + 1;
   LabelCompteur.Caption := 'Compteur : ' + IntToStr(Compteur);
 

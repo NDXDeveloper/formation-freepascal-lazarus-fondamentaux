@@ -1,4 +1,4 @@
-unit Unit1;
+unit Unit1;  
 
 {$mode objfpc}{$H+}
 
@@ -25,8 +25,8 @@ implementation
 
 {$R *.lfm}  // Charge le fichier .lfm (description visuelle du formulaire)
 
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   ShowMessage('Bonjour ! Vous avez cliqué sur le bouton !');
 end;
 

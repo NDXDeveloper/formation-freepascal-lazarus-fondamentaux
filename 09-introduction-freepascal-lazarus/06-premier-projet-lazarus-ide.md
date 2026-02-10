@@ -118,8 +118,8 @@ Vous devriez voir :
 ```pascal
 program Project1;
 
-begin
-end.
+begin  
+end.  
 ```
 
 **Explication ligne par ligne :**
@@ -207,9 +207,9 @@ Il est temps de voir votre programme fonctionner !
 Une fenêtre console (noire ou blanche selon votre système) s'ouvre avec :
 
 ```
-Hello World !
-Ceci est mon premier programme avec Lazarus.
-Appuyez sur Entrée pour quitter...
+Hello World !  
+Ceci est mon premier programme avec Lazarus.  
+Appuyez sur Entrée pour quitter...  
 ```
 
 Le curseur clignote, attendant que vous appuyiez sur **Entrée**.
@@ -378,8 +378,8 @@ Un bouton sans code ne fait rien. Faisons-le réagir au clic !
 Vous voyez maintenant :
 
 ```pascal
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
 
 end;
 ```
@@ -387,8 +387,8 @@ end;
 **Entre `begin` et `end;`, ajoutez :**
 
 ```pascal
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   ShowMessage('Bonjour ! Vous avez cliqué sur le bouton !');
 end;
 ```
@@ -457,8 +457,8 @@ var
 Puis modifiez le code du bouton :
 
 ```pascal
-procedure TForm1.Button1Click(Sender: TObject);
-begin
+procedure TForm1.Button1Click(Sender: TObject);  
+begin  
   Compteur := Compteur + 1;
   LabelCompteur.Caption := 'Compteur : ' + IntToStr(Compteur);
 
@@ -624,10 +624,10 @@ Menu **Run** → **Clean up and Build**
 ### Messages normaux (verts)
 
 ```
-Compiling unit1.pas
-Compiling MonAppli.lpr
-Linking MonAppli.exe
-Project "MonAppli" successfully built.
+Compiling unit1.pas  
+Compiling MonAppli.lpr  
+Linking MonAppli.exe  
+Project "MonAppli" successfully built.  
 ```
 
 ✅ Tout va bien !
@@ -645,9 +645,9 @@ Warning: Variable "test" is declared but never used
 ### Erreurs (rouges)
 
 ```
-Error: Identifier not found "WritLn"
-Error: Illegal expression
-Error: ";" expected but "." found
+Error: Identifier not found "WritLn"  
+Error: Illegal expression  
+Error: ";" expected but "." found  
 ```
 
 ❌ Erreur bloquante : le programme ne compile pas.
@@ -658,8 +658,8 @@ Error: ";" expected but "." found
 
 **1. Point-virgule oublié**
 ```pascal
-WriteLn('Bonjour')  // Erreur : ; manquant
-WriteLn('Au revoir');
+WriteLn('Bonjour')  // Erreur : ; manquant  
+WriteLn('Au revoir');  
 ```
 → Solution : ajouter `;` à la fin de chaque instruction
 
@@ -671,8 +671,8 @@ WriteLn('Bonjour);  // Erreur : apostrophe manquante
 
 **3. Faute de frappe dans un mot-clé**
 ```pascal
-begn  // Erreur : begin mal écrit
-end;
+begn  // Erreur : begin mal écrit  
+end;  
 ```
 → Solution : attention à l'orthographe !
 
@@ -758,8 +758,8 @@ Prenez l'habitude de commenter :
 **Exemple de code bien commenté :**
 
 ```pascal
-procedure TForm1.BtnCalculerClick(Sender: TObject);
-var
+procedure TForm1.BtnCalculerClick(Sender: TObject);  
+var  
   Nombre1, Nombre2, Resultat: Integer;
 begin
   // Récupération des valeurs saisies
@@ -831,8 +831,8 @@ end.
 ### Utiliser ShowMessage dans les applications graphiques
 
 ```pascal
-procedure TForm1.Button1Click(Sender: TObject);
-var
+procedure TForm1.Button1Click(Sender: TObject);  
+var  
   Valeur: Integer;
 begin
   Valeur := 42;

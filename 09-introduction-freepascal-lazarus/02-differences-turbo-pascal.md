@@ -50,8 +50,8 @@ FreePascal offre plusieurs **modes de compilation** pour gérer la compatibilit�
 **Exemple de code Turbo Pascal qui pose problème :**
 
 ```pascal
-uses Crt;
-begin
+uses Crt;  
+begin  
   TextBackground(Blue);      // Fonctionne en Turbo Pascal
   TextColor(Yellow);         // Fonctionne en Turbo Pascal
   ClrScr;                    // Efface l'écran - fonctionne
@@ -193,8 +193,8 @@ uses
 **Turbo Pascal** : Toutes les variables doivent être déclarées au début du programme/procédure.
 
 ```pascal
-procedure Test;
-var
+procedure Test;  
+var  
   i: Integer;
   s: String;
 begin
@@ -207,8 +207,8 @@ end;
 
 ```pascal
 {$mode delphi}  // Nécessaire pour les déclarations inline
-procedure Test;
-var
+procedure Test;  
+var  
   i: Integer;
 begin
   i := 5;
@@ -225,9 +225,9 @@ FreePascal ajoute de nouveaux opérateurs :
 
 ```pascal
 // Opérateurs d'affectation composés (comme en C)
-i += 5;      // Équivalent à : i := i + 5;
-i -= 3;      // Équivalent à : i := i - 3;
-i *= 2;      // Équivalent à : i := i * 2;
+i += 5;      // Équivalent à : i := i + 5;  
+i -= 3;      // Équivalent à : i := i - 3;  
+i *= 2;      // Équivalent à : i := i * 2;  
 
 // Opérateurs de puissance
 x := 2 ** 3;  // x = 8 (2 puissance 3)

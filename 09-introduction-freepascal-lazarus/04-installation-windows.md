@@ -328,10 +328,10 @@ Assurons-nous que tout fonctionne bien.
 
 **Exemple de ce que vous devriez voir :**
 ```
-Lazarus 3.0
-FPC 3.2.2
-Date: 2023-10-15
-Target: x86_64-win64-win32
+Lazarus 3.0  
+FPC 3.2.2  
+Date: 2023-10-15  
+Target: x86_64-win64-win32  
 ```
 
 Cliquez **OK** pour fermer.
@@ -346,8 +346,8 @@ Testons en compilant un petit programme :
 ```pascal
 program Project1;
 
-begin
-end.
+begin  
+end.  
 ```
 
 3. Ajoutez une ligne entre `begin` et `end.` :
