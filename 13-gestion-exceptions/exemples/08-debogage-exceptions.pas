@@ -12,8 +12,8 @@ uses
   SysUtils;
 
 { --- Demonstration 1 : debug de conversion caractere par caractere --- }
-procedure DebugConversion(const texte: String);
-var
+procedure DebugConversion(const texte: String);  
+var  
   nombre: Integer;
   i: Integer;
 begin
@@ -37,8 +37,8 @@ begin
   end;
 end;
 
-procedure DemoDebugConversion;
-begin
+procedure DemoDebugConversion;  
+begin  
   WriteLn('=== 1. Debug de conversion ===');
   DebugConversion('123');
   WriteLn;
@@ -49,8 +49,8 @@ begin
 end;
 
 { --- Demonstration 2 : Assert pour verifier les preconditions --- }
-procedure TraiterTableau(const tableau: array of Integer; index: Integer);
-begin
+procedure TraiterTableau(const tableau: array of Integer; index: Integer);  
+begin  
   Assert(Length(tableau) > 0, 'Le tableau ne doit pas etre vide');
   Assert((index >= Low(tableau)) and (index <= High(tableau)),
          Format('Index %d hors limites [%d..%d]',
@@ -59,8 +59,8 @@ begin
   WriteLn('  Valeur a l''index ', index, ' : ', tableau[index]);
 end;
 
-procedure DemoAssert;
-var
+procedure DemoAssert;  
+var  
   donnees: array[0..4] of Integer;
   i: Integer;
 begin
@@ -84,14 +84,14 @@ begin
 end;
 
 { --- Demonstration 3 : tester que les exceptions sont correctement levees --- }
-procedure ValiderEmail(const email: String);
-begin
+procedure ValiderEmail(const email: String);  
+begin  
   if Pos('@', email) = 0 then
     raise EConvertError.CreateFmt('"%s" n''est pas un email valide', [email]);
 end;
 
-procedure TestConversionInvalide;
-var
+procedure TestConversionInvalide;  
+var  
   exceptionLevee: Boolean;
 begin
   exceptionLevee := False;
@@ -108,8 +108,8 @@ begin
     WriteLn('  Test 1 ECHOUE : exception non levee');
 end;
 
-procedure TestEmailInvalide;
-var
+procedure TestEmailInvalide;  
+var  
   exceptionLevee: Boolean;
 begin
   exceptionLevee := False;
@@ -126,8 +126,8 @@ begin
     WriteLn('  Test 2 ECHOUE : exception non levee');
 end;
 
-procedure TestEmailValide;
-var
+procedure TestEmailValide;  
+var  
   exceptionLevee: Boolean;
 begin
   exceptionLevee := False;
@@ -144,8 +144,8 @@ begin
     WriteLn('  Test 3 ECHOUE : exception levee pour email valide');
 end;
 
-procedure DemoTestExceptions;
-begin
+procedure DemoTestExceptions;  
+begin  
   WriteLn('=== 3. Tester que les exceptions sont levees ===');
   TestConversionInvalide;
   TestEmailInvalide;
@@ -154,18 +154,18 @@ begin
 end;
 
 { --- Demonstration 4 : backtrace d'exception --- }
-procedure FonctionProfonde;
-begin
+procedure FonctionProfonde;  
+begin  
   raise Exception.Create('Erreur dans la fonction profonde');
 end;
 
-procedure FonctionIntermediaire;
-begin
+procedure FonctionIntermediaire;  
+begin  
   FonctionProfonde;
 end;
 
-procedure AfficherInfoException;
-var
+procedure AfficherInfoException;  
+var  
   i: Integer;
   frames: PPointer;
 begin
@@ -181,8 +181,8 @@ begin
     WriteLn('  (pas de frames disponibles - compiler avec -gl pour les avoir)');
 end;
 
-procedure DemoBacktrace;
-begin
+procedure DemoBacktrace;  
+begin  
   WriteLn('=== 4. Backtrace d''exception ===');
   try
     FonctionIntermediaire;
@@ -197,8 +197,8 @@ begin
 end;
 
 { --- Demonstration 5 : enrichissement avec contexte --- }
-procedure TraiterLigne(numeroLigne: Integer; const contenu: String);
-begin
+procedure TraiterLigne(numeroLigne: Integer; const contenu: String);  
+begin  
   try
     StrToInt(contenu);
   except
@@ -210,8 +210,8 @@ begin
   end;
 end;
 
-procedure DemoContexte;
-begin
+procedure DemoContexte;  
+begin  
   WriteLn('=== 5. Enrichissement avec contexte ===');
   try
     TraiterLigne(1, '42');

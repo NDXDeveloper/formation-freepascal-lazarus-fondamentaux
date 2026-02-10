@@ -36,30 +36,30 @@ if not ConnecterServeur(adresse) then
 
 ```pascal
 // ✗ MAUVAIS : Recherche qui ne trouve rien (normal)
-function TrouverUtilisateur(id: Integer): TUtilisateur;
-begin
+function TrouverUtilisateur(id: Integer): TUtilisateur;  
+begin  
   Result := BaseDonnees.Chercher(id);
   if Result = nil then
     raise Exception.Create('Utilisateur non trouvé');  // ✗ Non !
 end;
 
 // ✓ BON : Retourner un indicateur
-function TrouverUtilisateur(id: Integer; out utilisateur: TUtilisateur): Boolean;
-begin
+function TrouverUtilisateur(id: Integer; out utilisateur: TUtilisateur): Boolean;  
+begin  
   utilisateur := BaseDonnees.Chercher(id);
   Result := Assigned(utilisateur);
 end;
 
 // ✗ MAUVAIS : Validation d'entrée utilisateur
-procedure TraiterFormulaire;
-begin
+procedure TraiterFormulaire;  
+begin  
   if EditNom.Text = '' then
     raise Exception.Create('Nom requis');  // ✗ L'utilisateur peut oublier
 end;
 
 // ✓ BON : Message d'erreur simple
-procedure TraiterFormulaire;
-begin
+procedure TraiterFormulaire;  
+begin  
   if EditNom.Text = '' then
   begin
     ShowMessage('Veuillez remplir le nom');
@@ -102,10 +102,10 @@ Un bon message d'erreur répond à trois questions :
 #### ✗ Messages vagues
 
 ```pascal
-raise Exception.Create('Erreur');
-raise Exception.Create('Échec');
-raise Exception.Create('Impossible');
-raise Exception.Create('Erreur dans le traitement');
+raise Exception.Create('Erreur');  
+raise Exception.Create('Échec');  
+raise Exception.Create('Impossible');  
+raise Exception.Create('Erreur dans le traitement');  
 ```
 
 #### ✓ Messages informatifs
@@ -173,8 +173,8 @@ Ne capturez pas une exception si vous ne savez pas quoi en faire.
 #### ✗ Capture inutile
 
 ```pascal
-procedure NiveauBas;
-begin
+procedure NiveauBas;  
+begin  
   try
     TraiterDonnees;
   except
@@ -186,8 +186,8 @@ end;
 #### ✓ Capture avec valeur ajoutée
 
 ```pascal
-procedure NiveauBas;
-begin
+procedure NiveauBas;  
+begin  
   try
     TraiterDonnees;
   except
@@ -206,20 +206,20 @@ end;
 
 ```pascal
 // Niveau bas : laisse propager
-function LireFichierConfig: String;
-begin
+function LireFichierConfig: String;  
+begin  
   Result := LireContenuFichier('config.ini');  // Peut lever exception
 end;
 
 // Niveau moyen : laisse propager
-procedure InitialiserApplication;
-begin
+procedure InitialiserApplication;  
+begin  
   Configuration := LireFichierConfig;  // Peut lever exception
 end;
 
 // Niveau haut : capture et informe l'utilisateur
-procedure FormCreate(Sender: TObject);
-begin
+procedure FormCreate(Sender: TObject);  
+begin  
   try
     InitialiserApplication;
   except
@@ -328,8 +328,8 @@ Nous l'avons vu en détail, mais rappelons l'essentiel :
 
 ```pascal
 // Pattern fondamental
-Ressource := AcquerirRessource;
-try
+Ressource := AcquerirRessource;  
+try  
   UtiliserRessource(Ressource);
 finally
   LibererRessource(Ressource);
@@ -363,8 +363,8 @@ Lever et capturer une exception est environ **100 à 1000 fois plus lent** qu'un
 
 ```pascal
 // ✗ TRÈS MAUVAIS : exception dans une boucle
-for i := 0 to 999999 do
-begin
+for i := 0 to 999999 do  
+begin  
   try
     Traiter(tableau[i]);
   except
@@ -377,8 +377,8 @@ end;
 
 ```pascal
 // ✓ BON : vérification simple
-for i := 0 to 999999 do
-begin
+for i := 0 to 999999 do  
+begin  
   if EstValide(tableau[i]) then
     Traiter(tableau[i]);
 end;
@@ -391,8 +391,8 @@ Ne sacrifiez pas la robustesse pour la performance sans mesurer :
 ```pascal
 // Si cette fonction est appelée 10 fois par seconde (pas 10000),
 // la robustesse est plus importante que les microsecondes gagnées
-function ChargerConfiguration: TConfiguration;
-begin
+function ChargerConfiguration: TConfiguration;  
+begin  
   if not FileExists('config.xml') then
     raise EFOpenError.Create('Configuration manquante');
 
@@ -415,15 +415,15 @@ Les constructeurs ont un comportement particulier avec les exceptions.
 **Important :** En FreePascal/Delphi, si un constructeur lève une exception, le destructeur `Destroy` **EST automatiquement appelé** pour nettoyer l'objet partiellement créé. C'est pourquoi le destructeur doit être capable de gérer un objet incomplètement initialisé.
 
 ```pascal
-constructor TMonObjet.Create;
-begin
+constructor TMonObjet.Create;  
+begin  
   inherited Create;
   FListe := TStringList.Create;
   FListe.LoadFromFile('obligatoire.txt');  // Si exception → Destroy est appelé
 end;
 
-destructor TMonObjet.Destroy;
-begin
+destructor TMonObjet.Destroy;  
+begin  
   FListe.Free;  // Free vérifie nil, donc sûr même si FListe n'a pas été créé
   inherited Destroy;
 end;
@@ -433,8 +433,8 @@ end;
 
 ```pascal
 // ✗ MAUVAIS : double-free si LoadFromFile échoue
-constructor TMonObjet.Create;
-begin
+constructor TMonObjet.Create;  
+begin  
   inherited Create;
   FListe := TStringList.Create;
   try
@@ -474,8 +474,8 @@ end;
 ### ✗ Très dangereux
 
 ```pascal
-destructor TMonObjet.Destroy;
-begin
+destructor TMonObjet.Destroy;  
+begin  
   FListe.SaveToFile('sauvegarde.txt');  // ✗ Peut lever exception !
   inherited Destroy;
 end;
@@ -486,8 +486,8 @@ end;
 ### ✓ Gestion sécurisée
 
 ```pascal
-destructor TMonObjet.Destroy;
-begin
+destructor TMonObjet.Destroy;  
+begin  
   try
     if Assigned(FListe) then
       FListe.SaveToFile('sauvegarde.txt');
@@ -509,8 +509,8 @@ Les événements (handlers) ne devraient généralement pas laisser les exceptio
 ### ✗ Laisser propager
 
 ```pascal
-procedure TForm1.ButtonClick(Sender: TObject);
-begin
+procedure TForm1.ButtonClick(Sender: TObject);  
+begin  
   TraiterDonnees;  // ✗ Si exception, elle remonte dans la LCL
 end;
 ```
@@ -518,8 +518,8 @@ end;
 ### ✓ Capturer et gérer
 
 ```pascal
-procedure TForm1.ButtonClick(Sender: TObject);
-begin
+procedure TForm1.ButtonClick(Sender: TObject);  
+begin  
   try
     TraiterDonnees;
   except
@@ -539,8 +539,8 @@ end;
 Pour les opérations de base de données, combinez exceptions et transactions :
 
 ```pascal
-procedure TransfererArgent(deCompte, versCompte: String; montant: Double);
-begin
+procedure TransfererArgent(deCompte, versCompte: String; montant: Double);  
+begin  
   Connexion.StartTransaction;
   try
     DebiterCompte(deCompte, montant);
@@ -591,8 +591,8 @@ type
 Testez que vos fonctions lèvent bien les exceptions attendues :
 
 ```pascal
-procedure TesterValidation;
-var
+procedure TesterValidation;  
+var  
   exceptionLevee: Boolean;
 begin
   exceptionLevee := False;
@@ -615,8 +615,8 @@ end;
 Loggez les exceptions de manière structurée pour faciliter le diagnostic :
 
 ```pascal
-procedure LoggerException(const contexte: String; E: Exception);
-begin
+procedure LoggerException(const contexte: String; E: Exception);  
+begin  
   LogMessage(Format(
     '[ERREUR] %s - Type: %s - Message: %s - Date: %s',
     [contexte, E.ClassName, E.Message, DateTimeToStr(Now)]
@@ -681,8 +681,8 @@ end;
 
 ```pascal
 // ✗ Exceptions dans une boucle
-for i := 0 to 1000000 do
-begin
+for i := 0 to 1000000 do  
+begin  
   try
     Traiter(i);
   except
@@ -706,8 +706,8 @@ try
     end;
   except
   end;
-except
-end;
+except  
+end;  
 ```
 
 ### 4. Le menteur
@@ -762,8 +762,8 @@ type
 
 implementation
 
-constructor TProcessor.Create;
-begin
+constructor TProcessor.Create;  
+begin  
   inherited Create;
 
   FLog := TStringList.Create;
@@ -783,8 +783,8 @@ begin
   end;
 end;
 
-destructor TProcessor.Destroy;
-begin
+destructor TProcessor.Destroy;  
+begin  
   try
     // Fermer proprement la connexion
     if Assigned(FConnexion) and FConnexion.Connected then
@@ -803,8 +803,8 @@ begin
   inherited Destroy;
 end;
 
-procedure TProcessor.TraiterFichier(const nomFichier: String);
-var
+procedure TProcessor.TraiterFichier(const nomFichier: String);  
+var  
   fichier: TextFile;
   ligne: String;
 begin

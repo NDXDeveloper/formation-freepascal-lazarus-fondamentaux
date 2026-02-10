@@ -73,10 +73,10 @@ type
 Utilisé pour un débogage très détaillé, généralement désactivé.
 
 ```pascal
-Log(nlTrace, 'Entrée dans la fonction CalculerTotal');
-Log(nlTrace, 'Valeur de a: ' + IntToStr(a));
-Log(nlTrace, 'Valeur de b: ' + IntToStr(b));
-Log(nlTrace, 'Sortie de la fonction, résultat: ' + IntToStr(resultat));
+Log(nlTrace, 'Entrée dans la fonction CalculerTotal');  
+Log(nlTrace, 'Valeur de a: ' + IntToStr(a));  
+Log(nlTrace, 'Valeur de b: ' + IntToStr(b));  
+Log(nlTrace, 'Sortie de la fonction, résultat: ' + IntToStr(resultat));  
 ```
 
 #### DEBUG - Informations de débogage
@@ -84,9 +84,9 @@ Log(nlTrace, 'Sortie de la fonction, résultat: ' + IntToStr(resultat));
 Pour le développement, désactivé en production.
 
 ```pascal
-Log(nlDebug, 'Configuration chargée: ' + Config.ToString);
-Log(nlDebug, 'Connexion établie à la base de données');
-Log(nlDebug, 'Requête SQL: ' + query);
+Log(nlDebug, 'Configuration chargée: ' + Config.ToString);  
+Log(nlDebug, 'Connexion établie à la base de données');  
+Log(nlDebug, 'Requête SQL: ' + query);  
 ```
 
 #### INFO - Événements importants
@@ -94,10 +94,10 @@ Log(nlDebug, 'Requête SQL: ' + query);
 Informations générales sur le fonctionnement normal.
 
 ```pascal
-Log(nlInfo, 'Application démarrée');
-Log(nlInfo, 'Utilisateur ' + username + ' connecté');
-Log(nlInfo, 'Fichier ' + filename + ' traité avec succès');
-Log(nlInfo, 'Application fermée normalement');
+Log(nlInfo, 'Application démarrée');  
+Log(nlInfo, 'Utilisateur ' + username + ' connecté');  
+Log(nlInfo, 'Fichier ' + filename + ' traité avec succès');  
+Log(nlInfo, 'Application fermée normalement');  
 ```
 
 #### WARNING - Avertissements
@@ -105,9 +105,9 @@ Log(nlInfo, 'Application fermée normalement');
 Situations anormales mais non critiques.
 
 ```pascal
-Log(nlWarning, 'Fichier de cache introuvable, utilisation des valeurs par défaut');
-Log(nlWarning, 'Connexion lente détectée (' + IntToStr(delai) + ' ms)');
-Log(nlWarning, 'Espace disque faible: ' + IntToStr(espaceMo) + ' Mo restants');
+Log(nlWarning, 'Fichier de cache introuvable, utilisation des valeurs par défaut');  
+Log(nlWarning, 'Connexion lente détectée (' + IntToStr(delai) + ' ms)');  
+Log(nlWarning, 'Espace disque faible: ' + IntToStr(espaceMo) + ' Mo restants');  
 ```
 
 #### ERROR - Erreurs
@@ -115,9 +115,9 @@ Log(nlWarning, 'Espace disque faible: ' + IntToStr(espaceMo) + ' Mo restants');
 Erreurs qui empêchent une opération mais pas l'application entière.
 
 ```pascal
-Log(nlError, 'Impossible de sauvegarder le fichier: ' + E.Message);
-Log(nlError, 'Échec de connexion à la base de données: ' + E.Message);
-Log(nlError, 'Format de données invalide dans la ligne ' + IntToStr(ligne));
+Log(nlError, 'Impossible de sauvegarder le fichier: ' + E.Message);  
+Log(nlError, 'Échec de connexion à la base de données: ' + E.Message);  
+Log(nlError, 'Format de données invalide dans la ligne ' + IntToStr(ligne));  
 ```
 
 #### FATAL - Erreurs fatales
@@ -125,9 +125,9 @@ Log(nlError, 'Format de données invalide dans la ligne ' + IntToStr(ligne));
 Erreurs critiques qui empêchent l'application de continuer.
 
 ```pascal
-Log(nlFatal, 'Fichier de configuration critique manquant');
-Log(nlFatal, 'Mémoire insuffisante, arrêt de l''application');
-Log(nlFatal, 'Base de données inaccessible après 5 tentatives');
+Log(nlFatal, 'Fichier de configuration critique manquant');  
+Log(nlFatal, 'Mémoire insuffisante, arrêt de l''application');  
+Log(nlFatal, 'Base de données inaccessible après 5 tentatives');  
 ```
 
 ## Logger vers la console
@@ -137,8 +137,8 @@ La méthode la plus simple : écrire dans la console.
 ### Version basique
 
 ```pascal
-procedure LogConsole(const niveau: String; const message: String);
-begin
+procedure LogConsole(const niveau: String; const message: String);  
+begin  
   WriteLn(Format('[%s] %s - %s',
     [FormatDateTime('yyyy-mm-dd hh:nn:ss', Now), niveau, message]));
 end;
@@ -158,8 +158,8 @@ LogConsole('ERROR', 'Fichier introuvable: donnees.txt');
 uses
   Windows;
 
-procedure LogConsoleAvecCouleur(niveau: TNiveauLog; const message: String);
-var
+procedure LogConsoleAvecCouleur(niveau: TNiveauLog; const message: String);  
+var  
   couleur: Word;
   handle: THandle;
 begin
@@ -192,8 +192,8 @@ Le logging dans un fichier est la méthode la plus courante en production.
 var
   FichierLog: TextFile;
 
-procedure InitialiserLog(const nomFichier: String);
-begin
+procedure InitialiserLog(const nomFichier: String);  
+begin  
   AssignFile(FichierLog, nomFichier);
   if FileExists(nomFichier) then
     Append(FichierLog)  // Ajouter à la fin
@@ -201,8 +201,8 @@ begin
     Rewrite(FichierLog); // Créer nouveau
 end;
 
-procedure LogFichier(niveau: TNiveauLog; const message: String);
-begin
+procedure LogFichier(niveau: TNiveauLog; const message: String);  
+begin  
   WriteLn(FichierLog, Format('[%s] [%s] %s',
     [FormatDateTime('yyyy-mm-dd hh:nn:ss.zzz', Now),
      NiveauToString(niveau),
@@ -210,8 +210,8 @@ begin
   Flush(FichierLog);  // Écrire immédiatement sur disque
 end;
 
-procedure FermerLog;
-begin
+procedure FermerLog;  
+begin  
   CloseFile(FichierLog);
 end;
 
@@ -247,8 +247,8 @@ var
   FichierLog: TextFile;
   SectionCritique: TCriticalSection;
 
-procedure InitialiserLogThreadSafe;
-begin
+procedure InitialiserLogThreadSafe;  
+begin  
   SectionCritique := TCriticalSection.Create;
   AssignFile(FichierLog, 'application.log');
   if FileExists('application.log') then
@@ -257,8 +257,8 @@ begin
     Rewrite(FichierLog);
 end;
 
-procedure LogFichierThreadSafe(niveau: TNiveauLog; const message: String);
-begin
+procedure LogFichierThreadSafe(niveau: TNiveauLog; const message: String);  
+begin  
   SectionCritique.Enter;
   try
     WriteLn(FichierLog, Format('[%s] [%s] %s',
@@ -271,8 +271,8 @@ begin
   end;
 end;
 
-procedure FermerLogThreadSafe;
-begin
+procedure FermerLogThreadSafe;  
+begin  
   CloseFile(FichierLog);
   SectionCritique.Free;
 end;
@@ -317,8 +317,8 @@ type
 
 implementation
 
-constructor TLogger.Create(const nomFichier: String; niveauMin: TNiveauLog);
-begin
+constructor TLogger.Create(const nomFichier: String; niveauMin: TNiveauLog);  
+begin  
   inherited Create;
   FNomFichier := nomFichier;
   FNiveauMinimum := niveauMin;
@@ -340,16 +340,16 @@ begin
   end;
 end;
 
-destructor TLogger.Destroy;
-begin
+destructor TLogger.Destroy;  
+begin  
   if FFichierOuvert then
     CloseFile(FFichier);
   FSectionCritique.Free;
   inherited;
 end;
 
-function TLogger.NiveauToString(niveau: TNiveauLog): String;
-begin
+function TLogger.NiveauToString(niveau: TNiveauLog): String;  
+begin  
   case niveau of
     nlTrace:   Result := 'TRACE';
     nlDebug:   Result := 'DEBUG';
@@ -360,13 +360,13 @@ begin
   end;
 end;
 
-function TLogger.DoitLogger(niveau: TNiveauLog): Boolean;
-begin
+function TLogger.DoitLogger(niveau: TNiveauLog): Boolean;  
+begin  
   Result := FFichierOuvert and (niveau >= FNiveauMinimum);
 end;
 
-procedure TLogger.Log(niveau: TNiveauLog; const message: String);
-begin
+procedure TLogger.Log(niveau: TNiveauLog; const message: String);  
+begin  
   if not DoitLogger(niveau) then Exit;
 
   FSectionCritique.Enter;
@@ -381,43 +381,43 @@ begin
   end;
 end;
 
-procedure TLogger.Log(niveau: TNiveauLog; const format: String; const args: array of const);
-begin
+procedure TLogger.Log(niveau: TNiveauLog; const format: String; const args: array of const);  
+begin  
   Log(niveau, Format(format, args));
 end;
 
-procedure TLogger.Trace(const message: String);
-begin
+procedure TLogger.Trace(const message: String);  
+begin  
   Log(nlTrace, message);
 end;
 
-procedure TLogger.Debug(const message: String);
-begin
+procedure TLogger.Debug(const message: String);  
+begin  
   Log(nlDebug, message);
 end;
 
-procedure TLogger.Info(const message: String);
-begin
+procedure TLogger.Info(const message: String);  
+begin  
   Log(nlInfo, message);
 end;
 
-procedure TLogger.Warning(const message: String);
-begin
+procedure TLogger.Warning(const message: String);  
+begin  
   Log(nlWarning, message);
 end;
 
-procedure TLogger.Error(const message: String);
-begin
+procedure TLogger.Error(const message: String);  
+begin  
   Log(nlError, message);
 end;
 
-procedure TLogger.Fatal(const message: String);
-begin
+procedure TLogger.Fatal(const message: String);  
+begin  
   Log(nlFatal, message);
 end;
 
-procedure TLogger.LogException(const contexte: String; E: Exception);
-begin
+procedure TLogger.LogException(const contexte: String; E: Exception);  
+begin  
   Error(Format('%s - Exception: [%s] %s', [contexte, E.ClassName, E.Message]));
 end;
 ```
@@ -458,8 +458,8 @@ Les fichiers logs peuvent devenir très gros. La rotation permet de créer un no
 ### Rotation par taille
 
 ```pascal
-procedure VerifierRotationParTaille(const nomFichier: String; tailleLimite: Int64);
-var
+procedure VerifierRotationParTaille(const nomFichier: String; tailleLimite: Int64);  
+var  
   fichier: TFileStream;
   nouveauNom: String;
 begin
@@ -480,15 +480,15 @@ begin
 end;
 
 // Utilisation : vérifier avant d'ouvrir le log
-VerifierRotationParTaille('application.log', 10 * 1024 * 1024); // 10 Mo
-Logger := TLogger.Create('application.log');
+VerifierRotationParTaille('application.log', 10 * 1024 * 1024); // 10 Mo  
+Logger := TLogger.Create('application.log');  
 ```
 
 ### Rotation par date
 
 ```pascal
-function ObtenirNomFichierLogJour: String;
-begin
+function ObtenirNomFichierLogJour: String;  
+begin  
   Result := Format('application_%s.log', [FormatDateTime('yyyy-mm-dd', Now)]);
 end;
 
@@ -499,8 +499,8 @@ Logger := TLogger.Create(ObtenirNomFichierLogJour);
 ### Nettoyage des anciens logs
 
 ```pascal
-procedure SupprimerVieuxLogs(const repertoire: String; joursAConserver: Integer);
-var
+procedure SupprimerVieuxLogs(const repertoire: String; joursAConserver: Integer);  
+var  
   sr: TSearchRec;
   dateMin: TDateTime;
   fichier: String;
@@ -531,8 +531,8 @@ SupprimerVieuxLogs('logs/', 30);
 ### Lors d'une exception
 
 ```pascal
-procedure LoggerExceptionComplete(E: Exception);
-begin
+procedure LoggerExceptionComplete(E: Exception);  
+begin  
   Logger.Error('=== EXCEPTION DÉTECTÉE ===');
   Logger.Error('Type: ' + E.ClassName);
   Logger.Error('Message: ' + E.Message);
@@ -552,20 +552,20 @@ end;
 ### Contexte applicatif
 
 ```pascal
-Logger.Info('=== SESSION DÉMARRÉE ===');
-Logger.Info('Version application: ' + GetVersionApp);
-Logger.Info('Utilisateur: ' + GetCurrentUser);
-Logger.Info('Machine: ' + GetComputerName);
-Logger.Info('Système: ' + GetOSInfo);
-Logger.Info('Mémoire disponible: ' + IntToStr(GetMemoryAvailable) + ' Mo');
-Logger.Info('========================');
+Logger.Info('=== SESSION DÉMARRÉE ===');  
+Logger.Info('Version application: ' + GetVersionApp);  
+Logger.Info('Utilisateur: ' + GetCurrentUser);  
+Logger.Info('Machine: ' + GetComputerName);  
+Logger.Info('Système: ' + GetOSInfo);  
+Logger.Info('Mémoire disponible: ' + IntToStr(GetMemoryAvailable) + ' Mo');  
+Logger.Info('========================');  
 ```
 
 ### Opérations importantes
 
 ```pascal
-procedure EnregistrerClient(const client: TClient);
-begin
+procedure EnregistrerClient(const client: TClient);  
+begin  
   Logger.Info('Début enregistrement client: ' + client.Nom);
 
   try
@@ -585,8 +585,8 @@ end;
 ### Performances
 
 ```pascal
-procedure LoggerPerformance(const operation: String; debut: TDateTime);
-var
+procedure LoggerPerformance(const operation: String; debut: TDateTime);  
+var  
   duree: Integer;
 begin
   duree := MilliSecondsBetween(Now, debut);
@@ -647,8 +647,8 @@ LogJSON(nlError, 'Connexion échouée', '{"tentative":3,"delai":"5000ms"}');
 Pour import dans Excel :
 
 ```pascal
-procedure LogCSV(niveau: TNiveauLog; const message: String);
-begin
+procedure LogCSV(niveau: TNiveauLog; const message: String);  
+begin  
   WriteLn(FichierLog, Format('%s;%s;%s',
     [FormatDateTime('yyyy-mm-dd hh:nn:ss', Now),
      NiveauToString(niveau),
@@ -672,22 +672,22 @@ type
     procedure Log(niveau: TNiveauLog; const message: String);
   end;
 
-constructor TLoggerDB.Create(connexion: TSQLConnection);
-begin
+constructor TLoggerDB.Create(connexion: TSQLConnection);  
+begin  
   inherited Create;
   FConnexion := connexion;
   FQuery := TSQLQuery.Create(nil);
   FQuery.Database := FConnexion;
 end;
 
-destructor TLoggerDB.Destroy;
-begin
+destructor TLoggerDB.Destroy;  
+begin  
   FQuery.Free;
   inherited;
 end;
 
-procedure TLoggerDB.Log(niveau: TNiveauLog; const message: String);
-begin
+procedure TLoggerDB.Log(niveau: TNiveauLog; const message: String);  
+begin  
   FQuery.SQL.Text :=
     'INSERT INTO logs (date_log, niveau, message) VALUES (:date, :niveau, :message)';
   FQuery.ParamByName('date').AsDateTime := Now;
@@ -722,12 +722,12 @@ CREATE TABLE logs (
 
 ```pascal
 // ✓ BON
-Logger.Info('Utilisateur connecté: ' + username);
-Logger.Error('Échec connexion DB: ' + E.Message);
+Logger.Info('Utilisateur connecté: ' + username);  
+Logger.Error('Échec connexion DB: ' + E.Message);  
 
 // ✗ MAUVAIS
-Logger.Fatal('Utilisateur connecté');  // Ce n'est pas fatal !
-Logger.Debug('Fichier introuvable');   // C'est une erreur, pas du debug !
+Logger.Fatal('Utilisateur connecté');  // Ce n'est pas fatal !  
+Logger.Debug('Fichier introuvable');   // C'est une erreur, pas du debug !  
 ```
 
 ### 2. Messages clairs et contextuels
@@ -744,28 +744,28 @@ Logger.Error('Impossible d''ouvrir le fichier "config.xml" : fichier introuvable
 
 ```pascal
 // ✗ TRÈS MAUVAIS
-Logger.Info('Connexion réussie - Mot de passe: ' + password);
-Logger.Info('Carte bancaire: ' + numeroCarteBancaire);
+Logger.Info('Connexion réussie - Mot de passe: ' + password);  
+Logger.Info('Carte bancaire: ' + numeroCarteBancaire);  
 
 // ✓ BON
-Logger.Info('Connexion réussie - Utilisateur: ' + username);
-Logger.Info('Paiement validé - Transaction: ' + transactionID);
+Logger.Info('Connexion réussie - Utilisateur: ' + username);  
+Logger.Info('Paiement validé - Transaction: ' + transactionID);  
 ```
 
 ### 4. Utiliser différents fichiers par catégorie
 
 ```pascal
-LoggerApp := TLogger.Create('application.log');
-LoggerErreur := TLogger.Create('erreurs.log', nlError);  // Seulement erreurs
-LoggerDebug := TLogger.Create('debug.log', nlTrace);     // Tout pour dev
+LoggerApp := TLogger.Create('application.log');  
+LoggerErreur := TLogger.Create('erreurs.log', nlError);  // Seulement erreurs  
+LoggerDebug := TLogger.Create('debug.log', nlTrace);     // Tout pour dev  
 ```
 
 ### 5. Flush régulièrement
 
 ```pascal
 // Garantir que les logs sont écrits immédiatement
-WriteLn(FichierLog, message);
-Flush(FichierLog);  // Important !
+WriteLn(FichierLog, message);  
+Flush(FichierLog);  // Important !  
 ```
 
 **Pourquoi ?** Si l'application crash juste après, le message sera dans le fichier.
@@ -773,8 +773,8 @@ Flush(FichierLog);  // Important !
 ### 6. Gérer les erreurs de logging
 
 ```pascal
-procedure LogSecurise(const message: String);
-begin
+procedure LogSecurise(const message: String);  
+begin  
   try
     WriteLn(FichierLog, message);
     Flush(FichierLog);
@@ -811,8 +811,8 @@ uses
 var
   Logger: TLogger;
 
-procedure TraiterFichier(const nomFichier: String);
-var
+procedure TraiterFichier(const nomFichier: String);  
+var  
   debut: TDateTime;
 begin
   debut := Now;
@@ -901,8 +901,8 @@ tail -50 application.log
 ### Analyseur simple en Pascal
 
 ```pascal
-procedure AnalyserLogs(const nomFichier: String);
-var
+procedure AnalyserLogs(const nomFichier: String);  
+var  
   f: TextFile;
   ligne: String;
   nbInfo, nbWarn, nbError, nbFatal: Integer;

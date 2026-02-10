@@ -93,8 +93,8 @@ Un **point d'arrêt** (breakpoint) arrête l'exécution à une ligne spécifique
 **Exemple :**
 
 ```pascal
-procedure TraiterDonnees(const texte: String);
-var
+procedure TraiterDonnees(const texte: String);  
+var  
   nombre: Integer;
 begin
   WriteLn('Début du traitement');    // ← Point d'arrêt ici
@@ -180,8 +180,8 @@ Puis clic droit → **Ajouter point d'arrêt d'exception**
 ### Exemple d'utilisation
 
 ```pascal
-procedure TestConversion;
-var
+procedure TestConversion;  
+var  
   nombre: Integer;
 begin
   // Si vous avez configuré un point d'arrêt sur EConvertError,
@@ -200,8 +200,8 @@ end;
 Ajoutez des `WriteLn` stratégiques pour tracer l'exécution :
 
 ```pascal
-procedure ProcesserFichier(const nom: String);
-begin
+procedure ProcesserFichier(const nom: String);  
+begin  
   WriteLn('DEBUG: Début ProcesserFichier avec fichier: ', nom);
 
   try
@@ -230,8 +230,8 @@ end;
 ```pascal
 {$DEFINE DEBUG_MODE}
 
-procedure ProcesserFichier(const nom: String);
-begin
+procedure ProcesserFichier(const nom: String);  
+begin  
   {$IFDEF DEBUG_MODE}
   WriteLn('DEBUG: Début ProcesserFichier');
   {$ENDIF}
@@ -245,8 +245,8 @@ end;
 Les assertions vérifient qu'une condition est vraie. Si elle est fausse, une exception `EAssertionFailed` est levée.
 
 ```pascal
-procedure TraiterTableau(const tableau: array of Integer; index: Integer);
-begin
+procedure TraiterTableau(const tableau: array of Integer; index: Integer);  
+begin  
   // Vérifier les préconditions
   Assert(Length(tableau) > 0, 'Le tableau ne doit pas être vide');
   Assert((index >= Low(tableau)) and (index <= High(tableau)),
@@ -271,20 +271,20 @@ Créez un système de log qui enregistre dans un fichier :
 var
   FichierLog: TextFile;
 
-procedure InitLog;
-begin
+procedure InitLog;  
+begin  
   AssignFile(FichierLog, 'debug.log');
   Rewrite(FichierLog);
 end;
 
-procedure Log(const msg: String);
-begin
+procedure Log(const msg: String);  
+begin  
   WriteLn(FichierLog, FormatDateTime('hh:nn:ss.zzz', Now), ' - ', msg);
   Flush(FichierLog);  // Force l'écriture immédiate
 end;
 
-procedure FermerLog;
-begin
+procedure FermerLog;  
+begin  
   CloseFile(FichierLog);
 end;
 
@@ -314,8 +314,8 @@ end;
 Capturez et re-levez avec plus de contexte :
 
 ```pascal
-procedure TraiterLigne(numeroLigne: Integer; const contenu: String);
-begin
+procedure TraiterLigne(numeroLigne: Integer; const contenu: String);  
+begin  
   try
     ProcesserContenu(contenu);
   except
@@ -338,8 +338,8 @@ FreePascal peut capturer la pile d'appels dans une exception :
 uses
   SysUtils, LineInfo;
 
-procedure AfficherPileAppels;
-var
+procedure AfficherPileAppels;  
+var  
   i: Integer;
   frames: PCodePointer;
 begin
@@ -370,8 +370,8 @@ end;
 
 **Débogage :**
 ```pascal
-procedure DebugConversion(const texte: String);
-var
+procedure DebugConversion(const texte: String);  
+var  
   nombre, i: Integer;
 begin
   WriteLn('Tentative de conversion de : "', texte, '"');
@@ -404,8 +404,8 @@ end;
 
 **Débogage :**
 ```pascal
-procedure DebugDivision(a, b: Integer);
-begin
+procedure DebugDivision(a, b: Integer);  
+begin  
   WriteLn('Division de ', a, ' par ', b);
 
   if b = 0 then
@@ -429,8 +429,8 @@ end;
 
 **Débogage :**
 ```pascal
-procedure DebugObjet(obj: TMonObjet);
-begin
+procedure DebugObjet(obj: TMonObjet);  
+begin  
   WriteLn('Vérification objet...');
   WriteLn('Adresse : ', IntToHex(PtrUInt(obj), 16));
 
@@ -456,8 +456,8 @@ end;
 
 **Débogage :**
 ```pascal
-procedure DebugAccesTableau(const tableau: array of Integer; index: Integer);
-begin
+procedure DebugAccesTableau(const tableau: array of Integer; index: Integer);  
+begin  
   WriteLn('Taille du tableau : ', Length(tableau));
   WriteLn('Index demandé : ', index);
   WriteLn('Limites valides : ', Low(tableau), ' à ', High(tableau));
@@ -503,8 +503,8 @@ Heap dump by heaptrc unit
 123 memory blocks allocated : 4567/5000
 120 memory blocks freed     : 4321/4800
 3 unfreed memory blocks : 246
-True heap size : 65536
-True free heap : 61290
+True heap size : 65536  
+True free heap : 61290  
 
 Call trace for block $00405678 size 128
   $00401234  TMONOBJET__CREATE,  line 45 of MonObjet.pas
@@ -534,16 +534,16 @@ type
     destructor Destroy; override;
   end;
 
-constructor TMonObjet.Create;
-begin
+constructor TMonObjet.Create;  
+begin  
   inherited;
   {$IFDEF DEBUG_MEMORY}
   WriteLn('TMonObjet créé à ', IntToHex(PtrUInt(Self), 16));
   {$ENDIF}
 end;
 
-destructor TMonObjet.Destroy;
-begin
+destructor TMonObjet.Destroy;  
+begin  
   {$IFDEF DEBUG_MEMORY}
   WriteLn('TMonObjet détruit à ', IntToHex(PtrUInt(Self), 16));
   {$ENDIF}
@@ -594,8 +594,8 @@ EConvertError: '123,45' is not a valid integer value
 
 **Étape 4 - Isoler :** Point d'arrêt à la ligne 56 de Calculs.pas :
 ```pascal
-function CalculerTotal(const montantTexte: String): Integer;
-begin
+function CalculerTotal(const montantTexte: String): Integer;  
+begin  
   Result := StrToInt(montantTexte);  // ← Point d'arrêt ici
 end;
 ```
@@ -609,8 +609,8 @@ montantTexte = "123,45"
 
 **Étape 7 - Correction :**
 ```pascal
-function CalculerTotal(const montantTexte: String): Currency;
-var
+function CalculerTotal(const montantTexte: String): Currency;  
+var  
   montant: Currency;
 begin
   // Remplacer virgule par point si nécessaire
@@ -625,8 +625,8 @@ end;
 ### Validation en amont
 
 ```pascal
-function ConversionSecurisee(const texte: String): Integer;
-begin
+function ConversionSecurisee(const texte: String): Integer;  
+begin  
   // Validation avant conversion
   if Trim(texte) = '' then
     raise Exception.Create('Valeur vide');
@@ -639,8 +639,8 @@ end;
 ### Préconditions et postconditions
 
 ```pascal
-procedure TraiterIndex(const tableau: array of Integer; index: Integer);
-begin
+procedure TraiterIndex(const tableau: array of Integer; index: Integer);  
+begin  
   // Préconditions
   Assert(Length(tableau) > 0, 'Tableau vide');
   Assert((index >= Low(tableau)) and (index <= High(tableau)), 'Index invalide');
@@ -658,8 +658,8 @@ end;
 Créez des tests qui vérifient les exceptions :
 
 ```pascal
-procedure TestConversionInvalide;
-var
+procedure TestConversionInvalide;  
+var  
   exceptionLevee: Boolean;
 begin
   exceptionLevee := False;

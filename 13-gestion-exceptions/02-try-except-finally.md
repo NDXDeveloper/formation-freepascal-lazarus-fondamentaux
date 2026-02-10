@@ -48,8 +48,8 @@ end;
 
 **Résultat :**
 ```
-Erreur : impossible de convertir le texte en nombre
-Le programme continue normalement
+Erreur : impossible de convertir le texte en nombre  
+Le programme continue normalement  
 ```
 
 Sans le `try-except`, le programme se serait arrêté brutalement avec un message d'erreur système.
@@ -241,8 +241,8 @@ end;
 Voici un exemple réaliste combinant tout ce que nous avons vu :
 
 ```pascal
-procedure TelechargerFichier(const URL, NomFichier: String);
-var
+procedure TelechargerFichier(const URL, NomFichier: String);  
+var  
   client: TFPHttpClient;
   flux: TFileStream;
 begin
@@ -274,20 +274,20 @@ end;
 Si vous ne gérez pas une exception, elle "remonte" automatiquement au niveau supérieur.
 
 ```pascal
-procedure NiveauBas;
-begin
+procedure NiveauBas;  
+begin  
   // Lève une exception, pas de try-except
   raise Exception.Create('Erreur au niveau bas');
 end;
 
-procedure NiveauMoyen;
-begin
+procedure NiveauMoyen;  
+begin  
   // Appelle NiveauBas, pas de try-except
   NiveauBas;
 end;
 
-procedure NiveauHaut;
-begin
+procedure NiveauHaut;  
+begin  
   try
     NiveauMoyen;
   except
@@ -305,17 +305,17 @@ L'exception traverse `NiveauMoyen` et est finalement capturée dans `NiveauHaut`
 
 ```pascal
 // ✓ BON
-objet := TMonObjet.Create;
-try
+objet := TMonObjet.Create;  
+try  
   objet.FaireTravail;
 finally
   objet.Free;
 end;
 
 // ✗ MAUVAIS
-objet := TMonObjet.Create;
-objet.FaireTravail;
-objet.Free;  // Ne sera pas appelé si une erreur survient
+objet := TMonObjet.Create;  
+objet.FaireTravail;  
+objet.Free;  // Ne sera pas appelé si une erreur survient  
 ```
 
 ### 2. Capturer les exceptions spécifiques d'abord
@@ -367,8 +367,8 @@ end;
 ### 4. Finally s'exécute même avec Exit
 
 ```pascal
-procedure Test;
-begin
+procedure Test;  
+begin  
   WriteLn('Début');
   try
     WriteLn('Dans try');
@@ -383,9 +383,9 @@ end;
 
 **Résultat :**
 ```
-Début
-Dans try
-Dans finally - TOUJOURS exécuté
+Début  
+Dans try  
+Dans finally - TOUJOURS exécuté  
 ```
 
 ## Différences entre Except et Finally

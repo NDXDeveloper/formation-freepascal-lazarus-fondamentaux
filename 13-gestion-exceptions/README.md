@@ -37,8 +37,8 @@ Crash! Runtime error 216 at $00402A5C
 
 **Programme professionnel :**
 ```
-Une erreur s'est produite lors de l'ouverture du fichier "donnees.txt".
-Le fichier n'existe pas ou vous n'avez pas les droits d'accès.
+Une erreur s'est produite lors de l'ouverture du fichier "donnees.txt".  
+Le fichier n'existe pas ou vous n'avez pas les droits d'accès.  
 
 Souhaitez-vous :
 - Créer un nouveau fichier

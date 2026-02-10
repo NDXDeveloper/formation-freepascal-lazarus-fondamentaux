@@ -391,8 +391,8 @@ end;
 ## Exemple complet : traitement de fichier avec gestion fine
 
 ```pascal
-procedure TraiterFichierAvecGestionFine(const nomFichier: String);
-var
+procedure TraiterFichierAvecGestionFine(const nomFichier: String);  
+var  
   f: TextFile;
   ligne: String;
   nombre: Integer;
@@ -507,8 +507,8 @@ Quand vous créez des fonctions, documentez les exceptions qu'elles peuvent leve
 /// @param texte La chaîne à convertir
 /// @returns L'entier correspondant
 /// @raises EConvertError si la conversion est impossible
-function ConvertirTexte(const texte: String): Integer;
-begin
+function ConvertirTexte(const texte: String): Integer;  
+begin  
   Result := StrToInt(texte);  // Peut lever EConvertError
 end;
 ```

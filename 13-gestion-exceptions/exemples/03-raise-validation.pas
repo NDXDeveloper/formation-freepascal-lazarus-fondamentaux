@@ -11,8 +11,8 @@ uses
   SysUtils;
 
 { --- Demonstration 1 : raise Exception.Create pour validation --- }
-procedure DefinirAge(age: Integer);
-begin
+procedure DefinirAge(age: Integer);  
+begin  
   if age < 0 then
     raise Exception.Create('L''age ne peut pas etre negatif');
 
@@ -22,8 +22,8 @@ begin
   WriteLn('  Age defini : ', age);
 end;
 
-procedure DemoRaiseBasique;
-begin
+procedure DemoRaiseBasique;  
+begin  
   WriteLn('=== 1. Raise basique pour validation ===');
 
   try
@@ -51,8 +51,8 @@ begin
 end;
 
 { --- Demonstration 2 : raise Exception.CreateFmt --- }
-procedure VerifierAge(age: Integer);
-begin
+procedure VerifierAge(age: Integer);  
+begin  
   if (age < 18) or (age > 65) then
     raise Exception.CreateFmt(
       'Age invalide : %d. Doit etre entre 18 et 65.',
@@ -61,8 +61,8 @@ begin
   WriteLn('  Age accepte : ', age);
 end;
 
-procedure DemoCreateFmt;
-begin
+procedure DemoCreateFmt;  
+begin  
   WriteLn('=== 2. Raise avec CreateFmt ===');
 
   try
@@ -83,13 +83,13 @@ begin
 end;
 
 { --- Demonstration 3 : re-lever une exception avec raise seul --- }
-procedure TraiterDonnee(const valeur: String);
-begin
+procedure TraiterDonnee(const valeur: String);  
+begin  
   StrToInt(valeur);  { Peut lever EConvertError }
 end;
 
-procedure TraiterAvecLog(const valeur: String);
-begin
+procedure TraiterAvecLog(const valeur: String);  
+begin  
   try
     TraiterDonnee(valeur);
   except
@@ -101,8 +101,8 @@ begin
   end;
 end;
 
-procedure DemoReraise;
-begin
+procedure DemoReraise;  
+begin  
   WriteLn('=== 3. Re-lever une exception (raise seul) ===');
 
   try
@@ -116,20 +116,20 @@ begin
 end;
 
 { --- Demonstration 4 : cascade d'exceptions a travers les niveaux --- }
-procedure NiveauProfond;
-begin
+procedure NiveauProfond;  
+begin  
   raise Exception.Create('Erreur au niveau profond');
 end;
 
-procedure NiveauIntermediaire;
-begin
+procedure NiveauIntermediaire;  
+begin  
   WriteLn('  Avant appel niveau profond');
   NiveauProfond;
   WriteLn('  Apres appel - jamais execute');
 end;
 
-procedure NiveauSuperieur;
-begin
+procedure NiveauSuperieur;  
+begin  
   try
     WriteLn('  Debut du traitement');
     NiveauIntermediaire;
@@ -141,8 +141,8 @@ begin
   WriteLn('  Apres le try-except');
 end;
 
-procedure DemoCascade;
-begin
+procedure DemoCascade;  
+begin  
   WriteLn('=== 4. Cascade d''exceptions ===');
   NiveauSuperieur;
   WriteLn;
@@ -181,8 +181,8 @@ begin
   WriteLn('  Inscription validee pour ', nom);
 end;
 
-procedure DemoValidationFormulaire;
-begin
+procedure DemoValidationFormulaire;  
+begin  
   WriteLn('=== 5. Validation de formulaire ===');
 
   { Test 1 : nom vide }

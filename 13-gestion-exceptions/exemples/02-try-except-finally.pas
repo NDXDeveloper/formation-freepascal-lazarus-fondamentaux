@@ -11,8 +11,8 @@ uses
   SysUtils, Classes;
 
 { --- Demonstration 1 : try-except basique avec erreur de conversion --- }
-procedure DemoTryExceptBasique;
-var
+procedure DemoTryExceptBasique;  
+var  
   nombre: Integer;
   texte: String;
 begin
@@ -31,8 +31,8 @@ begin
 end;
 
 { --- Demonstration 2 : gestion de plusieurs types d'exceptions --- }
-procedure DemoTypesMultiples;
-var
+procedure DemoTypesMultiples;  
+var  
   nombre, diviseur, resultat: Integer;
 begin
   WriteLn('=== 2. Plusieurs types d''exceptions ===');
@@ -73,8 +73,8 @@ begin
 end;
 
 { --- Demonstration 3 : try-finally pour liberation de ressources --- }
-procedure DemoTryFinally;
-var
+procedure DemoTryFinally;  
+var  
   liste: TStringList;
 begin
   WriteLn('=== 3. Try-finally (liberation de ressources) ===');
@@ -93,8 +93,8 @@ begin
 end;
 
 { --- Demonstration 4 : finally s'execute meme avec Exit --- }
-procedure DemoFinallyAvecExit;
-begin
+procedure DemoFinallyAvecExit;  
+begin  
   WriteLn('=== 4. Finally s''execute meme avec Exit ===');
   WriteLn('  Debut');
   try
@@ -108,18 +108,18 @@ begin
 end;
 
 { --- Demonstration 5 : propagation des exceptions --- }
-procedure NiveauBas;
-begin
+procedure NiveauBas;  
+begin  
   raise Exception.Create('Erreur au niveau bas');
 end;
 
-procedure NiveauMoyen;
-begin
+procedure NiveauMoyen;  
+begin  
   NiveauBas;
 end;
 
-procedure NiveauHaut;
-begin
+procedure NiveauHaut;  
+begin  
   try
     NiveauMoyen;
   except
@@ -128,8 +128,8 @@ begin
   end;
 end;
 
-procedure DemoPropagation;
-begin
+procedure DemoPropagation;  
+begin  
   WriteLn;
   WriteLn('=== 5. Propagation des exceptions ===');
   NiveauHaut;
@@ -137,8 +137,8 @@ begin
 end;
 
 { --- Demonstration 6 : combinaison try-except + try-finally --- }
-procedure DemoCombinaison;
-var
+procedure DemoCombinaison;  
+var  
   liste: TStringList;
 begin
   WriteLn('=== 6. Combinaison try-except + try-finally ===');

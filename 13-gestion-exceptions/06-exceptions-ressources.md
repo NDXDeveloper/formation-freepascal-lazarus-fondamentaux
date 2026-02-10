@@ -89,8 +89,8 @@ Que se passe-t-il si une exception survient avant la libération ?
 ### Exemple du problème
 
 ```pascal
-procedure LireFichier(const nom: String);
-var
+procedure LireFichier(const nom: String);  
+var  
   f: TextFile;
   ligne: String;
 begin
@@ -129,8 +129,8 @@ Le bloc `try-finally` **garantit** que le code de libération sera exécuté, qu
 ### Pattern fondamental
 
 ```pascal
-Ressource := AcquerirRessource;
-try
+Ressource := AcquerirRessource;  
+try  
   // Utilisation de la ressource
 finally
   LibererRessource(Ressource);
@@ -140,8 +140,8 @@ end;
 ### Application au fichier
 
 ```pascal
-procedure LireFichierCorrect(const nom: String);
-var
+procedure LireFichierCorrect(const nom: String);  
+var  
   f: TextFile;
   ligne: String;
 begin
@@ -182,8 +182,8 @@ Début de la procédure
 ### Exemple 1 : Gestion d'objet
 
 ```pascal
-procedure TraiterDonnees;
-var
+procedure TraiterDonnees;  
+var  
   liste: TStringList;
 begin
   liste := TStringList.Create;
@@ -203,8 +203,8 @@ end;
 ### Exemple 2 : Fichier avec exception
 
 ```pascal
-procedure CopierFichier(const source, destination: String);
-var
+procedure CopierFichier(const source, destination: String);  
+var  
   fSource, fDest: TextFile;
   ligne: String;
 begin
@@ -235,8 +235,8 @@ end;
 ### Exemple 3 : Connexion base de données
 
 ```pascal
-procedure ExecuterRequete(const SQL: String);
-var
+procedure ExecuterRequete(const SQL: String);  
+var  
   connexion: TSQLConnection;
   requete: TSQLQuery;
 begin
@@ -264,8 +264,8 @@ end;
 ### Exemple 4 : Téléchargement HTTP
 
 ```pascal
-procedure TelechargerFichier(const URL, fichierLocal: String);
-var
+procedure TelechargerFichier(const URL, fichierLocal: String);  
+var  
   client: TFPHttpClient;
   flux: TFileStream;
 begin
@@ -291,8 +291,8 @@ Souvent, vous voulez à la fois gérer les erreurs ET libérer les ressources.
 ### Méthode 1 : Try-Finally puis Try-Except
 
 ```pascal
-procedure TraiterAvecGestion;
-var
+procedure TraiterAvecGestion;  
+var  
   liste: TStringList;
 begin
   try
@@ -317,8 +317,8 @@ end;
 On peut aussi placer le `try-except` à l'extérieur :
 
 ```pascal
-procedure TraiterAvecGestionCombinee;
-var
+procedure TraiterAvecGestionCombinee;  
+var  
   liste: TStringList;
 begin
   try
@@ -367,8 +367,8 @@ Un piège courant est d'initialiser la variable **après** le `try` :
 ### ✗ INCORRECT
 
 ```pascal
-procedure MauvaisExemple;
-var
+procedure MauvaisExemple;  
+var  
   liste: TStringList;
 begin
   try
@@ -385,8 +385,8 @@ end;
 ### ✓ CORRECT : Initialiser avant Try
 
 ```pascal
-procedure BonExemple;
-var
+procedure BonExemple;  
+var  
   liste: TStringList;
 begin
   liste := nil;  // ✓ Initialisation à nil
@@ -402,8 +402,8 @@ end;
 Ou encore mieux :
 
 ```pascal
-procedure MeilleurExemple;
-var
+procedure MeilleurExemple;  
+var  
   liste: TStringList;
 begin
   liste := TStringList.Create;  // ✓ Création AVANT try
@@ -422,8 +422,8 @@ Quand vous avez plusieurs ressources à gérer, il y a plusieurs approches.
 ### Approche 1 : Try-Finally imbriqués
 
 ```pascal
-procedure GererMultiplesRessources;
-var
+procedure GererMultiplesRessources;  
+var  
   ressource1, ressource2, ressource3: TObject;
 begin
   ressource1 := TObject.Create;
@@ -451,8 +451,8 @@ end;
 ### Approche 2 : Initialisation puis Try unique
 
 ```pascal
-procedure GererMultiplesRessourcesMieux;
-var
+procedure GererMultiplesRessourcesMieux;  
+var  
   ressource1, ressource2, ressource3: TObject;
 begin
   ressource1 := nil;
@@ -481,8 +481,8 @@ end;
 `FreeAndNil` libère un objet et met la variable à `nil` :
 
 ```pascal
-procedure AvecFreeAndNil;
-var
+procedure AvecFreeAndNil;  
+var  
   ressource1, ressource2: TObject;
 begin
   ressource1 := nil;
@@ -506,8 +506,8 @@ end;
 Pour les ressources qui peuvent ne pas exister :
 
 ```pascal
-procedure TraiterFichierOptional(const nom: String);
-var
+procedure TraiterFichierOptional(const nom: String);  
+var  
   f: TextFile;
   ligne: String;
   fichierOuvert: Boolean;
@@ -554,8 +554,8 @@ type
     procedure FaireTravail;
   end;
 
-procedure UtiliserInterface;
-var
+procedure UtiliserInterface;  
+var  
   obj: IMonInterface;
 begin
   obj := TMonObjet.Create;
@@ -629,8 +629,8 @@ end;
 
 ```pascal
 // ✓ BONNE PRATIQUE
-Ressource := Creer;
-try
+Ressource := Creer;  
+try  
   Utiliser(Ressource);
 finally
   Liberer(Ressource);
@@ -658,9 +658,9 @@ end;
 
 ```pascal
 // ✓ BONNE PRATIQUE
-obj1 := nil;
-obj2 := nil;
-try
+obj1 := nil;  
+obj2 := nil;  
+try  
   obj1 := TObject1.Create;  // Créé en premier
   obj2 := TObject2.Create;  // Créé en second
   // Utilisation
@@ -677,8 +677,8 @@ end;
 ```pascal
 /// Crée et retourne un nouvel objet
 /// L'appelant est responsable de libérer l'objet avec Free
-function CreerObjet: TMonObjet;
-begin
+function CreerObjet: TMonObjet;  
+begin  
   Result := TMonObjet.Create;
 end;
 ```
@@ -717,8 +717,8 @@ Avant de valider votre code, vérifiez :
 Voici un exemple complet montrant toutes les bonnes pratiques :
 
 ```pascal
-procedure TraiterFichierComplet(const nomFichier: String);
-var
+procedure TraiterFichierComplet(const nomFichier: String);  
+var  
   fichier: TextFile;
   ligne: String;
   liste: TStringList;

@@ -11,8 +11,8 @@ uses
   SysUtils;
 
 { --- Demonstration 1 : E.ClassName et E.Message --- }
-procedure DemoClassNameMessage;
-begin
+procedure DemoClassNameMessage;  
+begin  
   WriteLn('=== 1. E.ClassName et E.Message ===');
 
   try
@@ -29,8 +29,8 @@ begin
 end;
 
 { --- Demonstration 2 : ordre de capture (specifique -> general) --- }
-procedure DemoOrdreCapture;
-var
+procedure DemoOrdreCapture;  
+var  
   x, zero: Integer;
 begin
   WriteLn('=== 2. Ordre de capture (specifique -> general) ===');
@@ -155,8 +155,8 @@ begin
 end;
 
 { --- Demonstration 5 : heritage - EDivByZero est une EIntError --- }
-procedure DemoHeritage;
-var
+procedure DemoHeritage;  
+var  
   x, zero: Integer;
 begin
   WriteLn('=== 5. Heritage des exceptions ===');

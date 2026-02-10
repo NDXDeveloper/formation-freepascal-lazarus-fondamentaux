@@ -16,8 +16,8 @@ type
   EBusinessException = class(Exception);
 
 { --- Demonstration 1 : messages d'exception avec contexte (CreateFmt) --- }
-procedure ChargerConfiguration(const nomFichier: String);
-begin
+procedure ChargerConfiguration(const nomFichier: String);  
+begin  
   if not FileExists(nomFichier) then
     raise Exception.CreateFmt(
       'Impossible d''ouvrir le fichier "%s" : le fichier n''existe pas. ' +
@@ -27,8 +27,8 @@ begin
   WriteLn('  Configuration chargee depuis : ', nomFichier);
 end;
 
-procedure DemoMessagesContextuels;
-begin
+procedure DemoMessagesContextuels;  
+begin  
   WriteLn('=== 1. Messages d''exception avec contexte ===');
 
   { Message vague vs message contextuel }
@@ -43,8 +43,8 @@ begin
 end;
 
 { --- Demonstration 2 : validation precoce (verifier avant d'agir) --- }
-procedure DemoValidationPrecoce;
-var
+procedure DemoValidationPrecoce;  
+var  
   a, b, resultat: Integer;
 begin
   WriteLn('=== 2. Validation precoce ===');
@@ -77,13 +77,13 @@ begin
 end;
 
 { --- Demonstration 3 : ne pas ignorer les exceptions silencieusement --- }
-procedure OperationRisquee;
-begin
+procedure OperationRisquee;  
+begin  
   raise Exception.Create('Quelque chose a mal tourne');
 end;
 
-procedure DemoNePasIgnorer;
-begin
+procedure DemoNePasIgnorer;  
+begin  
   WriteLn('=== 3. Ne pas ignorer les exceptions ===');
 
   { MAUVAISE PRATIQUE : avaler silencieusement (on montre ce qu'il ne faut PAS faire) }
@@ -108,13 +108,13 @@ begin
 end;
 
 { --- Demonstration 4 : re-lever apres logging --- }
-procedure TraiterDonnees(const source: String);
-begin
+procedure TraiterDonnees(const source: String);  
+begin  
   raise EBusinessException.CreateFmt('Donnees invalides dans "%s"', [source]);
 end;
 
-procedure TraiterAvecLog(const source: String);
-begin
+procedure TraiterAvecLog(const source: String);  
+begin  
   try
     TraiterDonnees(source);
   except
@@ -126,8 +126,8 @@ begin
   end;
 end;
 
-procedure DemoReleverApresLog;
-begin
+procedure DemoReleverApresLog;  
+begin  
   WriteLn('=== 4. Re-lever apres logging ===');
 
   try
@@ -143,8 +143,8 @@ begin
 end;
 
 { --- Demonstration 5 : ordre specifique -> general --- }
-procedure DemoOrdreCapture;
-begin
+procedure DemoOrdreCapture;  
+begin  
   WriteLn('=== 5. Capture specifique -> general ===');
 
   { Test avec EConvertError }
@@ -173,8 +173,8 @@ begin
 end;
 
 { --- Demonstration 6 : liberation de ressources avec exception --- }
-procedure DemoRessourcesCorrectement;
-var
+procedure DemoRessourcesCorrectement;  
+var  
   liste: TStringList;
 begin
   WriteLn('=== 6. Liberation correcte des ressources ===');
@@ -191,8 +191,8 @@ begin
   end;
 end;
 
-procedure DemoRessources;
-begin
+procedure DemoRessources;  
+begin  
   try
     DemoRessourcesCorrectement;
   except
@@ -203,8 +203,8 @@ begin
 end;
 
 { --- Demonstration 7 : enrichir le message d'erreur --- }
-procedure TraiterLigne(numeroLigne: Integer; const contenu: String);
-begin
+procedure TraiterLigne(numeroLigne: Integer; const contenu: String);  
+begin  
   try
     StrToInt(contenu);
   except
@@ -216,8 +216,8 @@ begin
   end;
 end;
 
-procedure DemoEnrichirMessage;
-begin
+procedure DemoEnrichirMessage;  
+begin  
   WriteLn('=== 7. Enrichir le message d''erreur ===');
 
   try

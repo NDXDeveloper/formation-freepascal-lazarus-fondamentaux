@@ -19,8 +19,8 @@ raise ClasseException.Create('Message d''erreur');
 ### Exemple simple
 
 ```pascal
-procedure DiviserParDeux(nombre: Integer);
-begin
+procedure DiviserParDeux(nombre: Integer);  
+begin  
   if nombre mod 2 <> 0 then
     raise Exception.Create('Le nombre doit être pair !');
 
@@ -41,8 +41,8 @@ Lorsque `raise` est exécuté :
 Plutôt que de continuer avec des données invalides, il vaut mieux signaler le problème immédiatement.
 
 ```pascal
-procedure DefinirAge(age: Integer);
-begin
+procedure DefinirAge(age: Integer);  
+begin  
   if age < 0 then
     raise Exception.Create('L''âge ne peut pas être négatif');
 
@@ -57,8 +57,8 @@ end;
 ### 2. Signaler l'impossibilité d'effectuer une opération
 
 ```pascal
-function LireFichierConfiguration: String;
-var
+function LireFichierConfiguration: String;  
+var  
   f: TextFile;
 begin
   AssignFile(f, 'config.ini');
@@ -75,8 +75,8 @@ end;
 ### 3. Vérifier les préconditions
 
 ```pascal
-procedure RetirerArgent(montant: Double);
-begin
+procedure RetirerArgent(montant: Double);  
+begin  
   if montant <= 0 then
     raise Exception.Create('Le montant doit être positif');
 
@@ -145,8 +145,8 @@ raise EStreamError.Create('Erreur lors de la manipulation du flux');
 Parfois, vous voulez inclure des valeurs dans votre message d'erreur. Utilisez `Format` :
 
 ```pascal
-procedure VerifierAge(age: Integer);
-begin
+procedure VerifierAge(age: Integer);  
+begin  
   if (age < 18) or (age > 65) then
     raise Exception.CreateFmt(
       'Âge invalide : %d. Doit être entre 18 et 65.',
@@ -203,8 +203,8 @@ end;
 ### Exemple pratique : logging et re-propagation
 
 ```pascal
-procedure TraiterFichier(const nomFichier: String);
-begin
+procedure TraiterFichier(const nomFichier: String);  
+begin  
   try
     // Traitement du fichier
     LireDonnees(nomFichier);
@@ -229,8 +229,8 @@ end;
 Vous pouvez aussi capturer une exception et en lever une autre, plus appropriée :
 
 ```pascal
-function ChargerConfiguration: TConfiguration;
-begin
+function ChargerConfiguration: TConfiguration;  
+begin  
   try
     Result := TConfiguration.Create;
     Result.LoadFromFile('config.xml');
@@ -314,8 +314,8 @@ Les exceptions doivent être réservées aux situations **exceptionnelles**. Ne 
 
 ```pascal
 // ✗ MAUVAIS
-function TrouverElement(valeur: Integer): Boolean;
-begin
+function TrouverElement(valeur: Integer): Boolean;  
+begin  
   try
     // Recherche...
     raise Exception.Create('Pas trouvé');
@@ -325,8 +325,8 @@ begin
 end;
 
 // ✓ BON
-function TrouverElement(valeur: Integer): Boolean;
-begin
+function TrouverElement(valeur: Integer): Boolean;  
+begin  
   // Recherche...
   Result := False;  // Simple retour de valeur
 end;
@@ -336,8 +336,8 @@ end;
 
 ```pascal
 // ✗ MAUVAIS
-function Diviser(a, b: Integer): Integer;
-begin
+function Diviser(a, b: Integer): Integer;  
+begin  
   // Lever une exception à chaque fois que b = 0
   if b = 0 then
     raise EDivByZero.Create('Division par zéro');
@@ -345,8 +345,8 @@ begin
 end;
 
 // ✓ BON
-function Diviser(a, b: Integer; out resultat: Integer): Boolean;
-begin
+function Diviser(a, b: Integer; out resultat: Integer): Boolean;  
+begin  
   if b = 0 then
   begin
     Result := False;  // Retour simple
@@ -374,20 +374,20 @@ else
 Les exceptions peuvent se propager à travers plusieurs niveaux de procédures :
 
 ```pascal
-procedure NiveauProfond;
-begin
+procedure NiveauProfond;  
+begin  
   raise Exception.Create('Erreur au niveau profond');
 end;
 
-procedure NiveauIntermediaire;
-begin
+procedure NiveauIntermediaire;  
+begin  
   WriteLn('Avant appel niveau profond');
   NiveauProfond;  // Lève une exception
   WriteLn('Après appel - jamais exécuté');
 end;
 
-procedure NiveauSuperieur;
-begin
+procedure NiveauSuperieur;  
+begin  
   try
     WriteLn('Début du traitement');
     NiveauIntermediaire;
@@ -402,10 +402,10 @@ end;
 
 **Résultat :**
 ```
-Début du traitement
-Avant appel niveau profond
-Exception capturée : Erreur au niveau profond
-Après le try-except
+Début du traitement  
+Avant appel niveau profond  
+Exception capturée : Erreur au niveau profond  
+Après le try-except  
 ```
 
 ## Bonnes pratiques
@@ -438,16 +438,16 @@ Levez les exceptions dès que vous détectez un problème, mais ne les capturez 
 
 ```pascal
 // ✓ BON
-function OuvrirFichier(const nom: String): TextFile;
-begin
+function OuvrirFichier(const nom: String): TextFile;  
+begin  
   if not FileExists(nom) then
     raise Exception.Create('Fichier introuvable : ' + nom);  // Lever tôt
 
   // ...
 end;
 
-procedure TraiterDonnees;
-begin
+procedure TraiterDonnees;  
+begin  
   try
     // ... appels multiples
   except

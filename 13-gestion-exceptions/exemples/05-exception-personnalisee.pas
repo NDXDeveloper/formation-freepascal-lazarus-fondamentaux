@@ -13,8 +13,8 @@ uses
 type
   EAgeInvalide = class(Exception);  // Préfixe E par convention ; hérite de Exception (SysUtils)
 
-procedure VerifierAge(age: Integer);
-begin
+procedure VerifierAge(age: Integer);  
+begin  
   if (age < 0) or (age > 150) then
     raise EAgeInvalide.Create('L''âge doit être entre 0 et 150');  // raise crée et déclenche l'exception
 

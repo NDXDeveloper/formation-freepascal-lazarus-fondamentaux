@@ -80,8 +80,8 @@ uses
 type
   EAgeInvalide = class(Exception);  // Préfixe E par convention ; hérite de Exception (SysUtils)
 
-procedure VerifierAge(age: Integer);
-begin
+procedure VerifierAge(age: Integer);  
+begin  
   if (age < 0) or (age > 150) then
     raise EAgeInvalide.Create('L''âge doit être entre 0 et 150');  // raise crée et déclenche l'exception
 
@@ -170,8 +170,8 @@ type
     property MontantDemande: Double read FMontantDemande;
   end;
 
-constructor ESoldeInsuffisant.Create(solde, montant: Double);
-begin
+constructor ESoldeInsuffisant.Create(solde, montant: Double);  
+begin  
   FSoldeActuel := solde;
   FMontantDemande := montant;
 
@@ -185,8 +185,8 @@ end;
 ### Utilisation
 
 ```pascal
-procedure RetirerArgent(montant: Double);
-begin
+procedure RetirerArgent(montant: Double);  
+begin  
   if SoldeCompte < montant then
     raise ESoldeInsuffisant.Create(SoldeCompte, montant);
 
@@ -219,8 +219,8 @@ type
     property CodeErreur: Integer read FCodeErreur;
   end;
 
-constructor EApplicationException.Create(code: Integer; const msg: String);
-begin
+constructor EApplicationException.Create(code: Integer; const msg: String);  
+begin  
   FCodeErreur := code;
   inherited CreateFmt('[Erreur %d] %s', [code, msg]);
 end;
@@ -234,8 +234,8 @@ const
   ERR_ACCES_REFUSE = 1002;
   ERR_FORMAT_INVALIDE = 1003;
 
-procedure ChargerFichier(const nom: String);
-begin
+procedure ChargerFichier(const nom: String);  
+begin  
   if not FileExists(nom) then
     raise EApplicationException.Create(
       ERR_FICHIER_INTROUVABLE,
@@ -293,8 +293,8 @@ end;
 ### Utilisation
 
 ```pascal
-procedure TraiterLigne(const fichier: String; numLigne: Integer; const contenu: String);
-begin
+procedure TraiterLigne(const fichier: String; numLigne: Integer; const contenu: String);  
+begin  
   if Trim(contenu) = '' then
     raise EContexteException.Create(
       'TraiterLigne',
@@ -354,19 +354,19 @@ type
   end;
 
 // Implémentation
-constructor EValidationError.Create(const champ, message: String);
-begin
+constructor EValidationError.Create(const champ, message: String);  
+begin  
   FNomChamp := champ;
   inherited CreateFmt('Champ "%s" : %s', [champ, message]);
 end;
 
-constructor EChampVide.Create(const champ: String);
-begin
+constructor EChampVide.Create(const champ: String);  
+begin  
   inherited Create(champ, 'ce champ est obligatoire');
 end;
 
-constructor EChampTropLong.Create(const champ: String; longueurMax, longueurActuelle: Integer);
-begin
+constructor EChampTropLong.Create(const champ: String; longueurMax, longueurActuelle: Integer);  
+begin  
   FLongueurMax := longueurMax;
   FLongueurActuelle := longueurActuelle;
   inherited Create(
@@ -375,14 +375,14 @@ begin
   );
 end;
 
-constructor EFormatEmail.Create(const email: String);
-begin
+constructor EFormatEmail.Create(const email: String);  
+begin  
   inherited Create('email', Format('"%s" n''est pas un email valide', [email]));
 end;
 
 // Utilisation dans un validateur
-procedure ValiderFormulaire(const nom, email: String);
-begin
+procedure ValiderFormulaire(const nom, email: String);  
+begin  
   // Validation du nom
   if Trim(nom) = '' then
     raise EChampVide.Create('nom');
@@ -399,8 +399,8 @@ begin
 end;
 
 // Dans l'interface utilisateur
-procedure SoumettreFormulaire;
-begin
+procedure SoumettreFormulaire;  
+begin  
   try
     ValiderFormulaire(EditNom.Text, EditEmail.Text);
     ShowMessage('Formulaire valide !');
@@ -437,25 +437,25 @@ type
     property URL: String read FURL;
   end;
 
-constructor EReseauException.Create(code: Integer; const url, message: String);
-begin
+constructor EReseauException.Create(code: Integer; const url, message: String);  
+begin  
   FCodeHTTP := code;
   FURL := url;
   inherited CreateFmt('[HTTP %d] %s - %s', [code, url, message]);
 end;
 
-function EReseauException.EstErreurServeur: Boolean;
-begin
+function EReseauException.EstErreurServeur: Boolean;  
+begin  
   Result := (FCodeHTTP >= 500) and (FCodeHTTP < 600);
 end;
 
-function EReseauException.EstErreurClient: Boolean;
-begin
+function EReseauException.EstErreurClient: Boolean;  
+begin  
   Result := (FCodeHTTP >= 400) and (FCodeHTTP < 500);
 end;
 
-function EReseauException.PeutReessayer: Boolean;
-begin
+function EReseauException.PeutReessayer: Boolean;  
+begin  
   // On peut réessayer pour certaines erreurs serveur
   Result := EstErreurServeur or (FCodeHTTP = 429); // Too Many Requests
 end;
@@ -489,14 +489,14 @@ Par convention, toutes les classes d'exceptions commencent par **E** (pour Excep
 
 ```pascal
 // ✓ BON
-EMonErreur
-ESoldeInsuffisant
-EValidationError
+EMonErreur  
+ESoldeInsuffisant  
+EValidationError  
 
 // ✗ MAUVAIS
-MonErreur
-SoldeInsuffisantException
-ValidationError
+MonErreur  
+SoldeInsuffisantException  
+ValidationError  
 ```
 
 ### Noms descriptifs
@@ -505,14 +505,14 @@ Utilisez des noms clairs qui décrivent l'erreur :
 
 ```pascal
 // ✓ BON
-EEmailInvalide
-EFichierNonTrouve
-ECompteBloque
+EEmailInvalide  
+EFichierNonTrouve  
+ECompteBloque  
 
 // ✗ MAUVAIS
-EErreur1
-EProbleme
-EX
+EErreur1  
+EProbleme  
+EX  
 ```
 
 ## Bonnes pratiques
@@ -541,8 +541,8 @@ type
   end;
 
 // Permet plusieurs façons de créer l'exception
-raise ESoldeInsuffisant.Create(100.0, 150.0);
-raise ESoldeInsuffisant.Create('Solde insuffisant');
+raise ESoldeInsuffisant.Create(100.0, 150.0);  
+raise ESoldeInsuffisant.Create('Solde insuffisant');  
 ```
 
 ### 3. Ne pas exposer trop de détails techniques

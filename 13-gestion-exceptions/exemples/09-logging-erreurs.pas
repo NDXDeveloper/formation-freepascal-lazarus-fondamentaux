@@ -18,8 +18,8 @@ var
   FichierLog: TextFile;
   LogOuvert: Boolean;
 
-function NiveauToString(niveau: TNiveauLog): String;
-begin
+function NiveauToString(niveau: TNiveauLog): String;  
+begin  
   case niveau of
     nlInfo:  Result := 'INFO ';
     nlWarn:  Result := 'WARN ';
@@ -28,8 +28,8 @@ begin
   end;
 end;
 
-procedure InitialiserLog(const nomFichier: String);
-begin
+procedure InitialiserLog(const nomFichier: String);  
+begin  
   AssignFile(FichierLog, nomFichier);
   if FileExists(nomFichier) then
     Append(FichierLog)
@@ -38,8 +38,8 @@ begin
   LogOuvert := True;
 end;
 
-procedure Log(niveau: TNiveauLog; const msg: String);
-var
+procedure Log(niveau: TNiveauLog; const msg: String);  
+var  
   ligne: String;
 begin
   ligne := Format('[%s] [%s] %s',
@@ -58,14 +58,14 @@ begin
   WriteLn(ligne);
 end;
 
-procedure LogException(const contexte: String; E: Exception);
-begin
+procedure LogException(const contexte: String; E: Exception);  
+begin  
   Log(nlError, Format('%s - Exception: [%s] %s',
     [contexte, E.ClassName, E.Message]));
 end;
 
-procedure FermerLog;
-begin
+procedure FermerLog;  
+begin  
   if LogOuvert then
   begin
     CloseFile(FichierLog);
@@ -75,8 +75,8 @@ end;
 
 { === Fonctions metier pour la demonstration === }
 
-procedure TraiterFichierDonnees(const nomFichier: String);
-begin
+procedure TraiterFichierDonnees(const nomFichier: String);  
+begin  
   Log(nlInfo, 'Debut traitement fichier : ' + nomFichier);
 
   if not FileExists(nomFichier) then
@@ -88,8 +88,8 @@ begin
   Log(nlInfo, 'Fichier traite avec succes');
 end;
 
-procedure EffectuerCalcul(a, b: Integer);
-begin
+procedure EffectuerCalcul(a, b: Integer);  
+begin  
   Log(nlInfo, Format('Calcul demande : %d / %d', [a, b]));
 
   if b = 0 then
@@ -103,8 +103,8 @@ begin
   Log(nlInfo, Format('Calcul reussi : %d / %d = %d', [a, b, a div b]));
 end;
 
-procedure ConvertirDonnee(const valeur: String);
-var
+procedure ConvertirDonnee(const valeur: String);  
+var  
   nombre: Integer;
 begin
   Log(nlInfo, 'Conversion de "' + valeur + '"');

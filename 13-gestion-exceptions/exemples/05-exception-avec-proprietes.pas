@@ -39,8 +39,8 @@ type
 
 { === Implementation des constructeurs === }
 
-constructor ESoldeInsuffisant.Create(solde, montant: Double);
-begin
+constructor ESoldeInsuffisant.Create(solde, montant: Double);  
+begin  
   FSoldeActuel := solde;
   FMontantDemande := montant;
   inherited CreateFmt(
@@ -49,8 +49,8 @@ begin
   );
 end;
 
-constructor EApplicationException.Create(code: Integer; const msg: String);
-begin
+constructor EApplicationException.Create(code: Integer; const msg: String);  
+begin  
   FCodeErreur := code;
   inherited CreateFmt('[Erreur %d] %s', [code, msg]);
 end;
@@ -61,8 +61,8 @@ end;
 var
   SoldeCompte: Double;
 
-procedure RetirerArgent(montant: Double);
-begin
+procedure RetirerArgent(montant: Double);  
+begin  
   if SoldeCompte < montant then
     raise ESoldeInsuffisant.Create(SoldeCompte, montant);
 
@@ -70,8 +70,8 @@ begin
   WriteLn('  Retrait de ', montant:0:2, ' EUR effectue. Nouveau solde : ', SoldeCompte:0:2, ' EUR');
 end;
 
-procedure DemoSoldeInsuffisant;
-begin
+procedure DemoSoldeInsuffisant;  
+begin  
   WriteLn('=== 1. Exception avec proprietes (ESoldeInsuffisant) ===');
   SoldeCompte := 50.0;
   WriteLn('  Solde initial : ', SoldeCompte:0:2, ' EUR');
@@ -104,8 +104,8 @@ const
   ERR_ACCES_REFUSE = 1002;
   ERR_FORMAT_INVALIDE = 1003;
 
-procedure ChargerFichier(const nom: String);
-begin
+procedure ChargerFichier(const nom: String);  
+begin  
   if not FileExists(nom) then
     raise EApplicationException.Create(
       ERR_FICHIER_INTROUVABLE,
@@ -113,8 +113,8 @@ begin
     );
 end;
 
-procedure DemoCodeErreur;
-begin
+procedure DemoCodeErreur;  
+begin  
   WriteLn('=== 2. Exception avec code d''erreur ===');
 
   try
@@ -142,8 +142,8 @@ begin
 end;
 
 { --- 3. Hierarchie d'exceptions metier --- }
-procedure EffectuerOperation(typeOp: Integer);
-begin
+procedure EffectuerOperation(typeOp: Integer);  
+begin  
   case typeOp of
     1: raise ESoldeInsuffisant.Create(100.0, 500.0);
     2: raise ECompteBloque.Create('Compte bloque suite a activite suspecte');
@@ -151,8 +151,8 @@ begin
   end;
 end;
 
-procedure DemoHierarchie;
-var
+procedure DemoHierarchie;  
+var  
   i: Integer;
 begin
   WriteLn('=== 3. Hierarchie d''exceptions metier ===');
@@ -194,24 +194,24 @@ type
     constructor Create(const email: String);
   end;
 
-constructor EValidationError.Create(const champ, msg: String);
-begin
+constructor EValidationError.Create(const champ, msg: String);  
+begin  
   FNomChamp := champ;
   inherited CreateFmt('Champ "%s" : %s', [champ, msg]);
 end;
 
-constructor EChampVide.Create(const champ: String);
-begin
+constructor EChampVide.Create(const champ: String);  
+begin  
   inherited Create(champ, 'ce champ est obligatoire');
 end;
 
-constructor EFormatEmail.Create(const email: String);
-begin
+constructor EFormatEmail.Create(const email: String);  
+begin  
   inherited Create('email', Format('"%s" n''est pas un email valide', [email]));
 end;
 
-procedure ValiderFormulaire(const nom, email: String);
-begin
+procedure ValiderFormulaire(const nom, email: String);  
+begin  
   if Trim(nom) = '' then
     raise EChampVide.Create('nom');
 
@@ -224,8 +224,8 @@ begin
   WriteLn('  Formulaire valide pour : ', nom, ' <', email, '>');
 end;
 
-procedure DemoValidation;
-begin
+procedure DemoValidation;  
+begin  
   WriteLn('=== 4. Systeme de validation ===');
 
   try

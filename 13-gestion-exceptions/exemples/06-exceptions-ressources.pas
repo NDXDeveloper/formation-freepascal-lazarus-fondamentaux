@@ -11,8 +11,8 @@ uses
   SysUtils, Classes;
 
 { --- Demonstration 1 : try-finally pour fichier --- }
-procedure DemoFichier;
-var
+procedure DemoFichier;  
+var  
   f: TextFile;
   nomFichier: String;
   ligne: String;
@@ -48,8 +48,8 @@ begin
 end;
 
 { --- Demonstration 2 : try-finally pour objet --- }
-procedure DemoObjet;
-var
+procedure DemoObjet;  
+var  
   liste: TStringList;
 begin
   WriteLn('=== 2. Try-finally pour objet ===');
@@ -68,8 +68,8 @@ begin
 end;
 
 { --- Demonstration 3 : ressources multiples avec init a nil + FreeAndNil --- }
-procedure DemoMultiplesRessources;
-var
+procedure DemoMultiplesRessources;  
+var  
   liste1, liste2, liste3: TStringList;
 begin
   WriteLn('=== 3. Multiples ressources avec init a nil ===');
@@ -104,8 +104,8 @@ begin
 end;
 
 { --- Demonstration 4 : multiples ressources avec erreur au milieu --- }
-procedure DemoRessourcesAvecErreur;
-var
+procedure DemoRessourcesAvecErreur;  
+var  
   liste1, liste2, liste3: TStringList;
 begin
   WriteLn('=== 4. Multiples ressources avec erreur ===');
@@ -143,8 +143,8 @@ begin
 end;
 
 { --- Demonstration 5 : combinaison try-except + try-finally --- }
-procedure DemoCombinaison;
-var
+procedure DemoCombinaison;  
+var  
   liste: TStringList;
 begin
   WriteLn('=== 5. Combinaison try-except + try-finally ===');
@@ -167,8 +167,8 @@ begin
 end;
 
 { --- Demonstration 6 : try-finally imbrique pour deux fichiers --- }
-procedure DemoFichiersImbriques;
-var
+procedure DemoFichiersImbriques;  
+var  
   fSource, fDest: TextFile;
   ligne: String;
   nomSource, nomDest: String;
