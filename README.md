@@ -129,8 +129,7 @@ Ce projet est distribué sous licence MIT. Voir le fichier [LICENSE](LICENSE) po
 ---
 
 <div align="center">
-
-[![Mettre une étoile sur GitHub](https://github.com/NDXDeveloper/formation-freepascal-lazarus-fondamentaux?style=social)](https://github.com/NDXDeveloper/formation-freepascal-lazarus-fondamentaux)
+[![Mettre une étoile sur GitHub](https://img.shields.io/github/stars/NDXDeveloper/formation-freepascal-lazarus-fondamentaux?style=social)](https://github.com/NDXDeveloper/formation-freepascal-lazarus-fondamentaux)
 [![Suivre](https://img.shields.io/github/followers/NDXDeveloper?style=social)](https://github.com/NDXDeveloper)
 
 **[Retour](#formation-freepascallazarus)**
